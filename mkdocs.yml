@@ -1,0 +1,34 @@
+site_name: Neurogenomics KB
+site_description: TBD
+site_author: TBD
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+nav:
+  - Home: index.md
+  - Models:
+    - Genetics: models/genetics/index.md
+    - Brain: models/brain/index.md
+  - Integration: integration/index.md
+  - Data: data/index.md
+  - Code Walkthroughs: code_walkthroughs/index.md
+  - Decisions: decisions/index.md
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - tables
+
