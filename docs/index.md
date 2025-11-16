@@ -43,7 +43,7 @@ Quick start
 ## KB workflow
 
 ### Paper cards (NEW ✨)
-All papers from `pdf<->md;ai-summaries/input/` now have structured YAML cards in `kb/paper_cards/`:
+All 12 papers from `pdf<->md;ai-summaries/input/` now have structured YAML cards in `kb/paper_cards/`:
 
 **Integration principles:**
 - [Ensemble Integration (Li et al. 2022)](../kb/paper_cards/ensemble_integration_li2022.yaml) — Late fusion rationale

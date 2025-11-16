@@ -6,7 +6,7 @@ created: "2025-11-17"
 deadline: "2025-11-26"
 
 datasets:
-  # Same as CCA experiment
+  # CRITICAL: Use IDENTICAL data as CCA experiment (01_cca_gene_smri.yaml)
   genetics: "kb/datasets/ukb_wes.yaml"
   smri: "kb/datasets/ukb_smri_freesurfer.yaml"
   manifest: "kb/datasets/ukb_manifest_stub.yaml"
@@ -113,7 +113,8 @@ outputs:
     - "calibration_curves.png"
     - "feature_importance_bars.png (top 20)"
   predictions:
-    - "held_out_predictions.csv (fold, subject_id, y_true, y_pred_proba)"
+    - "held_out_predictions.csv (fold, subject_id, y_true, y_pred_proba_gene, y_pred_proba_smri, y_pred_proba_fusion)"
+    - "CRITICAL: Save predictions from ALL baselines per fold for valid DeLong comparison"
 
 next_steps:
   if_fusion_wins:

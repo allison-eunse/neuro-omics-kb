@@ -75,6 +75,7 @@ cross_validation:
   group_by: "site"  # prevent site leakage
   stratify_by: "mdd_diagnosis"  # if available; else random
   seed: 42
+  # CRITICAL: These exact folds MUST be reused in 02_prediction_baselines.yaml for fair comparison
 
 analysis:
   method: "cca_permutation"

@@ -128,7 +128,7 @@ configs/experiments/            (3 YAML templates) ← NEW
 - ✅ Analysis recipes (CCA, prediction baselines, partial correlations, LOGO)
 
 **KB (papers) deliverables:**
-- ✅ 11 paper cards in YAML (all PDFs from `pdf<->md;ai-summaries/input/`)
+- ✅ 12 paper cards in YAML (all PDFs from `pdf<->md;ai-summaries/input/`)
 - ✅ Each card includes: summary, key takeaways, methods, implications, related docs
 - ✅ Linked from `docs/index.md` and `kb/paper_cards/README.md`
 
