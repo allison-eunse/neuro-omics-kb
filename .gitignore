@@ -44,8 +44,8 @@ Thumbs.db
 chroma/
 向量数据库/
 
-
-
-
-
+# External research repos (fetched on demand)
+external_repos/*
+!external_repos/.gitkeep
+!external_repos/README.md
 

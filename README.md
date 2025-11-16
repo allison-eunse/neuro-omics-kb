@@ -4,7 +4,7 @@ Neurogenomics KB
 
 A **documentation-focused knowledge base** for genetics and brain foundation models and their multimodal integration. This repository contains structured documentation, YAML metadata cards, code walkthroughs, and integration strategies.
 
-**Note:** This is a **knowledge base only** - no implementation code. For actual model training/inference, refer to the `external_repos/` directories or the original model repositories.
+**Note:** This is a **knowledge base only** - no implementation code. For actual model training/inference, refer to the `external_repos/` directories or the original model repositories (run `./scripts/fetch_external_repos.sh` to clone them locally).
 
 ## What's Inside
 
@@ -23,8 +23,8 @@ A **documentation-focused knowledge base** for genetics and brain foundation mod
 - **Paper Cards** (`paper_cards/*.yaml`): Research paper references
 
 ### 🔗 External Repos (`external_repos/`)
-- Cloned source code for reference (read-only)
-- Links to original repositories for actual implementation
+- Git-ignored working copies synced via `./scripts/fetch_external_repos.sh`
+- Table of upstream links documented in `external_repos/README.md`
 
 ### 🔧 KB Management (`scripts/`)
 - `manage_kb.py`: Validation and catalog generation tools
@@ -36,6 +36,9 @@ A **documentation-focused knowledge base** for genetics and brain foundation mod
 # Install dependencies
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
+
+# (Optional) fetch upstream model repos for reference
+./scripts/fetch_external_repos.sh
 
 # Serve documentation site
 mkdocs serve
