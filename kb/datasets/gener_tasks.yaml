@@ -1,21 +1,24 @@
 id: gener_tasks
 name: Gener task suite
-description: Classification/regression datasets released alongside GENERator (taxonomic, enhancer, etc.).
+description: Classification datasets released alongside GENERator (gene-type and taxonomic classification).
 storage_location:
   huggingface: https://huggingface.co/datasets/GenerTeam/gener-tasks
 schema_ref: docs/data/schemas.md#gener-tasks
-dtypes: arrow
+dtypes: parquet
 required_columns:
   - sequence
   - label
-  - subset
   - split
+# gene_classification also has strand, species_type, gene_type; taxonomic_classification has analogous fields.
 counts:
-  records: 5_000_000
+  records: 157_334          # HF: "Number of rows: 157,334"
+  subsets:
+    gene_classification: 101_000
+    taxonomic_classification: 56_100
 modalities:
   - dna
 access: public
-restrictions: Accept Hugging Face terms of service; cite GenerTeam.
+restrictions: Accept Hugging Face terms of service; cite GenerTeam and Wu et al. (arXiv:2502.07272).
 maintainers:
   - name: Allison Eun Se You
 verified: false

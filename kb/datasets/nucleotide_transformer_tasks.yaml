@@ -1,21 +1,27 @@
 id: nucleotide_transformer_tasks
 name: Nucleotide Transformer downstream tasks
-description: InstaDeep sequence understanding benchmark reused by Caduceus and GENERator.
+description: InstaDeep sequence understanding benchmark (18 tasks) reused by Caduceus and GENERator.
 storage_location:
   huggingface: https://huggingface.co/datasets/InstaDeepAI/nucleotide_transformer_downstream_tasks
 schema_ref: docs/data/schemas.md#nucleotide-transformer
-dtypes: arrow
+dtypes: parquet
 required_columns:
   - sequence
   - label
-  - dataset_name
+  - task
   - split
+optional_columns:
+  - name
 counts:
-  records: 2_500_000
+  records: 510_647             # HF: "Number of rows: 510,647"
+  tasks: 18
 modalities:
   - dna
 access: public
-restrictions: Follow HF dataset license; some subsets CC BY 4.0.
+restrictions: >
+  Follow the Hugging Face dataset license; some component datasets may carry
+  CC BY 4.0 or paper-specific terms. The HF card notes a revised benchmark
+  version; prefer the updated release when possible.
 maintainers:
   - name: Allison Eun Se You
 verified: false

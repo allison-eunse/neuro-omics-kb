@@ -1,6 +1,6 @@
 id: multi_species_corpus
 name: DNABERT-2 multi-species pretraining corpus
-description: Aggregated genomes spanning human, mouse, zebrafish, and microbes used for DNABERT-2 MLM.
+description: Aggregated genomes spanning human, mouse, zebrafish, and microbial species used for DNABERT-2 MLM pretraining.
 storage_location:
   drive: https://drive.google.com/file/d/1dSXJfwGpDSJ59ry9KAp8SugQLK35V83f
 schema_ref: docs/data/schemas.md#multi-species-corpus
@@ -15,7 +15,9 @@ counts:
 modalities:
   - dna
 access: restricted
-restrictions: Requires DNABERT-2 data request approval; abide by species-specific licenses.
+restrictions: >
+  Requires DNABERT-2 data request approval; abide by source genome licenses
+  and any DNABERT-2 usage terms. Google Drive link requires sign-in.
 maintainers:
   - name: Allison Eun Se You
 verified: false

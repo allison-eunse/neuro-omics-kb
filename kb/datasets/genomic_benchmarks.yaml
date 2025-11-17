@@ -1,20 +1,35 @@
 id: genomic_benchmarks
 name: GenomicBenchmarks downstream suite
-description: Eight supervised classification tasks from Grešová et al. used for Caduceus evaluation.
+description: Nine supervised genomic sequence classification tasks from Grešová et al. (2022), used for model evaluation.
 storage_location:
   huggingface: https://huggingface.co/datasets/katielink/genomic-benchmarks
 schema_ref: docs/data/schemas.md#genomic-benchmarks
-dtypes: parquet / arrow
+dtypes: parquet
 required_columns:
-  - sequence
-  - label
+  - id
+  - region
+  - start
+  - end
+  - strand
   - split
+  # labels/classes are per-file (one CSV per class) in the original format;
+  # downstream loaders may materialize an explicit "label" column.
 counts:
-  records: 1_400_000
+  records: 847_660           # HF: "Number of rows: 847,660"
+  subsets:
+    demo_coding_vs_intergenomic_seqs: 100_000
+    demo_human_or_worm: 100_000
+    drosphilia_enhancers_stark: null
+    dummy_mouse_enhancers_ensembl: 1_210
+    human_enhancers_cohn: 27_800
+    human_enhancers_ensembl: 155_000
+    human_ensembl_regulatory: 289_000
+    human_nontata_promoters: null
+    human_ocr_ensembl: 175_000
 modalities:
   - dna
 access: public
-restrictions: Provide attribution to GenomicBenchmarks maintainers.
+restrictions: Provide attribution to GenomicBenchmarks maintainers; cite Grešová et al. 2022 (bioRxiv 2022.06.08.495248).
 maintainers:
   - name: Allison Eun Se You
 verified: false

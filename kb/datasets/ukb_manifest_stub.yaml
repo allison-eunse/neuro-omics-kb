@@ -1,7 +1,8 @@
+id: ukb_manifest_stub
 name: "UKB Multimodal Manifest"
-description: "Subject-level manifest linking genetics (WES), sMRI, and fMRI data with covariates"
+description: "Subject-level manifest linking genetics (WES), sMRI, and fMRI data with covariates and splits."
 status: "stub"
-updated: "2025-11-17"
+last_updated: "2025-11-17"
 
 paths:
   manifest_csv: "/path/to/ukb/manifest.csv"
@@ -17,7 +18,7 @@ sample_sizes:
   n_multimodal_full: TBD  # subjects with all three modalities
 
 splits:
-  strategy: "stratified_group_kfold"  # group by site
+  strategy: "stratified_group_kfold"  # group by site/scanner
   k_folds: 5
   train_frac: 0.7
   val_frac: 0.15
@@ -33,7 +34,7 @@ inclusion_criteria:
     - "FreeSurfer QC pass"
     - "No major artifacts"
   fmri:
-    - "Motion FD_mean < 0.5mm"
+    - "Motion FD_mean < 0.5 mm"
     - "Minimum 400 timepoints after scrubbing"
     - "Parcellation: Schaefer-400 or AAL"
 
@@ -43,7 +44,7 @@ covariates:
     - sex
     - site  # scanner site
   genetics_confounds:
-    - pc1   # genetic PCs 1-10 for ancestry
+    - pc1
     - pc2
     - pc3
     - pc4
@@ -57,13 +58,13 @@ covariates:
     - motion_fd      # framewise displacement (fMRI)
     - icv            # intracranial volume (sMRI normalization)
   socioeconomic:
-    - ses            # if available
+    - ses
     - education_years
 
 phenotypes:
   primary:
     - mdd_diagnosis       # Major Depressive Disorder (binary)
-    - phq9_score         # Depression severity (continuous)
+    - phq9_score          # Depression severity (continuous)
   secondary:
     - cognitive_composite  # fluid intelligence / reaction time
     - anxiety_score
@@ -101,15 +102,16 @@ preprocessing:
     motion_correction: "ICA-AROMA + scrubbing"
 
 notes: |
-  - Fill sample sizes after data inventory meeting with 은지선생님
-  - Confirm phenotype availability and coding
-  - Verify site/scanner distribution for stratified CV
-  - Check overlap between modalities (Venn diagram)
-  - Document any exclusions (psychiatric medication, neurological conditions)
+  - Fill sample sizes after data inventory meeting with 은지선생님.
+  - Confirm phenotype availability and coding.
+  - Verify site/scanner distribution for stratified CV.
+  - Check overlap between modalities (Venn diagram).
+  - Document any exclusions (psychiatric medication, neurological conditions).
 
 references:
   - "UKB data access application: [PROJECT_ID]"
   - "UKB showcase: https://biobank.ndph.ox.ac.uk/showcase/"
 
+maintainers:
+  - name: Allison Eun Se You
 verified: false
-

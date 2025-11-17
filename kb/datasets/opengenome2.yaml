@@ -1,22 +1,32 @@
 id: opengenome2
 name: OpenGenome2
-description: 8.8T-token multi-domain genome dataset used to train Evo 2.
+description: 8.8-trillion–base-pair multi-domain genome dataset used to train the Evo 2 models.
 storage_location:
   huggingface: https://huggingface.co/datasets/arcinstitute/opengenome2
 schema_ref: docs/data/schemas.md#opengenome2
 dtypes: jsonl + fasta
 required_columns:
+  # FASTA directory:
   - sequence
-  - organism
-  - split
-  - augmentation_flags
+  # JSONL directory:
+  - text
+optional_columns:
+  - record          # present in some JSONL shards and causes HF cast errors
 counts:
-  tokens: 8_800_000_000_000
-  records: 40_000_000
+  base_pairs: 8_800_000_000_000   # HF: "Total size: 8.8 trillion base pairs"
+  records: null                   # very large; not reliably summarized on HF
 modalities:
   - dna
-access: public (large download)
-restrictions: Cite Arc Institute and abide by dataset licensing per subset.
+access: public
+restrictions: >
+  Apache-2.0 license. Cite the Evo 2 preprint (Brixi et al. 2025, bioRxiv
+  2025.02.18.638918) and the original data sources (GTDB, MGD DB, NCBI,
+  Ensembl, IMG/VR, RNAcentral, Rfam, EPDnew) as appropriate.
+notes: >
+  The Hugging Face dataset viewer shows a DatasetGenerationCastError because
+  some JSONL shards include an extra 'record' column. This affects only the
+  auto-conversion/viewer; the underlying FASTA and JSONL files are usable
+  for training.
 maintainers:
   - name: Allison Eun Se You
 verified: false

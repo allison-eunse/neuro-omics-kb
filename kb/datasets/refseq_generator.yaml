@@ -14,8 +14,10 @@ counts:
   base_pairs: 515_000_000_000
 modalities:
   - dna
-access: mixed (RefSeq public; GenerTeam curated tasks on HF)
-restrictions: Respect RefSeq redistribution policy; cite GenerTeam for curated subsets.
+access: mixed        # RefSeq public; curated derivatives may be hosted on HF
+restrictions: >
+  Respect NCBI RefSeq redistribution policies. Cite RefSeq and GenerTeam
+  (Wu et al. 2025) for curated subsets and tasks.
 maintainers:
   - name: Allison Eun Se You
 verified: false

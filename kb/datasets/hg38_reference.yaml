@@ -1,6 +1,6 @@
 id: hg38_reference
 name: HG38 masked language corpus
-description: Human reference genome windows used for HyenaDNA/Caduceus MLM pretraining.
+description: Human reference genome windows used for HyenaDNA/Caduceus masked language model pretraining.
 storage_location:
   bucket: gs://basenji_barnyard2
   path: data/hg38/
@@ -17,7 +17,7 @@ counts:
 modalities:
   - dna
 access: public
-restrictions: Cite UCSC and HyenaDNA data instructions when redistributing.
+restrictions: Cite UCSC and follow HyenaDNA/Caduceus data instructions when redistributing.
 maintainers:
   - name: Allison Eun Se You
 verified: true
