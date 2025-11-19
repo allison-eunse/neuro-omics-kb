@@ -3653,6 +3653,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kb/paper_cards/swift_2023.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT (2023)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3784,6 +3812,34 @@
     
   
     GENERator (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kb/paper_cards/dnabert2_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2 (2024)
   
 
     
@@ -4402,6 +4458,34 @@
     
   
     Foundation models overview (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kb/paper_cards/tabpfn_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TabPFN (2024)
   
 
     
@@ -5325,36 +5409,36 @@
 <h2 id="core-mechanics">Core Mechanics<a class="headerlink" href="#core-mechanics" title="Permanent link">&para;</a></h2>
 <h3 id="1-modality-specific-model-training">1. Modality-Specific Model Training<a class="headerlink" href="#1-modality-specific-model-training" title="Permanent link">&para;</a></h3>
 <p>Train diverse base classifiers per modality using algorithms matched to data structure:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Genetics: sequence/graph data</span>
-<span class="n">gene_models</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;lr&#39;</span><span class="p">:</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">0.01</span><span class="p">),</span>
-    <span class="s1">&#39;rf&#39;</span><span class="p">:</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
-    <span class="s1">&#39;svm&#39;</span><span class="p">:</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;rbf&#39;</span><span class="p">,</span> <span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-    <span class="s1">&#39;xgb&#39;</span><span class="p">:</span> <span class="n">XGBClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="c1"># Brain: spatial/temporal features</span>
-<span class="n">brain_models</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;lr&#39;</span><span class="p">:</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">0.1</span><span class="p">),</span>
-    <span class="s1">&#39;gbdt&#39;</span><span class="p">:</span> <span class="n">LightGBMClassifier</span><span class="p">(</span><span class="n">num_leaves</span><span class="o">=</span><span class="mi">31</span><span class="p">),</span>
-    <span class="s1">&#39;knn&#39;</span><span class="p">:</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span__-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Genetics: sequence/graph data</span>
+</span><span id="__span__-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">gene_models</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span__-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="s1">&#39;lr&#39;</span><span class="p">:</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">0.01</span><span class="p">),</span>
+</span><span id="__span__-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="s1">&#39;rf&#39;</span><span class="p">:</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
+</span><span id="__span__-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="s1">&#39;svm&#39;</span><span class="p">:</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;rbf&#39;</span><span class="p">,</span> <span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+</span><span id="__span__-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="s1">&#39;xgb&#39;</span><span class="p">:</span> <span class="n">XGBClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</span><span id="__span__-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span>
+</span><span id="__span__-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+</span><span id="__span__-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1"># Brain: spatial/temporal features</span>
+</span><span id="__span__-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">brain_models</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span__-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="s1">&#39;lr&#39;</span><span class="p">:</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">0.1</span><span class="p">),</span>
+</span><span id="__span__-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="s1">&#39;gbdt&#39;</span><span class="p">:</span> <span class="n">LightGBMClassifier</span><span class="p">(</span><span class="n">num_leaves</span><span class="o">=</span><span class="mi">31</span><span class="p">),</span>
+</span><span id="__span__-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="s1">&#39;knn&#39;</span><span class="p">:</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</span><span id="__span__-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="p">}</span>
+</span></code></pre></div>
 <p><strong>Key insight:</strong> Different modalities benefit from different inductive biases (trees for genetics, neighbors for imaging).</p>
 <h3 id="2-late-fusion-strategies">2. Late Fusion Strategies<a class="headerlink" href="#2-late-fusion-strategies" title="Permanent link">&para;</a></h3>
 <p><strong>Simple averaging:</strong>
-<div class="highlight"><pre><span></span><code><span class="n">ensemble_pred</span> <span class="o">=</span> <span class="p">(</span><span class="n">gene_pred_proba</span> <span class="o">+</span> <span class="n">brain_pred_proba</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
-</code></pre></div></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span__-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">ensemble_pred</span> <span class="o">=</span> <span class="p">(</span><span class="n">gene_pred_proba</span> <span class="o">+</span> <span class="n">brain_pred_proba</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+</span></code></pre></div></p>
 <p><strong>Ensemble selection</strong> (Li et al. method):
 - Iteratively add models that improve validation performance
 - Greedy forward selection with replacement
 - Automatically weights models by contribution</p>
 <p><strong>Stacking with meta-learner:</strong>
-<div class="highlight"><pre><span></span><code><span class="c1"># Stack predictions from all base models</span>
-<span class="n">meta_features</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">gene_preds</span><span class="p">,</span> <span class="n">brain_preds</span><span class="p">])</span>
-<span class="n">meta_model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
-<span class="n">meta_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">meta_features</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-</code></pre></div></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span__-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Stack predictions from all base models</span>
+</span><span id="__span__-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">meta_features</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">gene_preds</span><span class="p">,</span> <span class="n">brain_preds</span><span class="p">])</span>
+</span><span id="__span__-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">meta_model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+</span><span id="__span__-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">meta_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">meta_features</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</span></code></pre></div></p>
 <p>⚠️ <strong>Critical:</strong> Stacking must be fold-proper to avoid leakage—train meta-learner only on out-of-fold base predictions.</p>
 <h3 id="3-interpretability-via-feature-ranking">3. Interpretability via Feature Ranking<a class="headerlink" href="#3-interpretability-via-feature-ranking" title="Permanent link">&para;</a></h3>
 <p><strong>Cross-modality feature importance:</strong>
@@ -5395,17 +5479,17 @@
 - <strong>Brain:</strong> LR + LightGBM on BrainLM/SwiFT embeddings (512-D)
 - <strong>Fusion:</strong> Ensemble selection or simple stacking with LR meta-learner</p>
 <p><strong>Workflow:</strong>
-<div class="highlight"><pre><span></span><code><span class="c1"># 1. Extract embeddings per modality</span>
-python<span class="w"> </span>extract_gene_embeddings.py<span class="w"> </span>--model<span class="w"> </span>caduceus<span class="w"> </span>--out<span class="w"> </span>gene_emb.npy
-python<span class="w"> </span>extract_brain_embeddings.py<span class="w"> </span>--model<span class="w"> </span>brainlm<span class="w"> </span>--out<span class="w"> </span>brain_emb.npy
-
-<span class="c1"># 2. Train per-modality models</span>
-python<span class="w"> </span>train_per_modality.py<span class="w"> </span>--modality<span class="w"> </span>gene<span class="w"> </span>--models<span class="w"> </span>lr,gbdt
-python<span class="w"> </span>train_per_modality.py<span class="w"> </span>--modality<span class="w"> </span>brain<span class="w"> </span>--models<span class="w"> </span>lr,gbdt
-
-<span class="c1"># 3. Ensemble integration</span>
-python<span class="w"> </span>ensemble_fusion.py<span class="w"> </span>--strategy<span class="w"> </span>stacking<span class="w"> </span>--meta_model<span class="w"> </span>lr
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span__-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># 1. Extract embeddings per modality</span>
+</span><span id="__span__-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>python<span class="w"> </span>extract_gene_embeddings.py<span class="w"> </span>--model<span class="w"> </span>caduceus<span class="w"> </span>--out<span class="w"> </span>gene_emb.npy
+</span><span id="__span__-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>python<span class="w"> </span>extract_brain_embeddings.py<span class="w"> </span>--model<span class="w"> </span>brainlm<span class="w"> </span>--out<span class="w"> </span>brain_emb.npy
+</span><span id="__span__-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span__-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># 2. Train per-modality models</span>
+</span><span id="__span__-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>python<span class="w"> </span>train_per_modality.py<span class="w"> </span>--modality<span class="w"> </span>gene<span class="w"> </span>--models<span class="w"> </span>lr,gbdt
+</span><span id="__span__-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>python<span class="w"> </span>train_per_modality.py<span class="w"> </span>--modality<span class="w"> </span>brain<span class="w"> </span>--models<span class="w"> </span>lr,gbdt
+</span><span id="__span__-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+</span><span id="__span__-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="c1"># 3. Ensemble integration</span>
+</span><span id="__span__-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>python<span class="w"> </span>ensemble_fusion.py<span class="w"> </span>--strategy<span class="w"> </span>stacking<span class="w"> </span>--meta_model<span class="w"> </span>lr
+</span></code></pre></div></p>
 <p><strong>Evaluation metrics:</strong>
 - Per-modality AUROC/AUPRC
 - Fusion AUROC/AUPRC
@@ -5413,14 +5497,14 @@ python<span class="w"> </span>ensemble_fusion.py<span class="w"> </span>--strate
 - Feature importance rankings</p>
 <h3 id="integration-with-arpa-h-bom">Integration with ARPA-H BOM<a class="headerlink" href="#integration-with-arpa-h-bom" title="Permanent link">&para;</a></h3>
 <p>EI provides the <strong>baseline late fusion</strong> in our escalation strategy:</p>
-<div class="highlight"><pre><span></span><code>1. Ensemble Integration (baseline) ✓ Current
-    ↓ If fusion wins (p &lt; 0.05)
-2. Two-tower contrastive
-    ↓ If gains plateau
-3. EI stacking with hub tokens
-    ↓ Last resort
-4. Full early fusion (TAPE-style)
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>1. Ensemble Integration (baseline) ✓ Current
+</span><span id="__span__-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    ↓ If fusion wins (p &lt; 0.05)
+</span><span id="__span__-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>2. Two-tower contrastive
+</span><span id="__span__-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    ↓ If gains plateau
+</span><span id="__span__-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>3. EI stacking with hub tokens
+</span><span id="__span__-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    ↓ Last resort
+</span><span id="__span__-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>4. Full early fusion (TAPE-style)
+</span></code></pre></div>
 <p><strong>Why start with EI:</strong>
 - Establishes <strong>whether fusion helps at all</strong> before complex architectures
 - Provides <strong>interpretable baseline</strong> for regulatory/clinical validation
@@ -5431,39 +5515,39 @@ python<span class="w"> </span>ensemble_fusion.py<span class="w"> </span>--strate
 <h3 id="leakage-prevention">⚠️ Leakage Prevention<a class="headerlink" href="#leakage-prevention" title="Permanent link">&para;</a></h3>
 <p><strong>Problem:</strong> If meta-learner sees in-fold predictions, it overfits to noise.</p>
 <p><strong>Solution:</strong> Always use out-of-fold predictions for stacking:
-<div class="highlight"><pre><span></span><code><span class="c1"># WRONG: Train meta-learner on training predictions</span>
-<span class="n">meta_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">base_preds_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>  <span class="c1"># Leakage!</span>
-
-<span class="c1"># RIGHT: Train meta-learner on out-of-fold predictions</span>
-<span class="n">oof_preds</span> <span class="o">=</span> <span class="n">cross_val_predict</span><span class="p">(</span><span class="n">base_model</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">meta_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">oof_preds</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-</code></pre></div></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span__-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># WRONG: Train meta-learner on training predictions</span>
+</span><span id="__span__-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">meta_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">base_preds_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>  <span class="c1"># Leakage!</span>
+</span><span id="__span__-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span__-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># RIGHT: Train meta-learner on out-of-fold predictions</span>
+</span><span id="__span__-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">oof_preds</span> <span class="o">=</span> <span class="n">cross_val_predict</span><span class="p">(</span><span class="n">base_model</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</span><span id="__span__-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="n">meta_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">oof_preds</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</span></code></pre></div></p>
 <h3 id="confound-control">⚠️ Confound Control<a class="headerlink" href="#confound-control" title="Permanent link">&para;</a></h3>
 <p><strong>Problem:</strong> Batch effects (site, scanner) can dominate modality signals.</p>
 <p><strong>Solution:</strong> Residualize <strong>before</strong> training base models:
-<div class="highlight"><pre><span></span><code><span class="c1"># Per modality, residualize confounds</span>
-<span class="n">gene_emb_residual</span> <span class="o">=</span> <span class="n">residualize</span><span class="p">(</span><span class="n">gene_emb</span><span class="p">,</span> <span class="n">confounds</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;site&#39;</span><span class="p">,</span> <span class="s1">&#39;PCs&#39;</span><span class="p">])</span>
-<span class="n">brain_emb_residual</span> <span class="o">=</span> <span class="n">residualize</span><span class="p">(</span><span class="n">brain_emb</span><span class="p">,</span> <span class="n">confounds</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;site&#39;</span><span class="p">,</span> <span class="s1">&#39;FD&#39;</span><span class="p">])</span>
-</code></pre></div></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span__-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Per modality, residualize confounds</span>
+</span><span id="__span__-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">gene_emb_residual</span> <span class="o">=</span> <span class="n">residualize</span><span class="p">(</span><span class="n">gene_emb</span><span class="p">,</span> <span class="n">confounds</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;site&#39;</span><span class="p">,</span> <span class="s1">&#39;PCs&#39;</span><span class="p">])</span>
+</span><span id="__span__-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">brain_emb_residual</span> <span class="o">=</span> <span class="n">residualize</span><span class="p">(</span><span class="n">brain_emb</span><span class="p">,</span> <span class="n">confounds</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;site&#39;</span><span class="p">,</span> <span class="s1">&#39;FD&#39;</span><span class="p">])</span>
+</span></code></pre></div></p>
 <h3 id="meta-learner-simplicity">⚠️ Meta-Learner Simplicity<a class="headerlink" href="#meta-learner-simplicity" title="Permanent link">&para;</a></h3>
 <p><strong>Problem:</strong> Complex meta-learners (deep NNs) can overfit ensemble predictions.</p>
 <p><strong>Solution:</strong> Use simple meta-learners (LR, Ridge) unless &gt;10k samples:
-<div class="highlight"><pre><span></span><code><span class="c1"># Prefer: Regularized logistic regression</span>
-<span class="n">meta_model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s1">&#39;l2&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
-
-<span class="c1"># Avoid: Unless large N</span>
-<span class="n">meta_model</span> <span class="o">=</span> <span class="n">MLPClassifier</span><span class="p">(</span><span class="n">hidden_layers</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">))</span>  <span class="c1"># Risk overfitting</span>
-</code></pre></div></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span__-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Prefer: Regularized logistic regression</span>
+</span><span id="__span__-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">meta_model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s1">&#39;l2&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</span><span id="__span__-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+</span><span id="__span__-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Avoid: Unless large N</span>
+</span><span id="__span__-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">meta_model</span> <span class="o">=</span> <span class="n">MLPClassifier</span><span class="p">(</span><span class="n">hidden_layers</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">))</span>  <span class="c1"># Risk overfitting</span>
+</span></code></pre></div></p>
 <h3 id="missing-modality-handling">⚠️ Missing Modality Handling<a class="headerlink" href="#missing-modality-handling" title="Permanent link">&para;</a></h3>
 <p><strong>Problem:</strong> Not all subjects have both gene and brain data.</p>
 <p><strong>Solution:</strong> Train modality-specific fallback models:
-<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">has_both_modalities</span><span class="p">(</span><span class="n">subject</span><span class="p">):</span>
-    <span class="n">pred</span> <span class="o">=</span> <span class="n">ensemble_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">gene_emb</span><span class="p">,</span> <span class="n">brain_emb</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">has_gene_only</span><span class="p">(</span><span class="n">subject</span><span class="p">):</span>
-    <span class="n">pred</span> <span class="o">=</span> <span class="n">gene_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">gene_emb</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">has_brain_only</span><span class="p">(</span><span class="n">subject</span><span class="p">):</span>
-    <span class="n">pred</span> <span class="o">=</span> <span class="n">brain_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">brain_emb</span><span class="p">)</span>
-</code></pre></div></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span__-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">if</span> <span class="n">has_both_modalities</span><span class="p">(</span><span class="n">subject</span><span class="p">):</span>
+</span><span id="__span__-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="n">pred</span> <span class="o">=</span> <span class="n">ensemble_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">gene_emb</span><span class="p">,</span> <span class="n">brain_emb</span><span class="p">)</span>
+</span><span id="__span__-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="k">elif</span> <span class="n">has_gene_only</span><span class="p">(</span><span class="n">subject</span><span class="p">):</span>
+</span><span id="__span__-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="n">pred</span> <span class="o">=</span> <span class="n">gene_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">gene_emb</span><span class="p">)</span>
+</span><span id="__span__-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="k">elif</span> <span class="n">has_brain_only</span><span class="p">(</span><span class="n">subject</span><span class="p">):</span>
+</span><span id="__span__-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="n">pred</span> <span class="o">=</span> <span class="n">brain_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">brain_emb</span><span class="p">)</span>
+</span></code></pre></div></p>
 <hr />
 <h2 id="practical-implementation-guide">Practical Implementation Guide<a class="headerlink" href="#practical-implementation-guide" title="Permanent link">&para;</a></h2>
 <h3 id="step-1-choose-base-models">Step 1: Choose Base Models<a class="headerlink" href="#step-1-choose-base-models" title="Permanent link">&para;</a></h3>
@@ -5495,75 +5579,75 @@ python<span class="w"> </span>ensemble_fusion.py<span class="w"> </span>--strate
 </tbody>
 </table>
 <h3 id="step-2-train-with-proper-cv">Step 2: Train with Proper CV<a class="headerlink" href="#step-2-train-with-proper-cv" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">StratifiedKFold</span>
-
-<span class="n">skf</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-
-<span class="c1"># Per-modality training with OOF predictions</span>
-<span class="k">for</span> <span class="n">modality</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;gene&#39;</span><span class="p">,</span> <span class="s1">&#39;brain&#39;</span><span class="p">]:</span>
-    <span class="n">oof_preds</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">train_idx</span><span class="p">,</span> <span class="n">val_idx</span> <span class="ow">in</span> <span class="n">skf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-        <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">train_idx</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span>
-        <span class="n">X_val</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">val_idx</span><span class="p">]</span>
-
-        <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-        <span class="n">oof_preds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">])</span>
-
-    <span class="c1"># Save OOF predictions for meta-learner</span>
-    <span class="n">save_oof_predictions</span><span class="p">(</span><span class="n">modality</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">oof_preds</span><span class="p">))</span>
-</code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span__-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">StratifiedKFold</span>
+</span><span id="__span__-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+</span><span id="__span__-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">skf</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</span><span id="__span__-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+</span><span id="__span__-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="c1"># Per-modality training with OOF predictions</span>
+</span><span id="__span__-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="k">for</span> <span class="n">modality</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;gene&#39;</span><span class="p">,</span> <span class="s1">&#39;brain&#39;</span><span class="p">]:</span>
+</span><span id="__span__-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>    <span class="n">oof_preds</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span__-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>    <span class="k">for</span> <span class="n">train_idx</span><span class="p">,</span> <span class="n">val_idx</span> <span class="ow">in</span> <span class="n">skf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+</span><span id="__span__-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>        <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">train_idx</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span>
+</span><span id="__span__-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>        <span class="n">X_val</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">val_idx</span><span class="p">]</span>
+</span><span id="__span__-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>
+</span><span id="__span__-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>        <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</span><span id="__span__-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>        <span class="n">oof_preds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">])</span>
+</span><span id="__span__-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>
+</span><span id="__span__-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>    <span class="c1"># Save OOF predictions for meta-learner</span>
+</span><span id="__span__-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>    <span class="n">save_oof_predictions</span><span class="p">(</span><span class="n">modality</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">oof_preds</span><span class="p">))</span>
+</span></code></pre></div>
 <h3 id="step-3-meta-learner-training">Step 3: Meta-Learner Training<a class="headerlink" href="#step-3-meta-learner-training" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># Load OOF predictions</span>
-<span class="n">gene_oof</span> <span class="o">=</span> <span class="n">load_oof_predictions</span><span class="p">(</span><span class="s1">&#39;gene&#39;</span><span class="p">)</span>
-<span class="n">brain_oof</span> <span class="o">=</span> <span class="n">load_oof_predictions</span><span class="p">(</span><span class="s1">&#39;brain&#39;</span><span class="p">)</span>
-
-<span class="c1"># Stack into meta-features</span>
-<span class="n">meta_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">gene_oof</span><span class="p">,</span> <span class="n">brain_oof</span><span class="p">])</span>
-
-<span class="c1"># Train meta-learner</span>
-<span class="n">meta_model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
-<span class="n">meta_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">meta_X</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-
-<span class="c1"># Evaluate on held-out test set</span>
-<span class="n">test_preds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span>
-    <span class="n">gene_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">gene_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">],</span>
-    <span class="n">brain_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">brain_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="p">])</span>
-<span class="n">test_auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">meta_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">test_preds</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">])</span>
-</code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span__-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Load OOF predictions</span>
+</span><span id="__span__-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">gene_oof</span> <span class="o">=</span> <span class="n">load_oof_predictions</span><span class="p">(</span><span class="s1">&#39;gene&#39;</span><span class="p">)</span>
+</span><span id="__span__-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">brain_oof</span> <span class="o">=</span> <span class="n">load_oof_predictions</span><span class="p">(</span><span class="s1">&#39;brain&#39;</span><span class="p">)</span>
+</span><span id="__span__-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+</span><span id="__span__-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1"># Stack into meta-features</span>
+</span><span id="__span__-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="n">meta_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">gene_oof</span><span class="p">,</span> <span class="n">brain_oof</span><span class="p">])</span>
+</span><span id="__span__-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
+</span><span id="__span__-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="c1"># Train meta-learner</span>
+</span><span id="__span__-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="n">meta_model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</span><span id="__span__-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="n">meta_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">meta_X</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</span><span id="__span__-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>
+</span><span id="__span__-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="c1"># Evaluate on held-out test set</span>
+</span><span id="__span__-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="n">test_preds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span>
+</span><span id="__span__-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>    <span class="n">gene_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">gene_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">],</span>
+</span><span id="__span__-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>    <span class="n">brain_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">brain_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+</span><span id="__span__-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="p">])</span>
+</span><span id="__span__-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="n">test_auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">meta_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">test_preds</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">])</span>
+</span></code></pre></div>
 <h3 id="step-4-feature-interpretation">Step 4: Feature Interpretation<a class="headerlink" href="#step-4-feature-interpretation" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">shap</span>
-
-<span class="c1"># Compute SHAP values for each base model</span>
-<span class="n">gene_shap</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">TreeExplainer</span><span class="p">(</span><span class="n">gene_model</span><span class="p">)</span><span class="o">.</span><span class="n">shap_values</span><span class="p">(</span><span class="n">gene_emb</span><span class="p">)</span>
-<span class="n">brain_shap</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">TreeExplainer</span><span class="p">(</span><span class="n">brain_model</span><span class="p">)</span><span class="o">.</span><span class="n">shap_values</span><span class="p">(</span><span class="n">brain_emb</span><span class="p">)</span>
-
-<span class="c1"># Weight by ensemble contribution (meta-learner coefficients)</span>
-<span class="n">gene_weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">meta_model</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">brain_weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">meta_model</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-
-<span class="c1"># Aggregate feature importance</span>
-<span class="n">weighted_gene_importance</span> <span class="o">=</span> <span class="n">gene_shap</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">gene_weight</span>
-<span class="n">weighted_brain_importance</span> <span class="o">=</span> <span class="n">brain_shap</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">brain_weight</span>
-
-<span class="c1"># Rank across all features</span>
-<span class="n">all_importance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">weighted_gene_importance</span><span class="p">,</span> <span class="n">weighted_brain_importance</span><span class="p">])</span>
-<span class="n">top_features</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">all_importance</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="mi">20</span><span class="p">]</span>
-</code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span__-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">shap</span>
+</span><span id="__span__-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+</span><span id="__span__-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="c1"># Compute SHAP values for each base model</span>
+</span><span id="__span__-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="n">gene_shap</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">TreeExplainer</span><span class="p">(</span><span class="n">gene_model</span><span class="p">)</span><span class="o">.</span><span class="n">shap_values</span><span class="p">(</span><span class="n">gene_emb</span><span class="p">)</span>
+</span><span id="__span__-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">brain_shap</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">TreeExplainer</span><span class="p">(</span><span class="n">brain_model</span><span class="p">)</span><span class="o">.</span><span class="n">shap_values</span><span class="p">(</span><span class="n">brain_emb</span><span class="p">)</span>
+</span><span id="__span__-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+</span><span id="__span__-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1"># Weight by ensemble contribution (meta-learner coefficients)</span>
+</span><span id="__span__-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="n">gene_weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">meta_model</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+</span><span id="__span__-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="n">brain_weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">meta_model</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+</span><span id="__span__-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>
+</span><span id="__span__-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="c1"># Aggregate feature importance</span>
+</span><span id="__span__-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="n">weighted_gene_importance</span> <span class="o">=</span> <span class="n">gene_shap</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">gene_weight</span>
+</span><span id="__span__-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="n">weighted_brain_importance</span> <span class="o">=</span> <span class="n">brain_shap</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">brain_weight</span>
+</span><span id="__span__-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>
+</span><span id="__span__-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="c1"># Rank across all features</span>
+</span><span id="__span__-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="n">all_importance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">weighted_gene_importance</span><span class="p">,</span> <span class="n">weighted_brain_importance</span><span class="p">])</span>
+</span><span id="__span__-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="n">top_features</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">all_importance</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="mi">20</span><span class="p">]</span>
+</span></code></pre></div>
 <hr />
 <h2 id="reference-materials">Reference Materials<a class="headerlink" href="#reference-materials" title="Permanent link">&para;</a></h2>
 <p><strong>Primary paper:</strong>
-- <a href="../../generated/kb_curated/papers-md/ensemble_integration_li2022/">Ensemble Integration (Li 2022)</a> — Full paper summary</p>
+- <a href="../../../generated/kb_curated/papers-md/ensemble_integration_li2022/">Ensemble Integration (Li 2022)</a> — Full paper summary</p>
 <p><strong>Related KB resources:</strong>
-- <a href="../../integration/integration_strategy/">Integration Strategy</a> — Overall fusion approach
-- <a href="../../integration/design_patterns/">Design Patterns</a> — Pattern 1: Late Fusion
-- <a href="../../integration/analysis_recipes/cca_permutation/">CCA + Permutation Recipe</a> — Statistical testing
-- <a href="../../integration/analysis_recipes/prediction_baselines/">Prediction Baselines</a> — Comparison protocol</p>
+- <a href="../../../integration/integration_strategy/">Integration Strategy</a> — Overall fusion approach
+- <a href="../../../integration/design_patterns/">Design Patterns</a> — Pattern 1: Late Fusion
+- <a href="../../../integration/analysis_recipes/cca_permutation/">CCA + Permutation Recipe</a> — Statistical testing
+- <a href="../../../integration/analysis_recipes/prediction_baselines/">Prediction Baselines</a> — Comparison protocol</p>
 <p><strong>Integration cards:</strong>
-- <a href="oncology_multimodal_review/">Oncology Multimodal Review</a> — Broader fusion taxonomy</p>
+- <a href="../oncology_multimodal_review/">Oncology Multimodal Review</a> — Broader fusion taxonomy</p>
 <p><strong>Model documentation:</strong>
-- <a href="../../models/genetics/">Genetics Models</a> — Gene embedding extraction
-- <a href="../../models/brain/">Brain Models</a> — Brain embedding extraction</p>
+- <a href="../../genetics/">Genetics Models</a> — Gene embedding extraction
+- <a href="../../brain/">Brain Models</a> — Brain embedding extraction</p>
 <p><strong>Experiment configs:</strong>
 - <code>configs/experiments/02_prediction_baselines.yaml</code> — EI implementation template</p>
 <hr />

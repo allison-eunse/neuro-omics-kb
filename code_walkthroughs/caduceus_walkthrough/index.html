@@ -3491,6 +3491,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/swift_2023.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT (2023)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3622,6 +3650,34 @@
     
   
     GENERator (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/dnabert2_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2 (2024)
   
 
     
@@ -4240,6 +4296,34 @@
     
   
     Foundation models overview (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/tabpfn_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TabPFN (2024)
   
 
     
@@ -5181,6 +5265,7 @@
 <h2 id="key-components">Key Components<a class="headerlink" href="#key-components" title="Permanent link">&para;</a></h2>
 <h3 id="tokenizer-preprocessing-hg38_char_tokenizerpy-rcpy">Tokenizer &amp; Preprocessing (<code>hg38_char_tokenizer.py</code>, <code>rc.py</code>)<a class="headerlink" href="#tokenizer-preprocessing-hg38_char_tokenizerpy-rcpy" title="Permanent link">&para;</a></h3>
 <p>Tokenization is strictly character-based, enumerating all specials and precomputing a complement map so RCPS layers can look up complements without re-tokenizing. String-level utilities supply reverse complements for augmentation or evaluation.</p>
+<p><strong>Character-based vocabulary with complement mapping:</strong></p>
 <p>```15:74:external_repos/caduceus/src/dataloaders/datasets/hg38_char_tokenizer.py
 class CharacterTokenizer(PreTrainedTokenizer):
     self._vocab_str_to_int = {
@@ -5192,16 +5277,19 @@ class CharacterTokenizer(PreTrainedTokenizer):
     ...
     complement_map = {"A": "T", "C": "G", "G": "C", "T": "A"}
     self.complement_map[self._vocab_str_to_int[k]] = complement_id
-<div class="highlight"><pre><span></span><code>```7:27:external_repos/caduceus/src/dataloaders/utils/rc.py
-STRING_COMPLEMENT_MAP = {&quot;A&quot;: &quot;T&quot;, ...}
-def string_reverse_complement(seq):
-    rev_comp = &quot;&quot;
-    for base in seq[::-1]:
-        rev_comp += STRING_COMPLEMENT_MAP.get(base, base)
-    return rev_comp
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>**Reverse complement utilities:**
+</span><span id="__span__-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span__-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>```7:27:external_repos/caduceus/src/dataloaders/utils/rc.py
+</span><span id="__span__-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>STRING_COMPLEMENT_MAP = {&quot;A&quot;: &quot;T&quot;, ...}
+</span><span id="__span__-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>def string_reverse_complement(seq):
+</span><span id="__span__-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    rev_comp = &quot;&quot;
+</span><span id="__span__-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    for base in seq[::-1]:
+</span><span id="__span__-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        rev_comp += STRING_COMPLEMENT_MAP.get(base, base)
+</span><span id="__span__-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    return rev_comp
+</span></code></pre></div></p>
 <h3 id="positional-rc-handling-modeling_caduceuspy">Positional &amp; RC Handling (<code>modeling_caduceus.py</code>)<a class="headerlink" href="#positional-rc-handling-modeling_caduceuspy" title="Permanent link">&para;</a></h3>
 <p>Bidirectional Mamba wrappers run forward and reverse streams (optionally weight tied) and merge them, while RCPS-aware embeddings split channel dimensions so hidden states encode forward and RC halves that can be combined later.</p>
+<p><strong>Bidirectional Mamba wrapper:</strong></p>
 <p>```87:141:external_repos/caduceus/caduceus/modeling_caduceus.py
 class BiMambaWrapper(nn.Module):
     self.mamba_fwd = Mamba(...)
@@ -5214,19 +5302,22 @@ class BiMambaWrapper(nn.Module):
         if self.bidirectional:
             out_rev = self.mamba_rev(hidden_states.flip(dims=(1,))).flip(dims=(1,))
             out = out + out_rev if self.bidirectional_strategy == "add" else out * out_rev
-<div class="highlight"><pre><span></span><code>```152:214:external_repos/caduceus/caduceus/modeling_caduceus.py
-class CaduceusEmbeddings(nn.Module):
-    if config.rcps:
-        self.word_embeddings = RCPSEmbedding(...)
-...
-class CaduceusMixerModel(nn.Module):
-    self.layers = nn.ModuleList([
-        create_block(..., rcps=config.rcps, ...) for i in range(config.n_layer)
-    ])
-    self.norm_f = norm_f if (config.fused_add_norm or not config.rcps) else RCPSAddNormWrapper(norm_f)
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>**RCPS-aware embeddings and mixer:**
+</span><span id="__span__-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span__-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>```152:214:external_repos/caduceus/caduceus/modeling_caduceus.py
+</span><span id="__span__-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>class CaduceusEmbeddings(nn.Module):
+</span><span id="__span__-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    if config.rcps:
+</span><span id="__span__-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>        self.word_embeddings = RCPSEmbedding(...)
+</span><span id="__span__-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>...
+</span><span id="__span__-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>class CaduceusMixerModel(nn.Module):
+</span><span id="__span__-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    self.layers = nn.ModuleList([
+</span><span id="__span__-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>        create_block(..., rcps=config.rcps, ...) for i in range(config.n_layer)
+</span><span id="__span__-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    ])
+</span><span id="__span__-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    self.norm_f = norm_f if (config.fused_add_norm or not config.rcps) else RCPSAddNormWrapper(norm_f)
+</span></code></pre></div></p>
 <h3 id="backbone-embedding-wrapper-dna_embeddingpy">Backbone &amp; Embedding Wrapper (<code>dna_embedding.py</code>)<a class="headerlink" href="#backbone-embedding-wrapper-dna_embeddingpy" title="Permanent link">&para;</a></h3>
 <p><code>DNAEmbeddingModelCaduceus</code> strips the LM head and exposes hidden states shaped <code>[B, L, d]</code> for standard mode or <code>[B, L, d, 2]</code> when RCPS/conjoined inference is enabled.</p>
+<p><strong>Embedding extraction with RC handling:</strong></p>
 <p>```156:195:external_repos/caduceus/src/models/sequence/dna_embedding.py
 class DNAEmbeddingModelCaduceus(DNAEmbeddingModel):
     def forward(...):
@@ -5242,23 +5333,26 @@ class DNAEmbeddingModelCaduceus(DNAEmbeddingModel):
             hidden_states_rc = self.caduceus(input_ids[..., 1], return_dict=False)
             return torch.stack([hidden_states, hidden_states_rc], dim=-1), None
         return self.caduceus(input_ids, return_dict=False), None
-<div class="highlight"><pre><span></span><code>### Training Loop (`train.py`)
-The Lightning `SequenceLightningModule` builds datasets/encoders from Hydra configs, forwards batches through encoder/decoder stacks, logs losses/metrics, and supports distributed strategies plus gradient accumulation.
-
-```126:377:external_repos/caduceus/train.py
-class SequenceLightningModule(pl.LightningModule):
-    def setup(...):
-        self.dataset = SequenceDataset.registry[self.hparams.dataset._name_](**self.hparams.dataset)
-        ...
-        self.encoder = U.PassthroughSequential(self.task.encoder, encoder)
-        self.decoder = U.PassthroughSequential(decoder, self.task.decoder)
-        self.loss = self.task.loss
-    def _shared_step(...):
-        x, y, w = self.forward(batch)
-        loss = self.loss(x, y, **w)
-        metrics = self.metrics(x, y, **w)
-        self.log_dict({f&quot;{prefix}/{k}&quot;: v for k, v in metrics.items()}, ...)
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>### Training Loop (`train.py`)
+</span><span id="__span__-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span__-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>The Lightning `SequenceLightningModule` builds datasets/encoders from Hydra configs, forwards batches through encoder/decoder stacks, logs losses/metrics, and supports distributed strategies plus gradient accumulation.
+</span><span id="__span__-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span__-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>**PyTorch Lightning module structure:**
+</span><span id="__span__-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span__-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>```126:377:external_repos/caduceus/train.py
+</span><span id="__span__-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>class SequenceLightningModule(pl.LightningModule):
+</span><span id="__span__-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    def setup(...):
+</span><span id="__span__-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>        self.dataset = SequenceDataset.registry[self.hparams.dataset._name_](**self.hparams.dataset)
+</span><span id="__span__-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>        ...
+</span><span id="__span__-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>        self.encoder = U.PassthroughSequential(self.task.encoder, encoder)
+</span><span id="__span__-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>        self.decoder = U.PassthroughSequential(decoder, self.task.decoder)
+</span><span id="__span__-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>        self.loss = self.task.loss
+</span><span id="__span__-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>    def _shared_step(...):
+</span><span id="__span__-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>        x, y, w = self.forward(batch)
+</span><span id="__span__-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>        loss = self.loss(x, y, **w)
+</span><span id="__span__-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>        metrics = self.metrics(x, y, **w)
+</span><span id="__span__-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>        self.log_dict({f&quot;{prefix}/{k}&quot;: v for k, v in metrics.items()}, ...)
+</span></code></pre></div></p>
 <h3 id="inference-vep-embeddings-vep_embeddingspy">Inference &amp; VEP Embeddings (<code>vep_embeddings.py</code>)<a class="headerlink" href="#inference-vep-embeddings-vep_embeddingspy" title="Permanent link">&para;</a></h3>
 <p>The VEP helper loads any HF model (Caduceus by default), tokenizes ref/alt + RC windows, averages variant-centered windows, and writes <code>.pt</code> tensors per split—handy for multimodal or downstream regression.</p>
 <p>```30:392:external_repos/caduceus/vep_embeddings.py
@@ -5271,41 +5365,41 @@ tokens_window_ref = torch.gather(
     expanded_indices.unsqueeze(-1).expand(-1, -1, item_ref.size(2))
 ).mean(dim=1)
 storage_dict["concat_avg_ws"] = torch.cat([tokens_window_ref, tokens_window_alt], dim=-1)
-<div class="highlight"><pre><span></span><code>### Sequence Constraints (`configuration_caduceus.py`)
-All RC/bidirectional behavior is driven by config: enabling RCPS, picking merge strategy (`add` vs `ew_multiply`), and passing complement maps extracted from the tokenizer.
-
-```10:55:external_repos/caduceus/caduceus/configuration_caduceus.py
-class CaduceusConfig(PretrainedConfig):
-    def __init__(..., bidirectional: bool = True, bidirectional_strategy: Union[str, None] = &quot;add&quot;,
-                 bidirectional_weight_tie: bool = True, rcps: bool = False, complement_map: Optional[dict] = None, ...):
-        self.bidirectional = bidirectional
-        self.bidirectional_strategy = bidirectional_strategy
-        self.bidirectional_weight_tie = bidirectional_weight_tie
-        self.rcps = rcps
-        self.complement_map = complement_map
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>### Sequence Constraints (`configuration_caduceus.py`)
+</span><span id="__span__-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>All RC/bidirectional behavior is driven by config: enabling RCPS, picking merge strategy (`add` vs `ew_multiply`), and passing complement maps extracted from the tokenizer.
+</span><span id="__span__-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span__-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>```10:55:external_repos/caduceus/caduceus/configuration_caduceus.py
+</span><span id="__span__-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>class CaduceusConfig(PretrainedConfig):
+</span><span id="__span__-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    def __init__(..., bidirectional: bool = True, bidirectional_strategy: Union[str, None] = &quot;add&quot;,
+</span><span id="__span__-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>                 bidirectional_weight_tie: bool = True, rcps: bool = False, complement_map: Optional[dict] = None, ...):
+</span><span id="__span__-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>        self.bidirectional = bidirectional
+</span><span id="__span__-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>        self.bidirectional_strategy = bidirectional_strategy
+</span><span id="__span__-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>        self.bidirectional_weight_tie = bidirectional_weight_tie
+</span><span id="__span__-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>        self.rcps = rcps
+</span><span id="__span__-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>        self.complement_map = complement_map
+</span></code></pre></div></p>
 <h2 id="integration-hooks-genetics-brain">Integration Hooks (Genetics ↔ Brain)<a class="headerlink" href="#integration-hooks-genetics-brain" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Embedding shapes.</strong> Outputs are <code>[B, L, d]</code> by default, <code>[B, L, d, 2]</code> when strands are stacked, or <code>[B, K, 2d]</code> after VEP window pooling—mean over tokens to get <code>[B, d]</code> per strand before any fusion.^[<code>156:195:external_repos/caduceus/src/models/sequence/dna_embedding.py</code>][<code>275:385:external_repos/caduceus/vep_embeddings.py</code>]</li>
 <li><strong>Pooling choices.</strong> Mean pooling across tokens mirrors the masked-LM objective; to keep strand info, average forward and RC halves separately, then concatenate them to <code>[B, 2d]</code>.</li>
 <li><strong>Projection to shared latent.</strong> Map pooled vectors into a 512-D multimodal space with a lightweight projector:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">CaduceusProjector</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">output_dim</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">net</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
-            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="mi">1024</span><span class="p">),</span>
-            <span class="n">nn</span><span class="o">.</span><span class="n">GELU</span><span class="p">(),</span>
-            <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout</span><span class="p">),</span>
-            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">),</span>
-            <span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">(</span><span class="n">output_dim</span><span class="p">),</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">net</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span__-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+</span><span id="__span__-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span__-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">class</span><span class="w"> </span><span class="nc">CaduceusProjector</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span><span id="__span__-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">output_dim</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+</span><span id="__span__-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span id="__span__-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">net</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+</span><span id="__span__-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="mi">1024</span><span class="p">),</span>
+</span><span id="__span__-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">GELU</span><span class="p">(),</span>
+</span><span id="__span__-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout</span><span class="p">),</span>
+</span><span id="__span__-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">),</span>
+</span><span id="__span__-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">(</span><span class="n">output_dim</span><span class="p">),</span>
+</span><span id="__span__-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>        <span class="p">)</span>
+</span><span id="__span__-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
+</span><span id="__span__-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+</span><span id="__span__-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">net</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></code></pre></div>
 <ul>
 <li><strong>Normalization &amp; RC alignment.</strong> When RCPS doubles channels, follow the model’s own <code>RCPSAddNormWrapper</code> convention: flip the RC half, sum/average with the forward half, and only then project—this keeps embeddings invariant to strand order.^[<code>210:274:external_repos/caduceus/caduceus/modeling_caduceus.py</code>]</li>
 <li><strong>Batch &amp; memory tips.</strong> The Lightning module instantiates DDP-aware samplers and can rehydrate checkpoints via <code>utils.instantiate</code>, so mirror that pattern (especially <code>_shared_step</code>) when adding multimodal heads to avoid redundant forward passes.^[<code>291:377:external_repos/caduceus/train.py</code>]</li>

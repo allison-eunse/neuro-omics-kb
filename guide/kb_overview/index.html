@@ -3481,6 +3481,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/swift_2023.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT (2023)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3612,6 +3640,34 @@
     
   
     GENERator (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/dnabert2_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2 (2024)
   
 
     
@@ -4230,6 +4286,34 @@
     
   
     Foundation models overview (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/tabpfn_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TabPFN (2024)
   
 
     
@@ -5139,22 +5223,21 @@
 <h2 id="scope-evolution">Scope &amp; Evolution<a class="headerlink" href="#scope-evolution" title="Permanent link">&para;</a></h2>
 <p>The KB began with <strong>adult UK Biobank–centric gene–brain FM alignment</strong> (genetics FM + MRI Brain FM outputs) and has expanded to include:</p>
 <ul>
-<li>✅ <strong>15 Foundation Models</strong>: 4 genetics + 5 brain + 6 multimodal/clinical</li>
+<li>✅ <strong>15 Model Cards</strong>: 13 foundation models (4 genetics + 5 brain + 4 multimodal/clinical) + 2 ARPA-H planning cards</li>
 <li>✅ <strong>18 Research Papers</strong>: Curated summaries with structured takeaways</li>
 <li>✅ <strong>3 Integration Cards</strong>: Comprehensive multimodal fusion guidance</li>
 <li>✅ <strong>Developmental/Neurodevelopmental Support</strong>: Longitudinal multimodal FMs spanning MRI/fMRI, EEG/EPhys, genetics, behavioral phenotypes</li>
 <li>✅ <strong>ARPA-H BOM Alignment</strong>: Documentation for escalating from late fusion → contrastive → unified architectures</li>
 </ul>
 <h2 id="architecture-at-a-glance">Architecture at a glance<a class="headerlink" href="#architecture-at-a-glance" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>flowchart LR
+<pre class="mermaid"><code>flowchart LR
     A[External repos &amp; datasets&lt;br/&gt;UKB · HCP · Gene FMs · Dev cohorts] --&gt; B[Metadata curation&lt;br/&gt;kb/model_cards · kb/datasets]
     B --&gt; C[Integration strategy &amp; modality specs&lt;br/&gt;docs/integration/*]
     C --&gt; D[Experiment configs&lt;br/&gt;configs/experiments/*.yaml]
     D --&gt; E[Analysis outputs &amp; decisions&lt;br/&gt;docs/decisions · docs/generated/*]
     B --&gt; F[Embedding &amp; harmonization registries&lt;br/&gt;kb/integration_cards/*.yaml]
     F --&gt; G[Semantic / hub alignments&lt;br/&gt;LLM · VLM]
-    G --&gt; D
-</code></pre></div>
+    G --&gt; D</code></pre>
 <ul>
 <li><strong>Source repos / datasets</strong> live under <code>external_repos/</code> (git-ignored) and upstream storage (UKB, HCP, Cha Hospital developmental cohorts, and future ARPA-H Brain-Omics Model (BOM) data sources).</li>
 <li><strong>Metadata cards</strong> (<code>kb/**</code>) are the single source of truth for model/dataset specs, including adult and developmental gene–brain–behaviour datasets.</li>
@@ -5164,7 +5247,7 @@
 <li><strong>Experiment configs</strong> log the exact recipe IDs and folds before any analysis job starts.</li>
 </ul>
 <h2 id="core-navigation-map">Core navigation map<a class="headerlink" href="#core-navigation-map" title="Permanent link">&para;</a></h2>
-<pre><code>**Foundation Models**
+<div class="language-text highlight"><pre><span></span><code>**Foundation Models**
 
 - **Models → Genetics**: Caduceus, DNABERT-2, Evo2, GENERator — DNA sequence models with RC-equivariance
 - **Models → Brain**: BrainLM, Brain-JEPA, Brain Harmony, BrainMT, SwiFT — sMRI/fMRI neuroimaging models
@@ -5190,18 +5273,18 @@
 - **Data**: UKB data map, schemas, subject keys, governance/QC logs
 - **KB Templates**: Model cards, dataset cards, integration cards, experiment configs
 - **Research Papers**: 18 curated paper summaries (genetics, brain, multimodal, integration methods)
-</code></pre>
+</code></pre></div>
 <h2 id="metadata-you-must-log-per-run">Metadata you must log per run<a class="headerlink" href="#metadata-you-must-log-per-run" title="Permanent link">&para;</a></h2>
 <p>Use the CLI helpers to print the canonical recipes and copy their IDs into your run metadata:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Embedding (e.g., FreeSurfer PCA-512)</span>
-python<span class="w"> </span>scripts/manage_kb.py<span class="w"> </span>ops<span class="w"> </span>strategy<span class="w"> </span>smri_free_surfer_pca512_v1
-
-<span class="c1"># Harmonization (e.g., MURD for T1/T2)</span>
-python<span class="w"> </span>scripts/manage_kb.py<span class="w"> </span>ops<span class="w"> </span>harmonization<span class="w"> </span>murd_t1_t2
-
-<span class="c1"># Preprocessing stack (e.g., HCP-like rs-fMRI)</span>
-python<span class="w"> </span>scripts/manage_kb.py<span class="w"> </span>ops<span class="w"> </span>strategy<span class="w"> </span>rsfmri_swift_segments_v1
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span__-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Embedding (e.g., FreeSurfer PCA-512)</span>
+</span><span id="__span__-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>python<span class="w"> </span>scripts/manage_kb.py<span class="w"> </span>ops<span class="w"> </span>strategy<span class="w"> </span>smri_free_surfer_pca512_v1
+</span><span id="__span__-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span__-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Harmonization (e.g., MURD for T1/T2)</span>
+</span><span id="__span__-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>python<span class="w"> </span>scripts/manage_kb.py<span class="w"> </span>ops<span class="w"> </span>harmonization<span class="w"> </span>murd_t1_t2
+</span><span id="__span__-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span__-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Preprocessing stack (e.g., HCP-like rs-fMRI)</span>
+</span><span id="__span__-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>python<span class="w"> </span>scripts/manage_kb.py<span class="w"> </span>ops<span class="w"> </span>strategy<span class="w"> </span>rsfmri_swift_segments_v1
+</span></code></pre></div>
 <p>Record:</p>
 <ol>
 <li><code>embedding_strategies.&lt;id&gt;</code> for every modality in the experiment.</li>
@@ -5219,7 +5302,7 @@ python<span class="w"> </span>scripts/manage_kb.py<span class="w"> </span>ops<sp
 <h3 id="for-researchers-new-to-foundation-models">For Researchers New to Foundation Models<a class="headerlink" href="#for-researchers-new-to-foundation-models" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>KB overview (this page)</strong> — Understand the structure</li>
-<li><strong>Models → Overview pages</strong> — Browse <a href="../models/genetics/">Genetics</a>, <a href="../models/brain/">Brain</a>, or <a href="../models/multimodal/">Multimodal</a> overviews</li>
+<li><strong>Models → Overview pages</strong> — Browse <a href="../../models/genetics/">Genetics</a>, <a href="../../models/brain/">Brain</a>, or <a href="../../models/multimodal/">Multimodal</a> overviews</li>
 <li><strong>Integration → Strategy</strong> — Learn the late-fusion-first philosophy</li>
 <li><strong>Code walkthroughs</strong> — Pick a model relevant to your modality</li>
 <li><strong>Analysis recipes</strong> — Copy-ready runbooks for CCA, prediction, etc.</li>

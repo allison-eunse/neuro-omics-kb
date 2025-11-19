@@ -1571,6 +1571,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Reference Materials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#knowledge-base-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Knowledge Base Resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#original-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Original Sources
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3555,6 +3583,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kb/paper_cards/swift_2023.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT (2023)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3686,6 +3742,34 @@
     
   
     GENERator (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kb/paper_cards/dnabert2_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2 (2024)
   
 
     
@@ -4304,6 +4388,34 @@
     
   
     Foundation models overview (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kb/paper_cards/tabpfn_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TabPFN (2024)
   
 
     
@@ -5236,23 +5348,23 @@
 - <strong>Multilingual support:</strong> Extend brain-behavior models to non-English populations
 - <strong>Report generation:</strong> Automate clinical summaries from neuroimaging</p>
 <p><strong>Potential adaptation:</strong>
-<div class="highlight"><pre><span></span><code>Brain MRI/fMRI → Vision encoder (SwiFT/BrainLM) → |
-                                                   | Contrastive alignment
-Clinical notes → Text encoder (medical LLM)     → |
-                                                   ↓
-                                           Shared latent space
-                                                   ↓
-                                           Report generation LLM
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Brain MRI/fMRI → Vision encoder (SwiFT/BrainLM) → |
+</span><span id="__span__-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                                                   | Contrastive alignment
+</span><span id="__span__-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Clinical notes → Text encoder (medical LLM)     → |
+</span><span id="__span__-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>                                                   ↓
+</span><span id="__span__-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>                                           Shared latent space
+</span><span id="__span__-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>                                                   ↓
+</span><span id="__span__-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>                                           Report generation LLM
+</span></code></pre></div></p>
 <h3 id="for-arpa-h-brain-omics-model-bom">For ARPA-H Brain-Omics Model (BOM)<a class="headerlink" href="#for-arpa-h-brain-omics-model-bom" title="Permanent link">&para;</a></h3>
 <p>M3FM demonstrates <strong>clinical translation patterns</strong>:</p>
-<div class="highlight"><pre><span></span><code>Brain embeddings → |
-                   | Two-tower contrastive alignment
-Clinical text    → |     ↓
-                   | Shared embedding space
-Gene annotations → |     ↓
-                   | Medical LLM for report generation
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Brain embeddings → |
+</span><span id="__span__-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>                   | Two-tower contrastive alignment
+</span><span id="__span__-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Clinical text    → |     ↓
+</span><span id="__span__-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>                   | Shared embedding space
+</span><span id="__span__-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>Gene annotations → |     ↓
+</span><span id="__span__-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>                   | Medical LLM for report generation
+</span></code></pre></div>
 <p><strong>Transfer insights:</strong>
 - <strong>Zero-shot diagnosis:</strong> Critical for rare neurological disorders with limited training data
 - <strong>Cross-domain generalization:</strong> M3FM's CXR→CT transfer informs MRI→fMRI→CT transfers
@@ -5260,12 +5372,12 @@ Gene annotations → |     ↓
 - <strong>Few-shot learning:</strong> Strong performance with minimal downstream labels</p>
 <h2 id="embedding-extraction-workflow">Embedding Extraction Workflow<a class="headerlink" href="#embedding-extraction-workflow" title="Permanent link">&para;</a></h2>
 <p>If adapting M3FM for brain imaging:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># 1. Train CLIP-style alignment on brain scans + clinical notes</span>
-<span class="c1"># 2. Load pretrained brain FM (SwiFT, BrainLM) as vision encoder</span>
-<span class="c1"># 3. Load medical LLM (Me-LLaMA, etc.) as text encoder</span>
-<span class="c1"># 4. Contrastive training on paired brain-text data</span>
-<span class="c1"># 5. Extract embeddings from shared space for downstream tasks</span>
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span__-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># 1. Train CLIP-style alignment on brain scans + clinical notes</span>
+</span><span id="__span__-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># 2. Load pretrained brain FM (SwiFT, BrainLM) as vision encoder</span>
+</span><span id="__span__-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># 3. Load medical LLM (Me-LLaMA, etc.) as text encoder</span>
+</span><span id="__span__-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># 4. Contrastive training on paired brain-text data</span>
+</span><span id="__span__-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># 5. Extract embeddings from shared space for downstream tasks</span>
+</span></code></pre></div>
 <p><strong>For neuro-omics:</strong>
 - <strong>Vision encoder:</strong> SwiFT (fMRI) or BrainLM (3D volumes)
 - <strong>Text encoder:</strong> Medical LLM pretrained on neurology literature
@@ -5300,17 +5412,27 @@ Gene annotations → |     ↓
 - <strong>TITAN:</strong> For high-resolution pathology imaging
 - <strong>Me-LLaMA:</strong> For medical LLM without imaging</p>
 <h2 id="reference-materials">Reference Materials<a class="headerlink" href="#reference-materials" title="Permanent link">&para;</a></h2>
-<p><strong>Primary sources:</strong>
-- <strong>Paper:</strong> <a href="../../../generated/kb_curated/papers-md/m3fm_2025/">M3FM (2025)</a> — npj Digital Medicine
+<h3 id="knowledge-base-resources">Knowledge Base Resources<a class="headerlink" href="#knowledge-base-resources" title="Permanent link">&para;</a></h3>
+<p><strong>Curated materials in this KB:</strong>
+- <strong>Paper summary &amp; notes (PDF):</strong> <a href="../../../generated/kb_curated/papers-pdf/m3fm_2025.pdf">M3FM (2025)</a>
 - <strong>Code walkthrough:</strong> <a href="../../../code_walkthroughs/m3fm_walkthrough/">M3FM walkthrough</a>
-- <strong>YAML card:</strong> <a href="https://github.com/allison-eunse/neuro-omics-kb/blob/main/kb/model_cards/m3fm.yaml">kb/model_cards/m3fm.yaml</a></p>
+- <strong>Model card (YAML):</strong> <code>kb/model_cards/m3fm.yaml</code>
+- <strong>Paper card (YAML):</strong> <code>kb/paper_cards/m3fm_2025.yaml</code></p>
 <p><strong>Integration recipes:</strong>
 - <a href="../../../integration/multimodal_architectures/">Multimodal Architectures</a>
 - <a href="../../../integration/design_patterns/">Design Patterns</a> — Two-tower contrastive section
 - <a href="../../../integration/integration_strategy/">Integration Strategy</a></p>
-<p><strong>Source repository:</strong>
-- <strong>Local:</strong> <code>external_repos/M3FM/</code>
-- <strong>GitHub:</strong> <a href="https://github.com/ai-in-health/M3FM">ai-in-health/M3FM</a></p>
+<h3 id="original-sources">Original Sources<a class="headerlink" href="#original-sources" title="Permanent link">&para;</a></h3>
+<p><strong>Source code repositories:</strong>
+- <strong>Local copy:</strong> <code>external_repos/M3FM/</code>
+- <strong>Official GitHub:</strong> <a href="https://github.com/ai-in-health/M3FM">ai-in-health/M3FM</a></p>
+<p><strong>Original paper:</strong>
+- <strong>Title:</strong> "M3FM: A Multimodal, Multidomain, Multilingual Medical Foundation Model for Zero‑Shot Clinical Diagnosis"
+- <strong>Authors:</strong> Liu, Fenglin; Li, Zheng; Yin, Qingyu; Huang, Jinfa; Luo, Jiebo; Thakur, Anshul; Branson, Kim; Schwab, Patrick; Yin, Bing; Wu, Xian; Zheng, Yefeng; Clifton, David A.
+- <strong>Published:</strong> npj Digital Medicine, 2025
+- <strong>Link:</strong> <a href="https://www.nature.com/articles/s41746-024-01339-7">Nature: s41746-024-01339-7</a>
+- <strong>DOI:</strong> <a href="https://doi.org/10.1038/s41746-024-01339-7">10.1038/s41746-024-01339-7</a>
+- <strong>PDF (local):</strong> <a href="../../../generated/kb_curated/papers-pdf/m3fm_2025.pdf">m3fm_2025.pdf</a></p>
 <h2 id="next-steps-in-our-pipeline">Next Steps in Our Pipeline<a class="headerlink" href="#next-steps-in-our-pipeline" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>CLIP adaptation:</strong> Implement brain imaging + clinical text contrastive learning</li>

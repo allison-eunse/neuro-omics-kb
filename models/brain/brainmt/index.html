@@ -1340,6 +1340,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Reference Materials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#knowledge-base-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Knowledge Base Resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#original-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Original Sources
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3555,6 +3583,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kb/paper_cards/swift_2023.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT (2023)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3686,6 +3742,34 @@
     
   
     GENERator (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kb/paper_cards/dnabert2_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2 (2024)
   
 
     
@@ -4304,6 +4388,34 @@
     
   
     Foundation models overview (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kb/paper_cards/tabpfn_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TabPFN (2024)
   
 
     
@@ -5243,13 +5355,13 @@
 - Hybrid SSM-Transformer paradigm balances efficiency vs. expressiveness
 - Multitask framework aligns with Brain-Omics Model (BOM) joint training over diverse phenotypes</p>
 <h2 id="embedding-extraction-workflow">Embedding Extraction Workflow<a class="headerlink" href="#embedding-extraction-workflow" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1"># 1. Preprocess fMRI → 3D volumes or parcels (≥200 frames preferred)</span>
-<span class="c1"># 2. Load pretrained BrainMT checkpoint</span>
-<span class="c1"># 3. Forward through encoder (Mamba blocks + MHSA layers)</span>
-<span class="c1"># 4. Extract pre-head embeddings (not task-specific outputs)</span>
-<span class="c1"># 5. Pool to subject-level vector</span>
-<span class="c1"># 6. Log: sequence_length, mamba_config, embedding_strategy_id</span>
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span__-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 1. Preprocess fMRI → 3D volumes or parcels (≥200 frames preferred)</span>
+</span><span id="__span__-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># 2. Load pretrained BrainMT checkpoint</span>
+</span><span id="__span__-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># 3. Forward through encoder (Mamba blocks + MHSA layers)</span>
+</span><span id="__span__-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># 4. Extract pre-head embeddings (not task-specific outputs)</span>
+</span><span id="__span__-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># 5. Pool to subject-level vector</span>
+</span><span id="__span__-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># 6. Log: sequence_length, mamba_config, embedding_strategy_id</span>
+</span></code></pre></div>
 <h2 id="strengths-limitations">Strengths &amp; Limitations<a class="headerlink" href="#strengths-limitations" title="Permanent link">&para;</a></h2>
 <h3 id="strengths">Strengths<a class="headerlink" href="#strengths" title="Permanent link">&para;</a></h3>
 <ul>
@@ -5281,18 +5393,26 @@
 - <strong>SwiFT:</strong> 4D volumes without explicit sequence modeling
 - <strong>Brain Harmony:</strong> Multi-modal sMRI+fMRI fusion</p>
 <h2 id="reference-materials">Reference Materials<a class="headerlink" href="#reference-materials" title="Permanent link">&para;</a></h2>
-<p><strong>Primary sources:</strong>
-- <strong>Paper:</strong> <a href="../../../generated/kb_curated/papers-pdf/brainmt_2025.pdf">BrainMT (2025)</a> — Conference paper (LNCS, pp. 150–160)
+<h3 id="knowledge-base-resources">Knowledge Base Resources<a class="headerlink" href="#knowledge-base-resources" title="Permanent link">&para;</a></h3>
+<p><strong>Curated materials in this KB:</strong>
+- <strong>Paper summary &amp; notes (PDF):</strong> <a href="../../../generated/kb_curated/papers-pdf/brainmt_2025.pdf">BrainMT (2025)</a>
 - <strong>Code walkthrough:</strong> <a href="../../../code_walkthroughs/brainmt_walkthrough/">BrainMT walkthrough</a>
-- <strong>YAML card:</strong> <code>kb/model_cards/brainmt.yaml</code>
-- <strong>Paper card:</strong> <code>kb/paper_cards/brainmt_2025.yaml</code></p>
+- <strong>Model card (YAML):</strong> <code>kb/model_cards/brainmt.yaml</code>
+- <strong>Paper card (YAML):</strong> <code>kb/paper_cards/brainmt_2025.yaml</code></p>
 <p><strong>Integration recipes:</strong>
 - <a href="../../../integration/modality_features/fmri/">Modality Features: fMRI</a>
 - <a href="../../../integration/integration_strategy/">Integration Strategy</a>
 - <a href="../../../integration/design_patterns/">Design Patterns</a></p>
-<p><strong>Source repository:</strong>
-- <strong>Local:</strong> <code>external_repos/brainmt/</code>
-- <strong>GitHub:</strong> <a href="https://github.com/arunkumar-kannan/brainmt-fmri">arunkumar-kannan/brainmt-fmri</a></p>
+<h3 id="original-sources">Original Sources<a class="headerlink" href="#original-sources" title="Permanent link">&para;</a></h3>
+<p><strong>Source code repositories:</strong>
+- <strong>Local copy:</strong> <code>external_repos/brainmt/</code>
+- <strong>Official GitHub:</strong> <a href="https://github.com/arunkumar-kannan/brainmt-fmri">arunkumar-kannan/brainmt-fmri</a></p>
+<p><strong>Original paper:</strong>
+- <strong>Title:</strong> "BrainMT: A Hybrid Mamba-Transformer Architecture for Modeling Long-Range Dependencies in Functional MRI Data"
+- <strong>Authors:</strong> Kannan, Arunkumar; Lindquist, Martin A.; Caffo, Brian
+- <strong>Published:</strong> Conference proceedings (SpringerLink), September 2025, pp. 150-160
+- <strong>Link:</strong> <a href="https://dl.acm.org/doi/10.1007/978-3-032-05162-2_15">SpringerLink</a>
+- <strong>PDF (local):</strong> <a href="../../../generated/kb_curated/papers-pdf/brainmt_2025.pdf">brainmt_2025.pdf</a></p>
 <h2 id="next-steps-in-our-pipeline">Next Steps in Our Pipeline<a class="headerlink" href="#next-steps-in-our-pipeline" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>Baseline comparisons:</strong> BrainMT vs. BrainLM on UKB cognitive tasks (same train/test splits)</li>

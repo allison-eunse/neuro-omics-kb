@@ -1606,6 +1606,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Reference Materials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#knowledge-base-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Knowledge Base Resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#original-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Original Sources
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3555,6 +3583,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kb/paper_cards/swift_2023.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT (2023)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3686,6 +3742,34 @@
     
   
     GENERator (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kb/paper_cards/dnabert2_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2 (2024)
   
 
     
@@ -4304,6 +4388,34 @@
     
   
     Foundation models overview (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kb/paper_cards/tabpfn_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TabPFN (2024)
   
 
     
@@ -5234,29 +5346,29 @@
 - <strong>Instruction tuning:</strong> Multi-task learning across diverse neuro-omics NLP tasks
 - <strong>Zero-shot transfer:</strong> Applicable to new clinical scenarios without labeled data</p>
 <p><strong>Potential adaptation for neuro-omics:</strong>
-<div class="highlight"><pre><span></span><code>General LLM (LLaMA-2) 
-    ↓
-Continual pretrain on:
-    - Neuroscience literature (PubMed)
-    - Genetics literature (dbGaP, ClinVar annotations)
-    - Clinical neurology notes
-    ↓
-Instruction tune on:
-    - Gene-disease QA
-    - Brain phenotype description
-    - Genetic counseling dialogs
-    ↓
-Neuro-Omics LLM
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>General LLM (LLaMA-2) 
+</span><span id="__span__-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    ↓
+</span><span id="__span__-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Continual pretrain on:
+</span><span id="__span__-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    - Neuroscience literature (PubMed)
+</span><span id="__span__-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    - Genetics literature (dbGaP, ClinVar annotations)
+</span><span id="__span__-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    - Clinical neurology notes
+</span><span id="__span__-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    ↓
+</span><span id="__span__-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>Instruction tune on:
+</span><span id="__span__-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    - Gene-disease QA
+</span><span id="__span__-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    - Brain phenotype description
+</span><span id="__span__-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    - Genetic counseling dialogs
+</span><span id="__span__-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    ↓
+</span><span id="__span__-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>Neuro-Omics LLM
+</span></code></pre></div></p>
 <h3 id="for-arpa-h-brain-omics-model-bom">For ARPA-H Brain-Omics Model (BOM)<a class="headerlink" href="#for-arpa-h-brain-omics-model-bom" title="Permanent link">&para;</a></h3>
 <p>Me-LLaMA demonstrates <strong>LLM as semantic bridge</strong>:</p>
-<div class="highlight"><pre><span></span><code>Gene embeddings   → |
-                    | Feature extraction
-Brain embeddings  → |     ↓
-                    | Medical LLM (Me-LLaMA-style)
-Clinical notes    → |     ↓
-                    | Unified reasoning + report generation
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Gene embeddings   → |
+</span><span id="__span__-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>                    | Feature extraction
+</span><span id="__span__-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Brain embeddings  → |     ↓
+</span><span id="__span__-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>                    | Medical LLM (Me-LLaMA-style)
+</span><span id="__span__-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>Clinical notes    → |     ↓
+</span><span id="__span__-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>                    | Unified reasoning + report generation
+</span></code></pre></div>
 <p><strong>Transfer insights:</strong>
 - <strong>Knowledge injection:</strong> Add neuroscience + genetics knowledge to general LLMs
 - <strong>Clinical reasoning:</strong> Complex case-based diagnosis applicable to neurological disorders
@@ -5264,18 +5376,18 @@ Clinical notes    → |     ↓
 - <strong>Report generation:</strong> Automate clinical summaries from multimodal neuro-omics inputs</p>
 <h2 id="embedding-extraction-workflow">Embedding Extraction Workflow<a class="headerlink" href="#embedding-extraction-workflow" title="Permanent link">&para;</a></h2>
 <p>If adapting Me-LLaMA for neuro-omics:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># 1. Collect neuroscience + genetics text corpora</span>
-<span class="c1">#    - PubMed Central (neuroscience + genetics papers)</span>
-<span class="c1">#    - Clinical neurology notes (de-identified)</span>
-<span class="c1">#    - Genetic variant annotations (ClinVar, dbGaP)</span>
-<span class="c1"># 2. Continual pretrain LLaMA-2 on domain corpora</span>
-<span class="c1"># 3. Curate instruction-tuning dataset</span>
-<span class="c1">#    - Gene-disease QA</span>
-<span class="c1">#    - Brain phenotype classification</span>
-<span class="c1">#    - Clinical case reasoning</span>
-<span class="c1"># 4. Instruction tune and evaluate on medical NLP tasks</span>
-<span class="c1"># 5. Use as semantic bridge for gene-brain-text integration</span>
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span__-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># 1. Collect neuroscience + genetics text corpora</span>
+</span><span id="__span__-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1">#    - PubMed Central (neuroscience + genetics papers)</span>
+</span><span id="__span__-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1">#    - Clinical neurology notes (de-identified)</span>
+</span><span id="__span__-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1">#    - Genetic variant annotations (ClinVar, dbGaP)</span>
+</span><span id="__span__-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># 2. Continual pretrain LLaMA-2 on domain corpora</span>
+</span><span id="__span__-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># 3. Curate instruction-tuning dataset</span>
+</span><span id="__span__-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1">#    - Gene-disease QA</span>
+</span><span id="__span__-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1">#    - Brain phenotype classification</span>
+</span><span id="__span__-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="c1">#    - Clinical case reasoning</span>
+</span><span id="__span__-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1"># 4. Instruction tune and evaluate on medical NLP tasks</span>
+</span><span id="__span__-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="c1"># 5. Use as semantic bridge for gene-brain-text integration</span>
+</span></code></pre></div>
 <p><strong>For neuro-omics KB:</strong>
 - <strong>Text encoder:</strong> Extract embeddings from Me-LLaMA for clinical notes
 - <strong>Semantic alignment:</strong> Align gene/brain embeddings with text embeddings
@@ -5310,17 +5422,26 @@ Clinical notes    → |     ↓
 - <strong>BAGEL:</strong> For unified understanding + generation with vision
 - <strong>TITAN:</strong> For whole-slide pathology with vision-language alignment</p>
 <h2 id="reference-materials">Reference Materials<a class="headerlink" href="#reference-materials" title="Permanent link">&para;</a></h2>
-<p><strong>Primary sources:</strong>
-- <strong>Paper:</strong> <a href="../../../generated/kb_curated/papers-md/me_llama_2024/">Me-LLaMA (2024)</a> — Preprint
+<h3 id="knowledge-base-resources">Knowledge Base Resources<a class="headerlink" href="#knowledge-base-resources" title="Permanent link">&para;</a></h3>
+<p><strong>Curated materials in this KB:</strong>
+- <strong>Paper summary &amp; notes (PDF):</strong> <a href="../../../generated/kb_curated/papers-pdf/me_llama_2024.pdf">Me-LLaMA (2024)</a>
 - <strong>Code walkthrough:</strong> <a href="../../../code_walkthroughs/melamma_walkthrough/">Me-LLaMA walkthrough</a>
-- <strong>YAML card:</strong> <a href="https://github.com/allison-eunse/neuro-omics-kb/blob/main/kb/model_cards/me_llama.yaml">kb/model_cards/me_llama.yaml</a></p>
+- <strong>Model card (YAML):</strong> <code>kb/model_cards/me_llama.yaml</code>
+- <strong>Paper card (YAML):</strong> <code>kb/paper_cards/me_llama_2024.yaml</code></p>
 <p><strong>Integration recipes:</strong>
 - <a href="../../../integration/multimodal_architectures/">Multimodal Architectures</a>
 - <a href="../../../integration/design_patterns/">Design Patterns</a> — LLM as semantic bridge
 - <a href="../../../integration/integration_strategy/">Integration Strategy</a></p>
-<p><strong>Source repository:</strong>
-- <strong>Local:</strong> <code>external_repos/me-lamma/</code>
-- <strong>GitHub:</strong> <a href="https://github.com/BIDS-Xu-Lab/Me-LLaMA">BIDS-Xu-Lab/Me-LLaMA</a></p>
+<h3 id="original-sources">Original Sources<a class="headerlink" href="#original-sources" title="Permanent link">&para;</a></h3>
+<p><strong>Source code repositories:</strong>
+- <strong>Local copy:</strong> <code>external_repos/me-lamma/</code>
+- <strong>Official GitHub:</strong> <a href="https://github.com/BIDS-Xu-Lab/Me-LLaMA">BIDS-Xu-Lab/Me-LLaMA</a></p>
+<p><strong>Original paper:</strong>
+- <strong>Title:</strong> "Me-LLaMA: Medical Foundation Large Language Models for Comprehensive Text Analysis and Clinical Reasoning"
+- <strong>Authors:</strong> Xie, Qianqian; Chen, Qingyu; Chen, Aokun; Peng, Cheng; Hu, Yan; Lin, Fongci; Peng, Xueqing; Huang, Jimin; Zhang, Jeffrey; Keloth, Vipina; Zhou, Xinyu; Qian, Lingfei; He, Huan; Shung, Dennis; Ohno‑Machado, Lucila; Wu, Yonghui; Xu, Hua; Bian, Jiang
+- <strong>Published:</strong> Preprint, 2024
+- <strong>Link:</strong> <a href="https://arxiv.org/abs/2404.05416">arXiv:2404.05416</a>
+- <strong>PDF (local):</strong> <a href="../../../generated/kb_curated/papers-pdf/me_llama_2024.pdf">me_llama_2024.pdf</a></p>
 <h2 id="next-steps-in-our-pipeline">Next Steps in Our Pipeline<a class="headerlink" href="#next-steps-in-our-pipeline" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>Domain corpus curation:</strong> Collect neuroscience + genetics literature for continual pretraining</li>

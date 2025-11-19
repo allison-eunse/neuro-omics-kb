@@ -3502,6 +3502,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/swift_2023.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT (2023)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3633,6 +3661,34 @@
     
   
     GENERator (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/dnabert2_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2 (2024)
   
 
     
@@ -4251,6 +4307,34 @@
     
   
     Foundation models overview (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/tabpfn_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TabPFN (2024)
   
 
     
@@ -5193,6 +5277,7 @@
 <h2 id="key-components">Key Components<a class="headerlink" href="#key-components" title="Permanent link">&para;</a></h2>
 <h3 id="tokenizer-data-interface-modulesdataloaderspy-modulesdatasetspy">Tokenizer + Data Interface (<code>modules/dataloaders.py</code>, <code>modules/datasets.py</code>)<a class="headerlink" href="#tokenizer-data-interface-modulesdataloaderspy-modulesdatasetspy" title="Permanent link">&para;</a></h3>
 <p><code>R2DataLoader</code> centralizes resizing/normalization, dataset selection (IU X-Ray vs. MIMIC/COV), and a collate function that pads both the teacher-forced <code>reports_ids</code> (targets) and decoder inputs (<code>reports_ids_use</code>). The dataset class uses cleaned strings to build token IDs, tracks language label via the leading token, and emits both full targets and shifted inputs.</p>
+<p><strong>Data loader with transforms:</strong></p>
 <p>```8:45:/Users/allison/Projects/neuro-omics-kb/external_repos/M3FM/modules/dataloaders.py
 class R2DataLoader(DataLoader):
     def <strong>init</strong>(self, args, tokenizer, split, shuffle):
@@ -5203,7 +5288,7 @@ class R2DataLoader(DataLoader):
         self.num_workers = args.num_workers
         self.tokenizer = tokenizer
         self.split = split</p>
-<pre><code>    if split == 'train':
+<div class="language-text highlight"><pre><span></span><code>    if split == &#39;train&#39;:
         self.transform = transforms.Compose([
             transforms.Resize(256),
             transforms.RandomCrop(224),
@@ -5218,12 +5303,12 @@ class R2DataLoader(DataLoader):
             transforms.Normalize((0.485, 0.456, 0.406),
                                  (0.229, 0.224, 0.225))])
 
-    if self.dataset_name == 'iu_xray':
+    if self.dataset_name == &#39;iu_xray&#39;:
         self.dataset = IuxrayMultiImageDataset(self.args, self.tokenizer, self.split, transform=self.transform)
     else:
         self.dataset = MimiccxrSingleImageDataset(self.args, self.tokenizer, self.split, transform=self.transform)
-</code></pre>
-<p><code></code>48:74:/Users/allison/Projects/neuro-omics-kb/external_repos/M3FM/modules/dataloaders.py
+</code></pre></div>
+<p><code>**Collate function with padding:**</code>48:74:/Users/allison/Projects/neuro-omics-kb/external_repos/M3FM/modules/dataloaders.py
     @staticmethod
     def collate_fn(data):
         images_id, images, reports_ids, report, seq_lengths, seq_length1,image_path_all, reports_ids_use = zip(*data)
@@ -5247,13 +5332,14 @@ class R2DataLoader(DataLoader):
         return images_id, images, torch.LongTensor(targets), report,image_path_all ,torch.LongTensor(targets_us)
 ```</p>
 <h3 id="multilingual-textextractor-modulestext_extractorpy">Multilingual TextExtractor (<code>modules/text_extractor.py</code>)<a class="headerlink" href="#multilingual-textextractor-modulestext_extractorpy" title="Permanent link">&para;</a></h3>
-<p>The <code>TextExtractor</code> loads <code>M-CLIP/XLM-Roberta-Large-Vit-L-14</code>, averages contextual token embeddings with attention masking, projects them through CLIP’s linear head, then applies a learnable affine + ReLU to map the 768-d output to the 512-d hidden size expected by the decoder. Reports are cleaned per language before tokenization, enabling bilingual support without retraining the encoder.</p>
+<p>The <code>TextExtractor</code> loads <code>M-CLIP/XLM-Roberta-Large-Vit-L-14</code>, averages contextual token embeddings with attention masking, projects them through CLIP's linear head, then applies a learnable affine + ReLU to map the 768-d output to the 512-d hidden size expected by the decoder. Reports are cleaned per language before tokenization, enabling bilingual support without retraining the encoder.</p>
+<p><strong>Multilingual CLIP text encoder:</strong></p>
 <p>```16:53:/Users/allison/Projects/neuro-omics-kb/external_repos/M3FM/modules/text_extractor.py
 class TextExtractor(nn.Module):
     def <strong>init</strong>(self, args):
         super(TextExtractor, self).<strong>init</strong>()
         self.device = "cuda" if torch.cuda.is_available() else "cpu"</p>
-<pre><code>    self.model_name = 'M-CLIP/XLM-Roberta-Large-Vit-L-14'
+<div class="language-text highlight"><pre><span></span><code>    self.model_name = &#39;M-CLIP/XLM-Roberta-Large-Vit-L-14&#39;
     self.model = pt_multilingual_clip.MultilingualCLIP.from_pretrained(self.model_name, device=self.device)
     self.tokenizer = transformers.AutoTokenizer.from_pretrained(self.model_name, device=self.device)
     self.clean_report = self.clean_report_cov
@@ -5274,9 +5360,9 @@ def forward(self, reports):
 
 
     with torch.no_grad():
-        txt_tok = self.tokenizer(texts, padding=True, return_tensors='pt').to(self.device)
+        txt_tok = self.tokenizer(texts, padding=True, return_tensors=&#39;pt&#39;).to(self.device)
         embs = self.transformer(**txt_tok)[0]
-        att = txt_tok['attention_mask']
+        att = txt_tok[&#39;attention_mask&#39;]
         embs = (embs * att.unsqueeze(2)).sum(dim=1) / att.sum(dim=1)[:, None]
         embeddings = self.LinearTransformation(embs).cuda()
 
@@ -5285,11 +5371,13 @@ def forward(self, reports):
 
     embeddings = F.relu(self.affine_aa(embeddings)).cuda() #batch*768--》batch*512
     return embeddings #batch*512
-</code></pre>
+</code></pre></div>
 <p>```
 </p>
 <h3 id="relational-memory-transformer-decoder-modulesencoder_decoderpy">Relational-Memory Transformer Decoder (<code>modules/encoder_decoder.py</code>)<a class="headerlink" href="#relational-memory-transformer-decoder-modulesencoder_decoderpy" title="Permanent link">&para;</a></h3>
 <p><code>Transformer</code> wraps a Decoder-only stack augmented with conditional layer norm controlled by a relational memory module. Before projection, the model reshapes logits to match token vocab (default 464). Memory slots capture long-range dependencies from the previous tokens, improving report fluency over vanilla Transformer decoders.
+
+<strong>Decoder with relational memory:</strong>
 
 <code>228:252:/Users/allison/Projects/neuro-omics-kb/external_repos/M3FM/modules/encoder_decoder.py
 class Transformer(nn.Module):
@@ -5317,10 +5405,11 @@ class Transformer(nn.Module):
         memory = self.rm(self.tgt_emb(dec_inputs), memory)
         return self.decoder(dec_inputs, enc_outputs, memory)</code></p>
 <h3 id="trainer-scheduler-modulestrainerpy">Trainer &amp; Scheduler (<code>modules/trainer.py</code>)<a class="headerlink" href="#trainer-scheduler-modulestrainerpy" title="Permanent link">&para;</a></h3>
-<p><code>Trainer._train_epoch</code> streams teacher-forced batches, clips gradients to <code>0.1</code>, steps SGD and the StepLR schedule every iteration, and records average loss per epoch. Mixed precision isn’t enabled here, so plan GPU memory accordingly.</p>
+<p><code>Trainer._train_epoch</code> streams teacher-forced batches, clips gradients to <code>0.1</code>, steps SGD and the StepLR schedule every iteration, and records average loss per epoch. Mixed precision isn't enabled here, so plan GPU memory accordingly.</p>
+<p><strong>Training loop with gradient clipping:</strong></p>
 <p>```203:221:/Users/allison/Projects/neuro-omics-kb/external_repos/M3FM/modules/trainer.py
     def _train_epoch(self, epoch):</p>
-<pre><code>    train_loss = 0
+<div class="language-text highlight"><pre><span></span><code>    train_loss = 0
     self.model.cuda().train()
     for batch_idx, (images_id, images, reports_ids, report,image_path_all,reports_ids_use) in enumerate(self.train_dataloader):
         images, reports_ids,reports_ids_use= images.to(self.device), reports_ids.to(self.device),reports_ids_use.to(self.device)
@@ -5333,15 +5422,17 @@ class Transformer(nn.Module):
         loss.backward()
         torch.nn.utils.clip_grad_value_(self.model.parameters(), 0.1)
         self.optimizer.step()
-    log = {'train_loss': train_loss / len(self.train_dataloader)}
+    log = {&#39;train_loss&#39;: train_loss / len(self.train_dataloader)}
 
     self.lr_scheduler.step()
     return log
-</code></pre>
+</code></pre></div>
 <p>```
 </p>
 <h3 id="bilingual-inference-script-inferencepy">Bilingual Inference Script (<code>inference.py</code>)<a class="headerlink" href="#bilingual-inference-script-inferencepy" title="Permanent link">&para;</a></h3>
 <p><code>inference.py</code> mirrors the training CLI, loads both English and Chinese <code>R2GenModel</code> variants, performs greedy decoding conditioned on the BOS token, and prints generated reports. Changing <code>--language</code> toggles which head runs and when the search halts.
+
+<strong>Language-specific greedy decoding:</strong>
 
 <code>162:210:/Users/allison/Projects/neuro-omics-kb/external_repos/M3FM/inference.py
 if args.language=='English' or args.language=='All':

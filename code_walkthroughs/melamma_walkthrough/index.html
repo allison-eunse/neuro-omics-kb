@@ -3491,6 +3491,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/swift_2023.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT (2023)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3622,6 +3650,34 @@
     
   
     GENERator (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/dnabert2_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2 (2024)
   
 
     
@@ -4240,6 +4296,34 @@
     
   
     Foundation models overview (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/tabpfn_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TabPFN (2024)
   
 
     
@@ -5182,6 +5266,7 @@
 <h2 id="key-components">Key Components<a class="headerlink" href="#key-components" title="Permanent link">&para;</a></h2>
 <h3 id="evaluation-entrypoint-srcevalpy">Evaluation Entrypoint (<code>src/eval.py</code>)<a class="headerlink" href="#evaluation-entrypoint-srcevalpy" title="Permanent link">&para;</a></h3>
 <p><code>parse_args</code> exposes the same knobs as upstream <code>lm_eval</code> (model/model_args/tasks/few-shot/batching/output). <code>main()</code> resolves task patterns, optional description dicts, and forwards everything to <code>evaluator.simple_evaluate</code>, writing JSON to <code>--output_path</code> when provided.</p>
+<p><strong>CLI argument parsing and evaluation:</strong></p>
 <p>```13:94:/Users/allison/Projects/neuro-omics-kb/external_repos/me-lamma/src/eval.py
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -5206,8 +5291,8 @@ def parse_args():
     parser.add_argument("--check_integrity", action="store_true")
     parser.add_argument("--write_out", action="store_true", default=False)
     parser.add_argument("--output_base_path", type=str, default=None)</p>
-<pre><code>return parser.parse_args()
-</code></pre>
+<div class="language-text highlight"><pre><span></span><code>return parser.parse_args()
+</code></pre></div>
 <p>...
     results = evaluator.simple_evaluate(
         model=args.model,
@@ -5230,6 +5315,8 @@ def parse_args():
 </p>
 <h3 id="evaluator-task-dispatch-srcevaluatorpy">Evaluator &amp; Task Dispatch (<code>src/evaluator.py</code>)<a class="headerlink" href="#evaluator-task-dispatch-srcevaluatorpy" title="Permanent link">&para;</a></h3>
 <p><code>simple_evaluate</code> instantiates a Hugging Face (or OpenAI) LM, wraps it with a caching layer, builds the medical task dictionary, and runs <code>evaluate</code> to orchestrate prompts, few-shot contexts, turn-based conversations, and metric aggregation. Bootstrap statistics, JSON logging, and caching directories mirror upstream <code>lm_eval</code> APIs for drop-in adoption.
+
+<strong>Model instantiation with caching:</strong>
 
 <code>19:133:/Users/allison/Projects/neuro-omics-kb/external_repos/me-lamma/src/evaluator.py
 @positional_deprecated
@@ -5295,6 +5382,7 @@ def simple_evaluate(
     }</code></p>
 <h3 id="medical-task-registry-srctasks__init__py">Medical Task Registry (<code>src/tasks/__init__.py</code>)<a class="headerlink" href="#medical-task-registry-srctasks__init__py" title="Permanent link">&para;</a></h3>
 <p><code>TASK_REGISTRY</code> maps human-readable task names to custom task classes (PubMedQA, MedQA, MedMCQA, etc.). Pattern-matched CLI arguments expand into this registry, so adding a new dataset is a matter of appending to <code>TASK_REGISTRY</code> or creating a JSON-backed task via <code>add_json_task</code>.</p>
+<p><strong>Task name to class mapping:</strong></p>
 <p>```9:34:/Users/allison/Projects/neuro-omics-kb/external_repos/me-lamma/src/tasks/<strong>init</strong>.py
 TASK_REGISTRY = {
     "PUBMEDQA": vital_measure.PUBMEDQA,
@@ -5310,74 +5398,78 @@ TASK_REGISTRY = {
     "BioNLI": vital_measure.BioNLI,
     "MedNLI": vital_measure.MedNLI,
 }
-<div class="highlight"><pre><span></span><code>### Task Definitions &amp; Metrics (`src/tasks/vital_measure.py`)
-`Classification` (and its subclasses) provides language-cleaning, response parsing, accuracy/F1/MCC aggregation, and sequence labeling utilities. `SequentialLabeling`/`NER` extend this to HTML BIO alignment, while summarization tasks use Rouge/BARTScore (loaded via Poetry extras).
-
-```50:181:/Users/allison/Projects/neuro-omics-kb/external_repos/me-lamma/src/tasks/vital_measure.py
-class Classification(Task):
-    CALCULATE_MCC = False
-    LOWER_CASE = True
-    FIRST_LETTER = False
-    VERSION = 1
-    EVAL_LAST_TURN = True
-
-    def reformulate_turn_req(self, req, turn_request, turn):
-        return req
-
-    def has_training_docs(self):
-        return True
-
-    def has_validation_docs(self):
-        return True
-
-    def has_test_docs(self):
-        return True
-
-    def training_docs(self):
-        return self.dataset[&quot;train&quot;]
-
-    def validation_docs(self):
-        return self.dataset[&quot;validation&quot;]
-
-    def test_docs(self):
-        return self.dataset[&quot;test&quot;]
-
-    def construct_requests(self, doc, ctx):
-        cont_request = rf.greedy_until(ctx, {&quot;until&quot;: None})
-        return cont_request
-...
-    def aggregation(self):
-        metrics = {
-            &quot;acc&quot;: mean,
-            &quot;missing&quot;: mean,
-            &quot;f1&quot;: self.weighted_f1,
-            &quot;macro_f1&quot;: self.macro_f1,
-        }
-        if self.CALCULATE_MCC:
-            metrics[&quot;mcc&quot;] = self.matthews_corrcoef
-        return metrics
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>### Task Definitions &amp; Metrics (`src/tasks/vital_measure.py`)
+</span><span id="__span__-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span__-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>`Classification` (and its subclasses) provides language-cleaning, response parsing, accuracy/F1/MCC aggregation, and sequence labeling utilities. `SequentialLabeling`/`NER` extend this to HTML BIO alignment, while summarization tasks use Rouge/BARTScore (loaded via Poetry extras).
+</span><span id="__span__-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span__-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>**Classification task base class:**
+</span><span id="__span__-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span__-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>```50:181:/Users/allison/Projects/neuro-omics-kb/external_repos/me-lamma/src/tasks/vital_measure.py
+</span><span id="__span__-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>class Classification(Task):
+</span><span id="__span__-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    CALCULATE_MCC = False
+</span><span id="__span__-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    LOWER_CASE = True
+</span><span id="__span__-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    FIRST_LETTER = False
+</span><span id="__span__-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    VERSION = 1
+</span><span id="__span__-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    EVAL_LAST_TURN = True
+</span><span id="__span__-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+</span><span id="__span__-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>    def reformulate_turn_req(self, req, turn_request, turn):
+</span><span id="__span__-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>        return req
+</span><span id="__span__-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
+</span><span id="__span__-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>    def has_training_docs(self):
+</span><span id="__span__-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>        return True
+</span><span id="__span__-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
+</span><span id="__span__-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>    def has_validation_docs(self):
+</span><span id="__span__-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>        return True
+</span><span id="__span__-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>
+</span><span id="__span__-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>    def has_test_docs(self):
+</span><span id="__span__-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>        return True
+</span><span id="__span__-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>
+</span><span id="__span__-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>    def training_docs(self):
+</span><span id="__span__-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>        return self.dataset[&quot;train&quot;]
+</span><span id="__span__-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>
+</span><span id="__span__-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>    def validation_docs(self):
+</span><span id="__span__-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>        return self.dataset[&quot;validation&quot;]
+</span><span id="__span__-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>
+</span><span id="__span__-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>    def test_docs(self):
+</span><span id="__span__-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>        return self.dataset[&quot;test&quot;]
+</span><span id="__span__-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>
+</span><span id="__span__-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>    def construct_requests(self, doc, ctx):
+</span><span id="__span__-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a>        cont_request = rf.greedy_until(ctx, {&quot;until&quot;: None})
+</span><span id="__span__-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a>        return cont_request
+</span><span id="__span__-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>...
+</span><span id="__span__-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a>    def aggregation(self):
+</span><span id="__span__-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a>        metrics = {
+</span><span id="__span__-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a>            &quot;acc&quot;: mean,
+</span><span id="__span__-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a>            &quot;missing&quot;: mean,
+</span><span id="__span__-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a>            &quot;f1&quot;: self.weighted_f1,
+</span><span id="__span__-1-45"><a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a>            &quot;macro_f1&quot;: self.macro_f1,
+</span><span id="__span__-1-46"><a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a>        }
+</span><span id="__span__-1-47"><a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a>        if self.CALCULATE_MCC:
+</span><span id="__span__-1-48"><a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a>            metrics[&quot;mcc&quot;] = self.matthews_corrcoef
+</span><span id="__span__-1-49"><a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a>        return metrics
+</span></code></pre></div></p>
 <h3 id="chatlm-prompt-templates-srcchatlmpy-srcmodel_promptpy">ChatLM + Prompt Templates (<code>src/chatlm.py</code>, <code>src/model_prompt.py</code>)<a class="headerlink" href="#chatlm-prompt-templates-srcchatlmpy-srcmodel_promptpy" title="Permanent link">&para;</a></h3>
 <p>For API-based baselines, <code>ChatLM</code> batches requests with asyncio + HTTPX, uses exponential backoff, and overrides <code>greedy_until</code>. Prompt wrappers in <code>model_prompt.py</code> add <code>Human/Assistant</code> prefixes when <code>--model_prompt mellama_prompt</code> is provided.</p>
+<p><strong>OpenAI API wrapper with async requests:</strong></p>
 <p>```12:154:/Users/allison/Projects/neuro-omics-kb/external_repos/me-lamma/src/chatlm.py
 async def single_chat(client, **kwargs):
     ...</p>
 <p>class ChatLM(BaseLM):
     REQ_CHUNK_SIZE = 10</p>
-<pre><code>def __init__(self, model, truncate=False):
+<div class="language-text highlight"><pre><span></span><code>def __init__(self, model, truncate=False):
     super().__init__()
 
     import openai
 
     self.model = model
     self.truncate = truncate
-    api_key = os.environ["OPENAI_API_SECRET_KEY"]
-    self.tokenizer = transformers.GPT2TokenizerFast.from_pretrained("gpt2")
+    api_key = os.environ[&quot;OPENAI_API_SECRET_KEY&quot;]
+    self.tokenizer = transformers.GPT2TokenizerFast.from_pretrained(&quot;gpt2&quot;)
     self.headers = {
-        "Content-Type": "application/json",
-        "Authorization": f"Bearer {api_key}"
+        &quot;Content-Type&quot;: &quot;application/json&quot;,
+        &quot;Authorization&quot;: f&quot;Bearer {api_key}&quot;
     }
-</code></pre>
+</code></pre></div>
 <p>...
     def greedy_until(self, requests):
         if not requests:
@@ -5392,7 +5484,7 @@ async def single_chat(client, **kwargs):
                 max_tokens=self.max_gen_toks,
                 temperature=0.0,
             ))
-<code></code>1:12:/Users/allison/Projects/neuro-omics-kb/external_repos/me-lamma/src/model_prompt.py
+<code>**Prompt template mapping:**</code>1:12:/Users/allison/Projects/neuro-omics-kb/external_repos/me-lamma/src/model_prompt.py
 def no_prompt(ctx):
     return ctx
 

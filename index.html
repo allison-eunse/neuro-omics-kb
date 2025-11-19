@@ -3596,6 +3596,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="kb/paper_cards/swift_2023.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT (2023)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3727,6 +3755,34 @@
     
   
     GENERator (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="kb/paper_cards/dnabert2_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2 (2024)
   
 
     
@@ -4345,6 +4401,34 @@
     
   
     Foundation models overview (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="kb/paper_cards/tabpfn_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TabPFN (2024)
   
 
     
@@ -5278,33 +5362,62 @@
 
     ---
 
-    Extract gene embeddings, analyze variant effects, predict phenotypes from DNA sequences
+    **What you can do:**
 
-    [:octicons-arrow-right-24: Genetics Models](models/genetics/)
+    - Extract gene embeddings from DNA sequences
+    - Analyze variant effects and predict phenotypes
+    - Generate gene-level representations for downstream analysis
+
+    [:octicons-arrow-right-24: Explore Genetics Models](models/genetics/)
 
 -   :material-brain: **Brain Imaging**
 
     ---
 
-    Process fMRI/sMRI, extract neuroimaging features, harmonize multi-site data
+    **What you can do:**
 
-    [:octicons-arrow-right-24: Brain Models](models/brain/)
+    - Process fMRI and sMRI neuroimaging data
+    - Extract site-robust brain embeddings
+    - Harmonize multi-site imaging datasets
+
+    [:octicons-arrow-right-24: Explore Brain Models](models/brain/)
 
 -   :material-link-variant: **Multimodal Integration**
 
     ---
 
-    Fuse gene + brain embeddings, gene-brain-behavior prediction, cross-modal alignment
+    **What you can do:**
 
-    [:octicons-arrow-right-24: Integration Strategy](integration/integration_strategy/)
+    - Fuse gene + brain embeddings via CCA or late fusion
+    - Build gene-brain-behavior prediction models
+    - Implement cross-modal alignment strategies
+
+    [:octicons-arrow-right-24: Explore Integration Strategy](integration/integration_strategy/)
+
+-   :material-hospital: **Multimodal & Clinical Models**
+
+    ---
+
+    **What you can do:**
+
+    - Use unified multimodal architectures (BAGEL, MoT, M3FM)
+    - Process medical imaging with clinical text (TITAN, M3FM)
+    - Leverage medical LLMs for clinical reasoning (Me-LLaMA)
+    - Explore foundation model catalogs (FMS-Medical)
+
+    [:octicons-arrow-right-24: Explore Multimodal Models](models/multimodal/)
 
 -   :material-flask: **Reproducible Research**
 
     ---
 
-    Use validated pipelines, experiment configs, and quality gates for your cohorts
+    **What you can do:**
 
-    [:octicons-arrow-right-24: Analysis Recipes](integration/analysis_recipes/cca_permutation/)
+    - Use validated analysis pipelines and recipes
+    - Clone experiment configs with proper CV schemes
+    - Apply quality gates for multi-site cohorts
+
+    [:octicons-arrow-right-24: Explore Analysis Recipes](integration/analysis_recipes/cca_permutation/)
 
 </div>
 
@@ -5502,7 +5615,7 @@
 <hr />
 <h2 id="research-papers">📚 Research Papers<a class="headerlink" href="#research-papers" title="Permanent link">&para;</a></h2>
 <details>
-<summary><strong>22 Structured Paper Summaries</strong> — Click to expand</summary>
+<summary><strong>20 Structured Paper Summaries</strong> — Click to expand</summary>
 
 ### 🧬 Genetics Foundation Models
 | Paper | Year | Key Contribution |
@@ -5596,7 +5709,7 @@
 
     ---
 
-    YAML metadata for 16 foundation models (genetics, brain, multimodal)
+    15 model cards: 13 foundation models + 2 ARPA-H planning cards
 
     [:octicons-arrow-right-24: Browse on GitHub](https://github.com/allison-eunse/neuro-omics-kb/tree/main/kb/model_cards)
 
@@ -5604,7 +5717,7 @@
 
     ---
 
-    Structured summaries of 15+ key papers with integration hooks
+    Structured summaries of 20 key papers with integration hooks
 
     [:octicons-arrow-right-24: Browse on GitHub](https://github.com/allison-eunse/neuro-omics-kb/tree/main/kb/paper_cards)
 
@@ -5659,7 +5772,7 @@
 <hr />
 <h2 id="quick-start-guide">🚀 Quick Start Guide<a class="headerlink" href="#quick-start-guide" title="Permanent link">&para;</a></h2>
 <h3 id="standard-pipeline">Standard Pipeline<a class="headerlink" href="#standard-pipeline" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>graph LR
+<pre class="mermaid"><code>graph LR
     A[Raw Data] --&gt; B[Z-score normalization]
     B --&gt; C[Residualize confounds]
     C --&gt; D[512-D projection]
@@ -5668,8 +5781,7 @@
     E --&gt;|Prediction| G[LR/GBDT fusion]
     F --&gt; H[Statistical tests]
     G --&gt; H
-    H --&gt; I[Results + validation]
-</code></pre></div>
+    H --&gt; I[Results + validation]</code></pre>
 <h3 id="essential-controls">Essential Controls<a class="headerlink" href="#essential-controls" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Always Residualize</p>
@@ -5680,14 +5792,14 @@
 - Batch effects</p>
 </div>
 <h3 id="integration-roadmap">Integration Roadmap<a class="headerlink" href="#integration-roadmap" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>Late Fusion (baseline)
-    ↓ If fusion wins significantly
-Two-Tower Contrastive
-    ↓ If gains plateau
-EI Stacking / Hub Tokens
-    ↓ Last resort
-Full Early Fusion (TAPE-style)
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Late Fusion (baseline)
+</span><span id="__span__-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    ↓ If fusion wins significantly
+</span><span id="__span__-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Two-Tower Contrastive
+</span><span id="__span__-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    ↓ If gains plateau
+</span><span id="__span__-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>EI Stacking / Hub Tokens
+</span><span id="__span__-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    ↓ Last resort
+</span><span id="__span__-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Full Early Fusion (TAPE-style)
+</span></code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Start with CCA + Permutation</p>
 <p>CCA always returns non-zero correlations, even on shuffled data. The permutation test builds a <strong>null distribution</strong> by re-fitting after within-fold shuffling, giving you p-values to avoid over-interpreting noise—critical when sites share confounds.</p>

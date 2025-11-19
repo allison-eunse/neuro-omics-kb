@@ -3480,6 +3480,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/swift_2023.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT (2023)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3611,6 +3639,34 @@
     
   
     GENERator (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/dnabert2_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2 (2024)
   
 
     
@@ -4229,6 +4285,34 @@
     
   
     Foundation models overview (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/tabpfn_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TabPFN (2024)
   
 
     
@@ -5172,15 +5256,19 @@
 <h2 id="key-components">Key Components<a class="headerlink" href="#key-components" title="Permanent link">&para;</a></h2>
 <h3 id="tokenizer-preprocessing-variant_effect_predictionpy-fine_tuningpy">Tokenizer &amp; Preprocessing (<code>variant_effect_prediction.py</code>, <code>fine_tuning.py</code>)<a class="headerlink" href="#tokenizer-preprocessing-variant_effect_predictionpy-fine_tuningpy" title="Permanent link">&para;</a></h3>
 <p>The downstream scripts consistently load the HF tokenizer with <code>trust_remote_code=True</code>, force pad tokens to EOS if missing, and either truncate or pad every sequence to the nearest 6-mer boundary (<code>pad_to_multiple_of_six</code> flag) so the 6-mer BPE never emits <code>&lt;oov&gt;</code> tokens.</p>
+<p><strong>Tokenizer initialization:</strong></p>
 <p>```151:176:external_repos/generator/src/tasks/downstream/variant_effect_prediction.py
 tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
 ...
 inputs = tokenizer(batch_sequences, return_tensors="pt", padding=True)
-<div class="highlight"><pre><span></span><code>```118:125:external_repos/generator/src/tasks/downstream/variant_effect_prediction.py
-truncate_length = len(sequence) % 6
-if truncate_length &gt; 0:
-    sequence = sequence[truncate_length:]
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>**6-mer boundary truncation:**
+</span><span id="__span__-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span__-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>```118:125:external_repos/generator/src/tasks/downstream/variant_effect_prediction.py
+</span><span id="__span__-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>truncate_length = len(sequence) % 6
+</span><span id="__span__-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>if truncate_length &gt; 0:
+</span><span id="__span__-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    sequence = sequence[truncate_length:]
+</span></code></pre></div></p>
+<p><strong>Padding to 6-mer multiples:</strong></p>
 <p>```208:243:external_repos/generator/src/tasks/downstream/fine_tuning.py
 if pad_to_multiple_of_six:
     remainder = len(seq) % 6
@@ -5194,21 +5282,22 @@ tokenized = tokenizer(
     add_special_tokens=True,
     padding=False,
 )
-<div class="highlight"><pre><span></span><code>### Positional &amp; Long-Context Handling (`sequence_understanding.py`)
-`sequence_understanding.py` either scales RoPE via YaRN or injects sliding-window attention patches so you can extend Llama-based classifiers to &gt;1 M tokens while staying numerically stable.
-
-```596:666:external_repos/generator/src/tasks/downstream/sequence_understanding.py
-elif length_extension_mode == &quot;sliding_window&quot;:
-    config.sliding_window = int(original_model_max_length_for_scaling)
-    ...
-    def _sliding_llama_forward(...):
-        kwargs[&quot;sliding_window&quot;] = self.config.sliding_window
-        return _orig_forward(...)
-    LlamaAttention.forward = _sliding_llama_forward
-    attn_implementation = &quot;flash_attention_2&quot;
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>### Positional &amp; Long-Context Handling (`sequence_understanding.py`)
+</span><span id="__span__-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>`sequence_understanding.py` either scales RoPE via YaRN or injects sliding-window attention patches so you can extend Llama-based classifiers to &gt;1 M tokens while staying numerically stable.
+</span><span id="__span__-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span__-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>```596:666:external_repos/generator/src/tasks/downstream/sequence_understanding.py
+</span><span id="__span__-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>elif length_extension_mode == &quot;sliding_window&quot;:
+</span><span id="__span__-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    config.sliding_window = int(original_model_max_length_for_scaling)
+</span><span id="__span__-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    ...
+</span><span id="__span__-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    def _sliding_llama_forward(...):
+</span><span id="__span__-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>        kwargs[&quot;sliding_window&quot;] = self.config.sliding_window
+</span><span id="__span__-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>        return _orig_forward(...)
+</span><span id="__span__-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    LlamaAttention.forward = _sliding_llama_forward
+</span><span id="__span__-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    attn_implementation = &quot;flash_attention_2&quot;
+</span></code></pre></div></p>
 <h3 id="backbone-instantiation-fine_tuningpy-sequence_understandingpy">Backbone Instantiation (<code>fine_tuning.py</code>, <code>sequence_understanding.py</code>)<a class="headerlink" href="#backbone-instantiation-fine_tuningpy-sequence_understandingpy" title="Permanent link">&para;</a></h3>
 <p>Fine-tuning uses <code>AutoModelForCausalLM</code> with optional pad ID fixes, while sequence-understanding swaps in <code>AutoModelForSequenceClassification</code> or the ChunkEnsemble wrapper to keep a rolling window over million-token sequences.</p>
+<p><strong>Causal LM model loading:</strong></p>
 <p>```257:285:external_repos/generator/src/tasks/downstream/fine_tuning.py
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
@@ -5216,19 +5305,19 @@ model = AutoModelForCausalLM.from_pretrained(
 )
 if model.config.pad_token_id is None and hasattr(model.config, "eos_token_id"):
     model.config.pad_token_id = model.config.eos_token_id
-<div class="highlight"><pre><span></span><code>```508:593:external_repos/generator/src/tasks/downstream/sequence_understanding.py
-class ChunkEnsembleLlamaForSequenceClassification(LlamaPreTrainedModel):
-    def forward(...):
-        input_ids_chunks = input_ids.unfold(dimension=1, size=self.chunk_size, step=self.stride)
-        ...
-        chunk_eos_embedding = hidden_states[
-            torch.arange(batch_size, device=hidden_states.device),
-            sequence_lengths,
-        ]
-        stacked_embeddings = torch.stack(all_chunk_eos_embeddings, dim=1)
-        final_representation = padded_embeddings.view(batch_size, -1)
-        logits = self.classifier(final_representation)
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>```508:593:external_repos/generator/src/tasks/downstream/sequence_understanding.py
+</span><span id="__span__-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>class ChunkEnsembleLlamaForSequenceClassification(LlamaPreTrainedModel):
+</span><span id="__span__-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    def forward(...):
+</span><span id="__span__-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>        input_ids_chunks = input_ids.unfold(dimension=1, size=self.chunk_size, step=self.stride)
+</span><span id="__span__-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>        ...
+</span><span id="__span__-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>        chunk_eos_embedding = hidden_states[
+</span><span id="__span__-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>            torch.arange(batch_size, device=hidden_states.device),
+</span><span id="__span__-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>            sequence_lengths,
+</span><span id="__span__-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>        ]
+</span><span id="__span__-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>        stacked_embeddings = torch.stack(all_chunk_eos_embeddings, dim=1)
+</span><span id="__span__-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>        final_representation = padded_embeddings.view(batch_size, -1)
+</span><span id="__span__-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>        logits = self.classifier(final_representation)
+</span></code></pre></div></p>
 <h3 id="objective-training-loop-fine_tuningpy">Objective &amp; Training Loop (<code>fine_tuning.py</code>)<a class="headerlink" href="#objective-training-loop-fine_tuningpy" title="Permanent link">&para;</a></h3>
 <p>The script wraps everything in <code>transformers.Trainer</code> with <code>DataCollatorForLanguageModeling</code> (<code>mlm=False</code>) so causal LM losses line up with the HF training stack and distributed options (DeepSpeed, FSDP) set via CLI.</p>
 <p>```351:390:external_repos/generator/src/tasks/downstream/fine_tuning.py
@@ -5240,32 +5329,32 @@ trainer = Trainer(
     data_collator=DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False),
 )
 trainer.train()
-<div class="highlight"><pre><span></span><code>### Inference Helpers (`variant_effect_prediction.py`)
-Variant effect prediction shards ClinVar sequences across GPUs, caches logits, and computes per-base probabilities by summing over all tokens starting with ref/alt characters. This utility powers the headline ClinVar AUROC numbers.
-
-```201:290:external_repos/generator/src/tasks/downstream/variant_effect_prediction.py
-def compute_logits_parallel(...):
-    num_gpus = torch.cuda.device_count()
-    shards.append({&#39;shard_id&#39;: i, &#39;sequences_data&#39;: sequences_data[start_idx:end_idx], ...})
-    with ctx.Pool(processes=num_gpus) as pool:
-        results = list(pool.imap(compute_logits_shard, args_list))
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>### Inference Helpers (`variant_effect_prediction.py`)
+</span><span id="__span__-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Variant effect prediction shards ClinVar sequences across GPUs, caches logits, and computes per-base probabilities by summing over all tokens starting with ref/alt characters. This utility powers the headline ClinVar AUROC numbers.
+</span><span id="__span__-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span__-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>```201:290:external_repos/generator/src/tasks/downstream/variant_effect_prediction.py
+</span><span id="__span__-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>def compute_logits_parallel(...):
+</span><span id="__span__-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    num_gpus = torch.cuda.device_count()
+</span><span id="__span__-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    shards.append({&#39;shard_id&#39;: i, &#39;sequences_data&#39;: sequences_data[start_idx:end_idx], ...})
+</span><span id="__span__-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    with ctx.Pool(processes=num_gpus) as pool:
+</span><span id="__span__-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>        results = list(pool.imap(compute_logits_shard, args_list))
+</span></code></pre></div></p>
 <p>```292:383:external_repos/generator/src/tasks/downstream/variant_effect_prediction.py
 def parallel_compute_probabilities(...):
     vocab = tokenizer.get_vocab()
     char_indices = get_char_indices(vocab)
     results = list(pool.imap(compute_prob, args_list, chunksize=chunksize))
     p_ref, p_alt = zip(*results)
-<div class="highlight"><pre><span></span><code>### Embedding Extraction (`sequence_understanding.py`)
-ChunkEnsemble accumulates the EOS vector from each sliding chunk, pads/truncates them to a fixed count, and flattens into a `[B, max_chunks * hidden]` representation before the classifier head—exactly what you can reuse for downstream alignment.
-
-```446:505:external_repos/generator/src/tasks/downstream/sequence_understanding.py
-stacked_embeddings = torch.stack(all_chunk_eos_embeddings, dim=1)
-num_padding_chunks = self.max_chunks - stacked_embeddings.shape[1]
-...
-final_representation = padded_embeddings.view(batch_size, -1)
-logits = self.classifier(final_representation)
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>### Embedding Extraction (`sequence_understanding.py`)
+</span><span id="__span__-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>ChunkEnsemble accumulates the EOS vector from each sliding chunk, pads/truncates them to a fixed count, and flattens into a `[B, max_chunks * hidden]` representation before the classifier head—exactly what you can reuse for downstream alignment.
+</span><span id="__span__-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span__-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>```446:505:external_repos/generator/src/tasks/downstream/sequence_understanding.py
+</span><span id="__span__-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>stacked_embeddings = torch.stack(all_chunk_eos_embeddings, dim=1)
+</span><span id="__span__-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>num_padding_chunks = self.max_chunks - stacked_embeddings.shape[1]
+</span><span id="__span__-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>...
+</span><span id="__span__-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>final_representation = padded_embeddings.view(batch_size, -1)
+</span><span id="__span__-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>logits = self.classifier(final_representation)
+</span></code></pre></div></p>
 <h3 id="sequence-constraints-variant_effect_predictionpy-fine_tuningpy">Sequence Constraints (<code>variant_effect_prediction.py</code>, <code>fine_tuning.py</code>)<a class="headerlink" href="#sequence-constraints-variant_effect_predictionpy-fine_tuningpy" title="Permanent link">&para;</a></h3>
 <p>Both inference and training enforce the 6-mer constraint by trimming or padding raw strings and, for dataset preprocessing, only accepting columns named <code>sequence</code>, <code>seq</code>, <code>dna_sequence</code>, etc., so you cannot silently feed invalid tokens.</p>
 <p>```208:244:external_repos/generator/src/tasks/downstream/fine_tuning.py
@@ -5276,29 +5365,29 @@ elif "seq" in examples:
 ...
 else:
     raise ValueError("No sequence column found in dataset.")
-<div class="highlight"><pre><span></span><code>## Integration Hooks (Genetics ↔ Brain)
-
-- **Embedding shapes.** GENERator decoders yield `[B, L_tokens, hidden]` tensors; ChunkEnsemble condenses them into `[B, max_chunks, hidden]` before flattening to `[B, max_chunks * hidden]`. You can stop just before the final classifier to grab the stacked embeddings for pooling.^[```446:505:external_repos/generator/src/tasks/downstream/sequence_understanding.py```]
-- **Pooling strategies.** Use mean pooling along the chunk dimension for overall sequence summaries, max pooling for motif emphasis, or take the final chunk (equivalent to autoregressive “last token”). Because chunk embeddings correspond to non-overlapping windows, pooling behaves like low-resolution downsampling.
-- **Projection to shared latent.** After pooling to `[B, H]` (H≈1536 for the 1.2 B model), apply a projector to map into the same 512-D space used by your brain encoder:
-
-```python
-import torch.nn as nn
-
-class GeneratorProjector(nn.Module):
-    def __init__(self, input_dim=1536, output_dim=512, dropout=0.1):
-        super().__init__()
-        self.net = nn.Sequential(
-            nn.Linear(input_dim, 1024),
-            nn.GELU(),
-            nn.Dropout(dropout),
-            nn.Linear(1024, output_dim),
-            nn.LayerNorm(output_dim),
-        )
-
-    def forward(self, x):
-        return self.net(x)
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>## Integration Hooks (Genetics ↔ Brain)
+</span><span id="__span__-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+</span><span id="__span__-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>- **Embedding shapes.** GENERator decoders yield `[B, L_tokens, hidden]` tensors; ChunkEnsemble condenses them into `[B, max_chunks, hidden]` before flattening to `[B, max_chunks * hidden]`. You can stop just before the final classifier to grab the stacked embeddings for pooling.^[```446:505:external_repos/generator/src/tasks/downstream/sequence_understanding.py```]
+</span><span id="__span__-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>- **Pooling strategies.** Use mean pooling along the chunk dimension for overall sequence summaries, max pooling for motif emphasis, or take the final chunk (equivalent to autoregressive “last token”). Because chunk embeddings correspond to non-overlapping windows, pooling behaves like low-resolution downsampling.
+</span><span id="__span__-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>- **Projection to shared latent.** After pooling to `[B, H]` (H≈1536 for the 1.2 B model), apply a projector to map into the same 512-D space used by your brain encoder:
+</span><span id="__span__-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span__-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>```python
+</span><span id="__span__-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>import torch.nn as nn
+</span><span id="__span__-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+</span><span id="__span__-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>class GeneratorProjector(nn.Module):
+</span><span id="__span__-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    def __init__(self, input_dim=1536, output_dim=512, dropout=0.1):
+</span><span id="__span__-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>        super().__init__()
+</span><span id="__span__-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>        self.net = nn.Sequential(
+</span><span id="__span__-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>            nn.Linear(input_dim, 1024),
+</span><span id="__span__-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>            nn.GELU(),
+</span><span id="__span__-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>            nn.Dropout(dropout),
+</span><span id="__span__-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>            nn.Linear(1024, output_dim),
+</span><span id="__span__-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>            nn.LayerNorm(output_dim),
+</span><span id="__span__-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>        )
+</span><span id="__span__-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>
+</span><span id="__span__-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>    def forward(self, x):
+</span><span id="__span__-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>        return self.net(x)
+</span></code></pre></div></p>
 <ul>
 <li><strong>Normalization.</strong> LayerNorm (as in the projector above) keeps token-averaged embeddings comparable to fMRI CLS tokens (BrainLM/SwiFT), especially before cosine-similarity objectives.</li>
 <li><strong>Sequence hygiene.</strong> Reuse the <code>pad_to_multiple_of_six</code> logic or <code>ensure_6mer_compatible</code> helper whenever you extract embeddings outside the packaged scripts; otherwise, HF will inject <code>&lt;oov&gt;</code> tokens that shift chunk boundaries and misalign pooling.^[<code>118:125:external_repos/generator/src/tasks/downstream/variant_effect_prediction.py</code>]</li>

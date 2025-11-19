@@ -1235,6 +1235,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Reference Materials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#knowledge-base-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Knowledge Base Resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#original-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Original Sources
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3544,6 +3572,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kb/paper_cards/swift_2023.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT (2023)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3675,6 +3731,34 @@
     
   
     GENERator (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kb/paper_cards/dnabert2_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2 (2024)
   
 
     
@@ -4293,6 +4377,34 @@
     
   
     Foundation models overview (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kb/paper_cards/tabpfn_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TabPFN (2024)
   
 
     
@@ -5230,13 +5342,13 @@
 - Site-robust features critical for federated/multi-institution Brain-Omics Models
 - Natural baseline before escalating to multimodal encoders (Brain Harmony, BrainMT)</p>
 <h2 id="embedding-extraction-workflow">Embedding Extraction Workflow<a class="headerlink" href="#embedding-extraction-workflow" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1"># 1. Preprocess fMRI → parcellate (Schaefer-400)</span>
-<span class="c1"># 2. Load pretrained BrainLM checkpoint</span>
-<span class="c1"># 3. Extract latent tokens (no masking during inference)</span>
-<span class="c1"># 4. Pool to subject vector</span>
-<span class="c1"># 5. Apply harmonization (ComBat/MURD) if needed</span>
-<span class="c1"># 6. Log embedding strategy ID in experiment config</span>
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span__-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 1. Preprocess fMRI → parcellate (Schaefer-400)</span>
+</span><span id="__span__-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># 2. Load pretrained BrainLM checkpoint</span>
+</span><span id="__span__-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># 3. Extract latent tokens (no masking during inference)</span>
+</span><span id="__span__-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># 4. Pool to subject vector</span>
+</span><span id="__span__-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># 5. Apply harmonization (ComBat/MURD) if needed</span>
+</span><span id="__span__-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># 6. Log embedding strategy ID in experiment config</span>
+</span></code></pre></div>
 <h2 id="strengths-limitations">Strengths &amp; Limitations<a class="headerlink" href="#strengths-limitations" title="Permanent link">&para;</a></h2>
 <h3 id="strengths">Strengths<a class="headerlink" href="#strengths" title="Permanent link">&para;</a></h3>
 <ul>
@@ -5262,18 +5374,26 @@
 - <strong>BrainMT:</strong> Long-range temporal dependencies via Mamba blocks
 - <strong>SwiFT:</strong> 4D volume input without explicit parcellation</p>
 <h2 id="reference-materials">Reference Materials<a class="headerlink" href="#reference-materials" title="Permanent link">&para;</a></h2>
-<p><strong>Primary sources:</strong>
-- <strong>Paper:</strong> <a href="../../../generated/kb_curated/papers-pdf/brainlm_2024.pdf">BrainLM (2024)</a>
+<h3 id="knowledge-base-resources">Knowledge Base Resources<a class="headerlink" href="#knowledge-base-resources" title="Permanent link">&para;</a></h3>
+<p><strong>Curated materials in this KB:</strong>
+- <strong>Paper summary &amp; notes (PDF):</strong> <a href="../../../generated/kb_curated/papers-pdf/brainlm_2024.pdf">BrainLM (2024)</a>
 - <strong>Code walkthrough:</strong> <a href="../../../code_walkthroughs/brainlm_walkthrough/">BrainLM walkthrough</a>
-- <strong>YAML card:</strong> <code>kb/model_cards/brainlm.yaml</code> (detailed architecture specs)
-- <strong>Paper card:</strong> <code>kb/paper_cards/brainlm_2024.yaml</code> (structured takeaways)</p>
+- <strong>Model card (YAML):</strong> <code>kb/model_cards/brainlm.yaml</code>
+- <strong>Paper card (YAML):</strong> <code>kb/paper_cards/brainlm_2024.yaml</code></p>
 <p><strong>Integration recipes:</strong>
 - <a href="../../../integration/modality_features/fmri/">Modality Features: fMRI</a>
 - <a href="../../../integration/integration_strategy/">Integration Strategy</a>
 - <a href="../../../integration/analysis_recipes/cca_permutation/">CCA + Permutation Recipe</a></p>
-<p><strong>Source repository:</strong>
-- <strong>Local:</strong> <code>external_repos/brainlm/</code>
-- <strong>GitHub:</strong> <a href="https://github.com/vandijklab/BrainLM">vandijklab/BrainLM</a></p>
+<h3 id="original-sources">Original Sources<a class="headerlink" href="#original-sources" title="Permanent link">&para;</a></h3>
+<p><strong>Source code repositories:</strong>
+- <strong>Local copy:</strong> <code>external_repos/brainlm/</code>
+- <strong>Official GitHub:</strong> <a href="https://github.com/vandijklab/BrainLM">vandijklab/BrainLM</a></p>
+<p><strong>Original paper:</strong>
+- <strong>Title:</strong> "BrainLM: A foundation model for brain activity recordings"
+- <strong>Authors:</strong> Talukder et al.
+- <strong>Published:</strong> 2024
+- <strong>Link:</strong> <a href="https://www.biorxiv.org/content/10.1101/2023.09.12.557460">bioRxiv/publication link</a>
+- <strong>PDF (local):</strong> <a href="../../../generated/kb_curated/papers-pdf/brainlm_2024.pdf">brainlm_2024.pdf</a></p>
 <h2 id="next-steps-in-our-pipeline">Next Steps in Our Pipeline<a class="headerlink" href="#next-steps-in-our-pipeline" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>Validate extraction:</strong> Ensure consistent embeddings across UKB/Cha Hospital cohorts</li>

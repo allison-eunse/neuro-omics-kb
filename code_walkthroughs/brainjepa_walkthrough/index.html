@@ -3480,6 +3480,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/swift_2023.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT (2023)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3611,6 +3639,34 @@
     
   
     GENERator (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/dnabert2_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2 (2024)
   
 
     
@@ -4229,6 +4285,34 @@
     
   
     Foundation models overview (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/tabpfn_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TabPFN (2024)
   
 
     
@@ -5171,6 +5255,7 @@
 <h2 id="key-components">Key Components<a class="headerlink" href="#key-components" title="Permanent link">&para;</a></h2>
 <h3 id="dataset-preprocessing-srcdatasetsukbiobank_scalepy">Dataset &amp; Preprocessing (<code>src/datasets/ukbiobank_scale.py</code>)<a class="headerlink" href="#dataset-preprocessing-srcdatasetsukbiobank_scalepy" title="Permanent link">&para;</a></h3>
 <p>The dataset class loads ROI-wise time series, applies robust scaling, optional downsampling, and returns tensors shaped <code>[channels, depth, height, width, time]</code> wrapped in dicts (<code>{'fmri': tensor}</code>) for the mask collator.</p>
+<p><strong>fMRI dataset with ROI time series:</strong></p>
 <p>```14:186:external_repos/brainjepa/src/datasets/ukbiobank_scale.py
 class fMRIDataset(Dataset):
     def <strong>getitem</strong>(self, idx):
@@ -5181,38 +5266,45 @@ class fMRIDataset(Dataset):
             ts_array = self._temporal_sampling(...)
         ts = torch.unsqueeze(torch.from_numpy(ts_array), 0).to(torch.float32)
         return {'fmri': ts}
-<div class="highlight"><pre><span></span><code>### Mask Collator (`src/masks/spatialtemporal_multiblock.py`)
-`MaskCollator_fmri` samples encoder/predictor windows over ROIs × time, enforcing non-overlapping context/target regions and returning boolean masks for each batch.
-
-```18:282:external_repos/brainjepa/src/masks/spatialtemporal_multiblock.py
-class MaskCollator_fmri(object):
-    def __call__(self, batch):
-        mask_e, _ = self._sample_block_mask_e(e_size)
-        masks_p.append(self._sample_block_mask_p_roi(p_size_roi)[0])
-        mask, mask_C = self._sample_block_mask_p_ts(...)
-        mask_e = self.constrain_e_mask(mask_e, acceptable_regions=masks_C)
-        collated_masks_pred.append([mask_p_final])
-        collated_masks_enc.append([mask_e])
-        return collated_batch, collated_masks_enc, collated_masks_pred
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>### Mask Collator (`src/masks/spatialtemporal_multiblock.py`)
+</span><span id="__span__-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span__-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>`MaskCollator_fmri` samples encoder/predictor windows over ROIs × time, enforcing non-overlapping context/target regions and returning boolean masks for each batch.
+</span><span id="__span__-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span__-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>**Spatiotemporal masking for JEPA:**
+</span><span id="__span__-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span__-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>```18:282:external_repos/brainjepa/src/masks/spatialtemporal_multiblock.py
+</span><span id="__span__-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>class MaskCollator_fmri(object):
+</span><span id="__span__-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    def __call__(self, batch):
+</span><span id="__span__-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>        mask_e, _ = self._sample_block_mask_e(e_size)
+</span><span id="__span__-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        masks_p.append(self._sample_block_mask_p_roi(p_size_roi)[0])
+</span><span id="__span__-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>        mask, mask_C = self._sample_block_mask_p_ts(...)
+</span><span id="__span__-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        mask_e = self.constrain_e_mask(mask_e, acceptable_regions=masks_C)
+</span><span id="__span__-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>        collated_masks_pred.append([mask_p_final])
+</span><span id="__span__-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>        collated_masks_enc.append([mask_e])
+</span><span id="__span__-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        return collated_batch, collated_masks_enc, collated_masks_pred
+</span></code></pre></div></p>
 <h3 id="positional-embeddings-encoder-srcmodelsvision_transformerpy">Positional Embeddings &amp; Encoder (<code>src/models/vision_transformer.py</code>)<a class="headerlink" href="#positional-embeddings-encoder-srcmodelsvision_transformerpy" title="Permanent link">&para;</a></h3>
 <p>Gradient-informed positional encoding (<code>GradTs_2dPE</code>) injects atlas gradients, while the encoder (<code>VisionTransformer</code>) patchifies <code>[B, C, D, H, W, T]</code> tensors, adds position encodings, and runs stacked Swin-like blocks.</p>
+<p><strong>Gradient-informed positional encoding:</strong></p>
 <p>```22:100:external_repos/brainjepa/src/models/vision_transformer.py
 class GradTs_2dPE(nn.Module):
     def <strong>init</strong>(...):
         self.emb_h = nn.Parameter(...)
         self.emb_w = ... if add_w == 'origin' else predictor_pos_embed_proj(gradient)
-<div class="highlight"><pre><span></span><code>```430:514:external_repos/brainjepa/src/models/vision_transformer.py
-x = self.patch_embed(x)
-pos_embed = self.pos_embed_proj(self.gradient_pos_embed)
-x = x + pos_embed
-if masks is not None:
-    x = apply_masks(x, masks)
-for blk in self.blocks:
-    x = blk(x)
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>**Vision transformer encoder:**
+</span><span id="__span__-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span__-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>```430:514:external_repos/brainjepa/src/models/vision_transformer.py
+</span><span id="__span__-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>x = self.patch_embed(x)
+</span><span id="__span__-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>pos_embed = self.pos_embed_proj(self.gradient_pos_embed)
+</span><span id="__span__-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>x = x + pos_embed
+</span><span id="__span__-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>if masks is not None:
+</span><span id="__span__-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    x = apply_masks(x, masks)
+</span><span id="__span__-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>for blk in self.blocks:
+</span><span id="__span__-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    x = blk(x)
+</span></code></pre></div></p>
 <h3 id="predictor-head-srcmodelsvision_transformerpy">Predictor Head (<code>src/models/vision_transformer.py</code>)<a class="headerlink" href="#predictor-head-srcmodelsvision_transformerpy" title="Permanent link">&para;</a></h3>
 <p>The predictor maps context tokens to a lower-dimensional space, concatenates learnable mask tokens (with their own positional embeddings), and runs Transformer blocks to regress target embeddings.</p>
+<p><strong>JEPA predictor architecture:</strong></p>
 <p>```280:396:external_repos/brainjepa/src/models/vision_transformer.py
 class VisionTransformerPredictor(nn.Module):
     x = self.predictor_embed(x)
@@ -5223,23 +5315,23 @@ class VisionTransformerPredictor(nn.Module):
     for blk in self.predictor_blocks:
         x = blk(x)
     x = self.predictor_proj(x[:, N_ctxt:])
-<div class="highlight"><pre><span></span><code>### Training Loop (`src/train.py`)
-The training script builds data loaders, mask collators, encoder/predictor pairs, and optimizers; the loss is Smooth L1 between predictor outputs and target encoder features.
-
-```215:360:external_repos/brainjepa/src/train.py
-def train_step():
-    def forward_target():
-        with torch.no_grad():
-            h = target_encoder(imgs)
-            h = F.layer_norm(h, (h.size(-1),))
-            h = apply_masks(h, masks_pred)
-            h = repeat_interleave_batch(h, B, repeat=len(masks_enc))
-    def forward_context():
-        z = encoder(imgs, masks_enc, return_attention=False)
-        z = predictor(z, masks_enc, masks_pred, return_attention=False)
-    def loss_fn(z, h):
-        return F.smooth_l1_loss(z, h)
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>### Training Loop (`src/train.py`)
+</span><span id="__span__-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>The training script builds data loaders, mask collators, encoder/predictor pairs, and optimizers; the loss is Smooth L1 between predictor outputs and target encoder features.
+</span><span id="__span__-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span__-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>```215:360:external_repos/brainjepa/src/train.py
+</span><span id="__span__-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>def train_step():
+</span><span id="__span__-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    def forward_target():
+</span><span id="__span__-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>        with torch.no_grad():
+</span><span id="__span__-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>            h = target_encoder(imgs)
+</span><span id="__span__-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>            h = F.layer_norm(h, (h.size(-1),))
+</span><span id="__span__-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>            h = apply_masks(h, masks_pred)
+</span><span id="__span__-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>            h = repeat_interleave_batch(h, B, repeat=len(masks_enc))
+</span><span id="__span__-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    def forward_context():
+</span><span id="__span__-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>        z = encoder(imgs, masks_enc, return_attention=False)
+</span><span id="__span__-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>        z = predictor(z, masks_enc, masks_pred, return_attention=False)
+</span><span id="__span__-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>    def loss_fn(z, h):
+</span><span id="__span__-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>        return F.smooth_l1_loss(z, h)
+</span></code></pre></div></p>
 <h3 id="downstream-evaluation-downstream_tasksmodels_vitpy">Downstream Evaluation (<code>downstream_tasks/models_vit.py</code>)<a class="headerlink" href="#downstream-evaluation-downstream_tasksmodels_vitpy" title="Permanent link">&para;</a></h3>
 <p>Linear-probe and fine-tuning scripts load pretrained encoders, optionally apply gradient checkpointing, and return global-pooled embeddings for classification/regression heads.</p>
 <p><code>15:74:external_repos/brainjepa/downstream_tasks/models_vit.py
@@ -5249,29 +5341,29 @@ if self.global_pool:
 else:
     outcome = self.encoder(x)[:, 0]
 x = self.head(outcome)
-<div class="highlight"><pre><span></span><code>## Integration Hooks (Brain ↔ Genetics)
-
-- **Embedding shape.** Encoder outputs `[B, N_tokens, embed_dim]` (after flattening 4D patches). Downstream heads either take the CLS token or mean pool spatial tokens; JEPA predictors output only masked-token predictions shaped `[num_masks, embed_dim]`.^[```280:396:external_repos/brainjepa/src/models/vision_transformer.py```]
-- **Pooling choices.** For multimodal fusion, use the downstream `VisionTransformer` global pool (`mean(dim=1)`) or compute mean pooling across context tokens to mirror predictor inputs.
-- **Projection to shared latent.** Map `[B, embed_dim]` vectors (384/768 for small/base) into 512-D shared space via a lightweight projector:
-
-```python
-import torch.nn as nn
-
-class BrainJEPAProjector(nn.Module):
-    def __init__(self, input_dim=768, output_dim=512, dropout=0.1):
-        super().__init__()
-        self.layers = nn.Sequential(
-            nn.Linear(input_dim, 1024),
-            nn.GELU(),
-            nn.Dropout(dropout),
-            nn.Linear(1024, output_dim),
-            nn.LayerNorm(output_dim),
-        )
-
-    def forward(self, x):
-        return self.layers(x)
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>## Integration Hooks (Brain ↔ Genetics)
+</span><span id="__span__-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span__-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>- **Embedding shape.** Encoder outputs `[B, N_tokens, embed_dim]` (after flattening 4D patches). Downstream heads either take the CLS token or mean pool spatial tokens; JEPA predictors output only masked-token predictions shaped `[num_masks, embed_dim]`.^[```280:396:external_repos/brainjepa/src/models/vision_transformer.py```]
+</span><span id="__span__-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>- **Pooling choices.** For multimodal fusion, use the downstream `VisionTransformer` global pool (`mean(dim=1)`) or compute mean pooling across context tokens to mirror predictor inputs.
+</span><span id="__span__-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>- **Projection to shared latent.** Map `[B, embed_dim]` vectors (384/768 for small/base) into 512-D shared space via a lightweight projector:
+</span><span id="__span__-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span__-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>```python
+</span><span id="__span__-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>import torch.nn as nn
+</span><span id="__span__-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+</span><span id="__span__-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>class BrainJEPAProjector(nn.Module):
+</span><span id="__span__-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    def __init__(self, input_dim=768, output_dim=512, dropout=0.1):
+</span><span id="__span__-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>        super().__init__()
+</span><span id="__span__-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>        self.layers = nn.Sequential(
+</span><span id="__span__-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>            nn.Linear(input_dim, 1024),
+</span><span id="__span__-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>            nn.GELU(),
+</span><span id="__span__-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>            nn.Dropout(dropout),
+</span><span id="__span__-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>            nn.Linear(1024, output_dim),
+</span><span id="__span__-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>            nn.LayerNorm(output_dim),
+</span><span id="__span__-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>        )
+</span><span id="__span__-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>
+</span><span id="__span__-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>    def forward(self, x):
+</span><span id="__span__-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>        return self.layers(x)
+</span></code></pre></div>
 - **Mask-aware embeddings.** When extracting representations for multimodal tasks, disable masking (feed identity masks) or average multiple masked views to reduce noise; the same mask collator can generate augmented views for contrastive objectives.
 - **Gradient positional alignment.** Because `GradTs_2dPE` injects atlas gradients, keep those embeddings when aligning with genetics—do not strip them off—so the spatial axes remain consistent across modalities.^[</code>22:100:external_repos/brainjepa/src/models/vision_transformer.py```]</p>
 <p>Following these hooks yields <code>[B, 512]</code> Brain-JEPA embeddings compatible with projected DNA embeddings (Evo 2, GENERator, Caduceus) for multimodal representation learning.</p>

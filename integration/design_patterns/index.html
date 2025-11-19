@@ -3905,6 +3905,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/swift_2023.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT (2023)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -4036,6 +4064,34 @@
     
   
     GENERator (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/dnabert2_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2 (2024)
   
 
     
@@ -4654,6 +4710,34 @@
     
   
     Foundation models overview (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/tabpfn_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TabPFN (2024)
   
 
     
@@ -5574,10 +5658,10 @@
 <h3 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h3>
 <p>Train separate encoders for each modality, extract fixed-size embeddings, concatenate, and pass to a simple classifier (LR, GBDT). No parameter sharing between modalities during training.</p>
 <h3 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>Genetics FM → gene_embed [512-D]  ──┐
-                                     ├─→ concat [1024-D] → LR/GBDT → prediction
-Brain FM    → brain_embed [512-D] ──┘
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Genetics FM → gene_embed [512-D]  ──┐
+</span><span id="__span__-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                                     ├─→ concat [1024-D] → LR/GBDT → prediction
+</span><span id="__span__-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Brain FM    → brain_embed [512-D] ──┘
+</span></code></pre></div>
 <h3 id="use-cases">Use Cases<a class="headerlink" href="#use-cases" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Initial baselines:</strong> Establish single-modality vs. fusion performance</li>
@@ -5603,12 +5687,12 @@ Brain FM    → brain_embed [512-D] ──┘
 <h3 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">&para;</a></h3>
 <p>Freeze pretrained modality encoders, add small learnable projectors, align via contrastive loss (InfoNCE). Creates shared embedding space without modifying foundation models.</p>
 <h3 id="architecture_1">Architecture<a class="headerlink" href="#architecture_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>Genetics FM (frozen) → gene_embed → projector_gene [256-D]  ──┐
-                                                               ├─→ InfoNCE loss
-Brain FM (frozen)    → brain_embed → projector_brain [256-D] ──┘
-                                           ↓
-                               aligned_space [256-D] → classifier
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Genetics FM (frozen) → gene_embed → projector_gene [256-D]  ──┐
+</span><span id="__span__-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>                                                               ├─→ InfoNCE loss
+</span><span id="__span__-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Brain FM (frozen)    → brain_embed → projector_brain [256-D] ──┘
+</span><span id="__span__-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>                                           ↓
+</span><span id="__span__-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>                               aligned_space [256-D] → classifier
+</span></code></pre></div>
 <h3 id="use-cases_1">Use Cases<a class="headerlink" href="#use-cases_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Cross-modal retrieval:</strong> Find genes associated with brain patterns</li>
@@ -5642,10 +5726,10 @@ Brain FM (frozen)    → brain_embed → projector_brain [256-D] ──┘
 <h3 id="description_2">Description<a class="headerlink" href="#description_2" title="Permanent link">&para;</a></h3>
 <p>Concatenate or interleave modality embeddings early, process through shared transformer layers. Enables cross-modal attention but requires careful preprocessing alignment.</p>
 <h3 id="architecture_2">Architecture<a class="headerlink" href="#architecture_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>gene_tokens [N_genes, D]  ──┐
-                            ├─→ concat → Shared Transformer → pooled_embed → classifier
-brain_tokens [N_parcels, D] ─┘
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>gene_tokens [N_genes, D]  ──┐
+</span><span id="__span__-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>                            ├─→ concat → Shared Transformer → pooled_embed → classifier
+</span><span id="__span__-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>brain_tokens [N_parcels, D] ─┘
+</span></code></pre></div>
 <h3 id="use-cases_2">Use Cases<a class="headerlink" href="#use-cases_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Complex interactions:</strong> When modalities have intricate dependencies (e.g., gene regulatory networks affecting brain circuits)</li>
@@ -5678,17 +5762,17 @@ brain_tokens [N_parcels, D] ─┘
 <h3 id="description_3">Description<a class="headerlink" href="#description_3" title="Permanent link">&para;</a></h3>
 <p>Shared self-attention over all modality tokens, but <strong>separate FFNs and layer norms per modality</strong>. Balances cross-modal attention with modality-specific processing.</p>
 <h3 id="architecture_3">Architecture<a class="headerlink" href="#architecture_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>gene_tokens + brain_tokens + behavior_tokens
-    ↓
-Shared Self-Attention (all tokens interact)
-    ↓
-Modality-specific FFN branches:
-  ├─ genetics_ffn
-  ├─ brain_ffn
-  └─ behavior_ffn
-    ↓
-Pooled embedding → task heads
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>gene_tokens + brain_tokens + behavior_tokens
+</span><span id="__span__-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    ↓
+</span><span id="__span__-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Shared Self-Attention (all tokens interact)
+</span><span id="__span__-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    ↓
+</span><span id="__span__-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>Modality-specific FFN branches:
+</span><span id="__span__-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>  ├─ genetics_ffn
+</span><span id="__span__-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>  ├─ brain_ffn
+</span><span id="__span__-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>  └─ behavior_ffn
+</span><span id="__span__-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    ↓
+</span><span id="__span__-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>Pooled embedding → task heads
+</span></code></pre></div>
 <h3 id="use-cases_3">Use Cases<a class="headerlink" href="#use-cases_3" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Compute efficiency:</strong> ~55% FLOPs vs. full dense multimodal transformer</li>
@@ -5719,27 +5803,27 @@ Pooled embedding → task heads
 <h3 id="description_4">Description<a class="headerlink" href="#description_4" title="Permanent link">&para;</a></h3>
 <p>Single decoder-only transformer with Mixture-of-Experts (MoE) processing <strong>all modalities as token sequences</strong>: genetics (nucleotide tokens), brain (parcel/voxel tokens), behavior (structured tokens), language (text tokens). Inspired by BAGEL/GPT-4o-style unified multimodal architectures.</p>
 <h3 id="architecture_4">Architecture<a class="headerlink" href="#architecture_4" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>Tokenize all modalities:
-  - Genetics: nucleotide sequences → tokens
-  - Brain MRI: 3D patches → tokens (ViT-style)
-  - fMRI: parcel time series → tokens
-  - EEG: channel × time → tokens
-  - Behavior: structured data → embedding tokens
-  - Language: text → BPE tokens
-
-  ↓
-Unified Decoder-Only Transformer (e.g., LLaMA-style)
-  - Mixture-of-Experts (understanding vs. generation)
-  - Cross-modal self-attention
-  - Next-token prediction objective
-
-  ↓
-Downstream tasks:
-  - Gene-brain association discovery
-  - Clinical report generation
-  - Counterfactual reasoning (&quot;what if gene X was mutated?&quot;)
-  - Cognitive decline prediction
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Tokenize all modalities:
+</span><span id="__span__-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>  - Genetics: nucleotide sequences → tokens
+</span><span id="__span__-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>  - Brain MRI: 3D patches → tokens (ViT-style)
+</span><span id="__span__-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>  - fMRI: parcel time series → tokens
+</span><span id="__span__-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>  - EEG: channel × time → tokens
+</span><span id="__span__-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>  - Behavior: structured data → embedding tokens
+</span><span id="__span__-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>  - Language: text → BPE tokens
+</span><span id="__span__-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+</span><span id="__span__-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>  ↓
+</span><span id="__span__-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>Unified Decoder-Only Transformer (e.g., LLaMA-style)
+</span><span id="__span__-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>  - Mixture-of-Experts (understanding vs. generation)
+</span><span id="__span__-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>  - Cross-modal self-attention
+</span><span id="__span__-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>  - Next-token prediction objective
+</span><span id="__span__-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
+</span><span id="__span__-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>  ↓
+</span><span id="__span__-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>Downstream tasks:
+</span><span id="__span__-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>  - Gene-brain association discovery
+</span><span id="__span__-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>  - Clinical report generation
+</span><span id="__span__-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>  - Counterfactual reasoning (&quot;what if gene X was mutated?&quot;)
+</span><span id="__span__-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>  - Cognitive decline prediction
+</span></code></pre></div>
 <h3 id="use-cases_4">Use Cases<a class="headerlink" href="#use-cases_4" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>ARPA-H Brain-Omics Model (BOM):</strong> Unified foundation model for neuro-omics</li>

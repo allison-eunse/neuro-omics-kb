@@ -3522,6 +3522,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/paper_cards/swift_2023.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT (2023)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3653,6 +3681,34 @@
     
   
     GENERator (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/paper_cards/dnabert2_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2 (2024)
   
 
     
@@ -4271,6 +4327,34 @@
     
   
     Foundation models overview (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/paper_cards/tabpfn_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TabPFN (2024)
   
 
     
@@ -5210,15 +5294,15 @@
 </ul>
 <h2 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
 <p><strong>Before running any analysis</strong>, grab the relevant strategy IDs and log them with your experiment configs:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Show sMRI baseline recipe</span>
-python<span class="w"> </span>scripts/manage_kb.py<span class="w"> </span>ops<span class="w"> </span>strategy<span class="w"> </span>smri_free_surfer_pca512_v1
-
-<span class="c1"># Inspect harmonization metadata (e.g., MURD)</span>
-python<span class="w"> </span>scripts/manage_kb.py<span class="w"> </span>ops<span class="w"> </span>harmonization<span class="w"> </span>murd_t1_t2
-
-<span class="c1"># Show rs-fMRI preprocessing stack</span>
-python<span class="w"> </span>scripts/manage_kb.py<span class="w"> </span>ops<span class="w"> </span>strategy<span class="w"> </span>rsfmri_swift_segments_v1
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span__-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Show sMRI baseline recipe</span>
+</span><span id="__span__-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>python<span class="w"> </span>scripts/manage_kb.py<span class="w"> </span>ops<span class="w"> </span>strategy<span class="w"> </span>smri_free_surfer_pca512_v1
+</span><span id="__span__-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span__-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Inspect harmonization metadata (e.g., MURD)</span>
+</span><span id="__span__-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>python<span class="w"> </span>scripts/manage_kb.py<span class="w"> </span>ops<span class="w"> </span>harmonization<span class="w"> </span>murd_t1_t2
+</span><span id="__span__-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span__-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Show rs-fMRI preprocessing stack</span>
+</span><span id="__span__-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>python<span class="w"> </span>scripts/manage_kb.py<span class="w"> </span>ops<span class="w"> </span>strategy<span class="w"> </span>rsfmri_swift_segments_v1
+</span></code></pre></div>
 <p>This keeps downstream reports <strong>auditable</strong> even when raw datasets (e.g., UKB) cannot be shared.</p>
 <h2 id="integration-phases">Integration Phases<a class="headerlink" href="#integration-phases" title="Permanent link">&para;</a></h2>
 <p>We follow a <strong>phased escalation strategy</strong> to avoid premature complexity:</p>

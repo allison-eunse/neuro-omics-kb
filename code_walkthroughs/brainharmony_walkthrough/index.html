@@ -3469,6 +3469,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/swift_2023.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT (2023)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3600,6 +3628,34 @@
     
   
     GENERator (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/dnabert2_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2 (2024)
   
 
     
@@ -4218,6 +4274,34 @@
     
   
     Foundation models overview (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/tabpfn_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TabPFN (2024)
   
 
     
@@ -5165,12 +5249,12 @@ class UKB_FusionDataset(UKBDataset, UKB_T1_Dataset):
     def <strong>init</strong>(self, <strong>kwargs):
         UKBDataset.<strong>init</strong>(self, </strong>kwargs)
         UKB_T1_Dataset.<strong>init</strong>(self, **kwargs)</p>
-<pre><code>def __getitem__(self, index):
+<div class="language-text highlight"><pre><span></span><code>def __getitem__(self, index):
     ts, _ = self.load_fmri(index)
     attn_mask = self.signal_attn_mask()
     t1 = self.load_t1(index)
     return ts, t1, self.patch_size, attn_mask, self.ids[index]
-</code></pre>
+</code></pre></div>
 <p>```
 </p>
 <h3 id="stage-1-token-space-jepa-pretraining-modulesharmonizerstage1_pretrain">Stage 1: Token-Space JEPA Pretraining (<code>modules/harmonizer/stage1_pretrain</code>)<a class="headerlink" href="#stage-1-token-space-jepa-pretraining-modulesharmonizerstage1_pretrain" title="Permanent link">&para;</a></h3>
@@ -5195,6 +5279,7 @@ class GenerateEmbedDataset(Dataset):
         if tensor.dtype != torch.float32:
             tensor = tensor.float()
         return tensor.squeeze(), arr["attn_mask"].squeeze()</code></p>
+<p><strong>Encoder with latent tokens:</strong></p>
 <p>```180:223:external_repos/brainharmony/modules/harmonizer/stage1_pretrain/models.py
     def forward_encoder(self, x, attn_mask):
         target = x
@@ -5215,36 +5300,36 @@ class GenerateEmbedDataset(Dataset):
         x = self.norm(x)
         latent_tokens = torch.cat([x[:, :1, :], x[:, -self.num_latent_tokens :]], dim=1)
         return latent_tokens, target
-<div class="highlight"><pre><span></span><code>### Stage 2: Downstream Harmonizer Heads (`modules/harmonizer/stage2_finetune`)
-For tasks like ABIDE diagnosis, `GenerateEmbedDataset_downstream` reads the saved embeddings plus labels, and `VisionTransformer` attaches either a CLS-token head or global pooler atop the latent-token expanded sequence. Training mixes standard augmentation knobs (mixup/cutmix) with layer-wise LR decay, and evaluation logs accuracy + F1.^[```828:857:external_repos/brainharmony/datasets/datasets.py```][```1:350:external_repos/brainharmony/modules/harmonizer/stage2_finetune/main_finetune.py```][```16:166:external_repos/brainharmony/modules/harmonizer/stage2_finetune/engine_finetune.py```][```1:59:external_repos/brainharmony/scripts/harmonizer/stage2_finetune/run_finetune.sh```]
-
-```117:170:external_repos/brainharmony/modules/harmonizer/stage2_finetune/models.py
-    def forward_features(self, x, attn_mask):
-        if self.add_pre_mapping:
-            x = self.pre_map(x)
-        B = x.shape[0]
-        cls_tokens = self.cls_token.expand(B, -1, -1)
-        x = torch.cat((cls_tokens, x), dim=1)
-        x = x + self.pos_embed
-        x = self.pos_drop(x)
-        latent_tokens = self.latent_tokens.expand(x.shape[0], -1, -1)
-        latent_tokens = latent_tokens + self.enc_latent_token_positional_embedding
-        x = torch.cat([x, latent_tokens], dim=1)
-        pad = torch.ones(attn_mask.shape[0], 1200 + latent_tokens.shape[1], dtype=attn_mask.dtype, device=attn_mask.device)
-        pad_0 = torch.ones(attn_mask.shape[0], 1, dtype=attn_mask.dtype, device=attn_mask.device)
-        attn_mask = torch.cat([pad_0, attn_mask, pad], dim=1)
-        for blk in self.blocks:
-            x = blk(x, attention_mask=attn_mask)
-        if self.global_pool:
-            x = torch.cat([x[:, :1, :], x[:, -self.num_latent_tokens :]], dim=1)
-            x = x[:, 1:, :].mean(dim=1)
-            outcome = self.fc_norm(x)
-        else:
-            x = self.norm(x)
-            x = torch.cat([x[:, :1, :], x[:, -self.num_latent_tokens :]], dim=1)
-            outcome = x[:, 0]
-        return outcome
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>### Stage 2: Downstream Harmonizer Heads (`modules/harmonizer/stage2_finetune`)
+</span><span id="__span__-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>For tasks like ABIDE diagnosis, `GenerateEmbedDataset_downstream` reads the saved embeddings plus labels, and `VisionTransformer` attaches either a CLS-token head or global pooler atop the latent-token expanded sequence. Training mixes standard augmentation knobs (mixup/cutmix) with layer-wise LR decay, and evaluation logs accuracy + F1.^[```828:857:external_repos/brainharmony/datasets/datasets.py```][```1:350:external_repos/brainharmony/modules/harmonizer/stage2_finetune/main_finetune.py```][```16:166:external_repos/brainharmony/modules/harmonizer/stage2_finetune/engine_finetune.py```][```1:59:external_repos/brainharmony/scripts/harmonizer/stage2_finetune/run_finetune.sh```]
+</span><span id="__span__-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span__-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>```117:170:external_repos/brainharmony/modules/harmonizer/stage2_finetune/models.py
+</span><span id="__span__-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    def forward_features(self, x, attn_mask):
+</span><span id="__span__-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>        if self.add_pre_mapping:
+</span><span id="__span__-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>            x = self.pre_map(x)
+</span><span id="__span__-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>        B = x.shape[0]
+</span><span id="__span__-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>        cls_tokens = self.cls_token.expand(B, -1, -1)
+</span><span id="__span__-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>        x = torch.cat((cls_tokens, x), dim=1)
+</span><span id="__span__-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>        x = x + self.pos_embed
+</span><span id="__span__-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>        x = self.pos_drop(x)
+</span><span id="__span__-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>        latent_tokens = self.latent_tokens.expand(x.shape[0], -1, -1)
+</span><span id="__span__-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>        latent_tokens = latent_tokens + self.enc_latent_token_positional_embedding
+</span><span id="__span__-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>        x = torch.cat([x, latent_tokens], dim=1)
+</span><span id="__span__-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>        pad = torch.ones(attn_mask.shape[0], 1200 + latent_tokens.shape[1], dtype=attn_mask.dtype, device=attn_mask.device)
+</span><span id="__span__-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>        pad_0 = torch.ones(attn_mask.shape[0], 1, dtype=attn_mask.dtype, device=attn_mask.device)
+</span><span id="__span__-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>        attn_mask = torch.cat([pad_0, attn_mask, pad], dim=1)
+</span><span id="__span__-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>        for blk in self.blocks:
+</span><span id="__span__-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>            x = blk(x, attention_mask=attn_mask)
+</span><span id="__span__-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>        if self.global_pool:
+</span><span id="__span__-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>            x = torch.cat([x[:, :1, :], x[:, -self.num_latent_tokens :]], dim=1)
+</span><span id="__span__-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>            x = x[:, 1:, :].mean(dim=1)
+</span><span id="__span__-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>            outcome = self.fc_norm(x)
+</span><span id="__span__-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>        else:
+</span><span id="__span__-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>            x = self.norm(x)
+</span><span id="__span__-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>            x = torch.cat([x[:, :1, :], x[:, -self.num_latent_tokens :]], dim=1)
+</span><span id="__span__-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>            outcome = x[:, 0]
+</span><span id="__span__-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>        return outcome
+</span></code></pre></div></p>
 <h3 id="flexvisiontransformer-masked-predictor-libsflex_transformerpy">FlexVisionTransformer &amp; Masked Predictor (<code>libs/flex_transformer.py</code>)<a class="headerlink" href="#flexvisiontransformer-masked-predictor-libsflex_transformerpy" title="Permanent link">&para;</a></h3>
 <p><code>FlexVisionTransformer</code> supports flexible patch sizes via <code>FlexiPatchEmbed</code>, optional gradient checkpointing, and either FlashAttention 2 or eager attention blocks. Predictor heads (<code>VisionTransformerPredictor</code>) project encoder outputs into predictor space, tile positional embeddings for masked regions, append learnable mask tokens, and regress back to encoder dimensionality; they reuse <code>apply_masks</code> to select context/target indices.^[<code>482:610:external_repos/brainharmony/libs/flex_transformer.py</code>][<code>322:463:external_repos/brainharmony/libs/flex_transformer.py</code>]</p>
 <p>```403:463:external_repos/brainharmony/libs/flex_transformer.py
@@ -5284,36 +5369,36 @@ For tasks like ABIDE diagnosis, `GenerateEmbedDataset_downstream` reads the save
         x = x[:, N_ctxt:]
         x = self.predictor_proj(x)
         return x
-<div class="highlight"><pre><span></span><code>### Positional Embeddings &amp; Mask Utilities
-BrainHarmony blends anatomical gradients with geometric harmonics to produce shared positional priors across encoder/predictor stacks, and the same module can emit decoder embeddings for Stage 1. Mask helpers expose gather-style APIs for re-indexing context/target tokens.^[```137:209:external_repos/brainharmony/libs/position_embedding.py```][```11:31:external_repos/brainharmony/libs/masks/utils.py```]
-
-```167:209:external_repos/brainharmony/libs/position_embedding.py
-        geo_harm_pos_embed = self.geo_harm_proj(self.geo_harm)
-        gradient_pos_embed = self.grad_proj(self.gradient)
-        pos_embed = (gradient_pos_embed + geo_harm_pos_embed) * 0.5
-        emb_w = pos_embed.squeeze().repeat_interleave(self.repeat_time, dim=0)
-        emb_w = (emb_w - emb_w.min()) / (emb_w.max() - emb_w.min()) * 2 - 1
-        emb_encoder = torch.cat([self.emb_h_encoder, emb_w], dim=1).unsqueeze(0)
-        if self.cls_token:
-            pos_embed_encoder = torch.concat(
-                [torch.zeros([1, 1, emb_encoder.shape[2]], requires_grad=False).to(self.device), emb_encoder],
-                dim=1,
-            )
-        else:
-            pos_embed_encoder = emb_encoder
-        if self.use_pos_embed_decoder:
-            emb_w_decoder = self.decoder_pos_embed_proj(emb_w.detach())
-            emb_decoder = torch.cat([self.emb_h_decoder, emb_w_decoder], dim=1).unsqueeze(0)
-            if self.cls_token:
-                pos_embed_decoder = torch.concat(
-                    [torch.zeros([1, 1, emb_decoder.shape[2]], requires_grad=False).to(self.device), emb_decoder],
-                    dim=1,
-                )
-            else:
-                pos_embed_decoder = emb_decoder
-            return pos_embed_encoder, pos_embed_decoder
-        return pos_embed_encoder, None
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>### Positional Embeddings &amp; Mask Utilities
+</span><span id="__span__-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>BrainHarmony blends anatomical gradients with geometric harmonics to produce shared positional priors across encoder/predictor stacks, and the same module can emit decoder embeddings for Stage 1. Mask helpers expose gather-style APIs for re-indexing context/target tokens.^[```137:209:external_repos/brainharmony/libs/position_embedding.py```][```11:31:external_repos/brainharmony/libs/masks/utils.py```]
+</span><span id="__span__-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span__-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>```167:209:external_repos/brainharmony/libs/position_embedding.py
+</span><span id="__span__-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>        geo_harm_pos_embed = self.geo_harm_proj(self.geo_harm)
+</span><span id="__span__-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>        gradient_pos_embed = self.grad_proj(self.gradient)
+</span><span id="__span__-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>        pos_embed = (gradient_pos_embed + geo_harm_pos_embed) * 0.5
+</span><span id="__span__-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>        emb_w = pos_embed.squeeze().repeat_interleave(self.repeat_time, dim=0)
+</span><span id="__span__-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>        emb_w = (emb_w - emb_w.min()) / (emb_w.max() - emb_w.min()) * 2 - 1
+</span><span id="__span__-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>        emb_encoder = torch.cat([self.emb_h_encoder, emb_w], dim=1).unsqueeze(0)
+</span><span id="__span__-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>        if self.cls_token:
+</span><span id="__span__-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>            pos_embed_encoder = torch.concat(
+</span><span id="__span__-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>                [torch.zeros([1, 1, emb_encoder.shape[2]], requires_grad=False).to(self.device), emb_encoder],
+</span><span id="__span__-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>                dim=1,
+</span><span id="__span__-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>            )
+</span><span id="__span__-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>        else:
+</span><span id="__span__-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>            pos_embed_encoder = emb_encoder
+</span><span id="__span__-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>        if self.use_pos_embed_decoder:
+</span><span id="__span__-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>            emb_w_decoder = self.decoder_pos_embed_proj(emb_w.detach())
+</span><span id="__span__-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>            emb_decoder = torch.cat([self.emb_h_decoder, emb_w_decoder], dim=1).unsqueeze(0)
+</span><span id="__span__-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>            if self.cls_token:
+</span><span id="__span__-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>                pos_embed_decoder = torch.concat(
+</span><span id="__span__-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>                    [torch.zeros([1, 1, emb_decoder.shape[2]], requires_grad=False).to(self.device), emb_decoder],
+</span><span id="__span__-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>                    dim=1,
+</span><span id="__span__-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>                )
+</span><span id="__span__-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>            else:
+</span><span id="__span__-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>                pos_embed_decoder = emb_decoder
+</span><span id="__span__-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>            return pos_embed_encoder, pos_embed_decoder
+</span><span id="__span__-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>        return pos_embed_encoder, None
+</span></code></pre></div></p>
 <p>```11:31:external_repos/brainharmony/libs/masks/utils.py
 def apply_masks(x, masks, cls_token=False):
     all_x = []
@@ -5327,29 +5412,29 @@ def apply_masks(x, masks, cls_token=False):
             mask_keep = m.unsqueeze(-1).repeat(1, 1, x.size(-1))
             all_x += [torch.gather(x, dim=1, index=mask_keep)]
     return torch.cat(all_x, dim=0)
-<div class="highlight"><pre><span></span><code>## Integration Hooks (Brain ↔ Genetics)
-- **Token shapes.** `FlexVisionTransformer.forward` outputs `[B, N_tokens, embed_dim]` (CLS + patches [+ latent tokens]); Stage 2 heads either take the CLS vector or mean-pool latent tokens, so downstream genetics encoders should expect 768-d (base) or 1024-d (large) vectors per sample.^[```563:610:external_repos/brainharmony/libs/flex_transformer.py```][```117:170:external_repos/brainharmony/modules/harmonizer/stage2_finetune/models.py```]
-- **Attention masks.** Both `GenerateEmbedDataset` variants surface per-sample masks; reusing them when aligning with long genomic sequences preserves which ROI/time windows were padded vs. observed.^[```803:857:external_repos/brainharmony/datasets/datasets.py```]
-- **Stage bridging.** Stage 0 writes `.npz` files with `data` and `attn_mask` arrays; you can append additional modalities (e.g., gene-expression embeddings) into the same `data` vector before Stage 1 as long as the downstream models’ positional encoders are updated accordingly.^[```138:184:external_repos/brainharmony/modules/harmonizer/stage0_embed/embedding_pretrain.py```]
-- **Projecting to shared latent spaces.** A lightweight projector keeps BrainHarmony tokens compatible with genetics embeddings:
-
-```python
-import torch.nn as nn
-
-class BrainHarmonyProjector(nn.Module):
-    def __init__(self, input_dim=768, output_dim=512, dropout=0.1):
-        super().__init__()
-        self.layers = nn.Sequential(
-            nn.Linear(input_dim, 1024),
-            nn.GELU(),
-            nn.Dropout(dropout),
-            nn.Linear(1024, output_dim),
-            nn.LayerNorm(output_dim),
-        )
-
-    def forward(self, x):
-        return self.layers(x)
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>## Integration Hooks (Brain ↔ Genetics)
+</span><span id="__span__-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>- **Token shapes.** `FlexVisionTransformer.forward` outputs `[B, N_tokens, embed_dim]` (CLS + patches [+ latent tokens]); Stage 2 heads either take the CLS vector or mean-pool latent tokens, so downstream genetics encoders should expect 768-d (base) or 1024-d (large) vectors per sample.^[```563:610:external_repos/brainharmony/libs/flex_transformer.py```][```117:170:external_repos/brainharmony/modules/harmonizer/stage2_finetune/models.py```]
+</span><span id="__span__-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>- **Attention masks.** Both `GenerateEmbedDataset` variants surface per-sample masks; reusing them when aligning with long genomic sequences preserves which ROI/time windows were padded vs. observed.^[```803:857:external_repos/brainharmony/datasets/datasets.py```]
+</span><span id="__span__-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>- **Stage bridging.** Stage 0 writes `.npz` files with `data` and `attn_mask` arrays; you can append additional modalities (e.g., gene-expression embeddings) into the same `data` vector before Stage 1 as long as the downstream models’ positional encoders are updated accordingly.^[```138:184:external_repos/brainharmony/modules/harmonizer/stage0_embed/embedding_pretrain.py```]
+</span><span id="__span__-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>- **Projecting to shared latent spaces.** A lightweight projector keeps BrainHarmony tokens compatible with genetics embeddings:
+</span><span id="__span__-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span__-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>```python
+</span><span id="__span__-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>import torch.nn as nn
+</span><span id="__span__-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+</span><span id="__span__-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>class BrainHarmonyProjector(nn.Module):
+</span><span id="__span__-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    def __init__(self, input_dim=768, output_dim=512, dropout=0.1):
+</span><span id="__span__-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>        super().__init__()
+</span><span id="__span__-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>        self.layers = nn.Sequential(
+</span><span id="__span__-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>            nn.Linear(input_dim, 1024),
+</span><span id="__span__-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>            nn.GELU(),
+</span><span id="__span__-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>            nn.Dropout(dropout),
+</span><span id="__span__-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>            nn.Linear(1024, output_dim),
+</span><span id="__span__-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>            nn.LayerNorm(output_dim),
+</span><span id="__span__-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>        )
+</span><span id="__span__-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>
+</span><span id="__span__-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>    def forward(self, x):
+</span><span id="__span__-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>        return self.layers(x)
+</span></code></pre></div></p>
 <p>Map mean-pooled latent tokens through this projector, concatenate with genetics embeddings, and fine-tune a fusion head while reusing BrainHarmony’s attention masks for masking-aware losses.</p>
 
 

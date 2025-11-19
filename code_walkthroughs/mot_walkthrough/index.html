@@ -3491,6 +3491,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/swift_2023.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT (2023)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3622,6 +3650,34 @@
     
   
     GENERator (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/dnabert2_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2 (2024)
   
 
     
@@ -4240,6 +4296,34 @@
     
   
     Foundation models overview (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/tabpfn_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TabPFN (2024)
   
 
     
@@ -5193,7 +5277,7 @@ class SimpleModalityUntiedFeedForward(torch.nn.Module):
         self.local_experts_ffn_norm = torch.nn.ModuleList(
             [SimpleRMSNorm(dim, eps=1e-5) for _ in range(self.n_modalities)]
         )</p>
-<pre><code>def forward(self, x, modality_masks):
+<div class="language-text highlight"><pre><span></span><code>def forward(self, x, modality_masks):
     expert_outputs = []
     for i in range(self.n_modalities):
         expert_input = x[modality_masks[i]]
@@ -5201,11 +5285,13 @@ class SimpleModalityUntiedFeedForward(torch.nn.Module):
         expert_output = self.local_experts_ffn_norm[i](expert_output)
         expert_outputs.append(expert_output)
     return merge_modalities(expert_outputs, modality_masks)
-</code></pre>
+</code></pre></div>
 <p><code>Because experts only see their modality tokens, you can scale specialization (e.g., text-heavy vs. image-heavy hidden sizes) without perturbing other branches. `SimpleFeedForward` itself is the Lingua-style gated MLP that preserves tensor-parallel friendliness.^[</code>64:107:external_repos/MoT/src/simple_ModalityUntiedFeedForward.py```]
 </p>
 <h3 id="modality-untied-attention-srcsimple_modalityuntiedattentionpy">Modality-Untied Attention (<code>src/simple_ModalityUntiedAttention.py</code>)<a class="headerlink" href="#modality-untied-attention-srcsimple_modalityuntiedattentionpy" title="Permanent link">&para;</a></h3>
 <p>The attention module mirrors the FFN pattern: per-modality projections and RMSNorms for Q/K/V/outputs, shared global attention via <code>torch.nn.MultiheadAttention</code>, and a final per-modality projection back to the model dimension.^[<code>141:301:external_repos/MoT/README.md</code>][<code>16:151:external_repos/MoT/src/simple_ModalityUntiedAttention.py</code>]
+
+<strong>Per-modality Q/K/V projections with shared attention:</strong>
 
 <code>16:151:external_repos/MoT/src/simple_ModalityUntiedAttention.py
 class SimpleModalityUntiedAttention(torch.nn.Module):
@@ -5223,6 +5309,7 @@ class SimpleModalityUntiedAttention(torch.nn.Module):
 <p>During <code>forward</code>, tokens are first split by mask, projected/normed per modality, concatenated back for standard attention, and finally projected/normed per modality again.^[<code>86:151:external_repos/MoT/src/simple_ModalityUntiedAttention.py</code>] Optional QK normalization reshapes tensors to <code>[*, num_heads, head_dim]</code> before applying <code>SimpleRMSNorm</code>, which keeps the rotary-scaled statistics stable.^[<code>112:174:external_repos/MoT/src/simple_ModalityUntiedAttention.py</code>]</p>
 <h3 id="utility-primitives-srcutilspy">Utility Primitives (<code>src/utils.py</code>)<a class="headerlink" href="#utility-primitives-srcutilspy" title="Permanent link">&para;</a></h3>
 <p><code>merge_modalities</code> reconstructs the packed sequence according to mask order, so expert outputs can be arbitrarily sharded while still producing a contiguous tensor for the residual path. <code>SimpleRMSNorm</code> is the Lingua-derived RMSNorm variant used consistently across experts.^[<code>14:66:external_repos/MoT/src/utils.py</code>]</p>
+<p><strong>Modality merging utility:</strong></p>
 <p><code>14:34:external_repos/MoT/src/utils.py
 def merge_modalities(expert_outputs, modality_masks):
     merged = torch.empty_like(expert_outputs[0])

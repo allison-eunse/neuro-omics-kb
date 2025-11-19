@@ -3747,6 +3747,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kb/paper_cards/swift_2023.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT (2023)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3878,6 +3906,34 @@
     
   
     GENERator (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kb/paper_cards/dnabert2_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2 (2024)
   
 
     
@@ -4496,6 +4552,34 @@
     
   
     Foundation models overview (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kb/paper_cards/tabpfn_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TabPFN (2024)
   
 
     
@@ -5444,11 +5528,11 @@
 <p>The review categorizes multimodal integration into three main patterns, with trade-offs for each:</p>
 <h3 id="1-early-fusion">1. Early Fusion<a class="headerlink" href="#1-early-fusion" title="Permanent link">&para;</a></h3>
 <p><strong>Mechanism:</strong> Concatenate raw or lightly processed features from all modalities before feeding into a single model.</p>
-<div class="highlight"><pre><span></span><code>Gene sequences    → |
-                    | → Concatenate → Single Model → Prediction
-Brain volumes     → |
-Clinical features → |
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Gene sequences    → |
+</span><span id="__span__-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                    | → Concatenate → Single Model → Prediction
+</span><span id="__span__-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Brain volumes     → |
+</span><span id="__span__-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Clinical features → |
+</span></code></pre></div>
 <p><strong>Advantages:</strong>
 - Simplest to implement
 - Single model to train and deploy
@@ -5468,10 +5552,10 @@ Clinical features → |
 - <strong>Our default:</strong> Avoid for gene-brain fusion unless late fusion fails</p>
 <h3 id="2-intermediate-fusion-joint-embeddings">2. Intermediate Fusion (Joint Embeddings)<a class="headerlink" href="#2-intermediate-fusion-joint-embeddings" title="Permanent link">&para;</a></h3>
 <p><strong>Mechanism:</strong> Extract modality-specific embeddings, then fuse via learned projections or attention before final prediction.</p>
-<div class="highlight"><pre><span></span><code>Gene FM     → gene_embed [512-D]   → |
-                                     | → Fusion layer (attention/concat) → Classifier
-Brain FM    → brain_embed [512-D]  → |
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Gene FM     → gene_embed [512-D]   → |
+</span><span id="__span__-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>                                     | → Fusion layer (attention/concat) → Classifier
+</span><span id="__span__-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Brain FM    → brain_embed [512-D]  → |
+</span></code></pre></div>
 <p><strong>Variants:</strong>
 - <strong>Concatenation + MLP:</strong> <code>concat(gene_emb, brain_emb) → MLP → pred</code>
 - <strong>Cross-attention:</strong> Query one modality with keys/values from another
@@ -5492,10 +5576,10 @@ Brain FM    → brain_embed [512-D]  → |
 <p><strong>Our escalation path:</strong> Move here if late fusion (EI) demonstrates significant gains.</p>
 <h3 id="3-late-fusion-decision-level">3. Late Fusion (Decision-Level)<a class="headerlink" href="#3-late-fusion-decision-level" title="Permanent link">&para;</a></h3>
 <p><strong>Mechanism:</strong> Train separate models per modality, combine predictions via ensembles or simple averaging.</p>
-<div class="highlight"><pre><span></span><code>Gene model  → gene_pred [proba]  → |
-                                    | → Ensemble (avg/stack) → Final pred
-Brain model → brain_pred [proba] → |
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Gene model  → gene_pred [proba]  → |
+</span><span id="__span__-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>                                    | → Ensemble (avg/stack) → Final pred
+</span><span id="__span__-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Brain model → brain_pred [proba] → |
+</span></code></pre></div>
 <p><strong>Advantages:</strong>
 - <strong>Respects modality-specific semantics:</strong> Each model uses appropriate architecture
 - <strong>Handles missing data gracefully:</strong> Can fall back to single-modality predictions
@@ -5509,7 +5593,7 @@ Brain model → brain_pred [proba] → |
 - Heterogeneous modalities with different structures
 - Small-to-medium datasets (&lt; 10k samples)
 - Interpretability critical for clinical translation</p>
-<p><strong>Our default:</strong> This is Pattern 1 in our <a href="../../integration/design_patterns/">Design Patterns</a>.</p>
+<p><strong>Our default:</strong> This is Pattern 1 in our <a href="../../../integration/design_patterns/">Design Patterns</a>.</p>
 <hr />
 <h2 id="practical-cautions-for-neuro-omics">Practical Cautions for Neuro-Omics<a class="headerlink" href="#practical-cautions-for-neuro-omics" title="Permanent link">&para;</a></h2>
 <p>The review highlights six major pitfalls—all directly applicable to our gene-brain integration:</p>
@@ -5645,59 +5729,59 @@ Brain model → brain_pred [proba] → |
 <p><strong>Trigger:</strong> Intermediate fusion demonstrates consistent gains, large paired dataset (&gt;50k) available</p>
 <hr />
 <h2 id="architecture-decision-tree">Architecture Decision Tree<a class="headerlink" href="#architecture-decision-tree" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>Start: Gene + Brain data
-    ↓
-Q1: Does fusion help at all?
-    → Run EI baseline (LR + GBDT per modality, stacking)
-    → Compare Fusion vs. max(Gene, Brain) AUROC
-
-    If NO (Fusion ≤ max + 0.01):
-        → Stop: Use best single-modality model
-        → Document: Modalities independent for this phenotype
-
-    If YES (Fusion &gt; max + 0.03, p &lt; 0.05):
-        ↓
-Q2: Do we have large paired dataset (&gt;10k)?
-
-    If NO:
-        → Continue with EI
-        → Add interpretability: Which modality contributes?
-
-    If YES:
-        ↓
-Q3: Are modalities strongly coupled?
-        → Run CCA + permutation: Significant canonical correlations?
-
-        If NO:
-            → Continue with EI (late fusion optimal)
-
-        If YES:
-            ↓
-            → Escalate to Two-Tower Contrastive (Pattern 2)
-            → If gains plateau, consider EI stacking with hub tokens
-            → If still improving, consider early fusion (Pattern 5)
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Start: Gene + Brain data
+</span><span id="__span__-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    ↓
+</span><span id="__span__-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Q1: Does fusion help at all?
+</span><span id="__span__-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    → Run EI baseline (LR + GBDT per modality, stacking)
+</span><span id="__span__-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    → Compare Fusion vs. max(Gene, Brain) AUROC
+</span><span id="__span__-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span__-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    If NO (Fusion ≤ max + 0.01):
+</span><span id="__span__-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>        → Stop: Use best single-modality model
+</span><span id="__span__-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>        → Document: Modalities independent for this phenotype
+</span><span id="__span__-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+</span><span id="__span__-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    If YES (Fusion &gt; max + 0.03, p &lt; 0.05):
+</span><span id="__span__-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>        ↓
+</span><span id="__span__-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>Q2: Do we have large paired dataset (&gt;10k)?
+</span><span id="__span__-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>
+</span><span id="__span__-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>    If NO:
+</span><span id="__span__-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>        → Continue with EI
+</span><span id="__span__-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>        → Add interpretability: Which modality contributes?
+</span><span id="__span__-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
+</span><span id="__span__-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>    If YES:
+</span><span id="__span__-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>        ↓
+</span><span id="__span__-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>Q3: Are modalities strongly coupled?
+</span><span id="__span__-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>        → Run CCA + permutation: Significant canonical correlations?
+</span><span id="__span__-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>
+</span><span id="__span__-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>        If NO:
+</span><span id="__span__-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>            → Continue with EI (late fusion optimal)
+</span><span id="__span__-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>
+</span><span id="__span__-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>        If YES:
+</span><span id="__span__-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>            ↓
+</span><span id="__span__-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>            → Escalate to Two-Tower Contrastive (Pattern 2)
+</span><span id="__span__-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>            → If gains plateau, consider EI stacking with hub tokens
+</span><span id="__span__-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a>            → If still improving, consider early fusion (Pattern 5)
+</span></code></pre></div>
 <hr />
 <h2 id="reference-materials">Reference Materials<a class="headerlink" href="#reference-materials" title="Permanent link">&para;</a></h2>
 <p><strong>Primary paper:</strong>
-- <a href="../../generated/kb_curated/papers-md/oncology_multimodal_waqas2024/">Oncology Multimodal Review (Waqas 2024)</a> — Full paper summary</p>
+- <a href="../../../generated/kb_curated/papers-md/oncology_multimodal_waqas2024/">Oncology Multimodal Review (Waqas 2024)</a> — Full paper summary</p>
 <p><strong>Related integration cards:</strong>
-- <a href="ensemble_integration/">Ensemble Integration (EI)</a> — Late fusion implementation details</p>
+- <a href="../ensemble_integration/">Ensemble Integration (EI)</a> — Late fusion implementation details</p>
 <p><strong>KB integration guides:</strong>
-- <a href="../../integration/integration_strategy/">Integration Strategy</a> — Overall fusion approach
-- <a href="../../integration/design_patterns/">Design Patterns</a> — 5 patterns with escalation criteria
-- <a href="../../integration/multimodal_architectures/">Multimodal Architectures</a> — Clinical/multimodal model patterns</p>
+- <a href="../../../integration/integration_strategy/">Integration Strategy</a> — Overall fusion approach
+- <a href="../../../integration/design_patterns/">Design Patterns</a> — 5 patterns with escalation criteria
+- <a href="../../../integration/multimodal_architectures/">Multimodal Architectures</a> — Clinical/multimodal model patterns</p>
 <p><strong>Analysis recipes:</strong>
-- <a href="../../integration/analysis_recipes/cca_permutation/">CCA + Permutation</a> — Cross-modal structure testing
-- <a href="../../integration/analysis_recipes/prediction_baselines/">Prediction Baselines</a> — Fusion vs. single-modality comparison
-- <a href="../../integration/analysis_recipes/partial_correlations/">Partial Correlations</a> — Confound-aware associations</p>
+- <a href="../../../integration/analysis_recipes/cca_permutation/">CCA + Permutation</a> — Cross-modal structure testing
+- <a href="../../../integration/analysis_recipes/prediction_baselines/">Prediction Baselines</a> — Fusion vs. single-modality comparison
+- <a href="../../../integration/analysis_recipes/partial_correlations/">Partial Correlations</a> — Confound-aware associations</p>
 <p><strong>Data governance:</strong>
-- <a href="../../data/governance_qc/">Governance &amp; QC</a> — Quality control protocols
-- <a href="../../data/ukb_data_map/">UKB Data Map</a> — Cohort definitions and confounds</p>
+- <a href="../../../data/governance_qc/">Governance &amp; QC</a> — Quality control protocols
+- <a href="../../../data/ukb_data_map/">UKB Data Map</a> — Cohort definitions and confounds</p>
 <p><strong>Model documentation:</strong>
-- <a href="../../models/genetics/">Genetics Models</a> — Foundation models for gene embeddings
-- <a href="../../models/brain/">Brain Models</a> — Foundation models for brain embeddings
-- <a href="../../models/multimodal/">Multimodal Models</a> — Examples of fusion architectures</p>
+- <a href="../../genetics/">Genetics Models</a> — Foundation models for gene embeddings
+- <a href="../../brain/">Brain Models</a> — Foundation models for brain embeddings
+- <a href="../../multimodal/">Multimodal Models</a> — Examples of fusion architectures</p>
 <hr />
 <h2 id="key-takeaways">Key Takeaways<a class="headerlink" href="#key-takeaways" title="Permanent link">&para;</a></h2>
 <ol>

@@ -3681,6 +3681,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kb/paper_cards/swift_2023.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT (2023)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3812,6 +3840,34 @@
     
   
     GENERator (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kb/paper_cards/dnabert2_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2 (2024)
   
 
     
@@ -4430,6 +4486,34 @@
     
   
     Foundation models overview (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kb/paper_cards/tabpfn_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TabPFN (2024)
   
 
     
@@ -5360,13 +5444,13 @@
 - M3FM (medical vision–language: CXR/CT + bilingual reports)<br />
 - TITAN (histopathology slides + ROI captions + pathology reports)  </p>
 <p><strong>Mechanism:</strong></p>
-<div class="highlight"><pre><span></span><code>Image encoder (brain / CXR / WSI)  →  visual_embedding
-Text encoder (medical LLM / encoder) → text_embedding
-           ↓                                   ↓
-         CLIP-style contrastive loss in shared latent space
-           ↓
-      Downstream heads (classification, retrieval, report generation)
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Image encoder (brain / CXR / WSI)  →  visual_embedding
+</span><span id="__span__-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Text encoder (medical LLM / encoder) → text_embedding
+</span><span id="__span__-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>           ↓                                   ↓
+</span><span id="__span__-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>         CLIP-style contrastive loss in shared latent space
+</span><span id="__span__-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>           ↓
+</span><span id="__span__-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>      Downstream heads (classification, retrieval, report generation)
+</span></code></pre></div>
 <p><strong>Key properties (from M3FM/TITAN):</strong>
 - <strong>Label efficiency:</strong> Strong zero-shot / few-shot transfer once alignment is learned.
 - <strong>Modality decoupling:</strong> Vision and text encoders can be updated or swapped independently.
@@ -5382,12 +5466,12 @@ Text encoder (medical LLM / encoder) → text_embedding
 - BAGEL (unified text–image–video + generation)<br />
 - MoT (modality-aware sparse transformers, Chameleon/Transfusion-style)</p>
 <p><strong>Mechanism:</strong></p>
-<div class="highlight"><pre><span></span><code>All modalities → token sequences → shared self-attention
-                           ↓
-         Modality-aware FFNs / experts (MoT-style)
-                           ↓
-                 Understanding + generation heads
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>All modalities → token sequences → shared self-attention
+</span><span id="__span__-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>                           ↓
+</span><span id="__span__-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>         Modality-aware FFNs / experts (MoT-style)
+</span><span id="__span__-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>                           ↓
+</span><span id="__span__-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>                 Understanding + generation heads
+</span></code></pre></div>
 <p><strong>Key properties (from BAGEL/MoT):</strong>
 - <strong>Unified reasoning:</strong> All modalities interact through a single attention backbone.<br />
 - <strong>Modality-aware sparsity:</strong> MoT decouples FFNs per modality → ~40–60% FLOP savings.<br />
@@ -5403,14 +5487,14 @@ Text encoder (medical LLM / encoder) → text_embedding
 - Me-LLaMA (medical LLM with continual pretraining + instruction tuning)<br />
 - Many general LLM + domain-adaptation pipelines</p>
 <p><strong>Mechanism:</strong></p>
-<div class="highlight"><pre><span></span><code>Modality encoders (genes, brain, behavior) → embeddings
-                                     ↓
-                       Projection into LLM token space
-                                     ↓
-                      Medical / neuro-omics LLM (Me-LLaMA-style)
-                                     ↓
-             Clinical reasoning, report generation, question answering
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Modality encoders (genes, brain, behavior) → embeddings
+</span><span id="__span__-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>                                     ↓
+</span><span id="__span__-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>                       Projection into LLM token space
+</span><span id="__span__-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>                                     ↓
+</span><span id="__span__-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>                      Medical / neuro-omics LLM (Me-LLaMA-style)
+</span><span id="__span__-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>                                     ↓
+</span><span id="__span__-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>             Clinical reasoning, report generation, question answering
+</span></code></pre></div>
 <p><strong>Key properties (from Me-LLaMA + BOM vision):</strong>
 - <strong>Domain-knowledge injection:</strong> Continual pretraining on medical/neuroscience corpora.<br />
 - <strong>Instruction-tuned reasoning:</strong> Multi-task prompts for QA, summarization, diagnosis.<br />
@@ -5466,7 +5550,7 @@ Text encoder (medical LLM / encoder) → text_embedding
 - Your <strong>primary goal is mechanistic interpretability</strong>, not raw predictive power.<br />
 - Compute constraints make unified models impractical.</p>
 <p>⚠️ <strong>Prefer simpler approaches first:</strong>
-- Start with <strong>late fusion + Ensemble Integration</strong> (see <a href="ensemble_integration/">EI card</a>).<br />
+- Start with <strong>late fusion + Ensemble Integration</strong> (see <a href="../ensemble_integration/">EI card</a>).<br />
 - Use <strong>CCA + permutation</strong> to test for cross-modal structure before complex fusion.<br />
 - Only escalate when fusion gains are <strong>statistically significant and stable</strong>.</p>
 <hr />
@@ -5491,11 +5575,11 @@ Text encoder (medical LLM / encoder) → text_embedding
 - Directly supports <strong>clinical translation</strong>, <strong>zero-shot deployment</strong>, and <strong>multilingual extensions</strong>.</p>
 <h3 id="phase-3-llm-as-bridge-for-genebrainbehavior">Phase 3 — LLM-as-Bridge for Gene–Brain–Behavior<a class="headerlink" href="#phase-3-llm-as-bridge-for-genebrainbehavior" title="Permanent link">&para;</a></h3>
 <p><strong>Goal:</strong> Use a Me-LLaMA-style LLM as the <strong>semantic hub</strong> for:</p>
-<div class="highlight"><pre><span></span><code>Genetics embeddings  → |
-                       | → LLM token space → clinical text
-Brain embeddings      → |
-Behavioral measures   → |
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Genetics embeddings  → |
+</span><span id="__span__-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>                       | → LLM token space → clinical text
+</span><span id="__span__-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Brain embeddings      → |
+</span><span id="__span__-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>Behavioral measures   → |
+</span></code></pre></div>
 <ul>
 <li>Continually pretrain LLaMA on neuroscience + genetics + clinical neurology corpora.  </li>
 <li>Instruction-tune for gene–brain–behavior reasoning tasks.  </li>
@@ -5559,18 +5643,18 @@ Behavioral measures   → |
 </tbody>
 </table>
 <h3 id="step-2-train-contrastive-alignment">Step 2 — Train Contrastive Alignment<a class="headerlink" href="#step-2-train-contrastive-alignment" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># Pseudo-code for InfoNCE over brain ↔ text pairs</span>
-<span class="k">for</span> <span class="n">brain_batch</span><span class="p">,</span> <span class="n">text_batch</span> <span class="ow">in</span> <span class="n">loader</span><span class="p">:</span>
-    <span class="n">b_emb</span> <span class="o">=</span> <span class="n">brain_proj</span><span class="p">(</span><span class="n">brain_encoder</span><span class="p">(</span><span class="n">brain_batch</span><span class="p">))</span>   <span class="c1"># [B, d]</span>
-    <span class="n">t_emb</span> <span class="o">=</span> <span class="n">text_proj</span><span class="p">(</span><span class="n">text_encoder</span><span class="p">(</span><span class="n">text_batch</span><span class="p">))</span>      <span class="c1"># [B, d]</span>
-
-    <span class="n">b_emb</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">b_emb</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">t_emb</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">t_emb</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-
-    <span class="n">logits</span> <span class="o">=</span> <span class="n">b_emb</span> <span class="o">@</span> <span class="n">t_emb</span><span class="o">.</span><span class="n">T</span> <span class="o">/</span> <span class="n">tau</span>   <span class="c1"># cosine similarities</span>
-    <span class="n">labels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">brain_batch</span><span class="p">),</span> <span class="n">device</span><span class="o">=</span><span class="n">logits</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
-    <span class="n">loss</span> <span class="o">=</span> <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span> <span class="o">+</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">logits</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">labels</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
-</code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span__-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Pseudo-code for InfoNCE over brain ↔ text pairs</span>
+</span><span id="__span__-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">for</span> <span class="n">brain_batch</span><span class="p">,</span> <span class="n">text_batch</span> <span class="ow">in</span> <span class="n">loader</span><span class="p">:</span>
+</span><span id="__span__-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">b_emb</span> <span class="o">=</span> <span class="n">brain_proj</span><span class="p">(</span><span class="n">brain_encoder</span><span class="p">(</span><span class="n">brain_batch</span><span class="p">))</span>   <span class="c1"># [B, d]</span>
+</span><span id="__span__-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="n">t_emb</span> <span class="o">=</span> <span class="n">text_proj</span><span class="p">(</span><span class="n">text_encoder</span><span class="p">(</span><span class="n">text_batch</span><span class="p">))</span>      <span class="c1"># [B, d]</span>
+</span><span id="__span__-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+</span><span id="__span__-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="n">b_emb</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">b_emb</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span__-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="n">t_emb</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">t_emb</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span__-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+</span><span id="__span__-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="n">logits</span> <span class="o">=</span> <span class="n">b_emb</span> <span class="o">@</span> <span class="n">t_emb</span><span class="o">.</span><span class="n">T</span> <span class="o">/</span> <span class="n">tau</span>   <span class="c1"># cosine similarities</span>
+</span><span id="__span__-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="n">labels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">brain_batch</span><span class="p">),</span> <span class="n">device</span><span class="o">=</span><span class="n">logits</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+</span><span id="__span__-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    <span class="n">loss</span> <span class="o">=</span> <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span> <span class="o">+</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">logits</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">labels</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
+</span></code></pre></div>
 <h3 id="step-3-downstream-tasks">Step 3 — Downstream Tasks<a class="headerlink" href="#step-3-downstream-tasks" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Retrieval:</strong> nearest-neighbor in shared space.  </li>
@@ -5580,23 +5664,23 @@ Behavioral measures   → |
 <hr />
 <h2 id="reference-materials">Reference Materials<a class="headerlink" href="#reference-materials" title="Permanent link">&para;</a></h2>
 <p><strong>Multimodal papers (summaries):</strong>
-- <a href="../../generated/kb_curated/papers-md/bagel_2025/">BAGEL (2025)</a> — Unified MoT multimodal FM<br />
-- <a href="../../generated/kb_curated/papers-md/mot_2025/">MoT (2025)</a> — Modality-aware sparse transformer<br />
-- <a href="../../generated/kb_curated/papers-md/m3fm_2025/">M3FM (2025)</a> — Medical vision–language with two-tower CLIP<br />
-- <a href="../../generated/kb_curated/papers-md/me_llama_2024/">Me-LLaMA (2024)</a> — Medical LLM via continual pretraining<br />
-- <a href="../../generated/kb_curated/papers-md/titan_2025/">TITAN (2025)</a> — Multi-scale pathology VLM<br />
-- <a href="../../generated/kb_curated/papers-md/mmfm_2025/">Multimodal FMs Survey (2025)</a> — Broader architectural landscape</p>
+- <a href="../../../generated/kb_curated/papers-md/bagel_2025/">BAGEL (2025)</a> — Unified MoT multimodal FM<br />
+- <a href="../../../generated/kb_curated/papers-md/mot_2025/">MoT (2025)</a> — Modality-aware sparse transformer<br />
+- <a href="../../../generated/kb_curated/papers-md/m3fm_2025/">M3FM (2025)</a> — Medical vision–language with two-tower CLIP<br />
+- <a href="../../../generated/kb_curated/papers-md/me_llama_2024/">Me-LLaMA (2024)</a> — Medical LLM via continual pretraining<br />
+- <a href="../../../generated/kb_curated/papers-md/titan_2025/">TITAN (2025)</a> — Multi-scale pathology VLM<br />
+- <a href="../../../generated/kb_curated/papers-md/mmfm_2025/">Multimodal FMs Survey (2025)</a> — Broader architectural landscape</p>
 <p><strong>Model documentation:</strong>
-- <a href="../multimodal/">Multimodal Models</a> — Model-level documentation<br />
+- <a href="../../multimodal/">Multimodal Models</a> — Model-level documentation<br />
 - <a href="https://github.com/allison-eunse/neuro-omics-kb/blob/main/kb/model_cards/m3fm.yaml">M3FM model card</a><br />
 - <a href="https://github.com/allison-eunse/neuro-omics-kb/blob/main/kb/model_cards/me_llama.yaml">Me-LLaMA model card</a><br />
 - <a href="https://github.com/allison-eunse/neuro-omics-kb/blob/main/kb/model_cards/titan.yaml">TITAN model card</a></p>
 <p><strong>Integration guidance:</strong>
-- <a href="../../integration/integration_strategy/">Integration Strategy</a> — Overall fusion approach<br />
-- <a href="../../integration/design_patterns/">Design Patterns</a> — Escalation from late fusion → MoT<br />
-- <a href="../../integration/multimodal_architectures/">Multimodal Architecture Patterns</a> — Detailed pattern catalog<br />
-- <a href="ensemble_integration/">Ensemble Integration (EI)</a> — Late fusion baseline<br />
-- <a href="oncology_multimodal_review/">Oncology Multimodal Principles</a> — Fusion cautions &amp; taxonomy</p>
+- <a href="../../../integration/integration_strategy/">Integration Strategy</a> — Overall fusion approach<br />
+- <a href="../../../integration/design_patterns/">Design Patterns</a> — Escalation from late fusion → MoT<br />
+- <a href="../../../integration/multimodal_architectures/">Multimodal Architecture Patterns</a> — Detailed pattern catalog<br />
+- <a href="../ensemble_integration/">Ensemble Integration (EI)</a> — Late fusion baseline<br />
+- <a href="../oncology_multimodal_review/">Oncology Multimodal Principles</a> — Fusion cautions &amp; taxonomy</p>
 <hr />
 <h2 id="next-steps-in-our-pipeline">Next Steps in Our Pipeline<a class="headerlink" href="#next-steps-in-our-pipeline" title="Permanent link">&para;</a></h2>
 <ol>

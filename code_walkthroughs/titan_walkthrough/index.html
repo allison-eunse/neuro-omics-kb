@@ -3469,6 +3469,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/swift_2023.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT (2023)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3600,6 +3628,34 @@
     
   
     GENERator (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/dnabert2_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2 (2024)
   
 
     
@@ -4218,6 +4274,34 @@
     
   
     Foundation models overview (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/tabpfn_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TabPFN (2024)
   
 
     
@@ -5160,17 +5244,18 @@
 <h2 id="key-components">Key Components<a class="headerlink" href="#key-components" title="Permanent link">&para;</a></h2>
 <h3 id="custom-sequential-wrapper-titanfinetunepy">Custom Sequential Wrapper (<code>titan/finetune.py</code>)<a class="headerlink" href="#custom-sequential-wrapper-titanfinetunepy" title="Permanent link">&para;</a></h3>
 <p>Fine-tuning wraps the frozen TITAN backbone with a lightweight MLP head. <code>CustomSequential</code> simply forwards tensor tuples into <code>encode_slide_from_patch_features</code>, then feeds slide embeddings into the classification head. <code>create_mlp</code> helps instantiate arbitrary hidden stacks.</p>
+<p><strong>Sequential wrapper with MLP head:</strong></p>
 <p>```25:50:/Users/allison/Projects/neuro-omics-kb/external_repos/titan/titan/finetune.py
 class CustomSequential(nn.Module):
     def <strong>init</strong>(self, model, mlp):
         super(CustomSequential, self).<strong>init</strong>()
         self.model = model
         self.mlp = mlp</p>
-<pre><code>def forward(self, *args, **kwargs):
+<div class="language-text highlight"><pre><span></span><code>def forward(self, *args, **kwargs):
     x = self.model.encode_slide_from_patch_features(*args, **kwargs)
     x = self.mlp(x)
     return x
-</code></pre>
+</code></pre></div>
 <p>def create_mlp(in_dim=None, hid_dims=[], act=nn.ReLU(), dropout=0.0, out_dim=None, end_with_fc=True):
     layers = []
     if len(hid_dims) &gt; 0:
@@ -5185,78 +5270,84 @@ class CustomSequential(nn.Module):
         layers.append(nn.Dropout(dropout))
     mlp = nn.Sequential(*layers)
     return mlp
-<div class="highlight"><pre><span></span><code>### Training Loop &amp; Scheduler (`titan/finetune.py`)
-`train` constructs two optimizer parameter groups (bias/LayerNorm vs. rest), applies cosine LR with warmup, leverages `torch.cuda.amp.GradScaler`, and evaluates on a validation loader with early stopping that tracks the best weights.
-
-```137:199:/Users/allison/Projects/neuro-omics-kb/external_repos/titan/titan/finetune.py
-    model.train()
-    fp16_scaler = torch.cuda.amp.GradScaler()
-    step = 0
-    early_stopping = EarlyStopping(patience=2, verbose=True)
-    for epoch in tqdm(range(num_epochs)):
-        model.train()
-        preds_all = []
-        targets_all = []
-        total_train_loss = 0
-        for features, coords, patch_size_lv0, label in tqdm(train_loader):
-            lr_scheduler(step)
-            features = features.to(device)
-            coords = coords.to(device)
-            with torch.cuda.amp.autocast(dtype=torch.bfloat16):
-                logits = model(features, coords, patch_size_lv0.to(device), **kwargs)
-                loss = loss_fn(logits, label.to(device))
-            fp16_scaler.scale(loss).backward()
-            fp16_scaler.step(optimizer)
-            fp16_scaler.update()
-            optimizer.zero_grad()
-
-            preds_all.append(logits.argmax(1).cpu().numpy())
-            targets_all.append(label.numpy())
-            step += 1
-            total_train_loss += loss.item()
-
-        avg_train_loss = total_train_loss / len(train_loader)
-        ...
-            tqdm.write(f&quot;epoch {epoch}, bacc: {np.round(bacc, 4):.4f}, bacc_val: {np.round(bacc_val, 4):.4f}, loss: {avg_train_loss:.4f}, val_loss: {avg_val_loss:.4f}&quot;)
-            early_stopping(avg_val_loss, model)
-            if early_stopping.early_stop:
-                print(&quot;Early stopping&quot;)
-                break
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>### Training Loop &amp; Scheduler (`titan/finetune.py`)
+</span><span id="__span__-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span__-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>`train` constructs two optimizer parameter groups (bias/LayerNorm vs. rest), applies cosine LR with warmup, leverages `torch.cuda.amp.GradScaler`, and evaluates on a validation loader with early stopping that tracks the best weights.
+</span><span id="__span__-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span__-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>**Mixed precision training with early stopping:**
+</span><span id="__span__-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span__-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>```137:199:/Users/allison/Projects/neuro-omics-kb/external_repos/titan/titan/finetune.py
+</span><span id="__span__-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    model.train()
+</span><span id="__span__-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    fp16_scaler = torch.cuda.amp.GradScaler()
+</span><span id="__span__-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    step = 0
+</span><span id="__span__-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    early_stopping = EarlyStopping(patience=2, verbose=True)
+</span><span id="__span__-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    for epoch in tqdm(range(num_epochs)):
+</span><span id="__span__-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        model.train()
+</span><span id="__span__-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>        preds_all = []
+</span><span id="__span__-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>        targets_all = []
+</span><span id="__span__-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        total_train_loss = 0
+</span><span id="__span__-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        for features, coords, patch_size_lv0, label in tqdm(train_loader):
+</span><span id="__span__-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>            lr_scheduler(step)
+</span><span id="__span__-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>            features = features.to(device)
+</span><span id="__span__-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>            coords = coords.to(device)
+</span><span id="__span__-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>            with torch.cuda.amp.autocast(dtype=torch.bfloat16):
+</span><span id="__span__-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>                logits = model(features, coords, patch_size_lv0.to(device), **kwargs)
+</span><span id="__span__-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>                loss = loss_fn(logits, label.to(device))
+</span><span id="__span__-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>            fp16_scaler.scale(loss).backward()
+</span><span id="__span__-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>            fp16_scaler.step(optimizer)
+</span><span id="__span__-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>            fp16_scaler.update()
+</span><span id="__span__-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>            optimizer.zero_grad()
+</span><span id="__span__-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>
+</span><span id="__span__-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>            preds_all.append(logits.argmax(1).cpu().numpy())
+</span><span id="__span__-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>            targets_all.append(label.numpy())
+</span><span id="__span__-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>            step += 1
+</span><span id="__span__-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>            total_train_loss += loss.item()
+</span><span id="__span__-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>
+</span><span id="__span__-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>        avg_train_loss = total_train_loss / len(train_loader)
+</span><span id="__span__-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>        ...
+</span><span id="__span__-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>            tqdm.write(f&quot;epoch {epoch}, bacc: {np.round(bacc, 4):.4f}, bacc_val: {np.round(bacc_val, 4):.4f}, loss: {avg_train_loss:.4f}, val_loss: {avg_val_loss:.4f}&quot;)
+</span><span id="__span__-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>            early_stopping(avg_val_loss, model)
+</span><span id="__span__-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>            if early_stopping.early_stop:
+</span><span id="__span__-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>                print(&quot;Early stopping&quot;)
+</span><span id="__span__-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>                break
+</span></code></pre></div></p>
 <h3 id="linear-probe-evaluation-titaneval_linear_probepy">Linear Probe Evaluation (<code>titan/eval_linear_probe.py</code>)<a class="headerlink" href="#linear-probe-evaluation-titaneval_linear_probepy" title="Permanent link">&para;</a></h3>
-<p>For frozen-feature experiments, <code>train_and_evaluate_logistic_regression_with_val</code> sweeps log-spaced <code>C</code>, fits <code>LogisticRegression</code>, and reports metrics (balanced accuracy, Cohen’s κ, AUROC) via shared utilities.</p>
+<p>For frozen-feature experiments, <code>train_and_evaluate_logistic_regression_with_val</code> sweeps log-spaced <code>C</code>, fits <code>LogisticRegression</code>, and reports metrics (balanced accuracy, Cohen's κ, AUROC) via shared utilities.</p>
+<p><strong>Logistic regression with hyperparameter sweep:</strong></p>
 <p>```2:75:/Users/allison/Projects/neuro-omics-kb/external_repos/titan/titan/eval_linear_probe.py
 def train_and_evaluate_logistic_regression_with_val(train_data, train_labels, val_data, val_labels, test_data, test_labels, log_spaced_values=None, max_iter=500):
     seed_torch(torch.device('cpu'), 0)</p>
-<pre><code>metric_dict = {
-    'bacc': 'balanced_accuracy',
-    'kappa': 'cohen_kappa_score',
-    'auroc': 'roc_auc_score',
+<div class="language-text highlight"><pre><span></span><code>metric_dict = {
+    &#39;bacc&#39;: &#39;balanced_accuracy&#39;,
+    &#39;kappa&#39;: &#39;cohen_kappa_score&#39;,
+    &#39;auroc&#39;: &#39;roc_auc_score&#39;,
 }
 
 if log_spaced_values is None:
     log_spaced_values = np.logspace(np.log10(10e-6), np.log10(10e5), num=45)
 
-best_score = -float('inf')
+best_score = -float(&#39;inf&#39;)
 best_C = None
 logistic_reg_final = None
-for log2_coeff in tqdm(log_spaced_values, desc="Finding best C"):
+for log2_coeff in tqdm(log_spaced_values, desc=&quot;Finding best C&quot;):
     ...
     logistic_reg = LogisticRegression(
         C=1/log2_coeff,
         fit_intercept=True,
         max_iter=max_iter,
         random_state=0,
-        solver="lbfgs",
+        solver=&quot;lbfgs&quot;,
     )
     logistic_reg.fit(train_data, train_labels)
     ...
 eval_metrics = get_eval_metrics(test_labels, test_preds, test_probs, roc_kwargs=roc_kwargs)
-</code></pre>
+</code></pre></div>
 <p>```
 </p>
 <h3 id="metrics-bootstrap-zero-shot-templates-titanutilspy">Metrics, Bootstrap &amp; Zero-Shot Templates (<code>titan/utils.py</code>)<a class="headerlink" href="#metrics-bootstrap-zero-shot-templates-titanutilspy" title="Permanent link">&para;</a></h3>
 <p><code>get_eval_metrics</code> reports accuracy/balanced accuracy/kappa/weighted F1 (+ AUROC/log-loss when probs are provided). The module also seeds reproducibility, merges dictionaries, and defines zero-shot text templates for class prompts.
+
+<strong>Evaluation metrics and zero-shot templates:</strong>
 
 ```13:89:/Users/allison/Projects/neuro-omics-kb/external_repos/titan/titan/utils.py</p>
 <h1 id="zeroshot-prompt-templates">zeroshot prompt templates<a class="headerlink" href="#zeroshot-prompt-templates" title="Permanent link">&para;</a></h1>
@@ -5292,7 +5383,8 @@ def get_eval_metrics(
     }
 ```</p>
 <h3 id="tcga-ot-configuration-prompts-datasetsconfig_tcga-otyaml">TCGA-OT Configuration &amp; Prompts (<code>datasets/config_tcga-ot.yaml</code>)<a class="headerlink" href="#tcga-ot-configuration-prompts-datasetsconfig_tcga-otyaml" title="Permanent link">&para;</a></h3>
-<p>The YAML describes label counts, OncoTree codes, class-specific textual prompts (supporting zero-shot CLIP-like scoring), and dataset metadata. Integrate these prompts with TITAN’s text encoder or other VLMs for retrieval tasks.</p>
+<p>The YAML describes label counts, OncoTree codes, class-specific textual prompts (supporting zero-shot CLIP-like scoring), and dataset metadata. Integrate these prompts with TITAN's text encoder or other VLMs for retrieval tasks.</p>
+<p><strong>Dataset configuration with class prompts:</strong></p>
 <p><code>1:60:/Users/allison/Projects/neuro-omics-kb/external_repos/titan/datasets/config_tcga-ot.yaml
 aggregation: slide
 cohorts:

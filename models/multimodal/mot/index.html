@@ -1536,6 +1536,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Reference Materials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#knowledge-base-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Knowledge Base Resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#original-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Original Sources
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3555,6 +3583,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kb/paper_cards/swift_2023.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT (2023)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3686,6 +3742,34 @@
     
   
     GENERator (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kb/paper_cards/dnabert2_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2 (2024)
   
 
     
@@ -4304,6 +4388,34 @@
     
   
     Foundation models overview (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kb/paper_cards/tabpfn_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TabPFN (2024)
   
 
     
@@ -5234,25 +5346,25 @@
 - <strong>Stable training:</strong> No MoE routing instability—deterministic modality selection
 - <strong>Implementation simplicity:</strong> Easy to implement vs. complex load-balancing in MoE</p>
 <p><strong>Application to KB pipeline:</strong>
-<div class="highlight"><pre><span></span><code><span class="c1"># Pseudocode for neuro-omics MoT</span>
-<span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">modality</span> <span class="o">==</span> <span class="s2">&quot;gene&quot;</span><span class="p">:</span>
-        <span class="n">ffn_output</span> <span class="o">=</span> <span class="n">gene_ffn</span><span class="p">(</span><span class="n">attention_output</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">token</span><span class="o">.</span><span class="n">modality</span> <span class="o">==</span> <span class="s2">&quot;brain&quot;</span><span class="p">:</span>
-        <span class="n">ffn_output</span> <span class="o">=</span> <span class="n">brain_ffn</span><span class="p">(</span><span class="n">attention_output</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">token</span><span class="o">.</span><span class="n">modality</span> <span class="o">==</span> <span class="s2">&quot;behavior&quot;</span><span class="p">:</span>
-        <span class="n">ffn_output</span> <span class="o">=</span> <span class="n">behavior_ffn</span><span class="p">(</span><span class="n">attention_output</span><span class="p">)</span>
-    <span class="c1"># Shared self-attention across all modalities</span>
-</code></pre></div></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span__-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Pseudocode for neuro-omics MoT</span>
+</span><span id="__span__-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">:</span>
+</span><span id="__span__-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">modality</span> <span class="o">==</span> <span class="s2">&quot;gene&quot;</span><span class="p">:</span>
+</span><span id="__span__-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        <span class="n">ffn_output</span> <span class="o">=</span> <span class="n">gene_ffn</span><span class="p">(</span><span class="n">attention_output</span><span class="p">)</span>
+</span><span id="__span__-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="k">elif</span> <span class="n">token</span><span class="o">.</span><span class="n">modality</span> <span class="o">==</span> <span class="s2">&quot;brain&quot;</span><span class="p">:</span>
+</span><span id="__span__-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="n">ffn_output</span> <span class="o">=</span> <span class="n">brain_ffn</span><span class="p">(</span><span class="n">attention_output</span><span class="p">)</span>
+</span><span id="__span__-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="k">elif</span> <span class="n">token</span><span class="o">.</span><span class="n">modality</span> <span class="o">==</span> <span class="s2">&quot;behavior&quot;</span><span class="p">:</span>
+</span><span id="__span__-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        <span class="n">ffn_output</span> <span class="o">=</span> <span class="n">behavior_ffn</span><span class="p">(</span><span class="n">attention_output</span><span class="p">)</span>
+</span><span id="__span__-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="c1"># Shared self-attention across all modalities</span>
+</span></code></pre></div></p>
 <h3 id="for-arpa-h-brain-omics-model-bom">For ARPA-H Brain-Omics Model (BOM)<a class="headerlink" href="#for-arpa-h-brain-omics-model-bom" title="Permanent link">&para;</a></h3>
 <p>MoT demonstrates <strong>scalable multimodal architectures</strong>:</p>
-<div class="highlight"><pre><span></span><code>Gene tokens   → |
-                | Global self-attention (dense)
-Brain tokens  → |     ↓
-                | Modality-aware FFNs (sparse)
-Text tokens   → |     ↓
-                | Prediction heads
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Gene tokens   → |
+</span><span id="__span__-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>                | Global self-attention (dense)
+</span><span id="__span__-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Brain tokens  → |     ↓
+</span><span id="__span__-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>                | Modality-aware FFNs (sparse)
+</span><span id="__span__-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>Text tokens   → |     ↓
+</span><span id="__span__-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>                | Prediction heads
+</span></code></pre></div>
 <p><strong>Transfer insights:</strong>
 - <strong>Efficiency-first design:</strong> Critical for scaling to population-level datasets (UK Biobank, HCP)
 - <strong>Leave-one-modality-out:</strong> MoT evaluation patterns inform ablation studies for gene-brain fusion
@@ -5260,12 +5372,12 @@ Text tokens   → |     ↓
 - <strong>Systems optimization:</strong> Wall-clock profiling applicable to neuro-omics training runs</p>
 <h2 id="embedding-extraction-workflow">Embedding Extraction Workflow<a class="headerlink" href="#embedding-extraction-workflow" title="Permanent link">&para;</a></h2>
 <p>MoT is an <strong>architectural pattern</strong>, not a standalone model, but if implementing for neuro-omics:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># 1. Tag tokens by modality (gene / brain / behavior)</span>
-<span class="c1"># 2. Build MoT transformer with modality-specific FFNs</span>
-<span class="c1"># 3. Forward through model (global attention + modality FFNs)</span>
-<span class="c1"># 4. Extract embeddings before task-specific heads</span>
-<span class="c1"># 5. Use for downstream fusion tasks</span>
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span__-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># 1. Tag tokens by modality (gene / brain / behavior)</span>
+</span><span id="__span__-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># 2. Build MoT transformer with modality-specific FFNs</span>
+</span><span id="__span__-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># 3. Forward through model (global attention + modality FFNs)</span>
+</span><span id="__span__-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># 4. Extract embeddings before task-specific heads</span>
+</span><span id="__span__-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># 5. Use for downstream fusion tasks</span>
+</span></code></pre></div>
 <p><strong>For implementation:</strong> See MoT paper code repository and adapt to neuro-omics modalities.</p>
 <h2 id="strengths-limitations">Strengths &amp; Limitations<a class="headerlink" href="#strengths-limitations" title="Permanent link">&para;</a></h2>
 <h3 id="strengths">Strengths<a class="headerlink" href="#strengths" title="Permanent link">&para;</a></h3>
@@ -5297,17 +5409,27 @@ Text tokens   → |     ↓
 - <strong>MoE architectures:</strong> If need learned task-specific routing
 - <strong>Late fusion:</strong> If modalities processed independently before combination</p>
 <h2 id="reference-materials">Reference Materials<a class="headerlink" href="#reference-materials" title="Permanent link">&para;</a></h2>
-<p><strong>Primary sources:</strong>
-- <strong>Paper:</strong> <a href="../../../generated/kb_curated/papers-md/mot_2025/">MoT (2025)</a> — TMLR 2025
+<h3 id="knowledge-base-resources">Knowledge Base Resources<a class="headerlink" href="#knowledge-base-resources" title="Permanent link">&para;</a></h3>
+<p><strong>Curated materials in this KB:</strong>
+- <strong>Paper summary &amp; notes (PDF):</strong> <a href="../../../generated/kb_curated/papers-pdf/mot_2025.pdf">MoT (2025)</a>
 - <strong>Code walkthrough:</strong> <a href="../../../code_walkthroughs/mot_walkthrough/">MoT walkthrough</a>
-- <strong>Paper card:</strong> <code>kb/paper_cards/mot_2025.yaml</code></p>
+- <strong>Model card (YAML):</strong> <code>kb/model_cards/mot.yaml</code> (if exists)
+- <strong>Paper card (YAML):</strong> <code>kb/paper_cards/mot_2025.yaml</code></p>
 <p><strong>Integration recipes:</strong>
 - <a href="../../../integration/multimodal_architectures/">Multimodal Architectures</a>
 - <a href="../../../integration/design_patterns/">Design Patterns</a>
 - <a href="../../../integration/integration_strategy/">Integration Strategy</a></p>
-<p><strong>Source repository:</strong>
-- <strong>Local:</strong> <code>external_repos/MoT/</code>
-- <strong>GitHub:</strong> <a href="https://github.com/facebookresearch/MoT">Meta Mixture-of-Transformers</a></p>
+<h3 id="original-sources">Original Sources<a class="headerlink" href="#original-sources" title="Permanent link">&para;</a></h3>
+<p><strong>Source code repositories:</strong>
+- <strong>Local copy:</strong> <code>external_repos/MoT/</code>
+- <strong>Official GitHub:</strong> <a href="https://github.com/facebookresearch/MoT">Meta Mixture-of-Transformers</a></p>
+<p><strong>Original paper:</strong>
+- <strong>Title:</strong> "Mixture-of-Transformers: A Sparse and Scalable Architecture for Multi-Modal Foundation Models"
+- <strong>Authors:</strong> Liang, Weixin; Yu, Lili; Luo, Liang; Iyer, Srinivasan; Dong, Ning; Zhou, Chunting; Ghosh, Gargi; Lewis, Mike; Yih, Wen-tau; Zettlemoyer, Luke; Lin, Xi Victoria
+- <strong>Published:</strong> Transactions on Machine Learning Research (TMLR), 2025
+- <strong>Link:</strong> <a href="https://arxiv.org/abs/2411.04996">arXiv:2411.04996</a>
+- <strong>DOI:</strong> <a href="https://doi.org/10.48550/arXiv.2411.04996">10.48550/arXiv.2411.04996</a>
+- <strong>PDF (local):</strong> <a href="../../../generated/kb_curated/papers-pdf/mot_2025.pdf">mot_2025.pdf</a></p>
 <h2 id="next-steps-in-our-pipeline">Next Steps in Our Pipeline<a class="headerlink" href="#next-steps-in-our-pipeline" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>Architecture adaptation:</strong> Design gene-brain-behavior MoT variant</li>

@@ -3491,6 +3491,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/swift_2023.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT (2023)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3622,6 +3650,34 @@
     
   
     GENERator (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/dnabert2_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2 (2024)
   
 
     
@@ -4240,6 +4296,34 @@
     
   
     Foundation models overview (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/tabpfn_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TabPFN (2024)
   
 
     
@@ -5182,6 +5266,7 @@
 <h2 id="key-components">Key Components<a class="headerlink" href="#key-components" title="Permanent link">&para;</a></h2>
 <h3 id="unified-forward-pass-modelingbagelbagelpy">Unified Forward Pass (<code>modeling/bagel/bagel.py</code>)<a class="headerlink" href="#unified-forward-pass-modelingbagelbagelpy" title="Permanent link">&para;</a></h3>
 <p><code>Bagel</code> hosts the three branches: (1) language tokens (always on), (2) ViT patches for understanding, and (3) VAE latent patches for generation. It projects modality features into the LLM embedding space, injects learned positional/timestep embeddings, and multiplexes MoT experts via packed index tensors. Losses are computed per-branch (CE for text, Smooth L1/MSE for latents) and returned side-by-side.</p>
+<p><strong>Multimodal packed sequence forward:</strong></p>
 <p>```101:229:external_repos/bagel/modeling/bagel/bagel.py
     def forward(..., packed_text_ids, packed_text_indexes, sample_lens, packed_position_ids,
                 ..., packed_vit_tokens=None, ..., padded_latent=None, ..., packed_timesteps=None,
@@ -5205,28 +5290,31 @@
             packed_ce_preds = self.language_model.lm_head(last_hidden_state[ce_loss_indexes])
             ce = F.cross_entropy(packed_ce_preds, packed_label_ids, reduction="none")
         return dict(mse=mse, ce=ce)
-<div class="highlight"><pre><span></span><code>The same class also defines cache-friendly helpers (`prepare_prompts`, `prepare_vit_images`, `prepare_vae_latent`, `generate_image`, `generate_text`) so both training and inference reuse identical packing rules.^[```232:907:external_repos/bagel/modeling/bagel/bagel.py```]
-
-### PackedDataset &amp; Sequence Plans (`data/dataset_base.py`)
-`PackedDataset` streams heterogenous samples, applies conditional dropout (`text_cond_dropout_prob`, etc.), and emits a single packed tensor blob per batch. Each `sequence_plan` step can insert text spans, ViT patches, or VAE tensors, automatically managing BOS/EOS vision tokens, per-split attention modes, and modality-specific losses.^[```45:400:external_repos/bagel/data/dataset_base.py```]
-
-```187:305:external_repos/bagel/data/dataset_base.py
-    def to_tensor(self, sequence_status):
-        data = dict(
-            sequence_length=sum(sequence_status[&#39;sample_lens&#39;]),
-            sample_lens=sequence_status[&#39;sample_lens&#39;],
-            packed_text_ids=torch.tensor(sequence_status[&#39;packed_text_ids&#39;]),
-            ...
-        )
-        if len(sequence_status[&#39;vae_image_tensors&#39;]) &gt; 0:
-            data[&#39;padded_images&#39;] = padded_images
-            data[&#39;patchified_vae_latent_shapes&#39;] = sequence_status[&#39;vae_latent_shapes&#39;]
-            data[&#39;packed_latent_position_ids&#39;] = torch.cat(sequence_status[&#39;packed_latent_position_ids&#39;], dim=0)
-        if len(sequence_status[&#39;packed_vit_tokens&#39;]) &gt; 0:
-            data[&#39;packed_vit_tokens&#39;] = torch.cat(sequence_status[&#39;packed_vit_tokens&#39;], dim=0)
-            data[&#39;packed_vit_position_ids&#39;] = torch.cat(sequence_status[&#39;packed_vit_position_ids&#39;], dim=0)
-            data[&#39;vit_token_seqlens&#39;] = torch.tensor(sequence_status[&#39;vit_token_seqlens&#39;])
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>The same class also defines cache-friendly helpers (`prepare_prompts`, `prepare_vit_images`, `prepare_vae_latent`, `generate_image`, `generate_text`) so both training and inference reuse identical packing rules.^[```232:907:external_repos/bagel/modeling/bagel/bagel.py```]
+</span><span id="__span__-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span__-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>### PackedDataset &amp; Sequence Plans (`data/dataset_base.py`)
+</span><span id="__span__-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span__-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>`PackedDataset` streams heterogenous samples, applies conditional dropout (`text_cond_dropout_prob`, etc.), and emits a single packed tensor blob per batch. Each `sequence_plan` step can insert text spans, ViT patches, or VAE tensors, automatically managing BOS/EOS vision tokens, per-split attention modes, and modality-specific losses.^[```45:400:external_repos/bagel/data/dataset_base.py```]
+</span><span id="__span__-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span__-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>**Packed tensor conversion:**
+</span><span id="__span__-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+</span><span id="__span__-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>```187:305:external_repos/bagel/data/dataset_base.py
+</span><span id="__span__-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    def to_tensor(self, sequence_status):
+</span><span id="__span__-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        data = dict(
+</span><span id="__span__-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>            sequence_length=sum(sequence_status[&#39;sample_lens&#39;]),
+</span><span id="__span__-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>            sample_lens=sequence_status[&#39;sample_lens&#39;],
+</span><span id="__span__-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>            packed_text_ids=torch.tensor(sequence_status[&#39;packed_text_ids&#39;]),
+</span><span id="__span__-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>            ...
+</span><span id="__span__-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        )
+</span><span id="__span__-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        if len(sequence_status[&#39;vae_image_tensors&#39;]) &gt; 0:
+</span><span id="__span__-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>            data[&#39;padded_images&#39;] = padded_images
+</span><span id="__span__-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>            data[&#39;patchified_vae_latent_shapes&#39;] = sequence_status[&#39;vae_latent_shapes&#39;]
+</span><span id="__span__-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>            data[&#39;packed_latent_position_ids&#39;] = torch.cat(sequence_status[&#39;packed_latent_position_ids&#39;], dim=0)
+</span><span id="__span__-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>        if len(sequence_status[&#39;packed_vit_tokens&#39;]) &gt; 0:
+</span><span id="__span__-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>            data[&#39;packed_vit_tokens&#39;] = torch.cat(sequence_status[&#39;packed_vit_tokens&#39;], dim=0)
+</span><span id="__span__-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>            data[&#39;packed_vit_position_ids&#39;] = torch.cat(sequence_status[&#39;packed_vit_position_ids&#39;], dim=0)
+</span><span id="__span__-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>            data[&#39;vit_token_seqlens&#39;] = torch.tensor(sequence_status[&#39;vit_token_seqlens&#39;])
+</span></code></pre></div></p>
 <p>The <code>pack_sequence</code> routine adds <code>&lt;|im_start|&gt; / &lt;|im_end|&gt;</code> sentinels, calls <code>patchify</code> for ViT patches, records <code>packed_timesteps</code> for diffusion supervision, and scales CE loss weights by token length so batches with different numbers of captions remain balanced.^[<code>306:724:external_repos/bagel/data/dataset_base.py</code>]</p>
 <h3 id="training-entry-point-trainpretrain_unified_navitpy">Training Entry Point (<code>train/pretrain_unified_navit.py</code>)<a class="headerlink" href="#training-entry-point-trainpretrain_unified_navitpy" title="Permanent link">&para;</a></h3>
 <p>Three dataclasses (<code>ModelArguments</code>, <code>DataArguments</code>, <code>TrainingArguments</code>) expose practically every toggle: source checkpoints, positional interpolation, dropout per modality, packed-data limits, sharding strategy, EMA decay, LR schedule, and loss weights.^[<code>98:405:external_repos/bagel/train/pretrain_unified_navit.py</code>] The <code>main()</code> routine then:
@@ -5237,12 +5325,13 @@
 - Periodically logs CE/MSE/token throughput, tracks dataset sampling state for deterministic resumes, and checkpoints both base + EMA weights alongside optimizer/scheduler state.^[<code>658:867:external_repos/bagel/train/pretrain_unified_navit.py</code>]</p>
 <h3 id="inference-stack-apppy-inferencerpy">Inference Stack (<code>app.py</code> + <code>inferencer.py</code>)<a class="headerlink" href="#inference-stack-apppy-inferencerpy" title="Permanent link">&para;</a></h3>
 <p><code>app.py</code> bootstraps configs, shares layers across devices, and lets you choose full precision, NF4, or INT8 quantization before launching the Gradio UI. It wires UI sliders directly to CFG/timestep parameters so experiments match README defaults.^[<code>25:357:external_repos/bagel/app.py</code>]</p>
-<p><code>InterleaveInferencer</code> encapsulates the streaming generation algorithm: it grows <code>NaiveCache</code> instances as you interleave prompts/images, clones contexts for classifier-free guidance, and alternates between textual “thinking” chains and latent diffusion steps.</p>
+<p><code>InterleaveInferencer</code> encapsulates the streaming generation algorithm: it grows <code>NaiveCache</code> instances as you interleave prompts/images, clones contexts for classifier-free guidance, and alternates between textual "thinking" chains and latent diffusion steps.</p>
+<p><strong>Streaming inference with context caching:</strong></p>
 <p>```22:284:external_repos/bagel/inferencer.py
 class InterleaveInferencer:
     def init_gen_context(self):
         return {'kv_lens': [0], 'ropes': [0], 'past_key_values': NaiveCache(...)}</p>
-<pre><code>def update_context_text(...):
+<div class="language-text highlight"><pre><span></span><code>def update_context_text(...):
     generation_input, kv_lens, ropes = self.model.prepare_prompts(...)
     past_key_values = self.model.forward_cache_update_text(past_key_values, **generation_input)
 
@@ -5259,7 +5348,7 @@ def gen_image(...):
     generation_input_cfg_text = self.model.prepare_vae_latent_cfg(...)
     unpacked_latent = self.model.generate_image(..., cfg_text_scale=cfg_text_scale, cfg_img_scale=cfg_img_scale, ...)
     return self.decode_image(unpacked_latent[0], image_shape)
-</code></pre>
+</code></pre></div>
 <p>```</p>
 <p>Understanding vs. generation differ only in whether you keep emitting text (<code>understanding_output=True</code>) or call <code>gen_image</code> with CFG contexts cloned before the last prompt.^[<code>207:314:external_repos/bagel/inferencer.py</code>]</p>
 <h3 id="packed-qwen2-navit-layers-modelingbagelqwen2_navitpy">Packed Qwen2-NaViT Layers (<code>modeling/bagel/qwen2_navit.py</code>)<a class="headerlink" href="#packed-qwen2-navit-layers-modelingbagelqwen2_navitpy" title="Permanent link">&para;</a></h3>

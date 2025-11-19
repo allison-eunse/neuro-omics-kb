@@ -3469,6 +3469,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/swift_2023.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT (2023)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3600,6 +3628,34 @@
     
   
     GENERator (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/dnabert2_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2 (2024)
   
 
     
@@ -4218,6 +4274,34 @@
     
   
     Foundation models overview (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/paper_cards/tabpfn_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TabPFN (2024)
   
 
     
@@ -5158,6 +5242,7 @@
 <h2 id="key-components">Key Components<a class="headerlink" href="#key-components" title="Permanent link">&para;</a></h2>
 <h3 id="tokenizer-dataset-pipeline-finetunetrainpy">Tokenizer &amp; Dataset Pipeline (<code>finetune/train.py</code>)<a class="headerlink" href="#tokenizer-dataset-pipeline-finetunetrainpy" title="Permanent link">&para;</a></h3>
 <p><code>SupervisedDataset</code> ingests CSVs, optionally swaps sequences for cached k-mer strings, and tokenizes them with the HF tokenizer, honoring <code>model_max_length</code> and storing label counts for dynamic classifier heads.</p>
+<p><strong>Supervised dataset with k-mer preprocessing:</strong></p>
 <p>```79:160:external_repos/dnabert2/finetune/train.py
 class SupervisedDataset(Dataset):
     def <strong>init</strong>(..., kmer: int = -1):
@@ -5175,24 +5260,28 @@ class SupervisedDataset(Dataset):
         )
         self.input_ids = output["input_ids"]
         self.labels = labels
-<div class="highlight"><pre><span></span><code>### K-mer Utilities (`finetune/train.py`)
-Helper functions create or cache k-mer corpora for experiments that compare raw BPE tokens vs explicit k-mer inputs.
-
-```79:109:external_repos/dnabert2/finetune/train.py
-def generate_kmer_str(sequence: str, k: int) -&gt; str:
-    return &quot; &quot;.join([sequence[i:i+k] for i in range(len(sequence) - k + 1)])
-...
-def load_or_generate_kmer(...):
-    if os.path.exists(kmer_path):
-        with open(kmer_path, &quot;r&quot;) as f:
-            kmer = json.load(f)
-    else:
-        kmer = [generate_kmer_str(text, k) for text in texts]
-        with open(kmer_path, &quot;w&quot;) as f:
-            json.dump(kmer, f)
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>### K-mer Utilities (`finetune/train.py`)
+</span><span id="__span__-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span__-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Helper functions create or cache k-mer corpora for experiments that compare raw BPE tokens vs explicit k-mer inputs.
+</span><span id="__span__-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span__-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>**K-mer generation and caching:**
+</span><span id="__span__-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span__-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>```79:109:external_repos/dnabert2/finetune/train.py
+</span><span id="__span__-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>def generate_kmer_str(sequence: str, k: int) -&gt; str:
+</span><span id="__span__-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    return &quot; &quot;.join([sequence[i:i+k] for i in range(len(sequence) - k + 1)])
+</span><span id="__span__-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>...
+</span><span id="__span__-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>def load_or_generate_kmer(...):
+</span><span id="__span__-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    if os.path.exists(kmer_path):
+</span><span id="__span__-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        with open(kmer_path, &quot;r&quot;) as f:
+</span><span id="__span__-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>            kmer = json.load(f)
+</span><span id="__span__-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    else:
+</span><span id="__span__-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        kmer = [generate_kmer_str(text, k) for text in texts]
+</span><span id="__span__-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        with open(kmer_path, &quot;w&quot;) as f:
+</span><span id="__span__-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>            json.dump(kmer, f)
+</span></code></pre></div></p>
 <h3 id="backbone-lora-finetunetrainpy">Backbone &amp; LoRA (<code>finetune/train.py</code>)<a class="headerlink" href="#backbone-lora-finetunetrainpy" title="Permanent link">&para;</a></h3>
 <p>The trainer script loads <code>AutoModelForSequenceClassification</code>, optionally wraps LoRA adapters (with user-specified target modules), and defers the loss/eval loop to <code>transformers.Trainer</code>.</p>
+<p><strong>Model loading with optional LoRA adapters:</strong></p>
 <p>```235:304:external_repos/dnabert2/finetune/train.py
 tokenizer = transformers.AutoTokenizer.from_pretrained(..., model_max_length=training_args.model_max_length, ...)
 model = transformers.AutoModelForSequenceClassification.from_pretrained(
@@ -5214,36 +5303,36 @@ trainer = transformers.Trainer(
     eval_dataset=val_dataset,
     data_collator=data_collator)
 trainer.train()
-<div class="highlight"><pre><span></span><code>### Embedding Access (README)
-You can grab `[CLS]` embeddings straight from `AutoModel`, as shown in the README example, to feed into multimodal projectors.
-
-```98:110:external_repos/dnabert2/README.md
-inputs = tokenizer(dna, return_tensors = &#39;pt&#39;)[&quot;input_ids&quot;]
-hidden_states = model(inputs)[0] # [1, sequence_length, 768]
-cls_embedding = hidden_states[:, 0, :]
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>### Embedding Access (README)
+</span><span id="__span__-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>You can grab `[CLS]` embeddings straight from `AutoModel`, as shown in the README example, to feed into multimodal projectors.
+</span><span id="__span__-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span__-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>```98:110:external_repos/dnabert2/README.md
+</span><span id="__span__-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>inputs = tokenizer(dna, return_tensors = &#39;pt&#39;)[&quot;input_ids&quot;]
+</span><span id="__span__-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>hidden_states = model(inputs)[0] # [1, sequence_length, 768]
+</span><span id="__span__-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>cls_embedding = hidden_states[:, 0, :]
+</span></code></pre></div></p>
 <h2 id="integration-hooks-genetics-brain">Integration Hooks (Genetics ↔ Brain)<a class="headerlink" href="#integration-hooks-genetics-brain" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Embedding shape.</strong> HF models return <code>last_hidden_state</code> shaped <code>[B, L_tokens, 768]</code>. Use the <code>[:, 0, :]</code> CLS token for classification-style features or mean-pool across tokens for regression-style features.^[<code>98:110:external_repos/dnabert2/README.md</code>]</li>
 <li><strong>Pooling choices.</strong> CLS pooling mirrors the pretraining objective; mean pooling smooths noise, and max pooling highlights motifs. You can concatenate these pooled views before projection if you need richer features.</li>
 <li><strong>Projection to shared latent.</strong> Map <code>[B, 768]</code> vectors into a 512-D brain space:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">DNABERT2Projector</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="o">=</span><span class="mi">768</span><span class="p">,</span> <span class="n">output_dim</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">layers</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
-            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="mi">1024</span><span class="p">),</span>
-            <span class="n">nn</span><span class="o">.</span><span class="n">GELU</span><span class="p">(),</span>
-            <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout</span><span class="p">),</span>
-            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">),</span>
-            <span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">(</span><span class="n">output_dim</span><span class="p">),</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span__-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+</span><span id="__span__-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span__-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">class</span><span class="w"> </span><span class="nc">DNABERT2Projector</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span><span id="__span__-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="o">=</span><span class="mi">768</span><span class="p">,</span> <span class="n">output_dim</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+</span><span id="__span__-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span id="__span__-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">layers</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+</span><span id="__span__-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="mi">1024</span><span class="p">),</span>
+</span><span id="__span__-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">GELU</span><span class="p">(),</span>
+</span><span id="__span__-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout</span><span class="p">),</span>
+</span><span id="__span__-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">),</span>
+</span><span id="__span__-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">(</span><span class="n">output_dim</span><span class="p">),</span>
+</span><span id="__span__-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>        <span class="p">)</span>
+</span><span id="__span__-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+</span><span id="__span__-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+</span><span id="__span__-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></code></pre></div>
 <ul>
 <li><strong>Normalization.</strong> LayerNorm (as above) or z-scoring per batch keeps embeddings compatible with BrainLM/BrainMT outputs that also end in norm layers.</li>
 <li><strong>Sequence hygiene.</strong> Stick to uppercase A/C/G/T before tokenization; when enabling k-mer augmentation, remember the transformation shortens the sequence by <code>k-1</code>, so adjust <code>model_max_length</code> in <code>TrainingArguments</code> to avoid truncation.^[<code>79:109:external_repos/dnabert2/finetune/train.py</code>][<code>43:52:external_repos/dnabert2/finetune/train.py</code>]</li>

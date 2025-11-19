@@ -1641,6 +1641,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Reference Materials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#knowledge-base-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Knowledge Base Resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#original-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Original Sources
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3555,6 +3583,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kb/paper_cards/swift_2023.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT (2023)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3686,6 +3742,34 @@
     
   
     GENERator (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kb/paper_cards/dnabert2_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2 (2024)
   
 
     
@@ -4304,6 +4388,34 @@
     
   
     Foundation models overview (2024)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kb/paper_cards/tabpfn_2024.yaml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TabPFN (2024)
   
 
     
@@ -5237,22 +5349,22 @@
 - <strong>Vision-language alignment:</strong> Contrastive learning patterns transferable to brain scans + radiology reports
 - <strong>Zero-shot rare disease:</strong> Critical for uncommon neurological phenotypes with &lt;100 cases</p>
 <p><strong>Potential adaptation for neuroimaging:</strong>
-<div class="highlight"><pre><span></span><code>Brain MRI voxels → Patch embeddings (BrainLM, SwiFT)
-                → 3D grid of features
-                → Vision transformer with long-context encoding
-                → Contrastive alignment with radiology reports
-                → Zero-shot diagnosis + report generation
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Brain MRI voxels → Patch embeddings (BrainLM, SwiFT)
+</span><span id="__span__-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                → 3D grid of features
+</span><span id="__span__-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>                → Vision transformer with long-context encoding
+</span><span id="__span__-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>                → Contrastive alignment with radiology reports
+</span><span id="__span__-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>                → Zero-shot diagnosis + report generation
+</span></code></pre></div></p>
 <h3 id="for-arpa-h-brain-omics-model-bom">For ARPA-H Brain-Omics Model (BOM)<a class="headerlink" href="#for-arpa-h-brain-omics-model-bom" title="Permanent link">&para;</a></h3>
 <p>TITAN demonstrates <strong>whole-system feature extraction</strong>:</p>
-<div class="highlight"><pre><span></span><code>Gene variants → Regional embeddings
-               ↓
-Brain volumes → Multi-scale features (voxel → region → whole-brain)
-               ↓
-               Vision-language alignment
-               ↓
-Clinical predictions + report generation
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Gene variants → Regional embeddings
+</span><span id="__span__-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>               ↓
+</span><span id="__span__-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Brain volumes → Multi-scale features (voxel → region → whole-brain)
+</span><span id="__span__-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>               ↓
+</span><span id="__span__-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>               Vision-language alignment
+</span><span id="__span__-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>               ↓
+</span><span id="__span__-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>Clinical predictions + report generation
+</span></code></pre></div>
 <p><strong>Transfer insights:</strong>
 - <strong>Long-context modeling:</strong> Process entire brain volumes without cropping/downsampling
 - <strong>Rare phenotype retrieval:</strong> TITAN's retrieval success informs rare genetic disorder diagnosis
@@ -5260,15 +5372,15 @@ Clinical predictions + report generation
 - <strong>Synthetic caption generation:</strong> PathChat patterns applicable to brain ROI descriptions</p>
 <h2 id="embedding-extraction-workflow">Embedding Extraction Workflow<a class="headerlink" href="#embedding-extraction-workflow" title="Permanent link">&para;</a></h2>
 <p>If adapting TITAN for neuroimaging:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># 1. Extract patch-level features from brain scans</span>
-<span class="c1">#    - Use BrainLM or SwiFT as patch encoder (analogous to CONCH)</span>
-<span class="c1"># 2. Arrange patches into 3D grid preserving spatial layout</span>
-<span class="c1"># 3. Apply vision transformer with long-context positional encoding</span>
-<span class="c1"># 4. Stage 1: Self-supervised pretraining on brain volumes</span>
-<span class="c1"># 5. Stage 2: ROI-level alignment with synthetic captions</span>
-<span class="c1"># 6. Stage 3: Whole-scan alignment with radiology reports</span>
-<span class="c1"># 7. Extract embeddings for downstream tasks</span>
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span__-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># 1. Extract patch-level features from brain scans</span>
+</span><span id="__span__-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1">#    - Use BrainLM or SwiFT as patch encoder (analogous to CONCH)</span>
+</span><span id="__span__-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># 2. Arrange patches into 3D grid preserving spatial layout</span>
+</span><span id="__span__-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># 3. Apply vision transformer with long-context positional encoding</span>
+</span><span id="__span__-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># 4. Stage 1: Self-supervised pretraining on brain volumes</span>
+</span><span id="__span__-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># 5. Stage 2: ROI-level alignment with synthetic captions</span>
+</span><span id="__span__-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># 6. Stage 3: Whole-scan alignment with radiology reports</span>
+</span><span id="__span__-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1"># 7. Extract embeddings for downstream tasks</span>
+</span></code></pre></div>
 <p><strong>For neuro-omics KB:</strong>
 - <strong>Hierarchical features:</strong> Multi-scale brain representations
 - <strong>Report alignment:</strong> Connect brain scans with clinical text
@@ -5304,17 +5416,26 @@ Clinical predictions + report generation
 - <strong>M3FM:</strong> For CLIP-style alignment with medical reports
 - <strong>BAGEL:</strong> For unified understanding + generation across modalities</p>
 <h2 id="reference-materials">Reference Materials<a class="headerlink" href="#reference-materials" title="Permanent link">&para;</a></h2>
-<p><strong>Primary sources:</strong>
-- <strong>Paper:</strong> <a href="../../../generated/kb_curated/papers-md/titan_2025/">TITAN (2025)</a> — Nature Medicine
+<h3 id="knowledge-base-resources">Knowledge Base Resources<a class="headerlink" href="#knowledge-base-resources" title="Permanent link">&para;</a></h3>
+<p><strong>Curated materials in this KB:</strong>
+- <strong>Paper summary &amp; notes (PDF):</strong> <a href="../../../generated/kb_curated/papers-pdf/titan_2025.pdf">TITAN (2025)</a>
 - <strong>Code walkthrough:</strong> <a href="../../../code_walkthroughs/titan_walkthrough/">TITAN walkthrough</a>
-- <strong>YAML card:</strong> <a href="https://github.com/allison-eunse/neuro-omics-kb/blob/main/kb/model_cards/titan.yaml">kb/model_cards/titan.yaml</a></p>
+- <strong>Model card (YAML):</strong> <code>kb/model_cards/titan.yaml</code>
+- <strong>Paper card (YAML):</strong> <code>kb/paper_cards/titan_2025.yaml</code></p>
 <p><strong>Integration recipes:</strong>
 - <a href="../../../integration/multimodal_architectures/">Multimodal Architectures</a>
 - <a href="../../../integration/design_patterns/">Design Patterns</a> — Hierarchical vision-language
 - <a href="../../../integration/integration_strategy/">Integration Strategy</a></p>
-<p><strong>Source repository:</strong>
-- <strong>Local:</strong> <code>external_repos/titan/</code>
-- <strong>GitHub:</strong> <a href="https://github.com/mahmoodlab/TITAN">mahmoodlab/TITAN</a></p>
+<h3 id="original-sources">Original Sources<a class="headerlink" href="#original-sources" title="Permanent link">&para;</a></h3>
+<p><strong>Source code repositories:</strong>
+- <strong>Local copy:</strong> <code>external_repos/titan/</code>
+- <strong>Official GitHub:</strong> <a href="https://github.com/mahmoodlab/TITAN">mahmoodlab/TITAN</a></p>
+<p><strong>Original paper:</strong>
+- <strong>Title:</strong> "TITAN: A Multimodal Whole-Slide Foundation Model for Computational Pathology"
+- <strong>Authors:</strong> Ding, Tong; Wagner, Sophia J.; Song, Andrew H.; Chen, Richard J.; Lu, Ming Y.; Zhang, Andrew; Vaidya, Anurag J.; Jaume, Guillaume; Shaban, Muhammad; Kim, Ahrong; Williamson, Drew F. K.; Robertson, Harry; Chen, Bowen; Almagro-Pérez, Cristina; Doucet, Paul; Sahai, Sharifa; Chen, Chengkuan; Chen, Christina S.; Komura, Daisuke; Kawabe, Akihiro; Ochi, Mieko; Sato, Shinya; Yokose, Tomoyuki; Miyagi, Yohei; Ishikawa, Shumpei; Gerber, Georg; Peng, Tingying; Le, Long Phi; Mahmood, Faisal
+- <strong>Published:</strong> Nature Medicine, 2025
+- <strong>Link:</strong> <a href="https://www.nature.com/articles/s41591-024-03235-7">Nature: s41591-024-03235-7</a>
+- <strong>PDF (local):</strong> <a href="../../../generated/kb_curated/papers-pdf/titan_2025.pdf">titan_2025.pdf</a></p>
 <h2 id="next-steps-in-our-pipeline">Next Steps in Our Pipeline<a class="headerlink" href="#next-steps-in-our-pipeline" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>Hierarchical architecture study:</strong> Extract multi-scale patterns for brain imaging</li>
