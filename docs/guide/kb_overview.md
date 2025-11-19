@@ -1,7 +1,7 @@
 ---
 title: KB Overview
-status: draft
-updated: 2025-11-18
+status: active
+updated: 2025-11-20
 ---
 
 # Navigating the Neuro-Omics KB
@@ -31,48 +31,75 @@ flowchart LR
 ## Core navigation map
 
 ???+ info "Critical sections"
-    - **Decisions → Integration plan (Nov 2025)**: why we start with late fusion + CCA before escalating to larger Brain-Omics Model (BOM) alignment.
-    - **Integration → Strategy**: shared preprocessing doctrine and escalation triggers.
-    - **Integration → Analysis recipes**: step-by-step guides for CCA, prediction baselines, partial correlations, and LOGO attribution.
-    - **Integration → Modality features**: per-modality feature prep with links to the embedding strategy IDs (Genomics, sMRI, fMRI, and planned EEG / developmental behavioural specs).
-    - **Models**: each FM’s walkthrough plus the YAML card referenced in `kb/model_cards/*.yaml` (genetic FMs, Brain FMs, and future EEG / Multi-Omics FMs).
-    - **Data**: governance/QC logs and schema maps, including UKB and future developmental / neurodevelopmental cohorts.
+    - **Decisions → Integration plan (Nov 2025)**: Phased escalation roadmap from late fusion → two-tower contrastive → LLM-as-bridge → unified MoT transformer, aligned with ARPA-H BOM design.
+    - **Integration → Strategy**: Shared preprocessing doctrine, embedding policies, and escalation triggers.
+    - **Integration → Analysis recipes**: Step-by-step guides for CCA+permutation, prediction baselines, partial correlations, and LOGO attribution.
+    - **Integration → Modality features**: Per-modality feature prep with links to embedding strategy IDs (Genomics, sMRI, fMRI, and planned EEG / developmental behavioral specs).
+    - **Integration → Embedding policies**: Naming conventions, PCA dimensionality policy, and version control for embedding strategies.
+    - **Integration → Integration cards**: Multimodal FM patterns, ensemble integration, oncology multimodal review — distilled cross-domain lessons for ARPA-H BOM.
+    - **Models**: Foundation models organized by domain:
+        - **Genetics** (Caduceus, DNABERT-2, Evo2, GENERator)
+        - **Brain** (BrainLM, Brain-JEPA, Brain Harmony, BrainMT, SwiFT)
+        - **Multimodal & Clinical** (BAGEL, MoT, M3FM, Me-LLaMA, TITAN, FMS-Medical catalog)
+    - **Data**: Governance/QC logs and schema maps, including UKB and future developmental / neurodevelopmental cohorts.
+    - **Research Papers**: 22 structured paper summaries (genetics, brain, multimodal, integration methods, genomics/population).
 
 ## Metadata you must log per run
 
 Use the CLI helpers to print the canonical recipes and copy their IDs into your run metadata:
 
 ```bash
-# Embedding (e.g., FreeSurfer PCA-512)
+# Embedding strategy (e.g., FreeSurfer PCA-512 for sMRI)
 python scripts/manage_kb.py ops strategy smri_free_surfer_pca512_v1
 
-# Harmonization (e.g., MURD for T1/T2)
+# Harmonization method (e.g., MURD for T1/T2)
 python scripts/manage_kb.py ops harmonization murd_t1_t2
 
-# Preprocessing stack (e.g., HCP-like rs-fMRI)
+# Preprocessing stack (e.g., HCP-like rs-fMRI for SwiFT)
 python scripts/manage_kb.py ops strategy rsfmri_swift_segments_v1
 ```
 
-Record:
+**Record these IDs in every run:**
 
-1. `embedding_strategies.<id>` for every modality in the experiment.
-2. `harmonization_methods.<id>` (even if it is `none_baseline`).
-3. `rsfmri_preprocessing_pipelines.<id>` whenever an rs-fMRI FM is involved.
-4. CV scheme (`StratifiedGroupKFold`, seed, groups) and manifest used.
+1. `embedding_strategies.<id>` for every modality in the experiment
+2. `harmonization_methods.<id>` (even if it is `none_baseline`)
+3. `rsfmri_preprocessing_pipelines.<id>` whenever an rs-fMRI FM is involved
+4. CV scheme (`StratifiedGroupKFold`, seed, groups) and manifest used
+5. Model versions and checkpoints (link to YAML cards in `kb/model_cards/`)
+
+**Why this matters:**
+- Reproducibility: Same strategy ID → same preprocessing → comparable results across runs
+- Versioning: If preprocessing changes, increment the version suffix (e.g., `_v1` → `_v2`)
+- Traceability: Link experiment configs back to KB metadata cards
 
 ## How content stays consistent
 
-- **Template-first editing.** Every new card starts from the templates in `kb/templates/`.
-- **Docs ↔ YAML parity.** If a doc cites a field (e.g., embedding recipe level), the corresponding YAML must include it.
-- **Strict builds.** `mkdocs build --strict` guards against broken navigation before publishing.
+- **Template-first editing:** Every new card starts from templates in `kb/templates/` or `docs/models/integrations/template.md`
+- **Docs ↔ YAML parity:** If a doc cites a field (e.g., embedding recipe level), the corresponding YAML must include it
+- **Strict builds:** `mkdocs build --strict` guards against broken navigation before publishing
+- **Quality gates:** Pre-commit hooks (`ruff`, `mypy`, `kb-validate-*`) catch errors early
+- **Integration card curation:** New multimodal patterns are distilled into integration cards (e.g., `multimodal_fm_patterns.md`) to guide ARPA-H BOM design
 
 ## Suggested reading order
 
-1. **KB overview (this page).**
-2. **Integration strategy** for the big-picture method.
-3. **Modality feature specs** for the modality you plan to touch.
-4. **Relevant model walkthrough** under Code Walkthroughs.
-5. **Experiment config** template that matches your goal (CCA, prediction, LOGO).
+### 🆕 New to this KB
+1. **KB overview (this page)** — Understand the structure and navigation map
+2. **Integration plan (Nov 2025)** — Phased escalation roadmap with decision tree
+3. **Model overviews** — Start with [Genetics](../models/genetics/index.md), [Brain](../models/brain/index.md), or [Multimodal](../models/multimodal/index.md)
+4. **Code walkthrough** — Hands-on guide for your chosen FM (e.g., [Caduceus](../code_walkthroughs/caduceus_walkthrough.md), [BrainLM](../code_walkthroughs/brainlm_walkthrough.md))
+
+### 🔬 Planning an analysis
+1. **Integration strategy** — Big-picture fusion approach and embedding policies
+2. **Modality features** — Per-modality prep for [Genomics](../integration/modality_features/genomics.md), [sMRI](../integration/modality_features/smri.md), [fMRI](../integration/modality_features/fmri.md)
+3. **Analysis recipe** — Pick [CCA+permutation](../integration/analysis_recipes/cca_permutation.md), [Prediction baselines](../integration/analysis_recipes/prediction_baselines.md), or [LOGO](https://github.com/allison-eunse/neuro-omics-kb/blob/main/configs/experiments/03_logo_gene_attribution.yaml)
+4. **Experiment config** — Clone a template from `configs/experiments/` and adapt to your cohort
+
+### 📚 Exploring multimodal architectures
+1. **Integration cards** — [Multimodal FM patterns](../models/integrations/multimodal_fm_patterns.md), [Ensemble integration](../models/integrations/ensemble_integration.md), [Oncology review](../models/integrations/oncology_multimodal_review.md)
+2. **Design patterns** — [General taxonomy](../integration/design_patterns.md) and [Multimodal architectures](../integration/multimodal_architectures.md)
+3. **Multimodal models** — [BAGEL](../models/multimodal/bagel.md), [MoT](../models/multimodal/mot.md), [M3FM](../models/multimodal/m3fm.md), [Me-LLaMA](../models/multimodal/me_llama.md), [TITAN](../models/multimodal/titan.md)
+
+---
 
 Use this map whenever you add new cards or plan analyses—it keeps the documentation, YAML metadata, and experiment configs aligned.
 

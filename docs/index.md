@@ -128,6 +128,11 @@ updated: 2025-11-19
   - [Genomics](integration/modality_features/genomics.md)
   - [sMRI](integration/modality_features/smri.md)
   - [fMRI](integration/modality_features/fmri.md)
+- **Embedding policies:** [integration/embedding_policies.md](integration/embedding_policies.md)
+- **Integration cards:**
+  - [Multimodal FM patterns](models/integrations/multimodal_fm_patterns.md) — ARPA-H BOM design patterns
+  - [Ensemble integration](models/integrations/ensemble_integration.md) — Late fusion best practices
+  - [Oncology multimodal review](models/integrations/oncology_multimodal_review.md) — Cross-domain lessons
 - **Design patterns:** [integration/design_patterns.md](integration/design_patterns.md)
 - **Multimodal architectures:** [integration/multimodal_architectures.md](integration/multimodal_architectures.md)
 
