@@ -1,12 +1,15 @@
 ---
+title: "BrainLM: A Foundation Model For Brain Activity Recordings"
+authors: "Josue Ortega Caro, Antonio H. de O. Fonseca, Syed A. Rizvi, Matteo Rosati, Christopher Averill, James L. Cross, Prateek Mittal, Emanuele Zappala, Rahul M. Dhodapkar, Chadi G. Abdallah, David van Dijk, et al."
+year: 2024
+venue: "ICLR (International Conference on Learning Representations)"
+---
+
 ## BrainLM: A Foundation Model For Brain Activity Recordings
 
 **Authors:** Josue Ortega Caro, Antonio H. de O. Fonseca, Syed A. Rizvi, Matteo Rosati, Christopher Averill, James L. Cross, Prateek Mittal, Emanuele Zappala, Rahul M. Dhodapkar, Chadi G. Abdallah, David van Dijk, et al.  
 **Year:** 2024  
 **Venue:** ICLR (International Conference on Learning Representations)
-
-
----
 
 ## 1. Classification
 

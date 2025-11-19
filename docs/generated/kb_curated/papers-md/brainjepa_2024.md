@@ -1,12 +1,15 @@
 ---
+title: "Brain-JEPA: Brain Dynamics Foundation Model with Gradient Positioning and Spatiotemporal Masking"
+authors: "Zijian Dong, Ruilin Li, Yilei Wu, Thuan Tinh Nguyen, Joanna Su Xian Chong, Fang Ji, Nathanael Ren Jie Tong, Christopher Li Hsian Chen, Juan Helen Zhou"
+year: 2024
+venue: "NeurIPS 2024 (Brain-JEPA: Brain Dynamics Foundation Model)"
+---
+
 # Brain-JEPA: Brain Dynamics Foundation Model with Gradient Positioning and Spatiotemporal Masking
 
 **Authors:** Zijian Dong, Ruilin Li, Yilei Wu, Thuan Tinh Nguyen, Joanna Su Xian Chong, Fang Ji, Nathanael Ren Jie Tong, Christopher Li Hsian Chen, Juan Helen Zhou  
 **Year:** 2024 (approx., based on arXiv:2409.19407 and NeurIPS 2024)  
 **Venue:** NeurIPS 2024 (Brain-JEPA: Brain Dynamics Foundation Model)
-
-
----
 
 ## 1. Classification
 
@@ -309,4 +312,5 @@ If any fine-grained preprocessing details are missing in the main text, they are
 
 
 ---
+
 

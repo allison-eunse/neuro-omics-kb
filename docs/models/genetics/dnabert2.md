@@ -96,20 +96,30 @@ DNABERT-2 provides **flexible tokenization** for Brain-Omics systems:
 
 ## Reference Materials
 
-**Primary sources:**
-- **Paper:** Pending full KB curation — see [Hugging Face model card](https://huggingface.co/zhihan1996/DNABERT-2-117M)
+### Knowledge Base Resources
+
+**Curated materials in this KB:**
+- **Paper card (YAML):** `kb/paper_cards/dnabert2_2024.yaml`
 - **Code walkthrough:** [DNABERT-2 walkthrough](../../code_walkthroughs/dnabert2_walkthrough.md)
-- **YAML card:** `kb/model_cards/dnabert2.yaml`
-- **Paper card:** TBD (add to `kb/paper_cards/dnabert2_2024.yaml` after curation)
+- **Model card (YAML):** `kb/model_cards/dnabert2.yaml`
 
 **Integration recipes:**
 - [Modality Features: Genomics](../../integration/modality_features/genomics.md)
 - [Integration Strategy](../../integration/integration_strategy.md)
 - [CCA + Permutation](../../integration/analysis_recipes/cca_permutation.md)
 
-**Source repository:**
-- **Local:** `external_repos/dnabert2/`
-- **GitHub:** [Zhihan1996/DNABERT2](https://github.com/Zhihan1996/DNABERT2)
+### Original Sources
+
+**Source code repositories:**
+- **Local copy:** `external_repos/dnabert2/`
+- **Official GitHub:** [Zhihan1996/DNABERT2](https://github.com/Zhihan1996/DNABERT2)
+- **Hugging Face:** [zhihan1996/DNABERT-2-117M](https://huggingface.co/zhihan1996/DNABERT-2-117M)
+
+**Original paper:**
+- **Title:** "DNABERT-2: Efficient Foundation Model and Benchmark For Multi-Species Genome"
+- **Authors:** Zhou et al.
+- **Published:** arXiv preprint, 2024
+- **Link:** [arXiv:2306.15006](https://arxiv.org/abs/2306.15006)
 
 ## Next Steps in Our Pipeline
 

@@ -17,7 +17,10 @@ BrainMT pairs bidirectional Mamba mixers (temporal-first scanning) with MHSA tra
 ## Key Components
 
 ### Dataset Loader (`src/brainmt/data/datasets.py`)
+
 The dataset stores fMRI volumes as fp16 tensors (`func_data_MNI_fp16.pt`), slices contiguous time segments, permutes them into `[frames, channel, depth, height, width]`, and returns `(tensor, target)` pairs.
+
+**fMRI dataset with temporal slicing:**
 
 ```15:80:external_repos/brainmt/src/brainmt/data/datasets.py
 class fMRIDataset(Dataset):
@@ -31,7 +34,10 @@ class fMRIDataset(Dataset):
 ```
 
 ### Patch Embed & Conv Blocks (`src/brainmt/models/brain_mt.py`)
+
 `PatchEmbed` downsamples the 4D tensor with strided 3D convolutions before two ConvBlocks + Downsample layers reduce spatial resolution while keeping temporal length.
+
+**3D convolution patch embedding:**
 
 ```202:263:external_repos/brainmt/src/brainmt/models/brain_mt.py
 class PatchEmbed(nn.Module):
@@ -44,7 +50,10 @@ class PatchEmbed(nn.Module):
 ```
 
 ### Hybrid Mamba + Transformer Backbone (`src/brainmt/models/brain_mt.py`)
+
 Temporal-first processing reshapes tokens, feeds them through `create_block` (bidirectional Mamba) and then through transformer attention + MLP to capture residual spatial dependencies.
+
+**Bidirectional Mamba blocks followed by transformer attention:**
 
 ```331:462:external_repos/brainmt/src/brainmt/models/brain_mt.py
 self.layers = nn.ModuleList([
@@ -69,7 +78,10 @@ def forward_features(self, x, ...):
 ```
 
 ### Forward & Head (`src/brainmt/models/brain_mt.py`)
+
 CLS token is prepended before Mamba blocks; `forward` returns final MLP head output for regression/classification.
+
+**CLS token prepending and final head:**
 
 ```400:461:external_repos/brainmt/src/brainmt/models/brain_mt.py
 cls_token = self.cls_token.expand(x.shape[0], -1, -1)
@@ -79,7 +91,10 @@ return hidden_states[:, 0, :]
 ```
 
 ### Training Loop (`src/brainmt/train.py`)
+
 Hydra config builds datasets, wraps the model in DDP, selects loss (MSE or BCEWithLogits), constructs layer-wise LR decay groups, and trains with `GradScaler` + cosine warm restarts.
+
+**DDP training with mixed precision:**
 
 ```132:234:external_repos/brainmt/src/brainmt/train.py
 model = BrainMT(**model_config).to(device)
@@ -92,7 +107,10 @@ val_loss, val_outputs, val_targets = evaluate(model, criteria, val_loader, devic
 ```
 
 ### Inference (`src/brainmt/inference.py`)
+
 The inference script mirrors dataset splits, loads checkpoints, and computes detailed metrics (accuracy/AUROC for classification, MSE/MAE/R²/Pearson for regression), plus optional plots.
+
+**Checkpoint loading and metric computation:**
 
 ```26:210:external_repos/brainmt/src/brainmt/inference.py
 model = BrainMT(**model_config).to(device)

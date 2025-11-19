@@ -17,7 +17,10 @@ Caduceus couples Mamba sequence mixers with reverse-complement parameter sharing
 ## Key Components
 
 ### Tokenizer & Preprocessing (`hg38_char_tokenizer.py`, `rc.py`)
+
 Tokenization is strictly character-based, enumerating all specials and precomputing a complement map so RCPS layers can look up complements without re-tokenizing. String-level utilities supply reverse complements for augmentation or evaluation.
+
+**Character-based vocabulary with complement mapping:**
 
 ```15:74:external_repos/caduceus/src/dataloaders/datasets/hg38_char_tokenizer.py
 class CharacterTokenizer(PreTrainedTokenizer):
@@ -32,6 +35,8 @@ class CharacterTokenizer(PreTrainedTokenizer):
     self.complement_map[self._vocab_str_to_int[k]] = complement_id
 ```
 
+**Reverse complement utilities:**
+
 ```7:27:external_repos/caduceus/src/dataloaders/utils/rc.py
 STRING_COMPLEMENT_MAP = {"A": "T", ...}
 def string_reverse_complement(seq):
@@ -42,7 +47,10 @@ def string_reverse_complement(seq):
 ```
 
 ### Positional & RC Handling (`modeling_caduceus.py`)
+
 Bidirectional Mamba wrappers run forward and reverse streams (optionally weight tied) and merge them, while RCPS-aware embeddings split channel dimensions so hidden states encode forward and RC halves that can be combined later.
+
+**Bidirectional Mamba wrapper:**
 
 ```87:141:external_repos/caduceus/caduceus/modeling_caduceus.py
 class BiMambaWrapper(nn.Module):
@@ -58,6 +66,8 @@ class BiMambaWrapper(nn.Module):
             out = out + out_rev if self.bidirectional_strategy == "add" else out * out_rev
 ```
 
+**RCPS-aware embeddings and mixer:**
+
 ```152:214:external_repos/caduceus/caduceus/modeling_caduceus.py
 class CaduceusEmbeddings(nn.Module):
     if config.rcps:
@@ -71,7 +81,10 @@ class CaduceusMixerModel(nn.Module):
 ```
 
 ### Backbone & Embedding Wrapper (`dna_embedding.py`)
+
 `DNAEmbeddingModelCaduceus` strips the LM head and exposes hidden states shaped `[B, L, d]` for standard mode or `[B, L, d, 2]` when RCPS/conjoined inference is enabled.
+
+**Embedding extraction with RC handling:**
 
 ```156:195:external_repos/caduceus/src/models/sequence/dna_embedding.py
 class DNAEmbeddingModelCaduceus(DNAEmbeddingModel):
@@ -91,7 +104,10 @@ class DNAEmbeddingModelCaduceus(DNAEmbeddingModel):
 ```
 
 ### Training Loop (`train.py`)
+
 The Lightning `SequenceLightningModule` builds datasets/encoders from Hydra configs, forwards batches through encoder/decoder stacks, logs losses/metrics, and supports distributed strategies plus gradient accumulation.
+
+**PyTorch Lightning module structure:**
 
 ```126:377:external_repos/caduceus/train.py
 class SequenceLightningModule(pl.LightningModule):

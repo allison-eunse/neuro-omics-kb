@@ -16,7 +16,10 @@ DNABERT‑2 swaps classic k-mer vocabularies for a DNA BPE tokenizer backed by A
 ## Key Components
 
 ### Tokenizer & Dataset Pipeline (`finetune/train.py`)
+
 `SupervisedDataset` ingests CSVs, optionally swaps sequences for cached k-mer strings, and tokenizes them with the HF tokenizer, honoring `model_max_length` and storing label counts for dynamic classifier heads.
+
+**Supervised dataset with k-mer preprocessing:**
 
 ```79:160:external_repos/dnabert2/finetune/train.py
 class SupervisedDataset(Dataset):
@@ -38,7 +41,10 @@ class SupervisedDataset(Dataset):
 ```
 
 ### K-mer Utilities (`finetune/train.py`)
+
 Helper functions create or cache k-mer corpora for experiments that compare raw BPE tokens vs explicit k-mer inputs.
+
+**K-mer generation and caching:**
 
 ```79:109:external_repos/dnabert2/finetune/train.py
 def generate_kmer_str(sequence: str, k: int) -> str:
@@ -55,7 +61,10 @@ def load_or_generate_kmer(...):
 ```
 
 ### Backbone & LoRA (`finetune/train.py`)
+
 The trainer script loads `AutoModelForSequenceClassification`, optionally wraps LoRA adapters (with user-specified target modules), and defers the loss/eval loop to `transformers.Trainer`.
+
+**Model loading with optional LoRA adapters:**
 
 ```235:304:external_repos/dnabert2/finetune/train.py
 tokenizer = transformers.AutoTokenizer.from_pretrained(..., model_max_length=training_args.model_max_length, ...)

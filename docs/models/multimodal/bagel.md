@@ -111,19 +111,31 @@ BAGEL is not used for embedding extraction in the Neuro-Omics KB (domain mismatc
 
 ## Reference Materials
 
-**Primary sources:**
-- **Paper:** [BAGEL (2025)](../../generated/kb_curated/papers-md/bagel_2025.md) — arXiv preprint
+### Knowledge Base Resources
+
+**Curated materials in this KB:**
+- **Paper summary & notes:** [BAGEL (2025)](../../generated/kb_curated/papers-md/bagel_2025.md)
 - **Code walkthrough:** [BAGEL walkthrough](../../code_walkthroughs/bagel_walkthrough.md)
-- **Paper card:** `kb/paper_cards/bagel_2025.yaml`
+- **Model card (YAML):** `kb/model_cards/bagel.yaml` (if exists)
+- **Paper card (YAML):** `kb/paper_cards/bagel_2025.yaml`
 
 **Integration recipes:**
 - [Multimodal Architectures](../../integration/multimodal_architectures.md)
 - [Design Patterns](../../integration/design_patterns.md)
 - [Integration Strategy](../../integration/integration_strategy.md)
 
-**Source repository:**
-- **Local:** `external_repos/bagel/`
-- **GitHub:** [ChaofanTao/BAGEL](https://github.com/ChaofanTao/BAGEL)
+### Original Sources
+
+**Source code repositories:**
+- **Local copy:** `external_repos/bagel/`
+- **Official GitHub:** [ChaofanTao/BAGEL](https://github.com/ChaofanTao/BAGEL)
+
+**Original paper:**
+- **Title:** "Emerging Properties in Unified Multimodal Pretraining"
+- **Authors:** Deng, Chaorui; Zhu, Deyao; Li, Kunchang; Gou, Chenhui; Li, Feng; Wang, Zeyu; Zhong, Shu; Yu, Weihao; Nie, Xiaonan; Song, Ziang; Shi, Guang; Fan, Haoqi
+- **Published:** arXiv preprint, 2025
+- **Link:** [arXiv:2505.14683](https://arxiv.org/abs/2505.14683)
+- **PDF (local):** [bagel_2025.pdf](../../generated/kb_curated/papers-pdf/bagel_2025.pdf)
 
 ## Next Steps in Our Pipeline
 

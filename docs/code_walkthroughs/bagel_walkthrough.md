@@ -18,7 +18,10 @@ BAGEL couples a Qwen2-style Mixture-of-Transformer decoder, a SigLIP NaViT encod
 ## Key Components
 
 ### Unified Forward Pass (`modeling/bagel/bagel.py`)
+
 `Bagel` hosts the three branches: (1) language tokens (always on), (2) ViT patches for understanding, and (3) VAE latent patches for generation. It projects modality features into the LLM embedding space, injects learned positional/timestep embeddings, and multiplexes MoT experts via packed index tensors. Losses are computed per-branch (CE for text, Smooth L1/MSE for latents) and returned side-by-side.
+
+**Multimodal packed sequence forward:**
 
 ```101:229:external_repos/bagel/modeling/bagel/bagel.py
     def forward(..., packed_text_ids, packed_text_indexes, sample_lens, packed_position_ids,
@@ -48,7 +51,10 @@ BAGEL couples a Qwen2-style Mixture-of-Transformer decoder, a SigLIP NaViT encod
 The same class also defines cache-friendly helpers (`prepare_prompts`, `prepare_vit_images`, `prepare_vae_latent`, `generate_image`, `generate_text`) so both training and inference reuse identical packing rules.^[```232:907:external_repos/bagel/modeling/bagel/bagel.py```]
 
 ### PackedDataset & Sequence Plans (`data/dataset_base.py`)
+
 `PackedDataset` streams heterogenous samples, applies conditional dropout (`text_cond_dropout_prob`, etc.), and emits a single packed tensor blob per batch. Each `sequence_plan` step can insert text spans, ViT patches, or VAE tensors, automatically managing BOS/EOS vision tokens, per-split attention modes, and modality-specific losses.^[```45:400:external_repos/bagel/data/dataset_base.py```]
+
+**Packed tensor conversion:**
 
 ```187:305:external_repos/bagel/data/dataset_base.py
     def to_tensor(self, sequence_status):
@@ -79,9 +85,12 @@ Three dataclasses (`ModelArguments`, `DataArguments`, `TrainingArguments`) expos
 - Periodically logs CE/MSE/token throughput, tracks dataset sampling state for deterministic resumes, and checkpoints both base + EMA weights alongside optimizer/scheduler state.^[```658:867:external_repos/bagel/train/pretrain_unified_navit.py```]
 
 ### Inference Stack (`app.py` + `inferencer.py`)
+
 `app.py` bootstraps configs, shares layers across devices, and lets you choose full precision, NF4, or INT8 quantization before launching the Gradio UI. It wires UI sliders directly to CFG/timestep parameters so experiments match README defaults.^[```25:357:external_repos/bagel/app.py```]
 
-`InterleaveInferencer` encapsulates the streaming generation algorithm: it grows `NaiveCache` instances as you interleave prompts/images, clones contexts for classifier-free guidance, and alternates between textual “thinking” chains and latent diffusion steps.
+`InterleaveInferencer` encapsulates the streaming generation algorithm: it grows `NaiveCache` instances as you interleave prompts/images, clones contexts for classifier-free guidance, and alternates between textual "thinking" chains and latent diffusion steps.
+
+**Streaming inference with context caching:**
 
 ```22:284:external_repos/bagel/inferencer.py
 class InterleaveInferencer:

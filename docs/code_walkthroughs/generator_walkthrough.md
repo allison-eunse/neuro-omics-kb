@@ -19,7 +19,10 @@ GENERator wraps GPT-style causal decoders (1.2 B and 3 B parameters for both
 ## Key Components
 
 ### Tokenizer & Preprocessing (`variant_effect_prediction.py`, `fine_tuning.py`)
+
 The downstream scripts consistently load the HF tokenizer with `trust_remote_code=True`, force pad tokens to EOS if missing, and either truncate or pad every sequence to the nearest 6-mer boundary (`pad_to_multiple_of_six` flag) so the 6-mer BPE never emits `<oov>` tokens.
+
+**Tokenizer initialization:**
 
 ```151:176:external_repos/generator/src/tasks/downstream/variant_effect_prediction.py
 tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
@@ -27,11 +30,15 @@ tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
 inputs = tokenizer(batch_sequences, return_tensors="pt", padding=True)
 ```
 
+**6-mer boundary truncation:**
+
 ```118:125:external_repos/generator/src/tasks/downstream/variant_effect_prediction.py
 truncate_length = len(sequence) % 6
 if truncate_length > 0:
     sequence = sequence[truncate_length:]
 ```
+
+**Padding to 6-mer multiples:**
 
 ```208:243:external_repos/generator/src/tasks/downstream/fine_tuning.py
 if pad_to_multiple_of_six:
@@ -63,7 +70,10 @@ elif length_extension_mode == "sliding_window":
 ```
 
 ### Backbone Instantiation (`fine_tuning.py`, `sequence_understanding.py`)
+
 Fine-tuning uses `AutoModelForCausalLM` with optional pad ID fixes, while sequence-understanding swaps in `AutoModelForSequenceClassification` or the ChunkEnsemble wrapper to keep a rolling window over million-token sequences.
+
+**Causal LM model loading:**
 
 ```257:285:external_repos/generator/src/tasks/downstream/fine_tuning.py
 model = AutoModelForCausalLM.from_pretrained(

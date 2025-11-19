@@ -1,12 +1,15 @@
 ---
+title: "Brain Harmony: A Multimodal Foundation Model Unifying Morphology and Function into 1D Tokens"
+authors: "Zijian Dong, Ruilin Li, Joanna Su Xian Chong, Niousha Dehestani, Yinghui Teng, Yi Lin, Zhizhou Li, Yichi Zhang, Yapei Xie, Leon Qi Rong Ooi, B.T. Thomas Yeo, Juan Helen Zhou"
+year: 2025
+venue: "NeurIPS 2025"
+---
+
 # Brain Harmony: A Multimodal Foundation Model Unifying Morphology and Function into 1D Tokens
 
 **Authors:** Zijian Dong, Ruilin Li, Joanna Su Xian Chong, Niousha Dehestani, Yinghui Teng, Yi Lin, Zhizhou Li, Yichi Zhang, Yapei Xie, Leon Qi Rong Ooi, B.T. Thomas Yeo, Juan Helen Zhou  
 **Year:** 2025  
 **Venue:** NeurIPS 2025
-
-
----
 
 ## 1. Classification
 
@@ -239,4 +242,5 @@ Brain Harmony (BrainHarmonix) is a multimodal brain foundation model that learns
 
 
 ---
+
 

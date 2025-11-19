@@ -119,19 +119,32 @@ MoT is an **architectural pattern**, not a standalone model, but if implementing
 
 ## Reference Materials
 
-**Primary sources:**
-- **Paper:** [MoT (2025)](../../generated/kb_curated/papers-md/mot_2025.md) — TMLR 2025
+### Knowledge Base Resources
+
+**Curated materials in this KB:**
+- **Paper summary & notes:** [MoT (2025)](../../generated/kb_curated/papers-md/mot_2025.md)
 - **Code walkthrough:** [MoT walkthrough](../../code_walkthroughs/mot_walkthrough.md)
-- **Paper card:** `kb/paper_cards/mot_2025.yaml`
+- **Model card (YAML):** `kb/model_cards/mot.yaml` (if exists)
+- **Paper card (YAML):** `kb/paper_cards/mot_2025.yaml`
 
 **Integration recipes:**
 - [Multimodal Architectures](../../integration/multimodal_architectures.md)
 - [Design Patterns](../../integration/design_patterns.md)
 - [Integration Strategy](../../integration/integration_strategy.md)
 
-**Source repository:**
-- **Local:** `external_repos/MoT/`
-- **GitHub:** [Meta Mixture-of-Transformers](https://github.com/facebookresearch/MoT)
+### Original Sources
+
+**Source code repositories:**
+- **Local copy:** `external_repos/MoT/`
+- **Official GitHub:** [Meta Mixture-of-Transformers](https://github.com/facebookresearch/MoT)
+
+**Original paper:**
+- **Title:** "Mixture-of-Transformers: A Sparse and Scalable Architecture for Multi-Modal Foundation Models"
+- **Authors:** Liang, Weixin; Yu, Lili; Luo, Liang; Iyer, Srinivasan; Dong, Ning; Zhou, Chunting; Ghosh, Gargi; Lewis, Mike; Yih, Wen-tau; Zettlemoyer, Luke; Lin, Xi Victoria
+- **Published:** Transactions on Machine Learning Research (TMLR), 2025
+- **Link:** [arXiv:2411.04996](https://arxiv.org/abs/2411.04996)
+- **DOI:** [10.48550/arXiv.2411.04996](https://doi.org/10.48550/arXiv.2411.04996)
+- **PDF (local):** [mot_2025.pdf](../../generated/kb_curated/papers-pdf/mot_2025.pdf)
 
 ## Next Steps in Our Pipeline
 

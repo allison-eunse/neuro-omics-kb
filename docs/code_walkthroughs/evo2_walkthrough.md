@@ -20,7 +20,10 @@ Evo 2 packages StripedHyena 2 checkpoints behind a lightweight Python API so y
 ## Key Components
 
 ### Tokenizer & Preprocessing (`evo2/evo2/models.py`, `evo2/evo2/scoring.py`)
+
 The API always instantiates a Vortex `CharLevelTokenizer(512)` and pairs it with pad/BOS conventions inside `prepare_batch`, which right-pads sequences to the longest length in the batch while optionally prepending an EOD token for language modeling reductions.
+
+**Character-level tokenizer initialization:**
 
 ```19:34:external_repos/evo2/evo2/models.py
 class Evo2:
@@ -28,6 +31,8 @@ class Evo2:
         ...
         self.tokenizer = CharLevelTokenizer(512)
 ```
+
+**Batch preparation with padding and BOS:**
 
 ```10:34:external_repos/evo2/evo2/scoring.py
 def prepare_batch(
@@ -47,7 +52,10 @@ def prepare_batch(
 ```
 
 ### Positional & Reverse-Complement Handling (`evo2/evo2/scoring.py`)
+
 Reverse-complement scoring duplicates the batch, flips it via Biopython, and averages the two likelihood traces so downstream metrics remain strand invariant.
+
+**RC-aware scoring with averaging:**
 
 ```127:170:external_repos/evo2/evo2/scoring.py
 def score_sequences_rc(...):
@@ -59,7 +67,10 @@ def score_sequences_rc(...):
 ```
 
 ### Backbone Loader (`evo2/evo2/models.py`, `evo2/evo2/configs/evo2-7b-1m.yml`)
+
 `load_evo2_model` resolves the YAML config, instantiates `StripedHyena` with the Hyena/Mamba layer schedule, and merges HF shards (removing them afterward) before loading the `.pt` checkpoint.
+
+**Model loading with config resolution:**
 
 ```171:258:external_repos/evo2/evo2/models.py
 def load_evo2_model(...):

@@ -51,7 +51,7 @@ feature_preparation:
   covariates:
     - age
     - sex
-    - site  # scanner site
+    - site_scanner  # scanner site
     - icv   # intracranial volume (for sMRI normalization)
     - pc1   # genetic PCs 1-10
     - pc2

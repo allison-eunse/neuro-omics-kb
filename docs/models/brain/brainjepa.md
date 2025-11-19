@@ -89,20 +89,31 @@ Brain-JEPA provides **lower-latency fMRI encoding** compared to full autoencodin
 
 ## Reference Materials
 
-**Primary sources:**
-- **Paper:** [Brain-JEPA (2024)](../../generated/kb_curated/papers-pdf/brainjepa_2024.pdf)
+### Knowledge Base Resources
+
+**Curated materials in this KB:**
+- **Paper summary & notes:** [Brain-JEPA (2024)](../../generated/kb_curated/papers-md/brainjepa_2024.md)
 - **Code walkthrough:** [Brain-JEPA walkthrough](../../code_walkthroughs/brainjepa_walkthrough.md)
-- **YAML card:** `kb/model_cards/brainjepa.yaml`
-- **Paper card:** `kb/paper_cards/brainjepa_2024.yaml`
+- **Model card (YAML):** `kb/model_cards/brainjepa.yaml`
+- **Paper card (YAML):** `kb/paper_cards/brainjepa_2024.yaml`
 
 **Integration recipes:**
 - [Modality Features: fMRI](../../integration/modality_features/fmri.md)
 - [Integration Strategy](../../integration/integration_strategy.md)
 - [Design Patterns](../../integration/design_patterns.md)
 
-**Source repository:**
-- **Local:** `external_repos/brainjepa/`
-- **GitHub:** [janklees/brainjepa](https://github.com/janklees/brainjepa)
+### Original Sources
+
+**Source code repositories:**
+- **Local copy:** `external_repos/brainjepa/`
+- **Official GitHub:** [janklees/brainjepa](https://github.com/janklees/brainjepa)
+
+**Original paper:**
+- **Title:** "Brain-JEPA: Brain Dynamics Foundation Model with Joint-Embedding Predictive Architecture"
+- **Authors:** Wang, Richard; et al.
+- **Published:** arXiv preprint, 2024
+- **Link:** [arXiv:2409.19407](https://arxiv.org/abs/2409.19407)
+- **PDF (local):** [brainjepa_2024.pdf](../../generated/kb_curated/papers-pdf/brainjepa_2024.pdf)
 
 ## Next Steps in Our Pipeline
 

@@ -18,7 +18,10 @@
 ## Key Components
 
 ### Survey Metadata & NEWS Banner
+
 Top-of-file announcements capture publication milestones, acceptance venues, and contact information. These lines can drive KB changelogs or curated timelines.
+
+**README header with news updates:**
 
 ```5:34:/Users/allison/Projects/neuro-omics-kb/external_repos/fms-medical/README.md
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
@@ -31,7 +34,10 @@ Top-of-file announcements capture publication milestones, acceptance venues, and
 ```
 
 ### Modality Method Registries (LFM/VFM/BFM/MFM)
+
 Each section groups methods by year, venue, and modality. Capturing these rows lets the KB auto-generate candidate model cards or integration experiments.
+
+**Method listings by modality:**
 
 ```82:210:/Users/allison/Projects/neuro-omics-kb/external_repos/fms-medical/README.md
 ## LFM methods
@@ -45,7 +51,10 @@ Each section groups methods by year, venue, and modality. Capturing these rows l
 ```
 
 ### Dataset Catalogs
+
 Separate tables detail datasets per modality (text, imaging, multimodal). These rows map neatly onto `kb/datasets/*.yaml` and help ensure coverage across integrative experiments.
+
+**Dataset tables by modality:**
 
 ```339:399:/Users/allison/Projects/neuro-omics-kb/external_repos/fms-medical/README.md
 ## Datasets

@@ -101,19 +101,30 @@ GENERator demonstrates **generative modeling** for biological sequences:
 
 ## Reference Materials
 
-**Primary sources:**
-- **Paper:** [GENERator (2024)](../../generated/kb_curated/papers-pdf/generator_2024.pdf)
+### Knowledge Base Resources
+
+**Curated materials in this KB:**
+- **Paper summary & notes:** [GENERator (2024)](../../generated/kb_curated/papers-md/generator_2024.md)
 - **Code walkthrough:** [GENERator walkthrough](../../code_walkthroughs/generator_walkthrough.md)
-- **YAML card:** `kb/model_cards/generator.yaml`
-- **Paper card:** `kb/paper_cards/generator_2024.yaml`
+- **Model card (YAML):** `kb/model_cards/generator.yaml`
+- **Paper card (YAML):** `kb/paper_cards/generator_2024.yaml`
 
 **Integration recipes:**
 - [Modality Features: Genomics](../../integration/modality_features/genomics.md)
 - [Integration Strategy](../../integration/integration_strategy.md)
 
-**Source repository:**
-- **Local:** `external_repos/generator/`
-- **GitHub:** [GenerTeam/GENERator](https://github.com/GenerTeam/GENERator)
+### Original Sources
+
+**Source code repositories:**
+- **Local copy:** `external_repos/generator/`
+- **Official GitHub:** [GenerTeam/GENERator](https://github.com/GenerTeam/GENERator)
+
+**Original paper:**
+- **Title:** "GENERator: A Long-Context Generative Genomic Foundation Model"
+- **Authors:** Wu, Wei; Li, Qiuyi; et al.
+- **Published:** arXiv preprint, 2024
+- **Link:** [arXiv:2502.07272](https://arxiv.org/abs/2502.07272)
+- **PDF (local):** [generator_2024.pdf](../../generated/kb_curated/papers-pdf/generator_2024.pdf)
 
 ## Next Steps in Our Pipeline
 

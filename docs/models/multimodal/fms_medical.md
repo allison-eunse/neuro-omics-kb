@@ -143,20 +143,28 @@ git clone https://github.com/YutingHe-list/Awesome-Foundation-Models-for-Advanci
 
 ## Reference Materials
 
-**Primary sources:**
-- **Catalog:** [FMS-Medical GitHub](https://github.com/YutingHe-list/Awesome-Foundation-Models-for-Advancing-Healthcare)
-- **Survey paper:** [IEEE Reviews in Biomedical Engineering (2024)](https://ieeexplore.ieee.org/document/10750441)
-- **arXiv version:** [Foundation Models for Healthcare (2024)](https://arxiv.org/abs/2404.03264)
+### Knowledge Base Resources
+
+**Curated materials in this KB:**
 - **Code walkthrough:** [FMS-Medical walkthrough](../../code_walkthroughs/fms_medical_walkthrough.md)
-- **KB dataset card:** [kb/datasets/fms_medical_catalog.yaml](https://github.com/allison-eunse/neuro-omics-kb/blob/main/kb/datasets/fms_medical_catalog.yaml)
+- **Dataset card (YAML):** `kb/datasets/fms_medical_catalog.yaml`
 
 **Integration recipes:**
 - [Integration Strategy](../../integration/integration_strategy.md) — Dataset selection
 - [KB Overview](../../guide/kb_overview.md) — Catalog integration patterns
 
-**Source repository:**
-- **Local:** `external_repos/fms-medical/`
-- **GitHub:** [YutingHe-list/Awesome-Foundation-Models-for-Advancing-Healthcare](https://github.com/YutingHe-list/Awesome-Foundation-Models-for-Advancing-Healthcare)
+### Original Sources
+
+**Source repositories:**
+- **Local copy:** `external_repos/fms-medical/`
+- **Official GitHub:** [YutingHe-list/Awesome-Foundation-Models-for-Advancing-Healthcare](https://github.com/YutingHe-list/Awesome-Foundation-Models-for-Advancing-Healthcare)
+
+**Original survey paper:**
+- **Title:** "Foundation Models for Healthcare"
+- **Authors:** Yuting He, et al.
+- **Published:** IEEE Reviews in Biomedical Engineering, 2024
+- **Link (IEEE):** [IEEE Xplore: 10750441](https://ieeexplore.ieee.org/document/10750441)
+- **Link (arXiv):** [arXiv:2404.03264](https://arxiv.org/abs/2404.03264)
 
 ## Next Steps in Our Pipeline
 

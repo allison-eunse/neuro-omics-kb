@@ -122,19 +122,32 @@ If adapting M3FM for brain imaging:
 
 ## Reference Materials
 
-**Primary sources:**
-- **Paper:** [M3FM (2025)](../../generated/kb_curated/papers-md/m3fm_2025.md) — npj Digital Medicine
+### Knowledge Base Resources
+
+**Curated materials in this KB:**
+- **Paper summary & notes:** [M3FM (2025)](../../generated/kb_curated/papers-md/m3fm_2025.md)
 - **Code walkthrough:** [M3FM walkthrough](../../code_walkthroughs/m3fm_walkthrough.md)
-- **YAML card:** [kb/model_cards/m3fm.yaml](https://github.com/allison-eunse/neuro-omics-kb/blob/main/kb/model_cards/m3fm.yaml)
+- **Model card (YAML):** `kb/model_cards/m3fm.yaml`
+- **Paper card (YAML):** `kb/paper_cards/m3fm_2025.yaml`
 
 **Integration recipes:**
 - [Multimodal Architectures](../../integration/multimodal_architectures.md)
 - [Design Patterns](../../integration/design_patterns.md) — Two-tower contrastive section
 - [Integration Strategy](../../integration/integration_strategy.md)
 
-**Source repository:**
-- **Local:** `external_repos/M3FM/`
-- **GitHub:** [ai-in-health/M3FM](https://github.com/ai-in-health/M3FM)
+### Original Sources
+
+**Source code repositories:**
+- **Local copy:** `external_repos/M3FM/`
+- **Official GitHub:** [ai-in-health/M3FM](https://github.com/ai-in-health/M3FM)
+
+**Original paper:**
+- **Title:** "M3FM: A Multimodal, Multidomain, Multilingual Medical Foundation Model for Zero‑Shot Clinical Diagnosis"
+- **Authors:** Liu, Fenglin; Li, Zheng; Yin, Qingyu; Huang, Jinfa; Luo, Jiebo; Thakur, Anshul; Branson, Kim; Schwab, Patrick; Yin, Bing; Wu, Xian; Zheng, Yefeng; Clifton, David A.
+- **Published:** npj Digital Medicine, 2025
+- **Link:** [Nature: s41746-024-01339-7](https://www.nature.com/articles/s41746-024-01339-7)
+- **DOI:** [10.1038/s41746-024-01339-7](https://doi.org/10.1038/s41746-024-01339-7)
+- **PDF (local):** [m3fm_2025.pdf](../../generated/kb_curated/papers-pdf/m3fm_2025.pdf)
 
 ## Next Steps in Our Pipeline
 

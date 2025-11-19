@@ -126,19 +126,31 @@ If adapting TITAN for neuroimaging:
 
 ## Reference Materials
 
-**Primary sources:**
-- **Paper:** [TITAN (2025)](../../generated/kb_curated/papers-md/titan_2025.md) — Nature Medicine
+### Knowledge Base Resources
+
+**Curated materials in this KB:**
+- **Paper summary & notes:** [TITAN (2025)](../../generated/kb_curated/papers-md/titan_2025.md)
 - **Code walkthrough:** [TITAN walkthrough](../../code_walkthroughs/titan_walkthrough.md)
-- **YAML card:** [kb/model_cards/titan.yaml](https://github.com/allison-eunse/neuro-omics-kb/blob/main/kb/model_cards/titan.yaml)
+- **Model card (YAML):** `kb/model_cards/titan.yaml`
+- **Paper card (YAML):** `kb/paper_cards/titan_2025.yaml`
 
 **Integration recipes:**
 - [Multimodal Architectures](../../integration/multimodal_architectures.md)
 - [Design Patterns](../../integration/design_patterns.md) — Hierarchical vision-language
 - [Integration Strategy](../../integration/integration_strategy.md)
 
-**Source repository:**
-- **Local:** `external_repos/titan/`
-- **GitHub:** [mahmoodlab/TITAN](https://github.com/mahmoodlab/TITAN)
+### Original Sources
+
+**Source code repositories:**
+- **Local copy:** `external_repos/titan/`
+- **Official GitHub:** [mahmoodlab/TITAN](https://github.com/mahmoodlab/TITAN)
+
+**Original paper:**
+- **Title:** "TITAN: A Multimodal Whole-Slide Foundation Model for Computational Pathology"
+- **Authors:** Ding, Tong; Wagner, Sophia J.; Song, Andrew H.; Chen, Richard J.; Lu, Ming Y.; Zhang, Andrew; Vaidya, Anurag J.; Jaume, Guillaume; Shaban, Muhammad; Kim, Ahrong; Williamson, Drew F. K.; Robertson, Harry; Chen, Bowen; Almagro-Pérez, Cristina; Doucet, Paul; Sahai, Sharifa; Chen, Chengkuan; Chen, Christina S.; Komura, Daisuke; Kawabe, Akihiro; Ochi, Mieko; Sato, Shinya; Yokose, Tomoyuki; Miyagi, Yohei; Ishikawa, Shumpei; Gerber, Georg; Peng, Tingying; Le, Long Phi; Mahmood, Faisal
+- **Published:** Nature Medicine, 2025
+- **Link:** [Nature: s41591-024-03235-7](https://www.nature.com/articles/s41591-024-03235-7)
+- **PDF (local):** [titan_2025.pdf](../../generated/kb_curated/papers-pdf/titan_2025.pdf)
 
 ## Next Steps in Our Pipeline
 

@@ -45,7 +45,10 @@ class SimpleModalityUntiedFeedForward(torch.nn.Module):
 Because experts only see their modality tokens, you can scale specialization (e.g., text-heavy vs. image-heavy hidden sizes) without perturbing other branches. `SimpleFeedForward` itself is the Lingua-style gated MLP that preserves tensor-parallel friendliness.^[```64:107:external_repos/MoT/src/simple_ModalityUntiedFeedForward.py```]
 
 ### Modality-Untied Attention (`src/simple_ModalityUntiedAttention.py`)
+
 The attention module mirrors the FFN pattern: per-modality projections and RMSNorms for Q/K/V/outputs, shared global attention via `torch.nn.MultiheadAttention`, and a final per-modality projection back to the model dimension.^[```141:301:external_repos/MoT/README.md```][```16:151:external_repos/MoT/src/simple_ModalityUntiedAttention.py```]
+
+**Per-modality Q/K/V projections with shared attention:**
 
 ```16:151:external_repos/MoT/src/simple_ModalityUntiedAttention.py
 class SimpleModalityUntiedAttention(torch.nn.Module):
@@ -65,7 +68,10 @@ class SimpleModalityUntiedAttention(torch.nn.Module):
 During `forward`, tokens are first split by mask, projected/normed per modality, concatenated back for standard attention, and finally projected/normed per modality again.^[```86:151:external_repos/MoT/src/simple_ModalityUntiedAttention.py```] Optional QK normalization reshapes tensors to `[*, num_heads, head_dim]` before applying `SimpleRMSNorm`, which keeps the rotary-scaled statistics stable.^[```112:174:external_repos/MoT/src/simple_ModalityUntiedAttention.py```]
 
 ### Utility Primitives (`src/utils.py`)
+
 `merge_modalities` reconstructs the packed sequence according to mask order, so expert outputs can be arbitrarily sharded while still producing a contiguous tensor for the residual path. `SimpleRMSNorm` is the Lingua-derived RMSNorm variant used consistently across experts.^[```14:66:external_repos/MoT/src/utils.py```]
+
+**Modality merging utility:**
 
 ```14:34:external_repos/MoT/src/utils.py
 def merge_modalities(expert_outputs, modality_masks):

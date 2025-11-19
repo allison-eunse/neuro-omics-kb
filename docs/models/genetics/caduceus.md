@@ -97,11 +97,13 @@ Caduceus provides **strand-robust genetic representations** for Brain-Omics syst
 
 ## Reference Materials
 
-**Primary sources:**
-- **Paper:** [Caduceus (2024)](../../generated/kb_curated/papers-pdf/caduceus_2024.pdf) — arXiv:2403.03234
+### Knowledge Base Resources
+
+**Curated materials in this KB:**
+- **Paper summary & notes:** [Caduceus (2024)](../../generated/kb_curated/papers-md/caduceus_2024.md)
 - **Code walkthrough:** [Caduceus walkthrough](../../code_walkthroughs/caduceus_walkthrough.md)
-- **YAML card:** `kb/model_cards/caduceus.yaml`
-- **Paper card:** `kb/paper_cards/caduceus_2024.yaml`
+- **Model card (YAML):** `kb/model_cards/caduceus.yaml`
+- **Paper card (YAML):** `kb/paper_cards/caduceus_2024.yaml`
 
 **Integration recipes:**
 - [Modality Features: Genomics](../../integration/modality_features/genomics.md)
@@ -109,9 +111,18 @@ Caduceus provides **strand-robust genetic representations** for Brain-Omics syst
 - [CCA + Permutation](../../integration/analysis_recipes/cca_permutation.md)
 - [LOGO Attribution](https://github.com/allison-eunse/neuro-omics-kb/blob/main/configs/experiments/03_logo_gene_attribution.yaml) (experiment config)
 
-**Source repository:**
-- **Local:** `external_repos/caduceus/`
-- **GitHub:** [kuleshov-group/caduceus](https://github.com/kuleshov-group/caduceus)
+### Original Sources
+
+**Source code repositories:**
+- **Local copy:** `external_repos/caduceus/`
+- **Official GitHub:** [kuleshov-group/caduceus](https://github.com/kuleshov-group/caduceus)
+
+**Original paper:**
+- **Title:** "Caduceus: Bi-Directional Equivariant Long-Range DNA Sequence Modeling"
+- **Authors:** Schiff et al.
+- **Published:** arXiv preprint, March 2024
+- **Link:** [arXiv:2403.03234](https://arxiv.org/abs/2403.03234)
+- **PDF (local):** [caduceus_2024.pdf](../../generated/kb_curated/papers-pdf/caduceus_2024.pdf)
 
 ## Next Steps in Our Pipeline
 

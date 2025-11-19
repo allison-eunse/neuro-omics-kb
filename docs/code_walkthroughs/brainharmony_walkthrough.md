@@ -57,6 +57,8 @@ class GenerateEmbedDataset(Dataset):
         return tensor.squeeze(), arr["attn_mask"].squeeze()
 ```
 
+**Encoder with latent tokens:**
+
 ```180:223:external_repos/brainharmony/modules/harmonizer/stage1_pretrain/models.py
     def forward_encoder(self, x, attn_mask):
         target = x

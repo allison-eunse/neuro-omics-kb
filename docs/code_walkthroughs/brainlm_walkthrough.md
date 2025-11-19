@@ -17,7 +17,10 @@ BrainLM is a ViT-MAE–style masked autoencoder: it slices each voxel’s time c
 ## Key Components
 
 ### Data & Collation (`brainlm/train.py`)
+
 Hydra dataclasses declare dataset paths, voxel/time dimensions, and labels; `collate_fn` stacks tensors into the format expected by the MAE model.
+
+**Dataset configuration and collation:**
 
 ```43:210:external_repos/brainlm/train.py
 @dataclass
@@ -36,7 +39,10 @@ def collate_fn(examples):
 ```
 
 ### Embeddings & Masking (`brainlm_mae/modeling_brainlm.py`)
+
 `BrainLMEmbeddings` reshapes time signals into patches, projects signals and spatial coordinates, injects positional encoding, and randomly masks patches before appending a CLS token.
+
+**Signal embedding and masking logic:**
 
 ```63:160:external_repos/brainlm/brainlm_mae/modeling_brainlm.py
 reshaped_signal_vectors = torch.reshape(signal_vectors, (batch, num_voxels, -1, self.timepoint_patching_size))
@@ -49,7 +55,10 @@ embeddings = torch.cat((cls_tokens, embeddings), dim=1)
 ```
 
 ### Encoder & Decoder (`brainlm_mae/modeling_brainlm.py`)
+
 The encoder stacks Nystromformer layers, while the decoder reintroduces mask tokens, adds spatial/time encodings again, and predicts the missing time windows.
+
+**MAE encoder structure:**
 
 ```227:340:external_repos/brainlm/brainlm_mae/modeling_brainlm.py
 class BrainLMModel(ViTMAEModel):
@@ -58,6 +67,8 @@ class BrainLMModel(ViTMAEModel):
     encoder_outputs = self.encoder(embedding_output, ...)
     sequence_output = self.layernorm(encoder_outputs[0])
 ```
+
+**Decoder with mask token reconstruction:**
 
 ```355:515:external_repos/brainlm/brainlm_mae/modeling_brainlm.py
 mask_tokens = self.mask_token.repeat(batch_size, num_mask_tokens, 1)
@@ -69,7 +80,10 @@ logits = torch.reshape(logits, (batch_size, self.num_brain_voxels, ..., self.tim
 ```
 
 ### Loss (`brainlm_mae/modeling_brainlm.py`)
+
 Masked reconstruction loss is computed only on the masked tokens (MSE or MAE).
+
+**Masked reconstruction loss computation:**
 
 ```562:584:external_repos/brainlm/brainlm_mae/modeling_brainlm.py
 mask = mask.unsqueeze(-1).repeat(1, 1, 1, pred_values.shape[-1])

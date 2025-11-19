@@ -90,20 +90,32 @@ Brain Harmony exemplifies **modality-adaptive fusion** for Brain-Omics systems:
 
 ## Reference Materials
 
-**Primary sources:**
-- **Paper:** [Brain Harmony (2025)](../../generated/kb_curated/papers-pdf/brainharmony_2025.pdf)
+### Knowledge Base Resources
+
+**Curated materials in this KB:**
+- **Paper summary & notes:** [Brain Harmony (2025)](../../generated/kb_curated/papers-md/brainharmony_2025.md)
 - **Code walkthrough:** [Brain Harmony walkthrough](../../code_walkthroughs/brainharmony_walkthrough.md)
-- **YAML card:** `kb/model_cards/brainharmony.yaml`
-- **Paper card:** `kb/paper_cards/brainharmony_2025.yaml`
+- **Model card (YAML):** `kb/model_cards/brainharmony.yaml`
+- **Paper card (YAML):** `kb/paper_cards/brainharmony_2025.yaml`
 
 **Integration recipes:**
 - [Modality Features: sMRI](../../integration/modality_features/smri.md)
 - [Modality Features: fMRI](../../integration/modality_features/fmri.md)
 - [Integration Strategy](../../integration/integration_strategy.md)
 
-**Source repository:**
-- **Local:** `external_repos/brainharmony/`
-- **GitHub:** [hzlab/Brain-Harmony](https://github.com/hzlab/Brain-Harmony)
+### Original Sources
+
+**Source code repositories:**
+- **Local copy:** `external_repos/brainharmony/`
+- **Official GitHub:** [hzlab/Brain-Harmony](https://github.com/hzlab/Brain-Harmony)
+
+**Original paper:**
+- **Title:** "Brain Harmony: A Multimodal Foundation Model Unifying Morphology and Function into 1D Tokens"
+- **Authors:** Dong, Zijian; Li, Ruilin; et al.
+- **Published:** NeurIPS 2025
+- **Link:** [arXiv:2509.24693](https://arxiv.org/abs/2509.24693)
+- **DOI:** [10.48550/arXiv.2509.24693](https://doi.org/10.48550/arXiv.2509.24693)
+- **PDF (local):** [brainharmony_2025.pdf](../../generated/kb_curated/papers-pdf/brainharmony_2025.pdf)
 
 ## Next Steps in Our Pipeline
 

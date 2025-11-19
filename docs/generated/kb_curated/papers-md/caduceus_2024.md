@@ -1,12 +1,15 @@
 ---
+title: "Caduceus: Bi-Directional Equivariant Long-Range DNA Sequence Modeling"
+authors: "Yair Schiff, Chia-Hsiang Kao, Aaron Gokaslan, Tri Dao, Albert Gu, Volodymyr Kuleshov"
+year: 2024
+venue: "41st International Conference on Machine Learning (ICML), PMLR 235"
+---
+
 # Caduceus: Bi-Directional Equivariant Long-Range DNA Sequence Modeling
 
 **Authors:** Yair Schiff, Chia-Hsiang Kao, Aaron Gokaslan, Tri Dao, Albert Gu, Volodymyr Kuleshov  
 **Year:** 2024  
 **Venue:** 41st International Conference on Machine Learning (ICML), PMLR 235
-
-
----
 
 ## 1. Classification
 

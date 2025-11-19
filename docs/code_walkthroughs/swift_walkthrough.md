@@ -17,7 +17,10 @@ SwiFT (Swin 4D fMRI Transformer) tokenizes 4D fMRI volumes with 3D convolutions,
 ## Key Components
 
 ### Data Module (`project/module/utils/data_module.py`)
+
 `fMRIDataModule` loads datasets (UKB, HCP, etc.), splits subjects, and returns PyTorch `DataLoader`s. Augmentations (affine/noise) are applied in the Lightning module.
+
+**PyTorch Lightning data module:**
 
 ```13:230:external_repos/swift/project/module/utils/data_module.py
 class fMRIDataModule(pl.LightningDataModule):
@@ -32,7 +35,10 @@ class fMRIDataModule(pl.LightningDataModule):
 ```
 
 ### Patch Embedding & Window Attention (`swin4d_transformer_ver7.py`)
+
 `PatchEmbed` downsamples volumes with strided 3D convs, `WindowAttention4D` computes attention inside local 4D windows, and `SwinTransformerBlock4D` applies shifted windows for better coverage. `PatchMergingV2` reduces spatial resolution while keeping temporal size.
+
+**4D windowed attention with patch embedding:**
 
 ```202:399:external_repos/swift/project/module/models/swin4d_transformer_ver7.py
 class PatchEmbed(nn.Module):
@@ -46,7 +52,10 @@ class WindowAttention4D(nn.Module):
 ```
 
 ### Swin4D Backbone (`swin4d_transformer_ver7.py`)
+
 `BasicLayer` stacks windowed blocks, handles padding, applies attention masks, and optionally downsamples. The main `SwinTransformer4D` builds multiple stages with positional embeddings, patch merging, and normalization.
+
+**Multi-stage Swin transformer with patch merging:**
 
 ```400:796:external_repos/swift/project/module/models/swin4d_transformer_ver7.py
 class BasicLayer(nn.Module):
@@ -69,7 +78,10 @@ class SwinTransformer4D(nn.Module):
 ```
 
 ### Lightning Module (`project/module/pl_classifier.py`)
+
 `LitClassifier` wraps the encoder, applies augmentations if requested, and attaches task-specific heads (classification/regression/contrastive). `_calculate_loss` routes to BCE, MSE, or contrastive losses.
+
+**Task-specific heads with loss routing:**
 
 ```32:205:external_repos/swift/project/module/pl_classifier.py
 self.model = load_model(self.hparams.model, self.hparams)
@@ -90,7 +102,10 @@ def _calculate_loss(self, batch, mode):
 ```
 
 ### Training Entry Point (`project/main.py`)
+
 CLI parses dataset/model/task args, instantiates the Lightning module + data module, and launches PyTorch Lightning `Trainer` with callbacks (checkpointing, LR monitor).
+
+**CLI entrypoint with Lightning trainer:**
 
 ```18:187:external_repos/swift/project/main.py
 parser = ArgumentParser(...)

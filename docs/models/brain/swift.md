@@ -92,20 +92,31 @@ SwiFT's **hierarchical 4D processing** offers advantages for Brain-Omics systems
 
 ## Reference Materials
 
-**Primary sources:**
-- **Paper:** Pending full KB curation — see [upstream paper](https://doi.org/TBD) and repo README
+### Knowledge Base Resources
+
+**Curated materials in this KB:**
+- **Paper card (YAML):** `kb/paper_cards/swift_2023.yaml`
 - **Code walkthrough:** [SwiFT walkthrough](../../code_walkthroughs/swift_walkthrough.md)
-- **YAML card:** `kb/model_cards/swift.yaml`
-- **Paper card:** TBD (add to `kb/paper_cards/swift_2024.yaml` after curation)
+- **Model card (YAML):** `kb/model_cards/swift.yaml`
 
 **Integration recipes:**
 - [Modality Features: fMRI](../../integration/modality_features/fmri.md)
 - [Integration Strategy](../../integration/integration_strategy.md)
 - [Preprocessing Pipelines](https://github.com/allison-eunse/neuro-omics-kb/blob/main/kb/integration_cards/rsfmri_preprocessing_pipelines.yaml)
 
-**Source repository:**
-- **Local:** `external_repos/swift/`
-- **GitHub:** [Transconnectome/SwiFT](https://github.com/Transconnectome/SwiFT)
+### Original Sources
+
+**Source code repositories:**
+- **Local copy:** `external_repos/swift/`
+- **Official GitHub:** [Transconnectome/SwiFT](https://github.com/Transconnectome/SwiFT)
+
+**Original paper:**
+- **Title:** "SwiFT: Swin 4D fMRI Transformer"
+- **Authors:** Kim, Peter Yongho; Kwon, Junbeom; Joo, Sunghwan; Bae, Sangyoon; Lee, Donggyu; Jung, Yoonho; Yoo, Shinjae; Cha, Jiook; Moon, Taesup
+- **Published:** NeurIPS 2023
+- **Link:** [arXiv:2307.05916](https://arxiv.org/abs/2307.05916)
+- **DOI:** [10.48550/arXiv.2307.05916](https://doi.org/10.48550/arXiv.2307.05916)
+- **PDF (local):** [swift_2023.pdf](../../generated/kb_curated/papers-pdf/swift_2023.pdf)
 
 ## Next Steps in Our Pipeline
 

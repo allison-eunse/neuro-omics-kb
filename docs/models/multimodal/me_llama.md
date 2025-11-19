@@ -132,19 +132,31 @@ If adapting Me-LLaMA for neuro-omics:
 
 ## Reference Materials
 
-**Primary sources:**
-- **Paper:** [Me-LLaMA (2024)](../../generated/kb_curated/papers-md/me_llama_2024.md) — Preprint
+### Knowledge Base Resources
+
+**Curated materials in this KB:**
+- **Paper summary & notes:** [Me-LLaMA (2024)](../../generated/kb_curated/papers-md/me_llama_2024.md)
 - **Code walkthrough:** [Me-LLaMA walkthrough](../../code_walkthroughs/melamma_walkthrough.md)
-- **YAML card:** [kb/model_cards/me_llama.yaml](https://github.com/allison-eunse/neuro-omics-kb/blob/main/kb/model_cards/me_llama.yaml)
+- **Model card (YAML):** `kb/model_cards/me_llama.yaml`
+- **Paper card (YAML):** `kb/paper_cards/me_llama_2024.yaml`
 
 **Integration recipes:**
 - [Multimodal Architectures](../../integration/multimodal_architectures.md)
 - [Design Patterns](../../integration/design_patterns.md) — LLM as semantic bridge
 - [Integration Strategy](../../integration/integration_strategy.md)
 
-**Source repository:**
-- **Local:** `external_repos/me-lamma/`
-- **GitHub:** [BIDS-Xu-Lab/Me-LLaMA](https://github.com/BIDS-Xu-Lab/Me-LLaMA)
+### Original Sources
+
+**Source code repositories:**
+- **Local copy:** `external_repos/me-lamma/`
+- **Official GitHub:** [BIDS-Xu-Lab/Me-LLaMA](https://github.com/BIDS-Xu-Lab/Me-LLaMA)
+
+**Original paper:**
+- **Title:** "Me-LLaMA: Medical Foundation Large Language Models for Comprehensive Text Analysis and Clinical Reasoning"
+- **Authors:** Xie, Qianqian; Chen, Qingyu; Chen, Aokun; Peng, Cheng; Hu, Yan; Lin, Fongci; Peng, Xueqing; Huang, Jimin; Zhang, Jeffrey; Keloth, Vipina; Zhou, Xinyu; Qian, Lingfei; He, Huan; Shung, Dennis; Ohno‑Machado, Lucila; Wu, Yonghui; Xu, Hua; Bian, Jiang
+- **Published:** Preprint, 2024
+- **Link:** [arXiv:2404.05416](https://arxiv.org/abs/2404.05416)
+- **PDF (local):** [me_llama_2024.pdf](../../generated/kb_curated/papers-pdf/me_llama_2024.pdf)
 
 ## Next Steps in Our Pipeline
 

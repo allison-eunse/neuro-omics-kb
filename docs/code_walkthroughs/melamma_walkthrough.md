@@ -18,7 +18,10 @@ Me-LLaMA extends LLaMA-2/3 checkpoints through 129B-token continual pre-training
 ## Key Components
 
 ### Evaluation Entrypoint (`src/eval.py`)
+
 `parse_args` exposes the same knobs as upstream `lm_eval` (model/model_args/tasks/few-shot/batching/output). `main()` resolves task patterns, optional description dicts, and forwards everything to `evaluator.simple_evaluate`, writing JSON to `--output_path` when provided.
+
+**CLI argument parsing and evaluation:**
 
 ```13:94:/Users/allison/Projects/neuro-omics-kb/external_repos/me-lamma/src/eval.py
 def parse_args():
@@ -67,7 +70,10 @@ def parse_args():
 ```
 
 ### Evaluator & Task Dispatch (`src/evaluator.py`)
+
 `simple_evaluate` instantiates a Hugging Face (or OpenAI) LM, wraps it with a caching layer, builds the medical task dictionary, and runs `evaluate` to orchestrate prompts, few-shot contexts, turn-based conversations, and metric aggregation. Bootstrap statistics, JSON logging, and caching directories mirror upstream `lm_eval` APIs for drop-in adoption.
+
+**Model instantiation with caching:**
 
 ```19:133:/Users/allison/Projects/neuro-omics-kb/external_repos/me-lamma/src/evaluator.py
 @positional_deprecated
@@ -134,7 +140,10 @@ def simple_evaluate(
 ```
 
 ### Medical Task Registry (`src/tasks/__init__.py`)
+
 `TASK_REGISTRY` maps human-readable task names to custom task classes (PubMedQA, MedQA, MedMCQA, etc.). Pattern-matched CLI arguments expand into this registry, so adding a new dataset is a matter of appending to `TASK_REGISTRY` or creating a JSON-backed task via `add_json_task`.
+
+**Task name to class mapping:**
 
 ```9:34:/Users/allison/Projects/neuro-omics-kb/external_repos/me-lamma/src/tasks/__init__.py
 TASK_REGISTRY = {
@@ -154,7 +163,10 @@ TASK_REGISTRY = {
 ```
 
 ### Task Definitions & Metrics (`src/tasks/vital_measure.py`)
+
 `Classification` (and its subclasses) provides language-cleaning, response parsing, accuracy/F1/MCC aggregation, and sequence labeling utilities. `SequentialLabeling`/`NER` extend this to HTML BIO alignment, while summarization tasks use Rouge/BARTScore (loaded via Poetry extras).
+
+**Classification task base class:**
 
 ```50:181:/Users/allison/Projects/neuro-omics-kb/external_repos/me-lamma/src/tasks/vital_measure.py
 class Classification(Task):
@@ -202,7 +214,10 @@ class Classification(Task):
 ```
 
 ### ChatLM + Prompt Templates (`src/chatlm.py`, `src/model_prompt.py`)
+
 For API-based baselines, `ChatLM` batches requests with asyncio + HTTPX, uses exponential backoff, and overrides `greedy_until`. Prompt wrappers in `model_prompt.py` add `Human/Assistant` prefixes when `--model_prompt mellama_prompt` is provided.
+
+**OpenAI API wrapper with async requests:**
 
 ```12:154:/Users/allison/Projects/neuro-omics-kb/external_repos/me-lamma/src/chatlm.py
 async def single_chat(client, **kwargs):
@@ -239,6 +254,8 @@ class ChatLM(BaseLM):
                 temperature=0.0,
             ))
 ```
+
+**Prompt template mapping:**
 
 ```1:12:/Users/allison/Projects/neuro-omics-kb/external_repos/me-lamma/src/model_prompt.py
 def no_prompt(ctx):

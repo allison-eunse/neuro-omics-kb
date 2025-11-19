@@ -87,20 +87,31 @@ BrainLM serves as a **brain modality encoder** in larger multimodal systems:
 
 ## Reference Materials
 
-**Primary sources:**
-- **Paper:** [BrainLM (2024)](../../generated/kb_curated/papers-pdf/brainlm_2024.pdf)
+### Knowledge Base Resources
+
+**Curated materials in this KB:**
+- **Paper summary & notes:** [BrainLM (2024)](../../generated/kb_curated/papers-md/brainlm_2024.md)
 - **Code walkthrough:** [BrainLM walkthrough](../../code_walkthroughs/brainlm_walkthrough.md)
-- **YAML card:** `kb/model_cards/brainlm.yaml` (detailed architecture specs)
-- **Paper card:** `kb/paper_cards/brainlm_2024.yaml` (structured takeaways)
+- **Model card (YAML):** `kb/model_cards/brainlm.yaml`
+- **Paper card (YAML):** `kb/paper_cards/brainlm_2024.yaml`
 
 **Integration recipes:**
 - [Modality Features: fMRI](../../integration/modality_features/fmri.md)
 - [Integration Strategy](../../integration/integration_strategy.md)
 - [CCA + Permutation Recipe](../../integration/analysis_recipes/cca_permutation.md)
 
-**Source repository:**
-- **Local:** `external_repos/brainlm/`
-- **GitHub:** [vandijklab/BrainLM](https://github.com/vandijklab/BrainLM)
+### Original Sources
+
+**Source code repositories:**
+- **Local copy:** `external_repos/brainlm/`
+- **Official GitHub:** [vandijklab/BrainLM](https://github.com/vandijklab/BrainLM)
+
+**Original paper:**
+- **Title:** "BrainLM: A foundation model for brain activity recordings"
+- **Authors:** Talukder et al.
+- **Published:** 2024
+- **Link:** [bioRxiv/publication link](https://www.biorxiv.org/content/10.1101/2023.09.12.557460)
+- **PDF (local):** [brainlm_2024.pdf](../../generated/kb_curated/papers-pdf/brainlm_2024.pdf)
 
 ## Next Steps in Our Pipeline
 

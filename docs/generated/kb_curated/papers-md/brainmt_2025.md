@@ -1,8 +1,8 @@
 ## BrainMT: A Hybrid Mamba-Transformer Architecture for Modeling Long-Range Dependencies in Functional MRI Data
 
 **Authors:** Arunkumar Kannan, Martin A. Lindquist, Brian Caffo  
-**Year:** 2025
-**Venue:** Medical Image Computing and Computer Assisted Intervention – MICCAI 2025
+**Year:** Unknown (not clearly specified in extracted text)  
+**Venue:** Unknown (likely a neuroimaging / ML venue; not clearly specified in extracted text)
 
 
 ---
@@ -311,4 +311,7 @@ Because the paper is not truly multimodal, the integration baseline plan is more
 
 
 ---
+
+
+
 

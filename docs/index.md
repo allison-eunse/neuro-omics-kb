@@ -35,33 +35,49 @@ updated: 2025-11-19
 
     ---
 
-    Extract gene embeddings, analyze variant effects, predict phenotypes from DNA sequences
-
-    [:octicons-arrow-right-24: Genetics Models](models/genetics/)
+    **What you can do:**
+    
+    - Extract gene embeddings from DNA sequences
+    - Analyze variant effects and predict phenotypes
+    - Generate gene-level representations for downstream analysis
+    
+    [:octicons-arrow-right-24: Explore Genetics Models](models/genetics/)
 
 -   :material-brain: **Brain Imaging**
 
     ---
 
-    Process fMRI/sMRI, extract neuroimaging features, harmonize multi-site data
-
-    [:octicons-arrow-right-24: Brain Models](models/brain/)
+    **What you can do:**
+    
+    - Process fMRI and sMRI neuroimaging data
+    - Extract site-robust brain embeddings
+    - Harmonize multi-site imaging datasets
+    
+    [:octicons-arrow-right-24: Explore Brain Models](models/brain/)
 
 -   :material-link-variant: **Multimodal Integration**
 
     ---
 
-    Fuse gene + brain embeddings, gene-brain-behavior prediction, cross-modal alignment
-
-    [:octicons-arrow-right-24: Integration Strategy](integration/integration_strategy/)
+    **What you can do:**
+    
+    - Fuse gene + brain embeddings via CCA or late fusion
+    - Build gene-brain-behavior prediction models
+    - Implement cross-modal alignment strategies
+    
+    [:octicons-arrow-right-24: Explore Integration Strategy](integration/integration_strategy/)
 
 -   :material-flask: **Reproducible Research**
 
     ---
 
-    Use validated pipelines, experiment configs, and quality gates for your cohorts
-
-    [:octicons-arrow-right-24: Analysis Recipes](integration/analysis_recipes/cca_permutation/)
+    **What you can do:**
+    
+    - Use validated analysis pipelines and recipes
+    - Clone experiment configs with proper CV schemes
+    - Apply quality gates for multi-site cohorts
+    
+    [:octicons-arrow-right-24: Explore Analysis Recipes](integration/analysis_recipes/cca_permutation/)
 
 </div>
 

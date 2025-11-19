@@ -18,7 +18,10 @@ TITAN (Transformer-based pathology Image and Text Alignment Network) aggregates 
 ## Key Components
 
 ### Custom Sequential Wrapper (`titan/finetune.py`)
+
 Fine-tuning wraps the frozen TITAN backbone with a lightweight MLP head. `CustomSequential` simply forwards tensor tuples into `encode_slide_from_patch_features`, then feeds slide embeddings into the classification head. `create_mlp` helps instantiate arbitrary hidden stacks.
+
+**Sequential wrapper with MLP head:**
 
 ```25:50:/Users/allison/Projects/neuro-omics-kb/external_repos/titan/titan/finetune.py
 class CustomSequential(nn.Module):
@@ -50,7 +53,10 @@ def create_mlp(in_dim=None, hid_dims=[], act=nn.ReLU(), dropout=0.0, out_dim=Non
 ```
 
 ### Training Loop & Scheduler (`titan/finetune.py`)
+
 `train` constructs two optimizer parameter groups (bias/LayerNorm vs. rest), applies cosine LR with warmup, leverages `torch.cuda.amp.GradScaler`, and evaluates on a validation loader with early stopping that tracks the best weights.
+
+**Mixed precision training with early stopping:**
 
 ```137:199:/Users/allison/Projects/neuro-omics-kb/external_repos/titan/titan/finetune.py
     model.train()
@@ -89,7 +95,10 @@ def create_mlp(in_dim=None, hid_dims=[], act=nn.ReLU(), dropout=0.0, out_dim=Non
 ```
 
 ### Linear Probe Evaluation (`titan/eval_linear_probe.py`)
-For frozen-feature experiments, `train_and_evaluate_logistic_regression_with_val` sweeps log-spaced `C`, fits `LogisticRegression`, and reports metrics (balanced accuracy, Cohen’s κ, AUROC) via shared utilities.
+
+For frozen-feature experiments, `train_and_evaluate_logistic_regression_with_val` sweeps log-spaced `C`, fits `LogisticRegression`, and reports metrics (balanced accuracy, Cohen's κ, AUROC) via shared utilities.
+
+**Logistic regression with hyperparameter sweep:**
 
 ```2:75:/Users/allison/Projects/neuro-omics-kb/external_repos/titan/titan/eval_linear_probe.py
 def train_and_evaluate_logistic_regression_with_val(train_data, train_labels, val_data, val_labels, test_data, test_labels, log_spaced_values=None, max_iter=500):
@@ -122,7 +131,10 @@ def train_and_evaluate_logistic_regression_with_val(train_data, train_labels, va
 ```
 
 ### Metrics, Bootstrap & Zero-Shot Templates (`titan/utils.py`)
+
 `get_eval_metrics` reports accuracy/balanced accuracy/kappa/weighted F1 (+ AUROC/log-loss when probs are provided). The module also seeds reproducibility, merges dictionaries, and defines zero-shot text templates for class prompts.
+
+**Evaluation metrics and zero-shot templates:**
 
 ```13:89:/Users/allison/Projects/neuro-omics-kb/external_repos/titan/titan/utils.py
 # zeroshot prompt templates
@@ -159,7 +171,10 @@ def get_eval_metrics(
 ```
 
 ### TCGA-OT Configuration & Prompts (`datasets/config_tcga-ot.yaml`)
-The YAML describes label counts, OncoTree codes, class-specific textual prompts (supporting zero-shot CLIP-like scoring), and dataset metadata. Integrate these prompts with TITAN’s text encoder or other VLMs for retrieval tasks.
+
+The YAML describes label counts, OncoTree codes, class-specific textual prompts (supporting zero-shot CLIP-like scoring), and dataset metadata. Integrate these prompts with TITAN's text encoder or other VLMs for retrieval tasks.
+
+**Dataset configuration with class prompts:**
 
 ```1:60:/Users/allison/Projects/neuro-omics-kb/external_repos/titan/datasets/config_tcga-ot.yaml
 aggregation: slide

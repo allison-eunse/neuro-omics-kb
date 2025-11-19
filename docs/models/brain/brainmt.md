@@ -96,20 +96,31 @@ BrainMT demonstrates **efficient long-context modeling** for multimodal systems:
 
 ## Reference Materials
 
-**Primary sources:**
-- **Paper:** [BrainMT (2025)](../../generated/kb_curated/papers-pdf/brainmt_2025.pdf) — Conference paper (LNCS, pp. 150–160)
+### Knowledge Base Resources
+
+**Curated materials in this KB:**
+- **Paper summary & notes:** [BrainMT (2025)](../../generated/kb_curated/papers-md/brainmt_2025.md)
 - **Code walkthrough:** [BrainMT walkthrough](../../code_walkthroughs/brainmt_walkthrough.md)
-- **YAML card:** `kb/model_cards/brainmt.yaml`
-- **Paper card:** `kb/paper_cards/brainmt_2025.yaml`
+- **Model card (YAML):** `kb/model_cards/brainmt.yaml`
+- **Paper card (YAML):** `kb/paper_cards/brainmt_2025.yaml`
 
 **Integration recipes:**
 - [Modality Features: fMRI](../../integration/modality_features/fmri.md)
 - [Integration Strategy](../../integration/integration_strategy.md)
 - [Design Patterns](../../integration/design_patterns.md)
 
-**Source repository:**
-- **Local:** `external_repos/brainmt/`
-- **GitHub:** [arunkumar-kannan/brainmt-fmri](https://github.com/arunkumar-kannan/brainmt-fmri)
+### Original Sources
+
+**Source code repositories:**
+- **Local copy:** `external_repos/brainmt/`
+- **Official GitHub:** [arunkumar-kannan/brainmt-fmri](https://github.com/arunkumar-kannan/brainmt-fmri)
+
+**Original paper:**
+- **Title:** "BrainMT: A Hybrid Mamba-Transformer Architecture for Modeling Long-Range Dependencies in Functional MRI Data"
+- **Authors:** Kannan, Arunkumar; Lindquist, Martin A.; Caffo, Brian
+- **Published:** Conference proceedings (SpringerLink), September 2025, pp. 150-160
+- **Link:** [SpringerLink](https://dl.acm.org/doi/10.1007/978-3-032-05162-2_15)
+- **PDF (local):** [brainmt_2025.pdf](../../generated/kb_curated/papers-pdf/brainmt_2025.pdf)
 
 ## Next Steps in Our Pipeline
 

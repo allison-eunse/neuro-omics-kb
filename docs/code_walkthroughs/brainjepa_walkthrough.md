@@ -18,7 +18,10 @@ Brain-JEPA extends Image/Joint-Embedding Predictive Architecture ideas to 4D fMR
 ## Key Components
 
 ### Dataset & Preprocessing (`src/datasets/ukbiobank_scale.py`)
+
 The dataset class loads ROI-wise time series, applies robust scaling, optional downsampling, and returns tensors shaped `[channels, depth, height, width, time]` wrapped in dicts (`{'fmri': tensor}`) for the mask collator.
+
+**fMRI dataset with ROI time series:**
 
 ```14:186:external_repos/brainjepa/src/datasets/ukbiobank_scale.py
 class fMRIDataset(Dataset):
@@ -33,7 +36,10 @@ class fMRIDataset(Dataset):
 ```
 
 ### Mask Collator (`src/masks/spatialtemporal_multiblock.py`)
+
 `MaskCollator_fmri` samples encoder/predictor windows over ROIs × time, enforcing non-overlapping context/target regions and returning boolean masks for each batch.
+
+**Spatiotemporal masking for JEPA:**
 
 ```18:282:external_repos/brainjepa/src/masks/spatialtemporal_multiblock.py
 class MaskCollator_fmri(object):
@@ -48,7 +54,10 @@ class MaskCollator_fmri(object):
 ```
 
 ### Positional Embeddings & Encoder (`src/models/vision_transformer.py`)
+
 Gradient-informed positional encoding (`GradTs_2dPE`) injects atlas gradients, while the encoder (`VisionTransformer`) patchifies `[B, C, D, H, W, T]` tensors, adds position encodings, and runs stacked Swin-like blocks.
+
+**Gradient-informed positional encoding:**
 
 ```22:100:external_repos/brainjepa/src/models/vision_transformer.py
 class GradTs_2dPE(nn.Module):
@@ -56,6 +65,8 @@ class GradTs_2dPE(nn.Module):
         self.emb_h = nn.Parameter(...)
         self.emb_w = ... if add_w == 'origin' else predictor_pos_embed_proj(gradient)
 ```
+
+**Vision transformer encoder:**
 
 ```430:514:external_repos/brainjepa/src/models/vision_transformer.py
 x = self.patch_embed(x)
@@ -68,7 +79,10 @@ for blk in self.blocks:
 ```
 
 ### Predictor Head (`src/models/vision_transformer.py`)
+
 The predictor maps context tokens to a lower-dimensional space, concatenates learnable mask tokens (with their own positional embeddings), and runs Transformer blocks to regress target embeddings.
+
+**JEPA predictor architecture:**
 
 ```280:396:external_repos/brainjepa/src/models/vision_transformer.py
 class VisionTransformerPredictor(nn.Module):

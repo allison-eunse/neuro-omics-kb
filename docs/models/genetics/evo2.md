@@ -104,19 +104,30 @@ Evo2 enables **whole-locus genetic representations** for Brain-Omics systems:
 
 ## Reference Materials
 
-**Primary sources:**
-- **Paper:** [Evo2 (2024)](../../generated/kb_curated/papers-pdf/evo2_2024.pdf)
+### Knowledge Base Resources
+
+**Curated materials in this KB:**
+- **Paper summary & notes:** [Evo2 (2024)](../../generated/kb_curated/papers-md/evo2_2024.md)
 - **Code walkthrough:** [Evo2 walkthrough](../../code_walkthroughs/evo2_walkthrough.md)
-- **YAML card:** `kb/model_cards/evo2.yaml`
-- **Paper card:** `kb/paper_cards/evo2_2024.yaml`
+- **Model card (YAML):** `kb/model_cards/evo2.yaml`
+- **Paper card (YAML):** `kb/paper_cards/evo2_2024.yaml`
 
 **Integration recipes:**
 - [Modality Features: Genomics](../../integration/modality_features/genomics.md)
 - [Integration Strategy](../../integration/integration_strategy.md)
 
-**Source repository:**
-- **Local:** `external_repos/evo2/`
-- **GitHub:** [ArcInstitute/evo2](https://github.com/ArcInstitute/evo2)
+### Original Sources
+
+**Source code repositories:**
+- **Local copy:** `external_repos/evo2/`
+- **Official GitHub:** [ArcInstitute/evo2](https://github.com/ArcInstitute/evo2)
+
+**Original paper:**
+- **Title:** "Genome modeling and design across all domains of life with Evo 2"
+- **Authors:** Arc Institute Team
+- **Published:** bioRxiv preprint, February 2025
+- **Link:** [bioRxiv:2025.02.18.638918](https://www.biorxiv.org/content/10.1101/2025.02.18.638918v1)
+- **PDF (local):** [evo2_2024.pdf](../../generated/kb_curated/papers-pdf/evo2_2024.pdf)
 
 ## Next Steps in Our Pipeline
 
