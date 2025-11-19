@@ -101,7 +101,7 @@ SwiFT's **hierarchical 4D processing** offers advantages for Brain-Omics systems
 **Integration recipes:**
 - [Modality Features: fMRI](../../integration/modality_features/fmri.md)
 - [Integration Strategy](../../integration/integration_strategy.md)
-- [Preprocessing Pipelines](../../generated/kb_curated/integration_cards/rsfmri_preprocessing_pipelines.md)
+- [Preprocessing Pipelines](https://github.com/allison-eunse/neuro-omics-kb/blob/main/kb/integration_cards/rsfmri_preprocessing_pipelines.yaml)
 
 **Source repository:**
 - **Local:** `external_repos/swift/`

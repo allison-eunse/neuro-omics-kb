@@ -127,7 +127,7 @@ This document catalogs **architectural patterns from multimodal foundation model
 
 **Reference materials:**
 - [M3FM walkthrough](../code_walkthroughs/m3fm_walkthrough.md)
-- [M3FM model card](../model_cards/m3fm.yaml)
+- [M3FM model card](https://github.com/allison-eunse/neuro-omics-kb/blob/main/kb/model_cards/m3fm.yaml)
 
 ---
 
@@ -165,7 +165,7 @@ This document catalogs **architectural patterns from multimodal foundation model
 
 **Reference materials:**
 - [Me-LLaMA walkthrough](../code_walkthroughs/melamma_walkthrough.md)
-- [Me-LLaMA model card](../model_cards/me_llama.yaml)
+- [Me-LLaMA model card](https://github.com/allison-eunse/neuro-omics-kb/blob/main/kb/model_cards/me_llama.yaml)
 
 ---
 
@@ -202,7 +202,7 @@ This document catalogs **architectural patterns from multimodal foundation model
 
 **Reference materials:**
 - [TITAN walkthrough](../code_walkthroughs/titan_walkthrough.md)
-- [TITAN model card](../model_cards/titan.yaml)
+- [TITAN model card](https://github.com/allison-eunse/neuro-omics-kb/blob/main/kb/model_cards/titan.yaml)
 
 ---
 
@@ -237,7 +237,7 @@ This document catalogs **architectural patterns from multimodal foundation model
 
 **Reference materials:**
 - [FMS-Medical walkthrough](../code_walkthroughs/fms_medical_walkthrough.md)
-- [FMS-Medical catalog YAML](../datasets/fms_medical_catalog.yaml)
+- [FMS-Medical catalog YAML](https://github.com/allison-eunse/neuro-omics-kb/blob/main/kb/datasets/fms_medical_catalog.yaml)
 
 ---
 

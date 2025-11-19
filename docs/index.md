@@ -31,8 +31,8 @@ updated: 2025-11-19
 === "📚 Looking for papers"
 
     1. Browse [paper cards](https://github.com/allison-eunse/neuro-omics-kb/tree/main/kb/paper_cards)
-    2. Read [integration principles](generated/kb_curated/integration_cards/)
-    3. Check [decision logs](decisions/2025-11-integration-plan.md)
+    2. Check [decision logs](decisions/2025-11-integration-plan.md)
+    3. Review [integration strategy](integration/integration_strategy.md)
 
 ---
 
@@ -137,11 +137,10 @@ Beyond genetics and brain FMs, the KB documents **multimodal architectures** tha
 
 ## 🗂️ KB Assets (YAML + Curated Sources)
 
-- **Model cards:** `kb/model_cards/`
-- **Paper cards:** `kb/paper_cards/`
-- **Integration principles:** `docs/generated/kb_curated/integration_cards/`
-- **Dataset cards:** `kb/datasets/`
-- **Paper source files:** `docs/generated/kb_curated/papers-md/` (markdown summaries) and `docs/generated/kb_curated/papers-pdf/` (original PDFs)
+- **Model cards:** [kb/model_cards/](https://github.com/allison-eunse/neuro-omics-kb/tree/main/kb/model_cards)
+- **Paper cards:** [kb/paper_cards/](https://github.com/allison-eunse/neuro-omics-kb/tree/main/kb/paper_cards)
+- **Dataset cards:** [kb/datasets/](https://github.com/allison-eunse/neuro-omics-kb/tree/main/kb/datasets)
+- **Integration cards:** [kb/integration_cards/](https://github.com/allison-eunse/neuro-omics-kb/tree/main/kb/integration_cards)
 
 ---
 

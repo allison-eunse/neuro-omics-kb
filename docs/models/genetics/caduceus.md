@@ -107,7 +107,7 @@ Caduceus provides **strand-robust genetic representations** for Brain-Omics syst
 - [Modality Features: Genomics](../../integration/modality_features/genomics.md)
 - [Integration Strategy](../../integration/integration_strategy.md)
 - [CCA + Permutation](../../integration/analysis_recipes/cca_permutation.md)
-- [LOGO Attribution](../../integration/analysis_recipes/logo_gene_attribution.md) (reference config)
+- [LOGO Attribution](https://github.com/allison-eunse/neuro-omics-kb/blob/main/configs/experiments/03_logo_gene_attribution.yaml) (experiment config)
 
 **Source repository:**
 - **Local:** `external_repos/caduceus/`
