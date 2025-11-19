@@ -1,0 +1,2712 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Code-first knowledge base for genetics and brain foundation models and multimodal integration">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Brainmt 2025 - Neurogenomics KB</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#brainmt-a-hybrid-mamba-transformer-architecture-for-modeling-long-range-dependencies-in-functional-mri-data" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Neurogenomics KB" class="md-header__button md-logo" aria-label="Neurogenomics KB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Neurogenomics KB
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Brainmt 2025
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/allison-eunse/neurogenomics-kb" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../guide/kb_overview/" class="md-tabs__link">
+          
+  
+  
+  Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../models/genetics/" class="md-tabs__link">
+          
+  
+  
+  Models
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../integration/" class="md-tabs__link">
+          
+  
+  
+  Integration
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../data/ukb_data_map/" class="md-tabs__link">
+          
+  
+  
+  Data
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../code_walkthroughs/" class="md-tabs__link">
+          
+  
+  
+  Code walkthroughs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../decisions/2025-11-integration-plan/" class="md-tabs__link">
+          
+  
+  
+  Decisions
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Neurogenomics KB" class="md-nav__button md-logo" aria-label="Neurogenomics KB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Neurogenomics KB
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/allison-eunse/neurogenomics-kb" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../guide/kb_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KB overview
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Models
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Models
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Genetics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Genetics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/genetics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/genetics/caduceus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caduceus
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/genetics/dnabert2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/genetics/evo2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evo 2
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/genetics/generator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GENERator
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Brain
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/brainlm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainLM
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/brainjepa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain-JEPA
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/brainharmony/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain Harmony
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/brainmt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainMT
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/swift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Integration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/integration_strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Strategy
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analysis recipes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Analysis recipes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/analysis_recipes/cca_permutation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CCA + permutation
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/analysis_recipes/prediction_baselines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prediction baselines
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/analysis_recipes/partial_correlations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Partial correlations
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modality features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modality features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/modality_features/genomics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Genomics
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/modality_features/smri/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    sMRI
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/modality_features/fmri/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fMRI
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/design_patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmarks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../data/ukb_data_map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UKB data map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../data/schemas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schemas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../data/governance_qc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governance & QC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code walkthroughs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Code walkthroughs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/caduceus_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caduceus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/dnabert2_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/evo2_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evo 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/generator_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GENERator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/brainlm_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainLM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/brainjepa_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain-JEPA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/brainharmony_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain Harmony
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/brainmt_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainMT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/swift_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Decisions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Decisions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../decisions/2025-11-integration-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integration plan (Nov 2025)
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/allison-eunse/neurogenomics-kb/edit/master/docs/generated/kb_curated/papers-md/brainmt_2025.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>Brainmt 2025</h1>
+
+<h2 id="brainmt-a-hybrid-mamba-transformer-architecture-for-modeling-long-range-dependencies-in-functional-mri-data">BrainMT: A Hybrid Mamba-Transformer Architecture for Modeling Long-Range Dependencies in Functional MRI Data<a class="headerlink" href="#brainmt-a-hybrid-mamba-transformer-architecture-for-modeling-long-range-dependencies-in-functional-mri-data" title="Permanent link">&para;</a></h2>
+<p><strong>Authors:</strong> Arunkumar Kannan, Martin A. Lindquist, Brian Caffo<br />
+<strong>Year:</strong> 2025
+<strong>Venue:</strong> Medical Image Computing and Computer Assisted Intervention – MICCAI 2025</p>
+<hr />
+<h3 id="1-classification">1. Classification<a class="headerlink" href="#1-classification" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Domain Category:</strong>  </li>
+<li>
+<p><strong>Brain FM.</strong> The paper develops a deep architecture specifically for resting-state functional MRI (rs-fMRI) and uses it to predict subject-level phenotypes (sex and cognitive intelligence) from whole-brain 4D volumes.</p>
+</li>
+<li>
+<p><strong>FM Usage Type:</strong>  </p>
+</li>
+<li>
+<p><strong>Core FM development (brain-specific sequence model).</strong> The work introduces a new hybrid architecture, BrainMT, that combines Mamba state-space models and transformers to handle long 4D fMRI sequences end-to-end. It is not a huge general-purpose foundation model in the GPT/CLIP sense, but it <em>does</em> propose a new, reusable backbone for a broad class of fMRI prediction tasks.</p>
+</li>
+<li>
+<p><strong>Key Modalities:</strong>  </p>
+</li>
+<li>Resting-state fMRI (4D volumetric time series: 3D brain volumes over time).  </li>
+<li>Phenotypic labels: sex (classification) and cognitive intelligence scores (regression).</li>
+</ul>
+<hr />
+<h3 id="2-one-paragraph-high-level-summary-for-a-new-grad-student">2. One-Paragraph High-Level Summary (For a New Grad Student)<a class="headerlink" href="#2-one-paragraph-high-level-summary-for-a-new-grad-student" title="Permanent link">&para;</a></h3>
+<p>This paper proposes BrainMT, a deep learning architecture designed to model long-range spatial and temporal dependencies in resting-state fMRI data for subject-level phenotypic prediction. Instead of compressing fMRI into connectivity matrices or using short temporal windows, BrainMT operates directly on 4D voxel-wise volumes and can process much longer temporal sequences efficiently. The model uses a hierarchical convolutional block to extract local spatial features, a bidirectional spatiotemporal Mamba block (a modern state-space model) to capture long-range temporal and spatiotemporal patterns, and a lightweight transformer block to model global spatial relationships. The authors evaluate BrainMT on large UK Biobank and Human Connectome Project datasets, predicting both sex and cognitive intelligence, and show it outperforms strong baselines including graph neural networks, transformer-based models, and the recent SwiFT voxel-wise transformer. Quantitative and ablation studies demonstrate that BrainMT achieves better accuracy with lower memory usage while benefiting from longer temporal context. Finally, interpretability analysis using Integrated Gradients highlights brain regions in default mode and frontoparietal networks that align with known neuroscience findings. Overall, the work is valuable to a new grad student because it showcases how modern sequence modeling ideas (Mamba + transformers) can be adapted to challenging 4D neuroimaging data and why long temporal context matters for fMRI-based prediction.</p>
+<hr />
+<h3 id="3-problem-setup-and-motivation">3. Problem Setup and Motivation<a class="headerlink" href="#3-problem-setup-and-motivation" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Scientific / practical problem:</strong>  </li>
+<li>The goal is to predict subject-level phenotypes (sex and cognitive intelligence) from resting-state fMRI data.  </li>
+<li>Each subject has a 4D fMRI scan: a sequence of 3D brain volumes over time (volumes × height × width × depth).  </li>
+<li>
+<p>The model should learn functional connectivity and spatiotemporal patterns directly from these volumetric time series, without relying on hand-crafted parcellations or connectivity matrices.</p>
+</li>
+<li>
+<p><strong>Why existing approaches are limited:</strong>  </p>
+</li>
+<li><strong>Correlation-based pipelines:</strong>  <ul>
+<li>They typically parcellate the brain into regions of interest (ROIs) and compute a region-by-region functional connectivity matrix (e.g., Pearson correlation).  </li>
+<li>This reduces dimensionality but can discard fine-grained spatial information, especially with coarse parcellations.  </li>
+<li>Performance can vary widely depending on the chosen parcellation and connectivity measure, leading to instability and lack of consensus.</li>
+</ul>
+</li>
+<li>
+<p><strong>Voxel-based deep models:</strong>  </p>
+<ul>
+<li>Recent transformer or CNN-based methods operate directly on voxel-level fMRI, but transformer-based models face quadratic complexity in sequence length.  </li>
+<li>As a result, they are often restricted to short sequences (e.g., 10–20 time frames), then aggregate predictions across multiple windows.  </li>
+<li>Because fMRI signals evolve relatively slowly (hemodynamics), limiting context to a few frames can miss important long-range temporal dynamics.</li>
+</ul>
+</li>
+<li>
+<p><strong>Why this is hard technically:</strong>  </p>
+</li>
+<li>fMRI is <strong>high-dimensional</strong>: 3D volumes with tens of thousands of voxels repeated hundreds to thousands of times per scan.  </li>
+<li>Spatiotemporal patterns are <strong>long-range and structured</strong>: activity in distant brain regions can be correlated across long time scales.  </li>
+<li>Direct transformer modeling over all voxels and time points is computationally heavy (quadratic in sequence length).  </li>
+<li>Models must balance <strong>expressivity</strong> (capturing complex patterns) with <strong>efficiency</strong> (memory and compute) to be practical on large datasets.</li>
+</ul>
+<hr />
+<h3 id="4-data-and-modalities">4. Data and Modalities<a class="headerlink" href="#4-data-and-modalities" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Datasets used:</strong>  </li>
+<li><strong>UK Biobank (UKB):</strong>  <ul>
+<li>Resting-state fMRI data from about 6,000 participants.  </li>
+<li>Scan length: approximately 490 volumes per subject.  </li>
+<li>Spatial dimensions: 91 × 109 × 91 in MNI space.  </li>
+<li>Sex distribution: ~50.86% female.  </li>
+</ul>
+</li>
+<li>
+<p><strong>Human Connectome Project (HCP, S1200 release):</strong>  </p>
+<ul>
+<li>Resting-state fMRI data from 1,075 participants.  </li>
+<li>Scan length: approximately 1,200 volumes per subject.  </li>
+<li>Spatial dimensions: 91 × 109 × 91 in MNI space.  </li>
+<li>Sex distribution: ~51.16% female.</li>
+</ul>
+</li>
+<li>
+<p><strong>Modalities:</strong>  </p>
+</li>
+<li>Primary modality: resting-state fMRI volumes (4D: time × 3D brain).  </li>
+<li>
+<p>Targets:  </p>
+<ul>
+<li><strong>Cognitive intelligence scores:</strong>  </li>
+<li>“Cognitive function” composite scores from HCP.  </li>
+<li>“Fluid intelligence/reasoning” scores from UKB.  </li>
+<li><strong>Sex:</strong> binary labels for sex classification.</li>
+</ul>
+</li>
+<li>
+<p><strong>Preprocessing / representation:</strong>  </p>
+</li>
+<li>The authors use existing preprocessed fMRI data from both datasets, following “fMRI volume” pipelines that include:  <ul>
+<li>Bias field reduction, skull stripping, cross-modality registration, and spatial normalization.  </li>
+</ul>
+</li>
+<li>For modeling:  <ul>
+<li>Global Z-score normalization is applied across brain voxels, excluding background regions; background voxels are filled with minimum Z-score intensity.  </li>
+<li>Each 3D volume is partitioned into partially overlapping 3D patches.  </li>
+<li>Patches are embedded via convolutional layers into a lower-dimensional feature space before being passed into the Mamba and transformer blocks.  </li>
+</ul>
+</li>
+<li>For comparison with correlation-based approaches, the HCP multimodal atlas is used to parcellate the data and compute ROI–ROI Pearson correlation matrices.</li>
+</ul>
+<hr />
+<h3 id="5-model-foundation-model">5. Model / Foundation Model<a class="headerlink" href="#5-model-foundation-model" title="Permanent link">&para;</a></h3>
+<p>BrainMT is a <strong>hybrid architecture</strong> combining convolutional neural networks, Mamba state-space models, and transformers to capture local, long-range temporal, and global spatial dependencies in fMRI.</p>
+<ul>
+<li><strong>Model type:</strong>  </li>
+<li>A <strong>hybrid deep sequence model</strong> for spatiotemporal fMRI data, composed of:  <ul>
+<li>3D convolutional blocks (hierarchical feature extractor).  </li>
+<li>Bidirectional <strong>Vision Mamba</strong> blocks (selective state-space models) arranged with a temporal-first scanning mechanism.  </li>
+<li>A <strong>multi-head self-attention transformer block</strong> for global spatial modeling.  </li>
+</ul>
+</li>
+<li>
+<p>Overall, it can be viewed as a brain-specific backbone that blends linear-time sequence modeling (Mamba) with transformer attention.</p>
+</li>
+<li>
+<p><strong>Is it a new FM or an existing one?</strong>  </p>
+</li>
+<li>The architecture itself, <strong>BrainMT</strong>, is new.  </li>
+<li>It builds on existing ideas: Vision Mamba / Mamba-based state-space models and standard transformers.  </li>
+<li>The paper does not present large-scale general-purpose pretraining; instead, BrainMT is trained directly on the task objectives (sex and intelligence prediction) on large datasets.  </li>
+<li>
+<p>So in FM terms, it is closer to a <strong>new, reusable backbone</strong> than a fully generic foundation model.</p>
+</li>
+<li>
+<p><strong>Key architectural components and innovations:</strong></p>
+</li>
+<li>
+<p><strong>1. Convolution block (local spatial feature extractor):</strong>  </p>
+<ul>
+<li>Takes fMRI volumes (X \in \mathbb{R}^{T \times H \times W \times D}).  </li>
+<li>Each volume is split into partially overlapping 3D patches (downsampling the spatial resolution).  </li>
+<li>Two convolutional layers project patches into a C-dimensional embedding.  </li>
+<li>A two-stage convolutional encoder with downsampling forms multi-scale feature maps, capturing coarse and fine spatial details.  </li>
+<li>Residual convolutional units with GELU activations and layer normalization provide stable feature extraction.</li>
+</ul>
+</li>
+<li>
+<p><strong>2. Positional embeddings and sequence construction:</strong>  </p>
+<ul>
+<li>The output of the convolution block is a sequence of patch tokens per time step.  </li>
+<li>Learnable <strong>spatial positional embeddings</strong> and <strong>temporal positional embeddings</strong> are added to encode positions.  </li>
+<li>A learnable <strong>classification token</strong> (X_{\text{cls}}) is prepended as a global aggregator.  </li>
+<li>Tokens are reshaped into a long 1D sequence of length (L = T \times K) (where (K) is the number of patches), preparing them for spatiotemporal modeling.</li>
+</ul>
+</li>
+<li>
+<p><strong>3. Spatiotemporal Mamba block (long-range context):</strong>  </p>
+<ul>
+<li>Based on <strong>selective state-space models (SSMs)</strong>, originally inspired by Kalman-like systems.  </li>
+<li>Uses <strong>Vision Mamba</strong> with <strong>bidirectional selective SSMs</strong> to handle spatiotemporal context.  </li>
+<li>Mamba introduces input-dependent parameters (e.g., B, C, and time scales), enabling adaptive context modeling.  </li>
+<li>The <strong>temporal-first scanning mechanism</strong> arranges tokens so that time is the leading dimension, followed by spatial dimensions, which:  </li>
+<li>Emphasizes temporal continuity and long-range temporal correlations critical for fMRI.  </li>
+<li>Helps the SSM capture long sequences with linear-time complexity in sequence length.  </li>
+<li>Forward and backward selective SSMs process the sequence in both directions, and their outputs are gated and combined, enabling rich bidirectional context.</li>
+</ul>
+</li>
+<li>
+<p><strong>4. Transformer block (global spatial relationships):</strong>  </p>
+<ul>
+<li>After Mamba processing, a multi-head self-attention transformer operates on the sequence.  </li>
+<li>Attention is defined as usual ( \text{Attention}(Q,K,V) = \text{Softmax}(QK^\top / \sqrt{d_\text{head}}) V ).  </li>
+<li>Because convolution and downsampling have already reduced the spatial resolution, the sequence length is shorter, making quadratic transformer attention tractable.  </li>
+<li>This block focuses on <strong>global spatial interactions</strong> among feature tokens, complementing the temporally oriented Mamba block.</li>
+</ul>
+</li>
+<li>
+<p><strong>5. Output head:</strong>  </p>
+<ul>
+<li>The final representation is taken from the normalized classification token (X_{\text{cls}}).  </li>
+<li>A multilayer perceptron (MLP) head is applied for downstream tasks:  </li>
+<li>Regression head for cognitive intelligence prediction.  </li>
+<li>Classification head for sex prediction.</li>
+</ul>
+</li>
+<li>
+<p><strong>Training setup (as described):</strong></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Implementation</td>
+<td>PyTorch; trained on NVIDIA L40S GPUs (48GB RAM)</td>
+</tr>
+<tr>
+<td>Architecture depth</td>
+<td>2 convolution blocks, 12 Mamba blocks, 8 transformer blocks</td>
+</tr>
+<tr>
+<td>Input frames</td>
+<td>200 frames per subject (chosen via ablation; trade-off between SNR and overfitting)</td>
+</tr>
+<tr>
+<td>Mamba hyperparameters</td>
+<td>State dimension 16, expansion ratio 2 (default Mamba settings)</td>
+</tr>
+<tr>
+<td>Optimization</td>
+<td>AdamW, cosine learning rate schedule over 20 epochs</td>
+</tr>
+<tr>
+<td>Warm-up</td>
+<td>First 5 epochs used for linear warm-up</td>
+</tr>
+<tr>
+<td>Learning rate</td>
+<td>2e-4 (default in experiments)</td>
+</tr>
+<tr>
+<td>Weight decay</td>
+<td>0.05</td>
+</tr>
+<tr>
+<td>Batch size</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Training strategy</td>
+<td>Distributed data-parallel training</td>
+</tr>
+<tr>
+<td>Early stopping</td>
+<td>Based on validation loss</td>
+</tr>
+<tr>
+<td>Regression objective</td>
+<td>Mean squared error (MSE), evaluated with MSE, MAE, Pearson’s R</td>
+</tr>
+<tr>
+<td>Classification objective</td>
+<td>Binary cross-entropy, evaluated with accuracy, balanced accuracy, AUROC</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="6-multimodal-integration-aspects-if-applicable">6. Multimodal / Integration Aspects (If Applicable)<a class="headerlink" href="#6-multimodal-integration-aspects-if-applicable" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Is this a multimodal integration paper?</strong>  </li>
+<li>Not primarily. The core focus is on <strong>single-modality</strong> resting-state fMRI data.  </li>
+<li>
+<p>The model does not fuse different data types (e.g., structural MRI, behavior, genetics) within the architecture; instead, it learns from volumetric fMRI alone and predicts phenotypes.</p>
+</li>
+<li>
+<p><strong>Integration aspects (within fMRI):</strong>  </p>
+</li>
+<li>BrainMT integrates <strong>spatial and temporal information</strong> from fMRI in a unified framework:  <ul>
+<li>Convolution handles local spatial integration.  </li>
+<li>Mamba handles long-range temporal and spatiotemporal dependencies.  </li>
+<li>Transformers handle global spatial relationships across the entire brain.  </li>
+</ul>
+</li>
+<li>
+<p>This can be viewed as <strong>intra-modality integration</strong> (across time and space) rather than multimodal integration.</p>
+</li>
+<li>
+<p><strong>Relation to the integration baseline plan:</strong>  </p>
+</li>
+<li>The integration baseline plan emphasizes <strong>late fusion across heterogeneous modalities</strong>, CCA-based analysis, and disciplined evaluation.  </li>
+<li>BrainMT does not explicitly adopt late fusion or CCA-style strategies, as it operates on a single modality.  </li>
+<li>However, its design aligns with the principle of <strong>preserving rich modality-specific signal</strong> (here, fMRI) by avoiding aggressive parcellation and instead modeling voxel-level dynamics directly.  </li>
+<li>The evaluation uses solid metrics (MSE/MAE/R for regression; accuracy, balanced accuracy, AUROC for classification), which resonates with the plan’s emphasis on robust, properly reported metrics.</li>
+</ul>
+<p>Because the paper is not truly multimodal, the integration baseline plan is more of a conceptual backdrop here than a direct methodological influence.</p>
+<hr />
+<h3 id="7-experiments-and-results">7. Experiments and Results<a class="headerlink" href="#7-experiments-and-results" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Tasks / benchmarks:</strong>  </li>
+<li><strong>Cognitive intelligence prediction (regression):</strong>  <ul>
+<li>Predicts continuous intelligence scores for subjects in HCP and UKB.  </li>
+<li>Evaluated with MSE, MAE, and Pearson’s correlation R.  </li>
+</ul>
+</li>
+<li><strong>Sex classification:</strong>  <ul>
+<li>Binary classification of sex for HCP and UKB participants.  </li>
+<li>Evaluated with accuracy, balanced accuracy, and AUROC.  </li>
+</ul>
+</li>
+<li>
+<p><strong>Additional analysis:</strong>  </p>
+<ul>
+<li>Predicting functional connectivity correlations, comparing BrainMT with SwiFT on subject-level Pearson correlations.  </li>
+<li>Ablation studies on number of frames, architecture components, numbers of layers, and alternative Mamba variants.  </li>
+<li>Interpretability analyses to identify brain regions contributing to predictions.</li>
+</ul>
+</li>
+<li>
+<p><strong>Baselines:</strong>  </p>
+</li>
+<li><strong>Correlation-based methods:</strong>  <ul>
+<li>XGBoost on connectivity features.  </li>
+<li>BrainNetCNN (CNN for brain networks).  </li>
+<li>BrainGNN (graph neural network for brain graphs).  </li>
+<li>BrainNetTF (transformer applied to brain networks).  </li>
+</ul>
+</li>
+<li><strong>Voxel-based methods:</strong>  <ul>
+<li>TFF: self-supervised transformers for fMRI representation.  </li>
+<li>SwiFT: 4D Swin transformer for fMRI (strong recent voxel-based baseline).  </li>
+</ul>
+</li>
+<li>
+<p>All baselines are implemented following their original papers and tuned on the validation sets.</p>
+</li>
+<li>
+<p><strong>Key quantitative findings (trends, not exact numbers):</strong>  </p>
+</li>
+<li><strong>Intelligence prediction:</strong>  <ul>
+<li>On both HCP and UKB, BrainMT achieves <strong>lower MSE and MAE</strong> and <strong>higher Pearson’s R</strong> than all baselines.  </li>
+<li>Many baselines achieve MSE close to 1.0 (given targets are normalized to unit variance), suggesting they mostly predict the mean.  </li>
+<li>BrainMT notably reduces MSE by around <strong>6–9%</strong> relative to the best baselines across datasets, indicating meaningful improvement.  </li>
+</ul>
+</li>
+<li><strong>Sex classification:</strong>  <ul>
+<li>On HCP, BrainMT achieves the <strong>best accuracy, balanced accuracy, and AUROC</strong> among all methods.  </li>
+<li>On UKB, BrainMT closely matches or slightly exceeds SwiFT, maintaining state-of-the-art performance.  </li>
+</ul>
+</li>
+<li><strong>Memory efficiency and scalability:</strong>  <ul>
+<li>BrainMT is reported to be about <strong>35.8% more memory-efficient</strong> than SwiFT.  </li>
+<li>Its memory usage grows <strong>linearly</strong> with the number of time frames, enabling longer sequence modeling than standard transformers.  </li>
+</ul>
+</li>
+<li>
+<p><strong>Ablation studies:</strong>  </p>
+<ul>
+<li><strong>Number of frames:</strong> Using around <strong>200 frames</strong> provides the best trade-off; fewer frames reduce signal-to-noise, while substantially more frames risk overfitting.  </li>
+<li><strong>Component ablations:</strong> Removing either the transformer or convolution block degrades performance, confirming the importance of the hybrid design.  </li>
+<li><strong>Depth variations:</strong> Larger or smaller numbers of Mamba/transformer layers change performance; the chosen configuration (12 Mamba, 8 transformer) is near optimal.  </li>
+<li><strong>Alternative Mamba variants:</strong> Replacing the bidirectional Vision Mamba block with alternatives like VMamba or MambaVision worsens results, suggesting the specific temporal-first, bidirectional setup is crucial.  </li>
+<li><strong>Functional connectivity prediction:</strong> BrainMT surpasses SwiFT in subject-level Pearson correlations, indicating better capture of dynamics that underlie functional connectivity.</li>
+</ul>
+</li>
+<li>
+<p><strong>Qualitative / interpretability findings:</strong>  </p>
+</li>
+<li><strong>Integrated Gradients (IG) maps</strong> for cognitive intelligence highlight regions in:  <ul>
+<li>Default Mode Network (DMN) and Frontoparietal Network (FPN), including posterior cingulate cortex (PCC), anterior cingulate cortex (ACC), precuneus (PCu), and cuneus (Cu).  </li>
+<li>These are known to be involved in working memory, attention, decision-making, and visuospatial processing.  </li>
+</ul>
+</li>
+<li>For sex prediction, IG maps consistently emphasize regions such as the superior temporal gyrus (STG), middle frontal gyrus (MFG), and precuneus (PCu), aligning with prior studies on sex differences in functional brain organization.  </li>
+<li>These maps suggest that BrainMT’s predictive patterns are consistent with established neuroscientific knowledge, not just arbitrary features.</li>
+</ul>
+<hr />
+<h3 id="8-strengths-limitations-and-open-questions">8. Strengths, Limitations, and Open Questions<a class="headerlink" href="#8-strengths-limitations-and-open-questions" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Strengths:</strong>  </li>
+<li><strong>End-to-end voxel-level modeling:</strong> Operates directly on 4D fMRI volumes, avoiding parcellation-induced information loss and inconsistencies.  </li>
+<li><strong>Long-range temporal modeling:</strong> The Mamba-based temporal-first design enables efficient handling of long sequences (hundreds of frames), which is crucial for capturing slow hemodynamic dynamics.  </li>
+<li><strong>Hybrid architecture:</strong> Combining convolution, Mamba, and transformers gives a balanced treatment of local spatial, long-range temporal, and global spatial dependencies.  </li>
+<li><strong>Strong empirical results:</strong> Consistently outperforms state-of-the-art correlation-based and voxel-based models on large, well-known datasets (HCP and UKB).  </li>
+<li><strong>Interpretability:</strong> Integrated Gradients provide biologically plausible importance maps, grounding model predictions in known functional networks.  </li>
+<li>
+<p><strong>Memory efficiency:</strong> More memory-efficient than a strong voxel-based transformer baseline (SwiFT), which is important for practical large-scale neuroimaging.</p>
+</li>
+<li>
+<p><strong>Limitations:</strong>  </p>
+</li>
+<li><strong>Single-modality focus:</strong> The model only uses resting-state fMRI; it does not yet integrate structural MRI, behavioral data, genetics, or other modalities that could aid prediction.  </li>
+<li><strong>Task-specific training:</strong> BrainMT is trained directly on supervised targets rather than via large-scale self-supervised pretraining; this limits its status as a general-purpose foundation model.  </li>
+<li><strong>Compute requirements:</strong> Despite efficiency improvements, training on 4D fMRI with deep Mamba and transformer stacks on large datasets still requires substantial compute (L40S GPUs, distributed training).  </li>
+<li><strong>Generalization beyond studied tasks:</strong> The paper evaluates on sex and cognitive intelligence; it remains unclear how well BrainMT transfers to other phenotypes or clinical conditions without substantial retraining.  </li>
+<li>
+<p><strong>Interpretability scope:</strong> Integrated Gradients focus on voxel importance but do not fully explain temporal dynamics or causal relationships.</p>
+</li>
+<li>
+<p><strong>Open Questions and Future Directions:</strong>  </p>
+</li>
+<li><strong>Multimodal extensions:</strong> How would BrainMT perform if extended to jointly model structural MRI, diffusion MRI, or behavioral measures along with fMRI? Could late fusion or shared embedding approaches from the integration baseline plan improve performance?  </li>
+<li><strong>Self-supervised or foundation-style pretraining:</strong> Can we pretrain BrainMT on large-scale unlabeled rs-fMRI datasets using self-supervised objectives (e.g., masked volume prediction, temporal contrastive tasks) and then fine-tune for many downstream tasks?  </li>
+<li><strong>Clinical translation:</strong> How well does BrainMT generalize to clinical populations (e.g., psychiatric or neurodegenerative disorders), and what adaptations are needed for imbalanced or smaller datasets?  </li>
+<li><strong>Temporal modeling variants:</strong> Would alternative state-space architectures, bidirectionality schemes, or temporal pooling strategies further improve performance or robustness?  </li>
+<li><strong>Uncertainty and reliability:</strong> How can we estimate prediction uncertainty and assess reliability across sites, scanners, and preprocessing pipelines?  </li>
+<li><strong>Integration with graph-based representations:</strong> Could learned voxel-level representations be aggregated into dynamic functional graphs and combined with GNNs for more interpretable connectivity analysis?</li>
+</ul>
+<hr />
+<h3 id="9-how-this-connects-to-the-bigger-picture-for-a-new-grad-student">9. How This Connects to the Bigger Picture (For a New Grad Student)<a class="headerlink" href="#9-how-this-connects-to-the-bigger-picture-for-a-new-grad-student" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Position in the landscape of brain foundation models:</strong>  </li>
+<li>BrainMT sits in the growing space of <strong>deep backbones for fMRI</strong>, alongside transformer-based models (e.g., TFF, SwiFT) and graph-based methods (BrainGNN).  </li>
+<li>It emphasizes <strong>efficient long-sequence modeling</strong>, borrowing ideas from modern sequence models like Mamba, and adapting them to 4D neuroimaging.  </li>
+<li>
+<p>While not a traditional “foundation model” with massive pretraining, it can serve as a <strong>strong architectural template</strong> for future brain FMs.</p>
+</li>
+<li>
+<p><strong>Connections to well-known ideas:</strong>  </p>
+</li>
+<li>Conceptually, BrainMT is like <strong>“a video model for brain volumes”</strong>: it treats fMRI as a spatiotemporal sequence, similar to video transformers but with neurobiological constraints.  </li>
+<li>The Mamba block provides <strong>linear-time sequence modeling</strong>, akin to efficient alternatives to transformers in NLP and vision; the transformer layer then adds global relational reasoning.  </li>
+<li>
+<p>Compared to traditional connectivity pipelines, it replaces hand-designed ROI-based features with <strong>end-to-end learned representations</strong> from raw data.</p>
+</li>
+<li>
+<p><strong>Relation to integration and broader research programs:</strong>  </p>
+</li>
+<li>For multimodal integration projects (e.g., integrating brain imaging with genomics or clinical data), BrainMT can act as a <strong>strong fMRI encoder</strong>, producing subject-level representations that can be fused with other modalities via late fusion or joint embedding methods.  </li>
+<li>Its success supports the integration baseline plan’s principle of <strong>preserving modality-specific signal</strong> (learning rich fMRI representations before combining with other data types).  </li>
+<li>
+<p>The evaluation practices (consistent splits, multiple metrics, ablations) echo the plan’s emphasis on careful, robust benchmarking.</p>
+</li>
+<li>
+<p><strong>Why this paper is a useful reference:</strong>  </p>
+</li>
+<li>It provides a concrete, well-validated example of how to design and train a modern deep architecture for 4D fMRI at scale.  </li>
+<li>It offers design patterns (temporal-first scanning, hybrid Mamba–transformer stacks, integrated interpretability) that can inform future brain FMs and multimodal models.  </li>
+<li>For a new grad student, it is a good entry point into understanding how sequence modeling ideas from NLP/vision can be translated into neuroimaging.</li>
+</ul>
+<hr />
+<h3 id="10-key-takeaways-bullet-summary">10. Key Takeaways (Bullet Summary)<a class="headerlink" href="#10-key-takeaways-bullet-summary" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Problem:</strong> Resting-state fMRI contains complex, long-range spatiotemporal patterns that can predict subject-level phenotypes such as sex and cognitive intelligence, but existing approaches either lose spatial detail (via parcellation) or are limited to short time windows (due to transformer complexity).  </li>
+<li>
+<p><strong>Problem:</strong> There is a need for architectures that can handle long 4D fMRI sequences efficiently while capturing both local and global dependencies in brain activity.</p>
+</li>
+<li>
+<p><strong>Method / model:</strong> BrainMT is a <strong>hybrid deep architecture</strong> combining convolutional blocks, a bidirectional Vision Mamba state-space module with temporal-first scanning, and a transformer block for global spatial attention.  </p>
+</li>
+<li><strong>Method / model:</strong> The model processes 200 fMRI frames per subject at a reduced spatial resolution, builds a long token sequence with positional embeddings and a classification token, and uses Mamba to capture long-range temporal context before applying transformer attention.  </li>
+<li>
+<p><strong>Method / model:</strong> Training uses large-scale resting-state fMRI datasets (UKB and HCP) with supervision for sex classification and cognitive intelligence regression, optimized with AdamW and standard loss functions.</p>
+</li>
+<li>
+<p><strong>Results:</strong> BrainMT outperforms strong correlation-based (XGBoost, BrainNetCNN, BrainGNN, BrainNetTF) and voxel-based (TFF, SwiFT) baselines in both intelligence prediction and sex classification across HCP and UKB.  </p>
+</li>
+<li><strong>Results:</strong> The model is more memory-efficient than SwiFT, scales linearly with the number of frames, and benefits from longer temporal context; ablations confirm the importance of its hybrid design and the specific Mamba variant.  </li>
+<li>
+<p><strong>Results:</strong> Integrated Gradients reveal that BrainMT’s predictions rely on default mode and frontoparietal regions for intelligence, and regions like STG, MFG, and precuneus for sex differences, aligning with known neuroscience.</p>
+</li>
+<li>
+<p><strong>Why it matters:</strong> BrainMT demonstrates that modern sequence models like Mamba, combined with transformers, can efficiently model long 4D fMRI sequences and yield state-of-the-art predictive performance.  </p>
+</li>
+<li><strong>Why it matters:</strong> The architecture is a promising backbone for future brain foundation models and a strong fMRI encoder that could be integrated into larger multimodal systems (e.g., combining brain imaging with genetics or clinical data).</li>
+</ul>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.instant", "navigation.top", "content.code.copy", "content.tabs.link", "toc.integrate", "toc.follow", "content.action.edit"], "search": "../../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

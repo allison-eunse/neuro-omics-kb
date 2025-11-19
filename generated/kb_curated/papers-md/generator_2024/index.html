@@ -1,0 +1,2593 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Code-first knowledge base for genetics and brain foundation models and multimodal integration">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Generator: A Long-Context Generative Genomic Foundation Model - Neurogenomics KB</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#generator-a-long-context-generative-genomic-foundation-model" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Neurogenomics KB" class="md-header__button md-logo" aria-label="Neurogenomics KB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Neurogenomics KB
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Generator: A Long-Context Generative Genomic Foundation Model
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/allison-eunse/neurogenomics-kb" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../guide/kb_overview/" class="md-tabs__link">
+          
+  
+  
+  Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../models/genetics/" class="md-tabs__link">
+          
+  
+  
+  Models
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../integration/" class="md-tabs__link">
+          
+  
+  
+  Integration
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../data/ukb_data_map/" class="md-tabs__link">
+          
+  
+  
+  Data
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../code_walkthroughs/" class="md-tabs__link">
+          
+  
+  
+  Code walkthroughs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../decisions/2025-11-integration-plan/" class="md-tabs__link">
+          
+  
+  
+  Decisions
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Neurogenomics KB" class="md-nav__button md-logo" aria-label="Neurogenomics KB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Neurogenomics KB
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/allison-eunse/neurogenomics-kb" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../guide/kb_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KB overview
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Models
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Models
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Genetics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Genetics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/genetics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/genetics/caduceus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caduceus
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/genetics/dnabert2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/genetics/evo2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evo 2
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/genetics/generator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GENERator
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Brain
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/brainlm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainLM
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/brainjepa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain-JEPA
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/brainharmony/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain Harmony
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/brainmt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainMT
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/swift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Integration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/integration_strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Strategy
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analysis recipes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Analysis recipes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/analysis_recipes/cca_permutation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CCA + permutation
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/analysis_recipes/prediction_baselines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prediction baselines
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/analysis_recipes/partial_correlations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Partial correlations
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modality features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modality features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/modality_features/genomics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Genomics
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/modality_features/smri/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    sMRI
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/modality_features/fmri/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fMRI
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/design_patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmarks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../data/ukb_data_map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UKB data map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../data/schemas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schemas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../data/governance_qc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governance & QC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code walkthroughs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Code walkthroughs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/caduceus_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caduceus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/dnabert2_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/evo2_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evo 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/generator_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GENERator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/brainlm_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainLM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/brainjepa_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain-JEPA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/brainharmony_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain Harmony
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/brainmt_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainMT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/swift_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Decisions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Decisions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../decisions/2025-11-integration-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integration plan (Nov 2025)
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/allison-eunse/neurogenomics-kb/edit/master/docs/generated/kb_curated/papers-md/generator_2024.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="generator-a-long-context-generative-genomic-foundation-model">Generator: A Long-Context Generative Genomic Foundation Model<a class="headerlink" href="#generator-a-long-context-generative-genomic-foundation-model" title="Permanent link">&para;</a></h1>
+<p><strong>Authors:</strong> Wei Wu, Qiuyi Li, Mingyang Li, Kun Fu, Fuli Feng, Jieping Ye, Hui Xiong, Zheng Wang<br />
+<strong>Year:</strong> 2025<br />
+<strong>Venue:</strong> arXiv (preprint)</p>
+<hr />
+<h2 id="1-classification">1. Classification<a class="headerlink" href="#1-classification" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Domain Category:</strong>  </li>
+<li>
+<p>Genomics FM. The paper develops a large generative language model over eukaryotic DNA sequences and evaluates it on a broad set of genomics prediction and design tasks.</p>
+</li>
+<li>
+<p><strong>FM Usage Type:</strong>  </p>
+</li>
+<li>
+<p>Core FM development. The main contribution is a new 1.2B-parameter generative genomic foundation model with long context, specialized tokenization, and a carefully curated pretraining corpus.</p>
+</li>
+<li>
+<p><strong>Key Modalities:</strong>  </p>
+</li>
+<li>DNA sequence (eukaryotic genomes, gene regions vs whole-genome segments).  </li>
+<li>Derived protein sequences and enhancer activity measurements are used mainly as downstream evaluation targets.</li>
+</ul>
+<hr />
+<h2 id="2-executive-summary">2. Executive Summary<a class="headerlink" href="#2-executive-summary" title="Permanent link">&para;</a></h2>
+<p>This paper introduces <strong>Generator</strong>, a large generative foundation model trained directly on eukaryotic DNA sequences to understand and design functional genomic sequences. The authors argue that existing genomic language models either lack generative ability, have short context, or are trained on relatively narrow datasets, which limits their usefulness for realistic genomic tasks. Generator is a 1.2B-parameter transformer decoder with a context length of about 98k base pairs, trained on 386 billion nucleotides from annotated gene regions of diverse eukaryotic species using next-token prediction and a 6‑mer tokenizer. The model achieves state-of-the-art performance on standard genomic benchmarks (Genomic Benchmarks, Nucleotide Transformer tasks) and on new “Gener” tasks that probe long-range sequence understanding. Beyond benchmarks, Generator can generate DNA coding sequences whose translated proteins have realistic structure and statistics, and can design enhancer sequences with controllable activity levels. Overall, the work demonstrates that a large, long-context generative DNA model can serve as a versatile tool for genomic analysis and sequence design, pointing toward future applications in synthetic biology and precision genomics.</p>
+<hr />
+<h2 id="3-problem-setup-and-motivation">3. Problem Setup and Motivation<a class="headerlink" href="#3-problem-setup-and-motivation" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Scientific / practical problem:</strong>  </li>
+<li>Build a <strong>general-purpose generative model of eukaryotic DNA</strong> that can both understand genomic sequences (for prediction tasks) and generate new, functional sequences (for design tasks).  </li>
+<li>
+<p>Specifically, the model should handle <strong>long genomic contexts</strong> (tens of kilobases), capture the semantics of <strong>gene regions and regulatory elements</strong>, and support downstream tasks like classification, next‑k‑mer prediction, protein-coding sequence generation, and enhancer design.</p>
+</li>
+<li>
+<p><strong>Why existing approaches are limited:</strong>  </p>
+</li>
+<li>Many prior genomic models are <strong>masked language models (MLMs)</strong> trained with BERT-style objectives; they are strong for understanding but weaker or awkward for <strong>generation</strong>.  </li>
+<li>Context lengths are often only <strong>hundreds to a few thousand base pairs</strong>, which is too short for many realistic gene and regulatory contexts that span tens of thousands of base pairs.  </li>
+<li>Some generative models like HyenaDNA, megaDNA, and Evo are either limited to specific organism groups (e.g., bacteriophages, prokaryotes/viruses, or human-only) or use relatively small models or datasets, leaving a gap for large-scale <strong>eukaryotic</strong> generative models.  </li>
+<li>
+<p>Naively training on entire genomes can flood the model with <strong>non-gene, low-information regions</strong>, potentially hurting downstream performance even if pretraining loss decreases.</p>
+</li>
+<li>
+<p><strong>Why this is hard (modeling and data challenges):</strong>  </p>
+</li>
+<li>DNA sequences are extremely long and <strong>lack clear word boundaries</strong>, making tokenization and context management nontrivial.  </li>
+<li>Computational cost scales badly with sequence length in standard transformers, so <strong>long-context training</strong> is expensive.  </li>
+<li>Functional regions (genes, promoters, enhancers) form only a <strong>small fraction</strong> of the genome; most bases are relatively redundant or low-entropy, so choosing what to train on matters.  </li>
+<li>Evaluating generative quality is difficult because there is not always a <strong>ground truth</strong> for “correct” generated DNA; one must rely on indirect metrics (e.g., downstream performance, protein structure statistics, enhancer activity predictions).</li>
+</ul>
+<hr />
+<h2 id="4-data-and-modalities">4. Data and Modalities<a class="headerlink" href="#4-data-and-modalities" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Datasets used (pretraining):</strong>  </li>
+<li>DNA sequences are drawn from <strong>all eukaryotic organisms</strong> in the RefSeq database.  </li>
+<li>
+<p>Two main strategies are compared:  </p>
+<ul>
+<li><strong>Gene Sequence Training (Scheme 1):</strong> Uses annotated gene regions (including protein-coding genes, various RNAs, and regulatory elements like promoters and enhancers). This yields about <strong>386 billion nucleotides</strong> and is the configuration used for Generator.  </li>
+<li><strong>Whole Sequence Training (Scheme 2):</strong> Mixes gene and non-gene regions from all eukaryotes, totaling about <strong>2 trillion nucleotides</strong>, producing the Generator-All variant.  </li>
+</ul>
+</li>
+<li>
+<p><strong>Datasets used (downstream):</strong>  </p>
+</li>
+<li><strong>Nucleotide Transformer (NT) tasks:</strong> A suite of genomics classification tasks (original and revised versions) covering promoters, enhancers, splice sites, chromatin marks, etc., across many species.  </li>
+<li><strong>Genomic Benchmarks:</strong> Primarily human-centric tasks such as enhancer vs non-enhancer, promoter vs non-promoter, regulatory element classification, and species discrimination.  </li>
+<li><strong>Gener tasks (proposed by this paper):</strong>  <ul>
+<li><strong>Gene classification:</strong> Predict gene type from sequences of length 100–5000 bp.  </li>
+<li><strong>Taxonomic classification:</strong> Predict taxonomic group from sequences of length 10,000–100,000 bp containing both gene and non-gene regions.  </li>
+</ul>
+</li>
+<li><strong>Central dogma tasks:</strong> Protein-coding DNA sequences for specific protein families (Histone and Cytochrome P450) from UniProt and RefSeq.  </li>
+<li>
+<p><strong>Enhancer design:</strong> The <strong>DeepSTARR</strong> dataset of enhancers with measured activity values (developmental vs housekeeping), including train/validation/test splits from the original DeepSTARR work.</p>
+</li>
+<li>
+<p><strong>Modalities and representations:</strong>  </p>
+</li>
+<li>Core input: <strong>DNA sequence</strong>, represented via a <strong>6‑mer tokenizer</strong> (each token is a contiguous 6‑base string).  </li>
+<li>Protein-level evaluation: DNA sequences are translated into <strong>amino acid sequences</strong> using the genetic code; protein language models and structure prediction tools are applied downstream.  </li>
+<li>
+<p>Enhancer activity: numerical <strong>activity values</strong> (log2-transformed) from DeepSTARR, plus textual prompts <code>&lt;high&gt;</code> / <code>&lt;low&gt;</code> used as conditioning tokens in sequence design experiments.</p>
+</li>
+<li>
+<p><strong>Preprocessing / representation details:</strong>  </p>
+</li>
+<li>For gene sequence training, the authors <strong>select annotated gene regions</strong> and treat them as semantically rich de facto “sentences” for the model.  </li>
+<li>For whole sequence training, the model sees both gene and non-gene sequences directly.  </li>
+<li>The 6‑mer tokenizer is applied with a <strong>random starting offset from 0 to 5</strong> for each sample so that the model is not tied to a fixed phase of the genomic coordinate system.  </li>
+<li>Long sequences are chunked into segments respecting the maximum token context.</li>
+</ul>
+<hr />
+<h2 id="5-model-foundation-model">5. Model / Foundation Model<a class="headerlink" href="#5-model-foundation-model" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Model Type:</strong>  </li>
+<li>
+<p><strong>Autoregressive transformer decoder</strong>, broadly following the <strong>LLaMA-style architecture</strong> for causal language modeling, adapted to DNA.</p>
+</li>
+<li>
+<p><strong>New vs existing FM:</strong>  </p>
+</li>
+<li>This is a <strong>new foundation model</strong>, called <strong>Generator</strong>, designed specifically for eukaryotic DNA.  </li>
+<li>
+<p>It is trained from scratch with DNA-specific choices for tokenization, data selection, and context length.</p>
+</li>
+<li>
+<p><strong>Key architectural configuration (approximate):</strong></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Value / Choice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Architecture</td>
+<td>Transformer decoder (LLaMA‑like)</td>
+</tr>
+<tr>
+<td>Layers</td>
+<td>26</td>
+</tr>
+<tr>
+<td>Hidden size</td>
+<td>2048</td>
+</tr>
+<tr>
+<td>MLP / intermediate size</td>
+<td>5632</td>
+</tr>
+<tr>
+<td>Attention heads</td>
+<td>32 (with 8 KV heads)</td>
+</tr>
+<tr>
+<td>Vocabulary size</td>
+<td>4128 (6‑mer tokens)</td>
+</tr>
+<tr>
+<td>Max token context</td>
+<td>16,384 tokens</td>
+</tr>
+<tr>
+<td>Max base-pair context</td>
+<td>≈ 98,304 bp (because each token is 6 bp)</td>
+</tr>
+<tr>
+<td>Positional encoding</td>
+<td>RoPE (rotary position embeddings)</td>
+</tr>
+<tr>
+<td>Activation</td>
+<td>SiLU</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Training objective and setup:</strong>  </li>
+<li>Pretraining objective is <strong>next-token prediction (NTP)</strong> on 6‑mer tokens, analogous to language modeling in NLP.  </li>
+<li>Batch size: about <strong>2 million tokens</strong> per batch.  </li>
+<li>Optimizer: <strong>AdamW</strong> with standard β values and weight decay, using <strong>cosine learning rate schedule with warmup</strong>.  </li>
+<li>Training spans <strong>6 epochs</strong> over 386B tokens (gene-only scheme), totaling ≈185k steps.  </li>
+<li>
+<p>Implementation uses <strong>FlashAttention</strong> and <strong>Zero Redundancy Optimizer (ZeRO)</strong> to make long-context training efficient on GPUs (32 A100s).</p>
+</li>
+<li>
+<p><strong>Key components and innovations:</strong>  </p>
+</li>
+<li><strong>Data selection strategy:</strong> Emphasis on <strong>gene regions only</strong> (Generator) versus gene + non-gene (Generator-All), showing that restricting to functional sequences can increase downstream performance even if pretraining loss is higher.  </li>
+<li><strong>Tokenization study:</strong> Systematic comparison of single-nucleotide, k‑mer, and BPE tokenizers for causal DNA LMs; finds that <strong>6‑mer tokenization</strong> gives the best generative performance in NTP settings.  </li>
+<li><strong>Long-context capability:</strong> By combining 6‑mer tokens with a large context window (16k tokens ≈ 98k bp), the model can see <strong>gene-scale and sub-chromosomal contexts</strong> in a single forward pass.  </li>
+<li>
+<p><strong>Generative downstream pipelines:</strong>  </p>
+<ul>
+<li>Fine-tuning for <strong>central dogma tasks</strong>, i.e., generating protein-coding DNA whose translated proteins look realistic to protein language models and structure predictors.  </li>
+<li>Prompt-conditioned <strong>enhancer design</strong>, where <code>&lt;high&gt;</code> / <code>&lt;low&gt;</code> prompts steer the model toward sequences with desired activity.</li>
+</ul>
+</li>
+<li>
+<p><strong>Fine-tuning / downstream usage:</strong>  </p>
+</li>
+<li>For classification benchmarks, the model is fine-tuned using a linear head on top of embeddings (e.g., of an end-of-sequence token), with hyperparameter search over learning rates and batch sizes.  </li>
+<li>For central dogma and enhancer design, a <strong>supervised fine-tuning (SFT)</strong> stage adapts the model to particular protein families or enhancer datasets, after which autoregressive generation is used with temperature and nucleus sampling controls.</li>
+</ul>
+<hr />
+<h2 id="6-multimodal-integration-aspects-if-applicable">6. Multimodal / Integration Aspects (If Applicable)<a class="headerlink" href="#6-multimodal-integration-aspects-if-applicable" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Is this paper multimodal?</strong>  </li>
+<li>The core model operates on <strong>single-modality DNA sequence data</strong>.  </li>
+<li>
+<p>Protein sequences and enhancer activity measurements appear as <strong>derived evaluation signals</strong>, not as fully co-modeled input modalities in a single end-to-end multimodal architecture.</p>
+</li>
+<li>
+<p><strong>Relation to multimodal / integration ideas:</strong>  </p>
+</li>
+<li>Although Generator itself is not a multimodal model, its <strong>embeddings and generative outputs</strong> could be used in <strong>late fusion pipelines</strong> with other modalities (e.g., chromatin marks, expression, imaging) as described in the integration baseline plan, where per-modality representations are concatenated and fed into shallow models (logistic regression, GBDTs).  </li>
+<li>The emphasis on <strong>semantically rich gene regions</strong> is conceptually similar to the plan’s principle of preserving <strong>modality-specific signal</strong>—here, “functional DNA segments” act as the high-value “modality” within the genome, and adding non-gene regions acts like injecting noise.  </li>
+<li>The careful evaluation practices (cross-validation, multiple benchmarks, explicit metrics) echo the baseline plan’s focus on <strong>robustness and disciplined evaluation</strong>, even though the work is not explicitly an integration study.</li>
+</ul>
+<hr />
+<h2 id="7-experiments-and-results">7. Experiments and Results<a class="headerlink" href="#7-experiments-and-results" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Tokenizer and objective experiments (Next K-mer Prediction):</strong>  </li>
+<li>The authors train multiple models with identical architecture but different tokenizers (single nucleotide, various k‑mers, BPE with different vocabulary sizes) and evaluate on <strong>next k‑mer prediction</strong> tasks.  </li>
+<li>They show that <strong>k‑mer tokenizers outperform BPE</strong>, and within k‑mers, the <strong>6‑mer tokenizer</strong> gives the best accuracy across different input lengths.  </li>
+<li>
+<p>They also compare a large <strong>Mamba-based state space model</strong> to transformer baselines and find that, despite its longer context and efficiency, it does <strong>not outperform</strong> the transformer with 6‑mer tokens as the input length grows.</p>
+</li>
+<li>
+<p><strong>Gene-only vs whole-genome training (Generator vs Generator-All):</strong>  </p>
+</li>
+<li>While the whole-sequence model (Generator-All) achieves <strong>lower pretraining loss</strong>, it underperforms Generator on almost all downstream tasks.  </li>
+<li>The authors argue that non-gene regions are often <strong>redundant or non-functional</strong>, so including them may dilute the high-information gene signal, effectively “contaminating” the data.  </li>
+<li>
+<p>This supports the idea that <strong>curated, semantically rich pretraining data</strong> can be more valuable than raw volume.</p>
+</li>
+<li>
+<p><strong>Benchmark evaluations (Nucleotide Transformer tasks and Genomic Benchmarks):</strong>  </p>
+</li>
+<li>On both the <strong>revised and original Nucleotide Transformer tasks</strong>, Generator generally achieves <strong>state-of-the-art or top-tier performance</strong>, often surpassing Enformer, DNABERT‑2, HyenaDNA, Nucleotide Transformer variants, Caduceus, and GROVER.  </li>
+<li>On <strong>Genomic Benchmarks</strong> (human-focused classification tasks), Generator again performs at or near the top; smaller specialized models like Caduceus sometimes come close but do not consistently dominate.  </li>
+<li>
+<p>The <strong>Gener tasks</strong> (gene and taxonomic classification) further highlight Generator’s strengths, especially for <strong>long-range sequence understanding</strong>, where it reaches very high weighted F1 scores, including near-perfect performance on taxonomic classification.</p>
+</li>
+<li>
+<p><strong>Central dogma experiments (protein-coding sequence generation):</strong>  </p>
+</li>
+<li>After fine-tuning on DNA sequences encoding specific protein families (Histones and Cytochrome P450), Generator is used to generate new coding sequences.  </li>
+<li>
+<p>Translating these sequences to proteins and analyzing them reveals:  </p>
+<ul>
+<li>Length distributions of generated proteins match those of natural families.  </li>
+<li>Protein language model perplexities (from Progen2) for generated sequences closely match those of natural proteins and differ from random shuffled controls.  </li>
+<li><strong>AlphaFold3</strong> predictions and <strong>Foldseek</strong> structure search show many generated proteins with <strong>high TM-scores (&gt;0.8)</strong> and high confidence, even when sequence identity is low (&lt;0.3), indicating that the model is not simply memorizing training sequences.</li>
+</ul>
+</li>
+<li>
+<p><strong>Enhancer design experiments:</strong>  </p>
+</li>
+<li>A predictor fine-tuned from Generator on <strong>DeepSTARR</strong> enhancer data achieves <strong>higher Pearson correlations</strong> between predicted and measured enhancer activity than DeepSTARR itself and NT‑multi, setting a new state of the art.  </li>
+<li>A further SFT stage adds <code>&lt;high&gt;</code> and <code>&lt;low&gt;</code> prompts to condition the model on desired activity levels.  </li>
+<li>
+<p>Generated enhancers labeled <code>&lt;high&gt;</code> and <code>&lt;low&gt;</code> show <strong>clear separation</strong> in predicted activity distributions relative to each other and to natural enhancers, suggesting that Generator can perform <strong>prompt-guided enhancer design</strong>.</p>
+</li>
+<li>
+<p><strong>Overall empirical message:</strong>  </p>
+</li>
+<li>Generator is a <strong>strong generalist</strong> across many genomic classification benchmarks and <strong>competent as a generative model</strong> for both coding and regulatory sequences, with particular strengths stemming from its long context, curated pretraining data, and 6‑mer tokenization.</li>
+</ul>
+<hr />
+<h2 id="8-strengths-limitations-and-open-questions">8. Strengths, Limitations, and Open Questions<a class="headerlink" href="#8-strengths-limitations-and-open-questions" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Strengths:</strong>  </li>
+<li><strong>Long-context, large-scale generative model</strong> tailored to eukaryotic DNA, filling a gap left by prior prokaryotic or short-context genomic models.  </li>
+<li>Careful <strong>tokenization and data selection studies</strong>, providing empirical guidance (e.g., 6‑mer tokens, gene-only data) that can inform future genomic FMs.  </li>
+<li>Strong, consistent performance across a <strong>wide range of benchmarks</strong>, including newly proposed long-context tasks.  </li>
+<li>Demonstrated ability to <strong>generate functional-like coding sequences</strong> and to perform <strong>prompt-conditioned enhancer design</strong>, moving beyond pure prediction into actionable sequence design.  </li>
+<li>
+<p>Extensive experimental detail (hyperparameter searches, cross-validation, ablations) that improves reproducibility and reliability.</p>
+</li>
+<li>
+<p><strong>Limitations:</strong>  </p>
+</li>
+<li>Pretraining focuses exclusively on <strong>eukaryotic genomes</strong>, leaving prokaryotic and viral DNA to other models like Evo; no unified genome-scale model across all domains of life is presented.  </li>
+<li>The model is <strong>computationally heavy</strong> (1.2B parameters, long sequences, many GPU hours), which may limit adoption in resource-constrained labs.  </li>
+<li>Most validations of generative quality are <strong>in silico</strong> (protein LMs, AlphaFold, enhancer predictors); there is limited or no wet-lab validation of generated sequences.  </li>
+<li>Despite long context, the model is still trained on <strong>1D sequence alone</strong>, without explicit modeling of 3D genome structure, epigenetic states, or cellular context.  </li>
+<li>
+<p>As with other large models, interpretability of what the model has learned about regulatory grammar and long-range interactions remains challenging.</p>
+</li>
+<li>
+<p><strong>Open Questions and Future Directions:</strong>  </p>
+</li>
+<li>How would a <strong>joint eukaryotic + prokaryotic + viral Generator</strong> behave, and what design choices would be needed to balance these domains?  </li>
+<li>Can Generator’s representations be combined with <strong>other modalities</strong> (chromatin accessibility, expression, epigenetics, single-cell data) in a systematic late-fusion or contrastive setup to improve downstream tasks like disease prediction?  </li>
+<li>What <strong>interpretability tools</strong> can be developed to probe the model’s understanding of motifs, regulatory grammar, and long-range enhancer–promoter interactions?  </li>
+<li>How robust are Generator’s predictions and designs across <strong>different species and genomic contexts</strong>, especially for non-model organisms with sparse annotations?  </li>
+<li>Can Generator be adapted for <strong>clinical applications</strong>, such as prioritizing noncoding variants in GWAS regions or designing therapeutic regulatory sequences, and what safety/ethics issues would arise?</li>
+</ul>
+<hr />
+<h2 id="9-context-and-broader-impact">9. Context and Broader Impact<a class="headerlink" href="#9-context-and-broader-impact" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Position in the landscape of foundation models in genomics:</strong>  </li>
+<li>Generator sits alongside models like <strong>Nucleotide Transformer</strong>, <strong>HyenaDNA</strong>, <strong>Caduceus</strong>, and <strong>Evo</strong> as part of the emerging ecosystem of <strong>genomic foundation models</strong>.  </li>
+<li>Compared to large masked LMs (e.g., DNABERT‑2, NT), Generator emphasizes <strong>autoregressive generation, long context, and curated gene-only training data</strong>, making it particularly suited for both understanding and designing DNA sequences.  </li>
+<li>
+<p>It complements <strong>Evo</strong>, which targets prokaryotic and viral genomes, by focusing on the more complex <strong>eukaryotic</strong> genomic setting.</p>
+</li>
+<li>
+<p><strong>Conceptual analogies for intuition:</strong>  </p>
+</li>
+<li>You can think of Generator as a <strong>GPT-style model for eukaryotic DNA</strong>, where tokens are 6‑mer substrings rather than words, and the context window spans whole genes or multi-gene regions instead of paragraphs.  </li>
+<li>
+<p>The central dogma experiments are somewhat analogous to asking a text model to generate <strong>syntactically valid and semantically coherent stories</strong> that pass external quality checks, except here the “checkers” are protein LMs and structure predictors.</p>
+</li>
+<li>
+<p><strong>Relevance to integration and broader research programs:</strong>  </p>
+</li>
+<li>The model’s strong sequence-level representations could serve as a <strong>genomic backbone</strong> in larger multimodal systems that integrate DNA with other omics or imaging modalities via late fusion, as recommended in the integration baseline plan.  </li>
+<li>Its success supports the broader thesis that <strong>domain-specific, long-context FMs</strong> can provide robust building blocks for downstream applications, from basic gene regulation studies to clinical genomics and synthetic biology.</li>
+</ul>
+<hr />
+<h2 id="10-key-takeaways-bullet-summary">10. Key Takeaways (Bullet Summary)<a class="headerlink" href="#10-key-takeaways-bullet-summary" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Problem:</strong> Existing genomic language models often lack <strong>generative capability</strong>, have <strong>short context windows</strong>, or are limited in organismal scope, constraining their usefulness for realistic eukaryotic genomics tasks.  </li>
+<li>
+<p><strong>Problem:</strong> Training directly on whole genomes may emphasize low-information non-gene regions, potentially hurting performance even when pretraining loss looks better.</p>
+</li>
+<li>
+<p><strong>Method / model:</strong> Generator is a <strong>1.2B-parameter transformer decoder</strong> with <strong>≈98k bp context length</strong>, trained with next-token prediction on <strong>386B nucleotides</strong> of eukaryotic gene regions.  </p>
+</li>
+<li><strong>Method / model:</strong> A systematic study of <strong>tokenizers</strong> finds that <strong>6‑mer tokens</strong> work best for causal DNA language modeling, beating both single-nucleotide and BPE tokenization.  </li>
+<li>
+<p><strong>Method / model:</strong> A comparison between <strong>gene-only</strong> and <strong>whole-genome</strong> pretraining shows that focusing on <strong>semantically rich gene regions</strong> yields better downstream performance than including vast non-gene regions.</p>
+</li>
+<li>
+<p><strong>Results:</strong> Generator achieves <strong>state-of-the-art or near-SOTA performance</strong> on Nucleotide Transformer tasks, Genomic Benchmarks, and newly proposed Gener tasks, particularly excelling in long-sequence understanding.  </p>
+</li>
+<li><strong>Results:</strong> In <strong>central dogma experiments</strong>, Generator can generate protein-coding DNA whose translated proteins have realistic lengths, protein-LM perplexities, and 3D structures, indicating true generative competence rather than memorization.  </li>
+<li>
+<p><strong>Results:</strong> For <strong>enhancer design</strong>, a Generator-based predictor surpasses previous models on DeepSTARR data, and prompt-conditioned generation produces enhancer sequences with clearly different predicted activity profiles.</p>
+</li>
+<li>
+<p><strong>Why it matters:</strong> Generator demonstrates that a <strong>large, long-context generative FM for eukaryotic DNA</strong> can serve as a powerful tool for both <strong>genomic analysis and sequence design</strong>, opening doors to more sophisticated applications in synthetic biology, variant interpretation, and future multimodal integration with other biological data types.</p>
+</li>
+</ul>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.instant", "navigation.top", "content.code.copy", "content.tabs.link", "toc.integrate", "toc.follow", "content.action.edit"], "search": "../../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

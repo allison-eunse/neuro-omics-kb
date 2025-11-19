@@ -1,0 +1,2566 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Code-first knowledge base for genetics and brain foundation models and multimodal integration">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Genome Modeling And Design Across All Domains Of Life With Evo 2 - Neurogenomics KB</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#genome-modeling-and-design-across-all-domains-of-life-with-evo-2" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Neurogenomics KB" class="md-header__button md-logo" aria-label="Neurogenomics KB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Neurogenomics KB
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Genome Modeling And Design Across All Domains Of Life With Evo 2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/allison-eunse/neurogenomics-kb" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../guide/kb_overview/" class="md-tabs__link">
+          
+  
+  
+  Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../models/genetics/" class="md-tabs__link">
+          
+  
+  
+  Models
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../integration/" class="md-tabs__link">
+          
+  
+  
+  Integration
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../data/ukb_data_map/" class="md-tabs__link">
+          
+  
+  
+  Data
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../code_walkthroughs/" class="md-tabs__link">
+          
+  
+  
+  Code walkthroughs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../decisions/2025-11-integration-plan/" class="md-tabs__link">
+          
+  
+  
+  Decisions
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Neurogenomics KB" class="md-nav__button md-logo" aria-label="Neurogenomics KB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Neurogenomics KB
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/allison-eunse/neurogenomics-kb" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../guide/kb_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KB overview
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Models
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Models
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Genetics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Genetics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/genetics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/genetics/caduceus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caduceus
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/genetics/dnabert2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/genetics/evo2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evo 2
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/genetics/generator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GENERator
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Brain
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/brainlm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainLM
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/brainjepa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain-JEPA
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/brainharmony/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain Harmony
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/brainmt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainMT
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/swift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Integration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/integration_strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Strategy
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analysis recipes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Analysis recipes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/analysis_recipes/cca_permutation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CCA + permutation
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/analysis_recipes/prediction_baselines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prediction baselines
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/analysis_recipes/partial_correlations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Partial correlations
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modality features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modality features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/modality_features/genomics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Genomics
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/modality_features/smri/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    sMRI
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/modality_features/fmri/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fMRI
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/design_patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmarks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../data/ukb_data_map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UKB data map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../data/schemas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schemas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../data/governance_qc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governance & QC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code walkthroughs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Code walkthroughs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/caduceus_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caduceus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/dnabert2_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/evo2_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evo 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/generator_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GENERator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/brainlm_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainLM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/brainjepa_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain-JEPA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/brainharmony_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain Harmony
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/brainmt_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainMT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/swift_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Decisions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Decisions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../decisions/2025-11-integration-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integration plan (Nov 2025)
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/allison-eunse/neurogenomics-kb/edit/master/docs/generated/kb_curated/papers-md/evo2_2024.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="genome-modeling-and-design-across-all-domains-of-life-with-evo-2">Genome Modeling And Design Across All Domains Of Life With Evo 2<a class="headerlink" href="#genome-modeling-and-design-across-all-domains-of-life-with-evo-2" title="Permanent link">&para;</a></h1>
+<p><strong>Authors:</strong> Garyk Brixi, Matthew G. Durrant, Jerome Ku, Michael Poli, Greg Brockman, Daniel Chang, Gabriel A. Gonzalez, Samuel H. King, David B. Li, Aditi T. Merchant, Mohsen Naghipourfar, Eric Nguyen, Chiara Ricci-Tam, David W. Romero, Gwanggyu Sun, Ali Taghibakshi, Anton Vorontsov, Brandon Yang, Myra Deng, Liv Gorton, Nam Nguyen, Nicholas K. Wang, Etowah Adams, Stephen A. Baccus, Steven Dillmann, Stefano Ermon, Daniel Guo, Rajesh Ilango, Ken Janik, Amy X. Lu, Reshma Mehta, Mohammad R.K. Mofrad, Madelena Y. Ng, Jaspreet Pannu, Christopher Ré, Jonathan C. Schmok, John St. John, Jeremy Sullivan, Kevin Zhu, Greg Zynda, Daniel Balsam, Patrick Collison, Anthony B. Costa, Tina Hernandez-Boussard, Eric Ho, Ming-Yu Liu, Thomas McGrath, Kimberly Powell, Dave P. Burke, Hani Goodarzi, Patrick D. Hsu, Brian L. Hie<br />
+<strong>Year:</strong> 2025<br />
+<strong>Venue:</strong> bioRxiv preprint</p>
+<hr />
+<h2 id="1-classification">1. Classification<a class="headerlink" href="#1-classification" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Domain Category:</strong>  </li>
+<li>
+<p><strong>Genomics FM.</strong> Evo 2 is a large-scale foundation model trained purely on DNA sequences from genomes across all domains of life, used for prediction and generation tasks that span molecular, genomic, and epigenomic levels.</p>
+</li>
+<li>
+<p><strong>FM Usage Type:</strong>  </p>
+</li>
+<li>
+<p><strong>Core FM development.</strong> The paper introduces a new large biological foundation model (Evo 2) together with a new multi-hybrid architecture (StripedHyena 2), training recipe, and evaluation suite, rather than just applying an existing FM.</p>
+</li>
+<li>
+<p><strong>Key Modalities:</strong>  </p>
+</li>
+<li>DNA sequence (genomic, organelle, and metagenomic).  </li>
+<li>RNA and protein effects (accessed via DNA-centric modeling and downstream assays, not as separate input modalities).  </li>
+<li>Epigenomic profiles (chromatin accessibility) used as downstream design targets via external predictive models (Enformer, Borzoi).</li>
+</ul>
+<hr />
+<h2 id="2-executive-summary">2. Executive Summary<a class="headerlink" href="#2-executive-summary" title="Permanent link">&para;</a></h2>
+<p>This paper presents Evo 2, a large-scale biological foundation model that learns directly from DNA sequences across all domains of life to support both prediction and generation of genomic functions. The authors train 7B and 40B parameter models on 9.3 trillion nucleotides with context windows up to 1 million base pairs, enabling the model to reason over entire genomes rather than short fragments. Evo 2 is evaluated on a wide range of tasks, including zero-shot prediction of mutational effects on proteins, noncoding RNAs, and organismal fitness, as well as clinical variant effect prediction for human genes like BRCA1/2. They show that Evo 2 achieves competitive or state-of-the-art performance, especially for noncoding and splice variants, without task-specific fine-tuning and while remaining alignment-free (no multiple sequence alignments). Using mechanistic interpretability tools, they reveal that the model’s internal features correspond to biologically meaningful concepts such as exons, introns, transcription factor motifs, protein secondary structures, and prophage regions. Finally, the paper demonstrates genome-scale DNA generation and guided “generative epigenomics,” where Evo 2 is steered at inference time by epigenomic predictors to design sequences with specified chromatin accessibility patterns. Overall, Evo 2 is positioned as a generalist genomic language model and design engine that can underpin many downstream tasks in computational biology.</p>
+<hr />
+<h2 id="3-problem-setup-and-motivation">3. Problem Setup and Motivation<a class="headerlink" href="#3-problem-setup-and-motivation" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Scientific / practical problem</strong></li>
+<li>How to build a single machine learning model that can <strong>understand and design genomic DNA</strong> across the full tree of life, from bacteria to humans, at scales ranging from short motifs to entire genomes.</li>
+<li>The model should support <strong>zero-shot mutational effect prediction</strong> (how mutations affect fitness or function) across proteins, RNAs, and noncoding regions, without relying on multiple sequence alignments or task-specific training.</li>
+<li>
+<p>It should also enable <strong>genome-scale sequence generation</strong>, including organelle genomes and full chromosomes, and support <strong>controllable design</strong> of higher-level properties such as chromatin accessibility.</p>
+</li>
+<li>
+<p><strong>Why this is hard</strong></p>
+</li>
+<li><strong>Data scale and diversity:</strong> Genomes vary widely in size and composition (small, compact prokaryotic genomes vs. large, intron-rich eukaryotic genomes with extensive noncoding and repetitive DNA). Capturing useful patterns across this diversity requires massive, carefully curated datasets.</li>
+<li><strong>Long-range dependencies:</strong> Many genomic functions (e.g., regulatory interactions, chromatin organization) depend on relationships spread over tens of kilobases to megabases, far beyond the context lengths of typical sequence models.</li>
+<li><strong>Multiple biological “modalities” along the central dogma:</strong> DNA variation influences RNA, protein, and organismal phenotypes; a useful model must implicitly encode patterns across these levels while only seeing DNA sequences.</li>
+<li><strong>Noncoding and regulatory elements:</strong> Noncoding variants and regulatory regions (enhancers, splice sites, chromatin features) are complex and “fuzzy,” making them harder to model than coding regions where the genetic code provides a more direct mapping to function.</li>
+<li><strong>Safety and biosecurity:</strong> Large biological foundation models could in principle be misused (e.g., in viral design), so the training data and evaluation strategy must be carefully structured to limit harmful capabilities while retaining broad utility.</li>
+</ul>
+<hr />
+<h2 id="4-data-and-modalities">4. Data and Modalities<a class="headerlink" href="#4-data-and-modalities" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Datasets used</strong></li>
+<li><strong>OpenGenome2</strong>: a large, curated genomic dataset totaling <strong>8.84–9.3 trillion nucleotides</strong>, strongly expanding the earlier OpenGenome dataset.<ul>
+<li>Representative <strong>prokaryotic genomes</strong> (bacteria and archaea), expanded from earlier GTDB releases.</li>
+<li><strong>Eukaryotic reference genomes</strong> from NCBI (16,000+ genomes), focusing on primary assemblies and non-nuclear contigs.</li>
+<li><strong>Organelle genomes</strong> (mitochondria and others), plus <strong>metagenomic</strong> sequencing data.</li>
+<li><strong>Function-focused subsets</strong> around coding genes (windows near genes and other functional regions) to enrich training for downstream tasks.</li>
+</ul>
+</li>
+<li>
+<p><strong>Evaluation datasets</strong> (not all named explicitly in the excerpt, but outlined conceptually):</p>
+<ul>
+<li>Deep mutational scanning (DMS) datasets for proteins and noncoding RNAs.</li>
+<li>Human mRNA stability data (for decay rates).</li>
+<li>Variant effect prediction datasets: ClinVar, SpliceVarDB, BRCA1/2 saturation mutagenesis.</li>
+<li>Organismal fitness and gene essentiality datasets for bacteria, phage, and human lncRNAs.</li>
+</ul>
+</li>
+<li>
+<p><strong>Modalities</strong></p>
+</li>
+<li><strong>Primary input modality:</strong> DNA sequence, tokenized at <strong>single-nucleotide resolution</strong>.</li>
+<li><strong>Implicit biological modalities captured through tasks:</strong> protein function, RNA function, noncoding regulatory function, and organismal fitness (all inferred from DNA variation).</li>
+<li>
+<p><strong>Epigenomic modality:</strong> chromatin accessibility tracks, used via <strong>external predictors</strong> (Enformer and Borzoi) for guided design, not as training inputs for Evo 2.</p>
+</li>
+<li>
+<p><strong>Preprocessing / representation</strong></p>
+</li>
+<li>DNA sequences are <strong>byte-tokenized</strong> and presented as long contiguous sequences, with a <strong>context length up to 1 million tokens</strong> during midtraining.</li>
+<li>Training uses <strong>sequence packing</strong> and a reweighted cross-entropy loss that downweights repetitive regions to better calibrate model likelihoods between repetitive and non-repetitive DNA.</li>
+<li>Lowercase annotations for repeats are used early in pretraining, then removed later so the model learns stable representations of repetitive vs non-repetitive regions.</li>
+<li>Special tokens (e.g., stitch tokens and phylogenetic tags) are used to condition the model and are masked out in the loss.</li>
+</ul>
+<hr />
+<h2 id="5-model-foundation-model">5. Model / Foundation Model<a class="headerlink" href="#5-model-foundation-model" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Model Type</strong></li>
+<li>Evo 2 is an <strong>autoregressive genomic language model</strong> built on <strong>StripedHyena 2</strong>, a <strong>multi-hybrid architecture</strong> that combines input-dependent convolutions with attention.</li>
+<li>
+<p>It is analogous to large language models (LLMs) in NLP but operates on nucleotide sequences and is optimized for extremely long contexts.</p>
+</li>
+<li>
+<p><strong>Is it a new FM or an existing one?</strong></p>
+</li>
+<li>
+<p><strong>New FM.</strong> Evo 2 extends the earlier Evo 1 models with a new architecture, larger parameter counts, vastly more training data, and a much longer context window (up to 1M bases).</p>
+</li>
+<li>
+<p><strong>Key components and innovations</strong></p>
+</li>
+<li><strong>StripedHyena 2 architecture:</strong><ul>
+<li>Uses multiple kinds of <strong>input-dependent convolution operators</strong> (Hyena-SE, Hyena-MR, Hyena-LI) interleaved with attention, arranged in a “striped” pattern.</li>
+<li>Designed to balance <strong>quality and efficiency</strong>, giving higher throughput than Transformers and earlier StripedHyena variants, especially at long sequence lengths.</li>
+<li>Achieves up to <strong>3× speedup</strong> at 1M context compared to optimized Transformers at 40B scale.</li>
+</ul>
+</li>
+<li><strong>Multi-phase training:</strong><ul>
+<li><strong>Pretraining phase</strong> at shorter context lengths (1024→8192 tokens), enriched for genic windows and high-information regions to learn core biological features efficiently.</li>
+<li><strong>Midtraining phase</strong> for <strong>context extension</strong> to 1M tokens using rotary positional embeddings with positional interpolation and base frequency scaling, plus more whole-genome sequences.</li>
+</ul>
+</li>
+<li><strong>Model sizes and configuration:</strong><ul>
+<li>Evo 2 <strong>40B</strong>: ~40.3B parameters, 50 layers, hidden size ~8192, trained on <strong>9.3T tokens</strong>.</li>
+<li>Evo 2 <strong>7B</strong>: ~6.5B parameters, 32 layers, trained on <strong>2.4T tokens</strong>.</li>
+<li>Evo 2 <strong>1B base</strong>: smaller 1.1B variant trained on 1T tokens (also released).</li>
+</ul>
+</li>
+<li>
+<p><strong>Loss and training tricks:</strong></p>
+<ul>
+<li>Reweighted cross-entropy that reduces emphasis on repetitive DNA.</li>
+<li>Context-parallel training infrastructure (Savanna) with 3D parallelism (data, tensor, context) and mixed precision (FP8 in some components).</li>
+<li>A new <strong>needle-in-a-haystack evaluation</strong> to test long-context retrieval at up to 1M bases using a categorical Jacobian-based retrieval score.</li>
+</ul>
+</li>
+<li>
+<p><strong>Training setup (as far as available)</strong></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Objective</td>
+<td>Autoregressive next-token prediction on byte-tokenized DNA</td>
+</tr>
+<tr>
+<td>Parameters</td>
+<td>1.1B, 6.5B, and 40.3B variants</td>
+</tr>
+<tr>
+<td>Tokens seen</td>
+<td>Up to 9.3T tokens for Evo 2 40B</td>
+</tr>
+<tr>
+<td>Context length</td>
+<td>8,192 in pretraining, up to 1,048,576 (≈1M) in midtraining</td>
+</tr>
+<tr>
+<td>Architecture</td>
+<td>StripedHyena 2 multi-hybrid (convolutions + attention + RoPE)</td>
+</tr>
+<tr>
+<td>Optimizer</td>
+<td>AdamW with cosine LR decay</td>
+</tr>
+<tr>
+<td>Infrastructure</td>
+<td>Custom stack (Savanna) with DeepSpeed, GPT-NeoX, Transformer Engine</td>
+</tr>
+<tr>
+<td>Availability</td>
+<td>Open-source model weights, training and inference code, OpenGenome2</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-multimodal-integration-aspects-if-applicable">6. Multimodal / Integration Aspects (If Applicable)<a class="headerlink" href="#6-multimodal-integration-aspects-if-applicable" title="Permanent link">&para;</a></h2>
+<p>This paper does <strong>not</strong> focus on multimodal integration in the sense of combining heterogeneous data modalities like imaging, clinical features, and genomics into a single model or fusion pipeline. Evo 2 operates on DNA sequence alone and learns representations that implicitly capture information relevant to proteins, RNAs, and organismal fitness; epigenomic aspects (chromatin accessibility) enter only through external predictive models used to score generated sequences.</p>
+<p>That said, Evo 2 is highly relevant to multimodal integration pipelines such as those outlined in the <strong>Integration Baseline Plan</strong>:
+- Evo 2 can serve as a <strong>genomics encoder</strong> that produces compact sequence embeddings for downstream integration with other modalities using <strong>late fusion</strong> (e.g., concatenating Evo 2-derived features with imaging or clinical features for logistic regression or gradient-boosted trees).
+- Its strong zero-shot performance and robust variant scores align with the plan’s emphasis on <strong>modality-specific modeling first</strong>, followed by disciplined late integration and careful evaluation (e.g., AUROC/AUPRC with CIs, bootstrapping or DeLong tests).
+- Mechanistic interpretability features (e.g., exon, splice, motif features) could act as <strong>interpretable genomic covariates</strong> in CCA or partial correlation analyses, fitting nicely into integration strategies that emphasize interpretability before moving to heavier fusion models.</p>
+<hr />
+<h2 id="7-experiments-and-results">7. Experiments and Results<a class="headerlink" href="#7-experiments-and-results" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Tasks / benchmarks</strong></li>
+<li><strong>Zero-shot mutational effect prediction</strong> across proteins, RNAs, and genomes from multiple domains of life, using changes in Evo 2 likelihood when introducing mutations.</li>
+<li><strong>Human variant effect prediction (VEP):</strong><ul>
+<li>Predicting pathogenic vs benign variants in <strong>ClinVar</strong> for both coding and noncoding variants, including indels and other non-SNVs.</li>
+<li>Predicting splice-altering variants using <strong>SpliceVarDB</strong>, split into exonic and intronic variants.</li>
+<li>Predicting functional consequences of variants in <strong>BRCA1</strong> and <strong>BRCA2</strong> from saturation mutagenesis/scanning datasets.</li>
+</ul>
+</li>
+<li><strong>Organismal fitness and gene essentiality:</strong><ul>
+<li>Zero-shot prediction of gene essentiality in bacteria and phage using mutational likelihood of premature stop codons.</li>
+<li>Prediction of human lncRNA essentiality using scrambled subsequences.</li>
+</ul>
+</li>
+<li><strong>Mechanistic interpretability:</strong><ul>
+<li>Training sparse autoencoders over Evo 2 representations to identify latent features corresponding to genomic and protein-level concepts.</li>
+</ul>
+</li>
+<li>
+<p><strong>Generative tasks:</strong></p>
+<ul>
+<li><strong>Genome-scale generation</strong> of mitochondrial genomes, minimal bacterial genomes (e.g., M. genitalium), and yeast chromosome-scale DNA.</li>
+<li><strong>Generative epigenomics</strong>: designing sequences with specified chromatin accessibility patterns using Enformer/Borzoi-guided inference-time search.</li>
+</ul>
+</li>
+<li>
+<p><strong>Baselines</strong></p>
+</li>
+<li><strong>Sequence and variant models:</strong> Nucleotide Transformer, Evo 1, and specialized variant effect models such as <strong>AlphaMissense</strong> and <strong>GPN-MSA</strong>.</li>
+<li><strong>For DMS and fitness tasks:</strong> State-of-the-art autoregressive protein LMs and DNA LMs used for mutational effect prediction.</li>
+<li>
+<p><strong>For generation and structure:</strong> Comparisons to Evo 1 and to natural sequence/structure distributions (e.g., using Pfam, ESMFold, AlphaFold 3).</p>
+</li>
+<li>
+<p><strong>Key findings</strong></p>
+</li>
+<li><strong>Zero-shot mutational effects &amp; biological priors</strong><ul>
+<li>Evo 2 likelihood changes correctly reflect fundamental coding properties: strong penalties for mutations in start/stop codons, triplet codon periodicity, and decreased penalties at wobble positions.</li>
+<li>The model distinguishes different genetic codes (e.g., standard vs mycoplasma vs ciliate) and requires longer contexts (4–8 kb) to correctly infer some species-specific codes, highlighting the benefit of long context.</li>
+<li>Likelihood changes correlate with known constraints: non-synonymous, frameshift, and stop-gain mutations are more deleterious than synonymous mutations; deletions in essential RNAs (tRNAs, rRNAs) are more damaging than in intergenic regions.</li>
+</ul>
+</li>
+<li><strong>DMS and fitness prediction</strong><ul>
+<li>Evo 2’s zero-shot likelihoods <strong>correlate well with DMS fitness measurements</strong> across diverse proteins and noncoding RNAs, matching or exceeding state-of-the-art protein LMs, especially for ncRNAs.</li>
+<li>For human mRNAs, Evo 2 likelihoods negatively correlate with mRNA decay rates (higher likelihood ↔ more stable mRNA), and the 40B model performs better than 7B.</li>
+<li>Evo 2 matches Evo 1 on prokaryotic gene essentiality and <strong>extends</strong> predictive power to eukaryotic noncoding elements like lncRNAs, outperforming baselines.</li>
+</ul>
+</li>
+<li><strong>Clinical variant prediction</strong><ul>
+<li>In ClinVar, Evo 2 is competitive for coding SNVs and <strong>outperforms baselines for non-SNVs</strong> (indels) and noncoding variants, where many specialized models perform poorly or cannot score variants.</li>
+<li>In SpliceVarDB, Evo 2 achieves top zero-shot performance for both exonic and intronic splice variants.</li>
+<li>For BRCA1/2 datasets, Evo 2 sets or matches state-of-the-art performance, particularly when combining coding and noncoding variants.</li>
+<li>A supervised classifier built on Evo 2 embeddings further improves performance, achieving <strong>AUROCs up to ~0.95</strong> on BRCA1 SNVs and outperforming AlphaMissense and other baselines.</li>
+</ul>
+</li>
+<li><strong>Mechanistic interpretability</strong><ul>
+<li>Sparse autoencoders over Evo 2 representations reveal features aligned with:</li>
+<li>Prophage and mobile genetic elements.</li>
+<li>ORFs, intergenic regions, tRNAs, rRNAs.</li>
+<li>Protein secondary structures (α-helices, β-sheets).</li>
+<li>Exon–intron architectures (including features that fire at specific exon boundaries).</li>
+<li>Promoter motifs and transcription factor binding-like patterns in human genome regions.</li>
+<li>These features generalize to out-of-training genomes, e.g., annotating exon–intron structure in the <strong>woolly mammoth</strong> genome.</li>
+</ul>
+</li>
+<li><strong>Genome-scale generation</strong><ul>
+<li>Evo 2 generates mitochondrial genomes with correct counts and arrangements of coding, tRNA, and rRNA genes, with diverse but structurally plausible proteins.</li>
+<li>It generates <strong>minimal bacterial genomes</strong> (M. genitalium scale) where ~70% of predicted genes have significant Pfam hits, a large improvement over Evo 1.</li>
+<li>Yeast chromosome-scale generation yields sequences with recognizable genes, introns, promoters, and tRNAs, with proteins that resemble natural yeast proteins in sequence and structure.</li>
+<li>Viral protein generation from human-infecting viruses remains poor by design, reflecting intentional data exclusion and risk mitigation.</li>
+</ul>
+</li>
+<li><strong>Generative epigenomics and inference-time scaling</strong><ul>
+<li>Using Enformer and Borzoi to score chromatin accessibility, a beam-search-based inference-time procedure produces sequences whose predicted accessibility matches desired patterns (e.g., open vs closed regions).</li>
+<li>Increasing inference-time compute (wider beam search, more sampled chunks) shows a <strong>log-linear improvement</strong> in design success (higher AUROC for distinguishing open vs closed regions), demonstrating <strong>inference-time scaling laws</strong> for a biological design task.</li>
+<li>The method is expressive enough to encode Morse-code messages in chromatin accessibility peaks, while maintaining natural sequence statistics (e.g., dinucleotide distributions).</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="8-strengths-limitations-and-open-questions">8. Strengths, Limitations, and Open Questions<a class="headerlink" href="#8-strengths-limitations-and-open-questions" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Strengths</strong></li>
+<li><strong>Scale and coverage:</strong> Evo 2 is trained on one of the largest curated genomic datasets to date, spanning all domains of life and multiple genomic contexts, and achieves a 1M-token context window.</li>
+<li><strong>Generalist capabilities:</strong> A single model supports diverse tasks: zero-shot mutational effect prediction, clinical variant scoring, genome-scale generation, and guided epigenomic design.</li>
+<li><strong>Strong performance on hard regimes:</strong> Evo 2 is particularly strong for noncoding, splice, and indel variants, where many existing models struggle.</li>
+<li><strong>Mechanistic interpretability:</strong> The use of sparse autoencoders reveals interpretable features that align with biological concepts, improving trust and offering new tools for discovery and annotation.</li>
+<li><strong>Open release:</strong> Model weights, training and inference code, and the OpenGenome2 dataset are released under an open license, enabling reproducibility and community-driven extensions.</li>
+<li>
+<p><strong>Safety-aware design:</strong> The training corpus deliberately excludes pathogenic viral genomes for eukaryotic hosts, and empirical tests show degraded performance in that domain, demonstrating concrete risk mitigation.</p>
+</li>
+<li>
+<p><strong>Limitations</strong></p>
+</li>
+<li><strong>DNA-only input:</strong> Despite implicitly touching proteins, RNAs, and epigenomics, Evo 2 only ingests DNA; it does not explicitly integrate multi-omic modalities (e.g., expression, proteomics) or other data types like imaging or clinical variables.</li>
+<li><strong>Reliance on external models for function-specific design:</strong> Generative epigenomics depends on Enformer and Borzoi for scoring; Evo 2 itself is not directly conditioned on chromatin states or other annotations.</li>
+<li><strong>Dataset and species bias:</strong> Although the training set is huge, it is still limited by what genomes are available and curated, and some domains (e.g., viruses infecting humans) are intentionally underrepresented.</li>
+<li><strong>Compute and infrastructure requirements:</strong> Training and inference at 40B scale with 1M context is expensive and requires specialized infrastructure (Savanna, Vortex), limiting who can retrain or significantly modify the model.</li>
+<li>
+<p><strong>Interpretability coverage:</strong> Even with SAEs, only a subset of latent features is mapped to interpretable biological concepts; many features likely encode higher-order or mixed patterns that remain to be understood.</p>
+</li>
+<li>
+<p><strong>Open Questions and Future Directions:</strong></p>
+</li>
+<li>How can Evo 2 embeddings be integrated with <strong>population-scale human genetic variation</strong> (e.g., biobanks) to further improve pathogenicity prediction and identify subtle regulatory effects?</li>
+<li>Can mechanistic interpretability tools (e.g., feature steering, activation clamping) be used to <strong>control specific biological properties</strong> during generation, such as alternative splicing or tissue-specific regulation?</li>
+<li>What are the best strategies to combine Evo 2 with other modalities (transcriptomics, epigenomics, imaging) in <strong>late fusion</strong> or <strong>two-tower architectures</strong>, in line with the integration baseline plan?</li>
+<li>How robust are Evo 2’s predictions across underrepresented species or genomic contexts, and what additional data curation or training strategies would reduce biases?</li>
+<li>Can inference-time design frameworks be generalized beyond chromatin accessibility to optimize for other complex properties (e.g., protein–protein interaction networks, gene circuit behavior) while maintaining safety?</li>
+</ul>
+<hr />
+<h2 id="9-context-and-broader-impact">9. Context and Broader Impact<a class="headerlink" href="#9-context-and-broader-impact" title="Permanent link">&para;</a></h2>
+<p>Evo 2 sits at the frontier of <strong>foundation models for genomics</strong>, analogous to large language models in NLP but operating directly on DNA across the tree of life. Compared to earlier genomic models and protein LMs, Evo 2 pushes three main frontiers at once: <strong>scale of data</strong>, <strong>model size and architecture</strong>, and <strong>context length</strong>, enabling it to capture patterns from local motifs up to genome-scale organization. Its success on zero-shot variant effect prediction and generative tasks shows that <strong>alignment-free, DNA-only models</strong> can be powerful generalists, complementing or even competing with highly specialized models like AlphaMissense. For students interested in multimodal integration, Evo 2 can be viewed as a <strong>genome encoder</strong>: its embeddings and interpretable features are natural inputs to late-fusion or contrastive multimodal pipelines that combine genomics with imaging, behavior, or clinical data, consistent with the integration baseline plan’s emphasis on strong per-modality modeling. More broadly, Evo 2 demonstrates how ideas from large-scale LMs (scaling laws, long-context training, inference-time scaling, mechanistic interpretability) can be translated into biology, opening up a path toward “virtual cell” models that integrate genomics with epigenomic and transcriptomic layers.</p>
+<hr />
+<h2 id="10-key-takeaways-bullet-summary">10. Key Takeaways (Bullet Summary)<a class="headerlink" href="#10-key-takeaways-bullet-summary" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Evo 2 is a <strong>large-scale genomic foundation model</strong> trained on ~9.3T nucleotides from genomes spanning all domains of life, with context windows up to 1M base pairs.</li>
+<li>The model uses a new <strong>StripedHyena 2 multi-hybrid architecture</strong>, combining input-dependent convolutions and attention to achieve efficient training and inference at long context lengths.</li>
+<li>Evo 2 supports <strong>zero-shot mutational effect prediction</strong> for proteins, RNAs, and noncoding regions, with likelihood changes that align with known biological constraints and genetic codes.</li>
+<li>On clinical variant tasks (ClinVar, SpliceVarDB, BRCA1/2), Evo 2 is competitive with or better than specialized models, especially for noncoding, splice, and non-SNV variants.</li>
+<li>Evo 2 embeddings can power <strong>supervised classifiers</strong> that achieve state-of-the-art performance on clinically important tasks such as BRCA1 variant classification.</li>
+<li>Mechanistic interpretability with sparse autoencoders reveals <strong>latent features corresponding to exons, introns, motifs, protein secondary structure, and prophages</strong>, and these features generalize to unseen genomes.</li>
+<li>The model can <strong>generate genome-scale DNA sequences</strong> (mitochondrial genomes, minimal bacterial genomes, yeast chromosomes) that resemble natural sequences in structure and function.</li>
+<li>By combining Evo 2 with epigenomic predictors and beam-search-style inference-time search, the authors demonstrate <strong>controllable “generative epigenomics”</strong> and the first inference-time scaling laws in a biological design setting.</li>
+<li>Evo 2 is released fully open (weights, training and inference code, data), offering a powerful <strong>foundation for downstream genomics, variant interpretation, and design tasks</strong>, while incorporating explicit risk mitigation for viral domains.</li>
+<li>For a new grad student, Evo 2 is a key reference for how to build, evaluate, and interpret <strong>DNA-based foundation models</strong>, and a natural starting point for projects in variant effect prediction, genome design, and multimodal integration.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.instant", "navigation.top", "content.code.copy", "content.tabs.link", "toc.integrate", "toc.follow", "content.action.edit"], "search": "../../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

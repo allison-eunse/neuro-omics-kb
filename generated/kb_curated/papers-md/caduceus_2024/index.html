@@ -1,0 +1,2689 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Code-first knowledge base for genetics and brain foundation models and multimodal integration">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Caduceus 2024 - Neurogenomics KB</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#caduceus-bi-directional-equivariant-long-range-dna-sequence-modeling" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Neurogenomics KB" class="md-header__button md-logo" aria-label="Neurogenomics KB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Neurogenomics KB
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Caduceus 2024
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/allison-eunse/neurogenomics-kb" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../guide/kb_overview/" class="md-tabs__link">
+          
+  
+  
+  Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../models/genetics/" class="md-tabs__link">
+          
+  
+  
+  Models
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../integration/" class="md-tabs__link">
+          
+  
+  
+  Integration
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../data/ukb_data_map/" class="md-tabs__link">
+          
+  
+  
+  Data
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../code_walkthroughs/" class="md-tabs__link">
+          
+  
+  
+  Code walkthroughs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../decisions/2025-11-integration-plan/" class="md-tabs__link">
+          
+  
+  
+  Decisions
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Neurogenomics KB" class="md-nav__button md-logo" aria-label="Neurogenomics KB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Neurogenomics KB
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/allison-eunse/neurogenomics-kb" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../guide/kb_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KB overview
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Models
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Models
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Genetics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Genetics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/genetics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/genetics/caduceus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caduceus
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/genetics/dnabert2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/genetics/evo2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evo 2
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/genetics/generator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GENERator
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Brain
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/brainlm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainLM
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/brainjepa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain-JEPA
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/brainharmony/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain Harmony
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/brainmt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainMT
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/swift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Integration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/integration_strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Strategy
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analysis recipes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Analysis recipes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/analysis_recipes/cca_permutation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CCA + permutation
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/analysis_recipes/prediction_baselines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prediction baselines
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/analysis_recipes/partial_correlations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Partial correlations
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modality features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modality features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/modality_features/genomics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Genomics
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/modality_features/smri/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    sMRI
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/modality_features/fmri/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fMRI
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/design_patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmarks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../data/ukb_data_map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UKB data map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../data/schemas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schemas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../data/governance_qc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governance & QC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code walkthroughs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Code walkthroughs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/caduceus_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caduceus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/dnabert2_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/evo2_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evo 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/generator_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GENERator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/brainlm_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainLM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/brainjepa_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain-JEPA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/brainharmony_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain Harmony
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/brainmt_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainMT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/swift_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Decisions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Decisions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../decisions/2025-11-integration-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integration plan (Nov 2025)
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/allison-eunse/neurogenomics-kb/edit/master/docs/generated/kb_curated/papers-md/caduceus_2024.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<hr />
+<h1 id="caduceus-bi-directional-equivariant-long-range-dna-sequence-modeling">Caduceus: Bi-Directional Equivariant Long-Range DNA Sequence Modeling<a class="headerlink" href="#caduceus-bi-directional-equivariant-long-range-dna-sequence-modeling" title="Permanent link">&para;</a></h1>
+<p><strong>Authors:</strong> Yair Schiff, Chia-Hsiang Kao, Aaron Gokaslan, Tri Dao, Albert Gu, Volodymyr Kuleshov<br />
+<strong>Year:</strong> 2024<br />
+<strong>Venue:</strong> 41st International Conference on Machine Learning (ICML), PMLR 235</p>
+<hr />
+<h2 id="1-classification">1. Classification<a class="headerlink" href="#1-classification" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Domain Category:</strong>  </li>
+<li>
+<p><strong>Genomics FM.</strong> The paper develops long-range sequence models specifically for DNA and evaluates them on genomics tasks such as regulatory element classification and variant effect prediction.</p>
+</li>
+<li>
+<p><strong>FM Usage Type:</strong>  </p>
+</li>
+<li>
+<p><strong>Core FM development.</strong> The main contribution is a new family of DNA foundation models (Caduceus) and underlying architectural blocks (BiMamba and MambaDNA), together with pretraining and fine-tuning strategies.</p>
+</li>
+<li>
+<p><strong>Key Modalities:</strong>  </p>
+</li>
+<li>Single-modality DNA sequence (human reference genome; nucleotide-level modeling).</li>
+</ul>
+<hr />
+<h2 id="2-executive-summary">2. Executive Summary<a class="headerlink" href="#2-executive-summary" title="Permanent link">&para;</a></h2>
+<p>This paper introduces Caduceus, a family of long-range DNA language models designed to capture two key biological symmetries: bi-directional context and reverse complement (RC) equivariance of DNA. Standard sequence models either struggle with very long genomic contexts or ignore that DNA’s two strands carry equivalent information in opposite directions, which wastes data and harms generalization. Building on the Mamba structured state space model, the authors propose BiMamba for efficient bi-directional sequence modeling and MambaDNA for RC-equivariant processing, then assemble these into Caduceus variants that operate as DNA foundation models trained with masked language modeling. They pretrain on the human genome and fine-tune on a wide range of genomics benchmarks, showing that Caduceus matches or outperforms both HyenaDNA (another long-range SSM-based model) and much larger Transformer-based models such as Nucleotide Transformer v2 and Enformer, especially for tasks requiring long-range sequence context and symmetry handling. A highlight is variant effect prediction, where Caduceus competes with or exceeds 10× larger attention-based models at long genomic distances from genes. For a new grad student, this paper is a concrete example of how to incorporate biological inductive biases (symmetries) into modern foundation-model-style architectures to unlock better performance at manageable scale.</p>
+<hr />
+<h2 id="3-problem-setup-and-motivation">3. Problem Setup and Motivation<a class="headerlink" href="#3-problem-setup-and-motivation" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Scientific / practical problem</strong></li>
+<li>How to build foundation-scale models that understand long DNA sequences, especially non-coding regions that regulate gene expression.</li>
+<li>Specifically, the model should:<ul>
+<li>Use <strong>bi-directional context</strong>: regulatory effects can depend on bases both upstream and downstream of a position.</li>
+<li>Be <strong>reverse complement (RC) aware</strong>: the two strands of DNA encode the same information in opposite directions (A↔T, C↔G), and biological assays may sequence either strand.</li>
+<li>Capture <strong>long-range interactions</strong>: variants up to hundreds of kilobases (or more) away from a gene can affect expression.</li>
+</ul>
+</li>
+<li>
+<p>Downstream, they particularly care about <strong>variant effect prediction (VEP)</strong>—predicting whether a single nucleotide polymorphism (SNP) causally affects gene expression.</p>
+</li>
+<li>
+<p><strong>Why this is hard</strong></p>
+</li>
+<li><strong>Long-range dependencies:</strong><ul>
+<li>Transformers scale quadratically with sequence length, making it costly to model context lengths of 100k–1M base pairs.</li>
+<li>Biological regulatory effects can span these very long distances, so truncating context harms performance.</li>
+</ul>
+</li>
+<li><strong>Bi-directionality:</strong><ul>
+<li>Many language models are causal (left-to-right) and only see past context; for DNA, both “past” and “future” bases matter symmetrically.</li>
+</ul>
+</li>
+<li><strong>Reverse complement symmetry:</strong><ul>
+<li>A DNA sequence and its reverse complement should yield equivalent predictions for most tasks.</li>
+<li>Standard models treat RC pairs as unrelated sequences, requiring explicit data augmentation and still not enforcing strict symmetry.</li>
+</ul>
+</li>
+<li><strong>Data and modeling complexity:</strong><ul>
+<li>Non-coding DNA is vast and noisy; many relevant signals are subtle (e.g., conservation, motif patterns).</li>
+<li>Tokenization choices (e.g., k-mers) can make small sequence changes look large in token space.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="4-data-and-modalities">4. Data and Modalities<a class="headerlink" href="#4-data-and-modalities" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Datasets used</strong></li>
+<li><strong>Pretraining:</strong><ul>
+<li>Human reference genome <strong>HG38 / GRCh37</strong> (from the Genome Reference Consortium), split into ~34,021 segments extended to length (2^{20} \approx 1,048,576) base pairs.</li>
+<li>Total scale ≈ <strong>35 billion nucleotide tokens</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Downstream benchmarks:</strong></p>
+<ul>
+<li><strong>Genomics Benchmarks</strong> suite (Grešová et al., 2023): eight regulatory element classification tasks (e.g., mouse enhancers, human enhancers, open chromatin regions, promoters).</li>
+<li><strong>Nucleotide Transformer benchmark</strong> (Dalla-Torre et al., 2023): 18 datasets, including histone mark prediction, enhancer and promoter annotations, and splice site prediction.</li>
+<li><strong>Variant effect prediction (VEP) dataset</strong> derived from Enformer (Avsec et al., 2021) and Trop et al. (2023), with SNPs labeled as causal vs non-causal for gene expression using SuSiE fine-mapping.</li>
+</ul>
+</li>
+<li>
+<p><strong>Modalities</strong></p>
+</li>
+<li>Single modality: <strong>DNA sequence</strong> at single-nucleotide resolution (A/C/G/T).</li>
+<li>
+<p>Outputs are task-specific labels (e.g., regulatory class, histone mark presence, variant effect).</p>
+</li>
+<li>
+<p><strong>Preprocessing / representation</strong></p>
+</li>
+<li><strong>Character-level tokenization</strong>: each nucleotide (A, C, G, T) is a token, avoiding k-mer tokenization.<ul>
+<li>Motive: k-mers make small base changes cause large token changes, which complicates learning; single-nucleotide tokens preserve locality.</li>
+</ul>
+</li>
+<li>For downstream tasks:<ul>
+<li>Sequences are trimmed or padded to task-specific lengths (e.g., 200–2,000 bps for Genomics Benchmarks).</li>
+<li>Final hidden states are pooled (e.g., mean pooling over positions) to obtain fixed-size embeddings.</li>
+</ul>
+</li>
+<li>For VEP:<ul>
+<li>They extract features from windows centered at SNP positions (e.g., 1,536 bp windows for SSM-based models) and use these embeddings with an external classifier (SVM).</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="5-model-foundation-model">5. Model / Foundation Model<a class="headerlink" href="#5-model-foundation-model" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Model Type</strong></li>
+<li>Based on <strong>Structured State Space Models (SSMs)</strong>—specifically the <strong>Mamba</strong> architecture (Gu &amp; Dao, 2023), which models sequences via linear state-space dynamics plus input-dependent “selection” mechanisms.</li>
+<li>
+<p>Mamba operates in <strong>linear time in sequence length</strong>, enabling long contexts (up to hundreds of thousands of base pairs) without quadratic cost.</p>
+</li>
+<li>
+<p><strong>Is it a new FM or an existing one?</strong></p>
+</li>
+<li>The paper <strong>extends Mamba</strong> with new architectural components tailored to DNA:<ul>
+<li><strong>BiMamba</strong>: a bi-directional variant that processes sequences in both forward and reversed order with shared parameters.</li>
+<li><strong>MambaDNA</strong>: an RC-equivariant block that enforces reverse complement symmetry.</li>
+</ul>
+</li>
+<li>
+<p>These blocks are used to build <strong>Caduceus</strong>, a <strong>new family of DNA foundation models</strong> pretrained with a masked language modeling objective.</p>
+</li>
+<li>
+<p><strong>Key components and innovations</strong></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Role / Idea</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mamba</td>
+<td>Base SSM block combining selective state space layers with a gated MLP; originally causal (uni-directional).</td>
+</tr>
+<tr>
+<td><strong>BiMamba</strong></td>
+<td>Applies Mamba to the sequence and its reversed version, then flips and adds outputs; uses shared projections to keep parameter count low while modeling bi-directional context.</td>
+</tr>
+<tr>
+<td><strong>MambaDNA</strong></td>
+<td>RC-equivariant module: splits channels, applies Mamba (or BiMamba) to forward and reverse-complement sequences with shared parameters, and recombines to guarantee RC equivariance.</td>
+</tr>
+<tr>
+<td><strong>Caduceus-PS</strong></td>
+<td>Fully RC-equivariant LM via parameter sharing: RC-equivariant embeddings, MambaDNA blocks, and LM head; predictions for RC inputs transform appropriately.</td>
+</tr>
+<tr>
+<td><strong>Caduceus-Ph</strong></td>
+<td>Uses BiMamba with RC data augmentation during pretraining and <strong>post-hoc conjoining</strong> at inference (averaging predictions on forward and RC sequences) to enforce RC invariance downstream.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Architectural details (intuitive)</strong></li>
+<li><strong>BiMamba:</strong><ul>
+<li>Take a sequence (X) and a reversed copy.</li>
+<li>Run the Mamba block on both with <strong>shared in/out projections</strong>.</li>
+<li>Flip the reversed output back along the sequence length and add it to the forward output.</li>
+<li>This yields a representation that incorporates information from both directions without doubling parameters.</li>
+</ul>
+</li>
+<li><strong>MambaDNA:</strong><ul>
+<li>Split the channel dimension into two halves.</li>
+<li>Apply Mamba (or BiMamba) to the forward half and to the <strong>reverse complement</strong> of the other half, with shared parameters.</li>
+<li>Apply the RC transform again to the reversed output and <strong>concatenate</strong> the two halves back, resulting in a representation that is provably RC-equivariant.</li>
+</ul>
+</li>
+<li><strong>Caduceus-PS:</strong><ul>
+<li>Uses RC-equivariant embeddings, stacks of MambaDNA blocks with BiMamba inside, and an RC-equivariant LM head that combines channel-flipped outputs.</li>
+<li>Enforces RC-equivariant behavior already during pretraining, so RC data augmentation is not needed.</li>
+</ul>
+</li>
+<li>
+<p><strong>Caduceus-Ph:</strong></p>
+<ul>
+<li>Uses BiMamba without built-in RC equivariance in the LM.</li>
+<li>Relies on <strong>RC data augmentation</strong> during pretraining and <strong>post-hoc conjoining</strong> (averaging outputs for forward and RC inputs) at downstream inference to enforce RC invariance.</li>
+</ul>
+</li>
+<li>
+<p><strong>Training setup</strong></p>
+</li>
+<li><strong>Pretraining objective:</strong><ul>
+<li><strong>Masked Language Modeling (MLM)</strong>, similar to BERT:</li>
+<li>Mask 15% of tokens; among these, 80% replaced with [MASK], 10% replaced with random bases, 10% unchanged.</li>
+<li>Causal next-token prediction is used for some baseline comparisons (e.g., Mamba vs HyenaDNA), but Caduceus FM training is primarily MLM-based and bi-directional.</li>
+</ul>
+</li>
+<li><strong>Pretraining data &amp; scale:</strong><ul>
+<li>Human reference genome with long sequence segments (1k, 32k, 131k bps), keeping number of tokens per batch approximately constant across lengths.</li>
+<li>Several model variants with different depths and hidden dimensions; small (~hundreds of thousands to a few million parameters) compared to Transformers like Nucleotide Transformer and Enformer.</li>
+</ul>
+</li>
+<li><strong>Optimization details (high level):</strong><ul>
+<li>ADAM optimizer, cosine learning rate decay, learning rate around (8 \times 10^{-3}) for Mamba-based models.</li>
+<li>RC data augmentation used for non-RC-equivariant models (including HyenaDNA and Caduceus-Ph during pretraining).</li>
+</ul>
+</li>
+<li><strong>Fine-tuning:</strong><ul>
+<li>For downstream tasks, they pool final hidden states (often mean pooling), then train task-specific heads.</li>
+<li>Hyperparameters (learning rate, batch size) are tuned per task using cross-validation (5-fold for Genomics Benchmarks, 10-fold for Nucleotide Transformer tasks).</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="6-multimodal-integration-aspects-if-applicable">6. Multimodal / Integration Aspects (If Applicable)<a class="headerlink" href="#6-multimodal-integration-aspects-if-applicable" title="Permanent link">&para;</a></h2>
+<p>This paper <strong>does not perform multimodal integration</strong>: it focuses on a single modality (DNA sequence) and does not combine genomics with other data types such as expression, imaging, or clinical variables.</p>
+<ul>
+<li><strong>Relation to integration and the baseline plan</strong></li>
+<li>Within the broader <strong>Integration Baseline Plan</strong>, Caduceus informs the <strong>“Genetics embedding hygiene and attribution”</strong> principle:<ul>
+<li>It emphasizes <strong>reverse-complement handling (RC equivariance or RC averaging)</strong> as a core inductive bias for DNA encoders.</li>
+<li>It uses deterministic, nucleotide-level tokenization rather than k-mers, aligning with the plan’s caution about unstable tokenization for variant-level analyses.</li>
+</ul>
+</li>
+<li>If Caduceus embeddings are later integrated with other modalities (e.g., brain imaging, clinical phenotypes), the plan would advocate:<ul>
+<li><strong>Preserving modality-specific representations</strong> (i.e., using Caduceus as a frozen or carefully fine-tuned encoder, then fusing at a later stage).</li>
+<li>Applying the robustness practices (standardization, residualization, consistent CV, calibrated metrics) discussed in the plan.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="7-experiments-and-results">7. Experiments and Results<a class="headerlink" href="#7-experiments-and-results" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Pretraining analyses</strong></li>
+<li><strong>Mamba vs HyenaDNA (next-token prediction):</strong><ul>
+<li>On human-genome pretraining with different sequence lengths (1k, 32k, 131k bps), <strong>Mamba achieves lower cross-entropy loss</strong> than HyenaDNA at similar model sizes.</li>
+<li>Mamba also appears more robust to higher learning rates, supporting its use as the core building block.</li>
+</ul>
+</li>
+<li><strong>Effect of BiMamba’s parameter sharing:</strong><ul>
+<li>BiMamba with <strong>projection weight tying</strong> enables deeper bi-directional models for the same parameter budget.</li>
+<li>These deeper, tied models achieve <strong>better MLM loss</strong> than naive bi-directional Mamba (without weight tying, shallower models).</li>
+</ul>
+</li>
+<li>
+<p><strong>Effect of RC equivariance:</strong></p>
+<ul>
+<li>RC-equivariant language modeling (as in Caduceus-PS) leads to <strong>improved MLM loss</strong> across sequence lengths compared to non-equvariant models.</li>
+<li>This suggests that encoding RC symmetry directly into the model improves pretraining quality, not just downstream metrics.</li>
+</ul>
+</li>
+<li>
+<p><strong>Genomics Benchmarks (8 classification tasks)</strong></p>
+</li>
+<li>Baselines:<ul>
+<li>CNN trained from scratch, HyenaDNA, non-RC-equvariant Mamba and Caduceus backbones.</li>
+</ul>
+</li>
+<li>
+<p>Key findings:</p>
+<ul>
+<li>Across all eight tasks, <strong>Caduceus variants attain the best or near-best accuracy</strong>.</li>
+<li><strong>Caduceus-Ph</strong> often provides the strongest performance, sometimes slightly surpassing Caduceus-PS and non-equvariant Caduceus.</li>
+<li>Example trends (qualitative):<ul>
+<li>Mouse enhancers: Caduceus models outperform CNN and HyenaDNA, with Caduceus-PS performing best among Caduceus variants.</li>
+<li>Human enhancer and promoter tasks: Caduceus models typically exceed Mamba-only and HyenaDNA baselines.</li>
+</ul>
+</li>
+<li>The results show that combining long-range SSMs with bi-directionality and RC handling is consistently beneficial on regulatory sequence tasks.</li>
+</ul>
+</li>
+<li>
+<p><strong>Nucleotide Transformer benchmark (18 tasks)</strong></p>
+</li>
+<li>Baselines:<ul>
+<li>Large Transformer-based models: Enformer (~252M parameters), DNABERT-2 (~117M), Nucleotide Transformer v2 (~500M).</li>
+<li>HyenaDNA (~1.6M parameters).</li>
+</ul>
+</li>
+<li>Metrics: MCC for histone marks/enhancers, F1 for promoters and splice annotation, accuracy for “splice sites all”.</li>
+<li>
+<p>Key findings:</p>
+<ul>
+<li><strong>Caduceus-Ph and Caduceus-PS (~1.9M parameters)</strong> perform <strong>competitively with much larger Transformers</strong>, particularly on histone marks and regulatory annotation tasks.</li>
+<li>Caduceus models generally <strong>outperform HyenaDNA</strong> on most histone and regulatory tasks.</li>
+<li>HyenaDNA remains strong on some splice site annotation tasks, where Caduceus performance is more mixed.</li>
+<li>Overall, Caduceus demonstrates that carefully designed SSM-based FMs with biological inductive biases can rival or outperform huge Transformers on many genomics tasks at a fraction of the parameter count.</li>
+</ul>
+</li>
+<li>
+<p><strong>Variant Effect Prediction (VEP) on gene expression</strong></p>
+</li>
+<li>Setup:<ul>
+<li>Use embeddings from Caduceus, HyenaDNA, Nucleotide Transformer v2, and Enformer.</li>
+<li>For each SNP, extract embeddings from a window centered at the SNP (e.g., 1,536 bp window for SSM models, shorter effective windows for Transformer baselines), optionally concatenated with tissue information.</li>
+<li>Train an <strong>SVM with RBF kernel</strong> to classify whether the SNP is causal for gene expression, stratifying by distance to the nearest transcription start site (TSS): short (0–30k bp), medium (30–100k bp), long (&gt;100k bp).</li>
+</ul>
+</li>
+<li>Key findings:<ul>
+<li><strong>Caduceus models consistently outperform HyenaDNA</strong> across distance buckets.</li>
+<li><strong>Caduceus-PS</strong> often <strong>matches or exceeds Nucleotide Transformer v2 (500M params)</strong>, especially at <strong>long ranges</strong>.</li>
+<li>For SNPs &gt;100k bp from TSS, <strong>Caduceus even surpasses Enformer</strong>, which is a strong, supervised baseline with large receptive fields.</li>
+<li>These trends demonstrate that Caduceus’ long-range, bi-directional, RC-aware representations are especially powerful when long genomic contexts matter most.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="8-strengths-limitations-and-open-questions">8. Strengths, Limitations, and Open Questions<a class="headerlink" href="#8-strengths-limitations-and-open-questions" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Strengths</strong></li>
+<li><strong>Biologically grounded inductive biases:</strong><ul>
+<li>Incorporates <strong>bi-directionality</strong> and <strong>RC equivariance</strong> directly into the architecture, aligning model invariances with DNA’s physical properties.</li>
+</ul>
+</li>
+<li><strong>Long-context efficiency:</strong><ul>
+<li>Uses SSM-based Mamba blocks to handle sequences up to ~131k bps and beyond with <strong>linear-time scaling</strong>, enabling realistic genomic context sizes.</li>
+</ul>
+</li>
+<li><strong>Strong empirical performance:</strong><ul>
+<li>Outperforms or matches both other SSM-based models (HyenaDNA) and much larger Transformers (Nucleotide Transformer, Enformer) on many benchmarks.</li>
+<li>Particularly strong on <strong>long-range variant effect prediction</strong>, a high-impact biological task.</li>
+</ul>
+</li>
+<li>
+<p><strong>Clear architectural story:</strong></p>
+<ul>
+<li>Breaks down innovations into modular components (BiMamba, MambaDNA, Caduceus-PS/Ph), making it easier to reuse or extend in other settings.</li>
+</ul>
+</li>
+<li>
+<p><strong>Limitations</strong></p>
+</li>
+<li><strong>Single-modality focus:</strong><ul>
+<li>Only models DNA sequence; does not integrate other relevant data (RNA expression, chromatin contact maps, clinical covariates).</li>
+</ul>
+</li>
+<li><strong>Task coverage:</strong><ul>
+<li>Evaluations focus on classification tasks and VEP; less attention to generative uses (e.g., sequence design) or interpretability tools (e.g., motif discovery pipelines).</li>
+</ul>
+</li>
+<li><strong>Complexity of RC handling:</strong><ul>
+<li>While the theory is clean, implementing and debugging RC-equivariant models and post-hoc conjoining pipelines may be non-trivial in practice.</li>
+</ul>
+</li>
+<li>
+<p><strong>Reliance on external classifiers for VEP:</strong></p>
+<ul>
+<li>The VEP evaluation uses SVMs on top of embeddings, which might not fully exploit the capacity of the representations compared to end-to-end fine-tuning.</li>
+</ul>
+</li>
+<li>
+<p><strong>Open Questions and Future Directions:</strong></p>
+</li>
+<li><strong>Multimodal integration:</strong><ul>
+<li>How do Caduceus embeddings combine with other modalities (e.g., expression, epigenomics, imaging) in late-fusion or contrastive frameworks, as suggested in the integration baseline plan?</li>
+</ul>
+</li>
+<li><strong>Interpretability:</strong><ul>
+<li>Can the RC-equivariant and bi-directional structure be exploited for clearer attribution of variants, motif discovery, or mechanistic interpretation?</li>
+</ul>
+</li>
+<li><strong>Scaling laws:</strong><ul>
+<li>How do performance and sample efficiency scale with model size and context length for Mamba-based DNA FMs compared to Transformers?</li>
+</ul>
+</li>
+<li><strong>End-to-end VEP:</strong><ul>
+<li>Does training end-to-end predictors on top of Caduceus (instead of SVMs) further improve performance and robustness?</li>
+</ul>
+</li>
+<li><strong>Generalization across species and assays:</strong><ul>
+<li>How well do Caduceus models transfer to other species, tissue types, or new assay types (e.g., single-cell, new histone marks)?</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="9-context-and-broader-impact">9. Context and Broader Impact<a class="headerlink" href="#9-context-and-broader-impact" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Position in the FM landscape</strong></li>
+<li>In the <strong>genomics FM</strong> space, Caduceus is part of a movement from Transformer-based models (DNABERT, Nucleotide Transformer, Enformer) toward <strong>efficient long-range architectures</strong> like HyenaDNA and SSM-based FMs.</li>
+<li>Conceptually, you can think of Caduceus as <strong>“like BERT but for DNA, built on Mamba instead of a Transformer, and explicitly aware of DNA’s symmetries”</strong>.</li>
+<li>
+<p>It complements work on large language models in biology (e.g., protein LMs) by focusing on non-coding genomic sequence and variant effects.</p>
+</li>
+<li>
+<p><strong>Relation to well-known ideas</strong></p>
+</li>
+<li><strong>Bi-directionality</strong> echoes BERT and ELMo, which improved NLP by considering both left and right context during pretraining.</li>
+<li><strong>Equivariance</strong> connects to broader ML trends of embedding symmetry (e.g., rotational equivariance in vision) into architectures to improve data efficiency and generalization.</li>
+<li>
+<p>The use of SSMs like Mamba fits into a growing ecosystem of non-attention-based, long-context sequence learners.</p>
+</li>
+<li>
+<p><strong>Connection to the integration baseline plan</strong></p>
+</li>
+<li>The integration baseline plan explicitly cites <strong>Caduceus</strong> as a reference for <strong>genetics embedding hygiene</strong>:<ul>
+<li>RC handling (e.g., RC averaging, post-hoc conjoining) and stable tokenization are central to trustworthy variant-level modeling.</li>
+</ul>
+</li>
+<li>For multimodal or clinical integration projects, Caduceus-style encoders can serve as <strong>frozen or lightly fine-tuned DNA feature extractors</strong>, feeding into late-fusion models or contrastive frameworks as described in the plan.</li>
+<li>The evaluation discipline in this paper (clear splits, cross-validation, AUROC/AUPRC reporting) is aligned with the plan’s emphasis on robust, statistically careful evaluation.</li>
+</ul>
+<hr />
+<h2 id="10-key-takeaways-bullet-summary">10. Key Takeaways (Bullet Summary)<a class="headerlink" href="#10-key-takeaways-bullet-summary" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Problem</strong></li>
+<li>Long-range DNA sequence modeling needs models that can handle <strong>very long contexts</strong>, use <strong>bi-directional information</strong>, and respect <strong>reverse complement symmetry</strong>.</li>
+<li>
+<p>Existing models either struggle with scaling (Transformers) or ignore key biological invariances (many sequence models).</p>
+</li>
+<li>
+<p><strong>Method / Model</strong></p>
+</li>
+<li>The authors introduce <strong>BiMamba</strong>, a parameter-efficient bi-directional extension of the Mamba SSM, and <strong>MambaDNA</strong>, an RC-equivariant module built around Mamba/BiMamba.</li>
+<li>They combine these components into <strong>Caduceus</strong>, a family of <strong>DNA foundation models</strong> trained with masked language modeling on the human genome.</li>
+<li>
+<p>Two main variants, <strong>Caduceus-PS</strong> (RC-equivariant via parameter sharing) and <strong>Caduceus-Ph</strong> (post-hoc RC conjoining), provide different trade-offs between strict equivariance and practical performance.</p>
+</li>
+<li>
+<p><strong>Results</strong></p>
+</li>
+<li>Mamba-based models achieve <strong>better pretraining loss</strong> than HyenaDNA and benefit from weight tying and RC equivariance.</li>
+<li>On <strong>Genomics Benchmarks</strong>, Caduceus variants consistently outperform CNN, HyenaDNA, and non-RC Mamba baselines across eight regulatory tasks.</li>
+<li>On the <strong>Nucleotide Transformer benchmark</strong>, Caduceus (~1.9M params) matches or surpasses much larger Transformer models on many histone and regulatory tasks while beating HyenaDNA on most of them.</li>
+<li>
+<p>For <strong>variant effect prediction</strong>, Caduceus models outperform HyenaDNA and <strong>Caduceus-PS exceeds the performance of a 500M-parameter Nucleotide Transformer and even Enformer at long distances to TSS</strong>.</p>
+</li>
+<li>
+<p><strong>Why it matters</strong></p>
+</li>
+<li>Caduceus shows that carefully designed, symmetry-aware, long-range SSM-based architectures can function as powerful <strong>genomic foundation models</strong> at modest scale.</li>
+<li>For a grad student, this paper is a template for combining <strong>domain knowledge (DNA symmetries)</strong> with <strong>modern sequence modeling techniques</strong> to achieve strong performance on biologically important tasks like variant effect prediction.</li>
+</ul>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.instant", "navigation.top", "content.code.copy", "content.tabs.link", "toc.integrate", "toc.follow", "content.action.edit"], "search": "../../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2815 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Code-first knowledge base for genetics and brain foundation models and multimodal integration">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Yoon biokdd2025 - Neurogenomics KB</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#classifying-major-depressive-disorder-with-exon-sequence-embeddings-from-dna-foundation-models" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Neurogenomics KB" class="md-header__button md-logo" aria-label="Neurogenomics KB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Neurogenomics KB
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Yoon biokdd2025
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/allison-eunse/neurogenomics-kb" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../guide/kb_overview/" class="md-tabs__link">
+          
+  
+  
+  Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../models/genetics/" class="md-tabs__link">
+          
+  
+  
+  Models
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../integration/" class="md-tabs__link">
+          
+  
+  
+  Integration
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../data/ukb_data_map/" class="md-tabs__link">
+          
+  
+  
+  Data
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../code_walkthroughs/" class="md-tabs__link">
+          
+  
+  
+  Code walkthroughs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../decisions/2025-11-integration-plan/" class="md-tabs__link">
+          
+  
+  
+  Decisions
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Neurogenomics KB" class="md-nav__button md-logo" aria-label="Neurogenomics KB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Neurogenomics KB
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/allison-eunse/neurogenomics-kb" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../guide/kb_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KB overview
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Models
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Models
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Genetics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Genetics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/genetics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/genetics/caduceus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caduceus
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/genetics/dnabert2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/genetics/evo2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evo 2
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/genetics/generator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GENERator
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Brain
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/brainlm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainLM
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/brainjepa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain-JEPA
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/brainharmony/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain Harmony
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/brainmt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainMT
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../models/brain/swift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Integration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/integration_strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Strategy
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analysis recipes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Analysis recipes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/analysis_recipes/cca_permutation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CCA + permutation
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/analysis_recipes/prediction_baselines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prediction baselines
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/analysis_recipes/partial_correlations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Partial correlations
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modality features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modality features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/modality_features/genomics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Genomics
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/modality_features/smri/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    sMRI
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/modality_features/fmri/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fMRI
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--ready"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/design_patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../integration/benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmarks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../data/ukb_data_map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UKB data map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../data/schemas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schemas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../data/governance_qc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governance & QC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code walkthroughs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Code walkthroughs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/caduceus_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caduceus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/dnabert2_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNABERT-2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/evo2_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evo 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/generator_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GENERator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/brainlm_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainLM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/brainjepa_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain-JEPA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/brainharmony_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain Harmony
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/brainmt_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BrainMT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../code_walkthroughs/swift_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SwiFT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Decisions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Decisions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../decisions/2025-11-integration-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integration plan (Nov 2025)
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/allison-eunse/neurogenomics-kb/edit/master/docs/generated/kb_curated/papers-md/yoon_biokdd2025.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<hr />
+<h1 id="classifying-major-depressive-disorder-with-exon-sequence-embeddings-from-dna-foundation-models">Classifying Major Depressive Disorder with Exon Sequence Embeddings from DNA Foundation Models<a class="headerlink" href="#classifying-major-depressive-disorder-with-exon-sequence-embeddings-from-dna-foundation-models" title="Permanent link">&para;</a></h1>
+<p><strong>Authors:</strong> Heesun Yoon, Eunji Lee, Heehwan Wang, Jiook Cha, Xin Dai, Shinjae Yoo, Yoonjung Yoonie Joo<br />
+<strong>Year:</strong> 2025<br />
+<strong>Venue:</strong> BIOKDD '25 (24th International Workshop on Data Mining in Bioinformatics)</p>
+<hr />
+<h2 id="1-classification">1. Classification<a class="headerlink" href="#1-classification" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Domain Category:</strong>  </li>
+<li>
+<p><strong>Genomics FM + Application</strong>. This paper applies pretrained DNA foundation models (Caduceus, DNABERT-2) to psychiatric genomics, specifically using exon sequence embeddings to classify Major Depressive Disorder (MDD).</p>
+</li>
+<li>
+<p><strong>FM Usage Type:</strong>  </p>
+</li>
+<li>
+<p><strong>Application of existing FMs</strong>. The study leverages two pretrained genomic foundation models—Caduceus (Mamba-based) and DNABERT-2 (Transformer-based)—to generate DNA sequence embeddings, then trains classical ML models on top of these embeddings for MDD classification.</p>
+</li>
+<li>
+<p><strong>Key Modalities:</strong>  </p>
+</li>
+<li><strong>DNA sequences:</strong> Whole exome sequencing (WES) data from 38 MDD-associated genes</li>
+<li><strong>Demographic/clinical features:</strong> Age, sex, household income, genetic principal components</li>
+<li><strong>Derived representations:</strong> High-dimensional exon sequence embeddings from foundation models</li>
+</ul>
+<hr />
+<h2 id="2-executive-summary">2. Executive Summary<a class="headerlink" href="#2-executive-summary" title="Permanent link">&para;</a></h2>
+<p>This study introduces a novel framework for classifying Major Depressive Disorder (MDD) using raw DNA sequence embeddings extracted from the exonic regions of 38 MDD-associated genes. Rather than relying on traditional polygenic risk scores (PRS) that aggregate single nucleotide polymorphism (SNP) effects and typically explain only 2-3% of MDD variance, the authors leverage pretrained genomic foundation models—Caduceus (based on the Mamba architecture) and DNABERT-2 (Transformer-based)—to generate context-rich, high-dimensional representations of exon sequences from whole exome sequencing (WES) data. Using UK Biobank data with 10,307 MDD cases and 10,307 healthy controls, they systematically evaluate 15 machine learning pipelines combining three embedding aggregation strategies (PCA, max pooling, mean pooling) with five classifiers (logistic regression, random forest, CatBoost, MLP, 1D-CNN). The best-performing pipeline—CatBoost with max pooling—achieves a mean AUC of 0.851 and AUPRC of 0.812, representing a ~49-60% improvement over traditional PRS approaches. A leave-one-gene-out (LOGO) analysis reveals that the SOD2 gene contributes most significantly to classification performance despite lacking established GWAS hits in exonic regions, highlighting the model's ability to capture biological signals beyond SNP-level associations. Replication with DNABERT-2 embeddings yields identical top performance (AUC 0.851), confirming the framework's generalizability across different foundation model architectures. This work demonstrates that pretrained sequence models can effectively encode complex genomic context for psychiatric risk prediction, opening new avenues for applying foundation models to mental health genomics.</p>
+<hr />
+<h2 id="3-problem-setup-and-motivation">3. Problem Setup and Motivation<a class="headerlink" href="#3-problem-setup-and-motivation" title="Permanent link">&para;</a></h2>
+<p><strong>Scientific / practical problem:</strong></p>
+<ul>
+<li><strong>Predicting MDD risk from genetic data:</strong></li>
+<li>Major Depressive Disorder affects ~300 million people worldwide with substantial economic burden (~$6 trillion projected by 2030)</li>
+<li>
+<p>Individual risk prediction is challenging due to extreme polygenicity and high phenotypic heterogeneity</p>
+</li>
+<li>
+<p><strong>Limitations of existing genetic approaches:</strong></p>
+</li>
+<li><strong>Polygenic Risk Scores (PRS):</strong> Aggregate SNP-level GWAS effects but explain only ~2-3% of MDD phenotypic variance (AUC ~0.53-0.57)</li>
+<li><strong>Variant-level focus:</strong> Cannot capture broader sequence-level context, regulatory motifs, structural variants, or long-range dependencies</li>
+<li>
+<p><strong>Exonic regions understudied:</strong> GWAS emphasizes non-coding regions, but functionally important protein-coding sequences may harbor disease-relevant information missed by SNP-based methods</p>
+</li>
+<li>
+<p><strong>Opportunity with DNA foundation models:</strong></p>
+</li>
+<li>Models like DNABERT, DNABERT-2, Caduceus, and Nucleotide Transformer pretrained on large genomic corpora can generate embeddings that capture sophisticated context beyond single variants</li>
+<li>These models have shown success in regulatory element classification and gene expression prediction but remain unexplored in psychiatric genomics</li>
+</ul>
+<p><strong>Why this is hard:</strong></p>
+<ul>
+<li><strong>Polygenicity and small effects:</strong></li>
+<li>
+<p>MDD involves thousands of loci with tiny individual contributions; signal-to-noise ratio is low</p>
+</li>
+<li>
+<p><strong>Data modality mismatch:</strong></p>
+</li>
+<li>
+<p>Whole exome sequencing (WES) captures exons cost-effectively but misses intronic/intergenic regulatory elements where many GWAS hits lie</p>
+</li>
+<li>
+<p><strong>Embedding aggregation:</strong></p>
+</li>
+<li>
+<p>38 genes produce 38 separate high-dimensional embeddings; need effective strategies to combine them without losing gene-specific signals or introducing noise</p>
+</li>
+<li>
+<p><strong>Demographic confounding:</strong></p>
+</li>
+<li>
+<p>MDD cases differ from controls in age, sex, and socioeconomic status; must control these covariates</p>
+</li>
+<li>
+<p><strong>Model selection and overfitting:</strong></p>
+</li>
+<li>
+<p>Many hyperparameters and modeling choices; need rigorous nested cross-validation to avoid overoptimistic results</p>
+</li>
+<li>
+<p><strong>Interpretability:</strong></p>
+</li>
+<li>Which genes or exons drive predictions? Black-box embeddings require LOGO-style analyses to identify key contributors</li>
+</ul>
+<hr />
+<h2 id="4-data-and-modalities">4. Data and Modalities<a class="headerlink" href="#4-data-and-modalities" title="Permanent link">&para;</a></h2>
+<p><strong>Dataset:</strong></p>
+<ul>
+<li><strong>UK Biobank:</strong></li>
+<li>10,307 MDD cases and 10,307 healthy controls (downsampled for balance)</li>
+<li>Whole Exome Sequencing (WES) data (Exome OQFE variant call files, interim 200k release)</li>
+<li>
+<p>Demographic and clinical features: age at recruitment, sex, household income, top 10 genetic principal components</p>
+</li>
+<li>
+<p><strong>MDD case definition:</strong></p>
+</li>
+<li>Participants meeting at least one of three depression criteria (Howard et al. 2018):<ul>
+<li>Broad depression</li>
+<li>Probable MDD</li>
+<li>ICD-coded MDD</li>
+</ul>
+</li>
+<li>
+<p>Cases: Single/recurrent probable major depression episodes</p>
+</li>
+<li>
+<p><strong>Healthy control definition:</strong></p>
+</li>
+<li>No bipolar disorder or major depression</li>
+<li>No history of psychiatric care on admission</li>
+<li>Never sought professional help for mental distress</li>
+</ul>
+<p><strong>Modalities:</strong></p>
+<ul>
+<li><strong>Genomic sequences:</strong></li>
+<li>FASTA sequences of exonic regions from 38 autosomal MDD-associated genes (genes reported ≥2 times in prior literature)</li>
+<li>Genome Reference Consortium Human Build 38 (GRCh38)</li>
+<li>
+<p>Individual-level sequences with reference alleles replaced by alternate alleles where applicable</p>
+</li>
+<li>
+<p><strong>Demographics:</strong></p>
+</li>
+<li>Age (mean: cases 55.4±8.0 years, controls 57.1±7.8 years; significant difference p&lt;0.001)</li>
+<li>Sex (cases 64.1% female, controls 46.9% female; p&lt;0.001)</li>
+<li>Household income (controls more likely in higher income brackets; p&lt;0.001)</li>
+<li>Genetic PCs (top 10 PCs to control population structure)</li>
+</ul>
+<p><strong>Preprocessing / representation:</strong></p>
+<ul>
+<li><strong>Sequence embedding generation:</strong></li>
+<li>Primary: <strong>Caduceus-PS</strong> (256 hidden dimensions, 16 MambaDNA layers)<ul>
+<li>Bi-directional Mamba with reverse-complement (RC) equivariance</li>
+<li>Hidden states averaged across forward and RC representations to obtain RC-invariant embeddings (512→256 dimensions)</li>
+</ul>
+</li>
+<li>Replication: <strong>DNABERT-2</strong> (Transformer-based genomic foundation model)</li>
+<li>
+<p>Each of 38 genes produces one 256-dimensional embedding per sample</p>
+</li>
+<li>
+<p><strong>Embedding aggregation (three strategies tested):</strong></p>
+</li>
+<li><strong>PCA:</strong> Feature scaling + PCA to 256 principal components</li>
+<li><strong>Max pooling:</strong> Element-wise maximum across all 38 gene embeddings</li>
+<li>
+<p><strong>Mean pooling:</strong> Element-wise mean across all 38 gene embeddings</p>
+</li>
+<li>
+<p><strong>Final input:</strong></p>
+</li>
+<li>Aggregated gene embeddings (256 dimensions) concatenated with 14 demographic features (age, sex, income, 10 genetic PCs)</li>
+</ul>
+<hr />
+<h2 id="5-model-foundation-model">5. Model / Foundation Model<a class="headerlink" href="#5-model-foundation-model" title="Permanent link">&para;</a></h2>
+<p><strong>Foundation Models Used:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Architecture</th>
+<th>Key Features</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Caduceus-PS</strong></td>
+<td>Mamba (structured state space model)</td>
+<td>Bi-directional, RC-equivariant, linear complexity, long context (~131k)</td>
+<td>Primary embedding generator</td>
+</tr>
+<tr>
+<td><strong>DNABERT-2</strong></td>
+<td>Transformer (BERT-like)</td>
+<td>Bidirectional attention, multi-species genome pretraining</td>
+<td>Replication/validation of framework generalizability</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Caduceus Details:</strong></p>
+<ul>
+<li><strong>Architecture:</strong> BiMamba + MambaDNA layers with parameter sharing for RC equivariance</li>
+<li><strong>Advantages:</strong></li>
+<li>Linear computational complexity (vs quadratic for Transformers) → handles long sequences efficiently</li>
+<li>Bi-directionality captures upstream and downstream context</li>
+<li>RC equivariance ensures equivalent representations for forward and reverse-complement strands</li>
+<li><strong>Configuration:</strong> 256 hidden dimensions, 16 layers, ~131k sequence length capacity</li>
+<li><strong>Output:</strong> Per-sequence hidden states split in half and averaged to yield RC-invariant 256-d embeddings</li>
+</ul>
+<p><strong>Downstream Classification Models (15 pipelines):</strong></p>
+<p>Five classifiers × three aggregation strategies:</p>
+<ol>
+<li><strong>Logistic Regression (LR):</strong> Linear baseline</li>
+<li><strong>Random Forest (RF):</strong> Ensemble of decision trees</li>
+<li><strong>CatBoost (CB):</strong> Gradient boosting with categorical feature support</li>
+<li><strong>Multilayer Perceptron (MLP):</strong> Feedforward neural network</li>
+<li><strong>1D Convolutional Neural Network (1D-CNN):</strong> Convolutional layers for pattern detection</li>
+</ol>
+<p><strong>Training Setup:</strong></p>
+<ul>
+<li><strong>Nested cross-validation:</strong></li>
+<li><strong>Outer loop:</strong> 10-fold stratified CV for unbiased model assessment</li>
+<li>
+<p><strong>Inner loop:</strong> 3-fold stratified CV for hyperparameter tuning</p>
+</li>
+<li>
+<p><strong>Hyperparameter optimization:</strong></p>
+</li>
+<li><strong>Framework:</strong> Optuna with Bayesian optimization</li>
+<li><strong>Pruning strategies:</strong> HyperbandPruner for neural nets, MedianPruner for others</li>
+<li>
+<p><strong>Trials:</strong> 150 for MLP, 100 for 1D-CNN, 300 for LR/RF/CB</p>
+</li>
+<li>
+<p><strong>Early stopping:</strong></p>
+</li>
+<li>CatBoost: 10 consecutive rounds without AUC improvement</li>
+<li>MLP/1D-CNN: 200 epochs with binary cross-entropy loss monitoring</li>
+<li>
+<p>10% holdout set for validation</p>
+</li>
+<li>
+<p><strong>Evaluation metrics:</strong></p>
+</li>
+<li>Primary: <strong>AUC</strong> (threshold-independent, consistent)</li>
+<li>Secondary: <strong>AUPRC</strong> (for tied AUC values), precision, recall, F1-score</li>
+</ul>
+<hr />
+<h2 id="6-multimodal-integration-aspects-if-applicable">6. Multimodal / Integration Aspects (If Applicable)<a class="headerlink" href="#6-multimodal-integration-aspects-if-applicable" title="Permanent link">&para;</a></h2>
+<p>This work is <strong>primarily unimodal (genomics)</strong> at the embedding level but incorporates <strong>late fusion</strong> of genetic embeddings with demographic/clinical features.</p>
+<p><strong>Modalities integrated:</strong></p>
+<ul>
+<li><strong>Genomic:</strong> DNA sequence embeddings from foundation models (captures exonic sequence context)</li>
+<li><strong>Demographic/clinical:</strong> Age, sex, household income, genetic PCs</li>
+</ul>
+<p><strong>How they are integrated:</strong></p>
+<ul>
+<li><strong>Late fusion via feature concatenation:</strong></li>
+<li>Gene embeddings aggregated into a 256-d vector</li>
+<li>Concatenated with 14 demographic features</li>
+<li>Combined feature vector fed to downstream classifiers</li>
+<li>This is analogous to <strong>late fusion</strong> in the integration baseline plan: modality-specific representations (gene sequences → embeddings, demographics as raw features) are combined at the feature level before final prediction</li>
+</ul>
+<p><strong>Why this integration is useful:</strong></p>
+<ul>
+<li><strong>Demographics as confounders:</strong> Age, sex, and income differ significantly between MDD cases and controls; including them improves model accuracy and reduces spurious associations</li>
+<li><strong>Genetic PCs control population structure:</strong> Prevent inflation due to ancestry-related confounding</li>
+<li><strong>Complementary information:</strong> Genetic embeddings capture biological predisposition; demographics provide environmental/social context</li>
+</ul>
+<p><strong>Relation to the integration baseline plan:</strong></p>
+<ul>
+<li><strong>Late fusion approach:</strong></li>
+<li>Aligns with the plan's preference for preserving modality-specific signals before integration</li>
+<li>
+<p>Genetic embeddings are computed independently (via pretrained FMs), then concatenated with demographics</p>
+</li>
+<li>
+<p><strong>Robustness and evaluation:</strong></p>
+</li>
+<li>Nested CV with proper train/test splits mirrors the plan's emphasis on evaluation discipline</li>
+<li>
+<p>Leave-one-gene-out analysis with Wilcoxon signed-rank test + FDR correction aligns with plan's recommendation for attribution via LOGO and statistical rigor</p>
+</li>
+<li>
+<p><strong>Genetics embedding hygiene:</strong></p>
+</li>
+<li>Use of RC-equivariant Caduceus and RC-averaging reflects the plan's citation of Caduceus for proper genetics handling</li>
+<li>
+<p>Deterministic embedding generation ensures reproducibility</p>
+</li>
+<li>
+<p><strong>Future escalation:</strong></p>
+</li>
+<li>Current work uses simple concatenation; could extend to two-tower contrastive learning (genetic encoder vs demographic encoder) or attention-based fusion if performance plateaus</li>
+</ul>
+<hr />
+<h2 id="7-experiments-and-results">7. Experiments and Results<a class="headerlink" href="#7-experiments-and-results" title="Permanent link">&para;</a></h2>
+<p><strong>Tasks / benchmarks:</strong></p>
+<ul>
+<li><strong>Binary classification:</strong> MDD cases (n=10,307) vs healthy controls (n=10,307) in UK Biobank</li>
+<li><strong>Primary evaluation:</strong> 15 modeling pipelines (5 classifiers × 3 aggregation strategies)</li>
+<li><strong>Replication:</strong> Same 15 pipelines with DNABERT-2 embeddings</li>
+<li><strong>Interpretability:</strong> Leave-one-gene-out (LOGO) analysis to rank gene contributions</li>
+</ul>
+<p><strong>Baselines:</strong></p>
+<ul>
+<li><strong>Traditional PRS:</strong> Historical MDD PRS models explain ~2-3% variance, AUC ~0.53-0.57</li>
+<li><strong>Within-study baselines:</strong> All 15 pipeline combinations serve as internal comparisons</li>
+</ul>
+<p><strong>Key findings:</strong></p>
+<p><strong>1. Primary Caduceus Results (Table 2):</strong></p>
+<ul>
+<li><strong>Best performance:</strong> CatBoost + max pooling</li>
+<li>Mean AUC: <strong>0.851 ± 0.009</strong></li>
+<li>
+<p>Mean AUPRC: <strong>0.812 ± 0.013</strong></p>
+</li>
+<li>
+<p><strong>Tied second-best:</strong> Logistic Regression + max pooling</p>
+</li>
+<li>Mean AUC: <strong>0.851 ± 0.010</strong></li>
+<li>
+<p>Mean AUPRC: 0.809 ± 0.015 (slightly lower)</p>
+</li>
+<li>
+<p><strong>Third:</strong> 1D-CNN + max pooling</p>
+</li>
+<li>
+<p>Mean AUC: 0.849 ± 0.010</p>
+</li>
+<li>
+<p><strong>Aggregation strategy impact:</strong></p>
+</li>
+<li><strong>Max pooling:</strong> Consistently best across all classifiers</li>
+<li><strong>PCA:</strong> Intermediate performance</li>
+<li>
+<p><strong>Mean pooling:</strong> Worst performance across all classifiers (e.g., 1D-CNN dropped to AUC 0.638 ± 0.010)</p>
+</li>
+<li>
+<p><strong>Performance gain over PRS:</strong></p>
+</li>
+<li>~49-60% improvement in AUC relative to traditional PRS (0.851 vs 0.53-0.57)</li>
+</ul>
+<p><strong>2. DNABERT-2 Replication:</strong></p>
+<ul>
+<li><strong>Best performance:</strong> CatBoost + max pooling</li>
+<li>Mean AUC: <strong>0.851</strong> (identical to Caduceus)</li>
+<li>
+<p>Confirms framework generalizability across different FM architectures (Mamba vs Transformer)</p>
+</li>
+<li>
+<p><strong>Aggregation differences:</strong></p>
+</li>
+<li>Mean pooling performed comparably to max pooling with DNABERT-2 (unlike Caduceus)</li>
+<li>Suggests optimal aggregation may be FM-specific</li>
+</ul>
+<p><strong>3. LOGO Analysis (Figure 3):</strong></p>
+<ul>
+<li><strong>SOD2 gene:</strong></li>
+<li><strong>Highest contribution:</strong> Median ΔAUC = 0.190 (IQR: 0.185-0.196)</li>
+<li><strong>Only statistically significant gene</strong> after FDR correction (Wilcoxon W=0, p_FDR=0.038)</li>
+<li>
+<p>Removing SOD2 drastically reduces classification performance despite no established GWAS hits in its exonic regions</p>
+</li>
+<li>
+<p><strong>SOD2 biological relevance:</strong></p>
+</li>
+<li>Encodes superoxide dismutase 2 (mitochondrial enzyme)</li>
+<li>Involved in oxidative stress regulation</li>
+<li>
+<p>Oxidative stress implicated in MDD pathophysiology</p>
+</li>
+<li>
+<p><strong>Demographics ablation:</strong></p>
+</li>
+<li>Removing demographic features: ΔAUC = 0.040 (0.037-0.045), significant (p_FDR=0.038)</li>
+<li>Confirms demographics contribute meaningfully but less than top genes</li>
+</ul>
+<p><strong>4. Cohort Demographics:</strong></p>
+<ul>
+<li><strong>Age:</strong> Cases younger than controls (55.4 vs 57.1 years, p&lt;0.001)</li>
+<li><strong>Sex:</strong> Cases more female (64.1% vs 46.9%, p&lt;0.001)</li>
+<li><strong>Income:</strong> Controls more likely in higher income brackets (p&lt;0.001)</li>
+<li>All differences significant → justifies including as covariates</li>
+</ul>
+<hr />
+<h2 id="8-strengths-limitations-and-open-questions">8. Strengths, Limitations, and Open Questions<a class="headerlink" href="#8-strengths-limitations-and-open-questions" title="Permanent link">&para;</a></h2>
+<p><strong>Strengths:</strong></p>
+<ul>
+<li><strong>Substantial performance improvement:</strong> 49-60% AUC gain over traditional PRS demonstrates value of sequence-level context</li>
+<li><strong>Novel application domain:</strong> First study to apply DNA foundation model embeddings to psychiatric disorder classification</li>
+<li><strong>Rigorous methodology:</strong></li>
+<li>Nested cross-validation prevents overfitting</li>
+<li>Multiple FM architectures tested (Caduceus + DNABERT-2) → validates generalizability</li>
+<li>Statistical testing (Wilcoxon + FDR correction) for LOGO analysis</li>
+<li><strong>Biological interpretability:</strong> LOGO analysis identifies SOD2 as key gene, linking to known oxidative stress mechanisms in MDD</li>
+<li><strong>Foundation model comparison:</strong> Shows Mamba and Transformer architectures yield similar top performance, suggesting robustness</li>
+<li><strong>Embedding aggregation insights:</strong> Max pooling consistently superior for Caduceus; strategy choice matters</li>
+</ul>
+<p><strong>Limitations:</strong></p>
+<ul>
+<li><strong>Exon-only analysis:</strong></li>
+<li>Focus on protein-coding regions despite most GWAS hits lying in non-coding regulatory elements</li>
+<li>
+<p>Intronic and intergenic regions (much larger proportion of genome) not included</p>
+</li>
+<li>
+<p><strong>Gene-level interpretation only:</strong></p>
+</li>
+<li>LOGO analysis identifies contributing genes but not specific exons or base-pair regions</li>
+<li>
+<p>Finer-grained attribution (e.g., attention maps, saliency) not explored</p>
+</li>
+<li>
+<p><strong>Single-ancestry cohort:</strong></p>
+</li>
+<li>UK Biobank participants primarily of European ancestry</li>
+<li>
+<p>Transferability to other populations uncertain</p>
+</li>
+<li>
+<p><strong>No external validation:</strong></p>
+</li>
+<li>Framework not tested on independent cohorts outside UK Biobank</li>
+<li>
+<p>Generalization across datasets unknown</p>
+</li>
+<li>
+<p><strong>Demographic differences:</strong></p>
+</li>
+<li>
+<p>Cases and controls differ significantly in age, sex, income → potential residual confounding even after covariate adjustment</p>
+</li>
+<li>
+<p><strong>Limited gene set:</strong></p>
+</li>
+<li>Only 38 pre-selected MDD-associated genes; genome-wide exome analysis could yield further insights</li>
+</ul>
+<p><strong>Open Questions and Future Directions:</strong></p>
+<ul>
+<li><strong>Expand genomic coverage:</strong></li>
+<li>Include intronic and intergenic regions to capture regulatory elements where many GWAS hits reside</li>
+<li>
+<p>Test framework on whole-genome sequencing (WGS) data</p>
+</li>
+<li>
+<p><strong>Multimodal integration:</strong></p>
+</li>
+<li>Combine DNA embeddings with transcriptomics (RNA-seq), epigenomics (methylation), proteomics</li>
+<li>
+<p>Integrate with brain imaging (fMRI, sMRI) for brain-genomics multimodal models</p>
+</li>
+<li>
+<p><strong>Fine-grained interpretability:</strong></p>
+</li>
+<li>Exon-level or base-pair-level attribution via attention weights, integrated gradients, or saliency maps</li>
+<li>
+<p>Link specific sequence motifs to MDD risk</p>
+</li>
+<li>
+<p><strong>External validation:</strong></p>
+</li>
+<li>Test on independent cohorts (e.g., other biobanks, clinical samples)</li>
+<li>
+<p>Evaluate cross-ancestry performance and fairness</p>
+</li>
+<li>
+<p><strong>Generative and design applications:</strong></p>
+</li>
+<li>Can FMs be used to design therapeutic sequences or identify novel targets?</li>
+<li>
+<p>Generate synthetic exon variants and predict MDD risk changes</p>
+</li>
+<li>
+<p><strong>Integration with PRS:</strong></p>
+</li>
+<li>Combine exon embeddings with genome-wide PRS to capture both local and global genetic risk</li>
+<li>Test whether the two signals are complementary or redundant</li>
+</ul>
+<hr />
+<h2 id="9-context-and-broader-impact">9. Context and Broader Impact<a class="headerlink" href="#9-context-and-broader-impact" title="Permanent link">&para;</a></h2>
+<p><strong>Position in the genomics FM landscape:</strong></p>
+<ul>
+<li>This work sits at the intersection of <strong>genomic foundation models</strong> and <strong>psychiatric genomics</strong></li>
+<li><strong>Genomics FMs</strong> (DNABERT, Caduceus, Nucleotide Transformer, Evo) have primarily been applied to:</li>
+<li>Regulatory element classification (promoters, enhancers)</li>
+<li>Variant effect prediction (pathogenicity)</li>
+<li>Gene expression forecasting</li>
+<li><strong>Psychiatric genomics</strong> has relied on:</li>
+<li>GWAS to identify risk loci</li>
+<li>PRS for individual-level risk aggregation</li>
+<li>Traditional ML (SVM, random forests) with handcrafted genomic features</li>
+</ul>
+<p><strong>Relation to well-known ideas:</strong></p>
+<ul>
+<li><strong>Analogy:</strong> "Like using BERT embeddings for text classification, but for DNA sequences predicting psychiatric risk"</li>
+<li><strong>Transfer learning paradigm:</strong> Pretrain large models on diverse genomic data, then fine-tune (or use embeddings) for specific downstream tasks</li>
+<li><strong>Contrastive to PRS:</strong> PRS are linear sums of SNP effects (shallow, interpretable); FM embeddings are high-dimensional, context-rich representations (deep, powerful but less transparent)</li>
+</ul>
+<p><strong>Connection to the integration baseline plan:</strong></p>
+<ul>
+<li><strong>Genetics embedding hygiene:</strong></li>
+<li>Paper explicitly cites Caduceus for RC-equivariance, aligning with the plan's recommendation for proper DNA handling</li>
+<li>
+<p>RC-averaging and deterministic tokenization ensure stable embeddings</p>
+</li>
+<li>
+<p><strong>Late fusion baseline:</strong></p>
+</li>
+<li>
+<p>Concatenating gene embeddings with demographics mirrors the plan's preference for late fusion under heterogeneous semantics</p>
+</li>
+<li>
+<p><strong>Evaluation rigor:</strong></p>
+</li>
+<li>
+<p>Nested CV, LOGO with Wilcoxon + FDR, proper train/test splits align with plan's robustness discipline</p>
+</li>
+<li>
+<p><strong>Future escalation:</strong></p>
+</li>
+<li>If exon embeddings prove valuable, next steps could include:<ul>
+<li>Two-tower contrastive learning (genetic encoder vs demographic/clinical encoder)</li>
+<li>Attention-based fusion across genes (hub tokens à la TAPE)</li>
+<li>Integration with brain FMs (BrainLM, Brain-JEPA) for brain-genomics multimodal models</li>
+</ul>
+</li>
+</ul>
+<p><strong>Why this paper is a useful reference:</strong></p>
+<ul>
+<li><strong>First application:</strong> Demonstrates feasibility and value of applying DNA FMs to psychiatric disorders</li>
+<li><strong>Methodological template:</strong> Provides reusable pipeline for embedding extraction → aggregation → ML classification</li>
+<li><strong>Performance benchmark:</strong> Establishes AUC 0.851 as a target for future MDD genetic prediction studies</li>
+<li><strong>Gene discovery:</strong> LOGO analysis identifies SOD2 despite absence of exonic GWAS hits, suggesting FM embeddings capture signals missed by SNP-level approaches</li>
+<li><strong>Foundation for multimodal work:</strong> Genetic embeddings from this study could serve as one modality in larger brain-genomics integration projects</li>
+</ul>
+<hr />
+<h2 id="10-key-takeaways-bullet-summary">10. Key Takeaways (Bullet Summary)<a class="headerlink" href="#10-key-takeaways-bullet-summary" title="Permanent link">&para;</a></h2>
+<p><strong>Problem:</strong></p>
+<ul>
+<li>Traditional polygenic risk scores (PRS) for MDD explain only 2-3% of variance (AUC ~0.53-0.57), limiting predictive utility</li>
+<li>PRS rely on SNP-level GWAS associations and miss broader sequence context, regulatory motifs, and long-range dependencies</li>
+<li>DNA foundation models (Caduceus, DNABERT-2) trained on large genomic corpora remain unexplored in psychiatric genomics</li>
+</ul>
+<p><strong>Method / Model:</strong></p>
+<ul>
+<li><strong>Framework:</strong> Extract exon sequence embeddings from 38 MDD-associated genes using pretrained DNA foundation models</li>
+<li><strong>Primary FM:</strong> Caduceus-PS (Mamba-based, bi-directional, RC-equivariant, 256-d embeddings per gene)</li>
+<li><strong>Aggregation:</strong> Test PCA, max pooling, and mean pooling to combine 38 gene embeddings</li>
+<li><strong>Downstream:</strong> Train 15 ML pipelines (5 classifiers × 3 aggregation strategies) with nested cross-validation</li>
+<li><strong>Data:</strong> UK Biobank WES data, 10,307 MDD cases + 10,307 controls, adjusted for demographics and genetic PCs</li>
+<li><strong>Replication:</strong> Validate framework generalizability with DNABERT-2 embeddings</li>
+</ul>
+<p><strong>Results:</strong></p>
+<ul>
+<li><strong>Best performance:</strong> CatBoost + max pooling achieves <strong>AUC 0.851 ± 0.009</strong>, <strong>AUPRC 0.812 ± 0.013</strong></li>
+<li><strong>Improvement over PRS:</strong> ~49-60% AUC gain (0.851 vs 0.53-0.57)</li>
+<li><strong>Replication:</strong> DNABERT-2 achieves identical top AUC (0.851), confirming robustness across FM architectures</li>
+<li><strong>Key gene:</strong> LOGO analysis identifies <strong>SOD2</strong> as most significant contributor (ΔAUC 0.190), linking to oxidative stress pathways</li>
+<li><strong>Aggregation matters:</strong> Max pooling consistently best for Caduceus; mean pooling severely degrades performance</li>
+</ul>
+<p><strong>Why it matters:</strong></p>
+<ul>
+<li><strong>First psychiatric genomics application:</strong> Demonstrates DNA foundation models can effectively predict complex psychiatric disorders</li>
+<li><strong>Paradigm shift:</strong> Moves beyond SNP-level associations to sequence-level context, capturing signals missed by GWAS</li>
+<li><strong>Substantial performance gain:</strong> Large improvement over traditional PRS suggests promise for clinical risk prediction</li>
+<li><strong>Methodological contribution:</strong> Provides reusable framework for applying genomic FMs to any polygenic disorder</li>
+<li><strong>Foundation for integration:</strong> Exon embeddings could be combined with brain imaging, transcriptomics, or epigenomics in future multimodal models</li>
+</ul>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.instant", "navigation.top", "content.code.copy", "content.tabs.link", "toc.integrate", "toc.follow", "content.action.edit"], "search": "../../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>
