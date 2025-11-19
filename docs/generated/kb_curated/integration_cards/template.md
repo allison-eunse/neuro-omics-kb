@@ -154,20 +154,20 @@ tags: [integration, {{TAGS}}]
 ## Reference Materials
 
 **Primary paper:**
-- [Paper Title (Authors Year)](../papers-md/{{PAPER_SLUG}}.md) — Full paper summary
+- [Paper Title (Authors Year)](../papers-md/{{PAPER_SLUG}}/) — Full paper summary
 
 **Related integration cards:**
-- [Related Card 1]({{RELATED_CARD_1}}.md) — Brief description
-- [Related Card 2]({{RELATED_CARD_2}}.md) — Brief description
+- [Related Card 1](../{{RELATED_CARD_1}}/) — Brief description
+- [Related Card 2](../{{RELATED_CARD_2}}/) — Brief description
 
 **KB integration guides:**
-- [Integration Strategy](../../integration/integration_strategy.md) — Overall fusion approach
-- [Design Patterns](../../integration/design_patterns.md) — Pattern taxonomy
-- [Multimodal Architectures](../../integration/multimodal_architectures.md) — Model examples
+- [Integration Strategy](../../integration/integration_strategy/) — Overall fusion approach
+- [Design Patterns](../../integration/design_patterns/) — Pattern taxonomy
+- [Multimodal Architectures](../../integration/multimodal_architectures/) — Model examples
 
 **Analysis recipes:**
-- [Relevant Recipe 1](../../integration/analysis_recipes/{{RECIPE}}.md)
-- [Relevant Recipe 2](../../integration/analysis_recipes/{{RECIPE}}.md)
+- [Relevant Recipe 1](../../integration/analysis_recipes/{{RECIPE}}/)
+- [Relevant Recipe 2](../../integration/analysis_recipes/{{RECIPE}}/)
 
 **Model documentation:**
 - [Genetics Models](../../models/genetics/) — Gene embedding extraction
