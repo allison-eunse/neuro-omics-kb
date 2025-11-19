@@ -56,7 +56,6 @@ nav:
   - Home: index.md
   - Guides:
       - KB overview: guide/kb_overview.md
-      - Embedding policies: kb/embedding_policies.md
       - AI Summaries & KB Cards: generated/kb_curated/README.md
   - Models:
       - Genetics:
@@ -91,6 +90,7 @@ nav:
           - Genomics: integration/modality_features/genomics.md
           - sMRI: integration/modality_features/smri.md
           - fMRI: integration/modality_features/fmri.md
+      - Embedding policies: integration/embedding_policies.md
       - Integration cards:
           - Ensemble integration: models/integrations/ensemble_integration.md
           - Oncology multimodal review: models/integrations/oncology_multimodal_review.md
