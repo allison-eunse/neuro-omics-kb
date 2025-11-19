@@ -19,8 +19,6 @@ A **documentation-first knowledge base** for researchers working with:
 
 **Scope:** Documentation, metadata cards, and integration strategies — **not** model implementation code.
 
-**Key cohorts:** UK Biobank, HCP, developmental/neurodevelopmental populations
-
 ---
 
 ## 🚀 Quick Start
