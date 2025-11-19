@@ -352,4 +352,32 @@
          <loc>https://allison-eunse.github.io/neuro-omics-kb/models/genetics/generator/</loc>
          <lastmod>2025-11-19</lastmod>
     </url>
+    <url>
+         <loc>https://allison-eunse.github.io/neuro-omics-kb/models/multimodal/</loc>
+         <lastmod>2025-11-19</lastmod>
+    </url>
+    <url>
+         <loc>https://allison-eunse.github.io/neuro-omics-kb/models/multimodal/bagel/</loc>
+         <lastmod>2025-11-19</lastmod>
+    </url>
+    <url>
+         <loc>https://allison-eunse.github.io/neuro-omics-kb/models/multimodal/fms_medical/</loc>
+         <lastmod>2025-11-19</lastmod>
+    </url>
+    <url>
+         <loc>https://allison-eunse.github.io/neuro-omics-kb/models/multimodal/m3fm/</loc>
+         <lastmod>2025-11-19</lastmod>
+    </url>
+    <url>
+         <loc>https://allison-eunse.github.io/neuro-omics-kb/models/multimodal/me_llama/</loc>
+         <lastmod>2025-11-19</lastmod>
+    </url>
+    <url>
+         <loc>https://allison-eunse.github.io/neuro-omics-kb/models/multimodal/mot/</loc>
+         <lastmod>2025-11-19</lastmod>
+    </url>
+    <url>
+         <loc>https://allison-eunse.github.io/neuro-omics-kb/models/multimodal/titan/</loc>
+         <lastmod>2025-11-19</lastmod>
+    </url>
 </urlset>
