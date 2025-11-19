@@ -11,6 +11,22 @@ arch:
   context_length: 0
   special_features:
     - bullet
+embedding_recipe:
+  level: subject  # subject | run | segment
+  unit:
+    modality_label: ["segment", "run"]
+  pipeline:
+    modality_label:
+      input_features: "Describe tensors or tables feeding the recipe"
+      preprocessing:
+        - "z-score within train fold"
+        - "residualize(age, sex, site)"
+      projector:
+        type: PCA
+        output_dim: 512
+  sources:
+    - docs/code_walkthroughs/model_walkthrough.md
+    - external_repos/model/path/to/file.py
 repo: https://github.com/org/repo
 weights:
   huggingface:

@@ -18,7 +18,5 @@ access: restricted
 restrictions: >
   Request download via the provided Google Drive link; follow DNABERT-2/GUE
   license and usage instructions. Sign-in is required.
-maintainers:
-  - name: Allison Eun Se You
 verified: false
 last_updated: 2025-11-15

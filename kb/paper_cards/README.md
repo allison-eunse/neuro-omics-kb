@@ -28,8 +28,8 @@ Structured YAML metadata for all key papers referenced in the KB. Each card incl
 |-------|------|--------------|------------|
 | BrainLM | [brainlm_2024.yaml](brainlm_2024.yaml) | ViT-MAE (Nystromformer) | fMRI |
 | Brain-JEPA | [brainjepa_2024.yaml](brainjepa_2024.yaml) | JEPA + gradient positioning | fMRI |
-| Brain Harmony | [brainharmony_2024.yaml](brainharmony_2024.yaml) | TAPE + hub tokens | sMRI + fMRI |
-| BrainMT | [brainmt_2024.yaml](brainmt_2024.yaml) | Hybrid Mamba-Transformer | fMRI |
+| Brain Harmony | [brainharmony_2025.yaml](brainharmony_2025.yaml) | TAPE + hub tokens | sMRI + fMRI |
+| BrainMT | [brainmt_2025.yaml](brainmt_2025.yaml) | Hybrid Mamba-Transformer | fMRI |
 
 ## Methods & Prior Work
 

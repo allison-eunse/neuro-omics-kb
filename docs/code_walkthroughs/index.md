@@ -9,8 +9,8 @@ Each walkthrough now surfaces the KB scaffolding you need to turn narrative note
 - [Modality features — Genomics](../integration/modality_features/genomics.md)
 - [Modality features — sMRI](../integration/modality_features/smri.md)
 - [Modality features — fMRI](../integration/modality_features/fmri.md)
-- [KB templates (model/integration/method/dataset)](../kb/templates/)
-- [Experiment config stub](../kb/templates/experiment_config_stub.md)
+- KB templates (model/integration/method/dataset): `kb/templates/`
+- Experiment config stub: `kb/templates/experiment_config_stub.md`
 
 ## Walkthrough roster
 
@@ -25,3 +25,7 @@ Each walkthrough now surfaces the KB scaffolding you need to turn narrative note
 | [DNABERT-2](dnabert2_walkthrough.md) | [DNABERT-2 card](../models/genetics/dnabert2.md) | [Genomics spec](../integration/modality_features/genomics.md) |
 | [Evo 2](evo2_walkthrough.md) | [Evo2 card](../models/genetics/evo2.md) | [Genomics spec](../integration/modality_features/genomics.md) |
 | [GENERATOR](generator_walkthrough.md) | [GENERator card](../models/genetics/generator.md) | [Genomics spec](../integration/modality_features/genomics.md) |
+| [M3FM](m3fm_walkthrough.md) | — | — |
+| [Me-LLaMA](melamma_walkthrough.md) | — | — |
+| [TITAN](titan_walkthrough.md) | — | — |
+| [FMS-Medical](fms_medical_walkthrough.md) | — | — |

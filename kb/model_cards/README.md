@@ -47,3 +47,17 @@ verified: false
 last_updated: YYYY-MM-DD
 notes: Optional paragraph
 ```
+
+## Model cards coverage (docs ↔ walkthroughs ↔ YAML)
+
+| ID | Domain | Model doc | Walkthrough | Card |
+| --- | --- | --- | --- | --- |
+| `caduceus` | Genetics / DNA | `docs/models/genetics/caduceus.md` | `docs/code_walkthroughs/caduceus_walkthrough.md` | `kb/model_cards/caduceus.yaml` |
+| `dnabert2` | Genetics / DNA | `docs/models/genetics/dnabert2.md` | `docs/code_walkthroughs/dnabert2_walkthrough.md` | `kb/model_cards/dnabert2.yaml` |
+| `evo2` | Genetics / DNA | `docs/models/genetics/evo2.md` | `docs/code_walkthroughs/evo2_walkthrough.md` | `kb/model_cards/evo2.yaml` |
+| `generator` | Genetics / DNA | `docs/models/genetics/generator.md` | `docs/code_walkthroughs/generator_walkthrough.md` | `kb/model_cards/generator.yaml` |
+| `brainlm` | Brain / fMRI | `docs/models/brain/brainlm.md` | `docs/code_walkthroughs/brainlm_walkthrough.md` | `kb/model_cards/brainlm.yaml` |
+| `brainjepa` | Brain / fMRI | `docs/models/brain/brainjepa.md` | `docs/code_walkthroughs/brainjepa_walkthrough.md` | `kb/model_cards/brainjepa.yaml` |
+| `brainharmony` | Brain / sMRI+fMRI | `docs/models/brain/brainharmony.md` | `docs/code_walkthroughs/brainharmony_walkthrough.md` | `kb/model_cards/brainharmony.yaml` |
+| `brainmt` | Brain / fMRI | `docs/models/brain/brainmt.md` | `docs/code_walkthroughs/brainmt_walkthrough.md` | `kb/model_cards/brainmt.yaml` |
+| `swift` | Brain / fMRI | `docs/models/brain/swift.md` | `docs/code_walkthroughs/swift_walkthrough.md` | `kb/model_cards/swift.yaml` |

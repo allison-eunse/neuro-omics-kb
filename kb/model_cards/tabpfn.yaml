@@ -1,0 +1,79 @@
+id: tabpfn
+name: TabPFN
+modality: tabular
+domain: multimodal_tabular
+summary: >-
+  Tabular foundation model released by H. Kossen et al. (Nature 2024). Uses a Transformer
+  trained on 100M synthetic SCM-based datasets to emulate Bayesian inference for small/medium
+  tabular problems in a single forward pass.
+arch:
+  type: decoder-only Transformer
+  backbone: https://github.com/PriorLabs/TabPFN
+  parameters: 11M
+  context_length: 10000  # max samples supported per forward pass
+  special_features:
+    - "Learns from synthetic structural causal models spanning regression/classification tasks"
+    - "Predicts labels for entire dataset at inference time (in-context learning)"
+    - "Handles up to 500 features with categorical + continuous support"
+repo: https://github.com/PriorLabs/TabPFN
+weights:
+  huggingface:
+    - https://huggingface.co/TabPFN/tabpfn
+tokenizer:
+  type: tabular feature encoder
+  notes: "Continuous features normalized; categorical features embedded with learned dictionaries."
+context_length: 10000
+checkpoints:
+  - name: tabpfn_latest
+    path: https://huggingface.co/TabPFN/tabpfn/blob/main/tabpfn.pt
+license:
+  code: Apache-2.0
+  weights: Apache-2.0
+  data: synthetic
+datasets:
+  - simulated_structural_causal_models
+tasks:
+  - tabular_classification
+  - tabular_regression
+  - probabilistic_prediction
+tabular_usage:
+  training_assumptions:
+    max_samples: 10000
+    max_features: 500
+    missing_values: "Supported via mask tokens"
+  inference_recipe:
+    - "Format dataset as (x, y) tables with meta mask for unlabeled rows."
+    - "Use TabPFN forward pass to get predictive mean/probabilities for unlabeled rows."
+    - "No gradient updates; optionally ensemble multiple priors."
+intended_use_in_project:
+  - "Baseline predictor on raw sMRI ROI tables (smri_free_surfer_raw_176)"
+  - "Baseline predictor on genetics summary features (PGS, PCA)"
+  - "Fusion predictor on concatenated gene + brain embeddings (fusion_concat_gene_brain_1024_v1)"
+limitations:
+  - "Published benchmarks cover ≤10k samples; scaling to full UKB (~40k) requires chunking."
+  - "Not an fMRI encoder; operates strictly on tabular inputs."
+  - "GPU recommended for fast inference; CPU acceptable but slower."
+how_to_infer:
+  notebook: |
+    # Example inference (requires `pip install tabpfn`)
+    python -m tabpfn.scripts.classification \
+      --data_path data/ukb/tabular_fold0.csv \
+      --task classification --max_features 176 --max_samples 10000
+inference_api:
+  provider: local
+  endpoint: tabpfn.scripts.classification
+  input_format: CSV / parquet tables with numeric + categorical columns
+  output: class probabilities or regression means per subject
+integrations:
+  - prediction_baselines_tabular
+tags:
+  - tabular
+  - foundation-model
+  - in-context-learning
+  - nature2024
+verified: false
+last_updated: 2025-11-18
+notes: >-
+  Treat TabPFN as a downstream predictor that competes with LR/GBDT on embeddings and ROI tables.
+  Keep per-fold sample counts ≤10k or stream batches to respect the published limits.
+

@@ -18,7 +18,5 @@ access: mixed        # RefSeq public; curated derivatives may be hosted on HF
 restrictions: >
   Respect NCBI RefSeq redistribution policies. Cite RefSeq and GenerTeam
   (Wu et al. 2025) for curated subsets and tasks.
-maintainers:
-  - name: Allison Eun Se You
 verified: false
 last_updated: 2025-11-15

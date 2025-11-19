@@ -18,6 +18,10 @@ datasets:
     source: "kb/datasets/ukb_manifest_stub.yaml"
     overlap_subjects: TBD  # subjects with both genetics + sMRI
 
+embedding_strategies:
+  genetics: "genetics_gene_fm_pca512_v1"
+  smri: "smri_free_surfer_pca512_v1"
+
 feature_preparation:
   genetics:
     model: "caduceus"  # or evo2, generator
@@ -68,6 +72,9 @@ feature_preparation:
       target_dim: 512
       fit_on: "train_fold"
       apply_to: "train + test"
+  notes: |
+    - Concrete implementation should match the named embedding strategies above.
+    - Record harmonization choice (default `none_baseline`) in run metadata.
 
 cross_validation:
   strategy: "StratifiedGroupKFold"

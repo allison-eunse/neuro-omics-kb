@@ -22,6 +22,5 @@ ci_checks:
   - python scripts/manage_kb.py validate models
   - python scripts/manage_kb.py validate datasets
   - python scripts/manage_kb.py ci docs
-owner: Allison Eun Se You
 verified: false
 last_updated: 2025-11-15

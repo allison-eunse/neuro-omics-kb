@@ -70,8 +70,6 @@ tags:
   - generation
 verified: false
 last_updated: 2025-11-15
-maintainers:
-  - name: Allison Eun Se You
 notes: >-
   40B checkpoint requires multi-GPU inference with 80GB GPUs and FP8 kernels from
   TransformerEngine. Ensure CUDA 12.1+ and FlashAttention 2.8+ drivers.

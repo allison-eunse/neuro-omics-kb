@@ -1,0 +1,100 @@
+id: alignment_strategies
+name: Cross-modal alignment strategies (LLM/VLM hubs)
+summary: >
+  High-level, documentation-only strategies for aligning brain, EEG/EPhys, genetics/omics, and clinical/developmental
+  signals to language and vision-language model spaces. Complements embedding_strategies.yaml by describing how
+  subject-level embeddings are connected to LLM/VLM hubs (e.g., ARPA-H Brain-Omics Model, BOM).
+status: drafting
+strategies:
+  brain_llm_alignment_dev_v1:
+    modalities:
+      - brain_fm
+      - eeg_fm
+      - text
+    inputs:
+      brain_embeddings:
+        examples:
+          - "smri_free_surfer_pca512_v1"
+          - "rsfmri_swift_segments_v1"
+          - "rsfmri_brainlm_segments_v1"
+          - "Brain Harmony hub tokens"
+      eeg_embeddings:
+        examples:
+          - "cha_dev_eeg_fm_v1"
+      text:
+        examples:
+          - "clinician notes"
+          - "diagnostic descriptors"
+          - "structured developmental reports"
+    approach:
+      candidates:
+        - "Cross-attention adapters from brain/EEG embeddings into a frozen or lightly fine-tuned LLM"
+        - "CLIP-style contrastive learning between (brain/EEG embedding, text) pairs"
+        - "Instruction-tuned decoding where prompts query developmental status or brain states"
+    intended_tasks:
+      - "Textual description of brain/EEG-derived states and risk profiles"
+      - "Question-answering about developmental status from embeddings"
+      - "Generating clinician-style summaries from embeddings + minimal prompts"
+    notes: >
+      This strategy is forward-looking and meant to document design decisions before any concrete BOM hub LLM
+      is implemented. Use together with `kb/model_cards/llm_semantic_bridge.yaml`.
+
+  gene_llm_alignment_dev_v1:
+    modalities:
+      - genetics
+      - text
+    inputs:
+      gene_embeddings:
+        examples:
+          - "genetics_gene_fm_pca512_v1"
+          - "genetics_joo_mdd_cog_v1"
+          - "genomics_cha_dev_v1"
+      textual_annotations:
+        examples:
+          - "ClinVar / OMIM variant and gene descriptions"
+          - "literature-derived functional annotations"
+    approach:
+      candidates:
+        - "Variant- and gene-aware contrastive learning between embeddings and textual annotations"
+        - "Text-conditioned omics reasoning (LLM takes gene embeddings + prompts about effect size, mechanism)"
+        - "Prompt-based explanation generation for variant impact and pathway involvement"
+    intended_tasks:
+      - "Explainable variant/gene impact narratives"
+      - "Gene-panel level reasoning about MDD / cognition risk"
+      - "Linking subject-level gene embeddings to report-like text in BOM"
+    notes: >
+      Treat this as the genetics/omics analogue of brain_llm_alignment_dev_v1. Exact implementation will depend on
+      which FM backbones and annotation corpora are ultimately available in the ARPA-H/BOM setting.
+
+  vlm_dev_clinic_v1:
+    modalities:
+      - vision
+      - text
+    inputs:
+      vision_streams:
+        examples:
+          - "MRI-derived projections or rendered surfaces"
+          - "clinic interaction videos (e.g., social gaze, play sessions)"
+          - "scanned developmental artifacts (drawings, worksheets)"
+      text_streams:
+        examples:
+          - "rating scale items and scores"
+          - "narrative developmental histories"
+          - "session-level clinician notes"
+    approach:
+      candidates:
+        - "BLIP/MedBLIP-style image+text encoders with clinical adapters"
+        - "Video-VLMs trained or adapted on developmental interaction clips + textual annotations"
+        - "Weakly supervised alignment where only aggregate ratings are available per clip"
+    intended_tasks:
+      - "Assisting with automatic scoring or pre-screening from clinic videos/images"
+      - "Providing multimodal context to LLM-based developmental reports"
+      - "Exploratory behavioural phenotyping in tandem with brain/EEG embeddings"
+    notes: >
+      This is explicitly future work. Use this strategy entry to log candidate architectures, datasets, and governance
+      requirements as they solidify, and connect them to `kb/model_cards/vlm_dev_clinical.yaml` and relevant dataset
+      cards (e.g., cha_dev_longitudinal_v1).
+
+last_updated: 2025-11-19
+
+

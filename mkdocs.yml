@@ -1,13 +1,31 @@
 site_name: Neurogenomics KB
 site_description: Code-first knowledge base for genetics and brain foundation models and multimodal integration
-repo_url: https://github.com/YOUR_ORG/neurogenomics-kb
+repo_url: https://github.com/allison-eunse/neurogenomics-kb
 theme:
   name: material
+  palette:
+    - scheme: default
+      primary: light blue
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: light blue
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
   features:
     - navigation.tabs
     - navigation.sections
+    - navigation.instant
+    - navigation.top
     - content.code.copy
+    - content.tabs.link
     - toc.integrate
+    - toc.follow
+    - content.action.edit
 markdown_extensions:
   - admonition
   - toc:
@@ -19,20 +37,33 @@ plugins:
   - search
 nav:
   - Home: index.md
+  - Guides:
+      - KB overview: guide/kb_overview.md
   - Models:
       - Genetics:
-          - Evo 2: models/genetics/evo2.md
-          - DNABERT-2: models/genetics/dnabert2.md
+          - Overview: models/genetics/index.md
           - Caduceus: models/genetics/caduceus.md
-          - Nucleotide Transformer: models/genetics/nucleotide_transformer.md
+          - DNABERT-2: models/genetics/dnabert2.md
+          - Evo 2: models/genetics/evo2.md
+          - GENERator: models/genetics/generator.md
       - Brain:
+          - Overview: models/brain/index.md
+          - BrainLM: models/brain/brainlm.md
+          - Brain-JEPA: models/brain/brainjepa.md
+          - Brain Harmony: models/brain/brainharmony.md
+          - BrainMT: models/brain/brainmt.md
           - SwiFT: models/brain/swift.md
-          - NeuroMamba: models/brain/neuromamba.md
-          - DiVER: models/brain/diver.md
-          - External roundup: models/brain/external_roundup.md
   - Integration:
-      - Baselines: integration/playbook_baselines.md
-      - Alignment: integration/playbook_alignment.md
+      - Overview: integration/index.md
+      - Strategy: integration/integration_strategy.md
+      - Analysis recipes:
+          - CCA + permutation: integration/analysis_recipes/cca_permutation.md
+          - Prediction baselines: integration/analysis_recipes/prediction_baselines.md
+          - Partial correlations: integration/analysis_recipes/partial_correlations.md
+      - Modality features:
+          - Genomics: integration/modality_features/genomics.md
+          - sMRI: integration/modality_features/smri.md
+          - fMRI: integration/modality_features/fmri.md
       - Design patterns: integration/design_patterns.md
       - Benchmarks: integration/benchmarks.md
   - Data:
@@ -40,11 +71,16 @@ nav:
       - Schemas: data/schemas.md
       - Governance & QC: data/governance_qc.md
   - Code walkthroughs:
-      - Evo 2: code_walkthroughs/evo2_walkthrough.md
-      - DNABERT-2: code_walkthroughs/dnabert2_walkthrough.md
+      - Index: code_walkthroughs/index.md
       - Caduceus: code_walkthroughs/caduceus_walkthrough.md
+      - DNABERT-2: code_walkthroughs/dnabert2_walkthrough.md
+      - Evo 2: code_walkthroughs/evo2_walkthrough.md
+      - GENERator: code_walkthroughs/generator_walkthrough.md
+      - BrainLM: code_walkthroughs/brainlm_walkthrough.md
+      - Brain-JEPA: code_walkthroughs/brainjepa_walkthrough.md
+      - Brain Harmony: code_walkthroughs/brainharmony_walkthrough.md
+      - BrainMT: code_walkthroughs/brainmt_walkthrough.md
       - SwiFT: code_walkthroughs/swift_walkthrough.md
   - Decisions:
-      - Baseline scope (Nov 2025): decisions/2025-11-baseline-scope.md
-      - Integration direction (Nov 2025): decisions/2025-11-integration-direction.md
+      - Integration plan (Nov 2025): decisions/2025-11-integration-plan.md
 

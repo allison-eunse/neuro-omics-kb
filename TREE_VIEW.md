@@ -71,18 +71,20 @@ neurogenomics-kb/
 │           └── datasets/
 │
 ├── kb/                              ← Structured YAML metadata
-│   ├── model_cards/                 ← 7 FM metadata cards
+│   ├── model_cards/                 ← 9 FM metadata cards
 │   │   ├── README.md
 │   │   ├── caduceus.yaml
+│   │   ├── dnabert2.yaml
 │   │   ├── evo2.yaml
 │   │   ├── generator.yaml
-│   │   ├── brainlm.yaml
+│   │   ├── brainharmony.yaml
 │   │   ├── brainjepa.yaml
+│   │   ├── brainlm.yaml
 │   │   ├── brainmt.yaml
 │   │   ├── swift.yaml
 │   │   └── template.yaml
 │   │
-│   ├── paper_cards/                 ← 11 paper summaries (NEW ✨)
+│   ├── paper_cards/                 ← 12 paper summaries (NEW ✨)
 │   │   ├── README.md                ← Index + usage
 │   │   ├── ensemble_integration_li2022.yaml
 │   │   ├── oncology_multimodal_waqas2024.yaml
@@ -91,14 +93,14 @@ neurogenomics-kb/
 │   │   ├── generator_2024.yaml
 │   │   ├── brainlm_2024.yaml
 │   │   ├── brainjepa_2024.yaml
-│   │   ├── brainharmony_2024.yaml
-│   │   ├── brainmt_2024.yaml
+│   │   ├── brainharmony_2025.yaml
+│   │   ├── brainmt_2025.yaml
 │   │   ├── yoon_biokdd2025.yaml
 │   │   ├── prs_guide.yaml
 │   │   ├── gwas_diverse_populations.yaml
 │   │   └── template.yaml
 │   │
-│   ├── datasets/                    ← 11 dataset specs + manifest
+│   ├── datasets/                    ← 13 dataset specs + manifest
 │   │   ├── README.md
 │   │   ├── ukb_manifest_stub.yaml   ← Fill after data inventory (NEW ✨)
 │   │   ├── ukb_fmri_tensor.yaml
@@ -161,9 +163,9 @@ neurogenomics-kb/
 
 **Total Files**:
 - 9 code walkthroughs
-- 7 model cards (YAML)
-- 11 paper cards (YAML) ← NEW
-- 11 dataset cards (YAML)
+- 9 model cards (YAML)
+- 12 paper cards (YAML) ← NEW
+- 13 dataset cards (YAML)
 - 3 experiment configs (YAML) ← NEW
 - 99 YAML files total across kb/ and configs/
 

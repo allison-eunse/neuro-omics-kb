@@ -1,25 +1,40 @@
 {
   "docs_markdown": [
-    "docs/code_walkthroughs/brainml_walkthrough.md",
+    "docs/code_walkthroughs/brainharmony_walkthrough.md",
+    "docs/code_walkthroughs/brainjepa_walkthrough.md",
+    "docs/code_walkthroughs/brainlm_walkthrough.md",
     "docs/code_walkthroughs/brainmt_walkthrough.md",
     "docs/code_walkthroughs/caduceus_walkthrough.md",
     "docs/code_walkthroughs/dnabert2_walkthrough.md",
     "docs/code_walkthroughs/evo2_walkthrough.md",
+    "docs/code_walkthroughs/generator_walkthrough.md",
     "docs/code_walkthroughs/index.md",
     "docs/code_walkthroughs/swift_walkthrough.md",
     "docs/data/governance_qc.md",
-    "docs/data/index.md",
     "docs/data/schemas.md",
     "docs/data/ukb_data_map.md",
-    "docs/decisions/2025-11-baseline-scope.md",
-    "docs/decisions/2025-11-integration-direction.md",
-    "docs/decisions/index.md",
+    "docs/decisions/2025-11-integration-plan.md",
     "docs/index.md",
     "docs/integration/benchmarks.md",
     "docs/integration/design_patterns.md",
     "docs/integration/index.md",
-    "docs/integration/playbook_alignment.md",
-    "docs/integration/playbook_baselines.md",
+    "docs/integration/integration_strategy.md",
+    "docs/integration/modality_features/fmri.md",
+    "docs/integration/modality_features/genomics.md",
+    "docs/integration/modality_features/smri.md",
+    "docs/integration/analysis_recipes/cca_permutation.md",
+    "docs/integration/analysis_recipes/partial_correlations.md",
+    "docs/integration/analysis_recipes/prediction_baselines.md",
+    "docs/kb/README.md",
+    "docs/kb/templates/cross_domain_eval_card.md",
+    "docs/kb/templates/dataset_card.md",
+    "docs/kb/templates/experiment_config_stub.md",
+    "docs/kb/templates/external_model_pattern_card.md",
+    "docs/kb/templates/integration_principles_card.md",
+    "docs/kb/templates/method_family_card.md",
+    "docs/kb/templates/model_card_template.md",
+    "docs/models/brain/brainharmony.md",
+    "docs/models/brain/brainjepa.md",
     "docs/models/brain/brainlm.md",
     "docs/models/brain/brainmt.md",
     "docs/models/brain/index.md",
@@ -52,7 +67,8 @@
       "kb/datasets/opengenome2.yaml",
       "kb/datasets/refseq_generator.yaml",
       "kb/datasets/template.yaml",
-      "kb/datasets/ukb_fmri_tensor.yaml"
+      "kb/datasets/ukb_fmri_tensor.yaml",
+      "kb/datasets/ukb_manifest_stub.yaml"
     ],
     "integration_cards": [
       "kb/integration_cards/genetics_embeddings_pipeline.yaml",
@@ -60,13 +76,35 @@
       "kb/integration_cards/ukb_genetics_brain_alignment.yaml"
     ],
     "paper_cards": [
-      "kb/paper_cards/template.yaml"
+      "kb/paper_cards/brainharmony_2024.yaml",
+      "kb/paper_cards/brainjepa_2024.yaml",
+      "kb/paper_cards/brainlm_2024.yaml",
+      "kb/paper_cards/brainmt_2024.yaml",
+      "kb/paper_cards/caduceus_2024.yaml",
+      "kb/paper_cards/ensemble_integration_li2022.yaml",
+      "kb/paper_cards/evo2_2024.yaml",
+      "kb/paper_cards/generator_2024.yaml",
+      "kb/paper_cards/gwas_diverse_populations.yaml",
+      "kb/paper_cards/oncology_multimodal_waqas2024.yaml",
+      "kb/paper_cards/prs_guide.yaml",
+      "kb/paper_cards/template.yaml",
+      "kb/paper_cards/yoon_biokdd2025.yaml"
     ]
   },
   "scripts": [
     "scripts/manage_kb.py"
   ],
   "external_repos": {
+    "brainharmony": {
+      "readme": "external_repos/brainharmony/README.md",
+      "requirements": "external_repos/brainharmony/requirements.txt",
+      "has_tests": false
+    },
+    "brainjepa": {
+      "readme": "external_repos/brainjepa/README.md",
+      "requirements": "external_repos/brainjepa/requirement.txt",
+      "has_tests": false
+    },
     "brainlm": {
       "readme": "external_repos/brainlm/README.md",
       "requirements": "external_repos/brainlm/requirements.txt",
@@ -106,26 +144,79 @@
   "parallel_tasks": [
     {
       "id": 1,
-      "label": "Docs & MkDocs site",
+      "label": "Brain docs, cards, and repos",
       "paths": [
-        "docs/",
-        "mkdocs.yml"
+        "docs/models/brain/",
+        "docs/code_walkthroughs/brainharmony_walkthrough.md",
+        "docs/code_walkthroughs/brainjepa_walkthrough.md",
+        "docs/code_walkthroughs/brainlm_walkthrough.md",
+        "docs/code_walkthroughs/brainmt_walkthrough.md",
+        "docs/code_walkthroughs/swift_walkthrough.md",
+        "kb/model_cards/brainlm.yaml",
+        "kb/model_cards/brainmt.yaml",
+        "kb/model_cards/swift.yaml",
+        "kb/paper_cards/brainharmony_2024.yaml",
+        "kb/paper_cards/brainjepa_2024.yaml",
+        "kb/paper_cards/brainlm_2024.yaml",
+        "kb/paper_cards/brainmt_2024.yaml",
+        "kb/datasets/hcp_fmri_tensor.yaml",
+        "kb/datasets/ukb_fmri_tensor.yaml",
+        "kb/datasets/ukb_manifest_stub.yaml",
+        "external_repos/brainharmony/",
+        "external_repos/brainjepa/",
+        "external_repos/brainlm/",
+        "external_repos/brainmt/",
+        "external_repos/swift/"
       ]
     },
     {
       "id": 2,
-      "label": "Knowledge base YAML cards",
+      "label": "Genetics docs, cards, and repos",
       "paths": [
-        "kb/model_cards/",
-        "kb/datasets/",
-        "kb/integration_cards/"
+        "docs/models/genetics/",
+        "docs/code_walkthroughs/caduceus_walkthrough.md",
+        "docs/code_walkthroughs/dnabert2_walkthrough.md",
+        "docs/code_walkthroughs/evo2_walkthrough.md",
+        "docs/code_walkthroughs/generator_walkthrough.md",
+        "kb/model_cards/caduceus.yaml",
+        "kb/model_cards/dnabert2.yaml",
+        "kb/model_cards/evo2.yaml",
+        "kb/model_cards/generator.yaml",
+        "kb/paper_cards/caduceus_2024.yaml",
+        "kb/paper_cards/evo2_2024.yaml",
+        "kb/paper_cards/generator_2024.yaml",
+        "kb/paper_cards/gwas_diverse_populations.yaml",
+        "kb/paper_cards/oncology_multimodal_waqas2024.yaml",
+        "kb/paper_cards/prs_guide.yaml",
+        "kb/paper_cards/yoon_biokdd2025.yaml",
+        "kb/datasets/gener_tasks.yaml",
+        "kb/datasets/genomic_benchmarks.yaml",
+        "kb/datasets/gue_benchmark.yaml",
+        "kb/datasets/multi_species_corpus.yaml",
+        "kb/datasets/nucleotide_transformer_tasks.yaml",
+        "kb/datasets/opengenome2.yaml",
+        "kb/datasets/refseq_generator.yaml",
+        "kb/datasets/hg38_reference.yaml",
+        "kb/datasets/ukb_manifest_stub.yaml",
+        "external_repos/caduceus/",
+        "external_repos/dnabert2/",
+        "external_repos/evo2/",
+        "external_repos/generator/"
       ]
     },
     {
       "id": 3,
-      "label": "External research repos",
+      "label": "Integration docs, cards, and datasets",
       "paths": [
-        "external_repos/"
+        "docs/integration/",
+        "docs/models/brain/",
+        "docs/models/genetics/",
+        "docs/code_walkthroughs/",
+        "docs/data/",
+        "kb/integration_cards/",
+        "kb/model_cards/",
+        "kb/datasets/",
+        "kb/paper_cards/"
       ]
     },
     {
@@ -135,6 +226,41 @@
         "scripts/",
         "rag/",
         "kb/rag/"
+      ]
+    },
+    {
+      "id": 5,
+      "label": "Global master / coherence agent (read-only)",
+      "paths": [
+        "docs/",
+        "kb/",
+        "configs/",
+        "scripts/",
+        "external_repos/",
+        "pyproject.toml",
+        "requirements.txt",
+        "mkdocs.yml",
+        "README.md",
+        "ORGANIZATION_SUMMARY.md",
+        "QUICK_REFERENCE.md",
+        "TREE_VIEW.md"
+      ],
+      "meta_write_paths": [
+        "README.md",
+        "ORGANIZATION_SUMMARY.md",
+        "QUICK_REFERENCE.md",
+        "TREE_VIEW.md",
+        "docs/index.md",
+        "docs/kb/README.md",
+        "docs/integration/index.md",
+        "docs/integration/integration_strategy.md",
+        "docs/decisions/2025-11-integration-plan.md",
+        "kb/model_cards/README.md",
+        "kb/datasets/README.md",
+        "kb/integration_cards/README.md",
+        "kb/paper_cards/README.md",
+        "kb/integration_cards/genetics_embeddings_pipeline.yaml",
+        "kb/integration_cards/ukb_genetics_brain_alignment.yaml"
       ]
     }
   ]

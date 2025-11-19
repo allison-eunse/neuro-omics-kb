@@ -1,5 +1,3 @@
-
-
 md. I’ll also keep carrying the specific repository + license notice on every walkthrough page so each doc makes its licensing context explicit.
 
 # Dataset Card Template
@@ -15,6 +13,10 @@ md. I’ll also keep carrying the specific repository + license notice on every 
 - Paths to raw data (e.g., `/secure/ukb/raw`), processed derivatives, and sync locations.
 - Encryption / PHI considerations; who has access.
 
+## Hugging Face / Shared Mirrors
+- Dataset repo + subset names, record counts, checksum or snapshot tags.
+- Notes on sync cadence between mirrors and secured copies.
+
 ## Cohort Summary
 | Split | N subjects | Notes |
 | --- | --- | --- |
@@ -24,9 +26,16 @@ md. I’ll also keep carrying the specific repository + license notice on every 
 
 Add stratification notes (sex balance, age range, sites).
 
+## Modality-Specific Schema
+- Column lists per modality (genes, ROIs, clinical tables) with links back to `docs/data/schemas.md`.
+- Required covariates + units.
+
 ## Overlap & Pairing Logic
 - How subjects overlap with other modalities (e.g., gene × sMRI intersection).
 - Inclusion/exclusion rules, QC flags (motion, missing genes, etc.).
+
+## Genomics / Base-Pair Stats
+- Total base pairs, mean/median sequence length, tokenizer context alignment details.
 
 ## Preprocessing Pipelines
 - Imaging: software versions, atlases, smoothing, censoring thresholds.
@@ -51,4 +60,8 @@ Add stratification notes (sex balance, age range, sites).
 ## References
 - Link to cohort publications / documentation.
 - Internal tickets or notebooks for preprocessing runs.
+
+## Linked Walkthroughs & External Repos
+- Walkthrough pages that describe preprocessing.
+- `external_repos/*` scripts or configs that produced the released tensors (commit/tag + entrypoint).
 

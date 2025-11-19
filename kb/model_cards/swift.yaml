@@ -36,6 +36,47 @@ tasks:
   - contrastive_pretraining
   - classification (sex, site)
   - regression (cognition)
+intended_use:
+  - "adult gene–brain alignment"
+  - "developmental / neurodevelopmental prediction"
+  - "multimodal brain–omics alignment"
+embedding_recipe:
+  level: subject
+  unit:
+    rsfmri:
+      - segment
+      - run
+  pipeline:
+    rsfmri:
+      reference_strategy: rsfmri_swift_segments_v1
+      segment_embedding:
+        frames: 20
+        stride: 20
+        pooling: mean_tokens
+        layer: last_hidden_state
+      run_aggregation: mean_over_segments
+      subject_aggregation: mean_over_runs
+      preprocessing:
+        - "z-score within CV fold"
+        - "residualize(age, sex, site, mean_FD, DVARS)"
+      projector:
+        type: PCA
+        output_dim: 512
+      harmonization_hooks:
+        - none_baseline
+        - site_unlearning_module
+  sources:
+    - docs/code_walkthroughs/swift_walkthrough.md#integration-hooks
+    - external_repos/swift/project/module/pl_classifier.py
+  genetics_alignment_notes: |
+    Export 512-D subject vectors (post-PCA) to pair with `genetics_gene_fm_pca512_v1`
+    in CCA/prediction configs. Document chosen strategy via
+    `embedding_strategies.rs_fmri_swift_segments_v1`.
+  developmental_notes: |
+    SwiFT’s segment→run→subject aggregation is conceptually compatible with developmental rs-fMRI, but pediatric
+    motion and varying scan lengths may necessitate different segment lengths and stricter low-motion filtering.
+    For Cha and similar cohorts, treat rsfmri_swift_segments_v1 as a starting point and log any age-specific
+    adjustments (e.g., segment duration, FD thresholds) in embedding_strategies.
 how_to_infer:
   training: |
     python external_repos/swift/project/main.py \
@@ -59,8 +100,6 @@ tags:
   - lightning
 verified: false
 last_updated: 2025-11-15
-maintainers:
-  - name: Allison Eun Se You
 notes: >-
   Use sample_scripts/sample_script.sh as a template for interactive jobs; for Slurm
   clusters run sample_script.slurm with correct NEPTUNE credentials.

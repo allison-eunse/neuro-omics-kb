@@ -2,7 +2,9 @@ title: "BrainLM: A Foundation Model for Brain Activity Recordings"
 authors: ["Azabou, Mehdi", "et al."]
 year: 2024
 venue: "NeurIPS 2024"
-pdf_source: "/Users/allison/Projects/pdf<->md;ai-summaries/input/BRAINLM- A FOUNDATION MODEL FOR BRAIN ACTIVITY RECORDINGS.pdf"
+pdf_source: "https://openreview.net/forum?id=RwI7ZEfR27"
+local_pdf_path: "docs/generated/kb_curated/papers-pdf/brainlm_2024.pdf"
+summary_md_path: "docs/generated/kb_curated/papers-md/brainlm_2024.md"
 
 summary: |
   ViT-MAE for fMRI: masked autoencoding on parcel time series. Pretrained on UK Biobank

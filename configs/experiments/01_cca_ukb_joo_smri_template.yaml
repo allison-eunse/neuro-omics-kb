@@ -1,0 +1,77 @@
+---
+experiment_name: "CCA: UKB Joo gene embeddings × sMRI (template)"
+objective: "Template for CCA + permutation between Prof. Joo-style gene embeddings and UKB sMRI PCA embeddings."
+status: "template"
+created: "2025-11-19"
+
+datasets:
+  genetics: "kb/datasets/ukb_wes.yaml"
+  smri: "kb/datasets/ukb_smri_freesurfer.yaml"
+  manifest: "kb/datasets/ukb_manifest_stub.yaml"
+
+embedding_strategies:
+  genetics: "genetics_joo_mdd_cog_v1"
+  smri: "smri_ukb_pca128_v1"   # can be updated after dim-search
+
+feature_preparation:
+  genetics:
+    description: "Subject-level gene embeddings from Prof. Joo's MDD/cognition panel (Yoon BIOKDD'25-style)."
+    references:
+      - "kb/paper_cards/yoon_biokdd2025.yaml"
+    notes: |
+      - Exact backbone FM, embedding dimension, and gene list should be filled once confirmed by Joo lab.
+      - genetics_joo_mdd_cog_v1 in embedding_strategies.yaml stores the canonical recipe.
+  smri:
+    description: "FreeSurfer-derived ROI features (aparc/aseg) projected to 128-D PCA space."
+    base_strategy: "smri_free_surfer_pca512_v1"
+  covariates:
+    - age
+    - sex
+    - site_scanner
+    - intracranial_volume
+    - pc1
+    - pc2
+    - pc3
+    - pc4
+    - pc5
+    - pc6
+    - pc7
+    - pc8
+    - pc9
+    - pc10
+  preprocessing:
+    z_score: true
+    residualize: true
+    projection:
+      method: "PCA"
+      fit_on: "train_fold"
+
+cross_validation:
+  strategy: "StratifiedGroupKFold"
+  k_folds: 5
+  group_by: "site_scanner"
+  stratify_by: "mdd_diagnosis"
+  seed: 42
+
+analysis:
+  method: "cca_permutation"
+  recipe: "docs/integration/analysis_recipes/cca_permutation.md"
+  n_components: 10
+  n_permutations: 1000
+  permutation_method: "shuffle_subjects_in_modality_B"
+
+metrics:
+  primary:
+    - "canonical_correlations (ρ1–ρ3)"
+    - "permutation_pvalues"
+  secondary:
+    - "cca_loadings (top genes / ROIs per component)"
+
+outputs:
+  results_dir: "results/TBD_date_cca_ukb_joo_smri/"
+
+notes: |
+  - This file is a template: do not run as-is. Fill in confirmed gene set, embedding dimension, and sample sizes first.
+  - The goal is to have a named config and strategy IDs ready so that once embeddings exist, the analysis can be wired up quickly.
+
+

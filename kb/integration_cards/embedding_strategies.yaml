@@ -1,0 +1,425 @@
+id: embedding_strategies
+name: Subject-level embedding strategies
+summary: Canonical recipes for turning modality-specific exports into harmonized subject vectors.
+status: drafting
+strategies:
+  smri_free_surfer_pca512_v1:
+    modality: smri
+    source: "FreeSurfer 7.x aparc.stats (thickness, volume) + aseg.stats (~176 features)"
+    level:
+      per_subject: "Concatenate ROI thickness/volume + subcortical volumes after QC."
+    preprocessing:
+      - "z-score per ROI feature within each training fold"
+      - "residualize(age, sex, site/scanner, intracranial_volume, ±SES)"
+    projector:
+      type: PCA
+      dim: 512
+      fit_on: train_fold
+    harmonization_options:
+      default: "feature-level residualization only"
+      alternatives: ["combat_smri", "murd_t1_t2"]
+    intended_use:
+      - cca_gene_smri_v1
+      - prediction_smri_baseline_v1
+      - harmonization_ablation_smri_v1
+    sources:
+      - docs/integration/modality_features/smri.md
+      - configs/experiments/01_cca_gene_smri.yaml
+
+  smri_ukb_pca32_v1:
+    modality: smri
+    source: "UKB FreeSurfer 7.x aparc/aseg ROI features (see ukb_smri_freesurfer.yaml)"
+    cohort: ukb_smri_freesurfer
+    level:
+      per_subject: "Concatenate cortical thickness/volume and subcortical volumes after QC (≈176 features)."
+    preprocessing:
+      - "z-score per ROI feature within each training fold"
+      - "residualize(age, sex, site_scanner, intracranial_volume, ±SES)"
+    projector:
+      type: PCA
+      dim: 32
+      fit_on: train_fold
+    harmonization_options:
+      default: "feature-level residualization only"
+      alternatives: ["combat_smri", "murd_t1_t2"]
+    intended_use:
+      - ukb_smri_pca_dimsearch_v1
+      - prediction_smri_baseline_v1
+    sources:
+      - kb/datasets/ukb_smri_freesurfer.yaml
+      - docs/integration/modality_features/smri.md
+
+  smri_ukb_pca64_v1:
+    modality: smri
+    source: "UKB FreeSurfer 7.x aparc/aseg ROI features (see ukb_smri_freesurfer.yaml)"
+    cohort: ukb_smri_freesurfer
+    level:
+      per_subject: "Concatenate cortical thickness/volume and subcortical volumes after QC (≈176 features)."
+    preprocessing:
+      - "z-score per ROI feature within each training fold"
+      - "residualize(age, sex, site_scanner, intracranial_volume, ±SES)"
+    projector:
+      type: PCA
+      dim: 64
+      fit_on: train_fold
+    harmonization_options:
+      default: "feature-level residualization only"
+      alternatives: ["combat_smri", "murd_t1_t2"]
+    intended_use:
+      - ukb_smri_pca_dimsearch_v1
+      - prediction_smri_baseline_v1
+    sources:
+      - kb/datasets/ukb_smri_freesurfer.yaml
+      - docs/integration/modality_features/smri.md
+
+  smri_ukb_pca128_v1:
+    modality: smri
+    source: "UKB FreeSurfer 7.x aparc/aseg ROI features (see ukb_smri_freesurfer.yaml)"
+    cohort: ukb_smri_freesurfer
+    level:
+      per_subject: "Concatenate cortical thickness/volume and subcortical volumes after QC (≈176 features)."
+    preprocessing:
+      - "z-score per ROI feature within each training fold"
+      - "residualize(age, sex, site_scanner, intracranial_volume, ±SES)"
+    projector:
+      type: PCA
+      dim: 128
+      fit_on: train_fold
+    harmonization_options:
+      default: "feature-level residualization only"
+      alternatives: ["combat_smri", "murd_t1_t2"]
+    intended_use:
+      - ukb_smri_pca_dimsearch_v1
+      - prediction_smri_baseline_v1
+    sources:
+      - kb/datasets/ukb_smri_freesurfer.yaml
+      - docs/integration/modality_features/smri.md
+
+  smri_ukb_pca256_v1:
+    modality: smri
+    source: "UKB FreeSurfer 7.x aparc/aseg ROI features (see ukb_smri_freesurfer.yaml)"
+    cohort: ukb_smri_freesurfer
+    level:
+      per_subject: "Concatenate cortical thickness/volume and subcortical volumes after QC (≈176 features)."
+    preprocessing:
+      - "z-score per ROI feature within each training fold"
+      - "residualize(age, sex, site_scanner, intracranial_volume, ±SES)"
+    projector:
+      type: PCA
+      dim: 256
+      fit_on: train_fold
+    harmonization_options:
+      default: "feature-level residualization only"
+      alternatives: ["combat_smri", "murd_t1_t2"]
+    intended_use:
+      - ukb_smri_pca_dimsearch_v1
+      - prediction_smri_baseline_v1
+    sources:
+      - kb/datasets/ukb_smri_freesurfer.yaml
+      - docs/integration/modality_features/smri.md
+
+  rsfmri_swift_segments_v1:
+    modality: rs-fmri
+    source: "SwiFT 4D FM (windowed Swin Transformer over 20-frame segments)"
+    hierarchy:
+      segment:
+        frames: 20
+        stride: 20
+        pooling: "mean over tokens from last_hidden_state"
+      run:
+        aggregation: "mean over segment embeddings per run"
+      subject:
+        aggregation: "mean over runs (drop runs with <50% low-motion segments)"
+    preprocessing:
+      - "z-score per embedding dimension within fold"
+      - "residualize(age, sex, site/scanner, mean_FD, DVARS)"
+    projector:
+      type: PCA
+      dim: 512
+    motion_handling:
+      segment_filter: "optionally drop segments with FD > 0.3mm"
+      covariates: ["mean_FD", "max_FD", "DVARS"]
+    intended_use:
+      - cca_gene_fmri_v1
+      - fmri_prediction_baseline_v1
+      - multimodal_fusion_rs_v1
+    sources:
+      - docs/code_walkthroughs/swift_walkthrough.md#integration-hooks
+      - external_repos/swift/project/module/pl_classifier.py
+
+  rsfmri_brainlm_segments_v1:
+    modality: rs-fmri
+    source: "BrainLM MAE exports (voxel × time patches)"
+    hierarchy:
+      window:
+        frames: 32
+        stride: 16
+        pooling: "use CLS token from decoder input"
+      run:
+        aggregation: "attention_pool(window_embeddings, attention ~ inverse FD)"
+      subject:
+        aggregation: "mean over runs"
+    preprocessing:
+      - "z-score per dimension within fold"
+      - "residualize(age, sex, site, motion FD, DVARS)"
+    projector:
+      type: PCA
+      dim: 512
+    intended_use:
+      - fmri_prediction_baseline_v2
+      - fmri_gene_alignment_exploratory
+    sources:
+      - docs/code_walkthroughs/brainlm_walkthrough.md#integration-hooks
+      - external_repos/brainlm/brainlm_mae/modeling_brainlm.py
+
+  rsfmri_brainjepa_roi_v1:
+    modality: rs-fmri
+    source: "Brain-JEPA ROI × time tokens (Schaefer-400 + Tian-50)"
+    hierarchy:
+      roi_token:
+        pooling: "mean over masked segments after JEPA encoder"
+      subject:
+        aggregation: "mean over roi_token embeddings (optionally network-wise averaging)"
+    preprocessing:
+      - "z-score within fold"
+      - "residualize(age, sex, site, motion FD, global_signal_flag)"
+    projector:
+      type: PCA
+      dim: 512
+    intended_use:
+      - fmri_prediction_baseline_v3
+      - cca_gene_fmri_roi_v1
+    sources:
+      - docs/code_walkthroughs/brainjepa_walkthrough.md#integration-hooks
+      - external_repos/brainjepa/downstream_tasks/models_vit.py
+
+  rsfmri_brainmt_segments_v1:
+    modality: rs-fmri
+    source: "BrainMT hybrid Mamba+Transformer exports (conv patches over 4D volumes)"
+    hierarchy:
+      segment:
+        frames: 32
+        stride: 32
+        pooling: "mean over conv patch tokens"
+      run:
+        aggregation: "mean over segments (optionally weight by usable time)"
+      subject:
+        aggregation: "mean over runs"
+    preprocessing:
+      - "z-score per dimension within fold"
+      - "residualize(age, sex, site, motion_FD)"
+    projector:
+      type: PCA
+      dim: 512
+    intended_use:
+      - fmri_prediction_baseline_v2
+      - harmonization_ablation_fmri_v1
+    sources:
+      - docs/code_walkthroughs/brainmt_walkthrough.md#integration-hooks
+      - external_repos/brainmt/src/brainmt/models/brain_mt.py
+
+  genetics_gene_fm_pca512_v1:
+    modality: genetics
+    source: "Gene-level embeddings from Caduceus / Evo 2 / GENERaTOR FMs"
+    per_gene_pipeline:
+      tokenization: "character-level DNA with reverse-complement augmentation"
+      rc_handling: "forward + reverse-complement average"
+      pooling: "mean over exon tokens → exon vector, then mean over exons → gene vector"
+    per_subject_aggregation: "concatenate curated gene set embeddings (e.g., 38 genes)"
+    preprocessing:
+      - "z-score within fold"
+      - "residualize(age, sex, ancestry_PCs_1-10, sequencing_batch)"
+    projector:
+      type: PCA
+      dim: 512
+    intended_use:
+      - cca_gene_smri_v1
+      - cca_gene_fmri_v1
+      - prediction_gene_baseline_v1
+    sources:
+      - docs/integration/modality_features/genomics.md
+      - docs/code_walkthroughs/caduceus_walkthrough.md
+
+  fusion_concat_gene_brain_1024_v1:
+    modality: multimodal
+    source: ["genetics_gene_fm_pca512_v1", "smri_free_surfer_pca512_v1"]
+    construction: "concatenate 512-D gene vector with 512-D brain vector → 1024-D"
+    preprocessing:
+      - "z-score each component separately before concatenation"
+    intended_use:
+      - prediction_fusion_baseline_v1
+      - cca_init_fusion_debug
+    sources:
+      - configs/experiments/02_prediction_baselines.yaml
+
+  smri_free_surfer_raw_176:
+    modality: smri
+    source: "FreeSurfer ROI tables without dimensionality reduction"
+    features: "~176 columns (thickness, volume, subcortical volumes)"
+    preprocessing:
+      - "z-score each feature"
+      - "residualize(age, sex, site, icv)"
+    intended_use:
+      - prediction_tabular_smri_v1
+      - baseline_tabular_feature_tests
+    sources:
+      - docs/integration/modality_features/smri.md
+
+  genetics_pgs_20traits:
+    modality: genetics
+    source: "20 curated UKB polygenic scores + ancestry PCs 1-10"
+    preprocessing:
+      - "z-score per PGS"
+      - "mean-impute missing PGS"
+    intended_use:
+      - prediction_tabular_genetics_v1
+      - fusion_tabular_tests
+    sources:
+      - docs/data/schemas.md
+      - configs/experiments/03_prediction_baselines_tabular.yaml
+
+  smri_cha_dev_pca64_v1:
+    modality: smri
+    source: "Cha Hospital developmental cohort FreeSurfer-derived sMRI ROIs"
+    cohort: cha_dev_longitudinal_v1
+    level:
+      per_subject: "Concatenate cortical thickness/volume and subcortical volumes after pediatric QC."
+    preprocessing:
+      - "age- and sex-adjustment (e.g., regress out age, age^2, sex, site/scanner)"
+      - "z-score per ROI feature within each training fold"
+    projector:
+      type: PCA
+      dim: 64
+      fit_on: train_fold
+    harmonization_options:
+      default: "feature-level residualization only"
+      alternatives: ["combat_smri", "murd_t1_t2"]
+    intended_use:
+      - dev_smri_pca_dimsearch_v1
+      - dev_smri_prediction_baseline_v1
+      - dev_gene_smri_cca_v1
+    sources:
+      - kb/datasets/cha_dev_longitudinal.yaml
+      - docs/integration/modality_features/smri.md
+
+  smri_cha_dev_pca128_v1:
+    modality: smri
+    source: "Cha Hospital developmental cohort FreeSurfer-derived sMRI ROIs"
+    cohort: cha_dev_longitudinal_v1
+    level:
+      per_subject: "Concatenate cortical thickness/volume and subcortical volumes after pediatric QC."
+    preprocessing:
+      - "age- and sex-adjustment (e.g., regress out age, age^2, sex, site/scanner)"
+      - "z-score per ROI feature within each training fold"
+    projector:
+      type: PCA
+      dim: 128
+      fit_on: train_fold
+    harmonization_options:
+      default: "feature-level residualization only"
+      alternatives: ["combat_smri", "murd_t1_t2"]
+    intended_use:
+      - dev_smri_pca_dimsearch_v1
+      - dev_smri_prediction_baseline_v1
+      - dev_gene_smri_cca_v1
+    sources:
+      - kb/datasets/cha_dev_longitudinal.yaml
+      - docs/integration/modality_features/smri.md
+
+  cha_dev_eeg_fm_v1:
+    modality: eeg
+    source: "Developmental EEG/EPhys FM or classical EEG features for Cha cohort"
+    hierarchy:
+      segment:
+        duration_seconds: 2
+        overlap: 0.0
+        pooling: "FM embedding per segment or bandpower/connectivity features"
+      run:
+        aggregation: "mean or attention pooling over segments per run"
+      subject:
+        aggregation: "mean over runs (optionally stratified by paradigm)"
+    preprocessing:
+      - "artifact rejection (blinks, muscle, line noise); bad-channel interpolation"
+      - "bandpass filtering into canonical bands (delta–gamma) if using classical features"
+      - "z-score per embedding dimension within cohort / fold"
+    projector:
+      type: PCA
+      dim: 256
+    intended_use:
+      - dev_eeg_prediction_baseline_v1
+      - dev_brain_eeg_fusion_v1
+    sources:
+      - kb/datasets/cha_dev_longitudinal.yaml
+
+  cha_dev_behaviour_latent_v1:
+    modality: behaviour
+    source: "Latent behavioural / developmental factors from multiple rating scales and cognitive tests"
+    inputs:
+      instruments:
+        - "cognitive batteries (IQ indices, subtests)"
+        - "adaptive functioning scales (e.g., Vineland, ABAS)"
+        - "ASD / ADHD / ND rating scales and parent/teacher reports"
+    transformation:
+      method: "factor_analysis_or_autoencoder"
+      dim: 16
+      notes: "Fit on training data; treat age and sex either as covariates or stratify."
+    preprocessing:
+      - "encode missingness with indicator + imputation"
+      - "standardize scores within age/sex strata when appropriate"
+    intended_use:
+      - dev_behaviour_prediction_baseline_v1
+      - dev_multimodal_fusion_v1
+    sources:
+      - kb/datasets/cha_dev_longitudinal.yaml
+
+  genomics_cha_dev_v1:
+    modality: genetics
+    source: "Future gene/omics embeddings for the Cha developmental cohort"
+    gene_set:
+      description: "To be defined; e.g., MDD / ASD / ADHD / cognition gene panels"
+      size: null
+    backbone_fm:
+      candidates: ["caduceus", "dnabert2", "evo2", "OMNIA-like multi-omics FM"]
+    per_gene_pipeline: "Follow genetics_gene_fm_pca512_v1 for exon → gene aggregation."
+    per_subject_aggregation: "Concatenate curated gene set embeddings into a subject-level vector."
+    preprocessing:
+      - "z-score within fold"
+      - "residualize(age, sex, ancestry_PCs_1-10, batch)"
+    projector:
+      type: PCA
+      dim: 512
+    intended_use:
+      - dev_gene_prediction_baseline_v1
+      - dev_gene_brain_behaviour_cca_v1
+    sources:
+      - kb/paper_cards/yoon_biokdd2025.yaml
+      - docs/integration/modality_features/genomics.md
+
+  genetics_joo_mdd_cog_v1:
+    modality: genetics
+    source: "Subject-level gene embeddings from Prof. Joo's MDD / cognition panels (Yoon BIOKDD'25-style pipeline)"
+    gene_set:
+      description: "38 MDD genes from Yoon et al. plus optional cognition-related genes (TBD)."
+      reference: "kb/paper_cards/yoon_biokdd2025.yaml"
+    per_gene_pipeline:
+      tokenization: "character-level DNA or BPE, with reverse-complement handling where applicable"
+      rc_handling: "forward + reverse-complement average where applicable"
+      pooling: "mean over exon tokens → exon vector, then mean over exons → gene vector"
+    per_subject_aggregation: "stack gene embeddings for the curated panel and optionally project to 512-D."
+    preprocessing:
+      - "z-score within fold"
+      - "residualize(age, sex, ancestry_PCs_1-10, sequencing_batch)"
+    projector:
+      type: PCA
+      dim: 512
+    intended_use:
+      - cca_gene_smri_v1
+      - cca_gene_fmri_v1
+      - prediction_gene_baseline_v1
+      - logo_gene_attribution_joo_v1
+    sources:
+      - kb/paper_cards/yoon_biokdd2025.yaml
+      - kb/integration_cards/genetics_embeddings_pipeline.yaml
+
+last_updated: 2025-11-19
+

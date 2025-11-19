@@ -88,9 +88,6 @@ tags:
   - masked-language-modeling
 verified: false
 last_updated: 2025-11-15
-maintainers:
-  - name: Allison Eun Se You
-    role: curator
 notes: >-
   Use dataset.rcps=true for strict RC weight tying. Set dataset.rc_aug=true when
   using non-equivariant checkpoints to match paper performance.

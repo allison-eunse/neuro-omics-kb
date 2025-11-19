@@ -1,0 +1,104 @@
+id: brainjepa
+name: Brain-JEPA
+modality: brain
+domain: fmri
+summary: >-
+  Brain dynamics foundation model based on a Joint-Embedding Predictive Architecture
+  (JEPA). Uses functional gradient positioning and spatiotemporal masking to learn
+  latent representations that outperform MAE baselines on age, sex, and cognition
+  prediction.
+arch:
+  type: JEPA-style transformer encoder + predictor
+  backbone: src/models/ (JEPA encoder/predictor) + main.py training loop
+  parameters: "TBD"
+  context_length: "450 ROIs × T timepoints (Schaefer-400 + Tian-50)"
+  special_features:
+    - "Brain gradient positioning for ROI locations in functional space"
+    - "Spatiotemporal masking (Cross-ROI, Cross-Time, Double-Cross)"
+    - "JEPA objective: predict target latents from context latents"
+repo: external_repos/brainjepa
+weights:
+  huggingface: []
+  artifacts:
+    - "https://drive.google.com/drive/folders/1zoe5zjWkj2KY824XWTukrXxrMno2mlN5?usp=sharing"
+tokenizer:
+  type: "parcel time-series tokens"
+  notes: >
+    fMRI data parcellated into 450 ROIs (Schaefer-400 cortical + Tian-50 subcortical),
+    then converted to ROI × time tokens.
+context_length: "450 ROIs × T timepoints"
+checkpoints:
+  - name: brainjepa-ukb-vitb-ep300
+    path: "logs/ukb_vitb_ep300/"
+license:
+  code: custom
+  weights: custom
+  data: "UKB, HCP-Aging, ADNI, MACC (restricted; see original paper and repo)."
+datasets:
+  - ukb_fmri_tensor
+  - hcp_fmri_tensor
+tasks:
+  - self_supervised_prediction
+  - embedding_export
+  - downstream_classification
+intended_use:
+  - "adult gene–brain alignment"
+  - "developmental / neurodevelopmental prediction"
+  - "multimodal brain–omics alignment"
+embedding_recipe:
+  level: subject
+  unit:
+    rsfmri:
+      - roi_token
+  pipeline:
+    rsfmri:
+      reference_strategy: rsfmri_brainjepa_roi_v1
+      roi_token_embedding:
+        tokens: 450
+        pooling: "mean over masked segments per ROI"
+        layer: encoder_output
+      subject_aggregation: "mean over ROI tokens or network-wise averages"
+      preprocessing:
+        - "z-score per dimension (within fold)"
+        - "residualize(age, sex, site, motion_FD, optional_GSR)"
+      projector:
+        type: PCA
+        output_dim: 512
+      notes: "Record whether Schaefer-400 or alternative parcellation is used."
+  sources:
+    - docs/code_walkthroughs/brainjepa_walkthrough.md#integration-hooks
+    - external_repos/brainjepa/downstream_tasks/models_vit.py
+  developmental_notes: |
+    ROI-token aggregation (mean over ROI tokens and network-wise averages) is likely to transfer to developmental
+    cohorts if parcellation and QC remain stable. For younger ages, consider age-stratified normalization and
+    explicit checks that JEPA objectives do not overfit site or motion-related confounds.
+how_to_infer:
+  pretrain: |
+    # Example JEPA pretraining (see external_repos/brainjepa for full details)
+    python external_repos/brainjepa/main.py \
+      --fname configs/ukb_vitb_ep300.yaml \
+      --devices cuda:0 cuda:1 cuda:2 cuda:3
+  finetune: |
+    # Example downstream finetuning script from the repo
+    sh external_repos/brainjepa/scripts/classification/run_downstream_FT_hca_sex.sh
+inference_api:
+  provider: local
+  endpoint: external_repos/brainjepa
+  input_format: >
+    Parcellated fMRI ROI × time tensors as described in the Brain-JEPA repo configs.
+  output: >
+    ROI-level latent embeddings (tokens) and pooled subject-level vectors for downstream tasks.
+integrations:
+  - ukb_genetics_brain_alignment
+tags:
+  - fmri
+  - jepa
+  - self-supervised
+  - spatiotemporal
+verified: false
+last_updated: 2025-11-18
+notes: >-
+  For integration baselines, extract mean-pooled embeddings per subject and project to
+  512-D for late fusion with gene embeddings (e.g., [gene_512 | brainjepa_512] → LR/GBDT).
+
+

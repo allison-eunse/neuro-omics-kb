@@ -17,6 +17,17 @@ sample_sizes:
   n_fmri_ok: TBD
   n_multimodal_full: TBD  # subjects with all three modalities
 
+subject_id_schema:
+  primary_id: eid
+  description: "UKB participant ID used to join genetics, sMRI, fMRI, and phenotypes."
+  modality_specific_ids:
+    genetics_id: "Typically matches eid in WES-derived tables; verify against ukb_wes.id columns."
+    smri_id: "Derived from imaging visit; maintain mapping tables from imaging file names to eid."
+    fmri_id: "One row per (eid, session_id) in ukb_fmri_tensor metadata."
+  cross_cohort_keys:
+    gard: "TBD – document if/when GARD IDs are linked at the subject level."
+    cha_dev: "No direct linkage; any mappings must remain in secure PHI systems and are not stored in this repo."
+
 splits:
   strategy: "stratified_group_kfold"  # group by site/scanner
   k_folds: 5
@@ -112,6 +123,4 @@ references:
   - "UKB data access application: [PROJECT_ID]"
   - "UKB showcase: https://biobank.ndph.ox.ac.uk/showcase/"
 
-maintainers:
-  - name: Allison Eun Se You
 verified: false

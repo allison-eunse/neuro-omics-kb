@@ -18,7 +18,5 @@ modalities:
   - dna
 access: public
 restrictions: Cite UCSC and follow HyenaDNA/Caduceus data instructions when redistributing.
-maintainers:
-  - name: Allison Eun Se You
 verified: true
 last_updated: 2025-11-15

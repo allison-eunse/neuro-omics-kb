@@ -1,0 +1,76 @@
+---
+experiment_name: "DEV-02: CHA gene–brain–behaviour baseline (template)"
+objective: "Template for multimodal prediction using genetics, sMRI, EEG, and behavioural latents in the CHA cohort."
+status: "template"
+created: "2025-11-19"
+
+datasets:
+  cohort: "kb/datasets/cha_dev_longitudinal.yaml"
+
+embedding_strategies:
+  genetics: "genomics_cha_dev_v1"          # placeholder, activated when omics are available
+  smri: "smri_cha_dev_pca128_v1"
+  eeg: "cha_dev_eeg_fm_v1"
+  behaviour: "cha_dev_behaviour_latent_v1"
+
+targets:
+  primary: "primary_dx"
+  secondary:
+    - "cognitive_composite"
+
+feature_preparation:
+  genetics:
+    description: "Subject-level gene/omics embeddings for CHA cohort (future work)."
+  smri:
+    description: "PCA-compressed developmental sMRI embeddings."
+  eeg:
+    description: "Subject-level EEG embeddings."
+  behaviour:
+    description: "Low-dimensional latent behavioural/developmental factors."
+  covariates:
+    - age_months
+    - sex
+    - site_scanner
+  preprocessing:
+    z_score: true
+    residualize: true
+
+cv:
+  outer_folds: 5
+  strategy: "StratifiedKFold"
+  stratify_by: "primary_dx"
+  seed: 42
+
+models:
+  logistic_regression:
+    penalty: "l2"
+    C: [0.5, 1.0, 2.0]
+    class_weight: "balanced"
+    max_iter: 5000
+
+baselines:
+  gene_only:
+    input: "genomics_cha_dev_v1"
+    models: ["logistic_regression"]
+  brain_only:
+    input: "concat(smri_cha_dev_pca128_v1, cha_dev_eeg_fm_v1)"
+    models: ["logistic_regression"]
+  behaviour_only:
+    input: "cha_dev_behaviour_latent_v1"
+    models: ["logistic_regression"]
+  fusion_all:
+    input: "concat(genomics_cha_dev_v1, smri_cha_dev_pca128_v1, cha_dev_eeg_fm_v1, cha_dev_behaviour_latent_v1)"
+    models: ["logistic_regression"]
+
+metrics:
+  primary:
+    - "macro_AUROC"
+  secondary:
+    - "balanced_accuracy"
+    - "F1_macro"
+
+notes: |
+  - genetics/omics for CHA may not exist initially; this config documents the intended future fusion setting.
+  - Use dev_01_brain_only_baseline.yaml as the first executable baseline and promote this config once genetics/behavioural features are ready.
+
+

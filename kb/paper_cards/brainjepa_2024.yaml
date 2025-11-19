@@ -1,7 +1,10 @@
 title: "Brain-JEPA: Brain Dynamics Foundation Model with Joint-Embedding Predictive Architecture"
 authors: ["Wang, Richard", "et al."]
 year: 2024
-pdf_source: "/Users/allison/Projects/pdf<->md;ai-summaries/input/Brain-JEPA- Brain Dynamics Foundation Model.pdf"
+venue: "arXiv 2024"
+pdf_source: "https://arxiv.org/abs/2409.19407"
+local_pdf_path: "docs/generated/kb_curated/papers-pdf/brainjepa_2024.pdf"
+summary_md_path: "docs/generated/kb_curated/papers-md/brainjepa_2024.md"
 
 summary: |
   JEPA (Joint-Embedding Predictive Architecture) for fMRI. Uses functional gradient

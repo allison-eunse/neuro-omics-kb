@@ -1,0 +1,37 @@
+id: fms_medical_catalog
+name: Awesome Foundation Models for Advancing Healthcare
+description: |
+  Community-maintained catalog of foundation-model research artifacts (LFMs, VFMs, BFMs, MFMs),
+  datasets, tutorials, and references curated by Yuting He et al. Includes bilingual coverage
+  (English README + Chinese PDF) with per-entry paper/code links and modality tags, making it a
+  convenient seed for new KB cards or benchmarking pipelines.
+storage_location:
+  github: https://github.com/YutingHe-list/Awesome-Foundation-Models-for-Advancing-Healthcare
+schema_ref: docs/guide/kb_overview.md#external-curation
+dtypes: markdown / pdf
+required_columns:
+  - section
+  - entry_name
+  - paper_link
+  - code_link
+counts:
+  entries: "200+ (rolling)"
+  modalities:
+    lfms: 60+
+    vfms: 70+
+    bfms: 40+
+    mfms: 50+
+modalities:
+  - text
+  - image
+  - genomics
+  - multimodal
+access: public
+restrictions: Cite He et al. (IEEE Reviews in Biomedical Engineering, 2024) and respect upstream model/data licenses.
+maintainers:
+  - name: Yuting He
+  - name: Fuxiang Huang
+  - name: Xinrui Jiang
+verified: false
+last_updated: 2025-11-19
+

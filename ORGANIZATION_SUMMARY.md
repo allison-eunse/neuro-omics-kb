@@ -12,8 +12,8 @@ This repository is now clearly defined as a **knowledge base only** - no impleme
 ### 1. Cleaned Up Repository Structure
 
 **Kept (Documentation & Metadata):**
-- ✅ All code walkthroughs (`docs/code_walkthroughs/*.md`) - 7 comprehensive guides
-- ✅ Model cards (`kb/model_cards/*.yaml`) - 7 valid YAML files
+- ✅ All code walkthroughs (`docs/code_walkthroughs/*.md`) - 9 comprehensive guides
+- ✅ Model cards (`kb/model_cards/*.yaml`) - 9 valid YAML files
 - ✅ Dataset cards (`kb/datasets/*.yaml`) - All validated
 - ✅ Integration cards (`kb/integration_cards/*.yaml`) - Multimodal strategies
 - ✅ Documentation structure (`docs/`) - All markdown files
@@ -39,14 +39,19 @@ This repository is now clearly defined as a **knowledge base only** - no impleme
 
 **Validated YAML Cards:**
 ```
-✓ brainmt
-✓ generator  
-✓ swift
-✓ caduceus
+✓ brainharmony
+✓ brainjepa
 ✓ brainlm
+✓ brainmt
+✓ caduceus
 ✓ dnabert2
 ✓ evo2
+✓ generator
+✓ swift
 ```
+
+**Enriched dataset cards:**
+- Added HF download counts, subset breakdowns, modality-specific column maps, access/licensing notes, and base-pair stats (tied to `external_repos/*` entrypoints + walkthrough callouts) across `kb/datasets/*.yaml`.
 
 ### 3. Moved PDF Conversion Tools
 
@@ -92,15 +97,22 @@ docs/
 │   ├── schemas.md
 │   └── ukb_data_map.md
 ├── decisions/
-│   ├── 2025-11-baseline-scope.md
-│   └── 2025-11-integration-direction.md
+│   └── 2025-11-integration-plan.md
 ├── integration/
+│   ├── index.md
 │   ├── benchmarks.md
 │   ├── design_patterns.md
-│   ├── playbook_alignment.md
-│   └── playbook_baselines.md
+│   ├── integration_strategy.md
+│   ├── analysis_recipes/
+│   │   ├── cca_permutation.md
+│   │   ├── prediction_baselines.md
+│   │   └── partial_correlations.md
+│   └── modality_features/
+│       ├── genomics.md
+│       ├── smri.md
+│       └── fmri.md
 └── models/
-    ├── brain/ (brainlm.md, brainmt.md, swift.md)
+    ├── brain/ (brainharmony.md, brainjepa.md, brainlm.md, brainmt.md, swift.md)
     └── genetics/ (caduceus.md, dnabert2.md, evo2.md, generator.md)
 ```
 
@@ -108,43 +120,70 @@ docs/
 ```
 kb/
 ├── model_cards/
-│   ├── brainlm.yaml       (✓ valid YAML)
-│   ├── brainmt.yaml       (✓ valid YAML)
-│   ├── caduceus.yaml      (✓ valid YAML)
-│   ├── dnabert2.yaml      (✓ valid YAML)
-│   ├── evo2.yaml          (✓ valid YAML)
-│   ├── generator.yaml     (✓ valid YAML)
-│   ├── swift.yaml         (✓ valid YAML)
+│   ├── brainharmony.yaml   (✓ valid YAML)
+│   ├── brainjepa.yaml      (✓ valid YAML)
+│   ├── brainlm.yaml        (✓ valid YAML)
+│   ├── brainmt.yaml        (✓ valid YAML)
+│   ├── caduceus.yaml       (✓ valid YAML)
+│   ├── dnabert2.yaml       (✓ valid YAML)
+│   ├── evo2.yaml           (✓ valid YAML)
+│   ├── generator.yaml      (✓ valid YAML)
+│   ├── swift.yaml          (✓ valid YAML)
 │   └── template.yaml
 ├── datasets/
+│   ├── gener_tasks.yaml
+│   ├── genomic_benchmarks.yaml
+│   ├── gue_benchmark.yaml
+│   ├── hcp_fmri_tensor.yaml
 │   ├── hg38_reference.yaml
-│   ├── ukb_fmri_tensor.yaml
+│   ├── multi_species_corpus.yaml
+│   ├── nucleotide_transformer_tasks.yaml
 │   ├── opengenome2.yaml
-│   └── [9 more dataset cards]
+│   ├── refseq_generator.yaml
+│   ├── ukb_fmri_tensor.yaml
+│   ├── ukb_manifest_stub.yaml
+│   └── template.yaml
 ├── integration_cards/
 │   ├── genetics_embeddings_pipeline.yaml
 │   └── ukb_genetics_brain_alignment.yaml
 └── paper_cards/
+    ├── README.md
+    ├── ensemble_integration_li2022.yaml
+    ├── oncology_multimodal_waqas2024.yaml
+    ├── caduceus_2024.yaml
+    ├── evo2_2024.yaml
+    ├── generator_2024.yaml
+    ├── brainlm_2024.yaml
+    ├── brainjepa_2024.yaml
+    ├── brainharmony_2025.yaml
+    ├── brainmt_2025.yaml
+    ├── yoon_biokdd2025.yaml
+    ├── prs_guide.yaml
+    ├── gwas_diverse_populations.yaml
     └── template.yaml
 ```
 
 ### Scripts (`scripts/`)
 ```
 scripts/
-├── manage_kb.py    (✓ KB management tool - appropriate for repo)
+├── manage_kb.py          (✓ KB management tool - appropriate for repo)
+├── codex_gate.py         (✓ Codex two-cycle quality gate)
+├── fetch_external_repos.sh (✓ Clone FM repos for reference)
 └── README.md
 ```
 
 ### External Repos (`external_repos/`)
 ```
 external_repos/
-├── brainlm/        (reference only)
-├── brainmt/        (reference only)
-├── caduceus/       (reference only)
-├── dnabert2/       (reference only)
-├── evo2/           (reference only)
-├── generator/      (reference only)
-└── swift/          (reference only)
+├── brainharmony/      (reference only)
+├── brainjepa/         (reference only)
+├── brainlm/           (reference only)
+├── brainmt/           (reference only)
+├── caduceus/          (reference only)
+├── dnabert2/          (reference only)
+├── evo2/              (reference only)
+├── generator/         (reference only)
+└── swift/             (reference only)
 ```
 
 ## 🎯 What User Should Do Next

@@ -1,0 +1,51 @@
+id: harmonization_methods
+name: Harmonization and site-effect mitigation methods
+summary: Central catalog of statistical and deep harmonization options to control site/scanner/motion artifacts.
+status: drafting
+methods:
+  none_baseline:
+    type: "none"
+    description: "Only z-score + covariate residualization (site, scanner, motion covariates)."
+    when_to_use: "Default until harmonization adds measurable benefit."
+
+  combat_smri:
+    type: statistical
+    modality: smri
+    reference: "Fortin et al., NeuroImage 2018"
+    description: "ROI-wise ComBat harmonization prior to PCA."
+    requirements:
+      - "site labels"
+      - "batch size ≥ 30 subjects per site"
+    intended_use:
+      - harmonization_ablation_smri_v1
+      - prediction_smri_baseline_v2
+
+  murd_t1_t2:
+    type: deep_unsupervised
+    modality: ["t1", "t2"]
+    reference: "Liu & Yap, Communications Engineering 2024 (MURD)"
+    description: "Image-space multi-site harmonizer producing site-invariant content + style-specific syntheses."
+    input: "raw/minimally-preprocessed T1/T2 volumes"
+    output: "site-harmonized T1/T2 volumes for each target site"
+    properties:
+      - "no traveling phantoms required"
+      - "supports multi-site ABCD/Tencent-style datasets"
+    intended_use:
+      - harmonization_ablation_smri_v1
+      - smri_fm_encoder_v1
+
+  site_unlearning_module:
+    type: representation_unlearning
+    modality: ["rs-fmri", "smri"]
+    reference: "Dinsdale et al., NeuroImage 2021"
+    description: "Adversarial or mutual-information unlearning module to remove site information from embeddings."
+    status: exploratory
+    intended_use:
+      - fmri_prediction_baseline_v3
+      - fusion_site_invariant_ablation
+
+notes: |
+  - Link harmonization choices from experiment configs via a `harmonization:` field.
+  - Keep MURD optional until we reproduce ComBat improvements or observe large scanner effects.
+last_updated: 2025-11-18
+

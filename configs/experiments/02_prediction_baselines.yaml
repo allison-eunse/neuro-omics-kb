@@ -12,6 +12,10 @@ datasets:
   manifest: "kb/datasets/ukb_manifest_stub.yaml"
   phenotype: "mdd_diagnosis"  # binary outcome
 
+embedding_strategies:
+  genetics: "genetics_gene_fm_pca512_v1"
+  smri: "smri_free_surfer_pca512_v1"
+
 feature_preparation:
   # Reuse exact preprocessing from 01_cca_gene_smri.yaml
   genetics:
@@ -27,6 +31,9 @@ feature_preparation:
     z_score: true
     residualize: true
     projection_method: "PCA"
+  notes: |
+    - Do not diverge from the embedding strategy definitions unless a new strategy id is registered.
+    - Capture harmonization choice (default `none_baseline`) for reproducibility.
 
 cross_validation:
   # Same folds as CCA experiment (CRITICAL for fair comparison)

@@ -1,7 +1,9 @@
 title: "GENERator: A Long-Context Generative Genomic Foundation Model"
-authors: ["TBD"]
+authors: ["Wu, Wei", "Li, Qiuyi", "et al."]
 year: 2024
-pdf_source: "/Users/allison/Projects/pdf<->md;ai-summaries/input/GENERator- A Long-Context Generative Genomic Foundation Model .pdf"
+pdf_source: "https://arxiv.org/abs/2502.07272"
+local_pdf_path: "docs/generated/kb_curated/papers-pdf/generator_2024.pdf"
+summary_md_path: "docs/generated/kb_curated/papers-md/generator_2024.md"
 
 summary: |
   Long-context generative DNA language model. Transformer decoder with 6-mer tokenization.
@@ -15,7 +17,7 @@ key_contributions:
 architecture:
   backbone: "GPT-style Transformer decoder"
   tokenization: "6-mer with deterministic framing"
-  context_length: "Long (exact length TBD from paper)"
+  context_length: "≈98k bp (16k tokens × 6 bp)"
 
 key_takeaways_for_us:
   - "6-mer tokenization requires careful RC handling (frame alignment)"

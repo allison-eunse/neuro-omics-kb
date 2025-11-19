@@ -3,7 +3,9 @@ authors: ["Peterson, Roseann E.", "et al."]
 year: 2019
 journal: "Cell"
 doi: "10.1016/j.cell.2019.11.015"
-pdf_source: "/Users/allison/Projects/pdf<->md;ai-summaries/input/Genome-wide Association Studies in Ancestrally Diverse Populations- Opportunities, Methods, Pitfalls, and Recommendations.pdf"
+pdf_source: "https://pubmed.ncbi.nlm.nih.gov/36158455/"
+local_pdf_path: "docs/generated/kb_curated/papers-pdf/gwas_diverse_populations.pdf"
+summary_md_path: "docs/generated/kb_curated/papers-md/gwas_diverse_populations.md"
 
 summary: |
   Guidelines for GWAS in diverse ancestries. Emphasizes population stratification control,

@@ -1,0 +1,58 @@
+---
+experiment_name: "Dim-search: CHA developmental sMRI PCA (template)"
+objective: "Template for selecting PCA dimensionality for CHA developmental sMRI ROIs via nested CV."
+status: "template"
+created: "2025-11-19"
+
+datasets:
+  smri: "kb/datasets/cha_dev_longitudinal.yaml"
+
+embedding_strategies:
+  candidates:
+    - "smri_cha_dev_pca64_v1"
+    - "smri_cha_dev_pca128_v1"
+
+feature_preparation:
+  smri:
+    base_strategy: "smri_cha_dev_pca128_v1"
+    notes: |
+      - smri_cha_dev_pca64_v1 and smri_cha_dev_pca128_v1 share preprocessing; differ only in PCA output dim.
+      - Age/sex adjustment and pediatric QC are critical; document exact criteria in downstream analysis repo.
+  covariates:
+    - age_months
+    - sex
+    - site_scanner
+    - intracranial_volume
+  preprocessing:
+    z_score: true
+    residualize: true
+
+cv:
+  outer_folds: 5
+  inner_folds: 3
+  strategy: "StratifiedKFold"
+  stratify_by: "primary_dx"  # ASD/ADHD/TD/etc.
+  seed: 42
+
+model:
+  type: "logistic_regression"
+  task: "multi_class_or_binary"   # TBD: depends on target (e.g., ASD vs TD)
+  hyperparameters:
+    penalty: "l2"
+    C: [0.5, 1.0, 2.0]
+    class_weight: "balanced"
+
+metrics:
+  primary:
+    - "macro_AUROC"
+  secondary:
+    - "balanced_accuracy"
+    - "F1_macro"
+
+selection_criterion: "Maximize macro-AUROC; prefer lowest dim within 1 SE of the best."
+
+notes: |
+  - Template only; actual diagnostic grouping (binary vs multi-class) and age ranges need to be specified later.
+  - Use this experiment to choose a default dim before registering a final smri_cha_dev_pcaXX_v1 strategy for production use.
+
+

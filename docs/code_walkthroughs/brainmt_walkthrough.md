@@ -3,7 +3,7 @@
 > **KB references:** [Model card](../models/brain/brainmt.md) · [fMRI feature spec](../integration/modality_features/fmri.md) · [Integration strategy](../integration/integration_strategy.md) · [Experiment config stub](../kb/templates/experiment_config_stub.md)
 
 ## Overview
-BrainMT pairs bidirectional Mamba mixers (temporal-first scanning) with MHSA transformer blocks to model long-range fMRI dynamics, delivering state-of-the-art regression/classification on UKB and HCP phenotypes.^[```3:170:external_repos/brainmt/README.md```][```294:462:external_repos/brainmt/src/brainmt/models/brain_mt.py```]
+BrainMT pairs bidirectional Mamba mixers (temporal-first scanning) with MHSA transformer blocks to model long-range fMRI dynamics, delivering state-of-the-art regression/classification on UKB and HCP phenotypes.^[```3:170:external_repos/brainmt/README.md```][```294:462:external_repos/brainmt/src/brainmt/models/brain_mt.py```] The architecture is now described in an official conference paper (SpringerLink, Lecture Notes in Computer Science, pp. 150–160; first online 19 September 2025), so reference the proceedings PDF in `docs/generated/kb_curated/papers-pdf/brainmt_2025.pdf` when citing.
 
 ## At-a-Glance
 | Architecture | Params | Context | Inputs | Key capabilities | Repo |

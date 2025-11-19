@@ -2,7 +2,9 @@ title: "Caduceus: Bi-Directional Equivariant Long-Range DNA Sequence Modeling"
 authors: ["Schiff, Yair", "et al."]
 year: 2024
 venue: "ICML 2024"
-pdf_source: "/Users/allison/Projects/pdf<->md;ai-summaries/input/Caduceus- Bi-Directional Equivariant Long-Range DNA Sequence Modeling .pdf"
+pdf_source: "https://arxiv.org/abs/2403.03234"
+local_pdf_path: "docs/generated/kb_curated/papers-pdf/caduceus_2024.pdf"
+summary_md_path: "docs/generated/kb_curated/papers-md/caduceus_2024.md"
 
 summary: |
   RC-equivariant DNA foundation model using BiMamba/Hyena. Enforces reverse-complement

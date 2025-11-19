@@ -2,7 +2,9 @@ title: "Multimodal data integration in oncology: challenges and opportunities wi
 authors: ["Waqas, Ahmad", "et al."]
 year: 2024
 journal: "TBD"
-pdf_source: "/Users/allison/Projects/pdf<->md;ai-summaries/input/Multimodal data integration,oncology;deep neural networks.pdf"
+pdf_source: "https://pubmed.ncbi.nlm.nih.gov/39118787/"
+local_pdf_path: "docs/generated/kb_curated/papers-pdf/oncology_multimodal_waqas2024.pdf"
+summary_md_path: "docs/generated/kb_curated/papers-md/oncology_multimodal_waqas2024.md"
 
 summary: |
   Systematic review of multimodal integration strategies in oncology. 

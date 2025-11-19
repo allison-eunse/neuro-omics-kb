@@ -1,0 +1,308 @@
+id: cha_dev_longitudinal_v1
+name: "Cha Hospital Longitudinal Neurodevelopmental Cohort"
+description: |
+  Longitudinal multimodal pediatric neurodevelopmental cohort collected at Cha Hospital (exact site(s) TBD).
+  Designed for early prediction and characterization of neurodevelopmental disorders (e.g., ASD, ADHD, developmental delay)
+  and trajectories of cognitive / behavioural development, aligned with ARPA-H–style Brain-Omics Model (BOM) documentation.
+  All numeric values and institutional codes are placeholders and should be updated once DRB/IRB-approved summaries are available.
+storage_location:
+  bucket: null  # e.g., "s3://cha-dev-longitudinal/..." or on-prem NAS path; set to null until finalized
+schema_ref: docs/data/schemas.md#cha-dev-longitudinal  # create/adjust anchor once schema is documented
+dtypes: parquet / csv / tensors
+required_columns:
+  - subject_id
+  - wave_id
+  - age_months
+  - primary_dx
+counts:
+  subjects: null          # e.g., 350
+modalities:
+  - mri
+  - eeg
+  - behaviour
+  - clinical
+  - genetics_omics_optional
+access: restricted
+restrictions: >
+  DRB/IRB-governed cohort; re-analysis and secondary analysis allowed only under approved protocols.
+  External sharing (academic or industry) and cloud FM training must follow DRB/IRB and data use agreement constraints.
+maintainers:
+  - name: "TBD Cha Hospital PI"
+  - name: "Allison Eun Se You"
+verified: false
+last_updated: 2025-11-19
+
+cohort:
+  internal_code: "TBD_CHA_DEV_CODE"   # e.g., CHA-NDD-LONG
+  site: "Cha Hospital (exact campus / department TBD)"
+  n_participants:
+    total: null        # e.g., 350
+    by_diagnostic_group:
+      asd: null        # e.g., 120
+      adhd: null
+      developmental_delay: null
+      typical_development: null
+      other_neurodevelopmental: null
+  age_range:
+    min_months: null   # e.g., 6
+    max_months: null   # e.g., 144
+  key_developmental_windows:
+    - label: "Infant_6m"
+      age_months: 6
+    - label: "Infant_12m"
+      age_months: 12
+    - label: "Toddler_24m"
+      age_months: 24
+    - label: "Preschool"
+      age_years: 4
+    - label: "Early_School_Age"
+      age_years: 7
+  longitudinal_structure:
+    n_visits_planned: null   # e.g., 3 or 4
+    typical_interval_months:
+      min: null              # e.g., 6
+      max: null              # e.g., 24
+    design_notes: >
+      Longitudinal pediatric cohort with repeated assessments at predefined developmental windows (see key_developmental_windows).
+      Exact schedule and retention policy TBD.
+    attrition:
+      overall_rate: null     # e.g., 0.20
+      notes: "Attrition patterns (by diagnosis/SES) TBD once first 2–3 waves are complete."
+
+diagnostic_and_clinical:
+  inclusion_criteria:
+    - "Age within predefined developmental windows at baseline (TBD exact ranges)."
+    - "Capacity to attend longitudinal follow-up visits (parental consent required)."
+    - "Ability to undergo MRI/EEG safely (no standard contraindications)."
+  exclusion_criteria:
+    - "Major neurological conditions unrelated to target NDD phenotypes (exact list TBD)."
+    - "Severe sensory/motor impairments precluding valid assessment (details TBD)."
+  diagnostic_groups:
+    primary_dx:
+      - "ASD"
+      - "ADHD"
+      - "Global developmental delay / intellectual disability"
+      - "Language disorder"
+      - "Typical development"
+      - "Other specified / unspecified neurodevelopmental disorders"
+    comorbidities:
+      examples:
+        - "Epilepsy"
+        - "Anxiety / mood disorders"
+        - "Sleep disorders"
+      notes: "Exact comorbidity definitions and coding schema TBD."
+  clinical_variables:
+    core_fields:
+      - "Primary DSM/ICD diagnosis and date of diagnosis"
+      - "Comorbid diagnoses"
+      - "Medication status (current / past; class, dose)"
+      - "Perinatal history (gestational age, birth weight, complications)"
+      - "Family history of NDD / psychiatric disorders"
+      - "Basic demographics (sex, SES proxy, parental education/occupation)"
+    format: "Structured EHR extraction + manually curated research CRFs (details TBD)."
+
+modalities_detail:
+  mri:
+    available: true          # set to false if not yet confirmed
+    sequences:
+      structural:
+        t1w:
+          available: true
+          scanner_vendor: "TBD"      # e.g., Siemens / GE / Philips
+          scanner_model: "TBD"
+          field_strength_t: null     # e.g., 3.0
+          notes: "Pediatric scan protocol; motion-mitigation strategies TBD."
+        t2w:
+          available: false           # set true if acquired
+          notes: "TBD."
+      diffusion:
+        dwi:
+          available: false           # set true if dMRI exists
+          b_values: []               # e.g., [0, 1000]
+          n_directions: null
+          notes: "Developmental diffusion acquisition details TBD."
+      functional:
+        fmri_rest:
+          available: false           # set true if resting-state is available
+          tr_sec: null
+          n_volumes: null
+          notes: "Eyes-open/closed paradigm TBD."
+        fmri_task:
+          available: false
+          tasks: []
+          notes: "If any developmental social/cognitive tasks exist, list here."
+    preprocessing:
+      status: "TBD"
+      pipelines:
+        structural: null             # e.g., "FreeSurfer v7.4; infant-specific pipeline if used."
+        diffusion: null
+        fmri: null
+      qc:
+        approach: "TBD – at minimum visual QC + motion metrics; pediatric thresholds to be specified."
+      parcellation:
+        atlases:
+          - "TBD (e.g., Desikan, Destrieux, Schaefer, developmental atlas if used)"
+        notes: "Final parcellation for FM embeddings will be defined in embedding_strategies."
+  eeg_ephys:
+    available: true                  # if EEG definitely exists
+    modalities:
+      eeg:
+        available: true
+        recording_system: "TBD"
+        n_channels: null             # e.g., 64 or 128
+        sampling_rate_hz: null       # e.g., 500 or 1000
+        reference: "TBD"
+        paradigms:
+          - type: "resting"
+            eyes: "TBD (open/closed/mixed)"
+            typical_duration_min: null
+          - type: "task"
+            description: "TBD (e.g., oddball, social gaze, etc.)"
+        notes: "Pediatric EEG with age-specific cap sizes; exact protocol TBD."
+      ieeg:
+        available: false
+      meg:
+        available: false
+      ecog:
+        available: false
+    preprocessing:
+      status: "TBD"
+      pipelines:
+        - "TBD – e.g., MNE/EEGLAB pipeline, artifact rejection, ICA, bandpass settings."
+      segment_definition: "TBD – e.g., 2s non-overlapping segments, per-task/event windows."
+      qc_notes: "Age-specific artifact thresholds, motion and drowsiness handling TBD."
+  behavioural_and_developmental:
+    available: true
+    instruments:
+      cognitive:
+        - name: "TBD (e.g., Bayley-III/IV, WPPSI, WISC, K-WISC, etc.)"
+          age_range: "TBD"
+          metrics: ["Full-scale IQ", "Index scores", "Subtests"]
+          format: ["raw", "standard_scores"]
+      language:
+        - name: "TBD (e.g., CDI, CELF, etc.)"
+          age_range: "TBD"
+          metrics: ["receptive", "expressive", "composite"]
+      social_communication:
+        - name: "TBD (e.g., ADOS, SRS, SCQ)"
+          metrics: ["total", "subscales"]
+      adaptive_functioning:
+        - name: "TBD (e.g., Vineland, ABAS)"
+      nd_rating_scales:
+        - name: "TBD (e.g., ADHD scales, CBCL, etc.)"
+    scoring_format:
+      raw: true
+      t_scores: true
+      percentiles: true
+      notes: "Exact scoring conventions and age/sex norm references to be documented."
+  clinical_labs_and_biomarkers:
+    available: false                 # set true if basic labs / pTau/NfL etc. exist in this cohort
+    assays:
+      - name: "TBD"
+        type: "blood_marker"
+        notes: "If aligned with GARD/CRIS biomarker panels, document mapping."
+  genetics_omics:
+    available: false                 # set true once confirmed
+    modalities:
+      snp_array:
+        available: false
+        platform: "TBD"
+        notes: "If present, indicate imputation panel; harmonization with GARD/UKB SNPs."
+      wes:
+        available: false
+      wgs:
+        available: false
+      epigenomics:
+        available: false
+      proteomics:
+        available: false
+      metabolomics:
+        available: false
+      microbiome:
+        available: false
+    notes: >
+      As of v1, the existence and scale of omics data for this cohort are not yet confirmed.
+      Once available, link to specific omics dataset cards (e.g., "cha_dev_genomics_v1") and to corresponding FM/embedding strategies.
+
+developmental_timepoints:
+  waves:
+    - wave_id: "T1"
+      label: "Baseline_Infant"
+      nominal_age:
+        months: 6
+      window:
+        min_months: 5
+        max_months: 7
+      notes: "Exact window TBD."
+    - wave_id: "T2"
+      label: "Toddler_Followup"
+      nominal_age:
+        months: 24
+      window:
+        min_months: 22
+        max_months: 26
+    - wave_id: "T3"
+      label: "Preschool"
+      nominal_age:
+        years: 4
+      window:
+        min_years: 3
+        max_years: 5
+    - wave_id: "T4"
+      label: "Early_School_Age"
+      nominal_age:
+        years: 7
+      window:
+        min_years: 6
+        max_years: 8
+  notes: >
+    This is an illustrative structure. Replace with the actual planned / realized visit schedule
+    (e.g., every 6–12 months or specific developmental checkpoints).
+
+keys_and_linkage:
+  subject_id_schema:
+    local_subject_id: "Internal CHA development cohort ID (non-PHI)."
+    cross_dataset_keys:
+      cha_ehr_id: "If mapped to hospital EHR; stored only in secure mapping tables."
+      gard_or_other_cohorts: "TBD – describe if any cross-cohort linkage is planned."
+  time_axis:
+    unit: "months_from_birth"
+    reference: "Date of birth (DOB); stored only in secure PHI systems."
+
+governance:
+  drb_approval: true          # set to false if still pending
+  drb_reference: "IRB/DRB #XXXX, approved YYYY-MM-DD"   # fill with actual number/date
+  allowed_use: >
+    Research; internal FM development; reanalysis within the CHA–SNU–BioNexus consortium and related ARPA-H-style Brain-Omics Model (BOM) efforts.
+    External reuse (including secondary analysis) requires an approved DRB/IRB protocol and a project-specific data use agreement.
+  data_access_process:
+    contact: "TBD contact person / office at Cha Hospital"
+    requirements:
+      - "Approved IRB/DRB protocol specifying scope and cohorts."
+      - "Data use agreement specifying scope, security, de-identification, and FM training constraints (e.g., on-prem only vs. allowed cloud regions)."
+      - "Compliance with local and international privacy regulations (e.g., PIPA, GDPR-equivalent if applicable)."
+  data_use_constraints:
+    reanalysis_and_secondary_analysis: "Allowed only under new or amended DRB/IRB approvals; must respect original consent scope."
+    external_academic_collaboration: "Permitted with DRB/IRB and institutional approvals, plus signed DUAs covering cross-institution transfer and storage."
+    industry_collaboration: "TBD – clarify whether data may be used with industry partners (e.g., Samsung) and under what contractual / governance conditions."
+    fm_training_environment: "TBD – document whether large foundation model training must occur on-prem, in specific secure clouds, or under additional controls."
+  sharing_constraints:
+    cross_border_transfer: "TBD – document whether export outside Korea is allowed and under what safeguards."
+    commercial_use: "TBD – specify whether commercial FM development is allowed and how IP / data governance are handled."
+  intended_future_projects:
+    - "Planned to be used in upcoming Samsung-funded developmental FM projects."
+    - "Intended to serve as the developmental / neurodevelopmental axis within ARPA-H-style Brain-Omics Model (BOM) brain–omics–LLM FM efforts."
+
+alignment_with_fm_projects:
+  role_in_bom:
+    - "Primary pediatric / developmental cohort for brain–behaviour FM evaluation."
+    - "Bridge between adult dementia/CRIS pipelines and early-life neurodevelopmental risk modeling."
+  planned_embedding_strategies:
+    smri: "smri_cha_dev_pca128_v1 (placeholder; see kb/integration_cards/embedding_strategies.yaml)."
+    eeg: "cha_dev_eeg_fm_v1 (placeholder)."
+    behaviour: "cha_dev_behaviour_latent_v1 (placeholder; e.g., factor-analytic or FM-based behavioural embeddings)."
+    genomics: "genomics_cha_dev_v1 (placeholder; activated when omics are available)."
+  notes: >
+    This cohort is intended to be integrated into ARPA-H–style Brain-Omics Model (BOM) efforts
+    as the developmental / neurodevelopmental axis, complementing adult GARD/FHS/CRIS and global multimodal cohorts.
+

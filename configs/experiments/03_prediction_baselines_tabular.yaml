@@ -1,0 +1,85 @@
+---
+experiment_name: "Prediction Baselines: Tabular FMs"
+objective: "Benchmark TabPFN vs LR vs LightGBM on raw ROI tables, genetics PGS, and fusion features."
+status: "planning"
+created: "2025-11-18"
+deadline: "2025-12-10"
+
+datasets:
+  smri_roi: "kb/datasets/ukb_smri_freesurfer.yaml"
+  genetics_pgs: "kb/datasets/ukb_genetics_pgs.yaml"
+  manifest: "kb/datasets/ukb_manifest_stub.yaml"
+  outcomes:
+    - "MDD_status"
+    - "incident_dementia_5y"
+
+embedding_strategies:
+  smri_roi: "smri_free_surfer_raw_176"
+  genetics: "genetics_pgs_20traits"
+  fusion: "fusion_concat_gene_brain_1024_v1"
+
+models:
+  logistic_regression:
+    penalty: "l2"
+    C: [0.5, 1.0, 2.0]
+    solver: "saga"
+    class_weight: "balanced"
+    max_iter: 5000
+  lightgbm:
+    num_leaves: 31
+    learning_rate: 0.05
+    n_estimators: 1500
+    early_stopping_rounds: 100
+    metric: "auc"
+  tabpfn:
+    model_card: "kb/model_cards/tabpfn.yaml"
+    max_samples: 10000
+    max_features: 500
+    batching: "chunk folds into ≤10k samples per forward pass"
+    hardware: "A100-40GB or RTX 6000 Ada"
+
+feature_sets:
+  smri_roi:
+    description: "Raw FreeSurfer ROI table (~176 features)"
+    imputations: "median"
+  genetics_pgs:
+    description: "20 curated polygenic scores + ancestry PCs"
+    imputations: "0 for missing PGS; mean for PCs"
+  fusion:
+    description: "Concatenate smri_roi + genetics_pgs (early fusion)"
+    standardization: "z-score per feature prior to TabPFN feed"
+
+cross_validation:
+  strategy: "StratifiedGroupKFold"
+  k_folds: 5
+  group_by: "site"
+  stratify_by: "MDD_status"
+  seed: 42
+
+evaluation:
+  metrics:
+    - "AUROC"
+    - "AUPRC"
+    - "Brier score"
+    - "Calibration error (ECE)"
+  statistical_tests:
+    - name: "DeLong"
+      comparison: "TabPFN vs best(GBDT, LR)"
+    - name: "Bootstrap"
+      n_bootstrap: 2000
+      metric: "AUROC difference"
+  plots:
+    - "roc_curves_tabular.png"
+    - "pr_curves_tabular.png"
+    - "calibration_curves_tabular.png"
+  tables:
+    - "tabular_perf_summary.csv"
+    - "per_fold_predictions.csv"
+
+notes: |
+  - Use identical folds as experiments 01/02 for fusion comparability.
+  - Track TabPFN runtime + memory to justify adoption.
+references:
+  - "kb/model_cards/tabpfn.yaml"
+  - "kb/integration_cards/embedding_strategies.yaml"
+

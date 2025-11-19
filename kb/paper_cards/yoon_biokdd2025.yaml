@@ -2,7 +2,9 @@ title: "DNA Foundation Models for Major Depressive Disorder Classification and G
 authors: ["Yoon, [First Name]", "et al."]
 year: 2025
 venue: "BIOKDD'25 Workshop"
-pdf_source: "/Users/allison/Projects/pdf<->md;ai-summaries/input/yoon paper.pdf"
+pdf_source: "https://www.biorxiv.org/content/10.1101/2025.02.18.638918v1.full.pdf"
+local_pdf_path: "docs/generated/kb_curated/papers-pdf/yoon_biokdd2025.pdf"
+summary_md_path: "docs/generated/kb_curated/papers-md/yoon_biokdd2025.md"
 
 summary: |
   Application of Caduceus and DNABERT-2 to MDD classification using 38 candidate genes.

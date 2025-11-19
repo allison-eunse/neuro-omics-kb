@@ -1,0 +1,84 @@
+---
+experiment_name: "Harmonization Ablation: sMRI FreeSurfer"
+objective: "Compare none vs ComBat vs MURD harmonization for sMRI → gene CCA."
+status: "planning"
+created: "2025-11-18"
+deadline: "2025-12-05"
+
+datasets:
+  smri: "kb/datasets/ukb_smri_freesurfer.yaml"
+  genetics: "kb/datasets/ukb_wes.yaml"
+  manifest: "kb/datasets/ukb_manifest_stub.yaml"
+
+embedding_strategies:
+  smri: "smri_free_surfer_pca512_v1"
+  genetics: "genetics_gene_fm_pca512_v1"
+
+harmonization:
+  compare:
+    - "none_baseline"
+    - "combat_smri"
+    - "murd_t1_t2"
+  reference_card: "kb/integration_cards/harmonization_methods.yaml"
+  logging: |
+    Record per-step metadata: sites included, subjects dropped, ComBat batch design,
+    MURD target site, FreeSurfer rerun hashes.
+
+design:
+  cross_validation:
+    strategy: "StratifiedGroupKFold"
+    k_folds: 5
+    group_by: "site"
+    stratify_by: "mdd_diagnosis"
+    seed: 42
+  preprocessing_common:
+    z_score: true
+    residualize: ["age", "sex", "site", "icv"]
+    projector:
+      method: "PCA"
+      n_components: 512
+  cca:
+    components: 10
+    permutations: 1000
+    permutation_method: "shuffle_subjects_in_modality_B"
+
+analysis:
+  steps:
+    - "Run embedding extraction per harmonization arm according to strategy ids."
+    - "Fit CCA per fold and compute canonical correlations."
+    - "Permutation test per arm; report Δρ1 vs baseline."
+    - "Downstream prediction sanity check (LR on embeddings) to link harmonization to AUROC."
+  automation: "scripts/manage_kb.py harmonization_ablation --config this_file"
+
+evaluation:
+  metrics:
+    - "ρ1–ρ3 + permutation p-values per arm"
+    - "Δρ1 relative to none_baseline"
+    - "Explained variance ratios from PCA"
+    - "Prediction AUROC (logistic regression on harmonized embeddings)"
+  plots:
+    - "rho_barplot.png (arm × canonical correlation)"
+    - "pvalue_strip.png"
+    - "auroc_boxplot.png"
+  tables:
+    - "harmonization_summary.csv"
+    - "cca_metrics.csv"
+    - "prediction_metrics.csv"
+
+risks:
+  - "MURD requires GPU time + raw volumes; schedule cluster slots."
+  - "ComBat sensitive to small site sample sizes; may need site grouping."
+
+next_steps:
+  if_murd_wins:
+    - "Adopt MURD outputs for downstream sMRI encoders."
+    - "Re-run FreeSurfer on harmonized images."
+  if_combat_wins:
+    - "Integrate ComBat as default harmonization in strategy registry."
+  if_none_ties:
+    - "Stick with residualization and focus on rs-fMRI harmonization."
+
+references:
+  - "kb/integration_cards/harmonization_methods.yaml"
+  - "docs/decisions/2025-11-integration-plan.md"
+

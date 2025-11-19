@@ -19,13 +19,15 @@
 ### Documentation
 ```
 docs/code_walkthroughs/
-├── brainlm_walkthrough.md      (BrainLM MAE guide)
-├── brainmt_walkthrough.md      (BrainMT Mamba+Transformer)
-├── caduceus_walkthrough.md     (RC-equivariant Hyena)
-├── dnabert2_walkthrough.md     (BPE tokenization)
-├── evo2_walkthrough.md         (StripedHyena 1M context)
-├── generator_walkthrough.md    (6-mer generative model)
-├── swift_walkthrough.md        (Swin 4D fMRI)
+├── brainharmony_walkthrough.md  (Hub-token fusion)
+├── brainjepa_walkthrough.md     (JEPA latent forecast)
+├── brainlm_walkthrough.md       (BrainLM MAE guide)
+├── brainmt_walkthrough.md       (BrainMT Mamba+Transformer)
+├── caduceus_walkthrough.md      (RC-equivariant Hyena)
+├── dnabert2_walkthrough.md      (BPE tokenization)
+├── evo2_walkthrough.md          (StripedHyena 1M context)
+├── generator_walkthrough.md     (6-mer generative model)
+├── swift_walkthrough.md         (Swin 4D fMRI)
 └── index.md
 ```
 
@@ -33,7 +35,7 @@ docs/code_walkthroughs/
 ```
 kb/
 ├── model_cards/       (7 models: all valid YAML)
-├── datasets/          (10 datasets: UKB, HCP, OpenGenome2, etc.)
+├── datasets/          (11 datasets + UKB manifest: HF counts, subset splits, access/licensing, modality columns, base-pair stats)
 ├── integration_cards/ (2 cards: embeddings + alignment)
 └── paper_cards/       (templates ready)
 ```
@@ -100,10 +102,10 @@ python markdown_to_pdf.py summary.md summary.pdf
 
 ## 📊 Repository Stats
 
-### Neurogenomics-KB (Updated Nov 17, 2025)
+### Neurogenomics-KB (Updated Nov 18, 2025)
 - **Code Walkthroughs**: 9 complete guides (with KB reference links)
-- **Model Cards**: 7 validated YAML files
-- **Paper Cards**: 11 structured cards (NEW ✨)
+- **Model Cards**: 9 validated YAML files
+- **Paper Cards**: 12 structured cards (NEW ✨)
 - **Dataset Cards**: 11 specifications + UKB manifest stub (NEW ✨)
 - **Integration Cards**: 2 multimodal strategies
 - **Experiment Configs**: 3 ready-to-run templates (NEW ✨)
@@ -113,6 +115,39 @@ python markdown_to_pdf.py summary.md summary.pdf
 - **Scripts**: 3 Python tools
 - **Features**: PDF↔MD conversion, AI summarization, aesthetic PDFs
 - **Theme**: Baby blue, lavender, wine red
+
+---
+
+## 🤖 Using Parallel Agents in Cursor
+
+- **What parallel agents do**: Cursor runs multiple isolated agents in parallel from **one prompt**, each restricted to different parts of the repo according to `.cursor/agent-manifest.json`.
+- **Your agents**:
+  - **Brain agent**: brain models, brain walkthroughs, brain datasets, brain paper/model cards, `external_repos/brain*`, `swift`.
+  - **Genetics agent**: genetics models, genetics walkthroughs, DNA/benchmark datasets, genetics paper/model cards, `external_repos/caduceus|dnabert2|evo2|generator`.
+  - **Integration agent**: `docs/integration/`, `docs/data/`, all model docs/walkthroughs, all KB cards (integration + cross-domain).
+  - **RAG/scripts agent**: `scripts/`, `rag/`, `kb/rag/`.
+  - **Master/coherence agent**: reads the whole project but should only **edit** meta files (README, summaries, KB READMEs, key integration cards).
+
+### How to write prompts for parallel agents
+
+- **Cross-domain update example** (brain + genetics + integration):
+
+  > “You are part of a team of domain agents (brain, genetics, integration, scripts, master).  
+  > In **your own domain slice**, update any relevant docs and KB cards so that the description and usage of the UKB fMRI and genetics datasets are consistent across model cards, dataset cards, and walkthroughs.  
+  > Do not edit files that are clearly outside your domain. At the end, summarize exactly which files you changed and why.”
+
+- **Master coherence pass example**:
+
+  > “Act as the **Global master / coherence agent**.  
+  > Read across the project to check naming and conceptual consistency between brain and genetics sections.  
+  > You may only edit: README, ORGANIZATION_SUMMARY, QUICK_REFERENCE, TREE_VIEW, docs index/integration docs, KB section READMEs, and the integration cards for genetics embeddings and UKB alignment.  
+  > Propose and apply small edits to those meta files so they accurately describe the current structure and relationships in the KB.”
+
+- **Domain-specific update example (brain only)**:
+
+  > “Consider only **brain-related** docs, walkthroughs, model cards, and datasets.  
+  > Bring BrainMT and BrainLM docs + cards into alignment with the `hcp_fmri_tensor` and `ukb_fmri_tensor` dataset cards, updating only brain files.  
+  > Do not modify genetics or non-brain content.”
 
 ---
 

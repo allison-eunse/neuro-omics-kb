@@ -1,0 +1,93 @@
+id: me_llama
+name: Me-LLaMA
+modality: language
+domain: medical_text
+summary: |
+  Continual-pretrained and instruction-tuned variants of LLaMA-2/3 (13B/70B + 8B chat) built on
+  129B medical tokens (biomedical literature, clinical notes, curated guidelines) plus 214K
+  instruction samples. Provides a Poetry-managed evaluation harness that plugs into the LM-Eval
+  framework with medical QA/VQA/NLP task suites and configurable prompts.
+arch:
+  type: "LLaMA-2/3 base model + continual pre-training + LoRA instruction tuning"
+  backbone: external_repos/me-lamma/src/eval.py
+  parameters: "13B / 70B (base), 8B (LLaMA3 spin-off)"
+  context_length: 4096
+  special_features:
+    - "Continual pre-training ratio of 15:1:4 (biomedical : clinical : general)."
+    - "Instruction tuning via LoRA on H100 GPUs with 3 epochs / lr=1e-5."
+    - "Evaluation harness bundles 12+ medical QA/NLP tasks with prompt templates."
+embedding_recipe:
+  level: passage
+  unit:
+    text:
+      - document
+  pipeline:
+    text:
+      input_features: >
+        Up to 4k-token prompts comprised of task descriptions, optional few-shot exemplars, and
+        user queries covering PubMedQA, MedQA, MedMCQA, BioNLI, MedNLI, i2b2, DDI2013, etc.
+      tokenizer: "SentencePiece tokenizer inherited from the underlying LLaMA release."
+      preprocessing:
+        - "Optional instruction prefix via `MODEL_PROMPT_MAP` (e.g., mellama Human/Assistant)."
+        - "Few-shot sampling handled by lm-eval `fewshot_context` utilities."
+      encoder:
+        type: "Transformer decoder-only (LLaMA)."
+        pooling: "Autoregressive generation; CLS-equivalent hidden states used for logits."
+  sources:
+    - docs/code_walkthroughs/melamma_walkthrough.md
+    - external_repos/me-lamma/README.md
+    - external_repos/me-lamma/src/eval.py
+repo: https://github.com/BIDS-Xu-Lab/Me-LLaMA
+weights:
+  huggingface: []
+  artifacts:
+    - https://www.physionet.org/content/me-llama/1.0.0/
+tokenizer:
+  type: "SentencePiece (LLaMA vocabulary, 32k tokens)."
+context_length: 4096
+checkpoints:
+  - name: me-llama-13b
+    path: physionet://me-llama/13B
+  - name: me-llama-70b
+    path: physionet://me-llama/70B
+license:
+  code: MIT
+  weights: PhysioNet-Credentialed-Health-Data-License-1.5.0
+  data: >
+    Training data aggregates PubMed, MIMIC, guideline corpora, Medical Meadow/MedInstruct, etc.;
+    reuse adheres to each upstream corpus policy and PhysioNet credentialing.
+datasets: []
+tasks:
+  - medical_question_answering
+  - clinical_reasoning
+  - instruction_following
+  - medical_text_generation
+how_to_infer:
+  huggingface: |
+    from transformers import AutoTokenizer, AutoModelForCausalLM
+
+    model_dir = "/path/to/Me-LLaMA-13B"   # download from PhysioNet
+    tokenizer = AutoTokenizer.from_pretrained(model_dir)
+    model = AutoModelForCausalLM.from_pretrained(model_dir, torch_dtype="auto", device_map="auto")
+
+    prompt = "Patient presents with chest pain. Differential diagnoses?"
+    input_ids = tokenizer(prompt, return_tensors="pt").to(model.device)
+    output = model.generate(**input_ids, max_new_tokens=256, temperature=0.2)
+    print(tokenizer.decode(output[0], skip_special_tokens=True))
+inference_api:
+  provider: none
+  endpoint: ""
+integrations:
+  - lm_eval_medical
+tags:
+  - llm
+  - medical
+  - instruction-tuned
+  - continual-pretraining
+verified: false
+last_updated: 2025-11-19
+notes: |
+  Access to weights requires a PhysioNet account, credentialing exam, and signed usage agreement.
+  Evaluation harness depends on Poetry, spaCy `en_core_web_lg`, and BARTScore checkpoints;
+  set `OPENAI_API_SECRET_KEY` when benchmarking API baselines via `ChatLM`.
+

@@ -1,0 +1,31 @@
+id: rsfmri_preprocessing_pipelines
+name: Reference rs-fMRI preprocessing pipelines
+summary: Named preprocessing stacks to standardize motion correction, parcellation, and nuisance regression choices.
+status: drafting
+pipelines:
+  hcp_like_minimal:
+    steps:
+      - motion_correction
+      - distortion_correction
+      - registration_to_MNI
+      - nuisance_regression: ["motion", "CSF/WM", "optional_GSR"]
+      - temporal_filter: "0.01-0.1 Hz"
+      - parcellation: "Schaefer-400"
+    notes: "Matches HCP minimal preprocessing + nuisance regression; default reference."
+  ukb_native_tensor:
+    steps:
+      - motion_correction
+      - distortion_correction
+      - native_space_time_series_export
+      - highpass_filter: "0.01 Hz"
+      - smoothing: "FWHM=5mm"
+    notes: "UKB-provided minimally processed images; used prior to SwiFT/BrainLM datamodules."
+  abcd_fmriprep_ica_aroma:
+    steps:
+      - fmriprep_ica_aroma_denoising
+      - bandpass_filter: "0.008-0.09 Hz"
+      - parcellation: "Gordon-333 or Schaefer-400"
+      - censor_motion_spikes: "FD > 0.5mm"
+    notes: "Use when transferring models to ABCD-style pediatric cohorts."
+last_updated: 2025-11-18
+

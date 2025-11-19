@@ -17,3 +17,11 @@ Embedding strategy
 
 Notes
 - Better linear-probe performance than MAE in reports; engineering heavier than FC.
+
+Primary notes (KB summary)
+- PDF: [docs/generated/kb_curated/papers-pdf/brainjepa_2024.pdf](../../generated/kb_curated/papers-pdf/brainjepa_2024.pdf)
+- Original inputs: `pdf<->md;ai-summaries/input/brainjepa_2024/`.
+- Original paper: [arXiv:2409.19407](https://arxiv.org/abs/2409.19407)
+
+Source repo
+- **Local**: `external_repos/brainjepa/`

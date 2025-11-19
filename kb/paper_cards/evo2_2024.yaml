@@ -1,8 +1,10 @@
 title: "Genome modeling and design across all domains of life with Evo 2"
 authors: ["Arc Institute Team"]
-year: 2024
-venue: "bioRxiv"
-pdf_source: "/Users/allison/Projects/pdf<->md;ai-summaries/input/Genome modeling and design across all domains of life with Evo 2.pdf"
+year: 2025
+venue: "bioRxiv preprint"
+pdf_source: "https://www.biorxiv.org/content/10.1101/2025.02.18.638918v1"
+local_pdf_path: "docs/generated/kb_curated/papers-pdf/evo2_2024.pdf"
+summary_md_path: "docs/generated/kb_curated/papers-md/evo2_2024.md"
 
 summary: |
   StripedHyena 2 foundation model for DNA sequences up to 1 Mbp context.

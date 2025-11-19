@@ -1,0 +1,64 @@
+---
+experiment_name: "DEV-01: CHA developmental brain-only baseline (template)"
+objective: "Template for baseline prediction from CHA developmental sMRI/EEG embeddings alone."
+status: "template"
+created: "2025-11-19"
+
+datasets:
+  cohort: "kb/datasets/cha_dev_longitudinal.yaml"
+
+embedding_strategies:
+  smri: "smri_cha_dev_pca128_v1"
+  eeg: "cha_dev_eeg_fm_v1"
+
+targets:
+  primary: "primary_dx"     # e.g., ASD vs TD or multi-class NDD
+  secondary:
+    - "cognitive_composite" # TBD, derived from behavioural batteries
+
+feature_preparation:
+  smri:
+    description: "PCA-compressed FreeSurfer ROI features for developmental cohort."
+  eeg:
+    description: "Subject-level EEG embeddings aggregated over segments/runs."
+  covariates:
+    - age_months
+    - sex
+    - site_scanner
+  preprocessing:
+    z_score: true
+    residualize: true
+
+cv:
+  outer_folds: 5
+  strategy: "StratifiedKFold"
+  stratify_by: "primary_dx"
+  seed: 42
+
+models:
+  logistic_regression:
+    penalty: "l2"
+    C: [0.5, 1.0, 2.0]
+    class_weight: "balanced"
+    max_iter: 5000
+
+baselines:
+  smri_only:
+    input: "smri_cha_dev_pca128_v1"
+    models: ["logistic_regression"]
+  eeg_only:
+    input: "cha_dev_eeg_fm_v1"
+    models: ["logistic_regression"]
+
+metrics:
+  primary:
+    - "macro_AUROC"
+  secondary:
+    - "balanced_accuracy"
+    - "F1_macro"
+
+notes: |
+  - Template only: diagnostic groupings, age windows, and inclusion/exclusion criteria must be clarified once CHA data are finalized.
+  - Use this config as a simple reference point before adding genetics/behavioural modalities.
+
+

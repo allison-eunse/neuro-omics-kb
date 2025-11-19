@@ -38,6 +38,39 @@ tasks:
   - masked_time_series_modeling
   - zero_shot_prediction
   - embedding_export
+intended_use:
+  - "adult gene–brain alignment"
+  - "developmental / neurodevelopmental prediction"
+  - "multimodal brain–omics alignment"
+embedding_recipe:
+  level: subject
+  unit:
+    rsfmri:
+      - window
+      - run
+  pipeline:
+    rsfmri:
+      reference_strategy: rsfmri_brainlm_segments_v1
+      window_embedding:
+        frames: 32
+        stride: 16
+        pooling: cls_token
+      run_aggregation: attention_pool_inverse_fd
+      subject_aggregation: mean_over_runs
+      preprocessing:
+        - "z-score within fold"
+        - "residualize(age, sex, site, mean_FD, DVARS)"
+      projector:
+        type: PCA
+        output_dim: 512
+      notes: "Use datamodule exports aligned to `rsfmri_preprocessing_pipelines.hcp_like_minimal`."
+  sources:
+    - docs/code_walkthroughs/brainlm_walkthrough.md#integration-hooks
+    - external_repos/brainlm/brainlm_mae/modeling_brainlm.py
+  developmental_notes: |
+    Reuse the window → run → subject aggregation hierarchy for developmental cohorts, but audit motion and TR
+    distributions carefully. Consider age-aware normalization or stratified models if strong nonlinear age effects
+    remain after residualization, especially in early childhood fMRI.
 how_to_infer:
   tutorial: |
     jupyter nbconvert --to notebook --execute external_repos/brainlm/brainlm_tutorial.ipynb
@@ -60,8 +93,6 @@ tags:
   - ukb
 verified: false
 last_updated: 2025-11-15
-maintainers:
-  - name: Allison Eun Se You
 notes: >-
   Convert UKB NIfTI volumes with convert_ukbiobank_to_arrow.py before invoking
   BrainLM; toolkit notebooks document voxel/timepoint orientation adjustments.

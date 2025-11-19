@@ -1,0 +1,64 @@
+---
+experiment_name: "Dim-search: UKB sMRI PCA (template)"
+objective: "Template for selecting PCA dimensionality for UKB sMRI ROI features via nested CV."
+status: "template"
+created: "2025-11-19"
+
+datasets:
+  smri: "kb/datasets/ukb_smri_freesurfer.yaml"
+  manifest: "kb/datasets/ukb_manifest_stub.yaml"
+
+embedding_strategies:
+  candidates:
+    - "smri_ukb_pca32_v1"
+    - "smri_ukb_pca64_v1"
+    - "smri_ukb_pca128_v1"
+    - "smri_ukb_pca256_v1"
+
+feature_preparation:
+  smri:
+    base_strategy: "smri_free_surfer_pca512_v1"
+    notes: |
+      - smri_ukb_pcaXX_v1 strategies share the same preprocessing as smri_free_surfer_pca512_v1
+        but differ in PCA output dimensionality (32, 64, 128, 256).
+      - Ensure PCA is fit within the training folds only.
+  covariates:
+    - age
+    - sex
+    - site_scanner
+    - intracranial_volume
+    - ses
+  preprocessing:
+    z_score: true
+    residualize: true
+
+cv:
+  outer_folds: 5
+  inner_folds: 3
+  strategy: "StratifiedGroupKFold"
+  group_by: "site_scanner"
+  stratify_by: "mdd_diagnosis"  # or other primary phenotype
+  seed: 42
+
+model:
+  type: "logistic_regression"
+  task: "binary_classification"
+  hyperparameters:
+    penalty: "l2"
+    C: [0.5, 1.0, 2.0]
+    class_weight: "balanced"
+
+metrics:
+  primary:
+    - "AUROC"
+  secondary:
+    - "AUPRC"
+    - "Brier_score"
+
+selection_criterion: "Maximize mean AUROC across outer folds; prefer lowest dim within 1 SE of the best."
+
+notes: |
+  - This is a template only; actual phenotype and inclusion/exclusion criteria must be specified before running.
+  - Store the chosen PCA dim as an official strategy ID and reference it from downstream experiments.
+
+

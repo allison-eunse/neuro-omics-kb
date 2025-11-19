@@ -19,7 +19,17 @@ modalities:
   - fmri
 access: restricted
 restrictions: Requires UKB approval (Project 33278); store in encrypted buckets.
-maintainers:
-  - name: Allison Eun Se You
 verified: false
-last_updated: 2025-11-15
+preprocessing:
+  pipeline: "fMRIPrep 20.x + custom nuisance regression, aligned with rsfmri_preprocessing_pipelines.hcp_like_minimal."
+  motion_qc:
+    mean_fd_threshold: 0.5
+    min_timepoints: 490
+  notes: >
+    See docs/data/ukb_data_map.md and docs/integration/modality_features/fmri.md for exact preprocessing steps,
+    including spatial normalization, smoothing (if any), and confound regression.
+parcellation:
+  usage_notes: >
+    Tensors are stored in voxel space; parcellation (e.g., Schaefer-400) is applied downstream when deriving ROI
+    features (Brain-JEPA tokens, functional connectivity matrices, etc.).
+last_updated: 2025-11-19

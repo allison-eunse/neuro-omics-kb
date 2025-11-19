@@ -19,7 +19,5 @@ modalities:
   - dna
 access: public
 restrictions: Accept Hugging Face terms of service; cite GenerTeam and Wu et al. (arXiv:2502.07272).
-maintainers:
-  - name: Allison Eun Se You
 verified: false
 last_updated: 2025-11-15

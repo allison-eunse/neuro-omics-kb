@@ -1,0 +1,47 @@
+title: "BrainMT: A Hybrid Mamba-Transformer Architecture for Modeling Long-Range Dependencies in Functional MRI Data"
+authors: ["Arunkumar Kannan", "Martin A. Lindquist", "Brian Caffo"]
+year: 2025
+venue: "Conference proceedings (SpringerLink)"
+publisher: "Springer Nature"
+first_online: "2025-09-19"
+pages: "150-160"
+pdf_source: "https://dl.acm.org/doi/10.1007/978-3-032-05162-2_15"
+local_pdf_path: "docs/generated/kb_curated/papers-pdf/brainmt_2025.pdf"
+summary_md_path: "docs/generated/kb_curated/papers-md/brainmt_2025.md"
+
+summary: |
+  Conference paper (SpringerLink) describing a hybrid Mamba-Transformer for fMRI.
+  Combines Mamba's efficient long-range modeling with Transformer's attention for
+  spatiotemporal dynamics, demonstrating multitask regression/classification performance
+  on UKB and HCP cohorts.
+
+key_contributions:
+  - "Hybrid architecture: Mamba for temporal efficiency + Transformer spatial attention"
+  - "Multitask pretraining: age/sex/cognitive tasks jointly"
+  - "Efficient long-sequence modeling for fMRI time series"
+
+architecture:
+  backbone: "Interleaved Mamba + Transformer blocks"
+  inputs: "fMRI time series (parcellated or voxel-level)"
+  training: "Multitask heads for diverse downstream objectives"
+
+key_takeaways_for_us:
+  - "Efficient for long fMRI sequences"
+  - "Multitask setup may provide richer embeddings"
+  - "Complexity higher than BrainLM/JEPA; test if baselines need boost"
+
+implications_for_project:
+  - "Candidate for later exploration if single-task models insufficient"
+  - "Defer until after Nov 26 baselines (note: conference paper now officially online)"
+  - "Multitask approach could inspire auxiliary objectives"
+
+related_to:
+  - "docs/code_walkthroughs/brainmt_walkthrough.md"
+  - "docs/models/brain/brainmt.md"
+  - "docs/integration/modality_features/fmri.md"
+
+verification_status: "needs_human_review"
+notes: "Advanced; prioritize simpler BrainLM/JEPA first. Reference SpringerLink metadata (First Online 19 Sep 2025, pp. 150-160)."
+
+tags: ["fmri", "foundation_model", "mamba", "transformer", "hybrid", "multitask"]
+

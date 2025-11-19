@@ -18,7 +18,5 @@ access: restricted
 restrictions: >
   Requires DNABERT-2 data request approval; abide by source genome licenses
   and any DNABERT-2 usage terms. Google Drive link requires sign-in.
-maintainers:
-  - name: Allison Eun Se You
 verified: false
 last_updated: 2025-11-15

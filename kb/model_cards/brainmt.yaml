@@ -35,6 +35,39 @@ tasks:
   - regression (fluid intelligence)
   - classification (sex)
   - self_supervised_pretraining
+intended_use:
+  - "adult gene–brain alignment"
+  - "developmental / neurodevelopmental prediction"
+  - "multimodal brain–omics alignment"
+embedding_recipe:
+  level: subject
+  unit:
+    rsfmri:
+      - segment
+      - run
+  pipeline:
+    rsfmri:
+      reference_strategy: rsfmri_brainmt_segments_v1
+      segment_embedding:
+        frames: 32
+        stride: 32
+        pooling: mean_patch_tokens
+      run_aggregation: mean_over_segments
+      subject_aggregation: mean_over_runs
+      preprocessing:
+        - "z-score within fold"
+        - "residualize(age, sex, site, motion_FD)"
+      projector:
+        type: PCA
+        output_dim: 512
+      notes: "Use the same preprocessing stack declared in `rsfmri_preprocessing_pipelines.hcp_like_minimal`."
+  sources:
+    - docs/code_walkthroughs/brainmt_walkthrough.md#integration-hooks
+    - external_repos/brainmt/src/brainmt/models/brain_mt.py
+  developmental_notes: |
+    Segment-based aggregation with mean-over-runs can be reused for developmental rs-fMRI, but motion and scan length
+    distributions in children may require stricter QC and alternative segment lengths. Consider age-aware motion
+    thresholds and verifying that downsampling/patching does not disproportionately discard pediatric signal.
 how_to_infer:
   training: |
     torchrun --nproc-per-node=2 external_repos/brainmt/src/brainmt/train.py task=regression \
@@ -56,7 +89,5 @@ tags:
   - fmri
 verified: false
 last_updated: 2025-11-15
-maintainers:
-  - name: Allison Eun Se You
 notes: >-
   Set NCCL_P2P_DISABLE=1 when training on multi-GPU workstations with limited P2P support.

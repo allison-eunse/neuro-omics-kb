@@ -3,7 +3,9 @@ authors: ["Li, Xichen", "Siahpirani, Alireza Fotuhi", "Lee, Dong-yeon", "Saha, A
 year: 2022
 journal: "Bioinformatics Advances"
 doi: "10.1093/bioadv/vbac065"
-pdf_source: "/Users/allison/Projects/pdf<->md;ai-summaries/input/Integrating multimodal data through interpretable heterogeneous ensembles.pdf"
+pdf_source: "docs/generated/kb_curated/papers-pdf/ensemble_integration_li2022.pdf"
+local_pdf_path: "docs/generated/kb_curated/papers-pdf/ensemble_integration_li2022.pdf"
+summary_md_path: "docs/generated/kb_curated/papers-md/ensemble_integration_li2022.md"
 
 summary: |
   Late integration via heterogeneous ensembles (LR/trees/SVM) outperforms early fusion 

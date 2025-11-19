@@ -26,3 +26,12 @@ Representative results
 
 Implications for us
 - Candidate for Option B fMRI embeddings; late integration with gene features.
+
+Primary notes (KB summary)
+- PDF: [docs/generated/kb_curated/papers-pdf/brainlm_2024.pdf](../../generated/kb_curated/papers-pdf/brainlm_2024.pdf)
+- Original inputs: `pdf<->md;ai-summaries/input/brainlm_2024/`.
+- Original paper: [OpenReview RwI7ZEfR27](https://openreview.net/forum?id=RwI7ZEfR27)
+
+Source repo
+- **Local**: `external_repos/brainlm/`
+- **GitHub**: [vandijklab/BrainLM](https://github.com/vandijklab/BrainLM)

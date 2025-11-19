@@ -22,7 +22,5 @@ restrictions: >
   Follow the Hugging Face dataset license; some component datasets may carry
   CC BY 4.0 or paper-specific terms. The HF card notes a revised benchmark
   version; prefer the updated release when possible.
-maintainers:
-  - name: Allison Eun Se You
 verified: false
 last_updated: 2025-11-15

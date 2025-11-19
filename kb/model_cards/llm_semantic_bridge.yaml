@@ -1,0 +1,104 @@
+id: llm_semantic_bridge
+name: "LLM semantic bridge (multimodal hub)"
+modality: multimodal
+domain: language
+summary: |
+  Documentation-only card describing an ARPA-H–style large language model (LLM) used as a common semantic hub
+  for brain, EEG/EPhys, and multi-omics foundation model embeddings. The LLM receives subject-level embeddings
+  from Brain FMs, EPhys/EEG FMs, and Multi-Omics FMs via adapters or cross-attention, and produces textual
+  explanations, reasoning chains, and structured reports.
+arch:
+  type: "Decoder-only LLM + cross-modal adapters"
+  backbone: "TBD (e.g., LLaMA-family or GPT-style backbone used in ARPA-H Brain-Omics Model, BOM)"
+  parameters: "TBD (e.g., 7B–155B)"
+  context_length: 8192
+  special_features:
+    - "Cross-attention or FiLM-style adapters that consume brain / EEG / omics embeddings"
+    - "CLIP-style contrastive heads for embedding↔text alignment"
+    - "Instruction-tuned decoder for medical/developmental explanations and structured reporting"
+embedding_recipe:
+  level: subject
+  unit:
+    brain_fm:
+      - subject_embedding
+    eeg_fm:
+      - subject_embedding
+    omics_fm:
+      - subject_embedding
+  pipeline:
+    brain_fm:
+      input_features: >
+        Subject-level embeddings from Brain FMs (e.g., smri_free_surfer_pca512_v1, rsfmri_swift_segments_v1,
+        rsfmri_brainlm_segments_v1, Brain Harmony hub tokens).
+      preprocessing:
+        - "z-score per dimension within training fold"
+        - "residualize(age, sex, site, motion covariates) when used for prediction"
+      adapter:
+        type: cross_attention
+        notes: "Project brain vectors to the LLM hidden size and feed as key/value tokens."
+    eeg_fm:
+      input_features: >
+        Subject-level EEG embeddings from cha_dev_eeg_fm_v1 or similar segment→run→subject hierarchies.
+      preprocessing:
+        - "artifact rejection and motion handling upstream"
+        - "z-score within developmental cohort / age band"
+      adapter:
+        type: cross_attention
+        notes: "Aggregate per-segment EEG embeddings to a compact set of tokens for the LLM."
+    omics_fm:
+      input_features: >
+        Subject-level gene or multi-omics embeddings (e.g., genetics_gene_fm_pca512_v1, genomics_cha_dev_v1,
+        genetics_joo_mdd_cog_v1).
+      preprocessing:
+        - "residualize(age, sex, ancestry_PCs_1-10, batch)"
+        - "z-score per dimension within fold"
+      adapter:
+        type: mlp_projection
+        notes: "Project fixed-length omics vectors into the LLM hidden space."
+  sources:
+    - docs/index.md
+    - docs/guide/kb_overview.md
+    - kb/integration_cards/alignment_strategies.yaml
+repo: "TBD (ARPA-H Brain-Omics Model hub LLM)"
+weights:
+  huggingface: []
+  artifacts: []
+license:
+  code: "TBD"
+  weights: "TBD"
+  data: "TBD; clinical/developmental data subject to DRB/IRB constraints"
+datasets:
+  - ukb_fmri_tensor
+  - ukb_smri_freesurfer
+  - ukb_wes
+  - cha_dev_longitudinal_v1
+tasks:
+  - "multimodal_semantic_alignment"
+  - "textual_decoding_of_brain_eeg_states"
+  - "genomic_variant_explanation"
+  - "developmental_report_generation"
+context_length: 8192
+how_to_infer:
+  huggingface: |
+    # Conceptual placeholder: no public implementation yet.
+    # In an ARPA-H-style Brain-Omics Model (BOM), this LLM would accept
+    # {subject_embeddings, prompt_text} and return explanations / reports.
+    pass
+inference_api:
+  provider: none
+  endpoint: ""
+integrations:
+  - ukb_genetics_brain_alignment
+  - alignment_strategies
+tags:
+  - llm
+  - multimodal
+  - semantic-bridge
+  - explanation
+verified: false
+last_updated: 2025-11-19
+notes: |
+  This is a documentation-only, forward-looking card for an LLM used as a common semantic hub (ARPA-H BOM concept).
+  It records alignment strategies and intended uses so that future implementations remain traceable to the KB.
+
+

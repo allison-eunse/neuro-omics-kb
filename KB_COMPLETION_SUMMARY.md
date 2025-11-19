@@ -22,7 +22,7 @@
   - Phenotypes (MDD, PHQ-9, cognition, eoMDD/loMDD stratifications)
 
 ### 3. Generated Paper Cards from All PDFs
-Created **11 structured YAML cards** in `kb/paper_cards/`:
+Created **12 structured YAML cards** in `kb/paper_cards/`:
 
 **Integration principles (2):**
 - `ensemble_integration_li2022.yaml` — Late fusion rationale
@@ -36,8 +36,8 @@ Created **11 structured YAML cards** in `kb/paper_cards/`:
 **Brain FMs (4):**
 - `brainlm_2024.yaml` — ViT-MAE for fMRI
 - `brainjepa_2024.yaml` — JEPA + gradient positioning
-- `brainharmony_2024.yaml` — sMRI+fMRI with TAPE
-- `brainmt_2024.yaml` — Hybrid Mamba-Transformer
+- `brainharmony_2025.yaml` — sMRI+fMRI with TAPE
+- `brainmt_2025.yaml` — Hybrid Mamba-Transformer
 
 **Methods & prior work (3):**
 - `yoon_biokdd2025.yaml` — MDD gene embeddings + LOGO protocol
@@ -104,9 +104,9 @@ docs/
 ### Metadata Cards
 ```
 kb/
-├── model_cards/                (7 YAML cards)
-├── paper_cards/                (11 YAML cards) ← NEW
-├── datasets/                   (11 YAML cards + manifest stub) ← UPDATED
+├── model_cards/                (9 YAML cards)
+├── paper_cards/                (12 YAML cards) ← NEW
+├── datasets/                   (13 YAML cards + manifest stub) ← UPDATED
 └── integration_cards/          (2 YAML cards)
 ```
 
@@ -198,7 +198,7 @@ configs/experiments/            (3 YAML templates) ← NEW
 ```
 kb/datasets/ukb_manifest_stub.yaml
 
-kb/paper_cards/ (11 cards + README):
+kb/paper_cards/ (12 cards + README):
 ├── README.md
 ├── ensemble_integration_li2022.yaml
 ├── oncology_multimodal_waqas2024.yaml
@@ -207,8 +207,8 @@ kb/paper_cards/ (11 cards + README):
 ├── generator_2024.yaml
 ├── brainlm_2024.yaml
 ├── brainjepa_2024.yaml
-├── brainharmony_2024.yaml
-├── brainmt_2024.yaml
+├── brainharmony_2025.yaml
+├── brainmt_2025.yaml
 ├── yoon_biokdd2025.yaml
 ├── prs_guide.yaml
 └── gwas_diverse_populations.yaml

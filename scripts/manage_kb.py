@@ -21,6 +21,8 @@ DOCS_ROOT = ROOT / "docs"
 MODEL_DIR = KB_ROOT / "model_cards"
 DATASET_DIR = KB_ROOT / "datasets"
 INTEGRATION_DIR = KB_ROOT / "integration_cards"
+EMBEDDING_STRATEGIES_FILE = INTEGRATION_DIR / "embedding_strategies.yaml"
+HARMONIZATION_FILE = INTEGRATION_DIR / "harmonization_methods.yaml"
 RAG_DIR = KB_ROOT / "rag"
 
 console = Console()
@@ -41,7 +43,7 @@ ci_app = typer.Typer(
     rich_markup_mode="markdown",
 )
 ops_app = typer.Typer(
-    help="Helper snippets for embeddings, inference, and walkthrough drafts",
+    help="Helper snippets for embeddings, inference, walkthrough drafts, and strategy metadata",
     rich_markup_mode="markdown",
 )
 
@@ -148,6 +150,17 @@ def _load_model_index(include_unverified: bool = True) -> list[dict[str, Any]]:
         data["_path"] = path
         cards.append(data)
     return cards
+
+
+def _load_yaml_document(path: Path) -> dict[str, Any]:
+    if not path.exists():
+        console.print(f"[red]missing:[/] {path.relative_to(ROOT)}")
+        raise typer.Exit(code=2)
+    data = yaml.safe_load(path.read_text()) or {}
+    if not isinstance(data, dict):
+        console.print(f"[red]invalid yaml:[/] {path.relative_to(ROOT)} is not a mapping")
+        raise typer.Exit(code=2)
+    return data
 
 
 def _load_dataset_index() -> list[dict[str, Any]]:
@@ -392,6 +405,44 @@ def ops_embeddings(
         raise typer.Exit(code=2)
     console.rule(f"Embedding command for {model_id}")
     console.print(snippets["embeddings"])
+
+
+@ops_app.command("strategy")
+def ops_strategy(
+    strategy_id: str = typer.Argument(..., help="ID from embedding_strategies.yaml"),
+    section: str | None = typer.Option(
+        None,
+        "--section",
+        "-s",
+        help="Print only a subsection (e.g., preprocessing, projector, intended_use)",
+    ),
+) -> None:
+    doc = _load_yaml_document(EMBEDDING_STRATEGIES_FILE)
+    strategies = doc.get("strategies") or {}
+    if not isinstance(strategies, dict) or strategy_id not in strategies:
+        console.print(f"[red]strategy:[/] '{strategy_id}' not found")
+        raise typer.Exit(code=2)
+    payload: Any = strategies[strategy_id]
+    if section:
+        if section not in payload:
+            console.print(f"[red]strategy:[/] '{strategy_id}' missing section '{section}'")
+            raise typer.Exit(code=2)
+        payload = payload[section]
+    console.rule(f"Embedding strategy: {strategy_id}")
+    console.print(json.dumps(payload, indent=2, sort_keys=True))
+
+
+@ops_app.command("harmonization")
+def ops_harmonization(
+    method_id: str = typer.Argument(..., help="ID from harmonization_methods.yaml"),
+) -> None:
+    doc = _load_yaml_document(HARMONIZATION_FILE)
+    methods = doc.get("methods") or {}
+    if not isinstance(methods, dict) or method_id not in methods:
+        console.print(f"[red]harmonization:[/] '{method_id}' not found")
+        raise typer.Exit(code=2)
+    console.rule(f"Harmonization method: {method_id}")
+    console.print(json.dumps(methods[method_id], indent=2, sort_keys=True))
 
 
 @ops_app.command("inference")

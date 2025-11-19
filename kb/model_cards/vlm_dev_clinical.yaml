@@ -1,0 +1,97 @@
+id: vlm_dev_clinical
+name: "Developmental clinical VLM (placeholder)"
+modality: multimodal
+domain: vision+language
+summary: |
+  Documentation-only card for future vision(-language) models that link developmental clinical images and videos
+  (e.g., MRI-derived images, clinic interaction videos, drawings) to textual descriptions and ratings.
+  Captures candidate architectures, datasets, and tasks for developmental phenotyping and scoring assistance.
+arch:
+  type: "Vision or vision-language transformer"
+  backbone: "TBD (e.g., MedBLIP-style MRI+text models, Video-VLMs for clinic interaction videos)"
+  parameters: "TBD"
+  context_length: 16
+  special_features:
+    - "Cross-modal encoders/decoders for image/video ↔ text alignment"
+    - "Adapters for clinical rating scales and structured developmental reports"
+    - "Optional conditioning on Brain/EEG embeddings via additional adapters"
+embedding_recipe:
+  level: subject
+  unit:
+    image:
+      - frame
+    video:
+      - clip
+  pipeline:
+    image:
+      input_features: >
+        2D or 3D projections from MRI (e.g., structural slices, rendered surfaces), clinic photos,
+        or scanned developmental artifacts (e.g., drawings), paired with textual labels or reports.
+      preprocessing:
+        - "standard medical image normalization / resizing"
+        - "de-identification / masking of PHI regions"
+      encoder:
+        type: "vision_transformer_or_cnn"
+        pooling: "CLS token or mean over patches"
+    video:
+      input_features: >
+        Short clips from developmental assessments or interaction tasks with frame-level or clip-level ratings.
+      preprocessing:
+        - "clip sampling (e.g., 8–32 frames per clip)"
+        - "temporal augmentation consistent with VLM training recipes"
+      encoder:
+        type: "video_transformer_or_time-distributed_CNN"
+        pooling: "mean or attention pooling over frames"
+    text:
+      input_features: >
+        Free-text clinician notes, structured rating scale descriptions, and developmental milestone narratives.
+      tokenizer: "LLM-compatible BPE or WordPiece"
+      encoder:
+        type: "text_transformer"
+        pooling: "CLS token or mean over tokens"
+    alignment:
+      strategy_candidates:
+        - "BLIP-2-style Q-Former adapters between visual tokens and text tokens"
+        - "CLIP-style contrastive learning between (image/video, text) pairs"
+        - "Instruction-tuned decoding for report generation given visual features"
+  sources:
+    - docs/index.md
+    - docs/guide/kb_overview.md
+repo: "TBD (developmental clinical VLM stack)"
+weights:
+  huggingface: []
+  artifacts: []
+license:
+  code: "TBD"
+  weights: "TBD"
+  data: "Clinical/developmental video and images governed by DRB/IRB constraints"
+datasets:
+  - cha_dev_longitudinal_v1
+tasks:
+  - "developmental_behavioral_phenotyping"
+  - "automatic_scoring_assistance"
+  - "clinic_session_summarization"
+  - "multimodal_video_text_alignment"
+context_length: 16
+how_to_infer:
+  huggingface: |
+    # Conceptual placeholder: no public implementation yet.
+    # This card logs candidate architectures and tasks for future developmental VLM work.
+    pass
+inference_api:
+  provider: none
+  endpoint: ""
+integrations:
+  - alignment_strategies
+tags:
+  - vlm
+  - vision-language
+  - developmental
+  - phenotyping
+verified: false
+last_updated: 2025-11-19
+notes: |
+  This is a forward-looking card to capture architectural and data requirements for developmental VLMs.
+  Use it to log candidate models/datasets as they become concrete, keeping the KB in sync with ARPA-H/BOM planning.
+
+

@@ -1,0 +1,119 @@
+id: brainharmony
+name: Brain Harmony
+modality: brain
+domain: smri+fmri
+summary: >-
+  Multimodal brain foundation model that unifies structural MRI (morphology) and
+  fMRI (function) using Temporal Adaptive Patch Embedding (TAPE) and hub tokens
+  to handle heterogeneous TRs and fuse modalities into a shared latent space.
+arch:
+  type: Transformer with TAPE + hub-token fusion
+  backbone: >
+    modules/harmonizer/ (stage0_embed, stage1_pretrain, stage2_finetune) +
+    libs/flex_transformer.py
+  parameters: "TBD"
+  context_length: "variable (TR-adaptive tokens)"
+  special_features:
+    - "TAPE: Temporal Adaptive Patch Embedding resizes time windows to a fixed τ seconds regardless of TR"
+    - "Hub tokens for cross-modality fusion between sMRI and fMRI"
+    - "Three-stage pipeline (embedding → self-supervised pretrain → downstream finetune)"
+repo: external_repos/brainharmony
+weights:
+  huggingface: []
+  artifacts:
+    - "https://drive.google.com/drive/folders/12MkUAOcegU60YVlK8u8_Owmgk4eQVheB?usp=sharing"
+tokenizer:
+  type: "continuous 1D tokens over time × ROIs"
+  notes: >
+    Uses TAPE to create TR-normalized temporal patches; no discrete tokens.
+context_length: "variable (TR-adaptive)"
+checkpoints:
+  - name: harmonizer-base
+    path: "checkpoints/harmonizer/"
+license:
+  code: CC-BY-NC-SA-4.0
+  weights: CC-BY-NC-SA-4.0
+  data: "UK Biobank, HCP, ADNI, PPMI (restricted; see original paper for details)."
+datasets:
+  - ukb_fmri_tensor
+  - ukb_smri_freesurfer
+tasks:
+  - multimodal_embedding_export
+  - downstream_classification
+  - representation_learning
+intended_use:
+  - "adult gene–brain alignment"
+  - "developmental / neurodevelopmental prediction"
+  - "multimodal brain–omics alignment"
+embedding_recipe:
+  level: subject
+  unit:
+    smri:
+      - volume
+      - hub_token
+    rsfmri:
+      - tape_segment
+      - hub_token
+  pipeline:
+    smri:
+      input: "T1/T2 volumes (optionally harmonized via `harmonization_methods.murd_t1_t2`)"
+      embedding_steps:
+        - "TAPE: resize temporal axis to constant τ seconds"
+        - "Stage 0 embedding network → spatial tokens"
+        - "Hub-token fusion with rs-fMRI stream"
+      postprocessing:
+        - "z-score hub-token outputs within fold"
+        - "residualize(age, sex, site, ICV)"
+      projector:
+        type: PCA
+        output_dim: 512
+    rsfmri:
+      preprocessing_pipeline: rsfmri_preprocessing_pipelines.hcp_like_minimal
+      tape_segments:
+        length_seconds: 6
+        pooling: "mean over tokens per segment"
+      hub_token_fusion: "cross-attention between modality hubs"
+      postprocessing:
+        - "z-score within fold"
+        - "residualize(age, sex, site, motion_FD)"
+      projector:
+        type: PCA
+        output_dim: 512
+  notes: |
+    Use hub-token embeddings when comparing against subject-level vectors from BrainLM/SwiFT.
+    Document whether harmonization (`none_baseline`, `combat_smri`, `murd_t1_t2`) is applied to sMRI inputs.
+  sources:
+    - docs/code_walkthroughs/brainharmony_walkthrough.md#overview
+    - external_repos/brainharmony/modules/harmonizer/stage0_embed/embedding_pretrain.py
+  developmental_notes: |
+    Brain Harmony’s TR-adaptive TAPE and hub-token fusion are attractive for multi-site pediatric cohorts where
+    TR and protocol differ across scanners. Before adopting it for Cha or other developmental cohorts, validate that
+    hub tokens remain stable across age ranges and that harmonization choices (e.g., MURD vs ComBat vs none) do not
+    wash out genuine developmental signals.
+how_to_infer:
+  harmonizer: |
+    # Example: stage 2 finetuning on a downstream task (see repo for configs)
+    bash scripts/harmonizer/stage2_finetune/run_finetune.sh base 128 AbideI 0
+inference_api:
+  provider: local
+  endpoint: external_repos/brainharmony
+  input_format: >
+    Preprocessed sMRI/fMRI tensors or ROI features as defined in the Brain Harmony repo.
+  output: >
+    Multimodal hub-token embeddings and task-specific logits (for finetuned models).
+integrations:
+  - ukb_genetics_brain_alignment
+tags:
+  - fmri
+  - smri
+  - multimodal
+  - hub-tokens
+  - tr-adaptation
+verified: false
+last_updated: 2025-11-18
+notes: >-
+  Use this model in later integration phases if TR/site heterogeneity limits simpler
+  baselines (e.g., BrainLM/Brain-JEPA embeddings + late fusion). Start with the
+  CCA/prediction/LOGO pipelines before escalating to hub-token multimodal models.
+
+

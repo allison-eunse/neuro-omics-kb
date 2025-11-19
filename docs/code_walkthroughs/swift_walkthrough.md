@@ -63,8 +63,8 @@ class SwinTransformer4D(nn.Module):
         x = self.patch_embed(x)
         x = self.pos_drop(x)
         for layer in self.layers:
-            x = self.pos_embeds[i](x)
-            x = self.layers[i](x.contiguous())
+            x = self.pos_embeds[i] (x)
+            x = self.layers[i] (x.contiguous())
         return x
 ```
 

@@ -1,0 +1,91 @@
+id: m3fm
+name: M3FM (Multilingual Medical Model for Findings)
+modality: multimodal
+domain: chest_xray+text
+summary: |
+  Multilingual chest X-ray report generator that fuses multilingual CLIP text embeddings with the
+  R2Gen relational-memory Transformer decoder to produce English and Chinese narratives from
+  COVID-era CXR images. Ships training/inference scripts for the COV-CTR dataset plus SPICE/BLEU
+  evaluation utilities and multilingual greedy/beam decoding.
+arch:
+  type: "Multilingual CLIP encoder + relational-memory Transformer decoder"
+  backbone: external_repos/M3FM/modules/encoder_decoder.py
+  parameters: "≈40–60M (d_model=512, 3 decoder layers, 8 heads)"
+  context_length: 100
+  special_features:
+    - "Language is selected via BOS token (1=English, 2=Chinese) enabling bilingual decoding."
+    - "RelationalMemory + ConditionalLayerNorm adds recurrent context to improve fluency."
+    - "Trainer exposes beam search, block trigrams, and SPICE metrics for report evaluation."
+embedding_recipe:
+  level: subject
+  unit:
+    image:
+      - cxr_frame
+  pipeline:
+    image:
+      input_features: >
+        224×224 RGB chest X-ray tensors normalized with ImageNet statistics (MIMIC/IU inputs use
+        paired or single images).
+      preprocessing:
+        - "Random resized crop + horizontal flip for train; center resize for eval."
+        - "Per-channel normalization to (0.485, 0.456, 0.406)."
+      encoder:
+        type: "CNN visual extractor (default ResNet101)."
+        pooling: "Global average pooled patch tokens passed into report decoder."
+    text:
+      input_features: >
+        Cleaned clinical reports tokenized with `Tokenizer` utilities; BOS token indicates target
+        language and `reports_ids_use` supplies the shifted teacher-forcing inputs.
+      tokenizer: "Custom tokenizer derived from dataset vocabulary (threshold=2)."
+      encoder:
+        type: "Multilingual CLIP (XLM-RoBERTa-Large-ViT-L-14) projected to 512-dim with affine ReLU."
+  sources:
+    - docs/code_walkthroughs/m3fm_walkthrough.md
+    - external_repos/M3FM/M3FM.py
+    - external_repos/M3FM/modules/encoder_decoder.py
+repo: https://github.com/ai-in-health/M3FM
+weights:
+  huggingface: []
+  artifacts: []
+tokenizer:
+  type: "Tokenizer + multilingual CLIP text encoder (XLM-RoBERTa-based)."
+context_length: 100
+checkpoints:
+  - name: cov_ctr_last_checkpoint
+    path: checkpoint/last_checkpoint.pth
+license:
+  code: Apache-2.0
+  weights: unreleased
+  data: "COV-CTR / IU-XRay / MIMIC-CXR datasets retain their original usage agreements."
+datasets: []
+tasks:
+  - medical_report_generation
+  - bilingual_report_generation
+  - cxr_captioning
+how_to_infer:
+  huggingface: |
+    # Run bilingual greedy decoding on prepared checkpoints
+    cd external_repos/M3FM
+    python inference.py \
+      --image_dir data/cov/images \
+      --ann_path data/cov/annotation.json \
+      --language English \
+      --dataset_name cov \
+      --checkpoint checkpoint/last_checkpoint.pth
+inference_api:
+  provider: none
+  endpoint: ""
+integrations:
+  - alignment_strategies
+tags:
+  - cxr
+  - multilingual
+  - report-generation
+  - transformer
+verified: false
+last_updated: 2025-11-19
+notes: |
+  Evaluation metrics require Java, Stanford CoreNLP jars, and pycocoevalcap installs. Re-train or
+  finetune only on datasets you are licensed to use; the repo does not ship pretrained weights for
+  legal/PHI reasons.
+

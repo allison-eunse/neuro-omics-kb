@@ -3,7 +3,9 @@ authors: ["Choi, Shing Wan", "O'Reilly, Paul F."]
 year: 2019
 journal: "Nature Protocols"
 doi: "10.1038/s41596-019-0203-3"
-pdf_source: "/Users/allison/Projects/pdf<->md;ai-summaries/input/A guide to performing Polygenic Risk Score analyses.pdf"
+pdf_source: "https://pubmed.ncbi.nlm.nih.gov/31607513/"
+local_pdf_path: "docs/generated/kb_curated/papers-pdf/prs_guide.pdf"
+summary_md_path: "docs/generated/kb_curated/papers-md/prs_guide.md"
 
 summary: |
   Comprehensive protocol for PRS computation, QC, and association testing.

@@ -1,0 +1,104 @@
+id: titan
+name: TITAN (Transformer-based pathology Image & Text Alignment Network)
+modality: multimodal
+domain: pathology_slide+text
+summary: |
+  Whole-slide foundation model that aggregates CONCH v1.5 patch embeddings into slide-level
+  transformers, aligned with paired pathology reports and synthetic captions through a CoCa-style
+  objective. Public release includes slide/text encoders (decoder removed), Hugging Face weights,
+  and scripts for finetuning, linear probing, zero-shot slide retrieval, and pathology report
+  generation across TCGA-OT/UT datasets.
+arch:
+  type: "Slide transformer with multimodal alignment (CoCa-inspired)"
+  backbone: external_repos/titan/titan/finetune.py
+  parameters: "≈768-d slide encoder (size undisclosed)"
+  context_length: 16_384 patches (depends on coordinates)
+  special_features:
+    - "Operates on irregular patch grids w/ Level-0 coordinates and patch_size metadata."
+    - "Supports zero-shot classification via textual prompts + TITAN text encoder."
+    - "Provides RelationalMetric bootstrap utilities for balanced accuracy confidence intervals."
+embedding_recipe:
+  level: slide
+  unit:
+    image:
+      - patch_grid
+  pipeline:
+    image:
+      input_features: >
+        Pre-extracted CONCH v1.5 patch embeddings (N×768) plus integer coordinates (N×2) in microns
+        at slide level 0 with `patch_size_lv0` describing sampling stride (512 or 1024).
+      preprocessing:
+        - "Optionally extract features via TRIDENT/CLAM before TITAN aggregation."
+        - "Pad/truncate patch grids to fit GPU memory."
+      encoder:
+        type: "TITAN slide transformer (Hugging Face AutoModel trust_remote_code)."
+        pooling: "encode_slide_from_patch_features returns a 768-d slide embedding."
+    text:
+      input_features: >
+        Pathology report sentences or synthetic captions from PathChat; prompts defined per class
+        (e.g., TCGA-OT OncoTree labels).
+      tokenizer: "Transformers AutoTokenizer shipped with TITAN repo."
+      encoder:
+        type: "Text encoder aligned with slide embeddings for zero-shot retrieval."
+  sources:
+    - docs/code_walkthroughs/titan_walkthrough.md
+    - external_repos/titan/README.md
+    - external_repos/titan/titan/finetune.py
+    - external_repos/titan/titan/utils.py
+repo: https://github.com/mahmoodlab/TITAN
+weights:
+  huggingface:
+    - https://huggingface.co/MahmoodLab/TITAN
+  artifacts: []
+tokenizer:
+  type: "AutoTokenizer packaged with MahmmodLab/TITAN (text encoder side)."
+context_length: 1200
+checkpoints:
+  - name: TITAN-preview
+    path: huggingface://MahmoodLab/TITAN
+license:
+  code: CC-BY-NC-ND-4.0
+  weights: CC-BY-NC-ND-4.0 (Hugging Face gated)
+  data: >
+    Training data spans 335,645 WSIs and 182k reports from Mass General Brigham; downstream TCGA and
+    PathChat assets retain their original terms (TCGA data portal, PathChat license).
+datasets: []
+tasks:
+  - slide_feature_extraction
+  - zero_shot_pathology_classification
+  - slide_retrieval
+  - pathology_report_generation
+how_to_infer:
+  huggingface: |
+    from transformers import AutoModel, AutoTokenizer
+    import torch, h5py
+
+    titan = AutoModel.from_pretrained("MahmoodLab/TITAN", trust_remote_code=True).eval().cuda()
+    tokenizer = AutoTokenizer.from_pretrained("MahmoodLab/TITAN", trust_remote_code=True)
+
+    h5 = h5py.File("TCGA_demo_features/slide.h5", "r")
+    features = torch.from_numpy(h5["features"][:]).cuda()
+    coords = torch.from_numpy(h5["coords"][:]).cuda()
+    patch_size_lv0 = h5["coords"].attrs["patch_size_level0"]
+
+    with torch.cuda.amp.autocast(dtype=torch.bfloat16), torch.inference_mode():
+      slide_emb = titan.encode_slide_from_patch_features(features, coords, patch_size_lv0)
+      slide_emb = slide_emb.float()
+inference_api:
+  provider: none
+  endpoint: ""
+integrations:
+  - alignment_strategies
+  - pathology_zero_shot
+tags:
+  - pathology
+  - slide
+  - zero-shot
+  - multimodal
+verified: false
+last_updated: 2025-11-19
+notes: |
+  Release omits the captioning decoder weights to avoid PHI leakage. Use provided notebooks
+  (`notebooks/inference_demo.ipynb`, `zeroshot_demo.ipynb`) for quickstarts and keep patch size
+  metadata consistent across feature pipelines.
+
