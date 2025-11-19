@@ -6,7 +6,7 @@
 
 > **A comprehensive documentation hub for genetics and brain foundation models and their multimodal integration.**
 
-[📖 Read the Docs](https://allison-eunse.github.io/neuro-omics-kb/) | [🚀 Quick Start](#quick-start) | [💡 Use Cases](#use-cases) | [🤝 Contributing](CONTRIBUTING.md)
+[📖 Read the Docs](https://allison-eunse.github.io/neuro-omics-kb/) | [🚀 Quick Start](#quick-start) | [💡 Use Cases](#use-cases)
 
 ---
 
