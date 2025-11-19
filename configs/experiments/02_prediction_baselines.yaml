@@ -26,7 +26,7 @@ feature_preparation:
   smri:
     features: "aparc.stats + aseg.stats (~176 features)"
     project_to: 512  # PCA
-  covariates: ["age", "sex", "site", "icv", "pc1", "pc2", "pc3", "pc4", "pc5", "pc6", "pc7", "pc8", "pc9", "pc10"]
+  covariates: ["age", "sex", "site_scanner", "icv", "pc1", "pc2", "pc3", "pc4", "pc5", "pc6", "pc7", "pc8", "pc9", "pc10"]
   preprocessing:
     z_score: true
     residualize: true
@@ -39,7 +39,7 @@ cross_validation:
   # Same folds as CCA experiment (CRITICAL for fair comparison)
   strategy: "StratifiedGroupKFold"
   k_folds: 5
-  group_by: "site"
+  group_by: "site_scanner"
   stratify_by: "mdd_diagnosis"
   seed: 42  # must match CCA experiment
 

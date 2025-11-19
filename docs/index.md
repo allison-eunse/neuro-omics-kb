@@ -158,7 +158,7 @@ Beyond genetics and brain FMs, the KB documents **multimodal architectures** tha
 ## 📚 Research Papers
 
 <details>
-<summary><strong>22 Structured Paper Summaries</strong> — Click to expand</summary>
+<summary><strong>20 Structured Paper Summaries</strong> — Click to expand</summary>
 
 ### 🧬 Genetics Foundation Models
 | Paper | Year | Key Contribution |
@@ -227,7 +227,7 @@ Beyond genetics and brain FMs, the KB documents **multimodal architectures** tha
 
     ---
 
-    YAML metadata for 16 foundation models (genetics, brain, multimodal)
+    15 model cards: 13 foundation models + 2 ARPA-H planning cards
 
     [:octicons-arrow-right-24: Browse on GitHub](https://github.com/allison-eunse/neuro-omics-kb/tree/main/kb/model_cards)
 
@@ -235,7 +235,7 @@ Beyond genetics and brain FMs, the KB documents **multimodal architectures** tha
 
     ---
 
-    Structured summaries of 15+ key papers with integration hooks
+    Structured summaries of 20 key papers with integration hooks
 
     [:octicons-arrow-right-24: Browse on GitHub](https://github.com/allison-eunse/neuro-omics-kb/tree/main/kb/paper_cards)
 

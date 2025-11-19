@@ -1,7 +1,7 @@
 # 🧬🧠 Neuro-Omics Knowledge Base
 
 [![Documentation](https://img.shields.io/badge/docs-mkdocs-blue)](https://allison-eunse.github.io/neuro-omics-kb/)
-[![Models](https://img.shields.io/badge/models-15-green)](#foundation-models)
+[![Models](https://img.shields.io/badge/models-13%20FMs-green)](#foundation-models)
 [![Paper Cards](https://img.shields.io/badge/papers-20-orange)](#research-papers)
 [![Integration Cards](https://img.shields.io/badge/integration_cards-3-purple)](#integration-strategies)
 

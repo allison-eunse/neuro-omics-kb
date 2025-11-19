@@ -97,7 +97,7 @@ python scripts/codex_gate.py --mode full --label cycle2 --since HEAD~1
 
 ### Neuro-Omics-KB (Updated Nov 19, 2025)
 - **Code Walkthroughs**: 15 complete guides (brain + genetics + multimodal)
-- **Model Cards**: 9 validated YAML files
+- **Model Cards**: 15 YAML files (13 FMs + 2 ARPA-H planning cards)
 - **Paper Cards**: 14 structured cards
 - **Dataset Cards**: 13 specifications + UKB manifest stub
 - **Integration Cards**: 2 multimodal strategies + embedding/harmonization registries

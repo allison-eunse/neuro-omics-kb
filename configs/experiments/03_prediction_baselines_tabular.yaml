@@ -16,7 +16,7 @@ datasets:
 embedding_strategies:
   smri_roi: "smri_free_surfer_raw_176"
   genetics: "genetics_pgs_20traits"
-  fusion: "fusion_concat_gene_brain_1024_v1"
+  fusion: "fusion_tabular_smri_pgs_v1"
 
 models:
   logistic_regression:
@@ -52,7 +52,7 @@ feature_sets:
 cross_validation:
   strategy: "StratifiedGroupKFold"
   k_folds: 5
-  group_by: "site"
+  group_by: "site_scanner"
   stratify_by: "MDD_status"
   seed: 42
 

@@ -20,7 +20,7 @@ feature_preparation:
     per_gene_embedding: true  # keep genes separate, don't concat yet
     output: "[N_subjects, 38_genes, hidden_dim]"
     project_per_gene: false  # project after dropping gene
-  covariates: ["age", "sex", "site", "pc1", "pc2", "pc3", "pc4", "pc5", "pc6", "pc7", "pc8", "pc9", "pc10"]
+  covariates: ["age", "sex", "site_scanner", "pc1", "pc2", "pc3", "pc4", "pc5", "pc6", "pc7", "pc8", "pc9", "pc10"]
   preprocessing:
     z_score: true
     residualize: true
@@ -30,7 +30,7 @@ cross_validation:
   outer_cv:
     strategy: "StratifiedGroupKFold"
     k_folds: 5
-    group_by: "site"
+    group_by: "site_scanner"
     stratify_by: "mdd_diagnosis"
     seed: 42
   inner_cv:

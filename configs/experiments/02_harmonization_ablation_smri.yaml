@@ -28,12 +28,12 @@ design:
   cross_validation:
     strategy: "StratifiedGroupKFold"
     k_folds: 5
-    group_by: "site"
+    group_by: "site_scanner"
     stratify_by: "mdd_diagnosis"
     seed: 42
   preprocessing_common:
     z_score: true
-    residualize: ["age", "sex", "site", "icv"]
+    residualize: ["age", "sex", "site_scanner", "icv"]
     projector:
       method: "PCA"
       n_components: 512

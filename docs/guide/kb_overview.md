@@ -12,7 +12,7 @@ This page orients new readers to the structure of the knowledge base, how the YA
 
 The KB began with **adult UK Biobank–centric gene–brain FM alignment** (genetics FM + MRI Brain FM outputs) and has expanded to include:
 
-- ✅ **15 Foundation Models**: 4 genetics + 5 brain + 6 multimodal/clinical
+- ✅ **15 Model Cards**: 13 foundation models (4 genetics + 5 brain + 4 multimodal/clinical) + 2 ARPA-H planning cards
 - ✅ **18 Research Papers**: Curated summaries with structured takeaways
 - ✅ **3 Integration Cards**: Comprehensive multimodal fusion guidance
 - ✅ **Developmental/Neurodevelopmental Support**: Longitudinal multimodal FMs spanning MRI/fMRI, EEG/EPhys, genetics, behavioral phenotypes

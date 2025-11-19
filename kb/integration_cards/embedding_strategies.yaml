@@ -278,6 +278,23 @@ strategies:
       - docs/data/schemas.md
       - configs/experiments/03_prediction_baselines_tabular.yaml
 
+  fusion_tabular_smri_pgs_v1:
+    modality: multimodal
+    source:
+      - "smri_free_surfer_raw_176"
+      - "genetics_pgs_20traits"
+    construction: "Concatenate raw FreeSurfer ROI features (~176) with 20 PGS + ancestry PCs into a single tabular feature vector."
+    preprocessing:
+      - "Median-impute missing sMRI ROI features; z-score per ROI feature."
+      - "Impute PGS/PCs as defined in `genetics_pgs_20traits`; z-score per PGS/PC."
+    intended_use:
+      - prediction_tabular_smri_pgs_v1
+      - fusion_tabular_tests
+    sources:
+      - kb/datasets/ukb_smri_freesurfer.yaml
+      - kb/datasets/ukb_genetics_pgs.yaml
+      - configs/experiments/03_prediction_baselines_tabular.yaml
+
   smri_cha_dev_pca64_v1:
     modality: smri
     source: "Cha Hospital developmental cohort FreeSurfer-derived sMRI ROIs"
