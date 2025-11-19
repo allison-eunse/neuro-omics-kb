@@ -433,7 +433,7 @@
     
   
   
-    <span class="md-status md-status--draft"></span>
+    <span class="md-status md-status--active"></span>
   
 
   
@@ -693,7 +693,7 @@
     
   
   
-    <span class="md-status md-status--draft"></span>
+    <span class="md-status md-status--active"></span>
   
 
   
@@ -728,7 +728,7 @@
     
   
   
-    <span class="md-status md-status--draft"></span>
+    <span class="md-status md-status--active"></span>
   
 
   
@@ -763,7 +763,7 @@
     
   
   
-    <span class="md-status md-status--draft"></span>
+    <span class="md-status md-status--active"></span>
   
 
   
@@ -798,7 +798,7 @@
     
   
   
-    <span class="md-status md-status--draft"></span>
+    <span class="md-status md-status--active"></span>
   
 
   
@@ -921,7 +921,7 @@
     
   
   
-    <span class="md-status md-status--draft"></span>
+    <span class="md-status md-status--active"></span>
   
 
   
@@ -956,7 +956,7 @@
     
   
   
-    <span class="md-status md-status--draft"></span>
+    <span class="md-status md-status--active"></span>
   
 
   
@@ -991,7 +991,7 @@
     
   
   
-    <span class="md-status md-status--draft"></span>
+    <span class="md-status md-status--active"></span>
   
 
   
@@ -1026,7 +1026,7 @@
     
   
   
-    <span class="md-status md-status--draft"></span>
+    <span class="md-status md-status--active"></span>
   
 
   
@@ -1061,7 +1061,7 @@
     
   
   
-    <span class="md-status md-status--draft"></span>
+    <span class="md-status md-status--active"></span>
   
 
   
@@ -1552,6 +1552,48 @@
     
   </span>
   
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integration/multimodal_architectures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multimodal architectures
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
   
 
       </a>
@@ -2277,12 +2319,13 @@ def parse_args():
         write_out=args.write_out,
         output_base_path=args.output_base_path,
         model_prompt=args.model_prompt
-    )</p>
-<pre><code>
-### Evaluator &amp; Task Dispatch (`src/evaluator.py`)
-`simple_evaluate` instantiates a Hugging Face (or OpenAI) LM, wraps it with a caching layer, builds the medical task dictionary, and runs `evaluate` to orchestrate prompts, few-shot contexts, turn-based conversations, and metric aggregation. Bootstrap statistics, JSON logging, and caching directories mirror upstream `lm_eval` APIs for drop-in adoption.
+    )
+```
+</p>
+<h3 id="evaluator-task-dispatch-srcevaluatorpy">Evaluator &amp; Task Dispatch (<code>src/evaluator.py</code>)<a class="headerlink" href="#evaluator-task-dispatch-srcevaluatorpy" title="Permanent link">&para;</a></h3>
+<p><code>simple_evaluate</code> instantiates a Hugging Face (or OpenAI) LM, wraps it with a caching layer, builds the medical task dictionary, and runs <code>evaluate</code> to orchestrate prompts, few-shot contexts, turn-based conversations, and metric aggregation. Bootstrap statistics, JSON logging, and caching directories mirror upstream <code>lm_eval</code> APIs for drop-in adoption.
 
-```19:133:/Users/allison/Projects/neuro-omics-kb/external_repos/me-lamma/src/evaluator.py
+<code>19:133:/Users/allison/Projects/neuro-omics-kb/external_repos/me-lamma/src/evaluator.py
 @positional_deprecated
 def simple_evaluate(
     model,
@@ -2305,14 +2348,14 @@ def simple_evaluate(
     random.seed(1234)
     np.random.seed(1234)
 
-    assert len(tasks) != 0, &quot;No tasks specified&quot;
+    assert len(tasks) != 0, "No tasks specified"
 
     if isinstance(model, str):
         if model_args is None:
-            model_args = &quot;&quot;
-        if model[:3] != &quot;gpt&quot;:
+            model_args = ""
+        if model[:3] != "gpt":
             lm = lm_eval.models.get_model(model).create_from_arg_string(
-                model_args, {&quot;batch_size&quot;: batch_size, &quot;max_batch_size&quot;: max_batch_size, &quot;device&quot;: device}
+                model_args, {"batch_size": batch_size, "max_batch_size": max_batch_size, "device": device}
             )
         else:
             lm = ChatLM(model)
@@ -2323,28 +2366,27 @@ def simple_evaluate(
     if not no_cache:
         lm = lm_eval.base.CachingLM(
             lm,
-            &quot;lm_cache/&quot;
+            "lm_cache/"
             + (model if isinstance(model, str) else model.model.config._name_or_path)
-            + &quot;_&quot;
-            + model_args.replace(&quot;=&quot;, &quot;-&quot;).replace(&quot;,&quot;, &quot;_&quot;).replace(&quot;/&quot;, &quot;-&quot;)
-            + &quot;.db&quot;,
+            + "_"
+            + model_args.replace("=", "-").replace(",", "_").replace("/", "-")
+            + ".db",
         )
 
     task_dict = ta.get_task_dict(tasks)
 ...
-    results[&quot;config&quot;] = {
-        &quot;model&quot;: (model if isinstance(model, str) else model.model.config._name_or_path),
-        &quot;model_args&quot;: model_args,
-        &quot;num_fewshot&quot;: num_fewshot,
-        &quot;batch_size&quot;: batch_size,
-        &quot;batch_sizes&quot;: list(lm.batch_sizes.values()) if hasattr(lm, &quot;batch_sizes&quot;) else [],
-        &quot;device&quot;: device,
-        &quot;no_cache&quot;: no_cache,
-        &quot;limit&quot;: limit,
-        &quot;bootstrap_iters&quot;: bootstrap_iters,
-        &quot;description_dict&quot;: description_dict,
-    }
-</code></pre>
+    results["config"] = {
+        "model": (model if isinstance(model, str) else model.model.config._name_or_path),
+        "model_args": model_args,
+        "num_fewshot": num_fewshot,
+        "batch_size": batch_size,
+        "batch_sizes": list(lm.batch_sizes.values()) if hasattr(lm, "batch_sizes") else [],
+        "device": device,
+        "no_cache": no_cache,
+        "limit": limit,
+        "bootstrap_iters": bootstrap_iters,
+        "description_dict": description_dict,
+    }</code></p>
 <h3 id="medical-task-registry-srctasks__init__py">Medical Task Registry (<code>src/tasks/__init__.py</code>)<a class="headerlink" href="#medical-task-registry-srctasks__init__py" title="Permanent link">&para;</a></h3>
 <p><code>TASK_REGISTRY</code> maps human-readable task names to custom task classes (PubMedQA, MedQA, MedMCQA, etc.). Pattern-matched CLI arguments expand into this registry, so adding a new dataset is a matter of appending to <code>TASK_REGISTRY</code> or creating a JSON-backed task via <code>add_json_task</code>.</p>
 <p>```9:34:/Users/allison/Projects/neuro-omics-kb/external_repos/me-lamma/src/tasks/<strong>init</strong>.py
@@ -2361,9 +2403,8 @@ TASK_REGISTRY = {
     "MimicSum": vital_measure.MimicSum,
     "BioNLI": vital_measure.BioNLI,
     "MedNLI": vital_measure.MedNLI,
-}</p>
-<pre><code>
-### Task Definitions &amp; Metrics (`src/tasks/vital_measure.py`)
+}
+<div class="highlight"><pre><span></span><code>### Task Definitions &amp; Metrics (`src/tasks/vital_measure.py`)
 `Classification` (and its subclasses) provides language-cleaning, response parsing, accuracy/F1/MCC aggregation, and sequence labeling utilities. `SequentialLabeling`/`NER` extend this to HTML BIO alignment, while summarization tasks use Rouge/BARTScore (loaded via Poetry extras).
 
 ```50:181:/Users/allison/Projects/neuro-omics-kb/external_repos/me-lamma/src/tasks/vital_measure.py
@@ -2409,7 +2450,7 @@ class Classification(Task):
         if self.CALCULATE_MCC:
             metrics[&quot;mcc&quot;] = self.matthews_corrcoef
         return metrics
-</code></pre>
+</code></pre></div></p>
 <h3 id="chatlm-prompt-templates-srcchatlmpy-srcmodel_promptpy">ChatLM + Prompt Templates (<code>src/chatlm.py</code>, <code>src/model_prompt.py</code>)<a class="headerlink" href="#chatlm-prompt-templates-srcchatlmpy-srcmodel_promptpy" title="Permanent link">&para;</a></h3>
 <p>For API-based baselines, <code>ChatLM</code> batches requests with asyncio + HTTPX, uses exponential backoff, and overrides <code>greedy_until</code>. Prompt wrappers in <code>model_prompt.py</code> add <code>Human/Assistant</code> prefixes when <code>--model_prompt mellama_prompt</code> is provided.</p>
 <p>```12:154:/Users/allison/Projects/neuro-omics-kb/external_repos/me-lamma/src/chatlm.py
@@ -2444,9 +2485,8 @@ async def single_chat(client, **kwargs):
                 messages=[{"role": "user", "content": inp} for inp in inps],
                 max_tokens=self.max_gen_toks,
                 temperature=0.0,
-            ))</p>
-<pre><code>
-```1:12:/Users/allison/Projects/neuro-omics-kb/external_repos/me-lamma/src/model_prompt.py
+            ))
+<code></code>1:12:/Users/allison/Projects/neuro-omics-kb/external_repos/me-lamma/src/model_prompt.py
 def no_prompt(ctx):
     return ctx
 
@@ -2456,10 +2496,10 @@ def mellama_prompt(ctx):
 
 
 MODEL_PROMPT_MAP = {
-    &quot;no_prompt&quot;: no_prompt,
-    &quot;mellama_prompt&quot;: mellama_prompt,
+    "no_prompt": no_prompt,
+    "mellama_prompt": mellama_prompt,
 }
-</code></pre>
+```</p>
 <h2 id="integration-hooks-language-kb">Integration Hooks (Language ↔ KB)<a class="headerlink" href="#integration-hooks-language-kb" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Extend the task roster.</strong> Add a new <code>Task</code> subclass in <code>tasks/vital_measure.py</code>, register it via <code>TASK_REGISTRY</code>, and it becomes instantly available to KB experiment configs via <code>--tasks</code> filters.^[<code>9:34:/Users/allison/Projects/neuro-omics-kb/external_repos/me-lamma/src/tasks/__init__.py</code>]</li>
@@ -2502,10 +2542,31 @@ MODEL_PROMPT_MAP = {
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
   
+    <div class="md-copyright__highlight">
+      Maintained by Allison Eun Se You | Last updated November 2025
+
+    </div>
   
-    Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/allison-eunse/neuro-omics-kb" target="_blank" rel="noopener" title="GitHub Repository" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://allison-eunse.github.io/neuro-omics-kb/" target="_blank" rel="noopener" title="Documentation" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M384 512H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h304c26.5 0 48 21.5 48 48v288c0 20.9-13.4 38.7-32 45.3V448c17.7 0 32 14.3 32 32s-14.3 32-32 32zM96 384c-17.7 0-32 14.3-32 32s14.3 32 32 32h256v-64zm32-232c0 13.3 10.7 24 24 24h176c13.3 0 24-10.7 24-24s-10.7-24-24-24H152c-13.3 0-24 10.7-24 24m24 72c-13.3 0-24 10.7-24 24s10.7 24 24 24h176c13.3 0 24-10.7 24-24s-10.7-24-24-24z"/></svg>
     </a>
   
 </div>

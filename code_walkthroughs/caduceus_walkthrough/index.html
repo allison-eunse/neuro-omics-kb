@@ -439,7 +439,7 @@
     
   
   
-    <span class="md-status md-status--draft"></span>
+    <span class="md-status md-status--active"></span>
   
 
   
@@ -699,7 +699,7 @@
     
   
   
-    <span class="md-status md-status--draft"></span>
+    <span class="md-status md-status--active"></span>
   
 
   
@@ -734,7 +734,7 @@
     
   
   
-    <span class="md-status md-status--draft"></span>
+    <span class="md-status md-status--active"></span>
   
 
   
@@ -769,7 +769,7 @@
     
   
   
-    <span class="md-status md-status--draft"></span>
+    <span class="md-status md-status--active"></span>
   
 
   
@@ -804,7 +804,7 @@
     
   
   
-    <span class="md-status md-status--draft"></span>
+    <span class="md-status md-status--active"></span>
   
 
   
@@ -927,7 +927,7 @@
     
   
   
-    <span class="md-status md-status--draft"></span>
+    <span class="md-status md-status--active"></span>
   
 
   
@@ -962,7 +962,7 @@
     
   
   
-    <span class="md-status md-status--draft"></span>
+    <span class="md-status md-status--active"></span>
   
 
   
@@ -997,7 +997,7 @@
     
   
   
-    <span class="md-status md-status--draft"></span>
+    <span class="md-status md-status--active"></span>
   
 
   
@@ -1032,7 +1032,7 @@
     
   
   
-    <span class="md-status md-status--draft"></span>
+    <span class="md-status md-status--active"></span>
   
 
   
@@ -1067,7 +1067,7 @@
     
   
   
-    <span class="md-status md-status--draft"></span>
+    <span class="md-status md-status--active"></span>
   
 
   
@@ -1558,6 +1558,48 @@
     
   </span>
   
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integration/multimodal_architectures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multimodal architectures
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
   
 
       </a>
@@ -2412,16 +2454,15 @@ class CharacterTokenizer(PreTrainedTokenizer):
     }
     ...
     complement_map = {"A": "T", "C": "G", "G": "C", "T": "A"}
-    self.complement_map[self._vocab_str_to_int[k]] = complement_id</p>
-<pre><code>
-```7:27:external_repos/caduceus/src/dataloaders/utils/rc.py
+    self.complement_map[self._vocab_str_to_int[k]] = complement_id
+<div class="highlight"><pre><span></span><code>```7:27:external_repos/caduceus/src/dataloaders/utils/rc.py
 STRING_COMPLEMENT_MAP = {&quot;A&quot;: &quot;T&quot;, ...}
 def string_reverse_complement(seq):
     rev_comp = &quot;&quot;
     for base in seq[::-1]:
         rev_comp += STRING_COMPLEMENT_MAP.get(base, base)
     return rev_comp
-</code></pre>
+</code></pre></div></p>
 <h3 id="positional-rc-handling-modeling_caduceuspy">Positional &amp; RC Handling (<code>modeling_caduceus.py</code>)<a class="headerlink" href="#positional-rc-handling-modeling_caduceuspy" title="Permanent link">&para;</a></h3>
 <p>Bidirectional Mamba wrappers run forward and reverse streams (optionally weight tied) and merge them, while RCPS-aware embeddings split channel dimensions so hidden states encode forward and RC halves that can be combined later.</p>
 <p>```87:141:external_repos/caduceus/caduceus/modeling_caduceus.py
@@ -2435,9 +2476,8 @@ class BiMambaWrapper(nn.Module):
         out = self.mamba_fwd(hidden_states, ...)
         if self.bidirectional:
             out_rev = self.mamba_rev(hidden_states.flip(dims=(1,))).flip(dims=(1,))
-            out = out + out_rev if self.bidirectional_strategy == "add" else out * out_rev</p>
-<pre><code>
-```152:214:external_repos/caduceus/caduceus/modeling_caduceus.py
+            out = out + out_rev if self.bidirectional_strategy == "add" else out * out_rev
+<div class="highlight"><pre><span></span><code>```152:214:external_repos/caduceus/caduceus/modeling_caduceus.py
 class CaduceusEmbeddings(nn.Module):
     if config.rcps:
         self.word_embeddings = RCPSEmbedding(...)
@@ -2447,7 +2487,7 @@ class CaduceusMixerModel(nn.Module):
         create_block(..., rcps=config.rcps, ...) for i in range(config.n_layer)
     ])
     self.norm_f = norm_f if (config.fused_add_norm or not config.rcps) else RCPSAddNormWrapper(norm_f)
-</code></pre>
+</code></pre></div></p>
 <h3 id="backbone-embedding-wrapper-dna_embeddingpy">Backbone &amp; Embedding Wrapper (<code>dna_embedding.py</code>)<a class="headerlink" href="#backbone-embedding-wrapper-dna_embeddingpy" title="Permanent link">&para;</a></h3>
 <p><code>DNAEmbeddingModelCaduceus</code> strips the LM head and exposes hidden states shaped <code>[B, L, d]</code> for standard mode or <code>[B, L, d, 2]</code> when RCPS/conjoined inference is enabled.</p>
 <p>```156:195:external_repos/caduceus/src/models/sequence/dna_embedding.py
@@ -2464,9 +2504,8 @@ class DNAEmbeddingModelCaduceus(DNAEmbeddingModel):
             hidden_states = self.caduceus(input_ids[..., 0], return_dict=False)
             hidden_states_rc = self.caduceus(input_ids[..., 1], return_dict=False)
             return torch.stack([hidden_states, hidden_states_rc], dim=-1), None
-        return self.caduceus(input_ids, return_dict=False), None</p>
-<pre><code>
-### Training Loop (`train.py`)
+        return self.caduceus(input_ids, return_dict=False), None
+<div class="highlight"><pre><span></span><code>### Training Loop (`train.py`)
 The Lightning `SequenceLightningModule` builds datasets/encoders from Hydra configs, forwards batches through encoder/decoder stacks, logs losses/metrics, and supports distributed strategies plus gradient accumulation.
 
 ```126:377:external_repos/caduceus/train.py
@@ -2482,7 +2521,7 @@ class SequenceLightningModule(pl.LightningModule):
         loss = self.loss(x, y, **w)
         metrics = self.metrics(x, y, **w)
         self.log_dict({f&quot;{prefix}/{k}&quot;: v for k, v in metrics.items()}, ...)
-</code></pre>
+</code></pre></div></p>
 <h3 id="inference-vep-embeddings-vep_embeddingspy">Inference &amp; VEP Embeddings (<code>vep_embeddings.py</code>)<a class="headerlink" href="#inference-vep-embeddings-vep_embeddingspy" title="Permanent link">&para;</a></h3>
 <p>The VEP helper loads any HF model (Caduceus by default), tokenizes ref/alt + RC windows, averages variant-centered windows, and writes <code>.pt</code> tensors per split—handy for multimodal or downstream regression.</p>
 <p>```30:392:external_repos/caduceus/vep_embeddings.py
@@ -2494,9 +2533,8 @@ tokens_window_ref = torch.gather(
     item_ref, 1,
     expanded_indices.unsqueeze(-1).expand(-1, -1, item_ref.size(2))
 ).mean(dim=1)
-storage_dict["concat_avg_ws"] = torch.cat([tokens_window_ref, tokens_window_alt], dim=-1)</p>
-<pre><code>
-### Sequence Constraints (`configuration_caduceus.py`)
+storage_dict["concat_avg_ws"] = torch.cat([tokens_window_ref, tokens_window_alt], dim=-1)
+<div class="highlight"><pre><span></span><code>### Sequence Constraints (`configuration_caduceus.py`)
 All RC/bidirectional behavior is driven by config: enabling RCPS, picking merge strategy (`add` vs `ew_multiply`), and passing complement maps extracted from the tokenizer.
 
 ```10:55:external_repos/caduceus/caduceus/configuration_caduceus.py
@@ -2508,29 +2546,29 @@ class CaduceusConfig(PretrainedConfig):
         self.bidirectional_weight_tie = bidirectional_weight_tie
         self.rcps = rcps
         self.complement_map = complement_map
-</code></pre>
+</code></pre></div></p>
 <h2 id="integration-hooks-genetics-brain">Integration Hooks (Genetics ↔ Brain)<a class="headerlink" href="#integration-hooks-genetics-brain" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Embedding shapes.</strong> Outputs are <code>[B, L, d]</code> by default, <code>[B, L, d, 2]</code> when strands are stacked, or <code>[B, K, 2d]</code> after VEP window pooling—mean over tokens to get <code>[B, d]</code> per strand before any fusion.^[<code>156:195:external_repos/caduceus/src/models/sequence/dna_embedding.py</code>][<code>275:385:external_repos/caduceus/vep_embeddings.py</code>]</li>
 <li><strong>Pooling choices.</strong> Mean pooling across tokens mirrors the masked-LM objective; to keep strand info, average forward and RC halves separately, then concatenate them to <code>[B, 2d]</code>.</li>
 <li><strong>Projection to shared latent.</strong> Map pooled vectors into a 512-D multimodal space with a lightweight projector:</li>
 </ul>
-<pre><code class="language-python">import torch.nn as nn
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
 
-class CaduceusProjector(nn.Module):
-    def __init__(self, input_dim=512, output_dim=512, dropout=0.1):
-        super().__init__()
-        self.net = nn.Sequential(
-            nn.Linear(input_dim, 1024),
-            nn.GELU(),
-            nn.Dropout(dropout),
-            nn.Linear(1024, output_dim),
-            nn.LayerNorm(output_dim),
-        )
+<span class="k">class</span><span class="w"> </span><span class="nc">CaduceusProjector</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">output_dim</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">net</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="mi">1024</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">GELU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">(</span><span class="n">output_dim</span><span class="p">),</span>
+        <span class="p">)</span>
 
-    def forward(self, x):
-        return self.net(x)
-</code></pre>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">net</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
 <ul>
 <li><strong>Normalization &amp; RC alignment.</strong> When RCPS doubles channels, follow the model’s own <code>RCPSAddNormWrapper</code> convention: flip the RC half, sum/average with the forward half, and only then project—this keeps embeddings invariant to strand order.^[<code>210:274:external_repos/caduceus/caduceus/modeling_caduceus.py</code>]</li>
 <li><strong>Batch &amp; memory tips.</strong> The Lightning module instantiates DDP-aware samplers and can rehydrate checkpoints via <code>utils.instantiate</code>, so mirror that pattern (especially <code>_shared_step</code>) when adding multimodal heads to avoid redundant forward passes.^[<code>291:377:external_repos/caduceus/train.py</code>]</li>
@@ -2572,10 +2610,31 @@ class CaduceusProjector(nn.Module):
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
   
+    <div class="md-copyright__highlight">
+      Maintained by Allison Eun Se You | Last updated November 2025
+
+    </div>
   
-    Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/allison-eunse/neuro-omics-kb" target="_blank" rel="noopener" title="GitHub Repository" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://allison-eunse.github.io/neuro-omics-kb/" target="_blank" rel="noopener" title="Documentation" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M384 512H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h304c26.5 0 48 21.5 48 48v288c0 20.9-13.4 38.7-32 45.3V448c17.7 0 32 14.3 32 32s-14.3 32-32 32zM96 384c-17.7 0-32 14.3-32 32s14.3 32 32 32h256v-64zm32-232c0 13.3 10.7 24 24 24h176c13.3 0 24-10.7 24-24s-10.7-24-24-24H152c-13.3 0-24 10.7-24 24m24 72c-13.3 0-24 10.7-24 24s10.7 24 24 24h176c13.3 0 24-10.7 24-24s-10.7-24-24-24z"/></svg>
     </a>
   
 </div>
