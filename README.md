@@ -7,7 +7,7 @@
 
 > **A comprehensive documentation hub for genetics and brain foundation models and their multimodal integration.**
 
-[📖 Read the Docs](https://allison-eunse.github.io/neuro-omics-kb/) | [🚀 Quick Start](#quick-start) | [💡 Use Cases](#use-cases)
+[📖 Read the Docs](https://allison-eunse.github.io/neuro-omics-kb/) | [🚀 Quick Start](https://allison-eunse.github.io/neuro-omics-kb/#getting-started) | [💡 Use Cases](https://allison-eunse.github.io/neuro-omics-kb/#use-cases)
 
 ---
 
@@ -50,18 +50,19 @@ python scripts/manage_kb.py validate models
 
 ## 💡 Use Cases
 
-**This KB helps you:**
+**This KB supports research across multiple modalities:**
 
-✅ **Understand foundation models** - Detailed walkthroughs for 9+ models with integration hooks  
-✅ **Design multimodal studies** - CCA, late fusion, contrastive learning recipes  
-✅ **Reproduce analyses** - Versioned embedding strategies, harmonization methods, experiment configs  
-✅ **Navigate datasets** - Structured cards for UK Biobank, HCP, developmental cohorts  
-✅ **Track decisions** - Decision logs documenting why certain approaches were chosen  
+- 🧬 **Genetics Research** - Extract gene embeddings, analyze variant effects, predict phenotypes from DNA sequences
+- 🧠 **Brain Imaging** - Process fMRI/sMRI, extract neuroimaging features, harmonize multi-site data
+- 🔗 **Multimodal Integration** - Fuse gene + brain embeddings, gene-brain-behavior prediction, cross-modal alignment
+- 🏥 **Multimodal & Clinical Models** - Use unified architectures (BAGEL, MoT, M3FM), process medical imaging with clinical text (TITAN, M3FM), leverage medical LLMs (Me-LLaMA)
+- 🧪 **Reproducible Research** - Use validated pipelines, experiment configs, and quality gates for your cohorts
 
 **Example workflows:**
-- Gene-brain association discovery using WES + sMRI
+- Gene-brain association discovery using WES + sMRI with CCA
 - fMRI embedding extraction with BrainLM for MDD prediction
 - Leave-one-gene-out (LOGO) attribution for gene importance
+- Multimodal fusion for clinical decision support
 
 ---
 
@@ -70,10 +71,10 @@ python scripts/manage_kb.py validate models
 <details open>
 <summary><b>📚 Documentation (docs/)</b></summary>
 
-- **Code Walkthroughs** - Step-by-step guides for 15 foundation models
-  - 🧬 Genomics: Caduceus, DNABERT-2, GENERator, Evo 2
-  - 🧠 Brain: BrainLM, Brain-JEPA, Brain Harmony, BrainMT, SwiFT
-  - 🏥 Multimodal/Clinical: M3FM, Me-LLaMA, TITAN, BAGEL, MoT, FMS-Medical catalog
+- **Code Walkthroughs** - Step-by-step guides for 15 foundation models with consistent formatting
+  - 🧬 **Genetics** (4): Caduceus, DNABERT-2, GENERator, Evo 2
+  - 🧠 **Brain** (5): BrainLM, Brain-JEPA, Brain Harmony, BrainMT, SwiFT
+  - 🏥 **Multimodal/Clinical** (6): BAGEL, MoT, M3FM, Me-LLaMA, TITAN, FMS-Medical catalog
 - **Integration Playbooks** - Multimodal fusion strategies (late fusion → contrastive → TAPE)
 - **Data Schemas** - UK Biobank, HCP, developmental cohorts
 - **Decision Logs** - Architectural choices and research rationale
@@ -84,9 +85,9 @@ python scripts/manage_kb.py validate models
 <details>
 <summary><b>🏷️ Metadata Cards (kb/)</b></summary>
 
-- **Model Cards** (`model_cards/*.yaml`) - 9 FMs with architecture specs, embedding recipes, integration hooks
+- **Model Cards** (`model_cards/*.yaml`) - 15 model cards (13 FMs + 2 ARPA-H planning cards) with architecture specs, embedding recipes, integration hooks
 - **Dataset Cards** (`datasets/*.yaml`) - Sample sizes, QC thresholds, access requirements
-- **Paper Cards** (`paper_cards/*.yaml`) - 14 research papers with structured takeaways
+- **Paper Cards** (`paper_cards/*.yaml`) - 20 research papers with structured takeaways
 - **Integration Cards** (`integration_cards/*.yaml`) - Embedding strategies, harmonization methods, preprocessing pipelines
 
 [Browse all cards →](./kb/)
