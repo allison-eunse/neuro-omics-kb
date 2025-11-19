@@ -57,6 +57,7 @@ nav:
   - Guides:
       - KB overview: guide/kb_overview.md
       - Embedding policies: kb/embedding_policies.md
+      - AI Summaries & KB Cards: generated/kb_curated/README.md
   - Models:
       - Genetics:
           - Overview: models/genetics/index.md
@@ -151,4 +152,25 @@ nav:
   - Decisions:
       - Integration plan (Nov 2025): decisions/2025-11-integration-plan.md
       - Dev validation plan: decisions/dev_validation_plan.md
+  - KB Templates (Reference):
+      - Generated Templates:
+          - Analysis recipe (CCA): generated/templates/analysis_recipe_cca.md
+          - Analysis recipe (prediction): generated/templates/analysis_recipe_prediction.md
+          - Dataset card: generated/templates/dataset_card.md
+          - Integration strategy: generated/templates/integration_strategy.md
+          - Modality features (fMRI): generated/templates/modality_features_fmri.md
+          - Modality features (genomics): generated/templates/modality_features_genomics.md
+          - Modality features (sMRI): generated/templates/modality_features_smri.md
+          - Model card: generated/templates/model_card_template.md
+      - KB Templates:
+          - Cross-domain eval card: kb/templates/cross_domain_eval_card.md
+          - Dataset card: kb/templates/dataset_card.md
+          - Experiment config stub: kb/templates/experiment_config_stub.md
+          - External model pattern: kb/templates/external_model_pattern_card.md
+          - Integration principles: kb/templates/integration_principles_card.md
+          - Method family card: kb/templates/method_family_card.md
+          - Model card: kb/templates/model_card_template.md
+      - Paper & Integration Card Templates:
+          - Integration card template: generated/kb_curated/integration_cards/template.md
+          - Paper summary template: generated/kb_curated/papers-md/template.md
 
