@@ -1,9 +1,9 @@
 # 🧬🧠 Neuro-Omics Knowledge Base
 
 [![Documentation](https://img.shields.io/badge/docs-mkdocs-blue)](https://allison-eunse.github.io/neuro-omics-kb/)
-[![Models](https://img.shields.io/badge/models-16-green)](#foundation-models)
-[![Paper Cards](https://img.shields.io/badge/papers-22-orange)](#research-papers)
-[![Integration Cards](https://img.shields.io/badge/integration%20cards-3-purple)](#integration-patterns)
+[![Models](https://img.shields.io/badge/models-15-green)](#foundation-models)
+[![Paper Cards](https://img.shields.io/badge/papers-18-orange)](#research-papers)
+[![Integration Cards](https://img.shields.io/badge/integration_cards-3-purple)](#integration-strategies)
 
 > **A comprehensive documentation hub for genetics and brain foundation models and their multimodal integration.**
 
@@ -17,9 +17,9 @@ A **documentation-first knowledge base** for researchers working with:
 - 🧬 **Genetic foundation models** (Caduceus, DNABERT-2, Evo2, GENERator)
 - 🧠 **Brain imaging models** (BrainLM, Brain-JEPA, BrainMT, Brain Harmony, SwiFT)
 - 🏥 **Multimodal/Clinical models** (BAGEL, MoT, M3FM, Me-LLaMA, TITAN, FMS-Medical)
-- 🔗 **Integration patterns** for gene-brain-behavior fusion and ARPA-H BOM design
+- 🔗 **Integration strategies** for gene-brain-behavior-language analysis
 
-**Scope:** Documentation, metadata cards, integration strategies, and analysis recipes — **not** model implementation code.
+**Scope:** Documentation, metadata cards, and integration patterns — **not** model implementation code.
 
 ---
 
@@ -42,10 +42,9 @@ python scripts/manage_kb.py validate models
 
 **New to foundation models?** Start with:
 1. 📖 [KB Overview](https://allison-eunse.github.io/neuro-omics-kb/guide/kb_overview/) - Understand the structure
-2. 🧬 [Genetics Models](https://allison-eunse.github.io/neuro-omics-kb/models/genetics/) - DNA sequence models
-3. 🧠 [Brain Models](https://allison-eunse.github.io/neuro-omics-kb/models/brain/) - Neuroimaging models
-4. 🏥 [Multimodal Models](https://allison-eunse.github.io/neuro-omics-kb/models/multimodal/) - Clinical & unified architectures
-5. 🔗 [Integration Strategy](https://allison-eunse.github.io/neuro-omics-kb/integration/integration_strategy/) - How to combine modalities
+2. 🧬 [Genetics Models Overview](https://allison-eunse.github.io/neuro-omics-kb/models/genetics/) - DNA sequence models
+3. 🧠 [Brain Models Overview](https://allison-eunse.github.io/neuro-omics-kb/models/brain/) - Neuroimaging models
+4. 🔗 [Integration Strategy](https://allison-eunse.github.io/neuro-omics-kb/integration/integration_strategy/) - How to combine modalities
 
 ---
 
@@ -53,11 +52,11 @@ python scripts/manage_kb.py validate models
 
 **This KB helps you:**
 
-✅ **Understand foundation models** - Detailed walkthroughs for 16 models (genetics, brain, multimodal)  
-✅ **Design multimodal studies** - Late fusion, two-tower contrastive, MoT-style unified architectures  
+✅ **Understand foundation models** - Detailed walkthroughs for 9+ models with integration hooks  
+✅ **Design multimodal studies** - CCA, late fusion, contrastive learning recipes  
 ✅ **Reproduce analyses** - Versioned embedding strategies, harmonization methods, experiment configs  
 ✅ **Navigate datasets** - Structured cards for UK Biobank, HCP, developmental cohorts  
-✅ **Track decisions** - Decision logs + integration pattern cards for ARPA-H BOM design  
+✅ **Track decisions** - Decision logs documenting why certain approaches were chosen  
 
 **Example workflows:**
 - Gene-brain association discovery using WES + sMRI
@@ -71,24 +70,23 @@ python scripts/manage_kb.py validate models
 <details open>
 <summary><b>📚 Documentation (docs/)</b></summary>
 
-- **Code Walkthroughs** - Step-by-step guides for 16 foundation models
+- **Code Walkthroughs** - Step-by-step guides for 15 foundation models
   - 🧬 Genomics: Caduceus, DNABERT-2, GENERator, Evo 2
   - 🧠 Brain: BrainLM, Brain-JEPA, Brain Harmony, BrainMT, SwiFT
   - 🏥 Multimodal/Clinical: M3FM, Me-LLaMA, TITAN, BAGEL, MoT, FMS-Medical catalog
-- **Integration Guides** - Analysis recipes (CCA, prediction, LOGO), modality features, embedding policies
-- **Integration Cards** - Multimodal FM patterns, ensemble integration, oncology multimodal review
-- **Data Schemas** - UK Biobank, HCP, developmental cohorts with QC protocols
-- **Decision Logs** - Architectural choices, escalation criteria, research rationale
-- **Curated Papers** - 22 paper summaries (PDFs + Markdown) in `docs/generated/kb_curated/`
+- **Integration Playbooks** - Multimodal fusion strategies (late fusion → contrastive → TAPE)
+- **Data Schemas** - UK Biobank, HCP, developmental cohorts
+- **Decision Logs** - Architectural choices and research rationale
+- **Curated Papers** - PDFs + Markdown summaries in `docs/generated/kb_curated/`
 
 </details>
 
 <details>
 <summary><b>🏷️ Metadata Cards (kb/)</b></summary>
 
-- **Model Cards** (`model_cards/*.yaml`) - 16 FMs with architecture specs, embedding recipes, integration hooks
+- **Model Cards** (`model_cards/*.yaml`) - 9 FMs with architecture specs, embedding recipes, integration hooks
 - **Dataset Cards** (`datasets/*.yaml`) - Sample sizes, QC thresholds, access requirements
-- **Paper Cards** (`paper_cards/*.yaml`) - 22 research papers with structured takeaways
+- **Paper Cards** (`paper_cards/*.yaml`) - 14 research papers with structured takeaways
 - **Integration Cards** (`integration_cards/*.yaml`) - Embedding strategies, harmonization methods, preprocessing pipelines
 
 [Browse all cards →](./kb/)
@@ -118,7 +116,7 @@ Ready-to-run YAML templates in `configs/experiments/`:
 
 ## 🎯 Foundation Models
 
-### 🧬 Genetics Models
+### Genetics Models
 | Model | Best for | Context | Documentation |
 |-------|----------|---------|---------------|
 | 🧬 [Caduceus](https://allison-eunse.github.io/neuro-omics-kb/models/genetics/caduceus/) | RC-equivariant gene embeddings | DNA sequences | [Walkthrough](https://allison-eunse.github.io/neuro-omics-kb/code_walkthroughs/caduceus_walkthrough/) |
@@ -126,7 +124,7 @@ Ready-to-run YAML templates in `configs/experiments/`:
 | 🧬 [Evo 2](https://allison-eunse.github.io/neuro-omics-kb/models/genetics/evo2/) | Ultra-long regulatory regions | 1M context | [Walkthrough](https://allison-eunse.github.io/neuro-omics-kb/code_walkthroughs/evo2_walkthrough/) |
 | 🧬 [GENERator](https://allison-eunse.github.io/neuro-omics-kb/models/genetics/generator/) | Generative modeling | 6-mer LM | [Walkthrough](https://allison-eunse.github.io/neuro-omics-kb/code_walkthroughs/generator_walkthrough/) |
 
-### 🧠 Brain Models
+### Brain Models
 | Model | Modality | Best for | Documentation |
 |-------|----------|----------|---------------|
 | 🧠 [BrainLM](https://allison-eunse.github.io/neuro-omics-kb/models/brain/brainlm/) | fMRI | Site-robust embeddings | [Walkthrough](https://allison-eunse.github.io/neuro-omics-kb/code_walkthroughs/brainlm_walkthrough/) |
@@ -135,33 +133,41 @@ Ready-to-run YAML templates in `configs/experiments/`:
 | 🧠 [BrainMT](https://allison-eunse.github.io/neuro-omics-kb/models/brain/brainmt/) | sMRI/fMRI | Mamba efficiency | [Walkthrough](https://allison-eunse.github.io/neuro-omics-kb/code_walkthroughs/brainmt_walkthrough/) |
 | 🧠 [SwiFT](https://allison-eunse.github.io/neuro-omics-kb/models/brain/swift/) | fMRI | Hierarchical spatiotemporal | [Walkthrough](https://allison-eunse.github.io/neuro-omics-kb/code_walkthroughs/swift_walkthrough/) |
 
+### Multimodal & Clinical Models
+| Model | Modalities | Best for | Documentation |
+|-------|-----------|----------|---------------|
+| 🏥 [BAGEL](https://allison-eunse.github.io/neuro-omics-kb/models/multimodal/bagel/) | Vision + Text + Video | Unified multimodal FM with MoT | [Walkthrough](https://allison-eunse.github.io/neuro-omics-kb/code_walkthroughs/bagel_walkthrough/) |
+| 🏥 [MoT](https://allison-eunse.github.io/neuro-omics-kb/models/multimodal/mot/) | Text + Images + Speech | Sparse mixture-of-transformers | [Walkthrough](https://allison-eunse.github.io/neuro-omics-kb/code_walkthroughs/mot_walkthrough/) |
+| 🏥 [M3FM](https://allison-eunse.github.io/neuro-omics-kb/models/multimodal/m3fm/) | CXR + Text | Multilingual medical reports | [Walkthrough](https://allison-eunse.github.io/neuro-omics-kb/code_walkthroughs/m3fm_walkthrough/) |
+| 🏥 [Me-LLaMA](https://allison-eunse.github.io/neuro-omics-kb/models/multimodal/me_llama/) | Medical Text | LLM for clinical reasoning | [Walkthrough](https://allison-eunse.github.io/neuro-omics-kb/code_walkthroughs/melamma_walkthrough/) |
+| 🏥 [TITAN](https://allison-eunse.github.io/neuro-omics-kb/models/multimodal/titan/) | Histopathology | Whole-slide image analysis | [Walkthrough](https://allison-eunse.github.io/neuro-omics-kb/code_walkthroughs/titan_walkthrough/) |
+| 🏥 [FMS-Medical](https://allison-eunse.github.io/neuro-omics-kb/models/multimodal/fms_medical/) | Clinical Multi-modal | Medical foundation models catalog | [Walkthrough](https://allison-eunse.github.io/neuro-omics-kb/code_walkthroughs/fms_medical_walkthrough/) |
+
 ---
 
 ## 📋 Research Papers
 
-**22 structured paper cards** documenting:
+**18 structured paper cards** documenting:
 
-- 🔗 **Integration methods** (5): Late fusion, multimodal oncology, MDD genes, PRS, GWAS, multimodal FM survey
 - 🧬 **Genetics FMs** (3): Caduceus, Evo2, GENERator
 - 🧠 **Brain FMs** (4): BrainLM, Brain-JEPA, Brain Harmony, BrainMT
 - 🏥 **Multimodal/Clinical FMs** (5): BAGEL, MoT, M3FM, Me-LLaMA, TITAN
-- 📚 **General FMs** (1): Foundation models overview
+- 🔗 **Integration & Methods** (5): Ensemble integration, Multimodal FMs survey, MM-LLM imaging, Oncology review, Yoon BioKDD
+- 🧬 **Genomics & Population** (2): GWAS diverse populations, PRS guide
 
-[View all paper cards →](./kb/paper_cards/) | [Browse papers online →](https://allison-eunse.github.io/neuro-omics-kb/)
+[View all paper cards →](./kb/paper_cards/) | [Browse summaries →](https://allison-eunse.github.io/neuro-omics-kb/generated/kb_curated/papers-md/)
 
 ---
 
-## 🔗 Integration Patterns
+## 🔗 Integration Strategies
 
-**3 integration cards** synthesizing fusion strategies:
+**3 comprehensive integration cards** synthesizing multimodal patterns:
 
-| Card | Purpose | Key Takeaway |
-|------|---------|--------------|
-| 🎯 [Multimodal FM Patterns](https://allison-eunse.github.io/neuro-omics-kb/models/integrations/multimodal_fm_patterns/) | Distill ARPA-H BOM-relevant patterns | Two-tower CLIP, LLM-as-bridge, unified MoT |
-| 📊 [Ensemble Integration](https://allison-eunse.github.io/neuro-omics-kb/models/integrations/ensemble_integration/) | Late fusion best practices | Simple averaging, stacking, ensemble selection |
-| 🏥 [Oncology Multimodal Review](https://allison-eunse.github.io/neuro-omics-kb/models/integrations/oncology_multimodal_review/) | Cross-domain fusion lessons | Confound control, evaluation protocols, architecture decision tree |
+- 🎯 **[Ensemble Integration](https://allison-eunse.github.io/neuro-omics-kb/models/integrations/ensemble_integration/)** - Model stacking, averaging, and meta-learning for late fusion
+- 🏥 **[Oncology Multimodal Review](https://allison-eunse.github.io/neuro-omics-kb/models/integrations/oncology_multimodal_review/)** - Early/intermediate/late fusion taxonomy from cancer research
+- 🎨 **[Multimodal FM Patterns](https://allison-eunse.github.io/neuro-omics-kb/models/integrations/multimodal_fm_patterns/)** - Architectural patterns from BAGEL, MoT, M3FM for Brain-Omics Models
 
-[View integration strategy →](https://allison-eunse.github.io/neuro-omics-kb/integration/integration_strategy/)
+[View integration design patterns →](https://allison-eunse.github.io/neuro-omics-kb/integration/design_patterns/) | [Multimodal architectures →](https://allison-eunse.github.io/neuro-omics-kb/integration/multimodal_architectures/)
 
 ---
 
@@ -195,7 +201,25 @@ python scripts/codex_gate.py --mode full --label cycle2 --since HEAD~1
 
 ## 🌍 Role in Larger Ecosystems
 
-In addition to standalone neurogenomics analyses, **neuro-omics-kb** serves as the **neurogenomics documentation layer** inside larger multimodal brain–omics–LLM FM efforts (e.g., ARPA-H–style **Brain-Omics Model (BOM)**). It documents models, datasets, and integration recipes so that **gene–brain–behaviour FMs**—spanning adult and developmental cohorts, MRI/fMRI, EEG/EPhys, genetics, behavioural/developmental assessments, and language—can be scaled, compared, and reproduced across cohorts and projects.
+In addition to standalone neurogenomics analyses, **neuro-omics-kb** serves as the **documentation layer** for multimodal brain–omics–LLM foundation model efforts, including ARPA-H–style **Brain-Omics Model (BOM)** initiatives.
+
+### ARPA-H Brain-Omics Model (BOM) Alignment
+
+This KB provides the **foundation for escalating from late fusion → contrastive learning → unified multimodal architectures**:
+
+- **Phase 1 (Current):** Late fusion baselines with genetics + brain FMs
+  - Tools: CCA+permutation, prediction baselines, partial correlations
+  - Models: Caduceus/DNABERT-2 (genetics) + BrainLM/SwiFT (brain)
+  
+- **Phase 2 (Near-term):** Two-tower contrastive alignment
+  - Patterns: InfoNCE, frozen encoders, small projectors
+  - Reference: M3FM, oncology multimodal review
+  
+- **Phase 3 (Long-term):** Unified Brain-Omics Models
+  - Architectures: MoT-style sparse transformers, BAGEL-style unified decoders
+  - Integration: Gene-brain-behavior-language tokens with LLM as semantic hub
+
+[Read Integration Plan →](https://allison-eunse.github.io/neuro-omics-kb/decisions/2025-11-integration-plan/) | [View Design Patterns →](https://allison-eunse.github.io/neuro-omics-kb/integration/design_patterns/)
 
 ---
 

@@ -1,187 +1,147 @@
 ---
 title: Integration Baseline Plan (Nov 2025)
 status: active
-updated: 2025-11-20
+updated: 2025-11-19
 ---
 
 # Integration Baseline Plan
 
-## Overview
+This document defines the **phased escalation strategy** for gene-brain-behavior integration, informed by foundation model research, oncology multimodal reviews, and ARPA-H Brain-Omics Model (BOM) vision.
 
-This document outlines the **phased integration roadmap** for multimodal gene–brain–behavior fusion in the Neuro-Omics KB, informed by ensemble integration principles (Li et al. 2022), oncology multimodal reviews (Waqas et al. 2024), and emerging multimodal FM patterns (BAGEL, MoT, M3FM, Me-LLaMA, TITAN).
+## Phase 1: Late Fusion Baselines (Current)
 
-**Philosophy:** Start simple (late fusion), escalate strategically only when simpler methods show clear limitations or specific ARPA-H BOM goals require it.
+**Principle**: Prefer late integration first under heterogeneous semantics.
 
----
+- **Sources**: Ensemble Integration (Li et al. 2022), Oncology multimodal review (2024)
+- **Inference**: Preserve modality-specific signal; avoid premature joint spaces
+- **Implementation**:
+  - Concatenate compact per-modality features (genetics embeddings + sMRI PCA + fMRI FC)
+  - Train LR and GBDT baselines with stratified CV
+  - Z-score + residualize per feature vs covariates
+  - AUROC/AUPRC with CIs; DeLong/bootstrap for differences
 
-## Where each step came from (paper → inference → our plan)
+**Analysis Recipes**:
 
-- Principle: Prefer late integration first under heterogeneous semantics.
-  - Sources: Ensemble Integration (Li et al. 2022), Oncology multimodal review (2024).
-  - Inference: Preserve modality-specific signal; avoid premature joint spaces.
-  - Plan: Concatenate compact per-modality features; train LR and GBDT baselines.
+- **CCA + permutation**: Test gene-brain associations before heavy fusion
+  - 1,000 permutations on residualized, standardized inputs
+  - Record canonical correlations, significance, and stability
+- **Prediction baselines**: Gene-only vs Brain-only vs Late fusion
+  - Establish unimodal baselines before multimodal claims
+- **Partial correlations**: Logistic regression with covariates
+  - Control for age, sex, site, scanner before interpreting effects
 
-- Robustness and evaluation discipline.
-  - Sources: Oncology review; BrainLM/Brain-JEPA/Harmony practices.
-  - Plan: Z-score + residualize per feature vs covariates; same CV folds; AUROC/AUPRC with CIs; DeLong/bootstrap for differences.
+**Modality Sequencing**:
 
-- CCA + permutation and partial correlations before heavy fusion.
-  - Sources: Review guidance; neuro CCA tradition.
-  - Plan: CCA on residualized, standardized inputs; 1,000 permutations; partial correlations/logistic with covariates.
+- Start with sMRI ROIs (FreeSurfer PCA embeddings)
+- Add fMRI as FC vectors (BrainLM/SwiFT embeddings)
+- Later consider brain FM latents (BrainMT, Brain Harmony)
 
-- Modality sequencing.
-  - Sources: Harmony, SwiFT, BrainLM/JEPA.
-  - Plan: Start with sMRI ROIs; add fMRI as FC vectors; later consider brain FMs.
+**Genetics Embedding Hygiene**:
 
-- Genetics embedding hygiene and attribution.
-  - Sources: Caduceus (RC-equivariance), DNABERT-2, GENERator; BIOKDD'25 LOGO.
-  - Plan: RC-average; deterministic tokenization; LOGO ΔAUC with Wilcoxon + FDR.
+- **RC-equivariance**: Average forward + reverse-complement embeddings (Caduceus)
+- **Deterministic tokenization**: Use consistent k-mer/BPE strategies (DNABERT-2, GENERator)
+- **Gene attribution**: LOGO (leave-one-gene-out) ΔAUC with Wilcoxon + FDR (Yoon BioKDD'25)
 
----
+## Phase 2: Two-Tower Contrastive (Near-term)
 
-## Escalation Roadmap
+**Trigger**: Late fusion shows consistent gene-brain signal (CCA p<0.001, prediction improvement >5% AUROC)
 
-### Phase 1: Late Fusion (Ensemble Integration — **Current baseline**)
+**Architecture Pattern**:
 
-**Mechanism:**
-- Concatenate per-modality embeddings (gene 512-D + brain 512-D → 1024-D fusion vector)
-- Train LR/GBDT on concatenated features
-- Alternative: Train separate models per modality, then ensemble predictions (averaging, stacking)
+- **Frozen encoders**: Genetics FM (Caduceus/DNABERT-2) + Brain FM (BrainLM/SwiFT)
+- **Small projectors**: 256→128→64 for each modality
+- **Contrastive loss**: InfoNCE with temperature tuning
+- **Reference models**: M3FM (vision-language for medical imaging), oncology two-tower review
 
-**Success Criteria:**
-- Fusion AUROC > max(Gene, Brain) with p < 0.05 (DeLong/bootstrap)
-- Stable performance across CV folds
+**What to Monitor**:
 
-**Next Phase Trigger:**
-- If fusion significantly outperforms single modalities → escalate to Phase 2
-- If gains are marginal or site/confound effects dominate → consider harmonization or Phase 3
+- Embedding alignment quality (cosine similarity distributions)
+- Downstream task performance vs. late fusion
+- Computational cost (FLOPs, GPU memory)
 
-**References:**
-- [Ensemble Integration card](../models/integrations/ensemble_integration.md)
-- [Integration Strategy](../integration/integration_strategy.md)
+**When to Escalate to Phase 3**:
 
----
+- Two-tower alignment consistently outperforms late fusion by >10% AUROC
+- Need for cross-modal reasoning (e.g., "which genes explain this brain pattern?")
+- Multi-site/TR heterogeneity requires joint harmonization
 
-### Phase 2: Two-Tower Contrastive Alignment (CLIP-style)
+## Phase 3: Unified Multimodal Architectures (Long-term)
 
-**Mechanism:**
-- Freeze pre-trained gene FM and brain FM encoders
-- Add small learnable projectors (MLP) for each modality
-- Train with InfoNCE contrastive loss on paired (gene, brain) samples
-- Enables zero-shot cross-modal retrieval and alignment
+**Vision**: ARPA-H-style Brain-Omics Model (BOM) — unified transformer processing gene-brain-behavior-language tokens
 
-**When to Use:**
-- Zero-shot transfer to new cohorts/domains
-- When paired gene-brain data is limited but weakly paired data is abundant
-- When interpretability of modality-specific contributions is critical
+**Architecture Options**:
 
-**Success Criteria:**
-- Improved cross-modal retrieval metrics (recall@k)
-- Better zero-shot performance on held-out cohorts
-- Stable alignment in shared latent space
+### Option A: Mixture-of-Transformers (MoT)
 
-**Next Phase Trigger:**
-- If contrastive alignment improves downstream tasks significantly
-- If LLM-based reasoning or clinical explanations are needed → Phase 3
-- If complex cross-modal interactions are hypothesized → Phase 4
+- **Pattern**: Modality-specific FFNs + shared global attention
+- **Advantages**: 
+  - 55% FLOPs of dense baseline
+  - Modality-aware sparsity (genetics_ffn, brain_ffn, behavior_ffn)
+  - Stable scaling to 7B+ parameters
+- **Reference**: MoT paper (2025), BAGEL paper (2025)
+- **Use case**: Large cohorts (UK Biobank N=500k+), compute-constrained environments
 
-**References:**
-- [Multimodal FM Patterns card](../models/integrations/multimodal_fm_patterns.md) (Pattern 1: Two-Tower CLIP)
-- [M3FM](../models/multimodal/m3fm.md), [TITAN](../models/multimodal/titan.md)
+### Option B: Unified Decoder (BAGEL-style)
 
----
+- **Pattern**: Single decoder-only transformer with interleaved modality tokens
+- **Advantages**:
+  - Emergent cross-modal reasoning
+  - Supports both understanding (gene-brain association) and generation (clinical report)
+  - Mixture-of-experts for task-specific specialization
+- **Reference**: BAGEL paper (2025)
+- **Use case**: Gene-brain-behavior-language unification with LLM as semantic hub
 
-### Phase 3: LLM as Semantic Bridge
+### Option C: LLM-as-Bridge
 
-**Mechanism:**
-- Project gene and brain embeddings into the token space of a medical LLM (e.g., Me-LLaMA)
-- Use LLM as a semantic hub for multimodal reasoning, natural language queries, and clinical report generation
-- Enables human-centric interaction with multimodal neuro-omics data
+- **Pattern**: Project genetics/brain embeddings into LLM token space (Me-LLaMA-style)
+- **Advantages**:
+  - Natural language queries over multimodal neuro-omics data
+  - Leverage pretrained medical LLMs for domain knowledge
+  - Explain genetic risk in natural language
+- **Reference**: Me-LLaMA (2024), M3FM (2025)
+- **Use case**: Clinical decision support, patient-facing genetic counseling
 
-**When to Use:**
-- Clinician-facing AI for explanation and query
-- Multimodal clinical reasoning (gene risk + brain imaging + EHR)
-- Low-resource language support (multilingual LLM)
+## Decision Table
 
-**Success Criteria:**
-- Improved clinical utility and interpretability
-- Robust multimodal question answering
-- Seamless integration of clinical text with omics/imaging data
+| Signal Strength | Computational Budget | Primary Goal | Recommended Pattern |
+|----------------|---------------------|-------------|-------------------|
+| Weak (CCA p>0.01) | Any | Establish baseline | Late Fusion |
+| Moderate (CCA p<0.001, ΔAUROC<5%) | Low | Gene-brain association | Late Fusion + CCA |
+| Strong (ΔAUROC>5%) | Medium | Multimodal prediction | Two-Tower Contrastive |
+| Very Strong (ΔAUROC>10%) | High | Cross-modal reasoning | MoT or Unified Decoder |
+| Strong + Language | High | Clinical integration | LLM-as-Bridge |
 
-**Next Phase Trigger:**
-- If fine-grained, low-level feature fusion is needed → Phase 4
-- If computational cost of large LLM is prohibitive → optimize or defer
+## Current Implementation Status
 
-**References:**
-- [Multimodal FM Patterns card](../models/integrations/multimodal_fm_patterns.md) (Pattern 2: LLM-as-bridge)
-- [Me-LLaMA](../models/multimodal/me_llama.md)
+✅ **Phase 1 Complete**:
+- Analysis recipes documented (CCA, prediction, partial correlations)
+- Modality features specified (genomics, sMRI, fMRI)
+- Embedding policies defined (naming, PCA dims)
+- Integration cards: Ensemble integration, Oncology review
 
----
+🚧 **Phase 2 Prep**:
+- Integration card: Multimodal FM patterns (synthesizes BAGEL, MoT, M3FM, Me-LLaMA, TITAN)
+- Multimodal architectures doc (detailed BAGEL/MoT/M3FM/Me-LLaMA/TITAN patterns)
+- Design patterns doc (late fusion, two-tower, MoT, BOM escalation logic)
 
-### Phase 4: Unified MoT-Style Multimodal Transformer (Deep Early Fusion)
+⏳ **Phase 3 Future**:
+- Awaiting Phase 1 validation on UK Biobank + genetics embeddings
+- Will pilot two-tower if CCA+permutation shows p<0.001 canonical correlations
+- BOM architecture selection depends on computational resources and cohort size
 
-**Mechanism:**
-- Interleave gene, brain, and behavior tokens in a single unified transformer
-- Use modality-aware sparse parameters (MoT architecture) for compute efficiency
-- Global self-attention enables rich cross-modal interactions
+## Key References
 
-**When to Use:**
-- Large-scale multimodal pretraining from scratch (ARPA-H BOM)
-- When deep, early fusion is hypothesized to capture critical gene-brain-behavior interactions
-- When compute efficiency is paramount (MoT uses ~55% FLOPs vs dense transformer)
+- **Ensemble Integration**: [Li et al. 2022](../../generated/kb_curated/papers-md/ensemble_integration_li2022/)
+- **Oncology Multimodal Review**: [Waqas et al. 2024](../../generated/kb_curated/papers-md/oncology_multimodal_waqas2024/)
+- **Multimodal FM Survey**: [Gupta et al. 2025](../../generated/kb_curated/papers-md/mmfm_2025/)
+- **BAGEL**: [arXiv:2505.14683](../../generated/kb_curated/papers-md/bagel_2025/)
+- **MoT**: [arXiv:2411.04996](../../generated/kb_curated/papers-md/mot_2025/)
+- **M3FM**: [ai-in-health/M3FM](../../generated/kb_curated/papers-md/m3fm_2025/)
+- **Me-LLaMA**: [BIDS-Xu-Lab/Me-LLaMA](../../generated/kb_curated/papers-md/me_llama_2024/)
 
-**Success Criteria:**
-- Substantial gains over simpler fusion methods
-- Efficient training on diverse multimodal corpora
-- Unified understanding and generation capabilities
+## Next Steps
 
-**Caution:**
-- High complexity and resource requirements
-- Only escalate here if Phases 1–3 show clear limitations
-
-**References:**
-- [Multimodal FM Patterns card](../models/integrations/multimodal_fm_patterns.md) (Pattern 3: Unified MoT)
-- [BAGEL](../models/multimodal/bagel.md), [MoT](../models/multimodal/mot.md)
-
----
-
-## Decision Tree
-
-```mermaid
-graph TD
-    A[Start: Late Fusion Baseline] --> B{Fusion > Single Modality?}
-    B -->|No, marginal| C[Improve preprocessing/harmonization]
-    B -->|Yes, significant| D{Zero-shot or cross-modal retrieval needed?}
-    D -->|Yes| E[Phase 2: Two-Tower Contrastive]
-    D -->|No| F{Clinical reasoning/LLM interaction needed?}
-    F -->|Yes| G[Phase 3: LLM-as-bridge]
-    F -->|No| H{Deep early fusion critical?}
-    H -->|Yes| I[Phase 4: Unified MoT Transformer]
-    H -->|No| J[Stay at Late Fusion + Iterate]
-    E --> K{Gains plateau?}
-    K -->|Yes| F
-    G --> L{Need finer-grained fusion?}
-    L -->|Yes| I
-    I --> M[ARPA-H BOM Architecture]
-```
-
----
-
-## Key Principles
-
-1. **Start simple:** Late fusion (EI) establishes a robust baseline with minimal assumptions
-2. **Escalate strategically:** Move to more complex patterns only when justified by specific limitations or BOM goals
-3. **Preserve modality specificity:** Avoid premature joint spaces that may lose modality-specific signal
-4. **Control confounds:** Residualize per modality before fusion; use group-aware CV
-5. **Benchmark rigorously:** Use DeLong tests, bootstrapped CIs, permutation tests for statistical rigor
-6. **Document decisions:** Log escalation criteria, success metrics, and failure modes in decision logs
-
----
-
-## Related Resources
-
-- [Integration Strategy](../integration/integration_strategy.md) — Overall fusion approach
-- [Multimodal FM Patterns](../models/integrations/multimodal_fm_patterns.md) — Pattern catalog with BOM roadmap
-- [Ensemble Integration](../models/integrations/ensemble_integration.md) — Late fusion implementation guide
-- [Oncology Multimodal Review](../models/integrations/oncology_multimodal_review.md) — Cross-domain fusion cautions
-- [Design Patterns](../integration/design_patterns.md) — General pattern taxonomy
+1. **Validate Phase 1** on UK Biobank WES + sMRI/fMRI
+2. **Monitor trigger conditions** for Phase 2 escalation
+3. **Pilot two-tower** if late fusion shows >5% AUROC improvement
+4. **Document decisions** in this log as we progress through phases
