@@ -1,0 +1,64 @@
+title: "DNABERT-2: Efficient Foundation Model and Benchmark For Multi-Species Genomes"
+short_name: "DNABERT-2"
+authors:
+  - Zhihan Zhou
+  - Yanrong Ji
+  - Weijian Li
+  - Pratik Dutta
+  - Ramana V Davuluri
+  - Han Liu
+year: 2024
+venue: "ICLR 2024"
+pdf_source: "https://arxiv.org/abs/2306.15006"
+local_pdf_path: "docs/generated/kb_curated/papers-pdf/dnabert2_2024.pdf"
+summary_md_path: "docs/generated/kb_curated/papers-md/dnabert2_2024.md"
+
+summary: |
+  DNABERT-2 is a 117M-parameter BERT encoder for DNA sequences that replaces fixed k-mer tokenization with Byte-Pair Encoding (BPE), enabling flexible vocabulary that adapts to sequence statistics. Pretrained on multi-species genomic data with ALiBi positional bias, it achieves strong zero-shot transfer to understudied organisms and excels at cross-species tasks. The model is paired with the Genome Understanding Evaluation (GUE) benchmark covering diverse genomic prediction tasks.
+
+key_contributions:
+  - "BPE tokenization for genomics: learns biologically meaningful subword units (motifs, repeats) instead of fixed k-mers"
+  - "Multi-species pretraining: human + model organisms → strong cross-species transfer"
+  - "ALiBi positional encoding: enables extrapolation to longer sequences than seen during training"
+  - "GUE benchmark: standardized evaluation suite for genomic foundation models across multiple tasks"
+
+model:
+  name: "DNABERT-2"
+  backbone: "BERT encoder with ALiBi positional bias and BPE tokenizer"
+  architecture: "Bidirectional transformer with masked language modeling"
+  modalities:
+    - dna
+  parameter_scale: "117M"
+  context_length: 512
+  special_features:
+    - "BPE vocabulary learned from multi-species corpus"
+    - "Cross-species transfer learning capability"
+    - "LoRA fine-tuning support for lightweight adaptation"
+
+implications_for_project:
+  - "Alternative to Caduceus for genetics embeddings when RC-equivariance is not critical"
+  - "Useful for cross-species validation: test gene-brain associations on mouse/primate orthologs"
+  - "BPE tokenization may capture regulatory motifs better than fixed k-mers"
+  - "Requires manual RC-averaging (not RC-equivariant like Caduceus)"
+  - "Strong baseline for comparison: DNABERT-2 vs. Caduceus RC-equivariance impact"
+
+related_to:
+  - "docs/generated/kb_curated/papers-md/dnabert2_2024.md"
+  - "kb/model_cards/dnabert2.yaml"
+  - "docs/models/genetics/dnabert2.md"
+  - "docs/code_walkthroughs/dnabert2_walkthrough.md"
+  - "docs/integration/modality_features/genomics.md"
+  - "kb/paper_cards/caduceus_2024.yaml"
+
+verification_status: "needs_human_review"
+notes: "DNABERT-2's BPE tokenization offers flexibility for motif discovery, but requires manual RC-averaging. Compare with Caduceus for RC-equivariance vs. tokenization flexibility trade-offs."
+
+tags:
+  - genetics
+  - foundation_model
+  - bert
+  - bpe
+  - multi-species
+  - cross-species-transfer
+  - genomics
+

@@ -116,35 +116,41 @@ These are integration/method papers, not model papers:
    - Follow `bagel_2025.yaml` as template
    - Link to model card: `kb/model_cards/me_llama.yaml`
 
-### Medium Priority (Verify & Create If Needed)
+### Medium Priority (COMPLETED ✅)
 
-4. **Check if DNABERT-2 has a published paper**
-   - If yes: Create markdown summary + YAML card
-   - If no: Document why no paper card exists
+4. **DNABERT-2** ✅
+   - **Paper found**: "DNABERT-2: Efficient Foundation Model and Benchmark For Multi-Species Genomes" (ICLR 2024)
+   - **Created**: `kb/paper_cards/dnabert2_2024.yaml`
+   - **Authors**: Zhihan Zhou et al.
+   - **Link**: [arXiv:2306.15006](https://arxiv.org/abs/2306.15006)
 
-5. **Check if SwiFT has a published paper**
-   - If yes: Create markdown summary + YAML card
-   - If no: Document why no paper card exists
+5. **SwiFT** ✅
+   - **Paper found**: "SwiFT: Swin 4D fMRI Transformer" (NeurIPS 2023)
+   - **Created**: `kb/paper_cards/swift_2023.yaml`
+   - **Authors**: Peter Yongho Kim et al.
+   - **Link**: [arXiv:2307.05916](https://arxiv.org/abs/2307.05916)
 
-### Low Priority (Verify Relevance)
+### Low Priority (COMPLETED ✅)
 
-6. **Verify if tabpfn needs a paper card**
-   - Check if it's used in neuro-omics workflows
-   - If not relevant, consider removing model card
+6. **TabPFN** ✅
+   - **Paper found**: "TabPFN: A Transformer That Solves Small Tabular Classification Problems in a Second" (Nature 2024)
+   - **Created**: `kb/paper_cards/tabpfn_2024.yaml`
+   - **Authors**: Noah Hollmann et al.
+   - **Link**: [Nature](https://www.nature.com/articles/s41586-024-08328-6)
+   - **Relevance**: Used as baseline predictor for tabular fusion tasks (late fusion with LR/GBDT)
 
 ---
 
 ## Expected Count After Fixes
 
 **Model Cards**: 15 (unchanged)
-**Paper Cards**: 17 (14 current + 3 new)
-- 3 new: m3fm_2025, titan_2025, me_llama_2024
-- Plus 2 if DNABERT-2 and SwiFT have papers
+**Paper Cards**: 20 (14 original + 6 new)
+- 6 new: m3fm_2025, titan_2025, me_llama_2024, dnabert2_2024, swift_2023, tabpfn_2024
 
 **Note**: The count won't match exactly because:
-- Some paper cards document integration methods (not models)
-- Some model cards are conceptual (no papers)
-- Some models may not have published papers
+- Some paper cards document integration methods (not models): ensemble_integration_li2022, oncology_multimodal_waqas2024, yoon_biokdd2025, mmfm_2025, etc.
+- Some model cards are conceptual (no papers): llm_semantic_bridge, vlm_dev_clinical
+- TabPFN is included as a relevant baseline predictor for tabular fusion tasks
 
 ---
 

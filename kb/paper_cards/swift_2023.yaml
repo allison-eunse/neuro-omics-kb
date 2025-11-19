@@ -1,0 +1,72 @@
+title: "SwiFT: Swin 4D fMRI Transformer"
+short_name: "SwiFT"
+authors:
+  - Peter Yongho Kim
+  - Junbeom Kwon
+  - Sunghwan Joo
+  - Sangyoon Bae
+  - Donggyu Lee
+  - Yoonho Jung
+  - Shinjae Yoo
+  - Jiook Cha
+  - Taesup Moon
+year: 2023
+venue: "NeurIPS 2023"
+pdf_source: "https://arxiv.org/abs/2307.05916"
+doi: "10.48550/arXiv.2307.05916"
+local_pdf_path: "docs/generated/kb_curated/papers-pdf/swift_2023.pdf"
+summary_md_path: "docs/generated/kb_curated/papers-md/swift_2023.md"
+
+summary: |
+  SwiFT (Swin 4D fMRI Transformer) is a Swin Transformer architecture that learns brain dynamics directly from 4D fMRI volumes in an end-to-end, memory- and computation-efficient manner. It implements 4D window multi-head self-attention and absolute positional embeddings to model spatiotemporal brain functional data without requiring hand-crafted feature extraction or parcellation. Evaluated on HCP, ABCD, and UK Biobank datasets, SwiFT consistently outperforms state-of-the-art models on sex, age, and cognitive intelligence prediction tasks. The model supports contrastive loss-based self-supervised pre-training to enhance downstream task performance.
+
+key_contributions:
+  - "First Swin Transformer to process 4D spatiotemporal fMRI data end-to-end"
+  - "4D window multi-head self-attention: memory-efficient hierarchical processing of volumetric time series"
+  - "Absolute positional embeddings for spatiotemporal coordinates"
+  - "Contrastive self-supervised pre-training improves downstream task performance"
+  - "State-of-the-art results on HCP, ABCD, UK Biobank for sex, age, cognitive intelligence prediction"
+
+model:
+  name: "SwiFT"
+  backbone: "Swin Transformer 4D (hierarchical windowed attention)"
+  architecture: "4D Swin Transformer with shifted windows for spatiotemporal volumes"
+  modalities:
+    - fmri
+  parameter_scale: "~80M (default config)"
+  context_length: "17,766,400 (96×96×96 voxels × 20 frames)"
+  special_features:
+    - "Windowed attention along spatial + temporal axes"
+    - "No parcellation required: learns spatial structure end-to-end"
+    - "Contrastive self-supervised pre-training support"
+    - "PyTorch Lightning training with datamodule utilities"
+
+implications_for_project:
+  - "Alternative to BrainLM/Brain-JEPA for fMRI embeddings when parcellation-free analysis desired"
+  - "Hierarchical 4D processing: captures multi-scale brain dynamics"
+  - "Useful for avoiding parcellation scheme bias (Schaefer vs. AAL vs. Gordon)"
+  - "Higher computational cost than parcellation-based models, but preserves fine-grained spatial structure"
+  - "Evaluate SwiFT vs. BrainLM (Schaefer-400) on same UKB cognitive tasks for trade-off analysis"
+  - "Extract subject embeddings via global pooling → project to 512-D for gene-brain fusion"
+
+related_to:
+  - "docs/generated/kb_curated/papers-md/swift_2023.md"
+  - "kb/model_cards/swift.yaml"
+  - "docs/models/brain/swift.md"
+  - "docs/code_walkthroughs/swift_walkthrough.md"
+  - "docs/integration/modality_features/fmri.md"
+  - "kb/paper_cards/brainlm_2024.yaml"
+  - "kb/paper_cards/brainjepa_2024.yaml"
+
+verification_status: "needs_human_review"
+notes: "SwiFT's end-to-end 4D processing eliminates parcellation bias but requires more compute. Compare with BrainLM for parcellation-free vs. parcellation-based trade-offs."
+
+tags:
+  - brain
+  - foundation_model
+  - swin_transformer
+  - fmri
+  - spatiotemporal
+  - contrastive_learning
+  - neuroimaging
+
