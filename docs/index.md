@@ -67,6 +67,19 @@ updated: 2025-11-19
 
     [:octicons-arrow-right-24: Explore Integration Strategy](integration/integration_strategy/)
 
+-   :material-hospital: **Multimodal & Clinical Models**
+
+    ---
+
+    **What you can do:**
+    
+    - Use unified multimodal architectures (BAGEL, MoT, M3FM)
+    - Process medical imaging with clinical text (TITAN, M3FM)
+    - Leverage medical LLMs for clinical reasoning (Me-LLaMA)
+    - Explore foundation model catalogs (FMS-Medical)
+
+    [:octicons-arrow-right-24: Explore Multimodal Models](models/multimodal/)
+
 -   :material-flask: **Reproducible Research**
 
     ---
