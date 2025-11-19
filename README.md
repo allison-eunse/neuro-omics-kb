@@ -3,7 +3,6 @@
 [![Documentation](https://img.shields.io/badge/docs-mkdocs-blue)](https://allison-eunse.github.io/neuro-omics-kb/)
 [![Models](https://img.shields.io/badge/models-9-green)](#foundation-models)
 [![Paper Cards](https://img.shields.io/badge/papers-14-orange)](#research-papers)
-[![License](https://img.shields.io/badge/license-MIT-purple)]()
 
 > **A comprehensive documentation hub for genetics and brain foundation models and their multimodal integration.**
 
