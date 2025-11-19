@@ -309,20 +309,20 @@ top_features = np.argsort(all_importance)[::-1][:20]
 ## Reference Materials
 
 **Primary paper:**
-- [Ensemble Integration (Li 2022)](../../generated/kb_curated/papers-md/ensemble_integration_li2022/) — Full paper summary
+- [Ensemble Integration (Li 2022)](../../generated/kb_curated/papers-md/ensemble_integration_li2022.md) — Full paper summary
 
 **Related KB resources:**
-- [Integration Strategy](../../integration/integration_strategy/) — Overall fusion approach
-- [Design Patterns](../../integration/design_patterns/) — Pattern 1: Late Fusion
-- [CCA + Permutation Recipe](../../integration/analysis_recipes/cca_permutation/) — Statistical testing
-- [Prediction Baselines](../../integration/analysis_recipes/prediction_baselines/) — Comparison protocol
+- [Integration Strategy](../../integration/integration_strategy.md) — Overall fusion approach
+- [Design Patterns](../../integration/design_patterns.md) — Pattern 1: Late Fusion
+- [CCA + Permutation Recipe](../../integration/analysis_recipes/cca_permutation.md) — Statistical testing
+- [Prediction Baselines](../../integration/analysis_recipes/prediction_baselines.md) — Comparison protocol
 
 **Integration cards:**
-- [Oncology Multimodal Review](oncology_multimodal_review/) — Broader fusion taxonomy
+- [Oncology Multimodal Review](oncology_multimodal_review.md) — Broader fusion taxonomy
 
 **Model documentation:**
-- [Genetics Models](../../models/genetics/) — Gene embedding extraction
-- [Brain Models](../../models/brain/) — Brain embedding extraction
+- [Genetics Models](../genetics/index.md) — Gene embedding extraction
+- [Brain Models](../brain/index.md) — Brain embedding extraction
 
 **Experiment configs:**
 - `configs/experiments/02_prediction_baselines.yaml` — EI implementation template

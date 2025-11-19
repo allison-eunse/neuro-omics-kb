@@ -1,0 +1,88 @@
+title: "TITAN: A Multimodal Whole-Slide Foundation Model for Computational Pathology"
+short_name: "TITAN"
+authors:
+  - Tong Ding
+  - Sophia J. Wagner
+  - Andrew H. Song
+  - Richard J. Chen
+  - Ming Y. Lu
+  - Andrew Zhang
+  - Anurag J. Vaidya
+  - Guillaume Jaume
+  - Muhammad Shaban
+  - Ahrong Kim
+  - Drew F. K. Williamson
+  - Harry Robertson
+  - Bowen Chen
+  - Cristina Almagro-Pérez
+  - Paul Doucet
+  - Sharifa Sahai
+  - Chengkuan Chen
+  - Christina S. Chen
+  - Daisuke Komura
+  - Akihiro Kawabe
+  - Mieko Ochi
+  - Shinya Sato
+  - Tomoyuki Yokose
+  - Yohei Miyagi
+  - Shumpei Ishikawa
+  - Georg Gerber
+  - Tingying Peng
+  - Long Phi Le
+  - Faisal Mahmood
+year: 2025
+venue: "Nature Medicine"
+pdf_source: "https://www.nature.com/articles/s41591-024-03235-7"
+local_pdf_path: "docs/generated/kb_curated/papers-pdf/titan_2025.pdf"
+summary_md_path: "docs/generated/kb_curated/papers-md/titan_2025.md"
+
+summary: |
+  TITAN (Transformer‑based pathology Image and Text Alignment Network) is a slide‑level foundation model for pathology designed to transform gigapixel whole‑slide images into general‑purpose feature representations that support diagnosis, prognosis, retrieval, and report generation. Instead of working at the level of raw pixels, TITAN builds on pre‑extracted patch embeddings from powerful histology encoders, then scales self‑supervised learning (SSL) to entire slides using a vision transformer with long‑context positional encodings. The model is pretrained in three stages: vision‑only self‑supervision on hundreds of thousands of WSIs; vision–language alignment using synthetic ROI‑level captions; and slide‑level alignment with pathology reports. This yields TITANV (vision‑only) and full TITAN (vision–language), which are evaluated across slide classification, biomarker prediction, survival analysis, rare cancer retrieval, cross‑modal slide–report retrieval, and zero‑shot report generation. TITAN consistently outperforms prior ROI‑based and slide‑level foundation models across linear probing, few‑shot, and zero‑shot settings, especially in low‑data clinical scenarios.
+
+key_contributions:
+  - "Slide-level foundation model scaling from patch encoders to whole-slide representations using ViT with long-context positional encodings."
+  - "Three-stage pretraining: vision-only SSL (TITANV), ROI-level vision-language alignment, slide-level report alignment."
+  - "Comprehensive evaluation across classification, biomarker prediction, survival analysis, rare cancer retrieval, and zero-shot generation."
+  - "Demonstrates how to aggregate patch features into clinically meaningful slide-level signals for low-data scenarios."
+
+model:
+  name: "TITAN"
+  backbone: "ViT-style transformer operating on patch-feature tokens"
+  architecture: "Slide-level Vision Transformer with multimodal vision-language pretraining"
+  modalities:
+    - image
+    - text
+  parameter_scale: "≈768-d slide encoder (size undisclosed)"
+  context_length: "16,384 patches (depends on coordinates)"
+  special_features:
+    - "Operates on irregular patch grids with Level-0 coordinates and patch_size metadata"
+    - "Supports zero-shot classification via textual prompts + TITAN text encoder"
+    - "Provides RelationalMetric bootstrap utilities for balanced accuracy confidence intervals"
+
+implications_for_project:
+  - "Analogous to whole-brain 3D volumes: TITAN's multi-scale patch aggregation could inform hierarchical brain MRI processing (region-level parcels + voxel-level features)."
+  - "Demonstrates how to scale from patch-level (gene-level) to slide-level (whole-genome) representations in genetics."
+  - "Shows how to fuse histology (if available in brain tissue banks) with genetics for neuro-omics applications."
+  - "Highlights the importance of hierarchical processing for gigapixel-scale medical images (similar to whole-brain volumes)."
+
+related_to:
+  - "docs/generated/kb_curated/papers-md/titan_2025.md"
+  - "kb/model_cards/titan.yaml"
+  - "docs/integration/integration_strategy.md"
+  - "docs/integration/design_patterns.md"
+  - "docs/integration/multimodal_architectures.md"
+  - "docs/code_walkthroughs/titan_walkthrough.md"
+
+verification_status: "needs_human_review"
+notes: "TITAN provides a blueprint for hierarchical multi-scale processing of large medical images, directly applicable to whole-brain MRI volumes and potentially gene-brain fusion if histopathology data becomes available."
+
+tags:
+  - multimodal
+  - foundation_model
+  - vision-language
+  - medical
+  - pathology
+  - whole-slide
+  - hierarchical
+  - zero-shot
+

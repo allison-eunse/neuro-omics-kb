@@ -1,0 +1,72 @@
+title: "M3FM: A Multimodal, Multidomain, Multilingual Medical Foundation Model for Zero‑Shot Clinical Diagnosis"
+short_name: "M3FM"
+authors:
+  - Fenglin Liu
+  - Zheng Li
+  - Qingyu Yin
+  - Jinfa Huang
+  - Jiebo Luo
+  - Anshul Thakur
+  - Kim Branson
+  - Patrick Schwab
+  - Bing Yin
+  - Xian Wu
+  - Yefeng Zheng
+  - David A. Clifton
+year: 2025
+venue: "npj Digital Medicine"
+pdf_source: "https://www.nature.com/articles/s41746-024-01339-7"
+doi: "10.1038/s41746-024-01339-7"
+local_pdf_path: "docs/generated/kb_curated/papers-pdf/m3fm_2025.pdf"
+summary_md_path: "docs/generated/kb_curated/papers-md/m3fm_2025.md"
+
+summary: |
+  M3FM (Multimodal Multidomain Multilingual Foundation Model) is a medical foundation model designed to perform zero-shot radiology report generation and disease diagnosis across imaging domains (CXR and CT) and languages (English and Chinese). The core idea is to first learn a shared vision–language embedding space (MultiMedCLIP) using large English-centric image–report and English–Chinese text pairs, and then train a multilingual medical language model (MultiMedLM) on top of this space. By aligning visual features from different imaging modalities and textual features from multiple languages to English, M3FM can generate reports and perform diagnosis in languages and domains where little or no labeled data exist. The model is pretrained on hundreds of thousands of CXR and CT images with English reports, plus translated Chinese corpora, and is evaluated on nine downstream datasets that cover report generation and disease classification for infectious (COVID‑19, TB) and noninfectious diseases. Across zero‑shot, few‑shot, and fully supervised settings, M3FM often matches or outperforms strong supervised baselines that have full access to labeled data, especially for cross-language and cross-domain generalization.
+
+key_contributions:
+  - "Two-stage medical foundation model: MultiMedCLIP (vision-language encoder) + MultiMedLM (multilingual medical LLM)."
+  - "Zero-shot and few-shot performance across imaging domains (CXR, CT) and languages (English, Chinese)."
+  - "Multidomain and multilingual pretraining strategy enabling cross-language and cross-domain generalization."
+  - "Comprehensive evaluation on nine downstream datasets covering report generation and disease classification."
+
+model:
+  name: "M3FM"
+  backbone: "Multilingual CLIP encoder + relational-memory Transformer decoder"
+  architecture: "Two-stage FM: MultiMedCLIP (vision-language alignment) + MultiMedLM (multilingual report generation)"
+  modalities:
+    - image
+    - text
+  parameter_scale: "≈40–60M (d_model=512, 3 decoder layers, 8 heads)"
+  domains:
+    - chest_xray
+    - ct
+  languages:
+    - english
+    - chinese
+
+implications_for_project:
+  - "Reference design for two-tower contrastive alignment (Phase 2) where genetics/brain embeddings could be aligned via CLIP-style contrastive learning."
+  - "Demonstrates how to handle multilingual clinical scenarios (English/Korean for Cha Hospital developmental cohorts)."
+  - "Shows how to fuse vision (brain scans) with language (clinical reports) for neuro-omics applications."
+  - "Highlights the importance of zero-shot and few-shot generalization for rare diseases and low-resource scenarios."
+
+related_to:
+  - "docs/generated/kb_curated/papers-md/m3fm_2025.md"
+  - "kb/model_cards/m3fm.yaml"
+  - "docs/integration/integration_strategy.md"
+  - "docs/integration/design_patterns.md"
+  - "docs/integration/multimodal_architectures.md"
+  - "docs/code_walkthroughs/m3fm_walkthrough.md"
+
+verification_status: "needs_human_review"
+notes: "M3FM provides a clear blueprint for vision-language alignment in medical contexts, directly applicable to brain scan + clinical report integration for neuro-omics."
+
+tags:
+  - multimodal
+  - foundation_model
+  - vision-language
+  - medical
+  - multilingual
+  - zero-shot
+  - radiology
+

@@ -145,7 +145,7 @@ Modality encoders (genes, brain, behavior) → embeddings
 - Compute constraints make unified models impractical.
 
 ⚠️ **Prefer simpler approaches first:**
-- Start with **late fusion + Ensemble Integration** (see [EI card](ensemble_integration/)).  
+- Start with **late fusion + Ensemble Integration** (see [EI card](ensemble_integration.md)).  
 - Use **CCA + permutation** to test for cross-modal structure before complex fusion.  
 - Only escalate when fusion gains are **statistically significant and stable**.
 
@@ -268,25 +268,25 @@ for brain_batch, text_batch in loader:
 ## Reference Materials
 
 **Multimodal papers (summaries):**
-- [BAGEL (2025)](../../generated/kb_curated/papers-md/bagel_2025/) — Unified MoT multimodal FM  
-- [MoT (2025)](../../generated/kb_curated/papers-md/mot_2025/) — Modality-aware sparse transformer  
-- [M3FM (2025)](../../generated/kb_curated/papers-md/m3fm_2025/) — Medical vision–language with two-tower CLIP  
-- [Me-LLaMA (2024)](../../generated/kb_curated/papers-md/me_llama_2024/) — Medical LLM via continual pretraining  
-- [TITAN (2025)](../../generated/kb_curated/papers-md/titan_2025/) — Multi-scale pathology VLM  
-- [Multimodal FMs Survey (2025)](../../generated/kb_curated/papers-md/mmfm_2025/) — Broader architectural landscape
+- [BAGEL (2025)](../../generated/kb_curated/papers-md/bagel_2025.md) — Unified MoT multimodal FM  
+- [MoT (2025)](../../generated/kb_curated/papers-md/mot_2025.md) — Modality-aware sparse transformer  
+- [M3FM (2025)](../../generated/kb_curated/papers-md/m3fm_2025.md) — Medical vision–language with two-tower CLIP  
+- [Me-LLaMA (2024)](../../generated/kb_curated/papers-md/me_llama_2024.md) — Medical LLM via continual pretraining  
+- [TITAN (2025)](../../generated/kb_curated/papers-md/titan_2025.md) — Multi-scale pathology VLM  
+- [Multimodal FMs Survey (2025)](../../generated/kb_curated/papers-md/mmfm_2025.md) — Broader architectural landscape
 
 **Model documentation:**
-- [Multimodal Models](../multimodal/) — Model-level documentation  
+- [Multimodal Models](../multimodal/index.md) — Model-level documentation  
 - [M3FM model card](https://github.com/allison-eunse/neuro-omics-kb/blob/main/kb/model_cards/m3fm.yaml)  
 - [Me-LLaMA model card](https://github.com/allison-eunse/neuro-omics-kb/blob/main/kb/model_cards/me_llama.yaml)  
 - [TITAN model card](https://github.com/allison-eunse/neuro-omics-kb/blob/main/kb/model_cards/titan.yaml)
 
 **Integration guidance:**
-- [Integration Strategy](../../integration/integration_strategy/) — Overall fusion approach  
-- [Design Patterns](../../integration/design_patterns/) — Escalation from late fusion → MoT  
-- [Multimodal Architecture Patterns](../../integration/multimodal_architectures/) — Detailed pattern catalog  
-- [Ensemble Integration (EI)](ensemble_integration/) — Late fusion baseline  
-- [Oncology Multimodal Principles](oncology_multimodal_review/) — Fusion cautions & taxonomy
+- [Integration Strategy](../../integration/integration_strategy.md) — Overall fusion approach  
+- [Design Patterns](../../integration/design_patterns.md) — Escalation from late fusion → MoT  
+- [Multimodal Architecture Patterns](../../integration/multimodal_architectures.md) — Detailed pattern catalog  
+- [Ensemble Integration (EI)](ensemble_integration.md) — Late fusion baseline  
+- [Oncology Multimodal Principles](oncology_multimodal_review.md) — Fusion cautions & taxonomy
 
 ---
 

@@ -151,7 +151,7 @@ Beyond genetics and brain FMs, the KB documents **multimodal architectures** tha
 | 🏥 [TITAN](models/multimodal/titan.md) | Pathology | Gigapixel whole-slide imaging | [Paper](generated/kb_curated/papers-md/titan_2025.md) • [Walkthrough](code_walkthroughs/titan_walkthrough.md) |
 
 📖 **Explore more:**  
-[Multimodal Models Overview](models/multimodal/) • [Multimodal Architectures Guide](integration/multimodal_architectures.md) • [Design Patterns](integration/design_patterns.md)
+[Multimodal Models Overview](models/multimodal/index.md) • [Multimodal Architectures Guide](integration/multimodal_architectures.md) • [Design Patterns](integration/design_patterns.md)
 
 ---
 

@@ -124,7 +124,7 @@ Brain model → brain_pred [proba] → |
 - Small-to-medium datasets (< 10k samples)
 - Interpretability critical for clinical translation
 
-**Our default:** This is Pattern 1 in our [Design Patterns](../../integration/design_patterns/).
+**Our default:** This is Pattern 1 in our [Design Patterns](../../integration/design_patterns.md).
 
 ---
 
@@ -225,7 +225,7 @@ Based on the review's recommendations and our neuro-omics context:
 **Implementation:**
 - Per-modality FMs: Caduceus/DNABERT-2 (genetics), BrainLM/SwiFT (brain)
 - Project to 512-D per modality
-- Ensemble Integration (see [EI card](../ensemble_integration/))
+- Ensemble Integration (see [EI card](ensemble_integration.md))
 - Compare: Gene-only vs. Brain-only vs. Fusion
 
 ### ✅ Rigorous Confound Control
@@ -364,29 +364,29 @@ Q3: Are modalities strongly coupled?
 ## Reference Materials
 
 **Primary paper:**
-- [Oncology Multimodal Review (Waqas 2024)](../../generated/kb_curated/papers-md/oncology_multimodal_waqas2024/) — Full paper summary
+- [Oncology Multimodal Review (Waqas 2024)](../../generated/kb_curated/papers-md/oncology_multimodal_waqas2024.md) — Full paper summary
 
 **Related integration cards:**
-- [Ensemble Integration (EI)](ensemble_integration/) — Late fusion implementation details
+- [Ensemble Integration (EI)](ensemble_integration.md) — Late fusion implementation details
 
 **KB integration guides:**
-- [Integration Strategy](../../integration/integration_strategy/) — Overall fusion approach
-- [Design Patterns](../../integration/design_patterns/) — 5 patterns with escalation criteria
-- [Multimodal Architectures](../../integration/multimodal_architectures/) — Clinical/multimodal model patterns
+- [Integration Strategy](../../integration/integration_strategy.md) — Overall fusion approach
+- [Design Patterns](../../integration/design_patterns.md) — 5 patterns with escalation criteria
+- [Multimodal Architectures](../../integration/multimodal_architectures.md) — Clinical/multimodal model patterns
 
 **Analysis recipes:**
-- [CCA + Permutation](../../integration/analysis_recipes/cca_permutation/) — Cross-modal structure testing
-- [Prediction Baselines](../../integration/analysis_recipes/prediction_baselines/) — Fusion vs. single-modality comparison
-- [Partial Correlations](../../integration/analysis_recipes/partial_correlations/) — Confound-aware associations
+- [CCA + Permutation](../../integration/analysis_recipes/cca_permutation.md) — Cross-modal structure testing
+- [Prediction Baselines](../../integration/analysis_recipes/prediction_baselines.md) — Fusion vs. single-modality comparison
+- [Partial Correlations](../../integration/analysis_recipes/partial_correlations.md) — Confound-aware associations
 
 **Data governance:**
-- [Governance & QC](../../data/governance_qc/) — Quality control protocols
-- [UKB Data Map](../../data/ukb_data_map/) — Cohort definitions and confounds
+- [Governance & QC](../../data/governance_qc.md) — Quality control protocols
+- [UKB Data Map](../../data/ukb_data_map.md) — Cohort definitions and confounds
 
 **Model documentation:**
-- [Genetics Models](../../models/genetics/) — Foundation models for gene embeddings
-- [Brain Models](../../models/brain/) — Foundation models for brain embeddings
-- [Multimodal Models](../../models/multimodal/) — Examples of fusion architectures
+- [Genetics Models](../genetics/index.md) — Foundation models for gene embeddings
+- [Brain Models](../brain/index.md) — Foundation models for brain embeddings
+- [Multimodal Models](../multimodal/index.md) — Examples of fusion architectures
 
 ---
 

@@ -1,0 +1,77 @@
+title: "Me-LLaMA: Medical Foundation Large Language Models for Comprehensive Text Analysis and Clinical Reasoning"
+short_name: "Me-LLaMA"
+authors:
+  - Qianqian Xie
+  - Qingyu Chen
+  - Aokun Chen
+  - Cheng Peng
+  - Yan Hu
+  - Fongci Lin
+  - Xueqing Peng
+  - Jimin Huang
+  - Jeffrey Zhang
+  - Vipina Keloth
+  - Xinyu Zhou
+  - Lingfei Qian
+  - Huan He
+  - Dennis Shung
+  - Lucila Ohno‑Machado
+  - Yonghui Wu
+  - Hua Xu
+  - Jiang Bian
+year: 2024
+venue: "Preprint (medical AI / biomedical informatics)"
+pdf_source: "https://arxiv.org/abs/2404.05416"
+local_pdf_path: "docs/generated/kb_curated/papers-pdf/me_llama_2024.pdf"
+summary_md_path: "docs/generated/kb_curated/papers-md/me_llama_2024.md"
+
+summary: |
+  Me‑LLaMA is a family of medical foundation large language models (LLMs) built by continually pretraining and instruction‑tuning LLaMA‑2 on one of the largest medical text corpora assembled to date. The authors construct a 129‑billion‑token pretraining dataset from biomedical literature and clinical notes, and a 214k‑example instruction‑tuning corpus spanning diverse medical NLP tasks. They release 13B and 70B base models plus chat‑optimized versions and evaluate them on six core text analysis task families—question answering, relation extraction, named entity recognition, text classification, summarization, and natural language inference—across 12 benchmarks, as well as on complex clinical case diagnosis. Me‑LLaMA substantially outperforms previous open‑source medical LLMs and, with targeted instruction tuning, surpasses commercial models such as ChatGPT and even GPT‑4 on several benchmarks, while matching them on challenging clinical case reasoning.
+
+key_contributions:
+  - "129B-token medical corpus from biomedical literature + clinical notes + general text (15:1:4 ratio)."
+  - "214k instruction-tuning examples covering 6+ medical NLP task types (QA, NER, RE, classification, summarization, NLI)."
+  - "13B and 70B base models plus chat-optimized variants with comprehensive evaluation on 12 benchmarks."
+  - "Demonstrates how specialized medical data can close the gap to frontier proprietary models (ChatGPT, GPT-4)."
+
+model:
+  name: "Me-LLaMA"
+  backbone: "LLaMA-2 13B and 70B decoder-only transformers"
+  architecture: "LLaMA-2 base model + continual pre-training + LoRA instruction tuning"
+  modalities:
+    - text
+  parameter_scale: "13B / 70B (base), 8B (LLaMA3 spin-off)"
+  context_length: 4096
+  special_features:
+    - "Continual pre-training ratio of 15:1:4 (biomedical : clinical : general)"
+    - "Instruction tuning via LoRA on H100 GPUs with 3 epochs / lr=1e-5"
+    - "Evaluation harness bundles 12+ medical QA/NLP tasks with prompt templates"
+
+implications_for_project:
+  - "Me-LLaMA-style medical LLM serves as semantic bridge (Phase 3: LLM-as-Bridge) for Brain-Omics Model (BOM)."
+  - "Project genetics/brain/EEG embeddings into LLM token space for cross-modal reasoning."
+  - "Enable natural language queries over multimodal neuro-omics data (e.g., 'which genes explain this brain pattern?')."
+  - "Continual pretraining strategy applicable to neuro-omics LLM: neuroscience literature + genetics papers + clinical neurology notes."
+  - "Instruction tuning for clinical tasks: cognitive assessment interpretation, genetic counseling, neuroimaging report generation."
+
+related_to:
+  - "docs/generated/kb_curated/papers-md/me_llama_2024.md"
+  - "kb/model_cards/me_llama.yaml"
+  - "docs/integration/integration_strategy.md"
+  - "docs/integration/design_patterns.md"
+  - "docs/integration/multimodal_architectures.md"
+  - "docs/code_walkthroughs/melamma_walkthrough.md"
+  - "docs/decisions/2025-11-integration-plan.md"
+
+verification_status: "needs_human_review"
+notes: "Me-LLaMA provides the blueprint for Phase 3 LLM-as-Bridge architecture in ARPA-H BOM, enabling natural language reasoning over gene-brain-behavior data."
+
+tags:
+  - language_model
+  - foundation_model
+  - medical
+  - llm
+  - clinical_reasoning
+  - instruction_tuning
+  - biomedical
+

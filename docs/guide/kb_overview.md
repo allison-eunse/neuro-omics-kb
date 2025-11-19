@@ -101,7 +101,7 @@ Record:
 ### For Researchers New to Foundation Models
 
 1. **KB overview (this page)** — Understand the structure
-2. **Models → Overview pages** — Browse [Genetics](../models/genetics/), [Brain](../models/brain/), or [Multimodal](../models/multimodal/) overviews
+2. **Models → Overview pages** — Browse [Genetics](../models/genetics/index.md), [Brain](../models/brain/index.md), or [Multimodal](../models/multimodal/index.md) overviews
 3. **Integration → Strategy** — Learn the late-fusion-first philosophy
 4. **Code walkthroughs** — Pick a model relevant to your modality
 5. **Analysis recipes** — Copy-ready runbooks for CCA, prediction, etc.

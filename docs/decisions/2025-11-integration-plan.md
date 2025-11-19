@@ -131,13 +131,13 @@ This document defines the **phased escalation strategy** for gene-brain-behavior
 
 ## Key References
 
-- **Ensemble Integration**: [Li et al. 2022](../../generated/kb_curated/papers-md/ensemble_integration_li2022/)
-- **Oncology Multimodal Review**: [Waqas et al. 2024](../../generated/kb_curated/papers-md/oncology_multimodal_waqas2024/)
-- **Multimodal FM Survey**: [Gupta et al. 2025](../../generated/kb_curated/papers-md/mmfm_2025/)
-- **BAGEL**: [arXiv:2505.14683](../../generated/kb_curated/papers-md/bagel_2025/)
-- **MoT**: [arXiv:2411.04996](../../generated/kb_curated/papers-md/mot_2025/)
-- **M3FM**: [ai-in-health/M3FM](../../generated/kb_curated/papers-md/m3fm_2025/)
-- **Me-LLaMA**: [BIDS-Xu-Lab/Me-LLaMA](../../generated/kb_curated/papers-md/me_llama_2024/)
+- **Ensemble Integration**: [Li et al. 2022](../generated/kb_curated/papers-md/ensemble_integration_li2022.md)
+- **Oncology Multimodal Review**: [Waqas et al. 2024](../generated/kb_curated/papers-md/oncology_multimodal_waqas2024.md)
+- **Multimodal FM Survey**: [Gupta et al. 2025](../generated/kb_curated/papers-md/mmfm_2025.md)
+- **BAGEL**: [arXiv:2505.14683](../generated/kb_curated/papers-md/bagel_2025.md)
+- **MoT**: [arXiv:2411.04996](../generated/kb_curated/papers-md/mot_2025.md)
+- **M3FM**: [ai-in-health/M3FM](../generated/kb_curated/papers-md/m3fm_2025.md)
+- **Me-LLaMA**: [BIDS-Xu-Lab/Me-LLaMA](../generated/kb_curated/papers-md/me_llama_2024.md)
 
 ## Next Steps
 
