@@ -27,6 +27,9 @@ theme:
     - toc.integrate
     - toc.follow
     - content.action.edit
+  custom_dir: docs/assets
+  extra_css:
+    - css/code-citations.css
 markdown_extensions:
   - admonition
   - toc:
@@ -41,6 +44,7 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+      preserve_tabs: true
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span__
@@ -62,6 +66,8 @@ copyright: |
 
 plugins:
   - search
+  - code_citations:
+      enabled: true
 nav:
   - Home: index.md
   - Guides:
