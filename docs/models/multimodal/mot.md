@@ -122,7 +122,7 @@ MoT is an **architectural pattern**, not a standalone model, but if implementing
 ### Knowledge Base Resources
 
 **Curated materials in this KB:**
-- **Paper summary & notes (PDF):** [MoT (2025)](../../generated/kb_curated/papers-pdf/mot_2025.pdf)
+- **Paper summary & notes (PDF):** [MoT (2025)](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/mot_2025.pdf)
 - **Code walkthrough:** [MoT walkthrough](../../code_walkthroughs/mot_walkthrough.md)
 - **Model card (YAML):** `kb/model_cards/mot.yaml` (if exists)
 - **Paper card (YAML):** `kb/paper_cards/mot_2025.yaml`
@@ -144,7 +144,7 @@ MoT is an **architectural pattern**, not a standalone model, but if implementing
 - **Published:** Transactions on Machine Learning Research (TMLR), 2025
 - **Link:** [arXiv:2411.04996](https://arxiv.org/abs/2411.04996)
 - **DOI:** [10.48550/arXiv.2411.04996](https://doi.org/10.48550/arXiv.2411.04996)
-- **PDF (local):** [mot_2025.pdf](../../generated/kb_curated/papers-pdf/mot_2025.pdf)
+- **PDF (local):** [mot_2025.pdf](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/mot_2025.pdf)
 
 ## Next Steps in Our Pipeline
 

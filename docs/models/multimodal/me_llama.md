@@ -135,7 +135,7 @@ If adapting Me-LLaMA for neuro-omics:
 ### Knowledge Base Resources
 
 **Curated materials in this KB:**
-- **Paper summary & notes (PDF):** [Me-LLaMA (2024)](../../generated/kb_curated/papers-pdf/me_llama_2024.pdf)
+- **Paper summary & notes (PDF):** [Me-LLaMA (2024)](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/me_llama_2024.pdf)
 - **Code walkthrough:** [Me-LLaMA walkthrough](../../code_walkthroughs/melamma_walkthrough.md)
 - **Model card (YAML):** `kb/model_cards/me_llama.yaml`
 - **Paper card (YAML):** `kb/paper_cards/me_llama_2024.yaml`
@@ -156,7 +156,7 @@ If adapting Me-LLaMA for neuro-omics:
 - **Authors:** Xie, Qianqian; Chen, Qingyu; Chen, Aokun; Peng, Cheng; Hu, Yan; Lin, Fongci; Peng, Xueqing; Huang, Jimin; Zhang, Jeffrey; Keloth, Vipina; Zhou, Xinyu; Qian, Lingfei; He, Huan; Shung, Dennis; Ohno‑Machado, Lucila; Wu, Yonghui; Xu, Hua; Bian, Jiang
 - **Published:** Preprint, 2024
 - **Link:** [arXiv:2404.05416](https://arxiv.org/abs/2404.05416)
-- **PDF (local):** [me_llama_2024.pdf](../../generated/kb_curated/papers-pdf/me_llama_2024.pdf)
+- **PDF (local):** [me_llama_2024.pdf](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/me_llama_2024.pdf)
 
 ## Next Steps in Our Pipeline
 

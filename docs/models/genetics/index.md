@@ -51,7 +51,7 @@ Foundation models operate on **reference sequences by default**. To incorporate 
 - Compare ΔAUC between reference and variant embeddings (exploratory)
 
 ### Attribution
-Use **LOGO (Leave-One-Gene-Out)** ΔAUC to assess which genes contribute most to downstream prediction tasks (e.g., MDD risk, cognitive scores). See [Yoon et al. BioKDD 2025](../../generated/kb_curated/papers-pdf/yoon_biokdd2025.pdf) for protocol details.
+Use **LOGO (Leave-One-Gene-Out)** ΔAUC to assess which genes contribute most to downstream prediction tasks (e.g., MDD risk, cognitive scores). See [Yoon et al. BioKDD 2025](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/yoon_biokdd2025.pdf) for protocol details.
 
 ---
 

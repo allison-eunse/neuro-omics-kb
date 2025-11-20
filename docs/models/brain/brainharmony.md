@@ -93,7 +93,7 @@ Brain Harmony exemplifies **modality-adaptive fusion** for Brain-Omics systems:
 ### Knowledge Base Resources
 
 **Curated materials in this KB:**
-- **Paper summary & notes (PDF):** [Brain Harmony (2025)](../../generated/kb_curated/papers-pdf/brainharmony_2025.pdf)
+- **Paper summary & notes (PDF):** [Brain Harmony (2025)](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/brainharmony_2025.pdf)
 - **Code walkthrough:** [Brain Harmony walkthrough](../../code_walkthroughs/brainharmony_walkthrough.md)
 - **Model card (YAML):** `kb/model_cards/brainharmony.yaml`
 - **Paper card (YAML):** `kb/paper_cards/brainharmony_2025.yaml`
@@ -115,7 +115,7 @@ Brain Harmony exemplifies **modality-adaptive fusion** for Brain-Omics systems:
 - **Published:** NeurIPS 2025
 - **Link:** [arXiv:2509.24693](https://arxiv.org/abs/2509.24693)
 - **DOI:** [10.48550/arXiv.2509.24693](https://doi.org/10.48550/arXiv.2509.24693)
-- **PDF (local):** [brainharmony_2025.pdf](../../generated/kb_curated/papers-pdf/brainharmony_2025.pdf)
+- **PDF (local):** [brainharmony_2025.pdf](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/brainharmony_2025.pdf)
 
 ## Next Steps in Our Pipeline
 

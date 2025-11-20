@@ -95,7 +95,7 @@ SwiFT's **hierarchical 4D processing** offers advantages for Brain-Omics systems
 ### Knowledge Base Resources
 
 **Curated materials in this KB:**
-- **Paper summary & notes (PDF):** [SwiFT (2023)](../../generated/kb_curated/papers-pdf/swift_2023.pdf)
+- **Paper summary & notes (PDF):** [SwiFT (2023)](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/swift_2023.pdf)
 - **Paper card (YAML):** `kb/paper_cards/swift_2023.yaml`
 - **Code walkthrough:** [SwiFT walkthrough](../../code_walkthroughs/swift_walkthrough.md)
 - **Model card (YAML):** `kb/model_cards/swift.yaml`
@@ -117,7 +117,7 @@ SwiFT's **hierarchical 4D processing** offers advantages for Brain-Omics systems
 - **Published:** NeurIPS 2023
 - **Link:** [arXiv:2307.05916](https://arxiv.org/abs/2307.05916)
 - **DOI:** [10.48550/arXiv.2307.05916](https://doi.org/10.48550/arXiv.2307.05916)
-- **PDF (local):** [swift_2023.pdf](../../generated/kb_curated/papers-pdf/swift_2023.pdf)
+- **PDF (local):** [swift_2023.pdf](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/swift_2023.pdf)
 
 ## Next Steps in Our Pipeline
 

@@ -90,7 +90,7 @@ BrainLM serves as a **brain modality encoder** in larger multimodal systems:
 ### Knowledge Base Resources
 
 **Curated materials in this KB:**
-- **Paper summary & notes (PDF):** [BrainLM (2024)](../../generated/kb_curated/papers-pdf/brainlm_2024.pdf)
+- **Paper summary & notes (PDF):** [BrainLM (2024)](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/brainlm_2024.pdf)
 - **Code walkthrough:** [BrainLM walkthrough](../../code_walkthroughs/brainlm_walkthrough.md)
 - **Model card (YAML):** `kb/model_cards/brainlm.yaml`
 - **Paper card (YAML):** `kb/paper_cards/brainlm_2024.yaml`
@@ -111,7 +111,7 @@ BrainLM serves as a **brain modality encoder** in larger multimodal systems:
 - **Authors:** Talukder et al.
 - **Published:** 2024
 - **Link:** [bioRxiv/publication link](https://www.biorxiv.org/content/10.1101/2023.09.12.557460)
-- **PDF (local):** [brainlm_2024.pdf](../../generated/kb_curated/papers-pdf/brainlm_2024.pdf)
+- **PDF (local):** [brainlm_2024.pdf](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/brainlm_2024.pdf)
 
 ## Next Steps in Our Pipeline
 

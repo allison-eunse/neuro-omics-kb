@@ -129,7 +129,7 @@ If adapting TITAN for neuroimaging:
 ### Knowledge Base Resources
 
 **Curated materials in this KB:**
-- **Paper summary & notes (PDF):** [TITAN (2025)](../../generated/kb_curated/papers-pdf/titan_2025.pdf)
+- **Paper summary & notes (PDF):** [TITAN (2025)](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/titan_2025.pdf)
 - **Code walkthrough:** [TITAN walkthrough](../../code_walkthroughs/titan_walkthrough.md)
 - **Model card (YAML):** `kb/model_cards/titan.yaml`
 - **Paper card (YAML):** `kb/paper_cards/titan_2025.yaml`
@@ -150,7 +150,7 @@ If adapting TITAN for neuroimaging:
 - **Authors:** Ding, Tong; Wagner, Sophia J.; Song, Andrew H.; Chen, Richard J.; Lu, Ming Y.; Zhang, Andrew; Vaidya, Anurag J.; Jaume, Guillaume; Shaban, Muhammad; Kim, Ahrong; Williamson, Drew F. K.; Robertson, Harry; Chen, Bowen; Almagro-Pérez, Cristina; Doucet, Paul; Sahai, Sharifa; Chen, Chengkuan; Chen, Christina S.; Komura, Daisuke; Kawabe, Akihiro; Ochi, Mieko; Sato, Shinya; Yokose, Tomoyuki; Miyagi, Yohei; Ishikawa, Shumpei; Gerber, Georg; Peng, Tingying; Le, Long Phi; Mahmood, Faisal
 - **Published:** Nature Medicine, 2025
 - **Link:** [Nature: s41591-024-03235-7](https://www.nature.com/articles/s41591-024-03235-7)
-- **PDF (local):** [titan_2025.pdf](../../generated/kb_curated/papers-pdf/titan_2025.pdf)
+- **PDF (local):** [titan_2025.pdf](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/titan_2025.pdf)
 
 ## Next Steps in Our Pipeline
 
