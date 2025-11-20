@@ -6,24 +6,52 @@ updated: 2025-11-19
 
 # 🧬🧠 Neuro-Omics Knowledge Base
 
-<p align="center">
-  <strong>A comprehensive documentation hub for genetics and brain foundation models and their multimodal integration</strong>
-</p>
+[![Documentation](https://img.shields.io/badge/docs-mkdocs-blue)](https://allison-eunse.github.io/neuro-omics-kb/)
+[![Models](https://img.shields.io/badge/models-13%20FMs-green)](#foundation-models)
+[![Paper Cards](https://img.shields.io/badge/papers-20-orange)](#research-papers)
+[![Integration Cards](https://img.shields.io/badge/integration_cards-3-purple)](#integration-strategies)
 
-<p align="center">
-  <a href="guide/kb_overview/">📖 KB Overview</a> •
-  <a href="models/genetics/">🧬 Genetics Models</a> •
-  <a href="models/brain/">🧠 Brain Models</a> •
-  <a href="integration/integration_strategy/">🔗 Integration Guide</a> •
-  <a href="https://github.com/allison-eunse/neuro-omics-kb">💻 GitHub</a>
-</p>
+> **A comprehensive documentation hub for genetics and brain foundation models and their multimodal integration.**
+
+[📖 KB Overview](guide/kb_overview/) | [🧬 Genetics Models](models/genetics/) | [🧠 Brain Models](models/brain/) | [🔗 Integration Guide](integration/integration_strategy/) | [💻 GitHub](https://github.com/allison-eunse/neuro-omics-kb)
 
 ---
 
-!!! success "Welcome!"
-    This knowledge base connects **genomics, brain imaging, and behavioral data** through foundation models and multimodal integration strategies. Whether you're analyzing UK Biobank data, implementing gene-brain fusion pipelines, or exploring developmental cohorts, you'll find structured documentation, ready-to-use recipes, and reproducible workflows here.
+## What is this?
 
-> **Maintained by** Allison Eun Se You | **Last updated** November 19, 2025 | **Status:** ✅ Documentation Complete
+A **documentation-first knowledge base** for researchers working with:
+- 🧬 **Genetic foundation models** (Caduceus, DNABERT-2, Evo2, GENERator)
+- 🧠 **Brain imaging models** (BrainLM, Brain-JEPA, BrainMT, Brain Harmony, SwiFT)
+- 🏥 **Multimodal/Clinical models** (BAGEL, MoT, M3FM, Me-LLaMA, TITAN, FMS-Medical)
+- 🔗 **Integration strategies** for gene-brain-behavior-language analysis
+
+**Scope:** Documentation, metadata cards, and integration patterns — **not** model implementation code.
+
+---
+
+## 🚀 Quick Start
+
+```bash
+# 1. Clone and setup
+git clone https://github.com/allison-eunse/neuro-omics-kb.git
+cd neuro-omics-kb
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+
+# 2. View documentation locally
+mkdocs serve
+# Visit http://localhost:8000
+
+# 3. Validate metadata cards
+python scripts/manage_kb.py validate models
+```
+
+**New to foundation models?** Start with:
+
+1. 📖 [KB Overview](guide/kb_overview/) - Understand the structure
+2. 🧬 [Genetics Models Overview](models/genetics/) - DNA sequence models
+3. 🧠 [Brain Models Overview](models/brain/) - Neuroimaging models
+4. 🔗 [Integration Strategy](integration/integration_strategy/) - How to combine modalities
 
 ---
 
@@ -94,28 +122,61 @@ updated: 2025-11-19
 
 </div>
 
+**Example workflows:**
+
+- Gene-brain association discovery using WES + sMRI with CCA
+- fMRI embedding extraction with BrainLM for MDD prediction
+- Leave-one-gene-out (LOGO) attribution for gene importance
+- Multimodal fusion for clinical decision support
+
 ---
 
-## 🚀 Getting Started
+## 📦 What's Inside
 
-=== "🆕 New to this KB"
+<details open>
+<summary><b>📚 Documentation (docs/)</b></summary>
 
-    1. Start with the [KB overview](guide/kb_overview.md) to understand the structure
-    2. Explore [Genetics Models](models/genetics/index.md) or [Brain Models](models/brain/index.md)
-    3. Check out a [code walkthrough](code_walkthroughs/index.md) for hands-on examples
+- **Code Walkthroughs** - Step-by-step guides for 15 foundation models with consistent formatting
+  - 🧬 **Genetics** (4): Caduceus, DNABERT-2, GENERator, Evo 2
+  - 🧠 **Brain** (5): BrainLM, Brain-JEPA, Brain Harmony, BrainMT, SwiFT
+  - 🏥 **Multimodal/Clinical** (6): BAGEL, MoT, M3FM, Me-LLaMA, TITAN, FMS-Medical catalog
+- **Integration Playbooks** - Multimodal fusion strategies (late fusion → contrastive → TAPE)
+- **Data Schemas** - UK Biobank, HCP, developmental cohorts
+- **Decision Logs** - Architectural choices and research rationale
+- **Curated Papers** - PDFs + Markdown summaries in `docs/generated/kb_curated/`
 
-=== "🔬 Planning an analysis"
+</details>
 
-    1. Review [Integration Strategy](integration/integration_strategy.md)
-    2. Pick an [analysis recipe](integration/analysis_recipes/cca_permutation.md)
-    3. Clone an [experiment config](https://github.com/allison-eunse/neuro-omics-kb/tree/main/configs/experiments)
-    4. Validate with `python scripts/manage_kb.py`
+<details>
+<summary><b>🏷️ Metadata Cards (kb/)</b></summary>
 
-=== "📚 Looking for papers"
+- **Model Cards** (`model_cards/*.yaml`) - 15 model cards (13 FMs + 2 ARPA-H planning cards) with architecture specs, embedding recipes, integration hooks
+- **Dataset Cards** (`datasets/*.yaml`) - Sample sizes, QC thresholds, access requirements
+- **Paper Cards** (`paper_cards/*.yaml`) - 20 research papers with structured takeaways
+- **Integration Cards** (`integration_cards/*.yaml`) - Embedding strategies, harmonization methods, preprocessing pipelines
 
-    1. Browse [paper cards](https://github.com/allison-eunse/neuro-omics-kb/tree/main/kb/paper_cards)
-    2. Check [decision logs](decisions/2025-11-integration-plan.md)
-    3. Review [integration strategy](integration/integration_strategy.md)
+[Browse all cards →](https://github.com/allison-eunse/neuro-omics-kb/tree/main/kb)
+
+</details>
+
+<details>
+<summary><b>🔧 Tools & Scripts</b></summary>
+
+- `scripts/manage_kb.py` - Validate YAML cards, query embedding strategies
+- `scripts/codex_gate.py` - Quality gate for automated workflows
+- `scripts/fetch_external_repos.sh` - Sync upstream model repositories
+
+</details>
+
+<details>
+<summary><b>⚙️ Experiment Configs</b></summary>
+
+Ready-to-run YAML templates in `configs/experiments/`:
+- `01_cca_gene_smri.yaml` - CCA + permutation baseline
+- `02_prediction_baselines.yaml` - Gene vs Brain vs Fusion
+- `03_logo_gene_attribution.yaml` - Gene attribution protocol
+
+</details>
 
 ---
 
@@ -184,10 +245,20 @@ Beyond genetics and brain FMs, the KB documents **multimodal architectures** tha
 
 ---
 
-## 📚 Research Papers
+## 📋 Research Papers
+
+**20 structured paper cards** documenting:
+
+- 🧬 **Genetics FMs** (4): Caduceus, DNABERT-2, Evo2, GENERator
+- 🧠 **Brain FMs** (5): BrainLM, Brain-JEPA, Brain Harmony, BrainMT, SwiFT
+- 🏥 **Multimodal/Clinical FMs** (5): BAGEL, MoT, M3FM, Me-LLaMA, TITAN
+- 🔗 **Integration & Methods** (5): Ensemble integration, Multimodal FMs survey, MM-LLM imaging, Oncology review, Yoon BioKDD
+- 🧬 **Genomics & Population** (2): GWAS diverse populations, PRS guide
+
+[Browse all papers →](https://github.com/allison-eunse/neuro-omics-kb/tree/main/kb/paper_cards) | [View paper summaries →](https://github.com/allison-eunse/neuro-omics-kb/tree/main/docs/generated/kb_curated/papers-md)
 
 <details>
-<summary><strong>20 Structured Paper Summaries</strong> — Click to expand</summary>
+<summary><strong>Detailed paper list</strong> — Click to expand</summary>
 
 ### 🧬 Genetics Foundation Models
 | Paper | Year | Key Contribution |
