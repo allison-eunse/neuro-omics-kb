@@ -1,8 +1,12 @@
-# Brain Foundation Models
+# 🧠 Brain Foundation Models
 
-This section documents the **neuroimaging foundation models** used for brain representation learning in the Neuro-Omics KB. These models extract embeddings from structural MRI (sMRI), functional MRI (fMRI), and other brain imaging modalities for downstream integration with genomic data, behavioral phenotypes, and clinical outcomes.
+> **Neuroimaging foundation models for brain representation learning**
 
-## Overview
+This section documents the **brain imaging foundation models** that extract embeddings from structural MRI (sMRI), functional MRI (fMRI), and other brain imaging modalities for downstream integration with genomic data, behavioral phenotypes, and clinical outcomes.
+
+---
+
+## 📋 Overview
 
 All brain FMs documented here:
 
@@ -11,17 +15,21 @@ All brain FMs documented here:
 - **Are pretrained on large multi-site datasets** (UK Biobank, HCP, ABCD, etc.)
 - **Enable cross-modal alignment** with genomic and behavioral representations
 
-## Model registry
+---
 
-| Model | Modality | Architecture | Key feature | Integration role |
-|-------|----------|-------------|-------------|------------------|
-| [BrainLM](brainlm.md) | fMRI | ViT-MAE | Masked autoencoding of parcel time series | Primary fMRI encoder; site-robust embeddings |
-| [Brain-JEPA](brainjepa.md) | fMRI | JEPA | Joint-embedding prediction; no reconstruction loss | Alternative fMRI encoder; lower-latency option |
-| [Brain Harmony](brainharmony.md) | sMRI + fMRI | ViT + TAPE | Multi-modal fusion via target-aware projection ensemble | Cross-modal sMRI+fMRI fusion; TAPE for multi-task |
-| [BrainMT](brainmt.md) | sMRI (+ fMRI planned) | Hybrid Mamba-Transformer | Efficient long-range dependencies for 3D volumes | sMRI encoder; Mamba for computational efficiency |
-| [SwiFT](swift.md) | fMRI | Swin Transformer | Hierarchical windows for spatiotemporal fMRI | Exploratory fMRI encoder; sequence-free modeling |
+## 🎯 Model Registry
 
-## Usage workflow
+| Model | Modality | Architecture | Key Feature | Documentation |
+|-------|----------|-------------|-------------|---------------|
+| 🧠 [**BrainLM**](brainlm.md) | fMRI | ViT-MAE | Masked autoencoding; site-robust | [Walkthrough](../../code_walkthroughs/brainlm_walkthrough.md) |
+| 🧠 [**Brain-JEPA**](brainjepa.md) | fMRI | JEPA | Joint-embedding prediction; lower-latency | [Walkthrough](../../code_walkthroughs/brainjepa_walkthrough.md) |
+| 🧠 [**Brain Harmony**](brainharmony.md) | sMRI + fMRI | ViT + TAPE | Multi-modal fusion via TAPE | [Walkthrough](../../code_walkthroughs/brainharmony_walkthrough.md) |
+| 🧠 [**BrainMT**](brainmt.md) | sMRI + fMRI | Mamba-Transformer | Efficient long-range dependencies | [Walkthrough](../../code_walkthroughs/brainmt_walkthrough.md) |
+| 🧠 [**SwiFT**](swift.md) | fMRI | Swin Transformer | Hierarchical spatiotemporal modeling | [Walkthrough](../../code_walkthroughs/swift_walkthrough.md) |
+
+---
+
+## 🔄 Usage Workflow
 
 ### For fMRI models (BrainLM, Brain-JEPA, SwiFT)
 
@@ -39,7 +47,9 @@ All brain FMs documented here:
 4. **Pool** to subject-level representation
 5. **Project** to 512-D for fusion
 
-## Key considerations
+---
+
+## 🔑 Key Considerations
 
 ### Site/scanner harmonization
 Multi-site pretraining (e.g., BrainLM on UKB+HCP) improves site robustness, but **residualize scanner/site effects** before fusion:
@@ -57,7 +67,9 @@ fMRI embeddings are sensitive to head motion. **Quality control:**
 ### Multimodal fusion
 **Brain Harmony** natively fuses sMRI and fMRI via TAPE (Target-Aware Projection Ensemble). For other models, use **late fusion** (concatenate embeddings) or **two-tower contrastive** alignment (see [Design Patterns](../../integration/design_patterns.md)).
 
-## Integration targets
+---
+
+## 🔗 Integration Targets
 
 Brain embeddings are integrated with:
 
@@ -65,26 +77,40 @@ Brain embeddings are integrated with:
 - **Behavioral phenotypes** (cognitive scores, psychiatric diagnoses) via multimodal prediction
 - **Clinical data** (longitudinal assessments, EHR records) for developmental trajectories
 
-See [Integration Strategy](../../integration/integration_strategy.md) for fusion protocols and modality-specific feature specs:
+**Learn more:**
+- [Integration Strategy](../../integration/integration_strategy.md) - Fusion protocols
+- [Modality Features: sMRI](../../integration/modality_features/smri.md) - sMRI preprocessing
+- [Modality Features: fMRI](../../integration/modality_features/fmri.md) - fMRI preprocessing
 
-- [Modality Features: sMRI](../../integration/modality_features/smri.md)
-- [Modality Features: fMRI](../../integration/modality_features/fmri.md)
+---
 
-## Source repositories
+## 📦 Source Repositories
+
+<details>
+<summary><b>Click to view all source repositories</b></summary>
 
 All brain FM source code lives in `external_repos/`:
 
-- `external_repos/brainlm/` — [vandijklab/BrainLM](https://github.com/vandijklab/BrainLM)
-- `external_repos/brainjepa/` — [janklees/brainjepa](https://github.com/janklees/brainjepa)
-- `external_repos/brainharmony/` — [hzlab/Brain-Harmony](https://github.com/hzlab/Brain-Harmony)
-- `external_repos/brainmt/` — [arunkumar-kannan/brainmt-fmri](https://github.com/arunkumar-kannan/brainmt-fmri)
-- `external_repos/swift/` — [Transconnectome/SwiFT](https://github.com/Transconnectome/SwiFT)
+| Model | Local Path | GitHub Repository |
+|-------|------------|-------------------|
+| BrainLM | `external_repos/brainlm/` | [vandijklab/BrainLM](https://github.com/vandijklab/BrainLM) |
+| Brain-JEPA | `external_repos/brainjepa/` | [janklees/brainjepa](https://github.com/janklees/brainjepa) |
+| Brain Harmony | `external_repos/brainharmony/` | [hzlab/Brain-Harmony](https://github.com/hzlab/Brain-Harmony) |
+| BrainMT | `external_repos/brainmt/` | [arunkumar-kannan/brainmt-fmri](https://github.com/arunkumar-kannan/brainmt-fmri) |
+| SwiFT | `external_repos/swift/` | [Transconnectome/SwiFT](https://github.com/Transconnectome/SwiFT) |
 
-Each model page includes walkthrough links to `docs/code_walkthroughs/` and structured YAML cards in `kb/model_cards/`.
+Each model page includes:
+- ✅ Detailed code walkthrough in `docs/code_walkthroughs/`
+- ✅ Structured YAML card in `kb/model_cards/`
+- ✅ Integration recipes and preprocessing specs
 
-## Next steps
+</details>
 
-- Validate brain embedding reproducibility across cohorts (UK Biobank, Cha Hospital developmental cohort)
-- Benchmark fMRI encoder stability across different parcellation schemes (Schaefer 100/200/400, AAL)
-- Explore **EEG/EPhys** foundation models for pediatric/clinical settings (e.g., LaBraM, TBD)
-- Integrate **diffusion MRI** embeddings for white matter microstructure (exploratory)
+---
+
+## 🚀 Next Steps
+
+- ✅ Validate brain embedding reproducibility across cohorts (UK Biobank, Cha Hospital developmental cohort)
+- ✅ Benchmark fMRI encoder stability across different parcellation schemes (Schaefer 100/200/400, AAL)
+- 🔬 Explore **EEG/EPhys** foundation models for pediatric/clinical settings (e.g., LaBraM, TBD)
+- 🔬 Integrate **diffusion MRI** embeddings for white matter microstructure (exploratory)

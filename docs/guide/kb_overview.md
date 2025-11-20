@@ -4,11 +4,15 @@ status: active
 updated: 2025-11-19
 ---
 
-# Navigating the Neuro-Omics KB
+# 📖 Navigating the Neuro-Omics KB
+
+> **Your guide to the knowledge base structure, YAML cards, and integration-critical metadata**
 
 This page orients new readers to the structure of the knowledge base, how the YAML cards feed into the rendered docs, and where to find integration-critical metadata for **gene–brain–behaviour foundation models**.
 
-## Scope & Evolution
+---
+
+## 🎯 Scope & Evolution
 
 The KB began with **adult UK Biobank–centric gene–brain FM alignment** (genetics FM + MRI Brain FM outputs) and has expanded to include:
 
@@ -18,7 +22,9 @@ The KB began with **adult UK Biobank–centric gene–brain FM alignment** (gene
 - ✅ **Developmental/Neurodevelopmental Support**: Longitudinal multimodal FMs spanning MRI/fMRI, EEG/EPhys, genetics, behavioral phenotypes
 - ✅ **ARPA-H BOM Alignment**: Documentation for escalating from late fusion → contrastive → unified architectures
 
-## Architecture at a glance
+---
+
+## 🏗️ Architecture at a Glance
 
 ```mermaid
 flowchart LR
@@ -38,7 +44,9 @@ flowchart LR
 - **Semantic alignment / hub registries** describe how modalities (gene, brain, EEG, behaviour) are aligned to **LLM** and **VLM** spaces in ARPA-H–style Brain-Omics Model (BOM) projects.
 - **Experiment configs** log the exact recipe IDs and folds before any analysis job starts.
 
-## Core navigation map
+---
+
+## 🗺️ Core Navigation Map
 
     
     **Foundation Models**

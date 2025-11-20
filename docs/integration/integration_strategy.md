@@ -4,18 +4,26 @@ status: draft
 updated: 2025-11-18
 ---
 
-# Integration Strategy
+# 🔗 Integration Strategy
 
-Overall philosophy
+> **Late fusion first, then escalate to contrastive and unified architectures**
 
-- Late fusion / integration first, then scale if we see gains.
+---
 
-Why this applies to genes × brain
+## 🎯 Overall Philosophy
 
-- Heterogeneous semantics: nucleic-acid sequence vs morphology/dynamics → maximize modality specificity before fusion.
-- Confounds differ: ancestry/batch vs site/motion/TR → deconfound independently.
+**Late fusion / integration first, then scale if we see gains.**
 
-Baselines
+---
+
+## 🧬🧠 Why This Applies to Genes × Brain
+
+- **Heterogeneous semantics:** Nucleic-acid sequence vs morphology/dynamics → maximize modality specificity before fusion
+- **Different confounds:** Ancestry/batch vs site/motion/TR → deconfound independently
+
+---
+
+## 📊 Baselines
 
 - Preprocess per modality
   - Z-score features.
@@ -27,37 +35,59 @@ Baselines
 - Prediction
   - LR (balanced) and LightGBM/CatBoost on Gene, Brain, Fusion; same CV folds; AUROC/AUPRC; DeLong/bootstrap for Fusion vs single-modality.
 
-## Embedding strategy registry
+---
 
-- Recipes live under `kb/integration_cards/embedding_strategies.yaml`. Print them via `python scripts/manage_kb.py ops strategy <id>` before each extraction and log the ID in experiment metadata.
+## 📋 Embedding Strategy Registry
+
+**Recipes live under `kb/integration_cards/embedding_strategies.yaml`**
+
+Print them via:
+```bash
+python scripts/manage_kb.py ops strategy <id>
+```
+
+**Available strategies:**
 - **sMRI (`smri_free_surfer_pca512_v1`).** FreeSurfer ROI table (~176 features) → fold-wise z-score → residualize age/sex/site/ICV → PCA→512. Future variants: FM encoders, diffusion MRI. Sources: `docs/integration/modality_features/smri.md`, FreeSurfer refs.
 - **rs-fMRI baseline (`rsfmri_swift_segments_v1`).** SwiFT exports per 20-frame segment → mean pool tokens → run mean → subject mean → residualize age/sex/site/motion → PCA→512. Variants exist for BrainLM (`rsfmri_brainlm_segments_v1`), Brain-JEPA (`rsfmri_brainjepa_roi_v1`), and BrainMT (`rsfmri_brainmt_segments_v1`); each references the corresponding walkthrough/code.
 - **Genetics (`genetics_gene_fm_pca512_v1`).** RC-averaged gene FMs (Caduceus/Evo2/GENERaTOR) → exon → gene pooling → concatenate curated gene set → residualize age/sex/ancestry PCs/batch → PCA→512.
 - **Fusion (`fusion_concat_gene_brain_1024_v1`).** Concatenate the 512-D genetics vector with the chosen 512-D brain vector; z-score each block independently before concatenation.
 
-Experiments now reference these IDs (see `configs/experiments/*.yaml`) to keep per-subject embeddings traceable.
+**Experiments now reference these IDs** (see `configs/experiments/*.yaml`) to keep per-subject embeddings traceable.
 
-## Harmonization & site effects
+---
 
-- Cataloged in `kb/integration_cards/harmonization_methods.yaml`; query via `python scripts/manage_kb.py ops harmonization <id>`.
+## 🔧 Harmonization & Site Effects
+
+**Cataloged in `kb/integration_cards/harmonization_methods.yaml`**
+
+Query via:
+```bash
+python scripts/manage_kb.py ops harmonization <id>
+```
+
+**Available harmonization methods:**
 - **Default (`none_baseline`).** Feature-level z-score + covariate residualization; always record site/motion covariates.
 - **Statistical (`combat_smri`).** ROI-wise ComBat before PCA for sMRI (Fortin et al., 2018). Run the `02_harmonization_ablation_smri` config to benchmark vs. the baseline.
 - **Deep (`murd_t1_t2`).** Apply MURD (Liu & Yap 2024) to T1/T2 volumes before FreeSurfer extraction; compare vs. ComBat and baseline to judge if image-space harmonization improves CCA/prediction.
 - **Representation unlearning (`site_unlearning_module`).** Optional adversarial head that removes site labels from embedding space (Dinsdale et al., 2021); treat as experimental until harmonization ablations justify it.
 
-Record harmonization IDs (and preprocessing pipeline IDs such as `rsfmri_preprocessing_pipelines.hcp_like_minimal`) alongside embedding strategy IDs in every run.
+**Record harmonization IDs** (and preprocessing pipeline IDs such as `rsfmri_preprocessing_pipelines.hcp_like_minimal`) alongside embedding strategy IDs in every run.
 
-Escalation criteria
+---
 
-- If Fusion > max(Gene, Brain) with p < 0.05 (DeLong/bootstrap), consider:
+## 🚀 Escalation Criteria
+
+**If Fusion > max(Gene, Brain) with p < 0.05 (DeLong/bootstrap), consider:**
   - Two-tower contrastive alignment (frozen encoders; small projectors).
   - EI stacking over per-modality models.
   - Harmony-style hub tokens/TAPE if TR/site heterogeneity limits fMRI.
 
-Interpretability
+---
 
-- LOGO ΔAUC with Wilcoxon + FDR for gene attribution.
-- CCA loadings; partial correlations of axes with outcomes (covariate-adjusted).
+## 🔍 Interpretability
+
+- **LOGO ΔAUC** with Wilcoxon + FDR for gene attribution
+- **CCA loadings:** Partial correlations of axes with outcomes (covariate-adjusted)
 
 ## Tabular FM (TabPFN) baseline
 

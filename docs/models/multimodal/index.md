@@ -1,31 +1,35 @@
-# Multimodal & Clinical Foundation Models
+# 🏥 Multimodal & Clinical Foundation Models
 
-## Overview
+> **Unified multimodal architectures informing gene-brain-behavior integration**
+
+---
+
+## 📋 Overview
 
 This section covers multimodal and clinical foundation models that integrate multiple modalities beyond genetics and neuroimaging, including medical imaging, text, video, and clinical data. These models represent the state-of-the-art in unified multimodal AI for healthcare and general-purpose vision-language understanding.
 
-## Models in this Section
+## 🎯 Models in this Section
 
 ### General Multimodal Models
 
-| Model | Architecture | Key Innovation | Parameters |
-|-------|--------------|----------------|------------|
-| [BAGEL](bagel.md) | MoT decoder + SigLIP + VAE | Unified understanding + generation | 7B active / 14B total |
-| [MoT](mot.md) | Sparse transformer | Modality-aware FFNs | Scales to 7B+ |
+| Model | Architecture | Key Innovation | Parameters | Documentation |
+|-------|--------------|----------------|------------|---------------|
+| 🔗 [**BAGEL**](bagel.md) | MoT decoder + SigLIP + VAE | Unified understanding + generation | 7B active / 14B total | [Walkthrough](../../code_walkthroughs/bagel_walkthrough.md) |
+| 🔗 [**MoT**](mot.md) | Sparse transformer | Modality-aware FFNs (~55% FLOPs) | Scales to 7B+ | [Walkthrough](../../code_walkthroughs/mot_walkthrough.md) |
 
 ### Medical Multimodal Models
 
-| Model | Architecture | Clinical Focus | Languages |
-|-------|--------------|----------------|-----------|
-| [M3FM](m3fm.md) | CLIP + medical LLM | CXR + CT report generation | English + Chinese |
-| [Me-LLaMA](me_llama.md) | Continual pretrained LLaMA | Medical knowledge integration | English |
-| [TITAN](titan.md) | Vision transformer | Whole-slide pathology | English |
+| Model | Architecture | Clinical Focus | Languages | Documentation |
+|-------|--------------|----------------|-----------|---------------|
+| 🏥 [**M3FM**](m3fm.md) | CLIP + medical LLM | CXR + CT report generation | EN + CN | [Walkthrough](../../code_walkthroughs/m3fm_walkthrough.md) |
+| 🏥 [**Me-LLaMA**](me_llama.md) | Continual pretrained LLaMA | Medical knowledge integration | English | [Walkthrough](../../code_walkthroughs/melamma_walkthrough.md) |
+| 🏥 [**TITAN**](titan.md) | Vision transformer | Whole-slide pathology (gigapixel) | English | [Walkthrough](../../code_walkthroughs/titan_walkthrough.md) |
 
 ###  Medical Data Catalog
 
-| Resource | Coverage | Use Case |
-|----------|----------|----------|
-| [FMS-Medical](fms_medical.md) | Survey of 100+ medical datasets | Dataset discovery + benchmarking |
+| Resource | Coverage | Use Case | Documentation |
+|----------|----------|----------|---------------|
+| 📚 [**FMS-Medical**](fms_medical.md) | 100+ medical datasets | Dataset discovery + benchmarking | [Walkthrough](../../code_walkthroughs/fms_medical_walkthrough.md) |
 
 ---
 
