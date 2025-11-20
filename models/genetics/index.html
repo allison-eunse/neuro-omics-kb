@@ -824,7 +824,7 @@
   <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        📋 Overview
       
     </span>
   </a>
@@ -835,7 +835,7 @@
   <a href="#model-registry" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Model registry
+        🎯 Model Registry
       
     </span>
   </a>
@@ -846,7 +846,7 @@
   <a href="#usage-workflow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Usage workflow
+        🔄 Usage Workflow
       
     </span>
   </a>
@@ -857,12 +857,12 @@
   <a href="#key-considerations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Key considerations
+        🔑 Key Considerations
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Key considerations">
+    <nav class="md-nav" aria-label="🔑 Key Considerations">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -907,7 +907,7 @@
   <a href="#integration-targets" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Integration targets
+        🔗 Integration Targets
       
     </span>
   </a>
@@ -918,7 +918,7 @@
   <a href="#source-repositories" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Source repositories
+        📦 Source Repositories
       
     </span>
   </a>
@@ -929,7 +929,7 @@
   <a href="#next-steps" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Next steps
+        🚀 Next Steps
       
     </span>
   </a>
@@ -5207,9 +5207,13 @@
   
 
 
-<h1 id="genetics-foundation-models">Genetics Foundation Models<a class="headerlink" href="#genetics-foundation-models" title="Permanent link">&para;</a></h1>
-<p>This section documents the <strong>DNA sequence foundation models</strong> used for genomic representation learning in the Neuro-Omics KB. These models are used to extract gene-level embeddings from raw genomic sequences (DNA/RNA) for downstream integration with brain imaging, behavioral phenotypes, and clinical outcomes.</p>
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<h1 id="genetics-foundation-models">🧬 Genetics Foundation Models<a class="headerlink" href="#genetics-foundation-models" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>DNA sequence foundation models for genomic representation learning</strong></p>
+</blockquote>
+<p>This section documents the <strong>genetics foundation models</strong> used to extract gene-level embeddings from raw genomic sequences (DNA/RNA) for downstream integration with brain imaging, behavioral phenotypes, and clinical outcomes.</p>
+<hr />
+<h2 id="overview">📋 Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>All genetics FMs documented here:</p>
 <ul>
 <li><strong>Operate on nucleotide sequences</strong> (A, C, G, T) rather than pre-computed variant calls or SNP arrays</li>
@@ -5217,44 +5221,51 @@
 <li><strong>Enable interpretability</strong> through attribution methods like LOGO ΔAUC</li>
 <li><strong>Are pretrained on large genomic corpora</strong> (human reference genomes, multi-species datasets, or RefSeq)</li>
 </ul>
-<h2 id="model-registry">Model registry<a class="headerlink" href="#model-registry" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="model-registry">🎯 Model Registry<a class="headerlink" href="#model-registry" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>Model</th>
 <th>Architecture</th>
-<th>Key feature</th>
-<th>Integration role</th>
+<th>Key Feature</th>
+<th>Integration Role</th>
+<th>Documentation</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="caduceus/">Caduceus</a></td>
+<td>🧬 <a href="caduceus/"><strong>Caduceus</strong></a></td>
 <td>Mamba (BiMamba) + RC-equivariance</td>
 <td>Strand-robust, efficient long-context</td>
 <td>Primary gene encoder for UK Biobank WES</td>
+<td><a href="../../code_walkthroughs/caduceus_walkthrough/">Walkthrough</a></td>
 </tr>
 <tr>
-<td><a href="dnabert2/">DNABERT-2</a></td>
-<td>BERT (multi-species pretraining)</td>
+<td>🧬 <a href="dnabert2/"><strong>DNABERT-2</strong></a></td>
+<td>BERT (multi-species)</td>
 <td>BPE tokenization, cross-species transfer</td>
 <td>Alternative gene encoder; comparison baseline</td>
+<td><a href="../../code_walkthroughs/dnabert2_walkthrough/">Walkthrough</a></td>
 </tr>
 <tr>
-<td><a href="evo2/">Evo 2</a></td>
+<td>🧬 <a href="evo2/"><strong>Evo 2</strong></a></td>
 <td>StripedHyena (1M context)</td>
 <td>Ultra-long-range dependencies</td>
 <td>Exploratory; regulatory region capture</td>
+<td><a href="../../code_walkthroughs/evo2_walkthrough/">Walkthrough</a></td>
 </tr>
 <tr>
-<td><a href="generator/">GENERator</a></td>
+<td>🧬 <a href="generator/"><strong>GENERator</strong></a></td>
 <td>Generative 6-mer LM</td>
 <td>Generative modeling, sequence design</td>
-<td>Reference for generative vs discriminative tradeoffs</td>
+<td>Reference for generative vs discriminative</td>
+<td><a href="../../code_walkthroughs/generator_walkthrough/">Walkthrough</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="usage-workflow">Usage workflow<a class="headerlink" href="#usage-workflow" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="usage-workflow">🔄 Usage Workflow<a class="headerlink" href="#usage-workflow" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>Extract sequences</strong> from reference genome (hg38) for target genes</li>
 <li><strong>Tokenize</strong> using model-specific vocabularies (k-mers, BPE, or single-nucleotide)</li>
@@ -5262,7 +5273,8 @@
 <li><strong>Pool</strong> to gene-level representation (mean/CLS depending on model)</li>
 <li><strong>Project</strong> to 512-D for cross-modal alignment with brain embeddings</li>
 </ol>
-<h2 id="key-considerations">Key considerations<a class="headerlink" href="#key-considerations" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="key-considerations">🔑 Key Considerations<a class="headerlink" href="#key-considerations" title="Permanent link">&para;</a></h2>
 <h3 id="rc-equivariance">RC-equivariance<a class="headerlink" href="#rc-equivariance" title="Permanent link">&para;</a></h3>
 <p>DNA has no inherent directionality; models like <strong>Caduceus</strong> enforce BiMamba RC-equivariance to avoid strand bias. For non-equivariant models, manually average forward and RC embeddings.</p>
 <h3 id="variant-handling">Variant handling<a class="headerlink" href="#variant-handling" title="Permanent link">&para;</a></h3>
@@ -5274,28 +5286,44 @@
 </ul>
 <h3 id="attribution">Attribution<a class="headerlink" href="#attribution" title="Permanent link">&para;</a></h3>
 <p>Use <strong>LOGO (Leave-One-Gene-Out)</strong> ΔAUC to assess which genes contribute most to downstream prediction tasks (e.g., MDD risk, cognitive scores). See <a href="../../generated/kb_curated/papers-pdf/yoon_biokdd2025.pdf">Yoon et al. BioKDD 2025</a> for protocol details.</p>
-<h2 id="integration-targets">Integration targets<a class="headerlink" href="#integration-targets" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="integration-targets">🔗 Integration Targets<a class="headerlink" href="#integration-targets" title="Permanent link">&para;</a></h2>
 <p>Genetics embeddings are integrated with:</p>
 <ul>
 <li><strong>sMRI</strong> IDPs (structural phenotypes) via CCA, late fusion, or contrastive alignment</li>
 <li><strong>fMRI</strong> embeddings (e.g., BrainLM, Brain-JEPA) for gene–brain–behaviour triangulation</li>
 <li><strong>Behavioral phenotypes</strong> (cognitive scores, psychiatric diagnoses) via multimodal prediction</li>
 </ul>
-<p>See <a href="../../integration/integration_strategy/">Integration Strategy</a> for fusion protocols and <a href="../../integration/modality_features/genomics/">Modality Features: Genomics</a> for preprocessing specs.</p>
-<h2 id="source-repositories">Source repositories<a class="headerlink" href="#source-repositories" title="Permanent link">&para;</a></h2>
-<p>All genetics FM source code lives in <code>external_repos/</code>:</p>
+<p><strong>Learn more:</strong>
+- <a href="../../integration/integration_strategy/">Integration Strategy</a> - Fusion protocols
+- <a href="../../integration/modality_features/genomics/">Modality Features: Genomics</a> - Preprocessing specs</p>
+<hr />
+<h2 id="source-repositories">📦 Source Repositories<a class="headerlink" href="#source-repositories" title="Permanent link">&para;</a></h2>
+<details>
+<summary><b>Click to view all source repositories</b></summary>
+
+All genetics FM source code lives in `external_repos/`:
+
+| Model | Local Path | GitHub Repository |
+|-------|------------|-------------------|
+| Caduceus | `external_repos/caduceus/` | [kuleshov-group/caduceus](https://github.com/kuleshov-group/caduceus) |
+| DNABERT-2 | `external_repos/dnabert2/` | [Zhihan1996/DNABERT2](https://github.com/Zhihan1996/DNABERT2) |
+| Evo 2 | `external_repos/evo2/` | [ArcInstitute/evo2](https://github.com/ArcInstitute/evo2) |
+| GENERator | `external_repos/generator/` | [GenerTeam/GENERator](https://github.com/GenerTeam/GENERator) |
+
+Each model page includes:
+- ✅ Detailed code walkthrough in `docs/code_walkthroughs/`
+- ✅ Structured YAML card in `kb/model_cards/`
+- ✅ Integration recipes and preprocessing specs
+
+</details>
+
+<hr />
+<h2 id="next-steps">🚀 Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>external_repos/caduceus/</code> — <a href="https://github.com/kuleshov-group/caduceus">kuleshov-group/caduceus</a></li>
-<li><code>external_repos/dnabert2/</code> — <a href="https://github.com/Zhihan1996/DNABERT2">Zhihan1996/DNABERT2</a></li>
-<li><code>external_repos/evo2/</code> — <a href="https://github.com/ArcInstitute/evo2">ArcInstitute/evo2</a></li>
-<li><code>external_repos/generator/</code> — <a href="https://github.com/GenerTeam/GENERator">GenerTeam/GENERator</a></li>
-</ul>
-<p>Each model page includes walkthrough links to <code>docs/code_walkthroughs/</code> and structured YAML cards in <code>kb/model_cards/</code>.</p>
-<h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Validate gene embedding reproducibility across cohorts (UK Biobank WES, Cha Hospital panel sequencing)</li>
-<li>Benchmark LOGO ΔAUC stability under different embedding projection dimensions (256, 512, 1024)</li>
-<li>Explore regulatory region embeddings (enhancers, promoters) with long-context models like Evo 2</li>
+<li>✅ Validate gene embedding reproducibility across cohorts (UK Biobank WES, Cha Hospital panel sequencing)</li>
+<li>✅ Benchmark LOGO ΔAUC stability under different embedding projection dimensions (256, 512, 1024)</li>
+<li>🔬 Explore regulatory region embeddings (enhancers, promoters) with long-context models like Evo 2</li>
 </ul>
 
 

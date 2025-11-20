@@ -1652,10 +1652,43 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#overall-philosophy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Overall Philosophy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-this-applies-to-genes-brain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧬🧠 Why This Applies to Genes × Brain
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#baselines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Baselines
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#embedding-strategy-registry" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Embedding strategy registry
+        📋 Embedding Strategy Registry
       
     </span>
   </a>
@@ -1666,7 +1699,29 @@
   <a href="#harmonization-site-effects" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Harmonization &amp; site effects
+        🔧 Harmonization &amp; Site Effects
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#escalation-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Escalation Criteria
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interpretability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 Interpretability
       
     </span>
   </a>
@@ -5127,17 +5182,21 @@
   
 
 
-<h1 id="integration-strategy">Integration Strategy<a class="headerlink" href="#integration-strategy" title="Permanent link">&para;</a></h1>
-<p>Overall philosophy</p>
+<h1 id="integration-strategy">🔗 Integration Strategy<a class="headerlink" href="#integration-strategy" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Late fusion first, then escalate to contrastive and unified architectures</strong></p>
+</blockquote>
+<hr />
+<h2 id="overall-philosophy">🎯 Overall Philosophy<a class="headerlink" href="#overall-philosophy" title="Permanent link">&para;</a></h2>
+<p><strong>Late fusion / integration first, then scale if we see gains.</strong></p>
+<hr />
+<h2 id="why-this-applies-to-genes-brain">🧬🧠 Why This Applies to Genes × Brain<a class="headerlink" href="#why-this-applies-to-genes-brain" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Late fusion / integration first, then scale if we see gains.</li>
+<li><strong>Heterogeneous semantics:</strong> Nucleic-acid sequence vs morphology/dynamics → maximize modality specificity before fusion</li>
+<li><strong>Different confounds:</strong> Ancestry/batch vs site/motion/TR → deconfound independently</li>
 </ul>
-<p>Why this applies to genes × brain</p>
-<ul>
-<li>Heterogeneous semantics: nucleic-acid sequence vs morphology/dynamics → maximize modality specificity before fusion.</li>
-<li>Confounds differ: ancestry/batch vs site/motion/TR → deconfound independently.</li>
-</ul>
-<p>Baselines</p>
+<hr />
+<h2 id="baselines">📊 Baselines<a class="headerlink" href="#baselines" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Preprocess per modality</li>
 <li>Z-score features.</li>
@@ -5149,35 +5208,41 @@
 <li>Prediction</li>
 <li>LR (balanced) and LightGBM/CatBoost on Gene, Brain, Fusion; same CV folds; AUROC/AUPRC; DeLong/bootstrap for Fusion vs single-modality.</li>
 </ul>
-<h2 id="embedding-strategy-registry">Embedding strategy registry<a class="headerlink" href="#embedding-strategy-registry" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="embedding-strategy-registry">📋 Embedding Strategy Registry<a class="headerlink" href="#embedding-strategy-registry" title="Permanent link">&para;</a></h2>
+<p><strong>Recipes live under <code>kb/integration_cards/embedding_strategies.yaml</code></strong></p>
+<p>Print them via:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span__-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>python<span class="w"> </span>scripts/manage_kb.py<span class="w"> </span>ops<span class="w"> </span>strategy<span class="w"> </span>&lt;id&gt;
+</span></code></pre></div></p>
+<p><strong>Available strategies:</strong>
+- <strong>sMRI (<code>smri_free_surfer_pca512_v1</code>).</strong> FreeSurfer ROI table (~176 features) → fold-wise z-score → residualize age/sex/site/ICV → PCA→512. Future variants: FM encoders, diffusion MRI. Sources: <code>docs/integration/modality_features/smri.md</code>, FreeSurfer refs.
+- <strong>rs-fMRI baseline (<code>rsfmri_swift_segments_v1</code>).</strong> SwiFT exports per 20-frame segment → mean pool tokens → run mean → subject mean → residualize age/sex/site/motion → PCA→512. Variants exist for BrainLM (<code>rsfmri_brainlm_segments_v1</code>), Brain-JEPA (<code>rsfmri_brainjepa_roi_v1</code>), and BrainMT (<code>rsfmri_brainmt_segments_v1</code>); each references the corresponding walkthrough/code.
+- <strong>Genetics (<code>genetics_gene_fm_pca512_v1</code>).</strong> RC-averaged gene FMs (Caduceus/Evo2/GENERaTOR) → exon → gene pooling → concatenate curated gene set → residualize age/sex/ancestry PCs/batch → PCA→512.
+- <strong>Fusion (<code>fusion_concat_gene_brain_1024_v1</code>).</strong> Concatenate the 512-D genetics vector with the chosen 512-D brain vector; z-score each block independently before concatenation.</p>
+<p><strong>Experiments now reference these IDs</strong> (see <code>configs/experiments/*.yaml</code>) to keep per-subject embeddings traceable.</p>
+<hr />
+<h2 id="harmonization-site-effects">🔧 Harmonization &amp; Site Effects<a class="headerlink" href="#harmonization-site-effects" title="Permanent link">&para;</a></h2>
+<p><strong>Cataloged in <code>kb/integration_cards/harmonization_methods.yaml</code></strong></p>
+<p>Query via:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span__-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python<span class="w"> </span>scripts/manage_kb.py<span class="w"> </span>ops<span class="w"> </span>harmonization<span class="w"> </span>&lt;id&gt;
+</span></code></pre></div></p>
+<p><strong>Available harmonization methods:</strong>
+- <strong>Default (<code>none_baseline</code>).</strong> Feature-level z-score + covariate residualization; always record site/motion covariates.
+- <strong>Statistical (<code>combat_smri</code>).</strong> ROI-wise ComBat before PCA for sMRI (Fortin et al., 2018). Run the <code>02_harmonization_ablation_smri</code> config to benchmark vs. the baseline.
+- <strong>Deep (<code>murd_t1_t2</code>).</strong> Apply MURD (Liu &amp; Yap 2024) to T1/T2 volumes before FreeSurfer extraction; compare vs. ComBat and baseline to judge if image-space harmonization improves CCA/prediction.
+- <strong>Representation unlearning (<code>site_unlearning_module</code>).</strong> Optional adversarial head that removes site labels from embedding space (Dinsdale et al., 2021); treat as experimental until harmonization ablations justify it.</p>
+<p><strong>Record harmonization IDs</strong> (and preprocessing pipeline IDs such as <code>rsfmri_preprocessing_pipelines.hcp_like_minimal</code>) alongside embedding strategy IDs in every run.</p>
+<hr />
+<h2 id="escalation-criteria">🚀 Escalation Criteria<a class="headerlink" href="#escalation-criteria" title="Permanent link">&para;</a></h2>
+<p><strong>If Fusion &gt; max(Gene, Brain) with p &lt; 0.05 (DeLong/bootstrap), consider:</strong>
+  - Two-tower contrastive alignment (frozen encoders; small projectors).
+  - EI stacking over per-modality models.
+  - Harmony-style hub tokens/TAPE if TR/site heterogeneity limits fMRI.</p>
+<hr />
+<h2 id="interpretability">🔍 Interpretability<a class="headerlink" href="#interpretability" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Recipes live under <code>kb/integration_cards/embedding_strategies.yaml</code>. Print them via <code>python scripts/manage_kb.py ops strategy &lt;id&gt;</code> before each extraction and log the ID in experiment metadata.</li>
-<li><strong>sMRI (<code>smri_free_surfer_pca512_v1</code>).</strong> FreeSurfer ROI table (~176 features) → fold-wise z-score → residualize age/sex/site/ICV → PCA→512. Future variants: FM encoders, diffusion MRI. Sources: <code>docs/integration/modality_features/smri.md</code>, FreeSurfer refs.</li>
-<li><strong>rs-fMRI baseline (<code>rsfmri_swift_segments_v1</code>).</strong> SwiFT exports per 20-frame segment → mean pool tokens → run mean → subject mean → residualize age/sex/site/motion → PCA→512. Variants exist for BrainLM (<code>rsfmri_brainlm_segments_v1</code>), Brain-JEPA (<code>rsfmri_brainjepa_roi_v1</code>), and BrainMT (<code>rsfmri_brainmt_segments_v1</code>); each references the corresponding walkthrough/code.</li>
-<li><strong>Genetics (<code>genetics_gene_fm_pca512_v1</code>).</strong> RC-averaged gene FMs (Caduceus/Evo2/GENERaTOR) → exon → gene pooling → concatenate curated gene set → residualize age/sex/ancestry PCs/batch → PCA→512.</li>
-<li><strong>Fusion (<code>fusion_concat_gene_brain_1024_v1</code>).</strong> Concatenate the 512-D genetics vector with the chosen 512-D brain vector; z-score each block independently before concatenation.</li>
-</ul>
-<p>Experiments now reference these IDs (see <code>configs/experiments/*.yaml</code>) to keep per-subject embeddings traceable.</p>
-<h2 id="harmonization-site-effects">Harmonization &amp; site effects<a class="headerlink" href="#harmonization-site-effects" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Cataloged in <code>kb/integration_cards/harmonization_methods.yaml</code>; query via <code>python scripts/manage_kb.py ops harmonization &lt;id&gt;</code>.</li>
-<li><strong>Default (<code>none_baseline</code>).</strong> Feature-level z-score + covariate residualization; always record site/motion covariates.</li>
-<li><strong>Statistical (<code>combat_smri</code>).</strong> ROI-wise ComBat before PCA for sMRI (Fortin et al., 2018). Run the <code>02_harmonization_ablation_smri</code> config to benchmark vs. the baseline.</li>
-<li><strong>Deep (<code>murd_t1_t2</code>).</strong> Apply MURD (Liu &amp; Yap 2024) to T1/T2 volumes before FreeSurfer extraction; compare vs. ComBat and baseline to judge if image-space harmonization improves CCA/prediction.</li>
-<li><strong>Representation unlearning (<code>site_unlearning_module</code>).</strong> Optional adversarial head that removes site labels from embedding space (Dinsdale et al., 2021); treat as experimental until harmonization ablations justify it.</li>
-</ul>
-<p>Record harmonization IDs (and preprocessing pipeline IDs such as <code>rsfmri_preprocessing_pipelines.hcp_like_minimal</code>) alongside embedding strategy IDs in every run.</p>
-<p>Escalation criteria</p>
-<ul>
-<li>If Fusion &gt; max(Gene, Brain) with p &lt; 0.05 (DeLong/bootstrap), consider:</li>
-<li>Two-tower contrastive alignment (frozen encoders; small projectors).</li>
-<li>EI stacking over per-modality models.</li>
-<li>Harmony-style hub tokens/TAPE if TR/site heterogeneity limits fMRI.</li>
-</ul>
-<p>Interpretability</p>
-<ul>
-<li>LOGO ΔAUC with Wilcoxon + FDR for gene attribution.</li>
-<li>CCA loadings; partial correlations of axes with outcomes (covariate-adjusted).</li>
+<li><strong>LOGO ΔAUC</strong> with Wilcoxon + FDR for gene attribution</li>
+<li><strong>CCA loadings:</strong> Partial correlations of axes with outcomes (covariate-adjusted)</li>
 </ul>
 <h2 id="tabular-fm-tabpfn-baseline">Tabular FM (TabPFN) baseline<a class="headerlink" href="#tabular-fm-tabpfn-baseline" title="Permanent link">&para;</a></h2>
 <ul>

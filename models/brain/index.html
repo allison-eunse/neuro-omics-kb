@@ -1055,7 +1055,7 @@
   <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        📋 Overview
       
     </span>
   </a>
@@ -1066,7 +1066,7 @@
   <a href="#model-registry" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Model registry
+        🎯 Model Registry
       
     </span>
   </a>
@@ -1077,12 +1077,12 @@
   <a href="#usage-workflow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Usage workflow
+        🔄 Usage Workflow
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Usage workflow">
+    <nav class="md-nav" aria-label="🔄 Usage Workflow">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1116,12 +1116,12 @@
   <a href="#key-considerations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Key considerations
+        🔑 Key Considerations
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Key considerations">
+    <nav class="md-nav" aria-label="🔑 Key Considerations">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1166,7 +1166,7 @@
   <a href="#integration-targets" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Integration targets
+        🔗 Integration Targets
       
     </span>
   </a>
@@ -1177,7 +1177,7 @@
   <a href="#source-repositories" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Source repositories
+        📦 Source Repositories
       
     </span>
   </a>
@@ -1188,7 +1188,7 @@
   <a href="#next-steps" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Next steps
+        🚀 Next Steps
       
     </span>
   </a>
@@ -5235,9 +5235,13 @@
   
 
 
-<h1 id="brain-foundation-models">Brain Foundation Models<a class="headerlink" href="#brain-foundation-models" title="Permanent link">&para;</a></h1>
-<p>This section documents the <strong>neuroimaging foundation models</strong> used for brain representation learning in the Neuro-Omics KB. These models extract embeddings from structural MRI (sMRI), functional MRI (fMRI), and other brain imaging modalities for downstream integration with genomic data, behavioral phenotypes, and clinical outcomes.</p>
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<h1 id="brain-foundation-models">🧠 Brain Foundation Models<a class="headerlink" href="#brain-foundation-models" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Neuroimaging foundation models for brain representation learning</strong></p>
+</blockquote>
+<p>This section documents the <strong>brain imaging foundation models</strong> that extract embeddings from structural MRI (sMRI), functional MRI (fMRI), and other brain imaging modalities for downstream integration with genomic data, behavioral phenotypes, and clinical outcomes.</p>
+<hr />
+<h2 id="overview">📋 Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>All brain FMs documented here:</p>
 <ul>
 <li><strong>Operate on neuroimaging data</strong> (volumetric MRI, parcel time series, or raw BOLD signals)</li>
@@ -5245,56 +5249,58 @@
 <li><strong>Are pretrained on large multi-site datasets</strong> (UK Biobank, HCP, ABCD, etc.)</li>
 <li><strong>Enable cross-modal alignment</strong> with genomic and behavioral representations</li>
 </ul>
-<h2 id="model-registry">Model registry<a class="headerlink" href="#model-registry" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="model-registry">🎯 Model Registry<a class="headerlink" href="#model-registry" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>Model</th>
 <th>Modality</th>
 <th>Architecture</th>
-<th>Key feature</th>
-<th>Integration role</th>
+<th>Key Feature</th>
+<th>Documentation</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="brainlm/">BrainLM</a></td>
+<td>🧠 <a href="brainlm/"><strong>BrainLM</strong></a></td>
 <td>fMRI</td>
 <td>ViT-MAE</td>
-<td>Masked autoencoding of parcel time series</td>
-<td>Primary fMRI encoder; site-robust embeddings</td>
+<td>Masked autoencoding; site-robust</td>
+<td><a href="../../code_walkthroughs/brainlm_walkthrough/">Walkthrough</a></td>
 </tr>
 <tr>
-<td><a href="brainjepa/">Brain-JEPA</a></td>
+<td>🧠 <a href="brainjepa/"><strong>Brain-JEPA</strong></a></td>
 <td>fMRI</td>
 <td>JEPA</td>
-<td>Joint-embedding prediction; no reconstruction loss</td>
-<td>Alternative fMRI encoder; lower-latency option</td>
+<td>Joint-embedding prediction; lower-latency</td>
+<td><a href="../../code_walkthroughs/brainjepa_walkthrough/">Walkthrough</a></td>
 </tr>
 <tr>
-<td><a href="brainharmony/">Brain Harmony</a></td>
+<td>🧠 <a href="brainharmony/"><strong>Brain Harmony</strong></a></td>
 <td>sMRI + fMRI</td>
 <td>ViT + TAPE</td>
-<td>Multi-modal fusion via target-aware projection ensemble</td>
-<td>Cross-modal sMRI+fMRI fusion; TAPE for multi-task</td>
+<td>Multi-modal fusion via TAPE</td>
+<td><a href="../../code_walkthroughs/brainharmony_walkthrough/">Walkthrough</a></td>
 </tr>
 <tr>
-<td><a href="brainmt/">BrainMT</a></td>
-<td>sMRI (+ fMRI planned)</td>
-<td>Hybrid Mamba-Transformer</td>
-<td>Efficient long-range dependencies for 3D volumes</td>
-<td>sMRI encoder; Mamba for computational efficiency</td>
+<td>🧠 <a href="brainmt/"><strong>BrainMT</strong></a></td>
+<td>sMRI + fMRI</td>
+<td>Mamba-Transformer</td>
+<td>Efficient long-range dependencies</td>
+<td><a href="../../code_walkthroughs/brainmt_walkthrough/">Walkthrough</a></td>
 </tr>
 <tr>
-<td><a href="swift/">SwiFT</a></td>
+<td>🧠 <a href="swift/"><strong>SwiFT</strong></a></td>
 <td>fMRI</td>
 <td>Swin Transformer</td>
-<td>Hierarchical windows for spatiotemporal fMRI</td>
-<td>Exploratory fMRI encoder; sequence-free modeling</td>
+<td>Hierarchical spatiotemporal modeling</td>
+<td><a href="../../code_walkthroughs/swift_walkthrough/">Walkthrough</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="usage-workflow">Usage workflow<a class="headerlink" href="#usage-workflow" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="usage-workflow">🔄 Usage Workflow<a class="headerlink" href="#usage-workflow" title="Permanent link">&para;</a></h2>
 <h3 id="for-fmri-models-brainlm-brain-jepa-swift">For fMRI models (BrainLM, Brain-JEPA, SwiFT)<a class="headerlink" href="#for-fmri-models-brainlm-brain-jepa-swift" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Preprocess</strong> rs-fMRI: parcellation (Schaefer/AAL), bandpass filter, motion scrubbing</li>
@@ -5311,7 +5317,8 @@
 <li><strong>Pool</strong> to subject-level representation</li>
 <li><strong>Project</strong> to 512-D for fusion</li>
 </ol>
-<h2 id="key-considerations">Key considerations<a class="headerlink" href="#key-considerations" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="key-considerations">🔑 Key Considerations<a class="headerlink" href="#key-considerations" title="Permanent link">&para;</a></h2>
 <h3 id="sitescanner-harmonization">Site/scanner harmonization<a class="headerlink" href="#sitescanner-harmonization" title="Permanent link">&para;</a></h3>
 <p>Multi-site pretraining (e.g., BrainLM on UKB+HCP) improves site robustness, but <strong>residualize scanner/site effects</strong> before fusion:</p>
 <ul>
@@ -5327,34 +5334,47 @@
 </ul>
 <h3 id="multimodal-fusion">Multimodal fusion<a class="headerlink" href="#multimodal-fusion" title="Permanent link">&para;</a></h3>
 <p><strong>Brain Harmony</strong> natively fuses sMRI and fMRI via TAPE (Target-Aware Projection Ensemble). For other models, use <strong>late fusion</strong> (concatenate embeddings) or <strong>two-tower contrastive</strong> alignment (see <a href="../../integration/design_patterns/">Design Patterns</a>).</p>
-<h2 id="integration-targets">Integration targets<a class="headerlink" href="#integration-targets" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="integration-targets">🔗 Integration Targets<a class="headerlink" href="#integration-targets" title="Permanent link">&para;</a></h2>
 <p>Brain embeddings are integrated with:</p>
 <ul>
 <li><strong>Genetics</strong> embeddings (Caduceus, DNABERT-2) for gene–brain association discovery</li>
 <li><strong>Behavioral phenotypes</strong> (cognitive scores, psychiatric diagnoses) via multimodal prediction</li>
 <li><strong>Clinical data</strong> (longitudinal assessments, EHR records) for developmental trajectories</li>
 </ul>
-<p>See <a href="../../integration/integration_strategy/">Integration Strategy</a> for fusion protocols and modality-specific feature specs:</p>
+<p><strong>Learn more:</strong>
+- <a href="../../integration/integration_strategy/">Integration Strategy</a> - Fusion protocols
+- <a href="../../integration/modality_features/smri/">Modality Features: sMRI</a> - sMRI preprocessing
+- <a href="../../integration/modality_features/fmri/">Modality Features: fMRI</a> - fMRI preprocessing</p>
+<hr />
+<h2 id="source-repositories">📦 Source Repositories<a class="headerlink" href="#source-repositories" title="Permanent link">&para;</a></h2>
+<details>
+<summary><b>Click to view all source repositories</b></summary>
+
+All brain FM source code lives in `external_repos/`:
+
+| Model | Local Path | GitHub Repository |
+|-------|------------|-------------------|
+| BrainLM | `external_repos/brainlm/` | [vandijklab/BrainLM](https://github.com/vandijklab/BrainLM) |
+| Brain-JEPA | `external_repos/brainjepa/` | [janklees/brainjepa](https://github.com/janklees/brainjepa) |
+| Brain Harmony | `external_repos/brainharmony/` | [hzlab/Brain-Harmony](https://github.com/hzlab/Brain-Harmony) |
+| BrainMT | `external_repos/brainmt/` | [arunkumar-kannan/brainmt-fmri](https://github.com/arunkumar-kannan/brainmt-fmri) |
+| SwiFT | `external_repos/swift/` | [Transconnectome/SwiFT](https://github.com/Transconnectome/SwiFT) |
+
+Each model page includes:
+- ✅ Detailed code walkthrough in `docs/code_walkthroughs/`
+- ✅ Structured YAML card in `kb/model_cards/`
+- ✅ Integration recipes and preprocessing specs
+
+</details>
+
+<hr />
+<h2 id="next-steps">🚀 Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../../integration/modality_features/smri/">Modality Features: sMRI</a></li>
-<li><a href="../../integration/modality_features/fmri/">Modality Features: fMRI</a></li>
-</ul>
-<h2 id="source-repositories">Source repositories<a class="headerlink" href="#source-repositories" title="Permanent link">&para;</a></h2>
-<p>All brain FM source code lives in <code>external_repos/</code>:</p>
-<ul>
-<li><code>external_repos/brainlm/</code> — <a href="https://github.com/vandijklab/BrainLM">vandijklab/BrainLM</a></li>
-<li><code>external_repos/brainjepa/</code> — <a href="https://github.com/janklees/brainjepa">janklees/brainjepa</a></li>
-<li><code>external_repos/brainharmony/</code> — <a href="https://github.com/hzlab/Brain-Harmony">hzlab/Brain-Harmony</a></li>
-<li><code>external_repos/brainmt/</code> — <a href="https://github.com/arunkumar-kannan/brainmt-fmri">arunkumar-kannan/brainmt-fmri</a></li>
-<li><code>external_repos/swift/</code> — <a href="https://github.com/Transconnectome/SwiFT">Transconnectome/SwiFT</a></li>
-</ul>
-<p>Each model page includes walkthrough links to <code>docs/code_walkthroughs/</code> and structured YAML cards in <code>kb/model_cards/</code>.</p>
-<h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Validate brain embedding reproducibility across cohorts (UK Biobank, Cha Hospital developmental cohort)</li>
-<li>Benchmark fMRI encoder stability across different parcellation schemes (Schaefer 100/200/400, AAL)</li>
-<li>Explore <strong>EEG/EPhys</strong> foundation models for pediatric/clinical settings (e.g., LaBraM, TBD)</li>
-<li>Integrate <strong>diffusion MRI</strong> embeddings for white matter microstructure (exploratory)</li>
+<li>✅ Validate brain embedding reproducibility across cohorts (UK Biobank, Cha Hospital developmental cohort)</li>
+<li>✅ Benchmark fMRI encoder stability across different parcellation schemes (Schaefer 100/200/400, AAL)</li>
+<li>🔬 Explore <strong>EEG/EPhys</strong> foundation models for pediatric/clinical settings (e.g., LaBraM, TBD)</li>
+<li>🔬 Integrate <strong>diffusion MRI</strong> embeddings for white matter microstructure (exploratory)</li>
 </ul>
 
 

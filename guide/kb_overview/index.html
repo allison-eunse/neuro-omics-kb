@@ -650,7 +650,7 @@
   <a href="#scope-evolution" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Scope &amp; Evolution
+        🎯 Scope &amp; Evolution
       
     </span>
   </a>
@@ -661,7 +661,7 @@
   <a href="#architecture-at-a-glance" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Architecture at a glance
+        🏗️ Architecture at a Glance
       
     </span>
   </a>
@@ -672,7 +672,7 @@
   <a href="#core-navigation-map" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Core navigation map
+        🗺️ Core Navigation Map
       
     </span>
   </a>
@@ -5190,9 +5190,13 @@
   
 
 
-<h1 id="navigating-the-neuro-omics-kb">Navigating the Neuro-Omics KB<a class="headerlink" href="#navigating-the-neuro-omics-kb" title="Permanent link">&para;</a></h1>
+<h1 id="navigating-the-neuro-omics-kb">📖 Navigating the Neuro-Omics KB<a class="headerlink" href="#navigating-the-neuro-omics-kb" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Your guide to the knowledge base structure, YAML cards, and integration-critical metadata</strong></p>
+</blockquote>
 <p>This page orients new readers to the structure of the knowledge base, how the YAML cards feed into the rendered docs, and where to find integration-critical metadata for <strong>gene–brain–behaviour foundation models</strong>.</p>
-<h2 id="scope-evolution">Scope &amp; Evolution<a class="headerlink" href="#scope-evolution" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="scope-evolution">🎯 Scope &amp; Evolution<a class="headerlink" href="#scope-evolution" title="Permanent link">&para;</a></h2>
 <p>The KB began with <strong>adult UK Biobank–centric gene–brain FM alignment</strong> (genetics FM + MRI Brain FM outputs) and has expanded to include:</p>
 <ul>
 <li>✅ <strong>15 Model Cards</strong>: 13 foundation models (4 genetics + 5 brain + 4 multimodal/clinical) + 2 ARPA-H planning cards</li>
@@ -5201,7 +5205,8 @@
 <li>✅ <strong>Developmental/Neurodevelopmental Support</strong>: Longitudinal multimodal FMs spanning MRI/fMRI, EEG/EPhys, genetics, behavioral phenotypes</li>
 <li>✅ <strong>ARPA-H BOM Alignment</strong>: Documentation for escalating from late fusion → contrastive → unified architectures</li>
 </ul>
-<h2 id="architecture-at-a-glance">Architecture at a glance<a class="headerlink" href="#architecture-at-a-glance" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="architecture-at-a-glance">🏗️ Architecture at a Glance<a class="headerlink" href="#architecture-at-a-glance" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>flowchart LR
     A[External repos &amp; datasets&lt;br/&gt;UKB · HCP · Gene FMs · Dev cohorts] --&gt; B[Metadata curation&lt;br/&gt;kb/model_cards · kb/datasets]
     B --&gt; C[Integration strategy &amp; modality specs&lt;br/&gt;docs/integration/*]
@@ -5218,7 +5223,8 @@
 <li><strong>Semantic alignment / hub registries</strong> describe how modalities (gene, brain, EEG, behaviour) are aligned to <strong>LLM</strong> and <strong>VLM</strong> spaces in ARPA-H–style Brain-Omics Model (BOM) projects.</li>
 <li><strong>Experiment configs</strong> log the exact recipe IDs and folds before any analysis job starts.</li>
 </ul>
-<h2 id="core-navigation-map">Core navigation map<a class="headerlink" href="#core-navigation-map" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="core-navigation-map">🗺️ Core Navigation Map<a class="headerlink" href="#core-navigation-map" title="Permanent link">&para;</a></h2>
 <div class="language-text highlight"><pre><span></span><code>**Foundation Models**
 
 - **Models → Genetics**: Caduceus, DNABERT-2, Evo2, GENERator — DNA sequence models with RC-equivariance
