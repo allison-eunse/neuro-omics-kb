@@ -72,7 +72,6 @@ nav:
   - Home: index.md
   - Guides:
       - KB overview: guide/kb_overview.md
-      - AI Summaries & KB Cards: generated/kb_curated/README.md
   - Models:
       - Genetics:
           - Overview: models/genetics/index.md

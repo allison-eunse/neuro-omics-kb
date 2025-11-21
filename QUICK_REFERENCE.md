@@ -11,10 +11,6 @@
 **Docs**: https://allison-eunse.github.io/neuro-omics-kb/  
 **Purpose**: Knowledge base - documentation, YAML cards, walkthroughs
 
-### Companion: PDF Converter
-**GitHub**: https://github.com/allison-eunse/pdf-md-ai-summaries  
-**Purpose**: PDF↔MD conversion + AI summaries for paper curation
-
 ---
 
 ## 🎯 Repository Overview

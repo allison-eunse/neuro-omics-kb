@@ -106,8 +106,7 @@ docs/
 │   └── 🏥 Multimodal (6): BAGEL, MoT, M3FM, Me-LLaMA, TITAN, FMS-Medical
 ├── integration/                ← Fusion strategies, design patterns, benchmarks
 ├── data/                       ← UKB data map, QC protocols, schemas
-├── decisions/                  ← Integration plans, validation rationale
-└── generated/kb_curated/       ← AI-curated PDFs + Markdown summaries
+└── decisions/                  ← Integration plans, validation rationale
 ```
 
 Walkthroughs, schemas, and decision logs share the same terminology across genetics, brain, and multimodal FMs.
@@ -223,8 +222,7 @@ Each config references the exact embeddings, covariates, and validation plan to 
 
 ## 📋 Research Papers
 
-**Every paper has three quick links:** KB summary (MD) · Annotated PDF · Original publication  
-[→ Full Paper Asset Index](generated/kb_curated/README.md#original-source-index)
+**Every paper has three quick links:** KB summary (MD) · Annotated PDF · Original publication
 
 ### 🧬 Genetics Foundation Models
 | Paper | MD notes | PDF notes | Source | Focus |

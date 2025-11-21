@@ -90,7 +90,7 @@ neuro-omics-kb/
 │   │   └── subject_keys.md
 │   │
 │   ├── generated/
-│   │   ├── kb_curated/                   ← PDFs + MD from pdf<->md;ai-summaries
+│   │   ├── kb_curated/                   ← Paper PDFs and Markdown summaries
 │   │   └── templates/                    ← Markdown templates for new cards
 │   │
 │   └── assets/
