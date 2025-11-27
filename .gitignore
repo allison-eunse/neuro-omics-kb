@@ -1,51 +1,16 @@
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
-venv/
-ENV/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
 
-# MkDocs
-site/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS
-.DS_Store
-Thumbs.db
-
-# RAG/Vector DB
-*.index
-*.faiss
-*.pkl
-chroma/
-向量数据库/
-
-# External research repos (fetched on demand)
+# Ignore all external repos by default
 external_repos/*
-!external_repos/.gitkeep
+# Whitelist the README
 !external_repos/README.md
+# Whitelist the keep file if it exists
+!external_repos/.keep
+
+
+# System and build artifacts
+.DS_Store
+**/.DS_Store
+site/
+__pycache__/
+*.egg-info/
 
