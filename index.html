@@ -712,7 +712,7 @@
   <a href="#genetics-models" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Genetics Models
+        🧬 Genetics Models
       
     </span>
   </a>
@@ -723,7 +723,7 @@
   <a href="#brain-models" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Brain Models
+        🧠 Brain Models
       
     </span>
   </a>
@@ -734,7 +734,7 @@
   <a href="#multimodal-clinical-models" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Multimodal &amp; Clinical Models
+        🏥 Multimodal &amp; Clinical Models
       
     </span>
   </a>
@@ -5990,11 +5990,18 @@ Walkthroughs, schemas, and decision logs share the same terminology across genet
 <summary><b>🏷️ Metadata Cards</b> — Structured YAML for all assets</summary>
 
 <div class="language-text highlight"><pre><span></span><code><span id="__span__-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>kb/
-</span><span id="__span__-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>├── model_cards/          ← 15 FM specs (13 FMs + 2 ARPA-H planning)
-</span><span id="__span__-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>├── paper_cards/          ← 20 research papers with structured takeaways
-</span><span id="__span__-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>├── datasets/             ← Sample sizes, QC thresholds, access requirements
-</span><span id="__span__-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>└── integration_cards/    ← Embeddings, harmonization, preprocessing pipelines
+</span><span id="__span__-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>├── 🏷️ model_cards/        ← 21 FM specs (17 FMs + 4 reference/planning)
+</span><span id="__span__-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>├── 📄 paper_cards/         ← 31 research papers with structured takeaways
+</span><span id="__span__-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>├── 📊 datasets/            ← 19 dataset schemas (UKB, HCP, Cha, benchmarks)
+</span><span id="__span__-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>└── 🔗 integration_cards/   ← Embedding recipes, harmonization, pipelines
 </span></code></pre></div>
+
+| Folder | Count | Contents |
+|:-------|:-----:|:---------|
+| 🏷️ `model_cards/` | 21 | FM specs (17 core + 4 reference) |
+| 📄 `paper_cards/` | 31 | Research papers with takeaways |
+| 📊 `datasets/` | 19 | UKB, HCP, Cha, benchmarks |
+| 🔗 `integration_cards/` | 8 | Embedding + harmonization recipes |
 
 [Browse all cards on GitHub →](https://github.com/allison-eunse/neuro-omics-kb/tree/main/kb)
 
@@ -6030,129 +6037,168 @@ Each config references the exact embeddings, covariates, and validation plan to 
 <hr />
 <p><a id="foundation-models"></a></p>
 <h2 id="foundation-model-registry">🎯 Foundation Model Registry<a class="headerlink" href="#foundation-model-registry" title="Permanent link">&para;</a></h2>
-<h3 id="genetics-models">Genetics Models<a class="headerlink" href="#genetics-models" title="Permanent link">&para;</a></h3>
+<h3 id="genetics-models">🧬 Genetics Models<a class="headerlink" href="#genetics-models" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>Model</th>
-<th>Best for</th>
-<th>Context</th>
-<th>Walkthrough</th>
+<th style="text-align: left;">Model</th>
+<th style="text-align: left;">Best For</th>
+<th style="text-align: left;">Context</th>
+<th style="text-align: center;">Status</th>
+<th style="text-align: center;">Docs</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>🧬 <a href="models/genetics/caduceus/">Caduceus</a></td>
-<td>RC-equivariant gene embeddings</td>
-<td>DNA sequences</td>
-<td><a href="code_walkthroughs/caduceus_walkthrough/">Code walkthrough</a></td>
+<td style="text-align: left;"><a href="models/genetics/caduceus/"><strong>Caduceus</strong></a></td>
+<td style="text-align: left;">RC-equivariant gene embeddings</td>
+<td style="text-align: left;">DNA</td>
+<td style="text-align: center;">🟢</td>
+<td style="text-align: center;"><a href="code_walkthroughs/caduceus_walkthrough/">↗</a></td>
 </tr>
 <tr>
-<td>🧬 <a href="models/genetics/dnabert2/">DNABERT-2</a></td>
-<td>Cross-species transfer</td>
-<td>BPE tokenization</td>
-<td><a href="code_walkthroughs/dnabert2_walkthrough/">Code walkthrough</a></td>
+<td style="text-align: left;"><a href="models/genetics/dnabert2/"><strong>DNABERT-2</strong></a></td>
+<td style="text-align: left;">Cross-species transfer</td>
+<td style="text-align: left;">BPE</td>
+<td style="text-align: center;">🟢</td>
+<td style="text-align: center;"><a href="code_walkthroughs/dnabert2_walkthrough/">↗</a></td>
 </tr>
 <tr>
-<td>🧬 <a href="models/genetics/evo2/">Evo 2</a></td>
-<td>Ultra-long regulatory regions</td>
-<td>1M context</td>
-<td><a href="code_walkthroughs/evo2_walkthrough/">Code walkthrough</a></td>
+<td style="text-align: left;"><a href="models/genetics/evo2/"><strong>Evo 2</strong></a></td>
+<td style="text-align: left;">Ultra-long regulatory regions</td>
+<td style="text-align: left;">1M ctx</td>
+<td style="text-align: center;">🟢</td>
+<td style="text-align: center;"><a href="code_walkthroughs/evo2_walkthrough/">↗</a></td>
 </tr>
 <tr>
-<td>🧬 <a href="models/genetics/generator/">GENERator</a></td>
-<td>Generative modeling</td>
-<td>6-mer LM</td>
-<td><a href="code_walkthroughs/generator_walkthrough/">Code walkthrough</a></td>
+<td style="text-align: left;"><a href="models/genetics/generator/"><strong>GENERator</strong></a></td>
+<td style="text-align: left;">Generative modeling</td>
+<td style="text-align: left;">6-mer</td>
+<td style="text-align: center;">🟢</td>
+<td style="text-align: center;"><a href="code_walkthroughs/generator_walkthrough/">↗</a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="models/genetics/hyenadna/"><strong>HyenaDNA</strong></a></td>
+<td style="text-align: left;">Long-range sequences</td>
+<td style="text-align: left;">1M ctx</td>
+<td style="text-align: center;">🟡</td>
+<td style="text-align: center;"><a href="code_walkthroughs/hyena_walkthrough/">↗</a></td>
 </tr>
 </tbody>
 </table>
-<h3 id="brain-models">Brain Models<a class="headerlink" href="#brain-models" title="Permanent link">&para;</a></h3>
+<h3 id="brain-models">🧠 Brain Models<a class="headerlink" href="#brain-models" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>Model</th>
-<th>Modality</th>
-<th>Best for</th>
-<th>Walkthrough</th>
+<th style="text-align: left;">Model</th>
+<th style="text-align: left;">Modality</th>
+<th style="text-align: left;">Best For</th>
+<th style="text-align: center;">Status</th>
+<th style="text-align: center;">Docs</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>🧠 <a href="models/brain/brainlm/">BrainLM</a></td>
-<td>fMRI</td>
-<td>Site-robust embeddings</td>
-<td><a href="code_walkthroughs/brainlm_walkthrough/">Code walkthrough</a></td>
+<td style="text-align: left;"><a href="models/brain/brainlm/"><strong>BrainLM</strong></a></td>
+<td style="text-align: left;">fMRI</td>
+<td style="text-align: left;">Site-robust embeddings</td>
+<td style="text-align: center;">🟢</td>
+<td style="text-align: center;"><a href="code_walkthroughs/brainlm_walkthrough/">↗</a></td>
 </tr>
 <tr>
-<td>🧠 <a href="models/brain/brainjepa/">Brain-JEPA</a></td>
-<td>fMRI</td>
-<td>Lower-latency option</td>
-<td><a href="code_walkthroughs/brainjepa_walkthrough/">Code walkthrough</a></td>
+<td style="text-align: left;"><a href="models/brain/brainjepa/"><strong>Brain-JEPA</strong></a></td>
+<td style="text-align: left;">fMRI</td>
+<td style="text-align: left;">Lower-latency option</td>
+<td style="text-align: center;">🟢</td>
+<td style="text-align: center;"><a href="code_walkthroughs/brainjepa_walkthrough/">↗</a></td>
 </tr>
 <tr>
-<td>🧠 <a href="models/brain/brainharmony/">Brain Harmony</a></td>
-<td>sMRI + fMRI</td>
-<td>Multi-modal fusion</td>
-<td><a href="code_walkthroughs/brainharmony_walkthrough/">Code walkthrough</a></td>
+<td style="text-align: left;"><a href="models/brain/brainharmony/"><strong>Brain Harmony</strong></a></td>
+<td style="text-align: left;">sMRI+fMRI</td>
+<td style="text-align: left;">Multi-modal fusion</td>
+<td style="text-align: center;">🟢</td>
+<td style="text-align: center;"><a href="code_walkthroughs/brainharmony_walkthrough/">↗</a></td>
 </tr>
 <tr>
-<td>🧠 <a href="models/brain/brainmt/">BrainMT</a></td>
-<td>sMRI/fMRI</td>
-<td>Mamba efficiency</td>
-<td><a href="code_walkthroughs/brainmt_walkthrough/">Code walkthrough</a></td>
+<td style="text-align: left;"><a href="models/brain/brainmt/"><strong>BrainMT</strong></a></td>
+<td style="text-align: left;">sMRI/fMRI</td>
+<td style="text-align: left;">Mamba efficiency</td>
+<td style="text-align: center;">🟢</td>
+<td style="text-align: center;"><a href="code_walkthroughs/brainmt_walkthrough/">↗</a></td>
 </tr>
 <tr>
-<td>🧠 <a href="models/brain/swift/">SwiFT</a></td>
-<td>fMRI</td>
-<td>Hierarchical spatiotemporal</td>
-<td><a href="code_walkthroughs/swift_walkthrough/">Code walkthrough</a></td>
+<td style="text-align: left;"><a href="models/brain/swift/"><strong>SwiFT</strong></a></td>
+<td style="text-align: left;">fMRI</td>
+<td style="text-align: left;">Hierarchical spatiotemporal</td>
+<td style="text-align: center;">🟢</td>
+<td style="text-align: center;"><a href="code_walkthroughs/swift_walkthrough/">↗</a></td>
 </tr>
 </tbody>
 </table>
-<h3 id="multimodal-clinical-models">Multimodal &amp; Clinical Models<a class="headerlink" href="#multimodal-clinical-models" title="Permanent link">&para;</a></h3>
+<h3 id="multimodal-clinical-models">🏥 Multimodal &amp; Clinical Models<a class="headerlink" href="#multimodal-clinical-models" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>Model</th>
-<th>Type</th>
-<th>Key Innovation</th>
-<th>Walkthrough</th>
+<th style="text-align: left;">Model</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Key Innovation</th>
+<th style="text-align: center;">Status</th>
+<th style="text-align: center;">Docs</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>🔗 <a href="models/multimodal/bagel/">BAGEL</a></td>
-<td>Unified FM</td>
-<td>MoT experts (understanding + generation)</td>
-<td><a href="code_walkthroughs/bagel_walkthrough/">Code walkthrough</a></td>
+<td style="text-align: left;"><a href="models/multimodal/bagel/"><strong>BAGEL</strong></a></td>
+<td style="text-align: left;">Unified FM</td>
+<td style="text-align: left;">MoT experts (understand + generate)</td>
+<td style="text-align: center;">🟣</td>
+<td style="text-align: center;"><a href="code_walkthroughs/bagel_walkthrough/">↗</a></td>
 </tr>
 <tr>
-<td>🔗 <a href="models/multimodal/mot/">MoT</a></td>
-<td>Sparse transformer</td>
-<td>Modality-aware sparsity (~55% FLOPs)</td>
-<td><a href="code_walkthroughs/mot_walkthrough/">Code walkthrough</a></td>
+<td style="text-align: left;"><a href="models/multimodal/mot/"><strong>MoT</strong></a></td>
+<td style="text-align: left;">Sparse</td>
+<td style="text-align: left;">Modality-aware sparsity (~55% FLOPs)</td>
+<td style="text-align: center;">🟣</td>
+<td style="text-align: center;"><a href="code_walkthroughs/mot_walkthrough/">↗</a></td>
 </tr>
 <tr>
-<td>🏥 <a href="models/multimodal/m3fm/">M3FM</a></td>
-<td>Radiology</td>
-<td>CXR/CT + bilingual reports (EN/CN)</td>
-<td><a href="code_walkthroughs/m3fm_walkthrough/">Code walkthrough</a></td>
+<td style="text-align: left;"><a href="models/multimodal/m3fm/"><strong>M3FM</strong></a></td>
+<td style="text-align: left;">Radiology</td>
+<td style="text-align: left;">CXR/CT + bilingual (EN/CN)</td>
+<td style="text-align: center;">🟣</td>
+<td style="text-align: center;"><a href="code_walkthroughs/m3fm_walkthrough/">↗</a></td>
 </tr>
 <tr>
-<td>🏥 <a href="models/multimodal/me_llama/">Me-LLaMA</a></td>
-<td>Medical LLM</td>
-<td>Continual pretrained LLaMA (129B tokens)</td>
-<td><a href="code_walkthroughs/melamma_walkthrough/">Code walkthrough</a></td>
+<td style="text-align: left;"><a href="models/multimodal/me_llama/"><strong>Me-LLaMA</strong></a></td>
+<td style="text-align: left;">Medical LLM</td>
+<td style="text-align: left;">Continual pretrained (129B tok)</td>
+<td style="text-align: center;">🟣</td>
+<td style="text-align: center;"><a href="code_walkthroughs/melamma_walkthrough/">↗</a></td>
 </tr>
 <tr>
-<td>🏥 <a href="models/multimodal/titan/">TITAN</a></td>
-<td>Pathology</td>
-<td>Gigapixel whole-slide imaging</td>
-<td><a href="code_walkthroughs/titan_walkthrough/">Code walkthrough</a></td>
+<td style="text-align: left;"><a href="models/multimodal/titan/"><strong>TITAN</strong></a></td>
+<td style="text-align: left;">Pathology</td>
+<td style="text-align: left;">Gigapixel whole-slide</td>
+<td style="text-align: center;">🟣</td>
+<td style="text-align: center;"><a href="code_walkthroughs/titan_walkthrough/">↗</a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="models/multimodal/flamingo/"><strong>Flamingo</strong></a></td>
+<td style="text-align: left;">VLM</td>
+<td style="text-align: left;">Visual-language few-shot</td>
+<td style="text-align: center;">🟣</td>
+<td style="text-align: center;"><a href="code_walkthroughs/flamingo_walkthrough/">↗</a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="models/multimodal/fms_medical/"><strong>FMS-Medical</strong></a></td>
+<td style="text-align: left;">Catalog</td>
+<td style="text-align: left;">Medical FM survey</td>
+<td style="text-align: center;">📚</td>
+<td style="text-align: center;"><a href="code_walkthroughs/fms_medical_walkthrough/">↗</a></td>
 </tr>
 </tbody>
 </table>
+<p><strong>Legend:</strong> 🟢 Core FM | 🟣 Reference Architecture | 🟡 Reference | 📚 Catalog</p>
 <p>📖 <a href="models/multimodal/">Explore Multimodal Models Overview</a> • <a href="integration/multimodal_architectures/">Multimodal Architectures Guide</a> • <a href="integration/design_patterns/">Design Patterns</a></p>
 <hr />
 <p><a id="integration-strategies"></a></p>

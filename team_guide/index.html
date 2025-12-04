@@ -626,10 +626,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-model-knowledge-20-fms" class="md-nav__link">
+  <a href="#repository-structure" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Model Knowledge (20 FMs)
+        📂 Repository Structure
       
     </span>
   </a>
@@ -637,10 +637,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-paper-knowledge-30-papers" class="md-nav__link">
+  <a href="#whats-documented" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Paper Knowledge (30 papers)
+        📦 What's Documented
       
     </span>
   </a>
@@ -648,21 +648,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-integration-knowledge" class="md-nav__link">
+  <a href="#the-playbook" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Integration Knowledge
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-experimental-playbook" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Experimental Playbook
+        🎯 The Playbook
       
     </span>
   </a>
@@ -5926,30 +5915,90 @@
 <hr />
 <h2 id="what-this-repo-does">🎯 What This Repo Does<a class="headerlink" href="#what-this-repo-does" title="Permanent link">&para;</a></h2>
 <p>This is your <strong>documentation-first knowledge base</strong> — the map and spec for the Brain–Genetics program.</p>
-<p><strong>It centralizes:</strong></p>
-<h3 id="1-model-knowledge-20-fms">1. <strong>Model Knowledge</strong> (20 FMs)<a class="headerlink" href="#1-model-knowledge-20-fms" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Genetics FMs:</strong> Caduceus, DNABERT-2, Evo 2, HyenaDNA, GENERator</li>
-<li><strong>Brain FMs:</strong> BrainLM, Brain-JEPA, BrainMT, Brain Harmony, SwiFT  </li>
-<li><strong>Multimodal FMs:</strong> BAGEL, MoT, M3FM, Me-LLaMA, TITAN, Flamingo, FMS-Medical</li>
-</ul>
-<p>Each has: YAML card + walkthrough + documentation</p>
-<h3 id="2-paper-knowledge-30-papers">2. <strong>Paper Knowledge</strong> (30 papers)<a class="headerlink" href="#2-paper-knowledge-30-papers" title="Permanent link">&para;</a></h3>
-<ul>
-<li>RC symmetry/consistency</li>
-<li>Ensemble integration (EI)</li>
-<li>MURD harmonization, site-unlearning</li>
-<li>Multimodal FM surveys</li>
-<li>Yoon BioKDD'25 (LOGO attribution)</li>
-</ul>
-<h3 id="3-integration-knowledge">3. <strong>Integration Knowledge</strong><a class="headerlink" href="#3-integration-knowledge" title="Permanent link">&para;</a></h3>
-<p><strong>THE PLAYBOOK:</strong> <code>docs/integration/integration_strategy.md</code></p>
-<p><strong>Strategy:</strong> Late fusion → two-tower contrastive → MoT/unified BOM (escalate only if justified)</p>
-<h3 id="4-experimental-playbook">4. <strong>Experimental Playbook</strong><a class="headerlink" href="#4-experimental-playbook" title="Permanent link">&para;</a></h3>
-<p>Ready-to-run configs in <code>configs/experiments/</code>:
-- CCA + permutation
-- Prediction baselines (Gene vs Brain vs Fusion)
-- LOGO attribution</p>
+<h3 id="repository-structure">📂 Repository Structure<a class="headerlink" href="#repository-structure" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>kb/
+</span><span id="__span__-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── 🏷️ model_cards/        ← 21 FM specs (17 FMs + 4 reference/planning)
+</span><span id="__span__-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── 📄 paper_cards/         ← 31 research papers with structured takeaways
+</span><span id="__span__-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── 📊 datasets/            ← 19 dataset schemas (UKB, HCP, Cha, benchmarks)
+</span><span id="__span__-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>└── 🔗 integration_cards/   ← Embedding recipes, harmonization, pipelines
+</span></code></pre></div>
+<h3 id="whats-documented">📦 What's Documented<a class="headerlink" href="#whats-documented" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Category</th>
+<th style="text-align: center;">Count</th>
+<th style="text-align: left;">Contents</th>
+<th style="text-align: center;">Color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">🧬 <strong>Genetics FMs</strong></td>
+<td style="text-align: center;">5</td>
+<td style="text-align: left;">Caduceus, DNABERT-2, Evo 2, HyenaDNA, GENERator</td>
+<td style="text-align: center;">🟢</td>
+</tr>
+<tr>
+<td style="text-align: left;">🧠 <strong>Brain FMs</strong></td>
+<td style="text-align: center;">5</td>
+<td style="text-align: left;">BrainLM, Brain-JEPA, BrainMT, Brain Harmony, SwiFT</td>
+<td style="text-align: center;">🔵</td>
+</tr>
+<tr>
+<td style="text-align: left;">🏥 <strong>Multimodal FMs</strong></td>
+<td style="text-align: center;">7</td>
+<td style="text-align: left;">BAGEL, MoT, M3FM, Me-LLaMA, TITAN, Flamingo, FMS-Medical</td>
+<td style="text-align: center;">🟣</td>
+</tr>
+<tr>
+<td style="text-align: left;">📄 <strong>Research Papers</strong></td>
+<td style="text-align: center;">31</td>
+<td style="text-align: left;">RC symmetry, EI, MURD, multimodal surveys, Yoon BioKDD'25</td>
+<td style="text-align: center;">🟠</td>
+</tr>
+<tr>
+<td style="text-align: left;">📊 <strong>Datasets</strong></td>
+<td style="text-align: center;">19</td>
+<td style="text-align: left;">UKB (fMRI, sMRI, WES), HCP, Cha developmental, benchmarks</td>
+<td style="text-align: center;">🔴</td>
+</tr>
+<tr>
+<td style="text-align: left;">🔗 <strong>Integration</strong></td>
+<td style="text-align: center;">8</td>
+<td style="text-align: left;">Embedding recipes, harmonization methods, pipelines</td>
+<td style="text-align: center;">🟡</td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-playbook">🎯 The Playbook<a class="headerlink" href="#the-playbook" title="Permanent link">&para;</a></h3>
+<p><strong>Strategy:</strong> <code>Late fusion</code> → <code>Two-tower contrastive</code> → <code>MoT/unified BOM</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Phase</th>
+<th style="text-align: center;">When</th>
+<th style="text-align: left;">What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">🟢 <strong>Stage 1</strong></td>
+<td style="text-align: center;">Now</td>
+<td style="text-align: left;">Per-modality FMs + 512-D embeddings + late fusion</td>
+</tr>
+<tr>
+<td style="text-align: left;">🟡 <strong>Stage 2</strong></td>
+<td style="text-align: center;">If fusion wins</td>
+<td style="text-align: left;">Two-tower contrastive / EI stacking</td>
+</tr>
+<tr>
+<td style="text-align: left;">🔴 <strong>Stage 3</strong></td>
+<td style="text-align: center;">Long-term</td>
+<td style="text-align: left;">MoT/BAGEL unified architectures</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h2 id="canonical-embedding-recipes">📋 Canonical Embedding Recipes<a class="headerlink" href="#canonical-embedding-recipes" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
@@ -5960,45 +6009,53 @@
 <thead>
 <tr>
 <th style="text-align: left;">Recipe ID</th>
-<th style="text-align: center;">Modality</th>
-<th style="text-align: left;">What It Does</th>
+<th style="text-align: center;">Type</th>
+<th style="text-align: center;">Output</th>
+<th style="text-align: left;">Pipeline</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>genetics_gene_fm_pca512_v1</code></td>
-<td style="text-align: center;">🧬 Genetics</td>
-<td style="text-align: left;">Caduceus/DNABERT-2/Evo2 + RC-averaging → 512-D</td>
+<td style="text-align: center;">🧬</td>
+<td style="text-align: center;">512-D</td>
+<td style="text-align: left;">Caduceus/DNABERT-2/Evo2 + RC-averaging</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>genetics_joo_mdd_cog_v1</code></td>
-<td style="text-align: center;">🧬 Genetics</td>
-<td style="text-align: left;"><strong>Prof. Joo's 38 MDD genes pipeline</strong></td>
+<td style="text-align: center;">🧬</td>
+<td style="text-align: center;">512-D</td>
+<td style="text-align: left;"><strong>Prof. Joo's 38 MDD genes</strong> ⭐</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>smri_free_surfer_pca512_v1</code></td>
-<td style="text-align: center;">🧠 sMRI</td>
-<td style="text-align: left;">FreeSurfer ROIs → residualize → PCA→512</td>
+<td style="text-align: center;">🧠</td>
+<td style="text-align: center;">512-D</td>
+<td style="text-align: left;">FreeSurfer ROIs → residualize → PCA</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>rsfmri_swift_segments_v1</code></td>
-<td style="text-align: center;">🧠 fMRI</td>
-<td style="text-align: left;">SwiFT embeddings → PCA→512</td>
+<td style="text-align: center;">🧠</td>
+<td style="text-align: center;">512-D</td>
+<td style="text-align: left;">SwiFT segments → mean pool → PCA</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>rsfmri_brainlm_segments_v1</code></td>
-<td style="text-align: center;">🧠 fMRI</td>
-<td style="text-align: left;">BrainLM embeddings → PCA→512</td>
+<td style="text-align: center;">🧠</td>
+<td style="text-align: center;">512-D</td>
+<td style="text-align: left;">BrainLM CLS tokens → mean pool</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>fusion_concat_gene_brain_1024_v1</code></td>
-<td style="text-align: center;">🔗 Fusion</td>
-<td style="text-align: left;">Concat(Gene₅₁₂, Brain₅₁₂) → 1024-D</td>
+<td style="text-align: center;">🔗</td>
+<td style="text-align: center;">1024-D</td>
+<td style="text-align: left;">Concat(Gene₅₁₂ + Brain₅₁₂)</td>
 </tr>
 </tbody>
 </table>
+<p><strong>Legend:</strong> 🧬 = Genetics | 🧠 = Brain | 🔗 = Fusion | ⭐ = Recommended start</p>
 <p><strong>Query a recipe:</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span__-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>python<span class="w"> </span>scripts/manage_kb.py<span class="w"> </span>ops<span class="w"> </span>strategy<span class="w"> </span>genetics_joo_mdd_cog_v1
+<div class="language-bash highlight"><pre><span></span><code><span id="__span__-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python<span class="w"> </span>scripts/manage_kb.py<span class="w"> </span>ops<span class="w"> </span>strategy<span class="w"> </span>genetics_joo_mdd_cog_v1
 </span></code></pre></div></p>
 <hr />
 <h2 id="how-to-navigate">🗺️ How to Navigate<a class="headerlink" href="#how-to-navigate" title="Permanent link">&para;</a></h2>
@@ -6025,7 +6082,7 @@
 <li><strong>fMRI:</strong> <code>docs/integration/modality_features/fmri.md</code></li>
 </ul>
 <h3 id="which-harmonization-method">→ "Which harmonization method?"<a class="headerlink" href="#which-harmonization-method" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span__-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python<span class="w"> </span>scripts/manage_kb.py<span class="w"> </span>ops<span class="w"> </span>harmonization<span class="w"> </span>murd_t1_t2
+<div class="language-bash highlight"><pre><span></span><code><span id="__span__-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>scripts/manage_kb.py<span class="w"> </span>ops<span class="w"> </span>harmonization<span class="w"> </span>murd_t1_t2
 </span></code></pre></div>
 <p>Or read: <code>docs/integration/integration_strategy.md</code> (Harmonization section)</p>
 <hr />
@@ -6042,15 +6099,15 @@
 </div>
 <h3 id="week-1-2-small-sample-testing-20-participants"><strong>Week 1-2: Small Sample Testing (20 participants)</strong><a class="headerlink" href="#week-1-2-small-sample-testing-20-participants" title="Permanent link">&para;</a></h3>
 <p><strong>Goal:</strong> Test pipeline on toy sample using new NVIDIA Spark GPU (128GB)</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span__-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># 1. Download 20-participant sample</span>
-</span><span id="__span__-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1">#    - Brain features (fMRI parcellation available now)</span>
-</span><span id="__span__-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1">#    - Genomics embeddings from Prof. Joo (offline, already trained)</span>
-</span><span id="__span__-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-</span><span id="__span__-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># 2. Test embedding extraction</span>
-</span><span id="__span__-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>python<span class="w"> </span>scripts/manage_kb.py<span class="w"> </span>ops<span class="w"> </span>strategy<span class="w"> </span>genetics_joo_mdd_cog_v1
-</span><span id="__span__-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
-</span><span id="__span__-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1"># 3. Run on NVIDIA Spark GPU</span>
-</span><span id="__span__-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="c1"># 4. Verify pipelines work end-to-end</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span__-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># 1. Download 20-participant sample</span>
+</span><span id="__span__-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1">#    - Brain features (fMRI parcellation available now)</span>
+</span><span id="__span__-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1">#    - Genomics embeddings from Prof. Joo (offline, already trained)</span>
+</span><span id="__span__-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span__-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># 2. Test embedding extraction</span>
+</span><span id="__span__-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>python<span class="w"> </span>scripts/manage_kb.py<span class="w"> </span>ops<span class="w"> </span>strategy<span class="w"> </span>genetics_joo_mdd_cog_v1
+</span><span id="__span__-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+</span><span id="__span__-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1"># 3. Run on NVIDIA Spark GPU</span>
+</span><span id="__span__-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="c1"># 4. Verify pipelines work end-to-end</span>
 </span></code></pre></div>
 <p><strong>What to test:</strong>
 - Brain feature download works
@@ -6080,22 +6137,31 @@
 <table>
 <thead>
 <tr>
-<th>Result</th>
-<th>Next Action</th>
+<th style="text-align: left;">Result</th>
+<th style="text-align: center;">Signal</th>
+<th style="text-align: left;">Next Action</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>Fusion &gt; max(Gene, Brain)</code> p &lt; 0.05</td>
-<td>→ Consider two-tower contrastive</td>
+<td style="text-align: left;"><code>Fusion &gt; max(Gene, Brain)</code> p &lt; 0.05</td>
+<td style="text-align: center;">🟢 Strong</td>
+<td style="text-align: left;">→ Consider two-tower contrastive</td>
 </tr>
 <tr>
-<td><code>Fusion ≈ best single modality</code></td>
-<td>→ Focus on improving per-modality models</td>
+<td style="text-align: left;"><code>Fusion ≈ best single modality</code></td>
+<td style="text-align: center;">🟡 Weak</td>
+<td style="text-align: left;">→ Focus on improving per-modality models</td>
 </tr>
 <tr>
-<td>CCA strong (ρ₁ &gt; 0.3, p &lt; 0.001)</td>
-<td>→ Supports two-tower alignment</td>
+<td style="text-align: left;">CCA strong (ρ₁ &gt; 0.3, p &lt; 0.001)</td>
+<td style="text-align: center;">🟢 Strong</td>
+<td style="text-align: left;">→ Supports two-tower alignment</td>
+</tr>
+<tr>
+<td style="text-align: left;">CCA weak (ρ₁ &lt; 0.2 or p &gt; 0.05)</td>
+<td style="text-align: center;">🔴 None</td>
+<td style="text-align: left;">→ Keep late fusion, check preprocessing</td>
 </tr>
 </tbody>
 </table>
@@ -6179,19 +6245,19 @@
 </div>
 <hr />
 <h2 id="escalation-decision-tree">🚦 Escalation Decision Tree<a class="headerlink" href="#escalation-decision-tree" title="Permanent link">&para;</a></h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span__-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Start: Run Stage-1 (CCA + Prediction + LOGO)
-</span><span id="__span__-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>  │
-</span><span id="__span__-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  ├─ Fusion &gt; single-modality (p &lt; 0.05)?
-</span><span id="__span__-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>  │  │
-</span><span id="__span__-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>  │  ├─ YES → CCA also significant?
-</span><span id="__span__-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>  │  │  │
-</span><span id="__span__-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>  │  │  ├─ YES → Consider two-tower contrastive
-</span><span id="__span__-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>  │  │  │        (frozen FMs + small projectors)
-</span><span id="__span__-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>  │  │  │
-</span><span id="__span__-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>  │  │  └─ NO → Keep late fusion, improve single-modality
-</span><span id="__span__-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>  │  │
-</span><span id="__span__-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>  │  └─ NO → Focus on better per-modality embeddings
-</span><span id="__span__-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>  │           Try harmonization (ComBat, MURD)
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Start: Run Stage-1 (CCA + Prediction + LOGO)
+</span><span id="__span__-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>  │
+</span><span id="__span__-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>  ├─ Fusion &gt; single-modality (p &lt; 0.05)?
+</span><span id="__span__-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>  │  │
+</span><span id="__span__-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>  │  ├─ YES → CCA also significant?
+</span><span id="__span__-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>  │  │  │
+</span><span id="__span__-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>  │  │  ├─ YES → Consider two-tower contrastive
+</span><span id="__span__-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>  │  │  │        (frozen FMs + small projectors)
+</span><span id="__span__-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>  │  │  │
+</span><span id="__span__-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>  │  │  └─ NO → Keep late fusion, improve single-modality
+</span><span id="__span__-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>  │  │
+</span><span id="__span__-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>  │  └─ NO → Focus on better per-modality embeddings
+</span><span id="__span__-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>  │           Try harmonization (ComBat, MURD)
 </span></code></pre></div>
 <hr />
 <h2 id="data-status">📊 Data Status<a class="headerlink" href="#data-status" title="Permanent link">&para;</a></h2>
@@ -6203,62 +6269,69 @@ Actual data availability is project-specific and tracked elsewhere.</p>
 <table>
 <thead>
 <tr>
-<th>Dataset</th>
+<th style="text-align: left;">Dataset</th>
 <th style="text-align: center;">Docs</th>
-<th style="text-align: center;">Data Status</th>
-<th>Notes</th>
+<th style="text-align: center;">Status</th>
+<th style="text-align: center;">Type</th>
+<th style="text-align: left;">Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>hg38 reference</strong></td>
+<td style="text-align: left;">🧬 <strong>hg38 reference</strong></td>
 <td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅ Available</td>
-<td>Public reference genome</td>
+<td style="text-align: center;">🟢 Ready</td>
+<td style="text-align: center;">Public</td>
+<td style="text-align: left;">Reference genome</td>
 </tr>
 <tr>
-<td><strong>Genomic benchmarks</strong></td>
+<td style="text-align: left;">🧬 <strong>Genomic benchmarks</strong></td>
 <td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅ Available</td>
-<td>Public benchmarks</td>
+<td style="text-align: center;">🟢 Ready</td>
+<td style="text-align: center;">Public</td>
+<td style="text-align: left;">Standard benchmarks</td>
 </tr>
 <tr>
-<td><strong>UKB fMRI/sMRI</strong></td>
+<td style="text-align: left;">🧠 <strong>UKB fMRI/sMRI</strong></td>
 <td style="text-align: center;">✅</td>
 <td style="text-align: center;">🟡 Pending</td>
-<td>Features can be downloaded (check with 정우/상윤 선생님)</td>
+<td style="text-align: center;">Restricted</td>
+<td style="text-align: left;">Check with 정우/상윤 선생님</td>
 </tr>
 <tr>
-<td><strong>Genetics embeddings</strong></td>
+<td style="text-align: left;">🧬 <strong>Genetics embeddings</strong></td>
 <td style="text-align: center;">✅</td>
 <td style="text-align: center;">🟡 Pending</td>
-<td>From Prof. Joo (offline, pre-trained)</td>
+<td style="text-align: center;">Internal</td>
+<td style="text-align: left;">From Prof. Joo (pre-trained)</td>
 </tr>
 <tr>
-<td><strong>Cha Hospital dev cohort</strong></td>
+<td style="text-align: left;">🧠 <strong>Cha Hospital dev</strong></td>
 <td style="text-align: center;">✅</td>
-<td style="text-align: center;">🟡 Future</td>
-<td>For developmental research</td>
+<td style="text-align: center;">🔵 Future</td>
+<td style="text-align: center;">Restricted</td>
+<td style="text-align: left;">Developmental research</td>
 </tr>
 </tbody>
 </table>
+<p><strong>Legend:</strong> 🟢 Ready | 🟡 In Progress | 🔵 Planned | 🧬 Genetics | 🧠 Brain</p>
 <hr />
 <h2 id="utilities">🛠️ Utilities<a class="headerlink" href="#utilities" title="Permanent link">&para;</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span__-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Validate all YAML cards</span>
-</span><span id="__span__-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>python<span class="w"> </span>scripts/manage_kb.py<span class="w"> </span>validate<span class="w"> </span>models
-</span><span id="__span__-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>python<span class="w"> </span>scripts/manage_kb.py<span class="w"> </span>validate<span class="w"> </span>datasets
-</span><span id="__span__-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
-</span><span id="__span__-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># Query embedding recipe</span>
-</span><span id="__span__-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>python<span class="w"> </span>scripts/manage_kb.py<span class="w"> </span>ops<span class="w"> </span>strategy<span class="w"> </span>genetics_joo_mdd_cog_v1
-</span><span id="__span__-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
-</span><span id="__span__-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1"># Query harmonization method</span>
-</span><span id="__span__-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>python<span class="w"> </span>scripts/manage_kb.py<span class="w"> </span>ops<span class="w"> </span>harmonization<span class="w"> </span>combat_smri
-</span><span id="__span__-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
-</span><span id="__span__-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="c1"># View docs locally</span>
-</span><span id="__span__-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>mkdocs<span class="w"> </span>serve<span class="w">  </span><span class="c1"># Visit http://localhost:8000</span>
-</span><span id="__span__-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
-</span><span id="__span__-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="c1"># Online docs</span>
-</span><span id="__span__-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>https://allison-eunse.github.io/neuro-omics-kb/
+<div class="language-bash highlight"><pre><span></span><code><span id="__span__-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Validate all YAML cards</span>
+</span><span id="__span__-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>python<span class="w"> </span>scripts/manage_kb.py<span class="w"> </span>validate<span class="w"> </span>models
+</span><span id="__span__-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>python<span class="w"> </span>scripts/manage_kb.py<span class="w"> </span>validate<span class="w"> </span>datasets
+</span><span id="__span__-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+</span><span id="__span__-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># Query embedding recipe</span>
+</span><span id="__span__-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>python<span class="w"> </span>scripts/manage_kb.py<span class="w"> </span>ops<span class="w"> </span>strategy<span class="w"> </span>genetics_joo_mdd_cog_v1
+</span><span id="__span__-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+</span><span id="__span__-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="c1"># Query harmonization method</span>
+</span><span id="__span__-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>python<span class="w"> </span>scripts/manage_kb.py<span class="w"> </span>ops<span class="w"> </span>harmonization<span class="w"> </span>combat_smri
+</span><span id="__span__-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
+</span><span id="__span__-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="c1"># View docs locally</span>
+</span><span id="__span__-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>mkdocs<span class="w"> </span>serve<span class="w">  </span><span class="c1"># Visit http://localhost:8000</span>
+</span><span id="__span__-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
+</span><span id="__span__-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="c1"># Online docs</span>
+</span><span id="__span__-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>https://allison-eunse.github.io/neuro-omics-kb/
 </span></code></pre></div>
 <hr />
 <h2 id="faq">❓ FAQ<a class="headerlink" href="#faq" title="Permanent link">&para;</a></h2>
