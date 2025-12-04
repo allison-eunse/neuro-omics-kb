@@ -119,16 +119,16 @@ Walkthroughs, schemas, and decision logs share the same terminology across genet
 
 ```
 kb/
-├── model_cards/        ← 21 FM specs (17 FMs + 4 reference/planning)
-├── paper_cards/        ← 31 research papers with structured takeaways
+├── model_cards/        ← 20 FM specs (17 FMs + 3 reference)
+├── paper_cards/        ← 30 research papers with structured takeaways
 ├── datasets/           ← 19 dataset schemas (UKB, HCP, Cha, benchmarks)
 └── integration_cards/  ← Embedding recipes, harmonization, pipelines
 ```
 
 | Folder | Count | Contents |
 |:-------|------:|:---------|
-| `model_cards/` | 21 | FM specs (17 core + 4 reference) |
-| `paper_cards/` | 31 | Research papers with takeaways |
+| `model_cards/` | 20 | FM specs (17 core + 3 reference) |
+| `paper_cards/` | 30 | Research papers with takeaways |
 | `datasets/` | 19 | UKB, HCP, Cha, benchmarks |
 | `integration_cards/` | 8 | Embedding + harmonization recipes |
 

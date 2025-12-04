@@ -22,8 +22,8 @@ This is your **documentation-first knowledge base** — the map and spec for the
 
 ```
 kb/
-├── model_cards/        ← 21 FM specs (17 FMs + 4 reference/planning)
-├── paper_cards/        ← 31 research papers with structured takeaways
+├── model_cards/        ← 20 FM specs (17 FMs + 3 reference)
+├── paper_cards/        ← 30 research papers with structured takeaways
 ├── datasets/           ← 19 dataset schemas (UKB, HCP, Cha, benchmarks)
 └── integration_cards/  ← Embedding recipes, harmonization, pipelines
 ```
@@ -35,9 +35,9 @@ kb/
 | <span class="genetics">**Genetics FMs**</span> | 5 | Caduceus, DNABERT-2, Evo 2, HyenaDNA, GENERator |
 | <span class="brain">**Brain FMs**</span> | 5 | BrainLM, Brain-JEPA, BrainMT, Brain Harmony, SwiFT |
 | <span class="multimodal">**Multimodal FMs**</span> | 7 | BAGEL, MoT, M3FM, Me-LLaMA, TITAN, Flamingo, FMS-Medical |
-| **Research Papers** | 31 | RC symmetry, EI, MURD, multimodal surveys, Yoon BioKDD'25 |
+| **Research Papers** | 30 | RC symmetry, EI, MURD, multimodal surveys, Yoon BioKDD'25 |
 | **Datasets** | 19 | UKB (fMRI, sMRI, WES), HCP, Cha developmental, benchmarks |
-| <span class="fusion">**Integration**</span> | 8 | Embedding recipes, harmonization methods, pipelines |
+| <span class="fusion">**Integration**</span> | 6 | Embedding recipes, harmonization methods, pipelines |
 
 ### The Playbook
 
