@@ -102,10 +102,33 @@
 <h3>Welcome to Neuro-Omics KB</h3>
 <p>This is your <strong>documentation-first knowledge base</strong> for the Brain–Genetics Foundation Model integration research. Everything you need to understand, replicate, and extend our work is here.</p>
 
+<div class="links-box" style="background: #fff8e1; border-color: #f9a825;">
+    <strong>⚡ What's New (Dec 2024)</strong>
+    <p style="margin: 8px 0;">
+        ✅ <span class="genetics">20 Foundation Models</span> documented (Genetics + Brain + Multimodal)<br>
+        ✅ <span class="multimodal">30 Research Papers</span> curated with PDF notes<br>
+        ✅ <span class="fusion">Color-coded tables</span> for easy navigation<br>
+        ✅ <span class="brain">Embedding pipelines</span> with step-by-step recipes<br>
+        ✅ <span class="strong">GitHub edit links</span> now working correctly
+    </p>
+</div>
+
+<div class="links-box" style="background: #ffebee; border-color: #c62828;">
+    <strong>⚠️ Data Not Yet Available</strong>
+    <p style="margin: 8px 0;">
+        🔴 UKB fMRI/sMRI features (check with 정우/상윤 선생님)<br>
+        🔴 Genetics embeddings from Prof. Joo's team<br>
+        🔴 Cha Hospital developmental cohort (future work)
+    </p>
+    <p style="margin: 8px 0; font-style: italic;">
+        → This KB documents <strong>how to use data</strong> when available, not data availability tracking.
+    </p>
+</div>
+
 <h3>🚀 Quick Start (5 minutes)</h3>
 <ol>
     <li><strong>Bookmark the site:</strong> <a href="https://allison-eunse.github.io/neuro-omics-kb/">allison-eunse.github.io/neuro-omics-kb</a></li>
-    <li><strong>Read the Team Guide first:</strong> Click "🚀 Team Guide" in the navigation</li>
+    <li><strong>Read the Team Guide first:</strong> Click "Team Guide" in the navigation</li>
     <li><strong>Browse the Integration Strategy:</strong> Understand the late fusion → two-tower playbook</li>
     <li><strong>Check your modality:</strong> Navigate to Genetics, Brain, or Multimodal sections</li>
 </ol>
@@ -114,7 +137,7 @@
 <table>
     <tr><th>I want to...</th><th>Go to...</th></tr>
     <tr><td>Understand a specific FM</td><td>Models → [Genetics/Brain/Multimodal] → Model name</td></tr>
-    <tr><td>See step-by-step code</td><td>Code Walkthroughs → Model walkthrough</td></tr>
+    <tr><td>See step-by-step code</td><td>Code Walkthroughs → Model name</td></tr>
     <tr><td>Get the embedding recipe</td><td>Team Guide → Canonical Embedding Recipes</td></tr>
     <tr><td>Run an experiment</td><td>GitHub → <code>configs/experiments/</code></td></tr>
     <tr><td>Read a paper summary</td><td>Research Papers → Paper name</td></tr>
@@ -174,6 +197,24 @@ A: For genetics: <code>genetics_joo_mdd_cog_v1</code>. For brain: <code>smri_fre
 <p><strong>Q: How do I know if my experiment config is valid?</strong><br>
 A: Run <code>python scripts/manage_kb.py validate models</code> to check all references.</p>
 
+<h3>📞 Questions for Team Members</h3>
+
+<h4>For Prof. Joo's Team (Genetics)</h4>
+<ul>
+    <li><strong>Genetics embeddings availability:</strong> When will the 38 MDD gene embeddings be ready?</li>
+    <li><strong>Embedding format:</strong> What is the output format (numpy array, CSV, HDF5)?</li>
+    <li><strong>Subject ID matching:</strong> How are subjects identified in the genetics embedding files?</li>
+    <li><strong>Gene list confirmation:</strong> Please confirm the exact 38 genes used in <code>genetics_joo_mdd_cog_v1</code></li>
+</ul>
+
+<h4>For 정우/상윤 선생님 (Brain Imaging Team)</h4>
+<ul>
+    <li><strong>UKB fMRI data:</strong> Which parcellation scheme is available (Schaefer 100/200/400, AAL)?</li>
+    <li><strong>sMRI features:</strong> Are FreeSurfer outputs pre-computed or should we run them?</li>
+    <li><strong>Data download:</strong> What is the process to download the 20-participant test sample?</li>
+    <li><strong>Motion QC:</strong> Are motion metrics (FD) already calculated or do we compute them?</li>
+</ul>
+
 <hr class="divider">
 <div class="page-break"></div>
 
@@ -183,10 +224,33 @@ A: Run <code>python scripts/manage_kb.py validate models</code> to check all ref
 <h3>Neuro-Omics KB에 오신 것을 환영합니다</h3>
 <p>이 레포지토리는 Brain–Genetics Foundation Model 통합 연구를 위한 <strong>문서 중심 지식 베이스</strong>입니다. 연구를 이해하고, 재현하고, 확장하는 데 필요한 모든 것이 여기에 있습니다.</p>
 
+<div class="links-box" style="background: #fff8e1; border-color: #f9a825;">
+    <strong>⚡ 최신 업데이트 (2024년 12월)</strong>
+    <p style="margin: 8px 0;">
+        ✅ <span class="genetics">20개 Foundation Model</span> 문서화 완료 (유전체 + 뇌영상 + 멀티모달)<br>
+        ✅ <span class="multimodal">30개 연구 논문</span> 큐레이션 및 PDF 노트<br>
+        ✅ <span class="fusion">색상 코딩 테이블</span>로 쉬운 네비게이션<br>
+        ✅ <span class="brain">임베딩 파이프라인</span> 단계별 레시피<br>
+        ✅ <span class="strong">GitHub 수정 링크</span> 정상 작동
+    </p>
+</div>
+
+<div class="links-box" style="background: #ffebee; border-color: #c62828;">
+    <strong>⚠️ 아직 제공되지 않은 데이터</strong>
+    <p style="margin: 8px 0;">
+        🔴 UKB fMRI/sMRI 피처 (정우/상윤 선생님께 확인 필요)<br>
+        🔴 주윤정 교수님 팀의 유전자 임베딩<br>
+        🔴 차병원 발달 코호트 (향후 작업)
+    </p>
+    <p style="margin: 8px 0; font-style: italic;">
+        → 이 KB는 데이터 <strong>사용 방법</strong>을 문서화하며, 데이터 가용성 추적용이 아닙니다.
+    </p>
+</div>
+
 <h3>🚀 빠른 시작 (5분)</h3>
 <ol>
     <li><strong>사이트 북마크:</strong> <a href="https://allison-eunse.github.io/neuro-omics-kb/">allison-eunse.github.io/neuro-omics-kb</a></li>
-    <li><strong>Team Guide 먼저 읽기:</strong> 네비게이션에서 "🚀 Team Guide" 클릭</li>
+    <li><strong>Team Guide 먼저 읽기:</strong> 네비게이션에서 "Team Guide" 클릭</li>
     <li><strong>Integration Strategy 확인:</strong> Late fusion → Two-tower 전략 이해하기</li>
     <li><strong>본인 연구 분야 확인:</strong> Genetics, Brain, 또는 Multimodal 섹션으로 이동</li>
 </ol>
@@ -195,7 +259,7 @@ A: Run <code>python scripts/manage_kb.py validate models</code> to check all ref
 <table>
     <tr><th>하고 싶은 것</th><th>찾아갈 곳</th></tr>
     <tr><td>특정 FM 이해하기</td><td>Models → [Genetics/Brain/Multimodal] → 모델 이름</td></tr>
-    <tr><td>단계별 코드 보기</td><td>Code Walkthroughs → 모델 walkthrough</td></tr>
+    <tr><td>단계별 코드 보기</td><td>Code Walkthroughs → 모델 이름</td></tr>
     <tr><td>임베딩 레시피 확인</td><td>Team Guide → Canonical Embedding Recipes</td></tr>
     <tr><td>실험 실행하기</td><td>GitHub → <code>configs/experiments/</code></td></tr>
     <tr><td>논문 요약 읽기</td><td>Research Papers → 논문 이름</td></tr>
@@ -258,10 +322,50 @@ A: <code>python scripts/manage_kb.py validate models</code>를 실행해서 모�
 <hr class="divider">
 
 <h3>📞 문의 / Contact</h3>
-<ul>
-    <li><strong>KB 관련 질문:</strong> Allison (유은서) 에게 문의</li>
 
+<h4>Questions for Allison (유은서)</h4>
+<ul>
+    <li>KB repository navigation or documentation issues</li>
+    <li>How to update model/dataset cards</li>
+    <li>Integration strategy clarification</li>
+    <li>Experiment config templates</li>
 </ul>
+
+<h4>Questions for Prof. Joo (주윤정 교수님) Team</h4>
+<ul>
+    <li><strong>Genetics embeddings:</strong> When will the 38 MDD gene embeddings be available?</li>
+    <li><strong>Embedding format:</strong> What is the output format (numpy array, CSV, HDF5)?</li>
+    <li><strong>Subject IDs:</strong> How are subjects identified in the genetics embedding files?</li>
+    <li><strong>Gene list:</strong> Confirm the exact 38 genes used in <code>genetics_joo_mdd_cog_v1</code></li>
+</ul>
+
+<h4>Questions for 정우/상윤 선생님 (Brain Imaging Team)</h4>
+<ul>
+    <li><strong>UKB fMRI data:</strong> Which parcellation scheme is available (Schaefer 100/200/400, AAL)?</li>
+    <li><strong>sMRI features:</strong> Are FreeSurfer outputs already computed or do we run it ourselves?</li>
+    <li><strong>Data download:</strong> What is the process to download the 20-participant sample?</li>
+    <li><strong>Motion QC:</strong> Are motion metrics (FD) already calculated or do we compute them?</li>
+</ul>
+
+<h3>📞 팀원 질문사항 / Team Member Questions</h3>
+
+<h4>주윤정 교수님 팀께 (Genetics Team)</h4>
+<ul>
+    <li><strong>유전자 임베딩 가용성:</strong> 38개 MDD 유전자 임베딩이 언제 제공될 예정인가요?</li>
+    <li><strong>임베딩 포맷:</strong> 출력 형식이 어떻게 되나요? (numpy array, CSV, HDF5?)</li>
+    <li><strong>Subject ID 매칭:</strong> 유전자 임베딩 파일에서 피험자는 어떻게 식별되나요?</li>
+    <li><strong>유전자 리스트 확인:</strong> <code>genetics_joo_mdd_cog_v1</code>에 사용된 정확한 38개 유전자 목록 확인</li>
+</ul>
+
+<h4>정우/상윤 선생님께 (Brain Imaging Team)</h4>
+<ul>
+    <li><strong>UKB fMRI 데이터:</strong> 어떤 parcellation scheme이 사용 가능한가요? (Schaefer 100/200/400, AAL?)</li>
+    <li><strong>sMRI features:</strong> FreeSurfer 출력이 이미 계산되어 있나요, 아니면 직접 실행해야 하나요?</li>
+    <li><strong>데이터 다운로드:</strong> 20명 샘플 데이터를 다운로드하는 절차가 어떻게 되나요?</li>
+    <li><strong>Motion QC:</strong> Motion metric (FD)이 이미 계산되어 있나요, 아니면 우리가 계산해야 하나요?</li>
+</ul>
+
+<hr class="divider">
 
 <h3>🎯 1-2월 목표 / Jan-Feb Goal</h3>
 <p><span class="badge badge-green">Stage-1 실험 완료</span> → <span class="badge badge-blue">결과 문서화</span> → <span class="badge badge-green">다음 단계 결정</span></p>
