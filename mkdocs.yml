@@ -28,9 +28,12 @@ theme:
     - toc.follow
     - content.action.edit
   custom_dir: docs/assets
-  extra_css:
-    - css/code-citations.css
+extra_css:
+  - assets/css/code-citations.css
+  - assets/css/custom.css
 markdown_extensions:
+  - attr_list
+  - md_in_html
   - admonition
   - toc:
       permalink: true

@@ -115,22 +115,22 @@ Walkthroughs, schemas, and decision logs share the same terminology across genet
 </details>
 
 <details>
-<summary><b>🏷️ Metadata Cards</b> — Structured YAML for all assets</summary>
+<summary><b>Metadata Cards</b> — Structured YAML for all assets</summary>
 
 ```
 kb/
-├── 🏷️ model_cards/        ← 21 FM specs (17 FMs + 4 reference/planning)
-├── 📄 paper_cards/         ← 31 research papers with structured takeaways
-├── 📊 datasets/            ← 19 dataset schemas (UKB, HCP, Cha, benchmarks)
-└── 🔗 integration_cards/   ← Embedding recipes, harmonization, pipelines
+├── model_cards/        ← 21 FM specs (17 FMs + 4 reference/planning)
+├── paper_cards/        ← 31 research papers with structured takeaways
+├── datasets/           ← 19 dataset schemas (UKB, HCP, Cha, benchmarks)
+└── integration_cards/  ← Embedding recipes, harmonization, pipelines
 ```
 
 | Folder | Count | Contents |
-|:-------|:-----:|:---------|
-| 🏷️ `model_cards/` | 21 | FM specs (17 core + 4 reference) |
-| 📄 `paper_cards/` | 31 | Research papers with takeaways |
-| 📊 `datasets/` | 19 | UKB, HCP, Cha, benchmarks |
-| 🔗 `integration_cards/` | 8 | Embedding + harmonization recipes |
+|:-------|------:|:---------|
+| `model_cards/` | 21 | FM specs (17 core + 4 reference) |
+| `paper_cards/` | 31 | Research papers with takeaways |
+| `datasets/` | 19 | UKB, HCP, Cha, benchmarks |
+| `integration_cards/` | 8 | Embedding + harmonization recipes |
 
 [Browse all cards on GitHub →](https://github.com/allison-eunse/neuro-omics-kb/tree/main/kb)
 
@@ -169,41 +169,39 @@ Each config references the exact embeddings, covariates, and validation plan to 
 
 <a id="foundation-models"></a>
 
-## 🎯 Foundation Model Registry
+## Foundation Model Registry
 
-### 🧬 Genetics Models
+### <span class="genetics">Genetics Models</span>
 
-| Model | Best For | Context | Status | Docs |
-|:------|:---------|:--------|:------:|:----:|
-| [**Caduceus**](models/genetics/caduceus.md) | RC-equivariant gene embeddings | DNA | 🟢 | [↗](code_walkthroughs/caduceus_walkthrough.md) |
-| [**DNABERT-2**](models/genetics/dnabert2.md) | Cross-species transfer | BPE | 🟢 | [↗](code_walkthroughs/dnabert2_walkthrough.md) |
-| [**Evo 2**](models/genetics/evo2.md) | Ultra-long regulatory regions | 1M ctx | 🟢 | [↗](code_walkthroughs/evo2_walkthrough.md) |
-| [**GENERator**](models/genetics/generator.md) | Generative modeling | 6-mer | 🟢 | [↗](code_walkthroughs/generator_walkthrough.md) |
-| [**HyenaDNA**](models/genetics/hyenadna.md) | Long-range sequences | 1M ctx | 🟡 | [↗](code_walkthroughs/hyena_walkthrough.md) |
+| Model | Best For | Context | Walkthrough |
+|:------|:---------|:--------|:------------|
+| [**Caduceus**](models/genetics/caduceus.md) | RC-equivariant gene embeddings | DNA | [walkthrough →](code_walkthroughs/caduceus_walkthrough.md) |
+| [**DNABERT-2**](models/genetics/dnabert2.md) | Cross-species transfer | BPE | [walkthrough →](code_walkthroughs/dnabert2_walkthrough.md) |
+| [**Evo 2**](models/genetics/evo2.md) | Ultra-long regulatory regions | 1M context | [walkthrough →](code_walkthroughs/evo2_walkthrough.md) |
+| [**GENERator**](models/genetics/generator.md) | Generative modeling | 6-mer LM | [walkthrough →](code_walkthroughs/generator_walkthrough.md) |
+| [**HyenaDNA**](models/genetics/hyenadna.md) | Long-range sequences | 1M context | [walkthrough →](code_walkthroughs/hyena_walkthrough.md) |
 
-### 🧠 Brain Models
+### <span class="brain">Brain Models</span>
 
-| Model | Modality | Best For | Status | Docs |
-|:------|:---------|:---------|:------:|:----:|
-| [**BrainLM**](models/brain/brainlm.md) | fMRI | Site-robust embeddings | 🟢 | [↗](code_walkthroughs/brainlm_walkthrough.md) |
-| [**Brain-JEPA**](models/brain/brainjepa.md) | fMRI | Lower-latency option | 🟢 | [↗](code_walkthroughs/brainjepa_walkthrough.md) |
-| [**Brain Harmony**](models/brain/brainharmony.md) | sMRI+fMRI | Multi-modal fusion | 🟢 | [↗](code_walkthroughs/brainharmony_walkthrough.md) |
-| [**BrainMT**](models/brain/brainmt.md) | sMRI/fMRI | Mamba efficiency | 🟢 | [↗](code_walkthroughs/brainmt_walkthrough.md) |
-| [**SwiFT**](models/brain/swift.md) | fMRI | Hierarchical spatiotemporal | 🟢 | [↗](code_walkthroughs/swift_walkthrough.md) |
+| Model | Modality | Best For | Walkthrough |
+|:------|:---------|:---------|:------------|
+| [**BrainLM**](models/brain/brainlm.md) | fMRI | Site-robust embeddings | [walkthrough →](code_walkthroughs/brainlm_walkthrough.md) |
+| [**Brain-JEPA**](models/brain/brainjepa.md) | fMRI | Lower-latency option | [walkthrough →](code_walkthroughs/brainjepa_walkthrough.md) |
+| [**Brain Harmony**](models/brain/brainharmony.md) | sMRI + fMRI | Multi-modal fusion | [walkthrough →](code_walkthroughs/brainharmony_walkthrough.md) |
+| [**BrainMT**](models/brain/brainmt.md) | sMRI/fMRI | Mamba efficiency | [walkthrough →](code_walkthroughs/brainmt_walkthrough.md) |
+| [**SwiFT**](models/brain/swift.md) | fMRI | Hierarchical spatiotemporal | [walkthrough →](code_walkthroughs/swift_walkthrough.md) |
 
-### 🏥 Multimodal & Clinical Models
+### <span class="multimodal">Multimodal & Clinical Models</span>
 
-| Model | Type | Key Innovation | Status | Docs |
-|:------|:-----|:---------------|:------:|:----:|
-| [**BAGEL**](models/multimodal/bagel.md) | Unified FM | MoT experts (understand + generate) | 🟣 | [↗](code_walkthroughs/bagel_walkthrough.md) |
-| [**MoT**](models/multimodal/mot.md) | Sparse | Modality-aware sparsity (~55% FLOPs) | 🟣 | [↗](code_walkthroughs/mot_walkthrough.md) |
-| [**M3FM**](models/multimodal/m3fm.md) | Radiology | CXR/CT + bilingual (EN/CN) | 🟣 | [↗](code_walkthroughs/m3fm_walkthrough.md) |
-| [**Me-LLaMA**](models/multimodal/me_llama.md) | Medical LLM | Continual pretrained (129B tok) | 🟣 | [↗](code_walkthroughs/melamma_walkthrough.md) |
-| [**TITAN**](models/multimodal/titan.md) | Pathology | Gigapixel whole-slide | 🟣 | [↗](code_walkthroughs/titan_walkthrough.md) |
-| [**Flamingo**](models/multimodal/flamingo.md) | VLM | Visual-language few-shot | 🟣 | [↗](code_walkthroughs/flamingo_walkthrough.md) |
-| [**FMS-Medical**](models/multimodal/fms_medical.md) | Catalog | Medical FM survey | 📚 | [↗](code_walkthroughs/fms_medical_walkthrough.md) |
-
-**Legend:** 🟢 Core FM | 🟣 Reference Architecture | 🟡 Reference | 📚 Catalog
+| Model | Type | Key Innovation | Walkthrough |
+|:------|:-----|:---------------|:------------|
+| [**BAGEL**](models/multimodal/bagel.md) | Unified FM | MoT experts (understand + generate) | [walkthrough →](code_walkthroughs/bagel_walkthrough.md) |
+| [**MoT**](models/multimodal/mot.md) | Sparse | Modality-aware sparsity (~55% FLOPs) | [walkthrough →](code_walkthroughs/mot_walkthrough.md) |
+| [**M3FM**](models/multimodal/m3fm.md) | Radiology | CXR/CT + bilingual (EN/CN) | [walkthrough →](code_walkthroughs/m3fm_walkthrough.md) |
+| [**Me-LLaMA**](models/multimodal/me_llama.md) | Medical LLM | Continual pretrained (129B tok) | [walkthrough →](code_walkthroughs/melamma_walkthrough.md) |
+| [**TITAN**](models/multimodal/titan.md) | Pathology | Gigapixel whole-slide | [walkthrough →](code_walkthroughs/titan_walkthrough.md) |
+| [**Flamingo**](models/multimodal/flamingo.md) | VLM | Visual-language few-shot | [walkthrough →](code_walkthroughs/flamingo_walkthrough.md) |
+| [**FMS-Medical**](models/multimodal/fms_medical.md) | Catalog | Medical FM survey | [walkthrough →](code_walkthroughs/fms_medical_walkthrough.md) |
 
 📖 [Explore Multimodal Models Overview](models/multimodal/index.md) • [Multimodal Architectures Guide](integration/multimodal_architectures.md) • [Design Patterns](integration/design_patterns.md)
 

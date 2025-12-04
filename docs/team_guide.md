@@ -3,7 +3,7 @@ title: Team User Guide
 updated: 2025-12-04
 ---
 
-# 🧬🧠 Team User Guide
+# Team User Guide
 
 **For:** Lab members working on Brain–Genetics FM integration
 
@@ -14,58 +14,58 @@ updated: 2025-12-04
 
 ---
 
-## 🎯 What This Repo Does
+## What This Repo Does
 
 This is your **documentation-first knowledge base** — the map and spec for the Brain–Genetics program.
 
-### 📂 Repository Structure
+### Repository Structure
 
 ```
 kb/
-├── 🏷️ model_cards/        ← 21 FM specs (17 FMs + 4 reference/planning)
-├── 📄 paper_cards/         ← 31 research papers with structured takeaways
-├── 📊 datasets/            ← 19 dataset schemas (UKB, HCP, Cha, benchmarks)
-└── 🔗 integration_cards/   ← Embedding recipes, harmonization, pipelines
+├── model_cards/        ← 21 FM specs (17 FMs + 4 reference/planning)
+├── paper_cards/        ← 31 research papers with structured takeaways
+├── datasets/           ← 19 dataset schemas (UKB, HCP, Cha, benchmarks)
+└── integration_cards/  ← Embedding recipes, harmonization, pipelines
 ```
 
-### 📦 What's Documented
+### What's Documented
 
-| Category | Count | Contents | Color |
-|:---------|:-----:|:---------|:-----:|
-| 🧬 **Genetics FMs** | 5 | Caduceus, DNABERT-2, Evo 2, HyenaDNA, GENERator | 🟢 |
-| 🧠 **Brain FMs** | 5 | BrainLM, Brain-JEPA, BrainMT, Brain Harmony, SwiFT | 🔵 |
-| 🏥 **Multimodal FMs** | 7 | BAGEL, MoT, M3FM, Me-LLaMA, TITAN, Flamingo, FMS-Medical | 🟣 |
-| 📄 **Research Papers** | 31 | RC symmetry, EI, MURD, multimodal surveys, Yoon BioKDD'25 | 🟠 |
-| 📊 **Datasets** | 19 | UKB (fMRI, sMRI, WES), HCP, Cha developmental, benchmarks | 🔴 |
-| 🔗 **Integration** | 8 | Embedding recipes, harmonization methods, pipelines | 🟡 |
+| Category | Count | Contents |
+|:---------|:-----:|:---------|
+| <span class="genetics">**Genetics FMs**</span> | 5 | Caduceus, DNABERT-2, Evo 2, HyenaDNA, GENERator |
+| <span class="brain">**Brain FMs**</span> | 5 | BrainLM, Brain-JEPA, BrainMT, Brain Harmony, SwiFT |
+| <span class="multimodal">**Multimodal FMs**</span> | 7 | BAGEL, MoT, M3FM, Me-LLaMA, TITAN, Flamingo, FMS-Medical |
+| **Research Papers** | 31 | RC symmetry, EI, MURD, multimodal surveys, Yoon BioKDD'25 |
+| **Datasets** | 19 | UKB (fMRI, sMRI, WES), HCP, Cha developmental, benchmarks |
+| <span class="fusion">**Integration**</span> | 8 | Embedding recipes, harmonization methods, pipelines |
 
-### 🎯 The Playbook
+### The Playbook
 
-**Strategy:** `Late fusion` → `Two-tower contrastive` → `MoT/unified BOM`
+**Strategy:** Late fusion → Two-tower contrastive → MoT/unified BOM
 
 | Phase | When | What |
-|:------|:----:|:-----|
-| 🟢 **Stage 1** | Now | Per-modality FMs + 512-D embeddings + late fusion |
-| 🟡 **Stage 2** | If fusion wins | Two-tower contrastive / EI stacking |
-| 🔴 **Stage 3** | Long-term | MoT/BAGEL unified architectures |
+|:------|:-----|:-----|
+| <span class="ready">**Stage 1**</span> | Now | Per-modality FMs + 512-D embeddings + late fusion |
+| <span class="pending">**Stage 2**</span> | If fusion wins | Two-tower contrastive / EI stacking |
+| <span class="future">**Stage 3**</span> | Long-term | MoT/BAGEL unified architectures |
 
 ---
 
-## 📋 Canonical Embedding Recipes
+## Canonical Embedding Recipes
 
 !!! info "All recipes defined in `kb/integration_cards/embedding_strategies.yaml`"
     Query any recipe: `python scripts/manage_kb.py ops strategy <recipe_id>`
 
 | Recipe ID | Type | Output | Pipeline |
-|:----------|:----:|:------:|:---------|
-| `genetics_gene_fm_pca512_v1` | 🧬 | 512-D | Caduceus/DNABERT-2/Evo2 + RC-averaging |
-| `genetics_joo_mdd_cog_v1` | 🧬 | 512-D | **Prof. Joo's 38 MDD genes** ⭐ |
-| `smri_free_surfer_pca512_v1` | 🧠 | 512-D | FreeSurfer ROIs → residualize → PCA |
-| `rsfmri_swift_segments_v1` | 🧠 | 512-D | SwiFT segments → mean pool → PCA |
-| `rsfmri_brainlm_segments_v1` | 🧠 | 512-D | BrainLM CLS tokens → mean pool |
-| `fusion_concat_gene_brain_1024_v1` | 🔗 | 1024-D | Concat(Gene₅₁₂ + Brain₅₁₂) |
+|:----------|:-----|:------:|:---------|
+| `genetics_gene_fm_pca512_v1` | <span class="genetics">genetics</span> | 512-D | Caduceus/DNABERT-2/Evo2 + RC-averaging |
+| `genetics_joo_mdd_cog_v1` | <span class="genetics">genetics</span> | 512-D | **Prof. Joo's 38 MDD genes** ★ |
+| `smri_free_surfer_pca512_v1` | <span class="brain">brain</span> | 512-D | FreeSurfer ROIs → residualize → PCA |
+| `rsfmri_swift_segments_v1` | <span class="brain">brain</span> | 512-D | SwiFT segments → mean pool → PCA |
+| `rsfmri_brainlm_segments_v1` | <span class="brain">brain</span> | 512-D | BrainLM CLS tokens → mean pool |
+| `fusion_concat_gene_brain_1024_v1` | <span class="fusion">fusion</span> | 1024-D | Concat(Gene₅₁₂ + Brain₅₁₂) |
 
-**Legend:** 🧬 = Genetics | 🧠 = Brain | 🔗 = Fusion | ⭐ = Recommended start
+★ = Recommended starting point
 
 **Query a recipe:**
 ```bash
@@ -74,7 +74,7 @@ python scripts/manage_kb.py ops strategy genetics_joo_mdd_cog_v1
 
 ---
 
-## 🗺️ How to Navigate
+## How to Navigate
 
 ### → "I need to understand a specific FM"
 
@@ -106,7 +106,7 @@ Or read: `docs/integration/integration_strategy.md` (Harmonization section)
 
 ---
 
-## 🚀 Your Jan-Feb Action Plan
+## Jan-Feb Action Plan
 
 !!! success "Meeting Goals: Jan-Feb Wrap-Up"
     - Test with 20-participant toy sample
@@ -159,11 +159,11 @@ python scripts/manage_kb.py ops strategy genetics_joo_mdd_cog_v1
 **Decision criteria:**
 
 | Result | Signal | Next Action |
-|:-------|:------:|:------------|
-| `Fusion > max(Gene, Brain)` p < 0.05 | 🟢 Strong | → Consider two-tower contrastive |
-| `Fusion ≈ best single modality` | 🟡 Weak | → Focus on improving per-modality models |
-| CCA strong (ρ₁ > 0.3, p < 0.001) | 🟢 Strong | → Supports two-tower alignment |
-| CCA weak (ρ₁ < 0.2 or p > 0.05) | 🔴 None | → Keep late fusion, check preprocessing |
+|:-------|:-------|:------------|
+| `Fusion > max(Gene, Brain)` p < 0.05 | <span class="strong">Strong</span> | Consider two-tower contrastive |
+| `Fusion ≈ best single modality` | <span class="weak">Weak</span> | Focus on improving per-modality models |
+| CCA strong (ρ₁ > 0.3, p < 0.001) | <span class="strong">Strong</span> | Supports two-tower alignment |
+| CCA weak (ρ₁ < 0.2 or p > 0.05) | <span class="none">None</span> | Keep late fusion, check preprocessing |
 
 **Templates available:**
 - Two-tower patterns: `docs/integration/design_patterns.md`
@@ -171,7 +171,7 @@ python scripts/manage_kb.py ops strategy genetics_joo_mdd_cog_v1
 
 ---
 
-## 🧪 What You Can Do Right Now (Before Data)
+## What You Can Do Now (Before Data)
 
 ### ✅ Available Now
 
@@ -198,7 +198,7 @@ python scripts/manage_kb.py ops strategy genetics_joo_mdd_cog_v1
 
 ---
 
-## 🔬 Stage-1 Experiments (Your Current Focus)
+## Stage-1 Experiments
 
 !!! abstract "Experiment 1: CCA (Gene ↔ Brain Association)"
     **Config:** `configs/experiments/01_cca_gene_smri.yaml`
@@ -247,7 +247,7 @@ python scripts/manage_kb.py ops strategy genetics_joo_mdd_cog_v1
 
 ---
 
-## 🚦 Escalation Decision Tree
+## Escalation Decision Tree
 
 ```
 Start: Run Stage-1 (CCA + Prediction + LOGO)
@@ -267,25 +267,23 @@ Start: Run Stage-1 (CCA + Prediction + LOGO)
 
 ---
 
-## 📊 Data Status
+## Data Status
 
 !!! warning "Note: Data Documentation vs Availability"
     This KB documents **how to use data**, not **when data is ready**.  
     Actual data availability is project-specific and tracked elsewhere.
 
-| Dataset | Docs | Status | Type | Notes |
-|:--------|:----:|:------:|:----:|:------|
-| 🧬 **hg38 reference** | ✅ | 🟢 Ready | Public | Reference genome |
-| 🧬 **Genomic benchmarks** | ✅ | 🟢 Ready | Public | Standard benchmarks |
-| 🧠 **UKB fMRI/sMRI** | ✅ | 🟡 Pending | Restricted | Check with 정우/상윤 선생님 |
-| 🧬 **Genetics embeddings** | ✅ | 🟡 Pending | Internal | From Prof. Joo (pre-trained) |
-| 🧠 **Cha Hospital dev** | ✅ | 🔵 Future | Restricted | Developmental research |
-
-**Legend:** 🟢 Ready | 🟡 In Progress | 🔵 Planned | 🧬 Genetics | 🧠 Brain
+| Dataset | Docs | Status | Access | Notes |
+|:--------|:----:|:-------|:-------|:------|
+| <span class="genetics">hg38 reference</span> | ✓ | <span class="ready">Ready</span> | Public | Reference genome |
+| <span class="genetics">Genomic benchmarks</span> | ✓ | <span class="ready">Ready</span> | Public | Standard benchmarks |
+| <span class="brain">UKB fMRI/sMRI</span> | ✓ | <span class="pending">Pending</span> | Restricted | Check with 정우/상윤 선생님 |
+| <span class="genetics">Genetics embeddings</span> | ✓ | <span class="pending">Pending</span> | Internal | From Prof. Joo (pre-trained) |
+| <span class="brain">Cha Hospital dev</span> | ✓ | <span class="future">Future</span> | Restricted | Developmental research |
 
 ---
 
-## 🛠️ Utilities
+## Utilities
 
 ```bash
 # Validate all YAML cards
@@ -307,7 +305,7 @@ https://allison-eunse.github.io/neuro-omics-kb/
 
 ---
 
-## ❓ FAQ
+## FAQ
 
 !!! question "Which genetics FM should I use?"
     **Answer:** Start with Prof. Joo's pipeline (`genetics_joo_mdd_cog_v1`):
@@ -346,7 +344,7 @@ https://allison-eunse.github.io/neuro-omics-kb/
 
 ---
 
-## 🎯 Key Principle
+## Key Principle
 
 **This KB answers:**
 - ✅ "How do I extract embeddings?"
@@ -356,7 +354,7 @@ https://allison-eunse.github.io/neuro-omics-kb/
 
 ---
 
-## 📞 Questions?
+## Questions?
 
 - **Model choice:** Check `docs/models/<category>/index.md`
 - **Integration strategy:** Read `docs/integration/integration_strategy.md`

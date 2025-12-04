@@ -1,0 +1,103 @@
+/* Custom color classes for text */
+
+/* Modality colors */
+.genetics { color: #2e7d32; font-weight: 500; }  /* Green */
+.brain { color: #1565c0; font-weight: 500; }     /* Blue */
+.multimodal { color: #7b1fa2; font-weight: 500; } /* Purple */
+.fusion { color: #f57c00; font-weight: 500; }    /* Orange */
+
+/* Status colors */
+.ready { color: #2e7d32; }      /* Green */
+.pending { color: #f9a825; }    /* Yellow/Amber */
+.future { color: #1565c0; }     /* Blue */
+.none { color: #c62828; }       /* Red */
+
+/* Signal strength */
+.strong { color: #2e7d32; font-weight: 600; }
+.weak { color: #f9a825; }
+.reference { color: #7b1fa2; }
+
+/* Badges/Pills */
+.badge {
+  display: inline-block;
+  padding: 0.15em 0.5em;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-weight: 500;
+}
+
+.badge-genetics {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.badge-brain {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.badge-multimodal {
+  background: #f3e5f5;
+  color: #7b1fa2;
+}
+
+.badge-ready {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.badge-pending {
+  background: #fff8e1;
+  color: #f57f17;
+}
+
+.badge-future {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+/* Table styling */
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.styled-table th {
+  background: var(--md-primary-fg-color);
+  color: white;
+  padding: 0.75em;
+  text-align: left;
+}
+
+.styled-table td {
+  padding: 0.5em 0.75em;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+/* Code highlighting for PyTorch/Python */
+.highlight .kn { color: #1565c0; }  /* import keywords */
+.highlight .nn { color: #7b1fa2; }  /* module names */
+.highlight .nc { color: #2e7d32; }  /* class names */
+.highlight .nf { color: #f57c00; }  /* function names */
+
+/* Dark mode adjustments */
+[data-md-color-scheme="slate"] .genetics { color: #81c784; }
+[data-md-color-scheme="slate"] .brain { color: #64b5f6; }
+[data-md-color-scheme="slate"] .multimodal { color: #ce93d8; }
+[data-md-color-scheme="slate"] .fusion { color: #ffb74d; }
+
+[data-md-color-scheme="slate"] .badge-genetics {
+  background: #1b5e20;
+  color: #c8e6c9;
+}
+
+[data-md-color-scheme="slate"] .badge-brain {
+  background: #0d47a1;
+  color: #bbdefb;
+}
+
+[data-md-color-scheme="slate"] .badge-multimodal {
+  background: #4a148c;
+  color: #e1bee7;
+}
+
