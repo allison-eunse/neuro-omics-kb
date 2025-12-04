@@ -13,24 +13,24 @@ This section covers multimodal and clinical foundation models that integrate mul
 ### General Multimodal Models
 
 | Model | Architecture | Key Innovation | Parameters | Documentation |
-|-------|--------------|----------------|------------|---------------|
-| 🔗 [**Flamingo**](flamingo.md) | Perceiver + gated cross-attention | Few-shot multimodal VLM via frozen encoders | 3B / 4B / 9B / 80B | [Walkthrough](../../code_walkthroughs/flamingo_walkthrough.md) |
-| 🔗 [**BAGEL**](bagel.md) | MoT decoder + SigLIP + VAE | Unified understanding + generation | 7B active / 14B total | [Walkthrough](../../code_walkthroughs/bagel_walkthrough.md) |
-| 🔗 [**MoT**](mot.md) | Sparse transformer | Modality-aware FFNs (~55% FLOPs) | Scales to 7B+ | [Walkthrough](../../code_walkthroughs/mot_walkthrough.md) |
+|:------|:-------------|:---------------|:-----------|:--------------|
+| <span class="multimodal">**[Flamingo](flamingo.md)**</span> | Perceiver + gated cross-attention | Few-shot multimodal VLM via frozen encoders | 3B / 4B / 9B / 80B | [Code Walkthrough](../../code_walkthroughs/flamingo_walkthrough.md) |
+| <span class="multimodal">**[BAGEL](bagel.md)**</span> | MoT decoder + SigLIP + VAE | Unified understanding + generation | 7B active / 14B total | [Code Walkthrough](../../code_walkthroughs/bagel_walkthrough.md) |
+| <span class="multimodal">**[MoT](mot.md)**</span> | Sparse transformer | Modality-aware FFNs (~55% FLOPs) | Scales to 7B+ | [Code Walkthrough](../../code_walkthroughs/mot_walkthrough.md) |
 
 ### Medical Multimodal Models
 
 | Model | Architecture | Clinical Focus | Languages | Documentation |
-|-------|--------------|----------------|-----------|---------------|
-| 🏥 [**M3FM**](m3fm.md) | CLIP + medical LLM | CXR + CT report generation | EN + CN | [Walkthrough](../../code_walkthroughs/m3fm_walkthrough.md) |
-| 🏥 [**Me-LLaMA**](me_llama.md) | Continual pretrained LLaMA | Medical knowledge integration | English | [Walkthrough](../../code_walkthroughs/melamma_walkthrough.md) |
-| 🏥 [**TITAN**](titan.md) | Vision transformer | Whole-slide pathology (gigapixel) | English | [Walkthrough](../../code_walkthroughs/titan_walkthrough.md) |
+|:------|:-------------|:---------------|:----------|:--------------|
+| <span class="multimodal">**[M3FM](m3fm.md)**</span> | CLIP + medical LLM | CXR + CT report generation | EN + CN | [Code Walkthrough](../../code_walkthroughs/m3fm_walkthrough.md) |
+| <span class="multimodal">**[Me-LLaMA](me_llama.md)**</span> | Continual pretrained LLaMA | Medical knowledge integration | English | [Code Walkthrough](../../code_walkthroughs/melamma_walkthrough.md) |
+| <span class="multimodal">**[TITAN](titan.md)**</span> | Vision transformer | Whole-slide pathology (gigapixel) | English | [Code Walkthrough](../../code_walkthroughs/titan_walkthrough.md) |
 
-###  Medical Data Catalog
+### Medical Data Catalog
 
 | Resource | Coverage | Use Case | Documentation |
-|----------|----------|----------|---------------|
-| 📚 [**FMS-Medical**](fms_medical.md) | 100+ medical datasets | Dataset discovery + benchmarking | [Walkthrough](../../code_walkthroughs/fms_medical_walkthrough.md) |
+|:---------|:---------|:---------|:--------------|
+| <span class="reference">**[FMS-Medical](fms_medical.md)**</span> | 100+ medical datasets | Dataset discovery + benchmarking | [Code Walkthrough](../../code_walkthroughs/fms_medical_walkthrough.md) |
 
 ---
 

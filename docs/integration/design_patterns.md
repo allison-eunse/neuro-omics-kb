@@ -77,7 +77,7 @@ Brain FM (frozen)    → brain_embed → projector_brain [256-D] ──┘
 
 ### Examples
 - **CLIP:** Image-text contrastive alignment (OpenAI)
-- **M3FM:** Medical image-text two-tower fusion ([walkthrough](../code_walkthroughs/m3fm_walkthrough.md))
+- **M3FM:** Medical image-text two-tower fusion ([Code Walkthrough](../code_walkthroughs/m3fm_walkthrough.md))
 
 ### Implementation Strategy
 1. Freeze Caduceus and BrainLM checkpoints
@@ -215,7 +215,7 @@ Downstream tasks:
 - **Evaluation:** Requires diverse benchmarks across modalities
 
 ### Examples
-- **BAGEL:** Unified text+image+video+web model ([walkthrough](../code_walkthroughs/bagel_walkthrough.md))
+- **BAGEL:** Unified text+image+video+web model ([Code Walkthrough](../code_walkthroughs/bagel_walkthrough.md))
 - **Flamingo:** Few-shot visual language model with Perceiver + gated cross-attention ([paper](../generated/kb_curated/papers-md/flamingo_2022.md))
 - **GPT-4o:** Unified multimodal reasoning (proprietary; included here as a conceptual example, not a KB-tracked model)
 - **Chameleon:** Text-image unified autoregressive model (dense unified baseline described in the MoT paper/card; used here as a reference pattern)^[See MoT summary: `docs/generated/kb_curated/papers-md/mot_2025.md`]

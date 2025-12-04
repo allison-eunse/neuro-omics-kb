@@ -127,7 +127,7 @@ If adapting M3FM for brain imaging:
 ### Knowledge Base Resources
 
 **Curated materials in this KB:**
-- **Paper summary & notes (PDF):** [M3FM (2025)](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/m3fm_2025.pdf)
+- **Paper Summary (PDF Notes):** [M3FM (2025)](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/m3fm_2025.pdf)
 - **Code walkthrough:** [M3FM walkthrough](../../code_walkthroughs/m3fm_walkthrough.md)
 - **Model card (YAML):** `kb/model_cards/m3fm.yaml`
 - **Paper card (YAML):** `kb/paper_cards/m3fm_2025.yaml`
@@ -149,7 +149,7 @@ If adapting M3FM for brain imaging:
 - **Published:** npj Digital Medicine, 2025
 - **Link:** [Nature: s41746-024-01339-7](https://www.nature.com/articles/s41746-024-01339-7)
 - **DOI:** [10.1038/s41746-024-01339-7](https://doi.org/10.1038/s41746-024-01339-7)
-- **PDF (local):** [m3fm_2025.pdf](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/m3fm_2025.pdf)
+- **PDF Notes:** [m3fm_2025.pdf](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/m3fm_2025.pdf)
 
 ## Next Steps in Our Pipeline
 

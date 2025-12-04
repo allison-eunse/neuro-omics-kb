@@ -116,7 +116,7 @@ BAGEL is not used for embedding extraction in the Neuro-Omics KB (domain mismatc
 ### Knowledge Base Resources
 
 **Curated materials in this KB:**
-- **Paper summary & notes (PDF):** [BAGEL (2025)](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/bagel_2025.pdf)
+- **Paper Summary (PDF Notes):** [BAGEL (2025)](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/bagel_2025.pdf)
 - **Code walkthrough:** [BAGEL walkthrough](../../code_walkthroughs/bagel_walkthrough.md)
 - **Model card (YAML):** `kb/model_cards/bagel.yaml` (if exists)
 - **Paper card (YAML):** `kb/paper_cards/bagel_2025.yaml`
@@ -137,7 +137,7 @@ BAGEL is not used for embedding extraction in the Neuro-Omics KB (domain mismatc
 - **Authors:** Deng, Chaorui; Zhu, Deyao; Li, Kunchang; Gou, Chenhui; Li, Feng; Wang, Zeyu; Zhong, Shu; Yu, Weihao; Nie, Xiaonan; Song, Ziang; Shi, Guang; Fan, Haoqi
 - **Published:** arXiv preprint, 2025
 - **Link:** [arXiv:2505.14683](https://arxiv.org/abs/2505.14683)
-- **PDF (local):** [bagel_2025.pdf](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/bagel_2025.pdf)
+- **PDF Notes:** [bagel_2025.pdf](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/bagel_2025.pdf)
 
 ## Next Steps in Our Pipeline
 

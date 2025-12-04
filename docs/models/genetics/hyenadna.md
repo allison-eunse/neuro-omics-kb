@@ -61,7 +61,7 @@ checkpoints and code stabilise.
 - **Paper summary:** `docs/generated/kb_curated/papers-md/hyenadna_2023.md`
 - **Paper card (YAML):** `kb/paper_cards/hyenadna_2023.yaml`
 - **Model card (YAML):** `kb/model_cards/hyenadna.yaml`
-- **Architecture walkthrough:** `docs/code_walkthroughs/hyena_walkthrough.md` (StripedHyena core)
+- **Code Walkthrough:** [hyena_walkthrough.md](../../code_walkthroughs/hyena_walkthrough.md) (StripedHyena core)
 
 ### Original Sources
 

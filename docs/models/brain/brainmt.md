@@ -101,7 +101,7 @@ BrainMT demonstrates **efficient long-context modeling** for multimodal systems:
 ### Knowledge Base Resources
 
 **Curated materials in this KB:**
-- **Paper summary & notes (PDF):** [BrainMT (2025)](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/brainmt_2025.pdf)
+- **Paper Summary (PDF Notes):** [BrainMT (2025)](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/brainmt_2025.pdf)
 - **Code walkthrough:** [BrainMT walkthrough](../../code_walkthroughs/brainmt_walkthrough.md)
 - **Model card (YAML):** `kb/model_cards/brainmt.yaml`
 - **Paper card (YAML):** `kb/paper_cards/brainmt_2025.yaml`
@@ -122,7 +122,7 @@ BrainMT demonstrates **efficient long-context modeling** for multimodal systems:
 - **Authors:** Kannan, Arunkumar; Lindquist, Martin A.; Caffo, Brian
 - **Published:** Conference proceedings (SpringerLink), September 2025, pp. 150-160
 - **Link:** [SpringerLink](https://dl.acm.org/doi/10.1007/978-3-032-05162-2_15)
-- **PDF (local):** [brainmt_2025.pdf](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/brainmt_2025.pdf)
+- **PDF Notes:** [brainmt_2025.pdf](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/brainmt_2025.pdf)
 
 ## Next Steps in Our Pipeline
 

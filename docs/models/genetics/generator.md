@@ -106,7 +106,7 @@ GENERator demonstrates **generative modeling** for biological sequences:
 ### Knowledge Base Resources
 
 **Curated materials in this KB:**
-- **Paper summary & notes (PDF):** [GENERator (2024)](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/generator_2024.pdf)
+- **Paper Summary (PDF Notes):** [GENERator (2024)](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/generator_2024.pdf)
 - **Code walkthrough:** [GENERator walkthrough](../../code_walkthroughs/generator_walkthrough.md)
 - **Model card (YAML):** `kb/model_cards/generator.yaml`
 - **Paper card (YAML):** `kb/paper_cards/generator_2024.yaml`
@@ -126,7 +126,7 @@ GENERator demonstrates **generative modeling** for biological sequences:
 - **Authors:** Wu, Wei; Li, Qiuyi; et al.
 - **Published:** arXiv preprint, 2024
 - **Link:** [arXiv:2502.07272](https://arxiv.org/abs/2502.07272)
-- **PDF (local):** [generator_2024.pdf](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/generator_2024.pdf)
+- **PDF Notes:** [generator_2024.pdf](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/generator_2024.pdf)
 
 ## Next Steps in Our Pipeline
 

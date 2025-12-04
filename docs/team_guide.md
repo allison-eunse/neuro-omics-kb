@@ -20,13 +20,13 @@ This is your **documentation-first knowledge base** — the map and spec for the
 
 ### Repository Structure
 
-```
-kb/
-├── model_cards/        ← 20 FM specs (17 FMs + 3 reference)
-├── paper_cards/        ← 30 research papers with structured takeaways
-├── datasets/           ← 19 dataset schemas (UKB, HCP, Cha, benchmarks)
-└── integration_cards/  ← Embedding recipes, harmonization, pipelines
-```
+<div style="font-family: monospace; background: #f5f5f5; padding: 16px; border-radius: 8px; line-height: 1.8;">
+<code>kb/</code><br>
+├── <span class="genetics"><b>model_cards/</b></span> ← 20 FM specs (17 FMs + 3 reference)<br>
+├── <span class="multimodal"><b>paper_cards/</b></span> ← 30 research papers with structured takeaways<br>
+├── <span class="brain"><b>datasets/</b></span> ← 19 dataset schemas (UKB, HCP, Cha, benchmarks)<br>
+└── <span class="fusion"><b>integration_cards/</b></span> ← Embedding recipes, harmonization, pipelines
+</div>
 
 ### What's Documented
 

@@ -102,7 +102,7 @@ Caduceus provides **strand-robust genetic representations** for Brain-Omics syst
 ### Knowledge Base Resources
 
 **Curated materials in this KB:**
-- **Paper summary & notes (PDF):** [Caduceus (2024)](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/caduceus_2024.pdf)
+- **Paper Summary (PDF Notes):** [Caduceus (2024)](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/caduceus_2024.pdf)
 - **Paper card (YAML):** `kb/paper_cards/caduceus_2024.yaml`
 - **Code walkthrough:** [Caduceus walkthrough](../../code_walkthroughs/caduceus_walkthrough.md)
 - **Model card (YAML):** `kb/model_cards/caduceus.yaml`
@@ -124,7 +124,7 @@ Caduceus provides **strand-robust genetic representations** for Brain-Omics syst
 - **Authors:** Schiff et al.
 - **Published:** arXiv preprint, March 2024
 - **Link:** [arXiv:2403.03234](https://arxiv.org/abs/2403.03234)
-- **PDF (local):** [caduceus_2024.pdf](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/caduceus_2024.pdf)
+- **PDF Notes:** [caduceus_2024.pdf](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/caduceus_2024.pdf)
 
 ## Next Steps in Our Pipeline
 

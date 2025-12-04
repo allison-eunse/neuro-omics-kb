@@ -20,16 +20,30 @@ All genetics FMs documented here:
 ## 🎯 Model Registry
 
 | Model | Architecture | Key Feature | Integration Role | Documentation |
-|-------|-------------|-------------|------------------|---------------|
-| 🧬 [**Caduceus**](caduceus.md) | Mamba (BiMamba) + RC-equivariance | Strand-robust, efficient long-context | Primary gene encoder for UK Biobank WES | [Walkthrough](../../code_walkthroughs/caduceus_walkthrough.md) |
-| 🧬 [**DNABERT-2**](dnabert2.md) | BERT (multi-species) | BPE tokenization, cross-species transfer | Alternative gene encoder; comparison baseline | [Walkthrough](../../code_walkthroughs/dnabert2_walkthrough.md) |
-| 🧬 [**Evo 2**](evo2.md) | StripedHyena (1M context) | Ultra-long-range dependencies | Exploratory; regulatory region capture | [Walkthrough](../../code_walkthroughs/evo2_walkthrough.md) |
-| 🧬 [**GENERator**](generator.md) | Generative 6-mer LM | Generative modeling, sequence design | Reference for generative vs discriminative | [Walkthrough](../../code_walkthroughs/generator_walkthrough.md) |
-| 🧬 [**HyenaDNA**](hyenadna.md) | Hyena implicit convolutions (1M context) | Single-nucleotide, ultra-long genomic modeling | Conceptual long-context genomics reference | [Architecture walkthrough](../../code_walkthroughs/hyena_walkthrough.md) |
+|:------|:-------------|:------------|:-----------------|:--------------|
+| <span class="genetics">**[Caduceus](caduceus.md)**</span> | Mamba (BiMamba) + RC-equivariance | Strand-robust, efficient long-context | Primary gene encoder for UK Biobank WES | [Code Walkthrough](../../code_walkthroughs/caduceus_walkthrough.md) |
+| <span class="genetics">**[DNABERT-2](dnabert2.md)**</span> | BERT (multi-species) | BPE tokenization, cross-species transfer | Alternative gene encoder; comparison baseline | [Code Walkthrough](../../code_walkthroughs/dnabert2_walkthrough.md) |
+| <span class="genetics">**[Evo 2](evo2.md)**</span> | StripedHyena (1M context) | Ultra-long-range dependencies | Exploratory; regulatory region capture | [Code Walkthrough](../../code_walkthroughs/evo2_walkthrough.md) |
+| <span class="genetics">**[GENERator](generator.md)**</span> | Generative 6-mer LM | Generative modeling, sequence design | Reference for generative vs discriminative | [Code Walkthrough](../../code_walkthroughs/generator_walkthrough.md) |
+| <span class="genetics">**[HyenaDNA](hyenadna.md)**</span> | Hyena implicit convolutions (1M context) | Single-nucleotide, ultra-long genomic modeling | Conceptual long-context genomics reference | [Code Walkthrough](../../code_walkthroughs/hyena_walkthrough.md) |
 
 ---
 
 ## 🔄 Usage Workflow
+
+<div style="font-family: monospace; background: #263238; color: #aed581; padding: 16px; border-radius: 8px; line-height: 1.8; overflow-x: auto;">
+<span style="color: #78909c;"># 1.</span> <span style="color: #4fc3f7;">Extract gene sequences</span> from hg38 reference (GENCODE annotations)<br>
+<span style="color: #78909c;"># 2.</span> <span style="color: #4fc3f7;">Tokenize</span> with model-specific vocabulary (6-mer, BPE, or single-nucleotide)<br>
+<span style="color: #78909c;"># 3.</span> <span style="color: #4fc3f7;">Load pretrained checkpoint</span> (Caduceus, DNABERT-2, Evo2, etc.)<br>
+<span style="color: #78909c;"># 4.</span> <span style="color: #4fc3f7;">Forward pass</span> → per-position embeddings<br>
+<span style="color: #78909c;"># 5.</span> <span style="color: #4fc3f7;">Verify RC equivariance</span> (optional but recommended):<br>
+<span style="color: #78909c;">#    </span> embed(seq) ≈ embed(reverse_complement(seq))<br>
+<span style="color: #78909c;"># 6.</span> <span style="color: #4fc3f7;">Mean pool</span> over gene → gene-level vector<br>
+<span style="color: #78909c;"># 7.</span> <span style="color: #4fc3f7;">Concatenate gene set</span> → subject genotype embedding<br>
+<span style="color: #78909c;"># 8.</span> <span style="color: #f9a825;">Log:</span> gene_list, reference_version, embedding_strategy_id
+</div>
+
+**Detailed steps:**
 
 1. **Extract sequences** from reference genome (hg38) for target genes
 2. **Tokenize** using model-specific vocabularies (k-mers, BPE, or single-nucleotide)
@@ -78,16 +92,18 @@ Genetics embeddings are integrated with:
 All genetics FM source code lives in `external_repos/`:
 
 | Model | Local Path | GitHub Repository |
-|-------|------------|-------------------|
-| Caduceus | `external_repos/caduceus/` | [kuleshov-group/caduceus](https://github.com/kuleshov-group/caduceus) |
-| DNABERT-2 | `external_repos/dnabert2/` | [Zhihan1996/DNABERT2](https://github.com/Zhihan1996/DNABERT2) |
-| Evo 2 | `external_repos/evo2/` | [ArcInstitute/evo2](https://github.com/ArcInstitute/evo2) |
-| GENERator | `external_repos/generator/` | [GenerTeam/GENERator](https://github.com/GenerTeam/GENERator) |
+|:------|:-----------|:------------------|
+| <span class="genetics">**Caduceus**</span> | `external_repos/caduceus/` | [kuleshov-group/caduceus](https://github.com/kuleshov-group/caduceus) |
+| <span class="genetics">**DNABERT-2**</span> | `external_repos/dnabert2/` | [Zhihan1996/DNABERT2](https://github.com/Zhihan1996/DNABERT2) |
+| <span class="genetics">**Evo 2**</span> | `external_repos/evo2/` | [ArcInstitute/evo2](https://github.com/ArcInstitute/evo2) |
+| <span class="genetics">**GENERator**</span> | `external_repos/generator/` | [GenerTeam/GENERator](https://github.com/GenerTeam/GENERator) |
+| <span class="genetics">**HyenaDNA**</span> | `external_repos/hyena/` | [HazyResearch/hyena-dna](https://github.com/HazyResearch/hyena-dna) |
 
 Each model page includes:
-- ✅ Detailed code walkthrough in `docs/code_walkthroughs/`
-- ✅ Structured YAML card in `kb/model_cards/`
-- ✅ Integration recipes and preprocessing specs
+
+- ✓ Detailed code walkthrough in `docs/code_walkthroughs/`
+- ✓ Structured YAML card in `kb/model_cards/`
+- ✓ Integration recipes and preprocessing specs
 
 </details>
 

@@ -109,7 +109,7 @@ Evo2 enables **whole-locus genetic representations** for Brain-Omics systems:
 ### Knowledge Base Resources
 
 **Curated materials in this KB:**
-- **Paper summary & notes (PDF):** [Evo2 (2024)](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/evo2_2024.pdf)
+- **Paper Summary (PDF Notes):** [Evo2 (2024)](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/evo2_2024.pdf)
 - **Code walkthrough:** [Evo2 walkthrough](../../code_walkthroughs/evo2_walkthrough.md)
 - **Model card (YAML):** `kb/model_cards/evo2.yaml`
 - **Paper card (YAML):** `kb/paper_cards/evo2_2024.yaml`
@@ -129,7 +129,7 @@ Evo2 enables **whole-locus genetic representations** for Brain-Omics systems:
 - **Authors:** Arc Institute Team
 - **Published:** bioRxiv preprint, February 2025
 - **Link:** [bioRxiv:2025.02.18.638918](https://www.biorxiv.org/content/10.1101/2025.02.18.638918v1)
-- **PDF (local):** [evo2_2024.pdf](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/evo2_2024.pdf)
+- **PDF Notes:** [evo2_2024.pdf](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/evo2_2024.pdf)
 
 ## Next Steps in Our Pipeline
 

@@ -117,13 +117,13 @@ Walkthroughs, schemas, and decision logs share the same terminology across genet
 <details>
 <summary><b>Metadata Cards</b> — Structured YAML for all assets</summary>
 
-```
-kb/
-├── model_cards/        ← 20 FM specs (17 FMs + 3 reference)
-├── paper_cards/        ← 30 research papers with structured takeaways
-├── datasets/           ← 19 dataset schemas (UKB, HCP, Cha, benchmarks)
-└── integration_cards/  ← Embedding recipes, harmonization, pipelines
-```
+<div style="font-family: monospace; background: #f5f5f5; padding: 16px; border-radius: 8px; line-height: 1.8;">
+<code>kb/</code><br>
+├── <span class="genetics"><b>model_cards/</b></span> ← 20 FM specs (17 FMs + 3 reference)<br>
+├── <span class="multimodal"><b>paper_cards/</b></span> ← 30 research papers with structured takeaways<br>
+├── <span class="brain"><b>datasets/</b></span> ← 19 dataset schemas (UKB, HCP, Cha, benchmarks)<br>
+└── <span class="fusion"><b>integration_cards/</b></span> ← Embedding recipes, harmonization, pipelines
+</div>
 
 | Folder | Count | Contents |
 |:-------|------:|:---------|
@@ -185,23 +185,23 @@ Each config references the exact embeddings, covariates, and validation plan to 
 
 | Model | Modality | Best For | Walkthrough |
 |:------|:---------|:---------|:------------|
-| [**BrainLM**](models/brain/brainlm.md) | fMRI | Site-robust embeddings | [walkthrough →](code_walkthroughs/brainlm_walkthrough.md) |
-| [**Brain-JEPA**](models/brain/brainjepa.md) | fMRI | Lower-latency option | [walkthrough →](code_walkthroughs/brainjepa_walkthrough.md) |
-| [**Brain Harmony**](models/brain/brainharmony.md) | sMRI + fMRI | Multi-modal fusion | [walkthrough →](code_walkthroughs/brainharmony_walkthrough.md) |
-| [**BrainMT**](models/brain/brainmt.md) | sMRI/fMRI | Mamba efficiency | [walkthrough →](code_walkthroughs/brainmt_walkthrough.md) |
-| [**SwiFT**](models/brain/swift.md) | fMRI | Hierarchical spatiotemporal | [walkthrough →](code_walkthroughs/swift_walkthrough.md) |
+| <span class="brain">**[BrainLM](models/brain/brainlm.md)**</span> | fMRI | Site-robust embeddings | [Code Walkthrough →](code_walkthroughs/brainlm_walkthrough.md) |
+| <span class="brain">**[Brain-JEPA](models/brain/brainjepa.md)**</span> | fMRI | Lower-latency option | [Code Walkthrough →](code_walkthroughs/brainjepa_walkthrough.md) |
+| <span class="brain">**[Brain Harmony](models/brain/brainharmony.md)**</span> | sMRI + fMRI | Multi-modal fusion | [Code Walkthrough →](code_walkthroughs/brainharmony_walkthrough.md) |
+| <span class="brain">**[BrainMT](models/brain/brainmt.md)**</span> | sMRI/fMRI | Mamba efficiency | [Code Walkthrough →](code_walkthroughs/brainmt_walkthrough.md) |
+| <span class="brain">**[SwiFT](models/brain/swift.md)**</span> | fMRI | Hierarchical spatiotemporal | [Code Walkthrough →](code_walkthroughs/swift_walkthrough.md) |
 
 ### 🏥 Multimodal & Clinical Models
 
 | Model | Type | Key Innovation | Walkthrough |
 |:------|:-----|:---------------|:------------|
-| [**BAGEL**](models/multimodal/bagel.md) | Unified FM | MoT experts (understand + generate) | [walkthrough →](code_walkthroughs/bagel_walkthrough.md) |
-| [**MoT**](models/multimodal/mot.md) | Sparse | Modality-aware sparsity (~55% FLOPs) | [walkthrough →](code_walkthroughs/mot_walkthrough.md) |
-| [**M3FM**](models/multimodal/m3fm.md) | Radiology | CXR/CT + bilingual (EN/CN) | [walkthrough →](code_walkthroughs/m3fm_walkthrough.md) |
-| [**Me-LLaMA**](models/multimodal/me_llama.md) | Medical LLM | Continual pretrained (129B tok) | [walkthrough →](code_walkthroughs/melamma_walkthrough.md) |
-| [**TITAN**](models/multimodal/titan.md) | Pathology | Gigapixel whole-slide | [walkthrough →](code_walkthroughs/titan_walkthrough.md) |
-| [**Flamingo**](models/multimodal/flamingo.md) | VLM | Visual-language few-shot | [walkthrough →](code_walkthroughs/flamingo_walkthrough.md) |
-| [**FMS-Medical**](models/multimodal/fms_medical.md) | Catalog | Medical FM survey | [walkthrough →](code_walkthroughs/fms_medical_walkthrough.md) |
+| <span class="multimodal">**[BAGEL](models/multimodal/bagel.md)**</span> | Unified FM | MoT experts (understand + generate) | [Code Walkthrough →](code_walkthroughs/bagel_walkthrough.md) |
+| <span class="multimodal">**[MoT](models/multimodal/mot.md)**</span> | Sparse | Modality-aware sparsity (~55% FLOPs) | [Code Walkthrough →](code_walkthroughs/mot_walkthrough.md) |
+| <span class="multimodal">**[M3FM](models/multimodal/m3fm.md)**</span> | Radiology | CXR/CT + bilingual (EN/CN) | [Code Walkthrough →](code_walkthroughs/m3fm_walkthrough.md) |
+| <span class="multimodal">**[Me-LLaMA](models/multimodal/me_llama.md)**</span> | Medical LLM | Continual pretrained (129B tok) | [Code Walkthrough →](code_walkthroughs/melamma_walkthrough.md) |
+| <span class="multimodal">**[TITAN](models/multimodal/titan.md)**</span> | Pathology | Gigapixel whole-slide | [Code Walkthrough →](code_walkthroughs/titan_walkthrough.md) |
+| <span class="multimodal">**[Flamingo](models/multimodal/flamingo.md)**</span> | VLM | Visual-language few-shot | [Code Walkthrough →](code_walkthroughs/flamingo_walkthrough.md) |
+| <span class="reference">**[FMS-Medical](models/multimodal/fms_medical.md)**</span> | Catalog | Medical FM survey | [Code Walkthrough →](code_walkthroughs/fms_medical_walkthrough.md) |
 
 📖 [Explore Multimodal Models Overview](models/multimodal/index.md) • [Multimodal Architectures Guide](integration/multimodal_architectures.md) • [Design Patterns](integration/design_patterns.md)
 
@@ -238,41 +238,45 @@ Each config references the exact embeddings, covariates, and validation plan to 
 
 **Every paper has three quick links:** KB summary (MD) · Annotated PDF · Original publication
 
-### 🧬 Genetics Foundation Models
-| Paper | MD notes | PDF notes | Source | Focus |
-|-------|----------|-----------|--------|-------|
-| 🧬 [Caduceus](models/genetics/caduceus.md) | [MD notes](generated/kb_curated/papers-md/caduceus_2024.md) | [PDF notes](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/caduceus_2024.pdf) | [arXiv:2403.03234](https://arxiv.org/abs/2403.03234) | RC-equivariant BiMamba DNA FM |
-| 🧬 [DNABERT-2](models/genetics/dnabert2.md) | [MD notes](generated/kb_curated/papers-md/dnabert2_2024.md) | [PDF notes](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/dnabert2_2024.pdf) | [arXiv:2306.15006](https://arxiv.org/abs/2306.15006) | BPE-tokenized multi-species encoder |
-| 🧬 [Evo 2](models/genetics/evo2.md) | [MD notes](generated/kb_curated/papers-md/evo2_2024.md) | [PDF notes](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/evo2_2024.pdf) | [bioRxiv 2025.02.18](https://www.biorxiv.org/content/10.1101/2025.02.18.638918v1) | StripedHyena 1M-token model |
-| 🧬 [GENERator](models/genetics/generator.md) | [MD notes](generated/kb_curated/papers-md/generator_2024.md) | [PDF notes](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/generator_2024.pdf) | [arXiv:2502.07272](https://arxiv.org/abs/2502.07272) | Generative 6-mer DNA LM |
+### Genetics Foundation Models
 
-### 🧠 Brain Foundation Models
-| Paper | MD notes | PDF notes | Source | Focus |
-|-------|----------|-----------|--------|-------|
-| 🧠 [BrainLM](models/brain/brainlm.md) | [MD notes](generated/kb_curated/papers-md/brainlm_2024.md) | [PDF notes](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/brainlm_2024.pdf) | [OpenReview RwI7ZEfR27](https://openreview.net/forum?id=RwI7ZEfR27) | ViT-MAE for UKB fMRI |
-| 🧠 [Brain-JEPA](models/brain/brainjepa.md) | [MD notes](generated/kb_curated/papers-md/brainjepa_2024.md) | [PDF notes](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/brainjepa_2024.pdf) | [arXiv:2409.19407](https://arxiv.org/abs/2409.19407) | Joint-embedding prediction |
-| 🧠 [Brain Harmony](models/brain/brainharmony.md) | [MD notes](generated/kb_curated/papers-md/brainharmony_2025.md) | [PDF notes](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/brainharmony_2025.pdf) | [arXiv:2509.24693](https://arxiv.org/abs/2509.24693) | sMRI+fMRI fusion with TAPE |
-| 🧠 [BrainMT](models/brain/brainmt.md) | [MD notes](generated/kb_curated/papers-md/brainmt_2025.md) | [PDF notes](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/brainmt_2025.pdf) | [LNCS 10.1007/…-2_15](https://dl.acm.org/doi/10.1007/978-3-032-05162-2_15) | Hybrid Mamba-Transformer |
-| 🧠 [SwiFT](models/brain/swift.md) | [MD notes](generated/kb_curated/papers-md/swift_2023.md) | [PDF notes](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/swift_2023.pdf) | [arXiv:2307.05916](https://arxiv.org/abs/2307.05916) | Swin-style 4D fMRI |
+| Paper | Notes | Source | Focus |
+|:------|:------|:-------|:------|
+| <span class="genetics">**[Caduceus](models/genetics/caduceus.md)**</span> | [MD](generated/kb_curated/papers-md/caduceus_2024.md) · [PDF](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/caduceus_2024.pdf) | [arXiv:2403.03234](https://arxiv.org/abs/2403.03234) | RC-equivariant BiMamba DNA FM |
+| <span class="genetics">**[DNABERT-2](models/genetics/dnabert2.md)**</span> | [MD](generated/kb_curated/papers-md/dnabert2_2024.md) · [PDF](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/dnabert2_2024.pdf) | [arXiv:2306.15006](https://arxiv.org/abs/2306.15006) | BPE-tokenized multi-species encoder |
+| <span class="genetics">**[Evo 2](models/genetics/evo2.md)**</span> | [MD](generated/kb_curated/papers-md/evo2_2024.md) · [PDF](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/evo2_2024.pdf) | [bioRxiv 2025.02.18](https://www.biorxiv.org/content/10.1101/2025.02.18.638918v1) | StripedHyena 1M-token model |
+| <span class="genetics">**[GENERator](models/genetics/generator.md)**</span> | [MD](generated/kb_curated/papers-md/generator_2024.md) · [PDF](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/generator_2024.pdf) | [arXiv:2502.07272](https://arxiv.org/abs/2502.07272) | Generative 6-mer DNA LM |
 
-### 🏥 Multimodal & Clinical Foundation Models
-| Paper | MD notes | PDF notes | Source | Focus |
-|-------|----------|-----------|--------|-------|
-| 🔗 [BAGEL](models/multimodal/bagel.md) | [MD notes](generated/kb_curated/papers-md/bagel_2025.md) | [PDF notes](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/bagel_2025.pdf) | [arXiv:2505.14683](https://arxiv.org/abs/2505.14683) | Unified MoT decoder |
-| 🔗 [MoT](models/multimodal/mot.md) | [MD notes](generated/kb_curated/papers-md/mot_2025.md) | [PDF notes](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/mot_2025.pdf) | [arXiv:2411.04996](https://arxiv.org/abs/2411.04996) | Modality-aware sparse transformers |
-| 🏥 [M3FM](models/multimodal/m3fm.md) | [MD notes](generated/kb_curated/papers-md/m3fm_2025.md) | [PDF notes](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/m3fm_2025.pdf) | [npj Digital Medicine 2025](https://www.nature.com/articles/s41746-024-01339-7) | Multilingual medical vision-language |
-| 🏥 [Me-LLaMA](models/multimodal/me_llama.md) | [MD notes](generated/kb_curated/papers-md/me_llama_2024.md) | [PDF notes](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/me_llama_2024.pdf) | [arXiv:2404.05416](https://arxiv.org/abs/2404.05416) | Medical LLM continual-pretraining |
-| 🏥 [TITAN](models/multimodal/titan.md) | [MD notes](generated/kb_curated/papers-md/titan_2025.md) | [PDF notes](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/titan_2025.pdf) | [Nature Medicine 2025](https://www.nature.com/articles/s41591-024-03235-7) | Gigapixel whole-slide pathology |
-| 📚 [MM FMs Survey](integration/multimodal_architectures.md) | [MD notes](generated/kb_curated/papers-md/mmfm_2025.md) | [PDF notes](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/mmfm_2025.pdf) | [AI in Medicine 2025](https://www.sciencedirect.com/science/article/pii/S0933365725002003) | Clinical MM FM patterns |
+### Brain Foundation Models
 
-### 🔗 Integration & Methods
-| Paper | MD notes | PDF notes | Source | Focus |
-|-------|----------|-----------|--------|-------|
-| 📊 [Ensemble Integration](models/integrations/ensemble_integration.md) | [MD notes](generated/kb_curated/papers-md/ensemble_integration_li2022.md) | [PDF notes](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/ensemble_integration_li2022.pdf) | [doi:10.1093/bioadv/vbac065](https://doi.org/10.1093/bioadv/vbac065) | Late-fusion rationale |
-| 🧪 [Oncology Multimodal](generated/kb_curated/papers-md/oncology_multimodal_waqas2024.md) | [MD notes](generated/kb_curated/papers-md/oncology_multimodal_waqas2024.md) | [PDF notes](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/oncology_multimodal_waqas2024.pdf) | [PubMed 39118787](https://pubmed.ncbi.nlm.nih.gov/39118787/) | Confounds & protocols |
-| 🧠 [Yoon BIOKDD 2025](generated/kb_curated/papers-md/yoon_biokdd2025.md) | [MD notes](generated/kb_curated/papers-md/yoon_biokdd2025.md) | [PDF notes](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/yoon_biokdd2025.pdf) | [bioRxiv 2025.02.18](https://www.biorxiv.org/content/10.1101/2025.02.18.638918v1.full.pdf) | LOGO attribution |
-| 🌍 [GWAS Diverse Populations](generated/kb_curated/papers-md/gwas_diverse_populations.md) | [MD notes](generated/kb_curated/papers-md/gwas_diverse_populations.md) | [PDF notes](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/gwas_diverse_populations.pdf) | [PubMed 36158455](https://pubmed.ncbi.nlm.nih.gov/36158455/) | Ancestry-aware QC |
-| 📈 [PRS Guide](generated/kb_curated/papers-md/prs_guide.md) | [MD notes](generated/kb_curated/papers-md/prs_guide.md) | [PDF notes](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/prs_guide.pdf) | [PubMed 31607513](https://pubmed.ncbi.nlm.nih.gov/31607513/) | Polygenic risk reporting |
+| Paper | Notes | Source | Focus |
+|:------|:------|:-------|:------|
+| <span class="brain">**[BrainLM](models/brain/brainlm.md)**</span> | [MD](generated/kb_curated/papers-md/brainlm_2024.md) · [PDF](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/brainlm_2024.pdf) | [OpenReview RwI7ZEfR27](https://openreview.net/forum?id=RwI7ZEfR27) | ViT-MAE for UKB fMRI |
+| <span class="brain">**[Brain-JEPA](models/brain/brainjepa.md)**</span> | [MD](generated/kb_curated/papers-md/brainjepa_2024.md) · [PDF](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/brainjepa_2024.pdf) | [arXiv:2409.19407](https://arxiv.org/abs/2409.19407) | Joint-embedding prediction |
+| <span class="brain">**[Brain Harmony](models/brain/brainharmony.md)**</span> | [MD](generated/kb_curated/papers-md/brainharmony_2025.md) · [PDF](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/brainharmony_2025.pdf) | [arXiv:2509.24693](https://arxiv.org/abs/2509.24693) | sMRI+fMRI fusion with TAPE |
+| <span class="brain">**[BrainMT](models/brain/brainmt.md)**</span> | [MD](generated/kb_curated/papers-md/brainmt_2025.md) · [PDF](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/brainmt_2025.pdf) | [LNCS 10.1007/…-2_15](https://dl.acm.org/doi/10.1007/978-3-032-05162-2_15) | Hybrid Mamba-Transformer |
+| <span class="brain">**[SwiFT](models/brain/swift.md)**</span> | [MD](generated/kb_curated/papers-md/swift_2023.md) · [PDF](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/swift_2023.pdf) | [arXiv:2307.05916](https://arxiv.org/abs/2307.05916) | Swin-style 4D fMRI |
+
+### Multimodal & Clinical Foundation Models
+
+| Paper | Notes | Source | Focus |
+|:------|:------|:-------|:------|
+| <span class="multimodal">**[BAGEL](models/multimodal/bagel.md)**</span> | [MD](generated/kb_curated/papers-md/bagel_2025.md) · [PDF](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/bagel_2025.pdf) | [arXiv:2505.14683](https://arxiv.org/abs/2505.14683) | Unified MoT decoder |
+| <span class="multimodal">**[MoT](models/multimodal/mot.md)**</span> | [MD](generated/kb_curated/papers-md/mot_2025.md) · [PDF](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/mot_2025.pdf) | [arXiv:2411.04996](https://arxiv.org/abs/2411.04996) | Modality-aware sparse transformers |
+| <span class="multimodal">**[M3FM](models/multimodal/m3fm.md)**</span> | [MD](generated/kb_curated/papers-md/m3fm_2025.md) · [PDF](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/m3fm_2025.pdf) | [npj Digital Medicine 2025](https://www.nature.com/articles/s41746-024-01339-7) | Multilingual medical vision-language |
+| <span class="multimodal">**[Me-LLaMA](models/multimodal/me_llama.md)**</span> | [MD](generated/kb_curated/papers-md/me_llama_2024.md) · [PDF](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/me_llama_2024.pdf) | [arXiv:2404.05416](https://arxiv.org/abs/2404.05416) | Medical LLM continual-pretraining |
+| <span class="multimodal">**[TITAN](models/multimodal/titan.md)**</span> | [MD](generated/kb_curated/papers-md/titan_2025.md) · [PDF](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/titan_2025.pdf) | [Nature Medicine 2025](https://www.nature.com/articles/s41591-024-03235-7) | Gigapixel whole-slide pathology |
+| <span class="reference">**[MM FMs Survey](integration/multimodal_architectures.md)**</span> | [MD](generated/kb_curated/papers-md/mmfm_2025.md) · [PDF](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/mmfm_2025.pdf) | [AI in Medicine 2025](https://www.sciencedirect.com/science/article/pii/S0933365725002003) | Clinical MM FM patterns |
+
+### Integration & Methods
+
+| Paper | Notes | Source | Focus |
+|:------|:------|:-------|:------|
+| <span class="fusion">**[Ensemble Integration](models/integrations/ensemble_integration.md)**</span> | [MD](generated/kb_curated/papers-md/ensemble_integration_li2022.md) · [PDF](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/ensemble_integration_li2022.pdf) | [doi:10.1093/bioadv/vbac065](https://doi.org/10.1093/bioadv/vbac065) | Late-fusion rationale |
+| <span class="fusion">**[Oncology Multimodal](generated/kb_curated/papers-md/oncology_multimodal_waqas2024.md)**</span> | [MD](generated/kb_curated/papers-md/oncology_multimodal_waqas2024.md) · [PDF](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/oncology_multimodal_waqas2024.pdf) | [PubMed 39118787](https://pubmed.ncbi.nlm.nih.gov/39118787/) | Confounds & protocols |
+| <span class="fusion">**[Yoon BIOKDD 2025](generated/kb_curated/papers-md/yoon_biokdd2025.md)**</span> | [MD](generated/kb_curated/papers-md/yoon_biokdd2025.md) · [PDF](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/yoon_biokdd2025.pdf) | [bioRxiv 2025.02.18](https://www.biorxiv.org/content/10.1101/2025.02.18.638918v1.full.pdf) | LOGO attribution |
+| <span class="genetics">**[GWAS Diverse Populations](generated/kb_curated/papers-md/gwas_diverse_populations.md)**</span> | [MD](generated/kb_curated/papers-md/gwas_diverse_populations.md) · [PDF](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/gwas_diverse_populations.pdf) | [PubMed 36158455](https://pubmed.ncbi.nlm.nih.gov/36158455/) | Ancestry-aware QC |
+| <span class="genetics">**[PRS Guide](generated/kb_curated/papers-md/prs_guide.md)**</span> | [MD](generated/kb_curated/papers-md/prs_guide.md) · [PDF](https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/prs_guide.pdf) | [PubMed 31607513](https://pubmed.ncbi.nlm.nih.gov/31607513/) | Polygenic risk reporting |
 
 ---
 
