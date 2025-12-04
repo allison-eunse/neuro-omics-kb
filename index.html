@@ -5972,15 +5972,16 @@
 <details open>
 <summary><b>📚 Documentation</b> — Walkthroughs, playbooks, decision logs</summary>
 
-<div class="language-text highlight"><pre><span></span><code><span id="__span__-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docs/
-</span><span id="__span__-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├── code_walkthroughs/          ← 15 guided FM tours
-</span><span id="__span__-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│   ├── 🧬 Genetics (4):  Caduceus, DNABERT-2, Evo 2, GENERator
-</span><span id="__span__-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│   ├── 🧠 Brain (5):     BrainLM, Brain-JEPA, Brain Harmony, BrainMT, SwiFT
-</span><span id="__span__-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│   └── 🏥 Multimodal (6): BAGEL, MoT, M3FM, Me-LLaMA, TITAN, FMS-Medical
-</span><span id="__span__-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>├── integration/                ← Fusion strategies, design patterns, benchmarks
-</span><span id="__span__-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>├── data/                       ← UKB data map, QC protocols, schemas
-</span><span id="__span__-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>└── decisions/                  ← Integration plans, validation rationale
-</span></code></pre></div>
+<div style="font-family: monospace; background: #f5f5f5; padding: 16px; border-radius: 8px; line-height: 1.8; border-left: 4px solid #7b1fa2;">
+<code>docs/</code><br>
+├── <b>code_walkthroughs/</b> ← 15 guided FM tours<br>
+│   ├── <span style="color: #2e7d32; font-weight: 600;">Genetics (4)</span>: Caduceus, DNABERT-2, Evo 2, GENERator<br>
+│   ├── <span style="color: #1565c0; font-weight: 600;">Brain (5)</span>: BrainLM, Brain-JEPA, Brain Harmony, BrainMT, SwiFT<br>
+│   └── <span style="color: #7b1fa2; font-weight: 600;">Multimodal (6)</span>: BAGEL, MoT, M3FM, Me-LLaMA, TITAN, FMS-Medical<br>
+├── <b>integration/</b> ← Fusion strategies, design patterns, benchmarks<br>
+├── <b>data/</b> ← UKB data map, QC protocols, schemas<br>
+└── <b>decisions/</b> ← Integration plans, validation rationale
+</div>
 
 Walkthroughs, schemas, and decision logs share the same terminology across genetics, brain, and multimodal FMs.
 
@@ -6011,11 +6012,12 @@ Walkthroughs, schemas, and decision logs share the same terminology across genet
 <details>
 <summary><b>🔧 Tools & Scripts</b> — Validation, quality gates, sync</summary>
 
-<div class="language-text highlight"><pre><span></span><code><span id="__span__-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>scripts/
-</span><span id="__span__-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>├── manage_kb.py             ← Validate YAML, query embeddings/harmonization
-</span><span id="__span__-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>├── codex_gate.py            ← Pre-commit quality sweeps
-</span><span id="__span__-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>└── fetch_external_repos.sh  ← Sync upstream FM repos
-</span></code></pre></div>
+<div style="font-family: monospace; background: #f5f5f5; padding: 16px; border-radius: 8px; line-height: 1.8; border-left: 4px solid #f57c00;">
+<code>scripts/</code><br>
+├── <span style="color: #f57c00; font-weight: 600;">manage_kb.py</span> ← Validate YAML, query embeddings/harmonization<br>
+├── <span style="color: #f57c00; font-weight: 600;">codex_gate.py</span> ← Pre-commit quality sweeps<br>
+└── <span style="color: #f57c00; font-weight: 600;">fetch_external_repos.sh</span> ← Sync upstream FM repos
+</div>
 
 Pair these with `verify_kb.sh` or `mkdocs serve` during review cycles.
 
@@ -6024,12 +6026,13 @@ Pair these with `verify_kb.sh` or `mkdocs serve` during review cycles.
 <details>
 <summary><b>⚙️ Experiment Configs</b> — Ready-to-run templates</summary>
 
-<div class="language-text highlight"><pre><span></span><code><span id="__span__-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>configs/experiments/
-</span><span id="__span__-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>├── 01_cca_gene_smri.yaml          ← CCA + permutation baseline
-</span><span id="__span__-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>├── 02_prediction_baselines.yaml   ← Gene vs Brain vs Fusion (LR/GBDT)
-</span><span id="__span__-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>├── 03_logo_gene_attribution.yaml  ← Leave-one-gene-out ΔAUC
-</span><span id="__span__-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>└── dev_* templates                ← CHA cohort dev stubs
-</span></code></pre></div>
+<div style="font-family: monospace; background: #f5f5f5; padding: 16px; border-radius: 8px; line-height: 1.8; border-left: 4px solid #f57c00;">
+<code>configs/experiments/</code><br>
+├── <span style="color: #f57c00; font-weight: 600;">01_cca_gene_smri.yaml</span> ← CCA + permutation baseline<br>
+├── <span style="color: #f57c00; font-weight: 600;">02_prediction_baselines.yaml</span> ← Gene vs Brain vs Fusion (LR/GBDT)<br>
+├── <span style="color: #f57c00; font-weight: 600;">03_logo_gene_attribution.yaml</span> ← Leave-one-gene-out ΔAUC<br>
+└── <span style="color: #f57c00; font-weight: 600;">dev_* templates</span> ← CHA cohort dev stubs
+</div>
 
 Each config references the exact embeddings, covariates, and validation plan to keep runs reproducible.
 
@@ -6188,14 +6191,16 @@ Each config references the exact embeddings, covariates, and validation plan to 
 <strong>→ Modality Features:</strong> <a href="integration/modality_features/genomics/">Genomics</a> · <a href="integration/modality_features/smri/">sMRI</a> · <a href="integration/modality_features/fmri/">fMRI</a><br />
 <strong>→ Design Patterns:</strong> <a href="integration/design_patterns/">Design patterns</a> · <a href="integration/multimodal_architectures/">Multimodal architectures</a></p>
 <p><strong>Integration Roadmap:</strong></p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span__-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>🔵 Late Fusion (baseline)
-</span><span id="__span__-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>       ↓ If fusion wins significantly
-</span><span id="__span__-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>🟢 Two-Tower Contrastive
-</span><span id="__span__-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>       ↓ If gains plateau
-</span><span id="__span__-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>🟡 EI Stacking / Hub Tokens
-</span><span id="__span__-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>       ↓ Last resort
-</span><span id="__span__-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>🔴 Full Early Fusion (TAPE-style)
-</span></code></pre></div>
+<div style="font-family: monospace; background: linear-gradient(135deg, #f5f5f5 0%, #e8f5e9 100%); padding: 20px; border-radius: 8px; line-height: 2; border-left: 4px solid #f57c00;">
+<span style="color: #1565c0; font-weight: 700;">● Late Fusion</span> (baseline)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓ <i>If fusion wins significantly</i><br>
+<span style="color: #2e7d32; font-weight: 700;">● Two-Tower Contrastive</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓ <i>If gains plateau</i><br>
+<span style="color: #f9a825; font-weight: 700;">● EI Stacking / Hub Tokens</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓ <i>Last resort</i><br>
+<span style="color: #c62828; font-weight: 700;">● Full Early Fusion</span> (TAPE-style)
+</div>
+
 <p><strong>Decisions:</strong> <a href="decisions/2025-11-integration-plan/">Integration baseline plan (Nov 2025)</a></p>
 <hr />
 <p><a id="research-papers"></a></p>
