@@ -6091,8 +6091,8 @@ python scripts/manage_kb.py ops harmonization <span style="color: #aed581; font-
 <ul>
 <li>Test with 20-participant toy sample</li>
 <li>Use new NVIDIA Spark GPU (128GB)  </li>
-<li>Offline genetics embeddings from Prof. Joo</li>
-<li>Brain features (fMRI parcellation available)</li>
+<li>Offline genetics embeddings (pending)</li>
+<li>Brain features (fMRI parcellation pending)</li>
 <li>Complete Stage-1 baselines</li>
 </ul>
 </div>
@@ -6100,8 +6100,8 @@ python scripts/manage_kb.py ops harmonization <span style="color: #aed581; font-
 <p><strong>Goal:</strong> Test pipeline on toy sample using new NVIDIA Spark GPU (128GB)</p>
 <div style="font-family: monospace; background: #263238; color: #aed581; padding: 16px; border-radius: 8px; line-height: 1.8; border-left: 4px solid #f57c00;">
 <span style="color: #78909c;"># 1. Download 20-participant sample</span><br>
-<span style="color: #78909c;">#    - <span style="color: #64b5f6;">Brain features</span> (fMRI parcellation available now)</span><br>
-<span style="color: #78909c;">#    - <span style="color: #4fc3f7;">Genomics embeddings</span> from Prof. Joo (offline, already trained)</span><br>
+<span style="color: #78909c;">#    - <span style="color: #64b5f6;">Brain features</span> (fMRI parcellation)</span><br>
+<span style="color: #78909c;">#    - <span style="color: #4fc3f7;">Genomics embeddings</span> (offline, pre-trained)</span><br>
 <br>
 <span style="color: #78909c;"># 2. Test embedding extraction</span><br>
 python scripts/manage_kb.py ops strategy <span style="color: #4fc3f7; font-weight: 600;">genetics_joo_mdd_cog_v1</span><br>
@@ -6182,7 +6182,7 @@ python scripts/manage_kb.py ops strategy <span style="color: #4fc3f7; font-weigh
 <h3 id="waiting-for">🟡 Waiting For<a class="headerlink" href="#waiting-for" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>UKB data access approval</strong> (fMRI/sMRI features)</li>
-<li><strong>Genetics embeddings</strong> from Prof. Joo's team</li>
+<li><strong>Genetics embeddings</strong> (offline pre-trained)</li>
 <li><strong>Cha Hospital developmental cohort</strong> (future)</li>
 </ul>
 <h3 id="onboarding-new-team-members">📚 Onboarding New Team Members<a class="headerlink" href="#onboarding-new-team-members" title="Permanent link">&para;</a></h3>
@@ -6297,14 +6297,14 @@ Actual data availability is project-specific and tracked elsewhere.</p>
 <td style="text-align: center;">✓</td>
 <td style="text-align: left;"><span class="pending">Pending</span></td>
 <td style="text-align: left;">Restricted</td>
-<td style="text-align: left;">Check with 정우/상윤 선생님</td>
+<td style="text-align: left;">Features can be downloaded</td>
 </tr>
 <tr>
 <td style="text-align: left;"><span class="genetics">Genetics embeddings</span></td>
 <td style="text-align: center;">✓</td>
 <td style="text-align: left;"><span class="pending">Pending</span></td>
 <td style="text-align: left;">Internal</td>
-<td style="text-align: left;">From Prof. Joo (pre-trained)</td>
+<td style="text-align: left;">Offline pre-trained embeddings</td>
 </tr>
 <tr>
 <td style="text-align: left;"><span class="brain">Cha Hospital dev</span></td>
@@ -6339,33 +6339,33 @@ mkdocs serve <span style="color: #78909c;"># Visit http://localhost:8000</span><
 <h2 id="faq">❓ FAQ<a class="headerlink" href="#faq" title="Permanent link">&para;</a></h2>
 <div class="admonition question">
 <p class="admonition-title">Which genetics FM should I use?</p>
-<p><strong>Answer:</strong> Start with Prof. Joo's pipeline (<code>genetics_joo_mdd_cog_v1</code>):</p>
-</div>
+<p><strong>Answer:</strong> Start with the recommended pipeline (<code>genetics_joo_mdd_cog_v1</code>):</p>
 <ul>
 <li>38 MDD genes from Yoon et al.</li>
 <li>RC-averaged embeddings</li>
-<li>Already validated in their work</li>
+<li>Pre-validated gene set</li>
 </ul>
 <p>Then compare with other FMs if needed (Caduceus, DNABERT-2, Evo2)</p>
+</div>
 <div class="admonition question">
 <p class="admonition-title">Should I use sMRI or fMRI features?</p>
 <p><strong>Answer:</strong> Both are documented:</p>
-</div>
 <ul>
 <li><strong>sMRI:</strong> FreeSurfer ROIs (~176 features) → Good for structural analysis</li>
-<li><strong>fMRI:</strong> Parcellation data available → Ask 정우/상윤 선생님 for fMRI-gene analysis guidance</li>
+<li><strong>fMRI:</strong> Parcellation data → Follow fMRI-gene analysis recipes in integration docs</li>
 </ul>
-<p>Start with whichever is easier to download first.</p>
+<p>Start with whichever is available first.</p>
+</div>
 <div class="admonition question">
 <p class="admonition-title">Do I need to build a new FM?</p>
 <p><strong>No!</strong> Stage-1 uses:</p>
-</div>
 <ul>
-<li><strong>Existing genetics FMs</strong> (already trained by Prof. Joo)</li>
+<li><strong>Existing genetics FMs</strong> (pre-trained embeddings)</li>
 <li><strong>Existing brain FMs</strong> (SwiFT, BrainLM, etc.)</li>
 <li><strong>Late fusion</strong> = just concatenate embeddings</li>
 </ul>
 <p>Only escalate to two-tower/unified FM if Stage-1 shows clear fusion benefit.</p>
+</div>
 <div class="admonition question">
 <p class="admonition-title">What about Cha Hospital / developmental data?</p>
 <p><strong>Future work.</strong> The KB has:</p>
