@@ -47,6 +47,6 @@ Each walkthrough now surfaces the KB scaffolding you need to turn narrative note
 
 ### Architecture References
 
-| Component | Code Walkthrough | Integration Guide |
-|:----------|:-----------------|:------------------|
-| <span class="genetics">**HyenaDNA / StripedHyena**</span> | [Code Walkthrough](hyena_walkthrough.md) | [Long-context genomics](../integration/modality_features/genomics.md) |
+| Architecture | Code Walkthrough | Model Card | Reference Purpose |
+|:-------------|:-----------------|:-----------|:------------------|
+| <span class="genetics">**HyenaDNA / StripedHyena**</span> | [Code Walkthrough](hyena_walkthrough.md) | [HyenaDNA card](../models/genetics/hyenadna.md) | Long-context genomic modeling (1M tokens), architectural reference for Evo2-style systems |
