@@ -345,10 +345,6 @@ https://allison-eunse.github.io/neuro-omics-kb/
 - ✅ "How do I run CCA?"
 - ✅ "When should I escalate to two-tower?"
 
-**Not:**
-- ❌ "Is UKB data ready yet?" (operational, not documentation)
-- ❌ "Should I commit this result?" (project management, not KB)
-
 ---
 
 ## 📞 Questions?
