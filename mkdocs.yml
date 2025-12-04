@@ -74,7 +74,7 @@ plugins:
       enabled: true
 nav:
   - Home: index.md
-  - 🚀 Team Guide: team_guide.md
+  - Team Guide: team_guide.md
   - Guides:
       - KB overview: guide/kb_overview.md
   - Models:

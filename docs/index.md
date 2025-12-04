@@ -283,12 +283,12 @@ Each config references the exact embeddings, covariates, and validation plan to 
 ## 📊 Data & Schemas
 
 | Resource | Description | Link |
-|----------|-------------|------|
-| 🏥 **UKB Data Map** | Field mappings, cohort definitions | [View](data/ukb_data_map.md) |
-| ✅ **Governance & QC** | Quality control protocols, IRB guidelines | [View](data/governance_qc.md) |
-| 🔑 **Subject Keys** | ID management and anonymization | [View](data/subject_keys.md) |
-| 📋 **Schemas** | Data format specifications | [View](data/schemas.md) |
-| 📦 **FMS-Medical Catalog** | 100+ medical FM references | [View](models/multimodal/fms_medical.md) |
+|:---------|:------------|:-----|
+| <span class="brain">**UKB Data Map**</span> | Field mappings, cohort definitions | [View](data/ukb_data_map.md) |
+| <span class="ready">**Governance & QC**</span> | Quality control protocols, IRB guidelines | [View](data/governance_qc.md) |
+| <span class="fusion">**Subject Keys**</span> | ID management and anonymization | [View](data/subject_keys.md) |
+| <span class="fusion">**Schemas**</span> | Data format specifications | [View](data/schemas.md) |
+| <span class="reference">**FMS-Medical Catalog**</span> | 100+ medical FM references | [View](models/multimodal/fms_medical.md) |
 
 ---
 
@@ -337,10 +337,10 @@ Each config references the exact embeddings, covariates, and validation plan to 
 Ready-to-use analysis templates with validation schemas:
 
 | Template | Purpose | Key Features |
-|----------|---------|--------------|
-| 📊 **01_cca_gene_smri** | CCA + permutation baseline | Cross-modal null distributions, p-values |
-| 🎯 **02_prediction_baselines** | Gene vs Brain vs Fusion | LR/GBDT comparison, DeLong tests |
-| 🧬 **03_logo_gene_attribution** | LOGO ΔAUC protocol | Leave-one-gene-out attribution |
+|:---------|:--------|:-------------|
+| <span class="fusion">**01_cca_gene_smri**</span> | CCA + permutation baseline | Cross-modal null distributions, p-values |
+| <span class="fusion">**02_prediction_baselines**</span> | Gene vs Brain vs Fusion | LR/GBDT comparison, DeLong tests |
+| <span class="genetics">**03_logo_gene_attribution**</span> | LOGO ΔAUC protocol | Leave-one-gene-out attribution |
 
 [→ Explore Experiment Configs](configs/experiments.md)
 

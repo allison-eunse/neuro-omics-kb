@@ -8,7 +8,7 @@
 
 This section covers multimodal and clinical foundation models that integrate multiple modalities beyond genetics and neuroimaging, including medical imaging, text, video, and clinical data. These models represent the state-of-the-art in unified multimodal AI for healthcare and general-purpose vision-language understanding.
 
-## 🎯 Models in this Section
+## 🎯 Model Registry
 
 ### General Multimodal Models
 
