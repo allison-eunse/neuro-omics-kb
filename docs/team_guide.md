@@ -266,13 +266,13 @@ Start: Run Stage-1 (CCA + Prediction + LOGO)
     This KB documents **how to use data**, not **when data is ready**.  
     Actual data availability is project-specific and tracked elsewhere.
 
-| Dataset | Documentation | Notes |
-|---------|:-------------:|-------|
-| **hg38 reference** | ✅ Complete | Public reference genome |
-| **Genomic benchmarks** | ✅ Complete | Public benchmarks documented |
-| **UKB fMRI/sMRI** | ✅ Complete | Schema + preprocessing documented; consult 정우/상윤 선생님 for access |
-| **Genetics embeddings** | ✅ Complete | Recipe documented; from Prof. Joo (offline, pre-trained) |
-| **Cha Hospital dev cohort** | ✅ Complete | Template ready for future developmental research |
+| Dataset | Docs | Data Status | Notes |
+|---------|:----:|:-----------:|-------|
+| **hg38 reference** | ✅ | ✅ Available | Public reference genome |
+| **Genomic benchmarks** | ✅ | ✅ Available | Public benchmarks |
+| **UKB fMRI/sMRI** | ✅ | 🟡 Pending | Features can be downloaded (check with 정우/상윤 선생님) |
+| **Genetics embeddings** | ✅ | 🟡 Pending | From Prof. Joo (offline, pre-trained) |
+| **Cha Hospital dev cohort** | ✅ | 🟡 Future | For developmental research |
 
 ---
 
