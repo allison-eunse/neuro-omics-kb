@@ -169,9 +169,9 @@ Each config references the exact embeddings, covariates, and validation plan to 
 
 <a id="foundation-models"></a>
 
-## Foundation Model Registry
+## 🎯 Foundation Model Registry
 
-### <span class="genetics">Genetics Models</span>
+### 🧬 Genetics Models
 
 | Model | Best For | Context | Walkthrough |
 |:------|:---------|:--------|:------------|
@@ -181,7 +181,7 @@ Each config references the exact embeddings, covariates, and validation plan to 
 | [**GENERator**](models/genetics/generator.md) | Generative modeling | 6-mer LM | [walkthrough →](code_walkthroughs/generator_walkthrough.md) |
 | [**HyenaDNA**](models/genetics/hyenadna.md) | Long-range sequences | 1M context | [walkthrough →](code_walkthroughs/hyena_walkthrough.md) |
 
-### <span class="brain">Brain Models</span>
+### 🧠 Brain Models
 
 | Model | Modality | Best For | Walkthrough |
 |:------|:---------|:---------|:------------|
@@ -191,7 +191,7 @@ Each config references the exact embeddings, covariates, and validation plan to 
 | [**BrainMT**](models/brain/brainmt.md) | sMRI/fMRI | Mamba efficiency | [walkthrough →](code_walkthroughs/brainmt_walkthrough.md) |
 | [**SwiFT**](models/brain/swift.md) | fMRI | Hierarchical spatiotemporal | [walkthrough →](code_walkthroughs/swift_walkthrough.md) |
 
-### <span class="multimodal">Multimodal & Clinical Models</span>
+### 🏥 Multimodal & Clinical Models
 
 | Model | Type | Key Innovation | Walkthrough |
 |:------|:-----|:---------------|:------------|

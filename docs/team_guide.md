@@ -3,7 +3,7 @@ title: Team User Guide
 updated: 2025-12-04
 ---
 
-# Team User Guide
+# 🧬🧠 Team User Guide
 
 **For:** Lab members working on Brain–Genetics FM integration
 
@@ -14,7 +14,7 @@ updated: 2025-12-04
 
 ---
 
-## What This Repo Does
+## 🎯 What This Repo Does
 
 This is your **documentation-first knowledge base** — the map and spec for the Brain–Genetics program.
 
@@ -51,7 +51,7 @@ kb/
 
 ---
 
-## Canonical Embedding Recipes
+## 📋 Canonical Embedding Recipes
 
 !!! info "All recipes defined in `kb/integration_cards/embedding_strategies.yaml`"
     Query any recipe: `python scripts/manage_kb.py ops strategy <recipe_id>`
@@ -74,7 +74,7 @@ python scripts/manage_kb.py ops strategy genetics_joo_mdd_cog_v1
 
 ---
 
-## How to Navigate
+## 🗺️ How to Navigate
 
 ### → "I need to understand a specific FM"
 
@@ -106,7 +106,7 @@ Or read: `docs/integration/integration_strategy.md` (Harmonization section)
 
 ---
 
-## Jan-Feb Action Plan
+## 🚀 Jan-Feb Action Plan
 
 !!! success "Meeting Goals: Jan-Feb Wrap-Up"
     - Test with 20-participant toy sample
@@ -198,7 +198,7 @@ python scripts/manage_kb.py ops strategy genetics_joo_mdd_cog_v1
 
 ---
 
-## Stage-1 Experiments
+## 🔬 Stage-1 Experiments
 
 !!! abstract "Experiment 1: CCA (Gene ↔ Brain Association)"
     **Config:** `configs/experiments/01_cca_gene_smri.yaml`
@@ -267,7 +267,7 @@ Start: Run Stage-1 (CCA + Prediction + LOGO)
 
 ---
 
-## Data Status
+## 📊 Data Status
 
 !!! warning "Note: Data Documentation vs Availability"
     This KB documents **how to use data**, not **when data is ready**.  
@@ -305,7 +305,7 @@ https://allison-eunse.github.io/neuro-omics-kb/
 
 ---
 
-## FAQ
+## ❓ FAQ
 
 !!! question "Which genetics FM should I use?"
     **Answer:** Start with Prof. Joo's pipeline (`genetics_joo_mdd_cog_v1`):
