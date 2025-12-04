@@ -2,7 +2,7 @@
 
 Each walkthrough now surfaces the KB scaffolding you need to turn narrative notes into living cards and experiment configs.
 
-## Quick links
+## 🔗 Quick Links
 
 - [Integration baseline plan](../decisions/2025-11-integration-plan.md)
 - [Integration strategy](../integration/integration_strategy.md)
@@ -12,9 +12,9 @@ Each walkthrough now surfaces the KB scaffolding you need to turn narrative note
 - KB templates (model/integration/method/dataset): `kb/templates/`
 - Experiment config stub: `kb/templates/experiment_config_stub.md`
 
-## Walkthrough roster
+## 📚 Walkthrough Roster
 
-### Brain Foundation Models
+### 🧠 Brain Foundation Models
 
 | Model | Code Walkthrough | Model Card | Modality Spec |
 |:------|:-----------------|:-----------|:--------------|
@@ -24,7 +24,7 @@ Each walkthrough now surfaces the KB scaffolding you need to turn narrative note
 | <span class="brain">**BrainMT**</span> | [Code Walkthrough](brainmt_walkthrough.md) | [Model Card](../models/brain/brainmt.md) | [fMRI features](../integration/modality_features/fmri.md) |
 | <span class="brain">**SwiFT**</span> | [Code Walkthrough](swift_walkthrough.md) | [Model Card](../models/brain/swift.md) | [fMRI features](../integration/modality_features/fmri.md) |
 
-### Genetics Foundation Models
+### 🧬 Genetics Foundation Models
 
 | Model | Code Walkthrough | Model Card | Modality Spec |
 |:------|:-----------------|:-----------|:--------------|
@@ -33,7 +33,7 @@ Each walkthrough now surfaces the KB scaffolding you need to turn narrative note
 | <span class="genetics">**Evo 2**</span> | [Code Walkthrough](evo2_walkthrough.md) | [Model Card](../models/genetics/evo2.md) | [Genomics features](../integration/modality_features/genomics.md) |
 | <span class="genetics">**GENERator**</span> | [Code Walkthrough](generator_walkthrough.md) | [Model Card](../models/genetics/generator.md) | [Genomics features](../integration/modality_features/genomics.md) |
 
-### Multimodal & Clinical Models
+### 🏥 Multimodal & Clinical Models
 
 | Model | Code Walkthrough | Model Card | Architecture Reference |
 |:------|:-----------------|:-----------|:----------------------|
@@ -45,7 +45,7 @@ Each walkthrough now surfaces the KB scaffolding you need to turn narrative note
 | <span class="multimodal">**TITAN**</span> | [Code Walkthrough](titan_walkthrough.md) | [Model Card](../models/multimodal/titan.md) | [Design patterns](../integration/design_patterns.md) |
 | <span class="reference">**FMS-Medical**</span> | [Code Walkthrough](fms_medical_walkthrough.md) | [Model Card](../models/multimodal/fms_medical.md) | [Reference catalog](../models/multimodal/fms_medical.md) |
 
-### Architecture References
+### 🏗️ Architecture References
 
 | Architecture | Code Walkthrough | Model Card | Reference Purpose |
 |:-------------|:-----------------|:-----------|:------------------|
