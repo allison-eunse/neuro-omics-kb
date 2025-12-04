@@ -53,10 +53,6 @@
       
     
     
-      <link rel="stylesheet" href="../assets/css/code-citations.css">
-    
-      <link rel="stylesheet" href="../assets/css/custom.css">
-    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -6192,6 +6188,7 @@
 <h2 id="stage-1-experiments">🔬 Stage-1 Experiments<a class="headerlink" href="#stage-1-experiments" title="Permanent link">&para;</a></h2>
 <div class="admonition abstract">
 <p class="admonition-title">Experiment 1: CCA (Gene ↔ Brain Association)</p>
+</div>
 <p><strong>Config:</strong> <code>configs/experiments/01_cca_gene_smri.yaml</code></p>
 <p><strong>What it does:</strong></p>
 <ul>
@@ -6204,18 +6201,16 @@
 <li>ρ₁ &gt; 0.2 with p &lt; 0.05 → significant association</li>
 <li>Gene/ROI loadings interpretable</li>
 </ul>
-</div>
 <div class="admonition abstract">
 <p class="admonition-title">Experiment 2: Prediction (Gene vs Brain vs Fusion)</p>
+</div>
 <p><strong>Config:</strong> <code>configs/experiments/02_prediction_baselines.yaml</code></p>
 <p><strong>What it does:</strong></p>
 <ul>
-<li>Compares 3 baselines for MDD prediction:<ul>
+<li>Compares 3 baselines for MDD prediction:</li>
 <li>Gene-only (512-D)</li>
 <li>Brain-only (512-D)</li>
 <li>Fusion (1024-D concatenation)</li>
-</ul>
-</li>
 <li>Uses LR + LightGBM + CatBoost</li>
 <li>DeLong test to compare AUROCs</li>
 </ul>
@@ -6224,9 +6219,9 @@
 <li>If Fusion &gt; max(Gene, Brain) p &lt; 0.05 → integration adds value</li>
 <li>Document which modality is stronger</li>
 </ul>
-</div>
 <div class="admonition abstract">
 <p class="admonition-title">Experiment 3: LOGO Attribution</p>
+</div>
 <p><strong>Config:</strong> <code>configs/experiments/03_logo_gene_attribution.yaml</code></p>
 <p><strong>What it does:</strong></p>
 <ul>
@@ -6239,7 +6234,6 @@
 <li>Find significant genes (p &lt; 0.05 FDR-corrected)</li>
 <li>Compare with literature (SOD2, HOXA10, etc.)</li>
 </ul>
-</div>
 <hr />
 <h2 id="escalation-decision-tree">Escalation Decision Tree<a class="headerlink" href="#escalation-decision-tree" title="Permanent link">&para;</a></h2>
 <div class="language-text highlight"><pre><span></span><code><span id="__span__-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Start: Run Stage-1 (CCA + Prediction + LOGO)
@@ -6334,42 +6328,44 @@ Actual data availability is project-specific and tracked elsewhere.</p>
 <div class="admonition question">
 <p class="admonition-title">Which genetics FM should I use?</p>
 <p><strong>Answer:</strong> Start with Prof. Joo's pipeline (<code>genetics_joo_mdd_cog_v1</code>):</p>
+</div>
 <ul>
 <li>38 MDD genes from Yoon et al.</li>
 <li>RC-averaged embeddings</li>
 <li>Already validated in their work</li>
 </ul>
 <p>Then compare with other FMs if needed (Caduceus, DNABERT-2, Evo2)</p>
-</div>
 <div class="admonition question">
 <p class="admonition-title">Should I use sMRI or fMRI features?</p>
 <p><strong>Answer:</strong> Both are documented:</p>
+</div>
 <ul>
 <li><strong>sMRI:</strong> FreeSurfer ROIs (~176 features) → Good for structural analysis</li>
 <li><strong>fMRI:</strong> Parcellation data available → Ask 정우/상윤 선생님 for fMRI-gene analysis guidance</li>
 </ul>
 <p>Start with whichever is easier to download first.</p>
-</div>
 <div class="admonition question">
 <p class="admonition-title">Do I need to build a new FM?</p>
 <p><strong>No!</strong> Stage-1 uses:</p>
+</div>
 <ul>
 <li><strong>Existing genetics FMs</strong> (already trained by Prof. Joo)</li>
 <li><strong>Existing brain FMs</strong> (SwiFT, BrainLM, etc.)</li>
 <li><strong>Late fusion</strong> = just concatenate embeddings</li>
 </ul>
 <p>Only escalate to two-tower/unified FM if Stage-1 shows clear fusion benefit.</p>
-</div>
 <div class="admonition question">
 <p class="admonition-title">What about Cha Hospital / developmental data?</p>
 <p><strong>Future work.</strong> The KB has:</p>
+</div>
 <ul>
 <li>Dataset card template: <code>kb/datasets/cha_dev_longitudinal.yaml</code></li>
 <li>Embedding recipes: <code>cha_dev_smri_pca64_v1</code>, <code>cha_dev_eeg_fm_v1</code>, <code>cha_dev_behaviour_latent_v1</code></li>
-<li>Experiment templates: <code>configs/experiments/dev_01_brain_only_baseline.yaml</code></li>
-</ul>
+<li>
+<p>Experiment templates: <code>configs/experiments/dev_01_brain_only_baseline.yaml</code></p>
 <p><strong>Focus on UKB first</strong> (Jan-Feb wrap-up), then extend to developmental.</p>
-</div>
+</li>
+</ul>
 <hr />
 <h2 id="key-principle">Key Principle<a class="headerlink" href="#key-principle" title="Permanent link">&para;</a></h2>
 <p><strong>This KB answers:</strong>
