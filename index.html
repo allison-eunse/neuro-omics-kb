@@ -773,7 +773,7 @@
   <a href="#genetics-foundation-models" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧬 Genetics Foundation Models
+        Genetics Foundation Models
       
     </span>
   </a>
@@ -784,7 +784,7 @@
   <a href="#brain-foundation-models" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧠 Brain Foundation Models
+        Brain Foundation Models
       
     </span>
   </a>
@@ -795,7 +795,7 @@
   <a href="#multimodal-clinical-foundation-models" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🏥 Multimodal &amp; Clinical Foundation Models
+        Multimodal &amp; Clinical Foundation Models
       
     </span>
   </a>
@@ -806,7 +806,7 @@
   <a href="#integration-methods" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔗 Integration &amp; Methods
+        Integration &amp; Methods
       
     </span>
   </a>
@@ -5989,12 +5989,13 @@ Walkthroughs, schemas, and decision logs share the same terminology across genet
 <details>
 <summary><b>Metadata Cards</b> — Structured YAML for all assets</summary>
 
-<div class="language-text highlight"><pre><span></span><code><span id="__span__-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>kb/
-</span><span id="__span__-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>├── model_cards/        ← 20 FM specs (17 FMs + 3 reference)
-</span><span id="__span__-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>├── paper_cards/        ← 30 research papers with structured takeaways
-</span><span id="__span__-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>├── datasets/           ← 19 dataset schemas (UKB, HCP, Cha, benchmarks)
-</span><span id="__span__-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>└── integration_cards/  ← Embedding recipes, harmonization, pipelines
-</span></code></pre></div>
+<div style="font-family: monospace; background: #f5f5f5; padding: 16px; border-radius: 8px; line-height: 1.8;">
+<code>kb/</code><br>
+├── <span class="genetics"><b>model_cards/</b></span> ← 20 FM specs (17 FMs + 3 reference)<br>
+├── <span class="multimodal"><b>paper_cards/</b></span> ← 30 research papers with structured takeaways<br>
+├── <span class="brain"><b>datasets/</b></span> ← 19 dataset schemas (UKB, HCP, Cha, benchmarks)<br>
+└── <span class="fusion"><b>integration_cards/</b></span> ← Embedding recipes, harmonization, pipelines
+</div>
 
 | Folder | Count | Contents |
 |:-------|------:|:---------|
@@ -6010,10 +6011,10 @@ Walkthroughs, schemas, and decision logs share the same terminology across genet
 <details>
 <summary><b>🔧 Tools & Scripts</b> — Validation, quality gates, sync</summary>
 
-<div class="language-text highlight"><pre><span></span><code><span id="__span__-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>scripts/
-</span><span id="__span__-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>├── manage_kb.py             ← Validate YAML, query embeddings/harmonization
-</span><span id="__span__-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>├── codex_gate.py            ← Pre-commit quality sweeps
-</span><span id="__span__-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>└── fetch_external_repos.sh  ← Sync upstream FM repos
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>scripts/
+</span><span id="__span__-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>├── manage_kb.py             ← Validate YAML, query embeddings/harmonization
+</span><span id="__span__-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>├── codex_gate.py            ← Pre-commit quality sweeps
+</span><span id="__span__-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>└── fetch_external_repos.sh  ← Sync upstream FM repos
 </span></code></pre></div>
 
 Pair these with `verify_kb.sh` or `mkdocs serve` during review cycles.
@@ -6023,11 +6024,11 @@ Pair these with `verify_kb.sh` or `mkdocs serve` during review cycles.
 <details>
 <summary><b>⚙️ Experiment Configs</b> — Ready-to-run templates</summary>
 
-<div class="language-text highlight"><pre><span></span><code><span id="__span__-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>configs/experiments/
-</span><span id="__span__-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>├── 01_cca_gene_smri.yaml          ← CCA + permutation baseline
-</span><span id="__span__-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>├── 02_prediction_baselines.yaml   ← Gene vs Brain vs Fusion (LR/GBDT)
-</span><span id="__span__-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>├── 03_logo_gene_attribution.yaml  ← Leave-one-gene-out ΔAUC
-</span><span id="__span__-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>└── dev_* templates                ← CHA cohort dev stubs
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>configs/experiments/
+</span><span id="__span__-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>├── 01_cca_gene_smri.yaml          ← CCA + permutation baseline
+</span><span id="__span__-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>├── 02_prediction_baselines.yaml   ← Gene vs Brain vs Fusion (LR/GBDT)
+</span><span id="__span__-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>├── 03_logo_gene_attribution.yaml  ← Leave-one-gene-out ΔAUC
+</span><span id="__span__-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>└── dev_* templates                ← CHA cohort dev stubs
 </span></code></pre></div>
 
 Each config references the exact embeddings, covariates, and validation plan to keep runs reproducible.
@@ -6092,34 +6093,34 @@ Each config references the exact embeddings, covariates, and validation plan to 
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><a href="models/brain/brainlm/"><strong>BrainLM</strong></a></td>
+<td style="text-align: left;"><span class="brain"><strong><a href="models/brain/brainlm/">BrainLM</a></strong></span></td>
 <td style="text-align: left;">fMRI</td>
 <td style="text-align: left;">Site-robust embeddings</td>
-<td style="text-align: left;"><a href="code_walkthroughs/brainlm_walkthrough/">walkthrough →</a></td>
+<td style="text-align: left;"><a href="code_walkthroughs/brainlm_walkthrough/">Code Walkthrough →</a></td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="models/brain/brainjepa/"><strong>Brain-JEPA</strong></a></td>
+<td style="text-align: left;"><span class="brain"><strong><a href="models/brain/brainjepa/">Brain-JEPA</a></strong></span></td>
 <td style="text-align: left;">fMRI</td>
 <td style="text-align: left;">Lower-latency option</td>
-<td style="text-align: left;"><a href="code_walkthroughs/brainjepa_walkthrough/">walkthrough →</a></td>
+<td style="text-align: left;"><a href="code_walkthroughs/brainjepa_walkthrough/">Code Walkthrough →</a></td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="models/brain/brainharmony/"><strong>Brain Harmony</strong></a></td>
+<td style="text-align: left;"><span class="brain"><strong><a href="models/brain/brainharmony/">Brain Harmony</a></strong></span></td>
 <td style="text-align: left;">sMRI + fMRI</td>
 <td style="text-align: left;">Multi-modal fusion</td>
-<td style="text-align: left;"><a href="code_walkthroughs/brainharmony_walkthrough/">walkthrough →</a></td>
+<td style="text-align: left;"><a href="code_walkthroughs/brainharmony_walkthrough/">Code Walkthrough →</a></td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="models/brain/brainmt/"><strong>BrainMT</strong></a></td>
+<td style="text-align: left;"><span class="brain"><strong><a href="models/brain/brainmt/">BrainMT</a></strong></span></td>
 <td style="text-align: left;">sMRI/fMRI</td>
 <td style="text-align: left;">Mamba efficiency</td>
-<td style="text-align: left;"><a href="code_walkthroughs/brainmt_walkthrough/">walkthrough →</a></td>
+<td style="text-align: left;"><a href="code_walkthroughs/brainmt_walkthrough/">Code Walkthrough →</a></td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="models/brain/swift/"><strong>SwiFT</strong></a></td>
+<td style="text-align: left;"><span class="brain"><strong><a href="models/brain/swift/">SwiFT</a></strong></span></td>
 <td style="text-align: left;">fMRI</td>
 <td style="text-align: left;">Hierarchical spatiotemporal</td>
-<td style="text-align: left;"><a href="code_walkthroughs/swift_walkthrough/">walkthrough →</a></td>
+<td style="text-align: left;"><a href="code_walkthroughs/swift_walkthrough/">Code Walkthrough →</a></td>
 </tr>
 </tbody>
 </table>
@@ -6135,46 +6136,46 @@ Each config references the exact embeddings, covariates, and validation plan to 
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><a href="models/multimodal/bagel/"><strong>BAGEL</strong></a></td>
+<td style="text-align: left;"><span class="multimodal"><strong><a href="models/multimodal/bagel/">BAGEL</a></strong></span></td>
 <td style="text-align: left;">Unified FM</td>
 <td style="text-align: left;">MoT experts (understand + generate)</td>
-<td style="text-align: left;"><a href="code_walkthroughs/bagel_walkthrough/">walkthrough →</a></td>
+<td style="text-align: left;"><a href="code_walkthroughs/bagel_walkthrough/">Code Walkthrough →</a></td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="models/multimodal/mot/"><strong>MoT</strong></a></td>
+<td style="text-align: left;"><span class="multimodal"><strong><a href="models/multimodal/mot/">MoT</a></strong></span></td>
 <td style="text-align: left;">Sparse</td>
 <td style="text-align: left;">Modality-aware sparsity (~55% FLOPs)</td>
-<td style="text-align: left;"><a href="code_walkthroughs/mot_walkthrough/">walkthrough →</a></td>
+<td style="text-align: left;"><a href="code_walkthroughs/mot_walkthrough/">Code Walkthrough →</a></td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="models/multimodal/m3fm/"><strong>M3FM</strong></a></td>
+<td style="text-align: left;"><span class="multimodal"><strong><a href="models/multimodal/m3fm/">M3FM</a></strong></span></td>
 <td style="text-align: left;">Radiology</td>
 <td style="text-align: left;">CXR/CT + bilingual (EN/CN)</td>
-<td style="text-align: left;"><a href="code_walkthroughs/m3fm_walkthrough/">walkthrough →</a></td>
+<td style="text-align: left;"><a href="code_walkthroughs/m3fm_walkthrough/">Code Walkthrough →</a></td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="models/multimodal/me_llama/"><strong>Me-LLaMA</strong></a></td>
+<td style="text-align: left;"><span class="multimodal"><strong><a href="models/multimodal/me_llama/">Me-LLaMA</a></strong></span></td>
 <td style="text-align: left;">Medical LLM</td>
 <td style="text-align: left;">Continual pretrained (129B tok)</td>
-<td style="text-align: left;"><a href="code_walkthroughs/melamma_walkthrough/">walkthrough →</a></td>
+<td style="text-align: left;"><a href="code_walkthroughs/melamma_walkthrough/">Code Walkthrough →</a></td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="models/multimodal/titan/"><strong>TITAN</strong></a></td>
+<td style="text-align: left;"><span class="multimodal"><strong><a href="models/multimodal/titan/">TITAN</a></strong></span></td>
 <td style="text-align: left;">Pathology</td>
 <td style="text-align: left;">Gigapixel whole-slide</td>
-<td style="text-align: left;"><a href="code_walkthroughs/titan_walkthrough/">walkthrough →</a></td>
+<td style="text-align: left;"><a href="code_walkthroughs/titan_walkthrough/">Code Walkthrough →</a></td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="models/multimodal/flamingo/"><strong>Flamingo</strong></a></td>
+<td style="text-align: left;"><span class="multimodal"><strong><a href="models/multimodal/flamingo/">Flamingo</a></strong></span></td>
 <td style="text-align: left;">VLM</td>
 <td style="text-align: left;">Visual-language few-shot</td>
-<td style="text-align: left;"><a href="code_walkthroughs/flamingo_walkthrough/">walkthrough →</a></td>
+<td style="text-align: left;"><a href="code_walkthroughs/flamingo_walkthrough/">Code Walkthrough →</a></td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="models/multimodal/fms_medical/"><strong>FMS-Medical</strong></a></td>
+<td style="text-align: left;"><span class="reference"><strong><a href="models/multimodal/fms_medical/">FMS-Medical</a></strong></span></td>
 <td style="text-align: left;">Catalog</td>
 <td style="text-align: left;">Medical FM survey</td>
-<td style="text-align: left;"><a href="code_walkthroughs/fms_medical_walkthrough/">walkthrough →</a></td>
+<td style="text-align: left;"><a href="code_walkthroughs/fms_medical_walkthrough/">Code Walkthrough →</a></td>
 </tr>
 </tbody>
 </table>
@@ -6187,212 +6188,188 @@ Each config references the exact embeddings, covariates, and validation plan to 
 <strong>→ Modality Features:</strong> <a href="integration/modality_features/genomics/">Genomics</a> · <a href="integration/modality_features/smri/">sMRI</a> · <a href="integration/modality_features/fmri/">fMRI</a><br />
 <strong>→ Design Patterns:</strong> <a href="integration/design_patterns/">Design patterns</a> · <a href="integration/multimodal_architectures/">Multimodal architectures</a></p>
 <p><strong>Integration Roadmap:</strong></p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span__-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>🔵 Late Fusion (baseline)
-</span><span id="__span__-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>       ↓ If fusion wins significantly
-</span><span id="__span__-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>🟢 Two-Tower Contrastive
-</span><span id="__span__-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>       ↓ If gains plateau
-</span><span id="__span__-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>🟡 EI Stacking / Hub Tokens
-</span><span id="__span__-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>       ↓ Last resort
-</span><span id="__span__-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>🔴 Full Early Fusion (TAPE-style)
+<div class="language-text highlight"><pre><span></span><code><span id="__span__-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>🔵 Late Fusion (baseline)
+</span><span id="__span__-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>       ↓ If fusion wins significantly
+</span><span id="__span__-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>🟢 Two-Tower Contrastive
+</span><span id="__span__-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>       ↓ If gains plateau
+</span><span id="__span__-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>🟡 EI Stacking / Hub Tokens
+</span><span id="__span__-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>       ↓ Last resort
+</span><span id="__span__-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>🔴 Full Early Fusion (TAPE-style)
 </span></code></pre></div>
 <p><strong>Decisions:</strong> <a href="decisions/2025-11-integration-plan/">Integration baseline plan (Nov 2025)</a></p>
 <hr />
 <p><a id="research-papers"></a></p>
 <h2 id="research-papers">📋 Research Papers<a class="headerlink" href="#research-papers" title="Permanent link">&para;</a></h2>
 <p><strong>Every paper has three quick links:</strong> KB summary (MD) · Annotated PDF · Original publication</p>
-<h3 id="genetics-foundation-models">🧬 Genetics Foundation Models<a class="headerlink" href="#genetics-foundation-models" title="Permanent link">&para;</a></h3>
+<h3 id="genetics-foundation-models">Genetics Foundation Models<a class="headerlink" href="#genetics-foundation-models" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>Paper</th>
-<th>MD notes</th>
-<th>PDF notes</th>
-<th>Source</th>
-<th>Focus</th>
+<th style="text-align: left;">Paper</th>
+<th style="text-align: left;">Notes</th>
+<th style="text-align: left;">Source</th>
+<th style="text-align: left;">Focus</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>🧬 <a href="models/genetics/caduceus/">Caduceus</a></td>
-<td><a href="generated/kb_curated/papers-md/caduceus_2024/">MD notes</a></td>
-<td><a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/caduceus_2024.pdf">PDF notes</a></td>
-<td><a href="https://arxiv.org/abs/2403.03234">arXiv:2403.03234</a></td>
-<td>RC-equivariant BiMamba DNA FM</td>
+<td style="text-align: left;"><span class="genetics"><strong><a href="models/genetics/caduceus/">Caduceus</a></strong></span></td>
+<td style="text-align: left;"><a href="generated/kb_curated/papers-md/caduceus_2024/">MD</a> · <a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/caduceus_2024.pdf">PDF</a></td>
+<td style="text-align: left;"><a href="https://arxiv.org/abs/2403.03234">arXiv:2403.03234</a></td>
+<td style="text-align: left;">RC-equivariant BiMamba DNA FM</td>
 </tr>
 <tr>
-<td>🧬 <a href="models/genetics/dnabert2/">DNABERT-2</a></td>
-<td><a href="generated/kb_curated/papers-md/dnabert2_2024/">MD notes</a></td>
-<td><a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/dnabert2_2024.pdf">PDF notes</a></td>
-<td><a href="https://arxiv.org/abs/2306.15006">arXiv:2306.15006</a></td>
-<td>BPE-tokenized multi-species encoder</td>
+<td style="text-align: left;"><span class="genetics"><strong><a href="models/genetics/dnabert2/">DNABERT-2</a></strong></span></td>
+<td style="text-align: left;"><a href="generated/kb_curated/papers-md/dnabert2_2024/">MD</a> · <a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/dnabert2_2024.pdf">PDF</a></td>
+<td style="text-align: left;"><a href="https://arxiv.org/abs/2306.15006">arXiv:2306.15006</a></td>
+<td style="text-align: left;">BPE-tokenized multi-species encoder</td>
 </tr>
 <tr>
-<td>🧬 <a href="models/genetics/evo2/">Evo 2</a></td>
-<td><a href="generated/kb_curated/papers-md/evo2_2024/">MD notes</a></td>
-<td><a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/evo2_2024.pdf">PDF notes</a></td>
-<td><a href="https://www.biorxiv.org/content/10.1101/2025.02.18.638918v1">bioRxiv 2025.02.18</a></td>
-<td>StripedHyena 1M-token model</td>
+<td style="text-align: left;"><span class="genetics"><strong><a href="models/genetics/evo2/">Evo 2</a></strong></span></td>
+<td style="text-align: left;"><a href="generated/kb_curated/papers-md/evo2_2024/">MD</a> · <a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/evo2_2024.pdf">PDF</a></td>
+<td style="text-align: left;"><a href="https://www.biorxiv.org/content/10.1101/2025.02.18.638918v1">bioRxiv 2025.02.18</a></td>
+<td style="text-align: left;">StripedHyena 1M-token model</td>
 </tr>
 <tr>
-<td>🧬 <a href="models/genetics/generator/">GENERator</a></td>
-<td><a href="generated/kb_curated/papers-md/generator_2024/">MD notes</a></td>
-<td><a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/generator_2024.pdf">PDF notes</a></td>
-<td><a href="https://arxiv.org/abs/2502.07272">arXiv:2502.07272</a></td>
-<td>Generative 6-mer DNA LM</td>
+<td style="text-align: left;"><span class="genetics"><strong><a href="models/genetics/generator/">GENERator</a></strong></span></td>
+<td style="text-align: left;"><a href="generated/kb_curated/papers-md/generator_2024/">MD</a> · <a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/generator_2024.pdf">PDF</a></td>
+<td style="text-align: left;"><a href="https://arxiv.org/abs/2502.07272">arXiv:2502.07272</a></td>
+<td style="text-align: left;">Generative 6-mer DNA LM</td>
 </tr>
 </tbody>
 </table>
-<h3 id="brain-foundation-models">🧠 Brain Foundation Models<a class="headerlink" href="#brain-foundation-models" title="Permanent link">&para;</a></h3>
+<h3 id="brain-foundation-models">Brain Foundation Models<a class="headerlink" href="#brain-foundation-models" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>Paper</th>
-<th>MD notes</th>
-<th>PDF notes</th>
-<th>Source</th>
-<th>Focus</th>
+<th style="text-align: left;">Paper</th>
+<th style="text-align: left;">Notes</th>
+<th style="text-align: left;">Source</th>
+<th style="text-align: left;">Focus</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>🧠 <a href="models/brain/brainlm/">BrainLM</a></td>
-<td><a href="generated/kb_curated/papers-md/brainlm_2024/">MD notes</a></td>
-<td><a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/brainlm_2024.pdf">PDF notes</a></td>
-<td><a href="https://openreview.net/forum?id=RwI7ZEfR27">OpenReview RwI7ZEfR27</a></td>
-<td>ViT-MAE for UKB fMRI</td>
+<td style="text-align: left;"><span class="brain"><strong><a href="models/brain/brainlm/">BrainLM</a></strong></span></td>
+<td style="text-align: left;"><a href="generated/kb_curated/papers-md/brainlm_2024/">MD</a> · <a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/brainlm_2024.pdf">PDF</a></td>
+<td style="text-align: left;"><a href="https://openreview.net/forum?id=RwI7ZEfR27">OpenReview RwI7ZEfR27</a></td>
+<td style="text-align: left;">ViT-MAE for UKB fMRI</td>
 </tr>
 <tr>
-<td>🧠 <a href="models/brain/brainjepa/">Brain-JEPA</a></td>
-<td><a href="generated/kb_curated/papers-md/brainjepa_2024/">MD notes</a></td>
-<td><a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/brainjepa_2024.pdf">PDF notes</a></td>
-<td><a href="https://arxiv.org/abs/2409.19407">arXiv:2409.19407</a></td>
-<td>Joint-embedding prediction</td>
+<td style="text-align: left;"><span class="brain"><strong><a href="models/brain/brainjepa/">Brain-JEPA</a></strong></span></td>
+<td style="text-align: left;"><a href="generated/kb_curated/papers-md/brainjepa_2024/">MD</a> · <a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/brainjepa_2024.pdf">PDF</a></td>
+<td style="text-align: left;"><a href="https://arxiv.org/abs/2409.19407">arXiv:2409.19407</a></td>
+<td style="text-align: left;">Joint-embedding prediction</td>
 </tr>
 <tr>
-<td>🧠 <a href="models/brain/brainharmony/">Brain Harmony</a></td>
-<td><a href="generated/kb_curated/papers-md/brainharmony_2025/">MD notes</a></td>
-<td><a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/brainharmony_2025.pdf">PDF notes</a></td>
-<td><a href="https://arxiv.org/abs/2509.24693">arXiv:2509.24693</a></td>
-<td>sMRI+fMRI fusion with TAPE</td>
+<td style="text-align: left;"><span class="brain"><strong><a href="models/brain/brainharmony/">Brain Harmony</a></strong></span></td>
+<td style="text-align: left;"><a href="generated/kb_curated/papers-md/brainharmony_2025/">MD</a> · <a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/brainharmony_2025.pdf">PDF</a></td>
+<td style="text-align: left;"><a href="https://arxiv.org/abs/2509.24693">arXiv:2509.24693</a></td>
+<td style="text-align: left;">sMRI+fMRI fusion with TAPE</td>
 </tr>
 <tr>
-<td>🧠 <a href="models/brain/brainmt/">BrainMT</a></td>
-<td><a href="generated/kb_curated/papers-md/brainmt_2025/">MD notes</a></td>
-<td><a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/brainmt_2025.pdf">PDF notes</a></td>
-<td><a href="https://dl.acm.org/doi/10.1007/978-3-032-05162-2_15">LNCS 10.1007/…-2_15</a></td>
-<td>Hybrid Mamba-Transformer</td>
+<td style="text-align: left;"><span class="brain"><strong><a href="models/brain/brainmt/">BrainMT</a></strong></span></td>
+<td style="text-align: left;"><a href="generated/kb_curated/papers-md/brainmt_2025/">MD</a> · <a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/brainmt_2025.pdf">PDF</a></td>
+<td style="text-align: left;"><a href="https://dl.acm.org/doi/10.1007/978-3-032-05162-2_15">LNCS 10.1007/…-2_15</a></td>
+<td style="text-align: left;">Hybrid Mamba-Transformer</td>
 </tr>
 <tr>
-<td>🧠 <a href="models/brain/swift/">SwiFT</a></td>
-<td><a href="generated/kb_curated/papers-md/swift_2023/">MD notes</a></td>
-<td><a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/swift_2023.pdf">PDF notes</a></td>
-<td><a href="https://arxiv.org/abs/2307.05916">arXiv:2307.05916</a></td>
-<td>Swin-style 4D fMRI</td>
+<td style="text-align: left;"><span class="brain"><strong><a href="models/brain/swift/">SwiFT</a></strong></span></td>
+<td style="text-align: left;"><a href="generated/kb_curated/papers-md/swift_2023/">MD</a> · <a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/swift_2023.pdf">PDF</a></td>
+<td style="text-align: left;"><a href="https://arxiv.org/abs/2307.05916">arXiv:2307.05916</a></td>
+<td style="text-align: left;">Swin-style 4D fMRI</td>
 </tr>
 </tbody>
 </table>
-<h3 id="multimodal-clinical-foundation-models">🏥 Multimodal &amp; Clinical Foundation Models<a class="headerlink" href="#multimodal-clinical-foundation-models" title="Permanent link">&para;</a></h3>
+<h3 id="multimodal-clinical-foundation-models">Multimodal &amp; Clinical Foundation Models<a class="headerlink" href="#multimodal-clinical-foundation-models" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>Paper</th>
-<th>MD notes</th>
-<th>PDF notes</th>
-<th>Source</th>
-<th>Focus</th>
+<th style="text-align: left;">Paper</th>
+<th style="text-align: left;">Notes</th>
+<th style="text-align: left;">Source</th>
+<th style="text-align: left;">Focus</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>🔗 <a href="models/multimodal/bagel/">BAGEL</a></td>
-<td><a href="generated/kb_curated/papers-md/bagel_2025/">MD notes</a></td>
-<td><a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/bagel_2025.pdf">PDF notes</a></td>
-<td><a href="https://arxiv.org/abs/2505.14683">arXiv:2505.14683</a></td>
-<td>Unified MoT decoder</td>
+<td style="text-align: left;"><span class="multimodal"><strong><a href="models/multimodal/bagel/">BAGEL</a></strong></span></td>
+<td style="text-align: left;"><a href="generated/kb_curated/papers-md/bagel_2025/">MD</a> · <a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/bagel_2025.pdf">PDF</a></td>
+<td style="text-align: left;"><a href="https://arxiv.org/abs/2505.14683">arXiv:2505.14683</a></td>
+<td style="text-align: left;">Unified MoT decoder</td>
 </tr>
 <tr>
-<td>🔗 <a href="models/multimodal/mot/">MoT</a></td>
-<td><a href="generated/kb_curated/papers-md/mot_2025/">MD notes</a></td>
-<td><a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/mot_2025.pdf">PDF notes</a></td>
-<td><a href="https://arxiv.org/abs/2411.04996">arXiv:2411.04996</a></td>
-<td>Modality-aware sparse transformers</td>
+<td style="text-align: left;"><span class="multimodal"><strong><a href="models/multimodal/mot/">MoT</a></strong></span></td>
+<td style="text-align: left;"><a href="generated/kb_curated/papers-md/mot_2025/">MD</a> · <a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/mot_2025.pdf">PDF</a></td>
+<td style="text-align: left;"><a href="https://arxiv.org/abs/2411.04996">arXiv:2411.04996</a></td>
+<td style="text-align: left;">Modality-aware sparse transformers</td>
 </tr>
 <tr>
-<td>🏥 <a href="models/multimodal/m3fm/">M3FM</a></td>
-<td><a href="generated/kb_curated/papers-md/m3fm_2025/">MD notes</a></td>
-<td><a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/m3fm_2025.pdf">PDF notes</a></td>
-<td><a href="https://www.nature.com/articles/s41746-024-01339-7">npj Digital Medicine 2025</a></td>
-<td>Multilingual medical vision-language</td>
+<td style="text-align: left;"><span class="multimodal"><strong><a href="models/multimodal/m3fm/">M3FM</a></strong></span></td>
+<td style="text-align: left;"><a href="generated/kb_curated/papers-md/m3fm_2025/">MD</a> · <a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/m3fm_2025.pdf">PDF</a></td>
+<td style="text-align: left;"><a href="https://www.nature.com/articles/s41746-024-01339-7">npj Digital Medicine 2025</a></td>
+<td style="text-align: left;">Multilingual medical vision-language</td>
 </tr>
 <tr>
-<td>🏥 <a href="models/multimodal/me_llama/">Me-LLaMA</a></td>
-<td><a href="generated/kb_curated/papers-md/me_llama_2024/">MD notes</a></td>
-<td><a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/me_llama_2024.pdf">PDF notes</a></td>
-<td><a href="https://arxiv.org/abs/2404.05416">arXiv:2404.05416</a></td>
-<td>Medical LLM continual-pretraining</td>
+<td style="text-align: left;"><span class="multimodal"><strong><a href="models/multimodal/me_llama/">Me-LLaMA</a></strong></span></td>
+<td style="text-align: left;"><a href="generated/kb_curated/papers-md/me_llama_2024/">MD</a> · <a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/me_llama_2024.pdf">PDF</a></td>
+<td style="text-align: left;"><a href="https://arxiv.org/abs/2404.05416">arXiv:2404.05416</a></td>
+<td style="text-align: left;">Medical LLM continual-pretraining</td>
 </tr>
 <tr>
-<td>🏥 <a href="models/multimodal/titan/">TITAN</a></td>
-<td><a href="generated/kb_curated/papers-md/titan_2025/">MD notes</a></td>
-<td><a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/titan_2025.pdf">PDF notes</a></td>
-<td><a href="https://www.nature.com/articles/s41591-024-03235-7">Nature Medicine 2025</a></td>
-<td>Gigapixel whole-slide pathology</td>
+<td style="text-align: left;"><span class="multimodal"><strong><a href="models/multimodal/titan/">TITAN</a></strong></span></td>
+<td style="text-align: left;"><a href="generated/kb_curated/papers-md/titan_2025/">MD</a> · <a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/titan_2025.pdf">PDF</a></td>
+<td style="text-align: left;"><a href="https://www.nature.com/articles/s41591-024-03235-7">Nature Medicine 2025</a></td>
+<td style="text-align: left;">Gigapixel whole-slide pathology</td>
 </tr>
 <tr>
-<td>📚 <a href="integration/multimodal_architectures/">MM FMs Survey</a></td>
-<td><a href="generated/kb_curated/papers-md/mmfm_2025/">MD notes</a></td>
-<td><a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/mmfm_2025.pdf">PDF notes</a></td>
-<td><a href="https://www.sciencedirect.com/science/article/pii/S0933365725002003">AI in Medicine 2025</a></td>
-<td>Clinical MM FM patterns</td>
+<td style="text-align: left;"><span class="reference"><strong><a href="integration/multimodal_architectures/">MM FMs Survey</a></strong></span></td>
+<td style="text-align: left;"><a href="generated/kb_curated/papers-md/mmfm_2025/">MD</a> · <a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/mmfm_2025.pdf">PDF</a></td>
+<td style="text-align: left;"><a href="https://www.sciencedirect.com/science/article/pii/S0933365725002003">AI in Medicine 2025</a></td>
+<td style="text-align: left;">Clinical MM FM patterns</td>
 </tr>
 </tbody>
 </table>
-<h3 id="integration-methods">🔗 Integration &amp; Methods<a class="headerlink" href="#integration-methods" title="Permanent link">&para;</a></h3>
+<h3 id="integration-methods">Integration &amp; Methods<a class="headerlink" href="#integration-methods" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>Paper</th>
-<th>MD notes</th>
-<th>PDF notes</th>
-<th>Source</th>
-<th>Focus</th>
+<th style="text-align: left;">Paper</th>
+<th style="text-align: left;">Notes</th>
+<th style="text-align: left;">Source</th>
+<th style="text-align: left;">Focus</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>📊 <a href="models/integrations/ensemble_integration/">Ensemble Integration</a></td>
-<td><a href="generated/kb_curated/papers-md/ensemble_integration_li2022/">MD notes</a></td>
-<td><a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/ensemble_integration_li2022.pdf">PDF notes</a></td>
-<td><a href="https://doi.org/10.1093/bioadv/vbac065">doi:10.1093/bioadv/vbac065</a></td>
-<td>Late-fusion rationale</td>
+<td style="text-align: left;"><span class="fusion"><strong><a href="models/integrations/ensemble_integration/">Ensemble Integration</a></strong></span></td>
+<td style="text-align: left;"><a href="generated/kb_curated/papers-md/ensemble_integration_li2022/">MD</a> · <a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/ensemble_integration_li2022.pdf">PDF</a></td>
+<td style="text-align: left;"><a href="https://doi.org/10.1093/bioadv/vbac065">doi:10.1093/bioadv/vbac065</a></td>
+<td style="text-align: left;">Late-fusion rationale</td>
 </tr>
 <tr>
-<td>🧪 <a href="generated/kb_curated/papers-md/oncology_multimodal_waqas2024/">Oncology Multimodal</a></td>
-<td><a href="generated/kb_curated/papers-md/oncology_multimodal_waqas2024/">MD notes</a></td>
-<td><a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/oncology_multimodal_waqas2024.pdf">PDF notes</a></td>
-<td><a href="https://pubmed.ncbi.nlm.nih.gov/39118787/">PubMed 39118787</a></td>
-<td>Confounds &amp; protocols</td>
+<td style="text-align: left;"><span class="fusion"><strong><a href="generated/kb_curated/papers-md/oncology_multimodal_waqas2024/">Oncology Multimodal</a></strong></span></td>
+<td style="text-align: left;"><a href="generated/kb_curated/papers-md/oncology_multimodal_waqas2024/">MD</a> · <a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/oncology_multimodal_waqas2024.pdf">PDF</a></td>
+<td style="text-align: left;"><a href="https://pubmed.ncbi.nlm.nih.gov/39118787/">PubMed 39118787</a></td>
+<td style="text-align: left;">Confounds &amp; protocols</td>
 </tr>
 <tr>
-<td>🧠 <a href="generated/kb_curated/papers-md/yoon_biokdd2025/">Yoon BIOKDD 2025</a></td>
-<td><a href="generated/kb_curated/papers-md/yoon_biokdd2025/">MD notes</a></td>
-<td><a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/yoon_biokdd2025.pdf">PDF notes</a></td>
-<td><a href="https://www.biorxiv.org/content/10.1101/2025.02.18.638918v1.full.pdf">bioRxiv 2025.02.18</a></td>
-<td>LOGO attribution</td>
+<td style="text-align: left;"><span class="fusion"><strong><a href="generated/kb_curated/papers-md/yoon_biokdd2025/">Yoon BIOKDD 2025</a></strong></span></td>
+<td style="text-align: left;"><a href="generated/kb_curated/papers-md/yoon_biokdd2025/">MD</a> · <a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/yoon_biokdd2025.pdf">PDF</a></td>
+<td style="text-align: left;"><a href="https://www.biorxiv.org/content/10.1101/2025.02.18.638918v1.full.pdf">bioRxiv 2025.02.18</a></td>
+<td style="text-align: left;">LOGO attribution</td>
 </tr>
 <tr>
-<td>🌍 <a href="generated/kb_curated/papers-md/gwas_diverse_populations/">GWAS Diverse Populations</a></td>
-<td><a href="generated/kb_curated/papers-md/gwas_diverse_populations/">MD notes</a></td>
-<td><a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/gwas_diverse_populations.pdf">PDF notes</a></td>
-<td><a href="https://pubmed.ncbi.nlm.nih.gov/36158455/">PubMed 36158455</a></td>
-<td>Ancestry-aware QC</td>
+<td style="text-align: left;"><span class="genetics"><strong><a href="generated/kb_curated/papers-md/gwas_diverse_populations/">GWAS Diverse Populations</a></strong></span></td>
+<td style="text-align: left;"><a href="generated/kb_curated/papers-md/gwas_diverse_populations/">MD</a> · <a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/gwas_diverse_populations.pdf">PDF</a></td>
+<td style="text-align: left;"><a href="https://pubmed.ncbi.nlm.nih.gov/36158455/">PubMed 36158455</a></td>
+<td style="text-align: left;">Ancestry-aware QC</td>
 </tr>
 <tr>
-<td>📈 <a href="generated/kb_curated/papers-md/prs_guide/">PRS Guide</a></td>
-<td><a href="generated/kb_curated/papers-md/prs_guide/">MD notes</a></td>
-<td><a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/prs_guide.pdf">PDF notes</a></td>
-<td><a href="https://pubmed.ncbi.nlm.nih.gov/31607513/">PubMed 31607513</a></td>
-<td>Polygenic risk reporting</td>
+<td style="text-align: left;"><span class="genetics"><strong><a href="generated/kb_curated/papers-md/prs_guide/">PRS Guide</a></strong></span></td>
+<td style="text-align: left;"><a href="generated/kb_curated/papers-md/prs_guide/">MD</a> · <a href="https://raw.githubusercontent.com/allison-eunse/neuro-omics-kb/main/docs/generated/kb_curated/papers-pdf/prs_guide.pdf">PDF</a></td>
+<td style="text-align: left;"><a href="https://pubmed.ncbi.nlm.nih.gov/31607513/">PubMed 31607513</a></td>
+<td style="text-align: left;">Polygenic risk reporting</td>
 </tr>
 </tbody>
 </table>

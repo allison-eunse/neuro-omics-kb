@@ -5756,53 +5756,66 @@
 <table>
 <thead>
 <tr>
-<th>Model</th>
-<th>Architecture</th>
-<th>Key Feature</th>
-<th>Integration Role</th>
-<th>Documentation</th>
+<th style="text-align: left;">Model</th>
+<th style="text-align: left;">Architecture</th>
+<th style="text-align: left;">Key Feature</th>
+<th style="text-align: left;">Integration Role</th>
+<th style="text-align: left;">Documentation</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>🧬 <a href="caduceus/"><strong>Caduceus</strong></a></td>
-<td>Mamba (BiMamba) + RC-equivariance</td>
-<td>Strand-robust, efficient long-context</td>
-<td>Primary gene encoder for UK Biobank WES</td>
-<td><a href="../../code_walkthroughs/caduceus_walkthrough/">Walkthrough</a></td>
+<td style="text-align: left;"><span class="genetics"><strong><a href="caduceus/">Caduceus</a></strong></span></td>
+<td style="text-align: left;">Mamba (BiMamba) + RC-equivariance</td>
+<td style="text-align: left;">Strand-robust, efficient long-context</td>
+<td style="text-align: left;">Primary gene encoder for UK Biobank WES</td>
+<td style="text-align: left;"><a href="../../code_walkthroughs/caduceus_walkthrough/">Code Walkthrough</a></td>
 </tr>
 <tr>
-<td>🧬 <a href="dnabert2/"><strong>DNABERT-2</strong></a></td>
-<td>BERT (multi-species)</td>
-<td>BPE tokenization, cross-species transfer</td>
-<td>Alternative gene encoder; comparison baseline</td>
-<td><a href="../../code_walkthroughs/dnabert2_walkthrough/">Walkthrough</a></td>
+<td style="text-align: left;"><span class="genetics"><strong><a href="dnabert2/">DNABERT-2</a></strong></span></td>
+<td style="text-align: left;">BERT (multi-species)</td>
+<td style="text-align: left;">BPE tokenization, cross-species transfer</td>
+<td style="text-align: left;">Alternative gene encoder; comparison baseline</td>
+<td style="text-align: left;"><a href="../../code_walkthroughs/dnabert2_walkthrough/">Code Walkthrough</a></td>
 </tr>
 <tr>
-<td>🧬 <a href="evo2/"><strong>Evo 2</strong></a></td>
-<td>StripedHyena (1M context)</td>
-<td>Ultra-long-range dependencies</td>
-<td>Exploratory; regulatory region capture</td>
-<td><a href="../../code_walkthroughs/evo2_walkthrough/">Walkthrough</a></td>
+<td style="text-align: left;"><span class="genetics"><strong><a href="evo2/">Evo 2</a></strong></span></td>
+<td style="text-align: left;">StripedHyena (1M context)</td>
+<td style="text-align: left;">Ultra-long-range dependencies</td>
+<td style="text-align: left;">Exploratory; regulatory region capture</td>
+<td style="text-align: left;"><a href="../../code_walkthroughs/evo2_walkthrough/">Code Walkthrough</a></td>
 </tr>
 <tr>
-<td>🧬 <a href="generator/"><strong>GENERator</strong></a></td>
-<td>Generative 6-mer LM</td>
-<td>Generative modeling, sequence design</td>
-<td>Reference for generative vs discriminative</td>
-<td><a href="../../code_walkthroughs/generator_walkthrough/">Walkthrough</a></td>
+<td style="text-align: left;"><span class="genetics"><strong><a href="generator/">GENERator</a></strong></span></td>
+<td style="text-align: left;">Generative 6-mer LM</td>
+<td style="text-align: left;">Generative modeling, sequence design</td>
+<td style="text-align: left;">Reference for generative vs discriminative</td>
+<td style="text-align: left;"><a href="../../code_walkthroughs/generator_walkthrough/">Code Walkthrough</a></td>
 </tr>
 <tr>
-<td>🧬 <a href="hyenadna/"><strong>HyenaDNA</strong></a></td>
-<td>Hyena implicit convolutions (1M context)</td>
-<td>Single-nucleotide, ultra-long genomic modeling</td>
-<td>Conceptual long-context genomics reference</td>
-<td><a href="../../code_walkthroughs/hyena_walkthrough/">Architecture walkthrough</a></td>
+<td style="text-align: left;"><span class="genetics"><strong><a href="hyenadna/">HyenaDNA</a></strong></span></td>
+<td style="text-align: left;">Hyena implicit convolutions (1M context)</td>
+<td style="text-align: left;">Single-nucleotide, ultra-long genomic modeling</td>
+<td style="text-align: left;">Conceptual long-context genomics reference</td>
+<td style="text-align: left;"><a href="../../code_walkthroughs/hyena_walkthrough/">Code Walkthrough</a></td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h2 id="usage-workflow">🔄 Usage Workflow<a class="headerlink" href="#usage-workflow" title="Permanent link">&para;</a></h2>
+<div style="font-family: monospace; background: #263238; color: #aed581; padding: 16px; border-radius: 8px; line-height: 1.8; overflow-x: auto;">
+<span style="color: #78909c;"># 1.</span> <span style="color: #4fc3f7;">Extract gene sequences</span> from hg38 reference (GENCODE annotations)<br>
+<span style="color: #78909c;"># 2.</span> <span style="color: #4fc3f7;">Tokenize</span> with model-specific vocabulary (6-mer, BPE, or single-nucleotide)<br>
+<span style="color: #78909c;"># 3.</span> <span style="color: #4fc3f7;">Load pretrained checkpoint</span> (Caduceus, DNABERT-2, Evo2, etc.)<br>
+<span style="color: #78909c;"># 4.</span> <span style="color: #4fc3f7;">Forward pass</span> → per-position embeddings<br>
+<span style="color: #78909c;"># 5.</span> <span style="color: #4fc3f7;">Verify RC equivariance</span> (optional but recommended):<br>
+<span style="color: #78909c;">#    </span> embed(seq) ≈ embed(reverse_complement(seq))<br>
+<span style="color: #78909c;"># 6.</span> <span style="color: #4fc3f7;">Mean pool</span> over gene → gene-level vector<br>
+<span style="color: #78909c;"># 7.</span> <span style="color: #4fc3f7;">Concatenate gene set</span> → subject genotype embedding<br>
+<span style="color: #78909c;"># 8.</span> <span style="color: #f9a825;">Log:</span> gene_list, reference_version, embedding_strategy_id
+</div>
+
+<p><strong>Detailed steps:</strong></p>
 <ol>
 <li><strong>Extract sequences</strong> from reference genome (hg38) for target genes</li>
 <li><strong>Tokenize</strong> using model-specific vocabularies (k-mers, BPE, or single-nucleotide)</li>
@@ -5842,16 +5855,18 @@
 All genetics FM source code lives in `external_repos/`:
 
 | Model | Local Path | GitHub Repository |
-|-------|------------|-------------------|
-| Caduceus | `external_repos/caduceus/` | [kuleshov-group/caduceus](https://github.com/kuleshov-group/caduceus) |
-| DNABERT-2 | `external_repos/dnabert2/` | [Zhihan1996/DNABERT2](https://github.com/Zhihan1996/DNABERT2) |
-| Evo 2 | `external_repos/evo2/` | [ArcInstitute/evo2](https://github.com/ArcInstitute/evo2) |
-| GENERator | `external_repos/generator/` | [GenerTeam/GENERator](https://github.com/GenerTeam/GENERator) |
+|:------|:-----------|:------------------|
+| <span class="genetics">**Caduceus**</span> | `external_repos/caduceus/` | [kuleshov-group/caduceus](https://github.com/kuleshov-group/caduceus) |
+| <span class="genetics">**DNABERT-2**</span> | `external_repos/dnabert2/` | [Zhihan1996/DNABERT2](https://github.com/Zhihan1996/DNABERT2) |
+| <span class="genetics">**Evo 2**</span> | `external_repos/evo2/` | [ArcInstitute/evo2](https://github.com/ArcInstitute/evo2) |
+| <span class="genetics">**GENERator**</span> | `external_repos/generator/` | [GenerTeam/GENERator](https://github.com/GenerTeam/GENERator) |
+| <span class="genetics">**HyenaDNA**</span> | `external_repos/hyena/` | [HazyResearch/hyena-dna](https://github.com/HazyResearch/hyena-dna) |
 
 Each model page includes:
-- ✅ Detailed code walkthrough in `docs/code_walkthroughs/`
-- ✅ Structured YAML card in `kb/model_cards/`
-- ✅ Integration recipes and preprocessing specs
+
+- ✓ Detailed code walkthrough in `docs/code_walkthroughs/`
+- ✓ Structured YAML card in `kb/model_cards/`
+- ✓ Integration recipes and preprocessing specs
 
 </details>
 

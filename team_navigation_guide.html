@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neuro-Omics KB - Team Navigation Guide</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 40px 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1 { color: #1565c0; border-bottom: 3px solid #1565c0; padding-bottom: 10px; }
+        h2 { color: #2e7d32; margin-top: 40px; border-left: 4px solid #2e7d32; padding-left: 12px; }
+        h3 { color: #7b1fa2; }
+        h4 { color: #f57c00; margin-top: 20px; }
+        code { 
+            background: #f5f5f5; 
+            padding: 2px 6px; 
+            border-radius: 4px; 
+            font-size: 0.9em;
+            color: #c62828;
+        }
+        pre { 
+            background: #263238; 
+            color: #aed581; 
+            padding: 16px; 
+            border-radius: 8px; 
+            overflow-x: auto;
+        }
+        pre code { background: none; color: inherit; }
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin: 20px 0; 
+        }
+        th { 
+            background: #1565c0; 
+            color: white; 
+            padding: 12px; 
+            text-align: left; 
+        }
+        td { 
+            padding: 10px 12px; 
+            border-bottom: 1px solid #e0e0e0; 
+        }
+        tr:hover { background: #f5f5f5; }
+        a { color: #1565c0; }
+        .genetics { color: #2e7d32; font-weight: 600; }
+        .brain { color: #1565c0; font-weight: 600; }
+        .multimodal { color: #7b1fa2; font-weight: 600; }
+        .fusion { color: #f57c00; font-weight: 600; }
+        .badge { 
+            display: inline-block; 
+            padding: 4px 10px; 
+            border-radius: 4px; 
+            font-size: 0.85em; 
+            font-weight: 500;
+        }
+        .badge-green { background: #e8f5e9; color: #2e7d32; }
+        .badge-blue { background: #e3f2fd; color: #1565c0; }
+        .links-box {
+            background: #e3f2fd;
+            border: 1px solid #1565c0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .links-box a { display: block; margin: 8px 0; }
+        .divider { 
+            border: none; 
+            border-top: 2px solid #e0e0e0; 
+            margin: 40px 0; 
+        }
+        .page-break { page-break-before: always; }
+        @media print {
+            body { padding: 20px; }
+            .links-box a { color: #333; }
+        }
+    </style>
+</head>
+<body>
+
+<h1>🧬🧠 Neuro-Omics KB<br>Team Navigation Guide / 팀 네비게이션 가이드</h1>
+
+<div class="links-box">
+    <strong>🔗 Quick Links</strong>
+    <a href="https://allison-eunse.github.io/neuro-omics-kb/">📖 Documentation Site</a>
+    <a href="https://github.com/allison-eunse/neuro-omics-kb">💻 GitHub Repository</a>
+    <a href="https://allison-eunse.github.io/neuro-omics-kb/team_guide/">🚀 Team Guide</a>
+</div>
+
+<hr class="divider">
+
+<!-- ENGLISH VERSION -->
+<h2>🇺🇸 English Version</h2>
+
+<h3>Welcome to Neuro-Omics KB</h3>
+<p>This is your <strong>documentation-first knowledge base</strong> for the Brain–Genetics Foundation Model integration research. Everything you need to understand, replicate, and extend our work is here.</p>
+
+<h3>🚀 Quick Start (5 minutes)</h3>
+<ol>
+    <li><strong>Bookmark the site:</strong> <a href="https://allison-eunse.github.io/neuro-omics-kb/">allison-eunse.github.io/neuro-omics-kb</a></li>
+    <li><strong>Read the Team Guide first:</strong> Click "🚀 Team Guide" in the navigation</li>
+    <li><strong>Browse the Integration Strategy:</strong> Understand the late fusion → two-tower playbook</li>
+    <li><strong>Check your modality:</strong> Navigate to Genetics, Brain, or Multimodal sections</li>
+</ol>
+
+<h3>📂 Where to Find What</h3>
+<table>
+    <tr><th>I want to...</th><th>Go to...</th></tr>
+    <tr><td>Understand a specific FM</td><td>Models → [Genetics/Brain/Multimodal] → Model name</td></tr>
+    <tr><td>See step-by-step code</td><td>Code Walkthroughs → Model walkthrough</td></tr>
+    <tr><td>Get the embedding recipe</td><td>Team Guide → Canonical Embedding Recipes</td></tr>
+    <tr><td>Run an experiment</td><td>GitHub → <code>configs/experiments/</code></td></tr>
+    <tr><td>Read a paper summary</td><td>Research Papers → Paper name</td></tr>
+    <tr><td>Check data schemas</td><td>Data → Schemas</td></tr>
+</table>
+
+<h3>🔑 Key Resources by Role</h3>
+
+<h4>For <span class="genetics">Genetics Researchers</span></h4>
+<ul>
+    <li><strong>Models:</strong> Caduceus, DNABERT-2, Evo 2, GENERator, HyenaDNA</li>
+    <li><strong>Start here:</strong> <a href="https://allison-eunse.github.io/neuro-omics-kb/models/genetics/">Genetics Models Overview</a></li>
+    <li><strong>Key recipe:</strong> <code>genetics_joo_mdd_cog_v1</code> (Prof. Joo's 38 MDD genes)</li>
+    <li><strong>Important concept:</strong> RC-averaging for strand symmetry</li>
+</ul>
+
+<h4>For <span class="brain">Brain Imaging Researchers</span></h4>
+<ul>
+    <li><strong>Models:</strong> BrainLM, Brain-JEPA, BrainMT, Brain Harmony, SwiFT</li>
+    <li><strong>Start here:</strong> <a href="https://allison-eunse.github.io/neuro-omics-kb/models/brain/">Brain Models Overview</a></li>
+    <li><strong>Key recipe:</strong> <code>smri_free_surfer_pca512_v1</code> or <code>rsfmri_swift_segments_v1</code></li>
+    <li><strong>Important concept:</strong> Site harmonization (ComBat, MURD)</li>
+</ul>
+
+<h4>For <span class="fusion">Integration Work</span></h4>
+<ul>
+    <li><strong>Start here:</strong> <a href="https://allison-eunse.github.io/neuro-omics-kb/integration/integration_strategy/">Integration Strategy</a></li>
+    <li><strong>Key configs:</strong> <code>01_cca_gene_smri.yaml</code>, <code>02_prediction_baselines.yaml</code></li>
+    <li><strong>Decision rule:</strong> Fusion wins only if p < 0.05 (DeLong test)</li>
+</ul>
+
+<h3>📋 Daily Workflow</h3>
+<p><strong>Before starting analysis:</strong></p>
+<pre><code># 1. Pull latest changes
+git pull origin main
+
+# 2. Check your embedding recipe
+python scripts/manage_kb.py ops strategy &lt;recipe_id&gt;
+
+# 3. Validate your changes
+python scripts/manage_kb.py validate models</code></pre>
+
+<p><strong>When documenting results:</strong></p>
+<ol>
+    <li>Log results in <code>kb/results/</code> (create if needed)</li>
+    <li>Reference the exact config and embedding strategy IDs</li>
+    <li>Update relevant model/dataset cards if needed</li>
+</ol>
+
+<h3>❓ Common Questions</h3>
+<p><strong>Q: Where do I find the code for a model?</strong><br>
+A: Check <code>external_repos/</code> for cloned repositories, or follow the repo link in the model card.</p>
+
+<p><strong>Q: Which embedding recipe should I start with?</strong><br>
+A: For genetics: <code>genetics_joo_mdd_cog_v1</code>. For brain: <code>smri_free_surfer_pca512_v1</code>.</p>
+
+<p><strong>Q: How do I know if my experiment config is valid?</strong><br>
+A: Run <code>python scripts/manage_kb.py validate models</code> to check all references.</p>
+
+<hr class="divider">
+<div class="page-break"></div>
+
+<!-- KOREAN VERSION -->
+<h2>🇰🇷 한국어 버전</h2>
+
+<h3>Neuro-Omics KB에 오신 것을 환영합니다</h3>
+<p>이 레포지토리는 Brain–Genetics Foundation Model 통합 연구를 위한 <strong>문서 중심 지식 베이스</strong>입니다. 연구를 이해하고, 재현하고, 확장하는 데 필요한 모든 것이 여기에 있습니다.</p>
+
+<h3>🚀 빠른 시작 (5분)</h3>
+<ol>
+    <li><strong>사이트 북마크:</strong> <a href="https://allison-eunse.github.io/neuro-omics-kb/">allison-eunse.github.io/neuro-omics-kb</a></li>
+    <li><strong>Team Guide 먼저 읽기:</strong> 네비게이션에서 "🚀 Team Guide" 클릭</li>
+    <li><strong>Integration Strategy 확인:</strong> Late fusion → Two-tower 전략 이해하기</li>
+    <li><strong>본인 연구 분야 확인:</strong> Genetics, Brain, 또는 Multimodal 섹션으로 이동</li>
+</ol>
+
+<h3>📂 어디서 무엇을 찾을 수 있나요?</h3>
+<table>
+    <tr><th>하고 싶은 것</th><th>찾아갈 곳</th></tr>
+    <tr><td>특정 FM 이해하기</td><td>Models → [Genetics/Brain/Multimodal] → 모델 이름</td></tr>
+    <tr><td>단계별 코드 보기</td><td>Code Walkthroughs → 모델 walkthrough</td></tr>
+    <tr><td>임베딩 레시피 확인</td><td>Team Guide → Canonical Embedding Recipes</td></tr>
+    <tr><td>실험 실행하기</td><td>GitHub → <code>configs/experiments/</code></td></tr>
+    <tr><td>논문 요약 읽기</td><td>Research Papers → 논문 이름</td></tr>
+    <tr><td>데이터 스키마 확인</td><td>Data → Schemas</td></tr>
+</table>
+
+<h3>🔑 역할별 핵심 리소스</h3>
+
+<h4><span class="genetics">유전체 연구자</span>를 위한 가이드</h4>
+<ul>
+    <li><strong>모델:</strong> Caduceus, DNABERT-2, Evo 2, GENERator, HyenaDNA</li>
+    <li><strong>시작점:</strong> <a href="https://allison-eunse.github.io/neuro-omics-kb/models/genetics/">Genetics Models Overview</a></li>
+    <li><strong>핵심 레시피:</strong> <code>genetics_joo_mdd_cog_v1</code> (주윤정 교수님의 38개 MDD 유전자)</li>
+    <li><strong>중요 개념:</strong> RC-averaging (strand symmetry 처리)</li>
+</ul>
+
+<h4><span class="brain">뇌영상 연구자</span>를 위한 가이드</h4>
+<ul>
+    <li><strong>모델:</strong> BrainLM, Brain-JEPA, BrainMT, Brain Harmony, SwiFT</li>
+    <li><strong>시작점:</strong> <a href="https://allison-eunse.github.io/neuro-omics-kb/models/brain/">Brain Models Overview</a></li>
+    <li><strong>핵심 레시피:</strong> <code>smri_free_surfer_pca512_v1</code> 또는 <code>rsfmri_swift_segments_v1</code></li>
+    <li><strong>중요 개념:</strong> Site harmonization (ComBat, MURD)</li>
+</ul>
+
+<h4><span class="fusion">통합 연구</span>를 위한 가이드</h4>
+<ul>
+    <li><strong>시작점:</strong> <a href="https://allison-eunse.github.io/neuro-omics-kb/integration/integration_strategy/">Integration Strategy</a></li>
+    <li><strong>핵심 config:</strong> <code>01_cca_gene_smri.yaml</code>, <code>02_prediction_baselines.yaml</code></li>
+    <li><strong>의사결정 기준:</strong> Fusion이 p < 0.05 (DeLong test)로 유의할 때만 escalation</li>
+</ul>
+
+<h3>📋 일일 작업 흐름</h3>
+<p><strong>분석 시작 전:</strong></p>
+<pre><code># 1. 최신 변경사항 가져오기
+git pull origin main
+
+# 2. 임베딩 레시피 확인
+python scripts/manage_kb.py ops strategy &lt;recipe_id&gt;
+
+# 3. 변경사항 검증
+python scripts/manage_kb.py validate models</code></pre>
+
+<p><strong>결과 문서화 시:</strong></p>
+<ol>
+    <li><code>kb/results/</code>에 결과 기록 (필요시 폴더 생성)</li>
+    <li>정확한 config와 임베딩 전략 ID 참조</li>
+    <li>필요시 관련 model/dataset 카드 업데이트</li>
+</ol>
+
+<h3>❓ 자주 묻는 질문</h3>
+<p><strong>Q: 모델 코드는 어디서 찾나요?</strong><br>
+A: <code>external_repos/</code>에서 클론된 레포지토리를 확인하거나, 모델 카드의 repo 링크를 따라가세요.</p>
+
+<p><strong>Q: 어떤 임베딩 레시피로 시작해야 하나요?</strong><br>
+A: Genetics: <code>genetics_joo_mdd_cog_v1</code>. Brain: <code>smri_free_surfer_pca512_v1</code>.</p>
+
+<p><strong>Q: 실험 config가 유효한지 어떻게 확인하나요?</strong><br>
+A: <code>python scripts/manage_kb.py validate models</code>를 실행해서 모든 참조를 검증하세요.</p>
+
+<hr class="divider">
+
+<h3>📞 문의 / Contact</h3>
+<ul>
+    <li><strong>KB 관련 질문:</strong> Allison (유은서) 에게 문의</li>
+
+</ul>
+
+<h3>🎯 1-2월 목표 / Jan-Feb Goal</h3>
+<p><span class="badge badge-green">Stage-1 실험 완료</span> → <span class="badge badge-blue">결과 문서화</span> → <span class="badge badge-green">다음 단계 결정</span></p>
+<p>CCA + prediction baselines → Document results → Decide next steps</p>
+
+<hr class="divider">
+
+<p style="text-align: center; color: #666; font-size: 0.9em;">
+    <strong>Repository:</strong> <a href="https://github.com/allison-eunse/neuro-omics-kb">github.com/allison-eunse/neuro-omics-kb</a><br>
+    <strong>Site:</strong> <a href="https://allison-eunse.github.io/neuro-omics-kb/">allison-eunse.github.io/neuro-omics-kb</a><br>
+    <em>Last updated: December 2025</em>
+</p>
+
+</body>
+</html>
