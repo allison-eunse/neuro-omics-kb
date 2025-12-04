@@ -5921,7 +5921,7 @@
 ├── <span class="genetics"><b>model_cards/</b></span> ← 20 FM specs (17 FMs + 3 reference)<br>
 ├── <span class="multimodal"><b>paper_cards/</b></span> ← 30 research papers with structured takeaways<br>
 ├── <span class="brain"><b>datasets/</b></span> ← 19 dataset schemas (UKB, HCP, Cha, benchmarks)<br>
-└── <span class="fusion"><b>integration_cards/</b></span> ← Embedding recipes, harmonization, pipelines
+└── <span class="fusion"><b>integration_cards/</b></span> ← 6 integration recipes
 </div>
 
 <h3 id="whats-documented">What's Documented<a class="headerlink" href="#whats-documented" title="Permanent link">&para;</a></h3>
@@ -5929,40 +5929,40 @@
 <thead>
 <tr>
 <th style="text-align: left;">Category</th>
-<th style="text-align: center;">Count</th>
-<th style="text-align: left;">Contents</th>
+<th style="text-align: left;">What It Is</th>
+<th style="text-align: left;">Examples</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><span class="genetics"><strong>Genetics FMs</strong></span></td>
-<td style="text-align: center;">5</td>
+<td style="text-align: left;">DNA sequence foundation models for gene-level embeddings</td>
 <td style="text-align: left;">Caduceus, DNABERT-2, Evo 2, HyenaDNA, GENERator</td>
 </tr>
 <tr>
 <td style="text-align: left;"><span class="brain"><strong>Brain FMs</strong></span></td>
-<td style="text-align: center;">5</td>
+<td style="text-align: left;">Neuroimaging models for fMRI/sMRI subject embeddings</td>
 <td style="text-align: left;">BrainLM, Brain-JEPA, BrainMT, Brain Harmony, SwiFT</td>
 </tr>
 <tr>
 <td style="text-align: left;"><span class="multimodal"><strong>Multimodal FMs</strong></span></td>
-<td style="text-align: center;">7</td>
+<td style="text-align: left;">Clinical &amp; unified multimodal architecture references</td>
 <td style="text-align: left;">BAGEL, MoT, M3FM, Me-LLaMA, TITAN, Flamingo, FMS-Medical</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Research Papers</strong></td>
-<td style="text-align: center;">30</td>
-<td style="text-align: left;">RC symmetry, EI, MURD, multimodal surveys, Yoon BioKDD'25</td>
+<td style="text-align: left;"><span class="multimodal"><strong>Research Papers</strong></span></td>
+<td style="text-align: left;">Curated paper summaries with implementation notes</td>
+<td style="text-align: left;">RC-equivariance, Ensemble Integration, MURD, Yoon BioKDD'25</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Datasets</strong></td>
-<td style="text-align: center;">19</td>
+<td style="text-align: left;"><span class="brain"><strong>Datasets</strong></span></td>
+<td style="text-align: left;">Data schema specs and preprocessing protocols</td>
 <td style="text-align: left;">UKB (fMRI, sMRI, WES), HCP, Cha developmental, benchmarks</td>
 </tr>
 <tr>
-<td style="text-align: left;"><span class="fusion"><strong>Integration</strong></span></td>
-<td style="text-align: center;">6</td>
-<td style="text-align: left;">Embedding recipes, harmonization methods, pipelines</td>
+<td style="text-align: left;"><span class="fusion"><strong>Integration &amp; Strategy</strong></span></td>
+<td style="text-align: left;">Embedding recipes, harmonization, fusion playbooks</td>
+<td style="text-align: left;"><code>genetics_joo_mdd_cog_v1</code>, <code>murd_t1_t2</code>, CCA + permutation</td>
 </tr>
 </tbody>
 </table>
@@ -6020,7 +6020,7 @@
 <td style="text-align: left;"><code>genetics_joo_mdd_cog_v1</code></td>
 <td style="text-align: left;"><span class="genetics">genetics</span></td>
 <td style="text-align: center;">512-D</td>
-<td style="text-align: left;"><strong>Prof. Joo's 38 MDD genes</strong> ★</td>
+<td style="text-align: left;"><span class="strong">Prof. Joo's 38 MDD genes</span> ⭐</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>smri_free_surfer_pca512_v1</code></td>
@@ -6048,7 +6048,7 @@
 </tr>
 </tbody>
 </table>
-<p>★ = Recommended starting point</p>
+<p>⭐ = Recommended starting point</p>
 <p><strong>Query a recipe:</strong></p>
 <div style="font-family: monospace; background: #263238; color: #4fc3f7; padding: 12px 16px; border-radius: 6px; border-left: 4px solid #2e7d32;">
 python scripts/manage_kb.py ops strategy <span style="color: #aed581; font-weight: 600;">genetics_joo_mdd_cog_v1</span>

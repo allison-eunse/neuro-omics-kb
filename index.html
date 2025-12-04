@@ -5988,22 +5988,24 @@ Walkthroughs, schemas, and decision logs share the same terminology across genet
 </details>
 
 <details>
-<summary><b>Metadata Cards</b> — Structured YAML for all assets</summary>
+<summary><b>🏷️ Metadata Cards</b> — Structured YAML for all assets</summary>
 
 <div style="font-family: monospace; background: #f5f5f5; padding: 16px; border-radius: 8px; line-height: 1.8;">
 <code>kb/</code><br>
 ├── <span class="genetics"><b>model_cards/</b></span> ← 20 FM specs (17 FMs + 3 reference)<br>
 ├── <span class="multimodal"><b>paper_cards/</b></span> ← 30 research papers with structured takeaways<br>
 ├── <span class="brain"><b>datasets/</b></span> ← 19 dataset schemas (UKB, HCP, Cha, benchmarks)<br>
-└── <span class="fusion"><b>integration_cards/</b></span> ← Embedding recipes, harmonization, pipelines
+└── <span class="fusion"><b>integration_cards/</b></span> ← 6 integration recipes (embedding + harmonization)
 </div>
 
-| Folder | Count | Contents |
-|:-------|------:|:---------|
-| `model_cards/` | 20 | FM specs (17 core + 3 reference) |
-| `paper_cards/` | 30 | Research papers with takeaways |
-| `datasets/` | 19 | UKB, HCP, Cha, benchmarks |
-| `integration_cards/` | 8 | Embedding + harmonization recipes |
+**What's in each folder:**
+
+| Folder | What It Contains | Examples |
+|:-------|:-----------------|:---------|
+| <span class="genetics">**model_cards/**</span> | Foundation model specifications with architecture details, parameters, and integration hooks | Caduceus, BrainLM, BAGEL, MoT |
+| <span class="multimodal">**paper_cards/**</span> | Research paper summaries with key takeaways and implementation notes | RC-equivariance, MURD harmonization, Ensemble Integration |
+| <span class="brain">**datasets/**</span> | Data schema definitions, preprocessing requirements, and access protocols | UKB fMRI/sMRI, HCP, Genomic Benchmarks |
+| <span class="fusion">**integration_cards/**</span> | Embedding extraction recipes, harmonization methods, and fusion strategies | `genetics_joo_mdd_cog_v1`, `murd_t1_t2`, `combat_smri` |
 
 [Browse all cards on GitHub →](https://github.com/allison-eunse/neuro-omics-kb/tree/main/kb)
 
