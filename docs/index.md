@@ -99,16 +99,16 @@ python scripts/manage_kb.py validate models
 <details open>
 <summary><b>📚 Documentation</b> — Walkthroughs, playbooks, decision logs</summary>
 
-```
-docs/
-├── code_walkthroughs/          ← 15 guided FM tours
-│   ├── 🧬 Genetics (4):  Caduceus, DNABERT-2, Evo 2, GENERator
-│   ├── 🧠 Brain (5):     BrainLM, Brain-JEPA, Brain Harmony, BrainMT, SwiFT
-│   └── 🏥 Multimodal (6): BAGEL, MoT, M3FM, Me-LLaMA, TITAN, FMS-Medical
-├── integration/                ← Fusion strategies, design patterns, benchmarks
-├── data/                       ← UKB data map, QC protocols, schemas
-└── decisions/                  ← Integration plans, validation rationale
-```
+<div style="font-family: monospace; background: #f5f5f5; padding: 16px; border-radius: 8px; line-height: 1.8; border-left: 4px solid #7b1fa2;">
+<code>docs/</code><br>
+├── <b>code_walkthroughs/</b> ← 15 guided FM tours<br>
+│   ├── <span style="color: #2e7d32; font-weight: 600;">Genetics (4)</span>: Caduceus, DNABERT-2, Evo 2, GENERator<br>
+│   ├── <span style="color: #1565c0; font-weight: 600;">Brain (5)</span>: BrainLM, Brain-JEPA, Brain Harmony, BrainMT, SwiFT<br>
+│   └── <span style="color: #7b1fa2; font-weight: 600;">Multimodal (6)</span>: BAGEL, MoT, M3FM, Me-LLaMA, TITAN, FMS-Medical<br>
+├── <b>integration/</b> ← Fusion strategies, design patterns, benchmarks<br>
+├── <b>data/</b> ← UKB data map, QC protocols, schemas<br>
+└── <b>decisions/</b> ← Integration plans, validation rationale
+</div>
 
 Walkthroughs, schemas, and decision logs share the same terminology across genetics, brain, and multimodal FMs.
 
@@ -139,12 +139,12 @@ Walkthroughs, schemas, and decision logs share the same terminology across genet
 <details>
 <summary><b>🔧 Tools & Scripts</b> — Validation, quality gates, sync</summary>
 
-```
-scripts/
-├── manage_kb.py             ← Validate YAML, query embeddings/harmonization
-├── codex_gate.py            ← Pre-commit quality sweeps
-└── fetch_external_repos.sh  ← Sync upstream FM repos
-```
+<div style="font-family: monospace; background: #f5f5f5; padding: 16px; border-radius: 8px; line-height: 1.8; border-left: 4px solid #f57c00;">
+<code>scripts/</code><br>
+├── <span style="color: #f57c00; font-weight: 600;">manage_kb.py</span> ← Validate YAML, query embeddings/harmonization<br>
+├── <span style="color: #f57c00; font-weight: 600;">codex_gate.py</span> ← Pre-commit quality sweeps<br>
+└── <span style="color: #f57c00; font-weight: 600;">fetch_external_repos.sh</span> ← Sync upstream FM repos
+</div>
 
 Pair these with `verify_kb.sh` or `mkdocs serve` during review cycles.
 
@@ -153,13 +153,13 @@ Pair these with `verify_kb.sh` or `mkdocs serve` during review cycles.
 <details>
 <summary><b>⚙️ Experiment Configs</b> — Ready-to-run templates</summary>
 
-```
-configs/experiments/
-├── 01_cca_gene_smri.yaml          ← CCA + permutation baseline
-├── 02_prediction_baselines.yaml   ← Gene vs Brain vs Fusion (LR/GBDT)
-├── 03_logo_gene_attribution.yaml  ← Leave-one-gene-out ΔAUC
-└── dev_* templates                ← CHA cohort dev stubs
-```
+<div style="font-family: monospace; background: #f5f5f5; padding: 16px; border-radius: 8px; line-height: 1.8; border-left: 4px solid #f57c00;">
+<code>configs/experiments/</code><br>
+├── <span style="color: #f57c00; font-weight: 600;">01_cca_gene_smri.yaml</span> ← CCA + permutation baseline<br>
+├── <span style="color: #f57c00; font-weight: 600;">02_prediction_baselines.yaml</span> ← Gene vs Brain vs Fusion (LR/GBDT)<br>
+├── <span style="color: #f57c00; font-weight: 600;">03_logo_gene_attribution.yaml</span> ← Leave-one-gene-out ΔAUC<br>
+└── <span style="color: #f57c00; font-weight: 600;">dev_* templates</span> ← CHA cohort dev stubs
+</div>
 
 Each config references the exact embeddings, covariates, and validation plan to keep runs reproducible.
 
@@ -218,15 +218,15 @@ Each config references the exact embeddings, covariates, and validation plan to 
 
 **Integration Roadmap:**
 
-```
-🔵 Late Fusion (baseline)
-       ↓ If fusion wins significantly
-🟢 Two-Tower Contrastive
-       ↓ If gains plateau
-🟡 EI Stacking / Hub Tokens
-       ↓ Last resort
-🔴 Full Early Fusion (TAPE-style)
-```
+<div style="font-family: monospace; background: linear-gradient(135deg, #f5f5f5 0%, #e8f5e9 100%); padding: 20px; border-radius: 8px; line-height: 2; border-left: 4px solid #f57c00;">
+<span style="color: #1565c0; font-weight: 700;">● Late Fusion</span> (baseline)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓ <i>If fusion wins significantly</i><br>
+<span style="color: #2e7d32; font-weight: 700;">● Two-Tower Contrastive</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓ <i>If gains plateau</i><br>
+<span style="color: #f9a825; font-weight: 700;">● EI Stacking / Hub Tokens</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓ <i>Last resort</i><br>
+<span style="color: #c62828; font-weight: 700;">● Full Early Fusion</span> (TAPE-style)
+</div>
 
 **Decisions:** [Integration baseline plan (Nov 2025)](decisions/2025-11-integration-plan.md)
 

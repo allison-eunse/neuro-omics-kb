@@ -68,9 +68,10 @@ This is your **documentation-first knowledge base** — the map and spec for the
 ★ = Recommended starting point
 
 **Query a recipe:**
-```bash
-python scripts/manage_kb.py ops strategy genetics_joo_mdd_cog_v1
-```
+
+<div style="font-family: monospace; background: #263238; color: #4fc3f7; padding: 12px 16px; border-radius: 6px; border-left: 4px solid #2e7d32;">
+python scripts/manage_kb.py ops strategy <span style="color: #aed581; font-weight: 600;">genetics_joo_mdd_cog_v1</span>
+</div>
 
 ---
 
@@ -98,9 +99,9 @@ python scripts/manage_kb.py ops strategy genetics_joo_mdd_cog_v1
 
 ### → "Which harmonization method?"
 
-```bash
-python scripts/manage_kb.py ops harmonization murd_t1_t2
-```
+<div style="font-family: monospace; background: #263238; color: #ce93d8; padding: 12px 16px; border-radius: 6px; border-left: 4px solid #1565c0;">
+python scripts/manage_kb.py ops harmonization <span style="color: #aed581; font-weight: 600;">murd_t1_t2</span>
+</div>
 
 Or read: `docs/integration/integration_strategy.md` (Harmonization section)
 
@@ -119,17 +120,17 @@ Or read: `docs/integration/integration_strategy.md` (Harmonization section)
 
 **Goal:** Test pipeline on toy sample using new NVIDIA Spark GPU (128GB)
 
-```bash
-# 1. Download 20-participant sample
-#    - Brain features (fMRI parcellation available now)
-#    - Genomics embeddings from Prof. Joo (offline, already trained)
-
-# 2. Test embedding extraction
-python scripts/manage_kb.py ops strategy genetics_joo_mdd_cog_v1
-
-# 3. Run on NVIDIA Spark GPU
-# 4. Verify pipelines work end-to-end
-```
+<div style="font-family: monospace; background: #263238; color: #aed581; padding: 16px; border-radius: 8px; line-height: 1.8; border-left: 4px solid #f57c00;">
+<span style="color: #78909c;"># 1. Download 20-participant sample</span><br>
+<span style="color: #78909c;">#    - <span style="color: #64b5f6;">Brain features</span> (fMRI parcellation available now)</span><br>
+<span style="color: #78909c;">#    - <span style="color: #4fc3f7;">Genomics embeddings</span> from Prof. Joo (offline, already trained)</span><br>
+<br>
+<span style="color: #78909c;"># 2. Test embedding extraction</span><br>
+python scripts/manage_kb.py ops strategy <span style="color: #4fc3f7; font-weight: 600;">genetics_joo_mdd_cog_v1</span><br>
+<br>
+<span style="color: #78909c;"># 3. Run on NVIDIA Spark GPU</span><br>
+<span style="color: #78909c;"># 4. Verify pipelines work end-to-end</span>
+</div>
 
 **What to test:**
 - Brain feature download works
@@ -249,21 +250,21 @@ python scripts/manage_kb.py ops strategy genetics_joo_mdd_cog_v1
 
 ## Escalation Decision Tree
 
-```
-Start: Run Stage-1 (CCA + Prediction + LOGO)
-  │
-  ├─ Fusion > single-modality (p < 0.05)?
-  │  │
-  │  ├─ YES → CCA also significant?
-  │  │  │
-  │  │  ├─ YES → Consider two-tower contrastive
-  │  │  │        (frozen FMs + small projectors)
-  │  │  │
-  │  │  └─ NO → Keep late fusion, improve single-modality
-  │  │
-  │  └─ NO → Focus on better per-modality embeddings
-  │           Try harmonization (ComBat, MURD)
-```
+<div style="font-family: monospace; background: #f5f5f5; padding: 20px; border-radius: 8px; line-height: 1.8; border-left: 4px solid #f57c00;">
+<span style="color: #f57c00; font-weight: 700;">Start:</span> Run Stage-1 (CCA + Prediction + LOGO)<br>
+&nbsp;&nbsp;│<br>
+&nbsp;&nbsp;├─ <span style="color: #f57c00;">Fusion > single-modality (p < 0.05)?</span><br>
+&nbsp;&nbsp;│&nbsp;&nbsp;│<br>
+&nbsp;&nbsp;│&nbsp;&nbsp;├─ <span style="color: #2e7d32; font-weight: 600;">YES</span> → CCA also significant?<br>
+&nbsp;&nbsp;│&nbsp;&nbsp;│&nbsp;&nbsp;│<br>
+&nbsp;&nbsp;│&nbsp;&nbsp;│&nbsp;&nbsp;├─ <span style="color: #2e7d32; font-weight: 600;">YES</span> → <span style="color: #1565c0;">Consider two-tower contrastive</span><br>
+&nbsp;&nbsp;│&nbsp;&nbsp;│&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(frozen FMs + small projectors)<br>
+&nbsp;&nbsp;│&nbsp;&nbsp;│&nbsp;&nbsp;│<br>
+&nbsp;&nbsp;│&nbsp;&nbsp;│&nbsp;&nbsp;└─ <span style="color: #c62828; font-weight: 600;">NO</span> → Keep late fusion, improve single-modality<br>
+&nbsp;&nbsp;│&nbsp;&nbsp;│<br>
+&nbsp;&nbsp;│&nbsp;&nbsp;└─ <span style="color: #c62828; font-weight: 600;">NO</span> → <span style="color: #2e7d32;">Focus on better per-modality embeddings</span><br>
+&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Try harmonization (ComBat, MURD)
+</div>
 
 ---
 
@@ -285,23 +286,23 @@ Start: Run Stage-1 (CCA + Prediction + LOGO)
 
 ## Utilities
 
-```bash
-# Validate all YAML cards
-python scripts/manage_kb.py validate models
-python scripts/manage_kb.py validate datasets
-
-# Query embedding recipe
-python scripts/manage_kb.py ops strategy genetics_joo_mdd_cog_v1
-
-# Query harmonization method
-python scripts/manage_kb.py ops harmonization combat_smri
-
-# View docs locally
-mkdocs serve  # Visit http://localhost:8000
-
-# Online docs
-https://allison-eunse.github.io/neuro-omics-kb/
-```
+<div style="font-family: monospace; background: #263238; color: #aed581; padding: 16px; border-radius: 8px; line-height: 1.8; border-left: 4px solid #f57c00;">
+<span style="color: #78909c;"># Validate all YAML cards</span><br>
+python scripts/manage_kb.py <span style="color: #64b5f6;">validate models</span><br>
+python scripts/manage_kb.py <span style="color: #64b5f6;">validate datasets</span><br>
+<br>
+<span style="color: #78909c;"># Query embedding recipe</span><br>
+python scripts/manage_kb.py ops strategy <span style="color: #4fc3f7;">genetics_joo_mdd_cog_v1</span><br>
+<br>
+<span style="color: #78909c;"># Query harmonization method</span><br>
+python scripts/manage_kb.py ops harmonization <span style="color: #ce93d8;">combat_smri</span><br>
+<br>
+<span style="color: #78909c;"># View docs locally</span><br>
+mkdocs serve <span style="color: #78909c;"># Visit http://localhost:8000</span><br>
+<br>
+<span style="color: #78909c;"># Online docs</span><br>
+<span style="color: #64b5f6;">https://allison-eunse.github.io/neuro-omics-kb/</span>
+</div>
 
 ---
 
