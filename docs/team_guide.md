@@ -112,8 +112,8 @@ Or read: `docs/integration/integration_strategy.md` (Harmonization section)
 !!! success "Meeting Goals: Jan-Feb Wrap-Up"
     - Test with 20-participant toy sample
     - Use new NVIDIA Spark GPU (128GB)  
-    - Offline genetics embeddings from Prof. Joo
-    - Brain features (fMRI parcellation available)
+    - Offline genetics embeddings (pending)
+    - Brain features (fMRI parcellation pending)
     - Complete Stage-1 baselines
 
 ### **Week 1-2: Small Sample Testing (20 participants)**
@@ -122,8 +122,8 @@ Or read: `docs/integration/integration_strategy.md` (Harmonization section)
 
 <div style="font-family: monospace; background: #263238; color: #aed581; padding: 16px; border-radius: 8px; line-height: 1.8; border-left: 4px solid #f57c00;">
 <span style="color: #78909c;"># 1. Download 20-participant sample</span><br>
-<span style="color: #78909c;">#    - <span style="color: #64b5f6;">Brain features</span> (fMRI parcellation available now)</span><br>
-<span style="color: #78909c;">#    - <span style="color: #4fc3f7;">Genomics embeddings</span> from Prof. Joo (offline, already trained)</span><br>
+<span style="color: #78909c;">#    - <span style="color: #64b5f6;">Brain features</span> (fMRI parcellation)</span><br>
+<span style="color: #78909c;">#    - <span style="color: #4fc3f7;">Genomics embeddings</span> (offline, pre-trained)</span><br>
 <br>
 <span style="color: #78909c;"># 2. Test embedding extraction</span><br>
 python scripts/manage_kb.py ops strategy <span style="color: #4fc3f7; font-weight: 600;">genetics_joo_mdd_cog_v1</span><br>
@@ -185,7 +185,7 @@ python scripts/manage_kb.py ops strategy <span style="color: #4fc3f7; font-weigh
 ### 🟡 Waiting For
 
 - **UKB data access approval** (fMRI/sMRI features)
-- **Genetics embeddings** from Prof. Joo's team
+- **Genetics embeddings** (offline pre-trained)
 - **Cha Hospital developmental cohort** (future)
 
 ### 📚 Onboarding New Team Members
@@ -278,8 +278,8 @@ python scripts/manage_kb.py ops strategy <span style="color: #4fc3f7; font-weigh
 |:--------|:----:|:-------|:-------|:------|
 | <span class="genetics">hg38 reference</span> | ✓ | <span class="ready">Ready</span> | Public | Reference genome |
 | <span class="genetics">Genomic benchmarks</span> | ✓ | <span class="ready">Ready</span> | Public | Standard benchmarks |
-| <span class="brain">UKB fMRI/sMRI</span> | ✓ | <span class="pending">Pending</span> | Restricted | Check with 정우/상윤 선생님 |
-| <span class="genetics">Genetics embeddings</span> | ✓ | <span class="pending">Pending</span> | Internal | From Prof. Joo (pre-trained) |
+| <span class="brain">UKB fMRI/sMRI</span> | ✓ | <span class="pending">Pending</span> | Restricted | Features can be downloaded |
+| <span class="genetics">Genetics embeddings</span> | ✓ | <span class="pending">Pending</span> | Internal | Offline pre-trained embeddings |
 | <span class="brain">Cha Hospital dev</span> | ✓ | <span class="future">Future</span> | Restricted | Developmental research |
 
 ---
@@ -309,30 +309,30 @@ mkdocs serve <span style="color: #78909c;"># Visit http://localhost:8000</span><
 ## ❓ FAQ
 
 !!! question "Which genetics FM should I use?"
-    **Answer:** Start with Prof. Joo's pipeline (`genetics_joo_mdd_cog_v1`):
-
-- 38 MDD genes from Yoon et al.
-- RC-averaged embeddings
-- Already validated in their work
-
-Then compare with other FMs if needed (Caduceus, DNABERT-2, Evo2)
+    **Answer:** Start with the recommended pipeline (`genetics_joo_mdd_cog_v1`):
+    
+    - 38 MDD genes from Yoon et al.
+    - RC-averaged embeddings
+    - Pre-validated gene set
+    
+    Then compare with other FMs if needed (Caduceus, DNABERT-2, Evo2)
 
 !!! question "Should I use sMRI or fMRI features?"
     **Answer:** Both are documented:
-
-- **sMRI:** FreeSurfer ROIs (~176 features) → Good for structural analysis
-- **fMRI:** Parcellation data available → Ask 정우/상윤 선생님 for fMRI-gene analysis guidance
-
-Start with whichever is easier to download first.
+    
+    - **sMRI:** FreeSurfer ROIs (~176 features) → Good for structural analysis
+    - **fMRI:** Parcellation data → Follow fMRI-gene analysis recipes in integration docs
+    
+    Start with whichever is available first.
 
 !!! question "Do I need to build a new FM?"
     **No!** Stage-1 uses:
-
-- **Existing genetics FMs** (already trained by Prof. Joo)
-- **Existing brain FMs** (SwiFT, BrainLM, etc.)
-- **Late fusion** = just concatenate embeddings
-
-Only escalate to two-tower/unified FM if Stage-1 shows clear fusion benefit.
+    
+    - **Existing genetics FMs** (pre-trained embeddings)
+    - **Existing brain FMs** (SwiFT, BrainLM, etc.)
+    - **Late fusion** = just concatenate embeddings
+    
+    Only escalate to two-tower/unified FM if Stage-1 shows clear fusion benefit.
 
 !!! question "What about Cha Hospital / developmental data?"
     **Future work.** The KB has:
