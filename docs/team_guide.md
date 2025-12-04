@@ -201,49 +201,49 @@ python scripts/manage_kb.py ops strategy genetics_joo_mdd_cog_v1
 ## 🔬 Stage-1 Experiments
 
 !!! abstract "Experiment 1: CCA (Gene ↔ Brain Association)"
-    **Config:** `configs/experiments/01_cca_gene_smri.yaml`
+**Config:** `configs/experiments/01_cca_gene_smri.yaml`
+
+**What it does:**
     
-    **What it does:**
+- Tests if gene embeddings share structure with brain embeddings
+- 1,000 permutations to assess significance
+- Reports ρ₁–ρ₃ (canonical correlations) with p-values
+
+**Success criteria:**
     
-    - Tests if gene embeddings share structure with brain embeddings
-    - 1,000 permutations to assess significance
-    - Reports ρ₁–ρ₃ (canonical correlations) with p-values
-    
-    **Success criteria:**
-    
-    - ρ₁ > 0.2 with p < 0.05 → significant association
-    - Gene/ROI loadings interpretable
+- ρ₁ > 0.2 with p < 0.05 → significant association
+- Gene/ROI loadings interpretable
 
 !!! abstract "Experiment 2: Prediction (Gene vs Brain vs Fusion)"
-    **Config:** `configs/experiments/02_prediction_baselines.yaml`
+**Config:** `configs/experiments/02_prediction_baselines.yaml`
+
+**What it does:**
     
-    **What it does:**
+- Compares 3 baselines for MDD prediction:
+  - Gene-only (512-D)
+  - Brain-only (512-D)
+  - Fusion (1024-D concatenation)
+- Uses LR + LightGBM + CatBoost
+- DeLong test to compare AUROCs
+
+**Success criteria:**
     
-    - Compares 3 baselines for MDD prediction:
-        - Gene-only (512-D)
-        - Brain-only (512-D)
-        - Fusion (1024-D concatenation)
-    - Uses LR + LightGBM + CatBoost
-    - DeLong test to compare AUROCs
-    
-    **Success criteria:**
-    
-    - If Fusion > max(Gene, Brain) p < 0.05 → integration adds value
-    - Document which modality is stronger
+- If Fusion > max(Gene, Brain) p < 0.05 → integration adds value
+- Document which modality is stronger
 
 !!! abstract "Experiment 3: LOGO Attribution"
-    **Config:** `configs/experiments/03_logo_gene_attribution.yaml`
+**Config:** `configs/experiments/03_logo_gene_attribution.yaml`
+
+**What it does:**
     
-    **What it does:**
+- Leave-one-gene-out ΔAUC
+- Identifies which genes contribute most to prediction
+- Wilcoxon test + FDR correction
+
+**Success criteria:**
     
-    - Leave-one-gene-out ΔAUC
-    - Identifies which genes contribute most to prediction
-    - Wilcoxon test + FDR correction
-    
-    **Success criteria:**
-    
-    - Find significant genes (p < 0.05 FDR-corrected)
-    - Compare with literature (SOD2, HOXA10, etc.)
+- Find significant genes (p < 0.05 FDR-corrected)
+- Compare with literature (SOD2, HOXA10, etc.)
 
 ---
 
@@ -309,37 +309,37 @@ https://allison-eunse.github.io/neuro-omics-kb/
 
 !!! question "Which genetics FM should I use?"
     **Answer:** Start with Prof. Joo's pipeline (`genetics_joo_mdd_cog_v1`):
-    
-    - 38 MDD genes from Yoon et al.
-    - RC-averaged embeddings
-    - Already validated in their work
-    
-    Then compare with other FMs if needed (Caduceus, DNABERT-2, Evo2)
+
+- 38 MDD genes from Yoon et al.
+- RC-averaged embeddings
+- Already validated in their work
+
+Then compare with other FMs if needed (Caduceus, DNABERT-2, Evo2)
 
 !!! question "Should I use sMRI or fMRI features?"
     **Answer:** Both are documented:
-    
-    - **sMRI:** FreeSurfer ROIs (~176 features) → Good for structural analysis
-    - **fMRI:** Parcellation data available → Ask 정우/상윤 선생님 for fMRI-gene analysis guidance
-    
-    Start with whichever is easier to download first.
+
+- **sMRI:** FreeSurfer ROIs (~176 features) → Good for structural analysis
+- **fMRI:** Parcellation data available → Ask 정우/상윤 선생님 for fMRI-gene analysis guidance
+
+Start with whichever is easier to download first.
 
 !!! question "Do I need to build a new FM?"
     **No!** Stage-1 uses:
-    
-    - **Existing genetics FMs** (already trained by Prof. Joo)
-    - **Existing brain FMs** (SwiFT, BrainLM, etc.)
-    - **Late fusion** = just concatenate embeddings
-    
-    Only escalate to two-tower/unified FM if Stage-1 shows clear fusion benefit.
+
+- **Existing genetics FMs** (already trained by Prof. Joo)
+- **Existing brain FMs** (SwiFT, BrainLM, etc.)
+- **Late fusion** = just concatenate embeddings
+
+Only escalate to two-tower/unified FM if Stage-1 shows clear fusion benefit.
 
 !!! question "What about Cha Hospital / developmental data?"
     **Future work.** The KB has:
-    
-    - Dataset card template: `kb/datasets/cha_dev_longitudinal.yaml`
-    - Embedding recipes: `cha_dev_smri_pca64_v1`, `cha_dev_eeg_fm_v1`, `cha_dev_behaviour_latent_v1`
-    - Experiment templates: `configs/experiments/dev_01_brain_only_baseline.yaml`
-    
+
+- Dataset card template: `kb/datasets/cha_dev_longitudinal.yaml`
+- Embedding recipes: `cha_dev_smri_pca64_v1`, `cha_dev_eeg_fm_v1`, `cha_dev_behaviour_latent_v1`
+- Experiment templates: `configs/experiments/dev_01_brain_only_baseline.yaml`
+
     **Focus on UKB first** (Jan-Feb wrap-up), then extend to developmental.
 
 ---

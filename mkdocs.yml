@@ -28,7 +28,7 @@ theme:
     - toc.follow
     - content.action.edit
   custom_dir: docs/assets
-extra_css:
+  extra_css:
   - assets/css/code-citations.css
   - assets/css/custom.css
 markdown_extensions:
