@@ -20,12 +20,12 @@ All brain FMs documented here:
 ## 🎯 Model Registry
 
 | Model | Modality | Architecture | Key Feature | Documentation |
-|:------|:---------|:-------------|:------------|:--------------|
-| <span class="brain">**[BrainLM](brainlm.md)**</span> | fMRI | ViT-MAE | Masked autoencoding; site-robust | [Code Walkthrough](../../code_walkthroughs/brainlm_walkthrough.md) |
-| <span class="brain">**[Brain-JEPA](brainjepa.md)**</span> | fMRI | JEPA | Joint-embedding prediction; lower-latency | [Code Walkthrough](../../code_walkthroughs/brainjepa_walkthrough.md) |
-| <span class="brain">**[Brain Harmony](brainharmony.md)**</span> | sMRI + fMRI | ViT + TAPE | Multi-modal fusion via TAPE | [Code Walkthrough](../../code_walkthroughs/brainharmony_walkthrough.md) |
-| <span class="brain">**[BrainMT](brainmt.md)**</span> | sMRI + fMRI | Mamba-Transformer | Efficient long-range dependencies | [Code Walkthrough](../../code_walkthroughs/brainmt_walkthrough.md) |
-| <span class="brain">**[SwiFT](swift.md)**</span> | fMRI | Swin Transformer | Hierarchical spatiotemporal modeling | [Code Walkthrough](../../code_walkthroughs/swift_walkthrough.md) |
+|-------|----------|-------------|-------------|---------------|
+| 🧠 [**BrainLM**](brainlm.md) | fMRI | ViT-MAE | Masked autoencoding; site-robust | [Walkthrough](../../code_walkthroughs/brainlm_walkthrough.md) |
+| 🧠 [**Brain-JEPA**](brainjepa.md) | fMRI | JEPA | Joint-embedding prediction; lower-latency | [Walkthrough](../../code_walkthroughs/brainjepa_walkthrough.md) |
+| 🧠 [**Brain Harmony**](brainharmony.md) | sMRI + fMRI | ViT + TAPE | Multi-modal fusion via TAPE | [Walkthrough](../../code_walkthroughs/brainharmony_walkthrough.md) |
+| 🧠 [**BrainMT**](brainmt.md) | sMRI + fMRI | Mamba-Transformer | Efficient long-range dependencies | [Walkthrough](../../code_walkthroughs/brainmt_walkthrough.md) |
+| 🧠 [**SwiFT**](swift.md) | fMRI | Swin Transformer | Hierarchical spatiotemporal modeling | [Walkthrough](../../code_walkthroughs/swift_walkthrough.md) |
 
 ---
 
@@ -33,27 +33,19 @@ All brain FMs documented here:
 
 ### For fMRI models (BrainLM, Brain-JEPA, SwiFT)
 
-<div style="font-family: monospace; background: #263238; color: #64b5f6; padding: 16px; border-radius: 8px; line-height: 1.8; overflow-x: auto;">
-<span style="color: #78909c;"># 1.</span> <span style="color: #64b5f6;">Preprocess rs-fMRI:</span> parcellation (Schaefer/AAL), bandpass filter, motion scrubbing<br>
-<span style="color: #78909c;"># 2.</span> <span style="color: #64b5f6;">Tokenize</span> parcel time series (or 4D volumes for SwiFT)<br>
-<span style="color: #78909c;"># 3.</span> <span style="color: #64b5f6;">Load checkpoint</span> (BrainLM, Brain-JEPA, SwiFT)<br>
-<span style="color: #78909c;"># 4.</span> <span style="color: #64b5f6;">Forward pass</span> → per-token embeddings<br>
-<span style="color: #78909c;"># 5.</span> <span style="color: #64b5f6;">Pool</span> to subject-level (mean over tokens/time)<br>
-<span style="color: #78909c;"># 6.</span> <span style="color: #64b5f6;">Project</span> to 512-D for cross-modal alignment<br>
-<span style="color: #78909c;"># 7.</span> <span style="color: #f9a825;">Log:</span> parcellation_scheme, motion_exclusion_threshold, embedding_strategy_id
-</div>
+1. **Preprocess** rs-fMRI: parcellation (Schaefer/AAL), bandpass filter, motion scrubbing
+2. **Tokenize** parcel time series (or 4D volumes for SwiFT)
+3. **Embed** via pretrained encoder
+4. **Pool** to subject-level representation (mean over tokens/time)
+5. **Project** to 512-D for cross-modal alignment
 
 ### For sMRI models (BrainMT, Brain Harmony)
 
-<div style="font-family: monospace; background: #263238; color: #64b5f6; padding: 16px; border-radius: 8px; line-height: 1.8; overflow-x: auto;">
-<span style="color: #78909c;"># 1.</span> <span style="color: #64b5f6;">Run FreeSurfer</span> or FSL FAST for tissue segmentation<br>
-<span style="color: #78909c;"># 2.</span> <span style="color: #64b5f6;">Extract IDPs</span> (cortical thickness, subcortical volumes) or feed raw T1w<br>
-<span style="color: #78909c;"># 3.</span> <span style="color: #64b5f6;">Residualize confounds</span> (age, sex, site, ICV)<br>
-<span style="color: #78909c;"># 4.</span> <span style="color: #64b5f6;">Embed</span> via pretrained encoder<br>
-<span style="color: #78909c;"># 5.</span> <span style="color: #64b5f6;">Pool</span> to subject-level representation<br>
-<span style="color: #78909c;"># 6.</span> <span style="color: #64b5f6;">Project</span> to 512-D for fusion<br>
-<span style="color: #78909c;"># 7.</span> <span style="color: #f9a825;">Log:</span> freesurfer_version, harmonization_method, embedding_strategy_id
-</div>
+1. **Run** FreeSurfer or FSL FAST for tissue segmentation
+2. **Extract** IDPs (cortical thickness, subcortical volumes) or feed raw T1w volumes
+3. **Embed** via pretrained encoder
+4. **Pool** to subject-level representation
+5. **Project** to 512-D for fusion
 
 ---
 
@@ -97,21 +89,20 @@ Brain embeddings are integrated with:
 <details>
 <summary><b>Click to view all source repositories</b></summary>
 
-**All brain FM source code is tracked in** `external_repos/`:
+All brain FM source code lives in `external_repos/`:
 
-| Model | GitHub Repository | Local Clone |
-|:------|:------------------|:------------|
-| <span class="brain">**BrainLM**</span> | [vandijklab/BrainLM](https://github.com/vandijklab/BrainLM) | `external_repos/brainlm/` |
-| <span class="brain">**Brain-JEPA**</span> | [janklees/brainjepa](https://github.com/janklees/brainjepa) | `external_repos/brainjepa/` |
-| <span class="brain">**Brain Harmony**</span> | [hzlab/Brain-Harmony](https://github.com/hzlab/Brain-Harmony) | `external_repos/brainharmony/` |
-| <span class="brain">**BrainMT**</span> | [arunkumar-kannan/brainmt-fmri](https://github.com/arunkumar-kannan/brainmt-fmri) | `external_repos/brainmt/` |
-| <span class="brain">**SwiFT**</span> | [Transconnectome/SwiFT](https://github.com/Transconnectome/SwiFT) | `external_repos/swift/` |
+| Model | Local Path | GitHub Repository |
+|-------|------------|-------------------|
+| BrainLM | `external_repos/brainlm/` | [vandijklab/BrainLM](https://github.com/vandijklab/BrainLM) |
+| Brain-JEPA | `external_repos/brainjepa/` | [janklees/brainjepa](https://github.com/janklees/brainjepa) |
+| Brain Harmony | `external_repos/brainharmony/` | [hzlab/Brain-Harmony](https://github.com/hzlab/Brain-Harmony) |
+| BrainMT | `external_repos/brainmt/` | [arunkumar-kannan/brainmt-fmri](https://github.com/arunkumar-kannan/brainmt-fmri) |
+| SwiFT | `external_repos/swift/` | [Transconnectome/SwiFT](https://github.com/Transconnectome/SwiFT) |
 
-**Each model has three interconnected resources:**
-
-- <span class="multimodal">**Code Walkthrough**</span> → Step-by-step implementation guide
-- <span class="brain">**YAML Model Card**</span> → Structured metadata and specs
-- <span class="fusion">**Integration Recipe**</span> → Embedding extraction and fusion protocols
+Each model page includes:
+- ✅ Detailed code walkthrough in `docs/code_walkthroughs/`
+- ✅ Structured YAML card in `kb/model_cards/`
+- ✅ Integration recipes and preprocessing specs
 
 </details>
 
