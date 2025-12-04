@@ -13,7 +13,7 @@ updated: 2025-12-04
 
 > **A comprehensive documentation hub for genetics and brain foundation models and their multimodal integration.**
 
-[📖 KB Overview](guide/kb_overview.md) | [🧬 Genetics Models](models/genetics/index.md) | [🧠 Brain Models](models/brain/index.md) | [🔗 Integration Guide](integration/integration_strategy.md) | [💻 GitHub](https://github.com/allison-eunse/neuro-omics-kb)
+[🚀 Team Guide](team_guide.md) | [📖 KB Overview](guide/kb_overview.md) | [🧬 Genetics Models](models/genetics/index.md) | [🧠 Brain Models](models/brain/index.md) | [🔗 Integration Strategy](integration/integration_strategy.md) | [💻 GitHub](https://github.com/allison-eunse/neuro-omics-kb)
 
 ---
 

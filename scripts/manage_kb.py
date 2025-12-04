@@ -257,10 +257,22 @@ def catalog_integrations(out: Path = DESTINATION_MARKDOWN_OPTION):
     headers = ["Integration", "Models", "Datasets", "Status", "Verified"]
     rows: list[list[str]] = []
     for card in cards:
+        # Handle both flat list and nested dict for models
+        models = card.get("models", [])
+        if isinstance(models, dict):
+            # Flatten nested structure
+            model_list = []
+            for category_models in models.values():
+                if isinstance(category_models, list):
+                    model_list.extend(category_models)
+            models_str = ", ".join(model_list) or "—"
+        else:
+            models_str = ", ".join(models) or "—"
+
         rows.append(
             [
                 f"`{card['id']}`",
-                ", ".join(card.get("models", [])) or "—",
+                models_str,
                 ", ".join(card.get("datasets", [])) or "—",
                 card.get("status", "—"),
                 _bool_icon(card.get("verified", False)),
@@ -321,7 +333,18 @@ def validate_links() -> None:
     dataset_ids = {card["id"] for card in _load_dataset_index()}
     issues: list[str] = []
     for card in _load_integration_index():
-        for model_id in card.get("models", []):
+        # Handle both flat list and nested dict for models
+        models = card.get("models", [])
+        if isinstance(models, dict):
+            # Nested structure like {genetics: [...], brain: [...]}
+            model_list = []
+            for category_models in models.values():
+                if isinstance(category_models, list):
+                    model_list.extend(category_models)
+        else:
+            model_list = models
+
+        for model_id in model_list:
             if model_id not in model_ids:
                 issues.append(f"{card['id']}: unknown model `{model_id}`")
         for dataset_id in card.get("datasets", []):

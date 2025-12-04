@@ -9,11 +9,11 @@ weights:
 license:
   code: MIT
   weights: N/A
+context_length: 0
 tasks:
   - resource_catalog
   - literature_survey
 verified: false
-context_length: 0
 tags:
   - survey
   - catalog
