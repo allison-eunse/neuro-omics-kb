@@ -25,19 +25,19 @@ This is your **documentation-first knowledge base** — the map and spec for the
 ├── <span class="genetics"><b>model_cards/</b></span> ← 20 FM specs (17 FMs + 3 reference)<br>
 ├── <span class="multimodal"><b>paper_cards/</b></span> ← 30 research papers with structured takeaways<br>
 ├── <span class="brain"><b>datasets/</b></span> ← 19 dataset schemas (UKB, HCP, Cha, benchmarks)<br>
-└── <span class="fusion"><b>integration_cards/</b></span> ← Embedding recipes, harmonization, pipelines
+└── <span class="fusion"><b>integration_cards/</b></span> ← 6 integration recipes
 </div>
 
 ### What's Documented
 
-| Category | Count | Contents |
-|:---------|:-----:|:---------|
-| <span class="genetics">**Genetics FMs**</span> | 5 | Caduceus, DNABERT-2, Evo 2, HyenaDNA, GENERator |
-| <span class="brain">**Brain FMs**</span> | 5 | BrainLM, Brain-JEPA, BrainMT, Brain Harmony, SwiFT |
-| <span class="multimodal">**Multimodal FMs**</span> | 7 | BAGEL, MoT, M3FM, Me-LLaMA, TITAN, Flamingo, FMS-Medical |
-| **Research Papers** | 30 | RC symmetry, EI, MURD, multimodal surveys, Yoon BioKDD'25 |
-| **Datasets** | 19 | UKB (fMRI, sMRI, WES), HCP, Cha developmental, benchmarks |
-| <span class="fusion">**Integration**</span> | 6 | Embedding recipes, harmonization methods, pipelines |
+| Category | What It Is | Examples |
+|:---------|:-----------|:---------|
+| <span class="genetics">**Genetics FMs**</span> | DNA sequence foundation models for gene-level embeddings | Caduceus, DNABERT-2, Evo 2, HyenaDNA, GENERator |
+| <span class="brain">**Brain FMs**</span> | Neuroimaging models for fMRI/sMRI subject embeddings | BrainLM, Brain-JEPA, BrainMT, Brain Harmony, SwiFT |
+| <span class="multimodal">**Multimodal FMs**</span> | Clinical & unified multimodal architecture references | BAGEL, MoT, M3FM, Me-LLaMA, TITAN, Flamingo, FMS-Medical |
+| <span class="multimodal">**Research Papers**</span> | Curated paper summaries with implementation notes | RC-equivariance, Ensemble Integration, MURD, Yoon BioKDD'25 |
+| <span class="brain">**Datasets**</span> | Data schema specs and preprocessing protocols | UKB (fMRI, sMRI, WES), HCP, Cha developmental, benchmarks |
+| <span class="fusion">**Integration & Strategy**</span> | Embedding recipes, harmonization, fusion playbooks | `genetics_joo_mdd_cog_v1`, `murd_t1_t2`, CCA + permutation |
 
 ### The Playbook
 
@@ -59,13 +59,13 @@ This is your **documentation-first knowledge base** — the map and spec for the
 | Recipe ID | Type | Output | Pipeline |
 |:----------|:-----|:------:|:---------|
 | `genetics_gene_fm_pca512_v1` | <span class="genetics">genetics</span> | 512-D | Caduceus/DNABERT-2/Evo2 + RC-averaging |
-| `genetics_joo_mdd_cog_v1` | <span class="genetics">genetics</span> | 512-D | **Prof. Joo's 38 MDD genes** ★ |
+| `genetics_joo_mdd_cog_v1` | <span class="genetics">genetics</span> | 512-D | <span class="strong">Prof. Joo's 38 MDD genes</span> ⭐ |
 | `smri_free_surfer_pca512_v1` | <span class="brain">brain</span> | 512-D | FreeSurfer ROIs → residualize → PCA |
 | `rsfmri_swift_segments_v1` | <span class="brain">brain</span> | 512-D | SwiFT segments → mean pool → PCA |
 | `rsfmri_brainlm_segments_v1` | <span class="brain">brain</span> | 512-D | BrainLM CLS tokens → mean pool |
 | `fusion_concat_gene_brain_1024_v1` | <span class="fusion">fusion</span> | 1024-D | Concat(Gene₅₁₂ + Brain₅₁₂) |
 
-★ = Recommended starting point
+⭐ = Recommended starting point
 
 **Query a recipe:**
 
