@@ -1,6 +1,7 @@
 site_name: Neuro-Omics KB
 site_description: Code-first knowledge base for genetics and brain foundation models and multimodal integration
 repo_url: https://github.com/allison-eunse/neuro-omics-kb
+edit_uri: edit/main/docs/
 site_url: https://allison-eunse.github.io/neuro-omics-kb/
 theme:
   name: material
