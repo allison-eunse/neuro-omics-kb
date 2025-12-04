@@ -1,3 +1,5 @@
+<!-- model-id: titan -->
+
 # TITAN Code Walkthrough
 
 > **KB references:** Model card (pending) · [Integration strategy](../integration/integration_strategy.md) · [Experiment config stub](../kb/templates/experiment_config_stub.md)

@@ -91,14 +91,14 @@ python scripts/codex_gate.py --mode full --label cycle2 --since HEAD~1
 
 ## 📊 Repository Stats
 
-### Neuro-Omics-KB (Updated Nov 20, 2025)
-- **Code Walkthroughs**: 15 complete guides (brain + genetics + multimodal)
-- **Model Cards**: 15 YAML files (13 FMs + 2 ARPA-H planning cards)
-- **Paper Cards**: 20 structured cards
-- **Dataset Cards**: 17 specifications + UKB manifest stub
-- **Integration Guidance**: 6 YAML registries + 3 narrative integration cards
+### Neuro-Omics-KB (Updated Dec 4, 2025)
+- **Code Walkthroughs**: 15+ complete guides (brain + genetics + multimodal)
+- **Model Cards**: 18+ YAML files (core FMs + reference architectures + ARPA-H planning cards)
+- **Paper Cards**: 31+ structured cards
+- **Dataset Cards**: 20+ specifications (includes planning cards for pending UKB data)
+- **Integration Guidance**: 7+ YAML registries + 3 narrative integration cards
 - **Experiment Configs**: 10 YAMLs (3 production templates + 7 dev/ablation stubs)
-- **External Repos**: 15 reference implementations (mix of tracked snapshots + fetch-on-demand)
+- **External Repos**: 15+ reference implementations (mix of tracked snapshots + fetch-on-demand)
 
 ---
 
@@ -177,6 +177,14 @@ python scripts/codex_gate.py --mode full --label cycle2 --since HEAD~1
 
 ---
 
-**Last Updated**: November 20, 2025  
+**Last Updated**: December 4, 2025  
 **Organized by**: Allison Eun Se You  
-**Status**: ✅ Documentation Complete — Ready for Multimodal Integration (once datasets are loaded: i.e., UK biobank & genetic embeddings)
+**Status**: ✅ Documentation Framework Complete — Awaiting Data Availability
+
+**Data Status:**
+- 🟡 **UKB Covariates**: Planning card created; data extraction pending UKB project approval
+- 🟡 **Genetics Embeddings**: Planning card created; embeddings NOT YET computed (pending UKB WES access)
+- 🟡 **UKB fMRI/sMRI**: Pipeline documented; data extraction pending
+- 🟢 **Reference Datasets**: hg38, genomic benchmarks available
+
+**KB Purpose Reminder:** This is a **documentation-first knowledge base**—not running code. Implementation code lives in upstream `external_repos/`. Cards marked "planning" or "reference_model" are for documentation/architectural reference only.

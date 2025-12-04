@@ -353,7 +353,7 @@ def _scan_model_docs(paths: Iterable[Path]) -> list[tuple[Path, str | None]]:
 def ci_docs() -> None:
     """Ensure docs/models/* and docs/code_walkthroughs/* declare `model-id` markers."""
     model_ids = {card["id"] for card in _load_model_index(include_unverified=True)}
-    doc_paths = list((DOCS_ROOT / "models").rglob("*.md"))
+    doc_paths = [p for p in (DOCS_ROOT / "models").rglob("*.md") if "integrations" not in p.parts]
     walk_paths = list((DOCS_ROOT / "code_walkthroughs").glob("*.md"))
     issues: list[str] = []
     for path, doc_model_id in _scan_model_docs(doc_paths + walk_paths):

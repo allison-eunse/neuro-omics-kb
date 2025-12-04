@@ -1,3 +1,5 @@
+<!-- model-id: mot -->
+
 # MoT Code Walkthrough
 
 > **KB references:** [MoT paper note](../generated/kb_curated/papers-md/mot_2025.md)

@@ -1,3 +1,5 @@
+<!-- model-id: hyenadna -->
+
 # StripedHyena Code Walkthrough
 
 > **KB references:** [Integration strategy](../integration/integration_strategy.md) · [Experiment config stub](../kb/templates/experiment_config_stub.md)

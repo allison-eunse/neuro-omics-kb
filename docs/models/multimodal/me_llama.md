@@ -4,6 +4,8 @@ status: active
 updated: 2025-11-19
 ---
 
+<!-- model-id: me_llama -->
+
 # Me-LLaMA (Medical Large Language Model)
 
 ## Overview

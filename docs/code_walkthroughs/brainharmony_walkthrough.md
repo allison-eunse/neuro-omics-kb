@@ -1,3 +1,5 @@
+<!-- model-id: brainharmony -->
+
 # BrainHarmony Code Walkthrough
 
 > **KB references:** [Model card](../models/brain/brainharmony.md) · [fMRI feature spec](../integration/modality_features/fmri.md) · [sMRI feature spec](../integration/modality_features/smri.md) · [Integration strategy](../integration/integration_strategy.md) · [Experiment config stub](../kb/templates/experiment_config_stub.md)

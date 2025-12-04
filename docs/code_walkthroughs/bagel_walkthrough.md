@@ -1,3 +1,5 @@
+<!-- model-id: bagel -->
+
 # BAGEL Code Walkthrough
 
 > **KB references:** [BAGEL paper note](../generated/kb_curated/papers-md/bagel_2025.md)

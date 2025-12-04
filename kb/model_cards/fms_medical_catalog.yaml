@@ -1,0 +1,23 @@
+id: fms_medical_catalog
+name: FMS-Medical Catalog
+modality: multimodal
+domain: medical_fms
+summary: A curated catalog/survey of foundation models for healthcare (meta-resource).
+repo: https://github.com/YutingHe-list/Awesome-Foundation-Models-for-Advancing-Healthcare
+weights:
+  huggingface: []
+license:
+  code: MIT
+  weights: N/A
+tasks:
+  - resource_catalog
+  - literature_survey
+verified: false
+context_length: 0
+tags:
+  - survey
+  - catalog
+  - healthcare
+notes: |
+  Meta-resource cataloging healthcare foundation models.
+  Useful for identifying additional models to integrate into KB.

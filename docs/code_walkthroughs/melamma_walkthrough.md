@@ -1,3 +1,5 @@
+<!-- model-id: me_llama -->
+
 # Me-LLaMA Code Walkthrough
 
 > **KB references:** [Me-LLaMA paper note](../generated/kb_curated/papers-md/me_llama_2024.md)

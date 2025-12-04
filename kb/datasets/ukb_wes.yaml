@@ -5,14 +5,14 @@ description: |
   This card describes the cohort and feature table layout for downstream genetics FMs (e.g., Caduceus, Evo2,
   DNABERT-2) and subject-level gene embeddings (e.g., genetics_gene_fm_pca512_v1, genetics_joo_mdd_cog_v1).
 storage_location:
-  bucket: "s3://path-to-ukb-wes-bucket-or-secure-store"
-  notes: "Replace with actual storage root for UKB WES-derived feature tables."
+  bucket: "s3://ukb-genetics-derived"
+  path: "wes/"
 schema_ref: docs/data/schemas.md#ukb-wes
 dtypes: "parquet / csv"
 required_columns:
   - eid
   - gene_symbol
-  - feature_path        # or direct numeric columns after feature extraction
+  - feature_path
 modalities:
   - genetics
 modality_columns:
@@ -20,7 +20,7 @@ modality_columns:
     - gene_symbol
     - feature_vector
 counts:
-  subjects: TBD           # update with N_subjects with WES after inventory
+  subjects: TBD
   variants: TBD
   genes_per_subject: TBD
 inclusion_criteria:
@@ -52,9 +52,7 @@ preprocessing:
 access: restricted
 access_notes: |
   Requires UK Biobank approval (link to project ID) and compliance with local governance.
-  Update with actual DUA / governance trail once finalized.
 license: "UK Biobank terms of use"
 restrictions: "No raw data redistribution; derived data governed by UKB and institutional policies."
 verified: false
 last_updated: 2025-11-19
-

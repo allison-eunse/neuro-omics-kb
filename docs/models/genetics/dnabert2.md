@@ -4,6 +4,8 @@ status: active
 updated: 2025-11-19
 ---
 
+<!-- model-id: dnabert2 -->
+
 # DNABERT-2
 
 ## Overview

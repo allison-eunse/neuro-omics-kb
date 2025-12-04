@@ -1,6 +1,6 @@
 Dataset card schema (one YAML per dataset under `kb/datasets/`):
 
-```
+```yaml
 id: unique_slug
 name: Human-readable title
 description: Short paragraph

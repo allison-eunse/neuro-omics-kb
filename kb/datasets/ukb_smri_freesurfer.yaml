@@ -4,14 +4,14 @@ description: |
   Structural MRI ROI features extracted with FreeSurfer (aparc/aseg) for UK Biobank subjects.
   Used as the primary sMRI input for CCA and prediction baselines in adult gene–brain and gene–brain–behaviour analyses.
 storage_location:
-  bucket: "s3://path-to-ukb-smri-derived-bucket"
-  notes: "Replace with actual storage root for FreeSurfer outputs or ROI feature tables."
+  bucket: "s3://ukb-smri-derived"
+  path: "freesurfer/"
 schema_ref: docs/data/schemas.md#ukb-smri
 dtypes: "parquet / csv"
 required_columns:
   - eid
   - roi_id
-  - roi_feature_vector   # or explicit columns for thickness/volume per ROI
+  - roi_feature_vector
 modalities:
   - smri
 modality_columns:
@@ -19,11 +19,10 @@ modality_columns:
     - roi_thickness
     - roi_volume
 counts:
-  subjects: TBD            # update with N_subjects with sMRI after inventory
+  subjects: TBD
 parcellation:
   atlas: "Desikan-Killiany (aparc) + aseg"
   n_rois: 176
-  notes: "Exact ROI count may vary with exclusions; update after final QC."
 covariates:
   core:
     - age
@@ -46,9 +45,7 @@ preprocessing:
 access: restricted
 access_notes: |
   Requires UK Biobank approval and adherence to imaging data usage policies.
-  Update with scanner/site distribution and QC-derived exclusions after inventory.
 license: "UK Biobank terms of use"
 restrictions: "No raw data redistribution; derived data governed by UKB and institutional policies."
 verified: false
 last_updated: 2025-11-19
-

@@ -1,3 +1,5 @@
+<!-- model-id: fms_medical_catalog -->
+
 # FMS-Medical Curation Walkthrough
 
 > **KB references:** Survey digest (pending) · [Integration strategy](../integration/integration_strategy.md) · [KB overview](../guide/kb_overview.md) · [Experiment config stub](../kb/templates/experiment_config_stub.md)

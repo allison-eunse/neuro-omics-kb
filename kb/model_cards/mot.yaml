@@ -1,0 +1,32 @@
+id: mot
+name: Mixture-of-Transformers
+modality: multimodal
+domain: architecture
+summary: Sparse multimodal transformer architecture decoupling parameters by modality for efficiency.
+repo: https://github.com/facebookresearch/MoT
+weights:
+  huggingface:
+    - https://huggingface.co/facebook/mot
+license:
+  code: MIT
+  weights: CDLA-Permissive-2.0
+arch:
+  type: sparse_multimodal_transformer
+  backbone: Transformer with modality-specific FFNs
+  parameters: scales to 7B+
+  context_length: 4096
+  special_features:
+    - Modality-specific FFN experts
+    - Shared global attention
+    - 55% FLOPs reduction vs dense baseline
+tasks:
+  - multimodal_pretraining
+verified: false
+context_length: 4096
+tags:
+  - sparse
+  - multimodal
+  - architecture
+notes: |
+  Documented as architectural reference for efficient multimodal architectures.
+  See docs/integration/design_patterns.md for how MoT patterns inform gene-brain fusion.

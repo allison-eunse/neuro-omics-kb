@@ -1,8 +1,8 @@
 # 🧬🧠 Neuro-Omics Knowledge Base
 
 [![Documentation](https://img.shields.io/badge/docs-mkdocs-blue)](https://allison-eunse.github.io/neuro-omics-kb/)
-[![Models](https://img.shields.io/badge/models-13%20FMs-green)](#foundation-models)
-[![Paper Cards](https://img.shields.io/badge/papers-33-orange)](#research-papers)
+[![Models](https://img.shields.io/badge/models-20%20FMs-green)](#foundation-models)
+[![Paper Cards](https://img.shields.io/badge/papers-30-orange)](#research-papers)
 [![Integration Cards](https://img.shields.io/badge/integration_cards-3-purple)](#integration-strategies)
 
 > **A comprehensive documentation hub for genetics and brain foundation models and their multimodal integration.**
@@ -71,7 +71,7 @@ python scripts/manage_kb.py validate models
 <details open>
 <summary><b>📚 Documentation (docs/)</b></summary>
 
-- **Code Walkthroughs** - Step-by-step guides for 15 foundation models with consistent formatting
+- **Code Walkthroughs** - Step-by-step guides for 17 foundation models with consistent formatting
   - 🧬 **Genetics** (4): Caduceus, DNABERT-2, GENERator, Evo 2
   - 🧠 **Brain** (5): BrainLM, Brain-JEPA, Brain Harmony, BrainMT, SwiFT
   - 🏥 **Multimodal/Clinical** (6): BAGEL, MoT, M3FM, Me-LLaMA, TITAN, FMS-Medical catalog
@@ -85,9 +85,9 @@ python scripts/manage_kb.py validate models
 <details>
 <summary><b>🏷️ Metadata Cards (kb/)</b></summary>
 
-- **Model Cards** (`model_cards/*.yaml`) - 15 model cards (13 FMs + 2 ARPA-H planning cards) with architecture specs, embedding recipes, integration hooks
-- **Dataset Cards** (`datasets/*.yaml`) - Sample sizes, QC thresholds, access requirements
-- **Paper Cards** (`paper_cards/*.yaml`) - 20 research papers with structured takeaways
+- **Model Cards** (`model_cards/*.yaml`) - 20 model cards (17 FMs + 3 ARPA-H/reference cards) with architecture specs, embedding recipes, integration hooks
+- **Dataset Cards** (`datasets/*.yaml`) - 19 dataset specifications (6 UKB planning cards + 13 available/reference datasets)
+- **Paper Cards** (`paper_cards/*.yaml`) - 30 research papers with structured takeaways
 - **Integration Cards** (`integration_cards/*.yaml`) - Embedding strategies, harmonization methods, preprocessing pipelines
 
 [Browse all cards →](./kb/)
@@ -124,6 +124,7 @@ Ready-to-run YAML templates in `configs/experiments/`:
 | 🧬 [DNABERT-2](https://allison-eunse.github.io/neuro-omics-kb/models/genetics/dnabert2/) | Cross-species transfer | BPE tokenization | [Walkthrough](https://allison-eunse.github.io/neuro-omics-kb/code_walkthroughs/dnabert2_walkthrough/) |
 | 🧬 [Evo 2](https://allison-eunse.github.io/neuro-omics-kb/models/genetics/evo2/) | Ultra-long regulatory regions | 1M context | [Walkthrough](https://allison-eunse.github.io/neuro-omics-kb/code_walkthroughs/evo2_walkthrough/) |
 | 🧬 [GENERator](https://allison-eunse.github.io/neuro-omics-kb/models/genetics/generator/) | Generative modeling | 6-mer LM | [Walkthrough](https://allison-eunse.github.io/neuro-omics-kb/code_walkthroughs/generator_walkthrough/) |
+| 🧬 [HyenaDNA](https://allison-eunse.github.io/neuro-omics-kb/models/genetics/hyenadna/) | Long-range DNA modeling | Efficient convolutions | [Walkthrough](https://allison-eunse.github.io/neuro-omics-kb/code_walkthroughs/hyena_walkthrough/) |
 
 ### Brain Models
 | Model | Modality | Best for | Documentation |
@@ -148,7 +149,7 @@ Ready-to-run YAML templates in `configs/experiments/`:
 
 ## 📋 Research Papers
 
-**33 structured paper cards** documenting:
+**30 structured paper cards** documenting:
 
 - 🧬 **Genetics FMs** (5): Caduceus, DNABERT-2, Evo2, GENERator, HyenaDNA
 - 🧠 **Brain FMs** (5): BrainLM, Brain-JEPA, Brain Harmony, BrainMT, SwiFT

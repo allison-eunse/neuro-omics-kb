@@ -4,6 +4,8 @@ status: active
 updated: 2025-11-19
 ---
 
+<!-- model-id: titan -->
+
 # TITAN (Transformer-based Image and Text Alignment Network)
 
 ## Overview

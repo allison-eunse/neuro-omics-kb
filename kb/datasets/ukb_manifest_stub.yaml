@@ -1,7 +1,6 @@
 id: ukb_manifest_stub
 name: "UKB Multimodal Manifest"
 description: "Subject-level manifest linking genetics (WES), sMRI, and fMRI data with covariates and splits."
-status: "stub"
 last_updated: "2025-11-17"
 
 storage_location:

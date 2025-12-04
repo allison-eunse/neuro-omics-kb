@@ -1,3 +1,5 @@
+<!-- model-id: evo2 -->
+
 # Evo 2 Code Walkthrough
 
 > **KB references:** [Model card](../models/genetics/evo2.md) · [Genomics feature spec](../integration/modality_features/genomics.md) · [Integration strategy](../integration/integration_strategy.md) · [Experiment config stub](../kb/templates/experiment_config_stub.md)

@@ -4,6 +4,8 @@ status: active
 updated: 2025-11-19
 ---
 
+<!-- model-id: m3fm -->
+
 # M3FM (Multimodal, Multidomain, Multilingual Medical Foundation Model)
 
 ## Overview

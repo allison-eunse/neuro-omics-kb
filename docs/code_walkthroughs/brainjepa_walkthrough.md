@@ -1,3 +1,5 @@
+<!-- model-id: brainjepa -->
+
 # Brain-JEPA Code Walkthrough
 
 > **KB references:** [Model card](../models/brain/brainjepa.md) · [fMRI feature spec](../integration/modality_features/fmri.md) · [Integration strategy](../integration/integration_strategy.md) · [Experiment config stub](../kb/templates/experiment_config_stub.md)

@@ -1,0 +1,29 @@
+id: genetics_embeddings
+name: Precomputed Genetics Embeddings
+description: Embeddings generated from gene sequences using various foundation models (Caduceus, DNABERT-2, Evo2, GENERator).
+storage_location:
+  bucket: s3://ukb-derived
+  path: embeddings/genetics/
+schema_ref: docs/data/schemas.md#genetics_embeddings
+required_columns:
+  - eid
+  - gene_id
+  - embedding
+  - model_name
+  - embedding_dim
+  - reference_version
+modalities:
+  - genetics
+counts:
+  subjects: TBD
+  genes_per_subject: TBD
+embedding_models:
+  - caduceus
+  - dnabert2
+  - evo2
+  - generator
+embedding_recipe_ref: kb/integration_cards/genetics_embeddings_pipeline.yaml
+access: restricted
+restrictions: Requires UK Biobank project approval. Derived from UKB WES.
+verified: false
+last_updated: 2025-11-19

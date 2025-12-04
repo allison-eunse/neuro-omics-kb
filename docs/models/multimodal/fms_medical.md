@@ -4,6 +4,8 @@ status: active
 updated: 2025-11-19
 ---
 
+<!-- model-id: fms_medical_catalog -->
+
 # FMS-Medical: Foundation Models for Advancing Healthcare (Catalog)
 
 ## Overview

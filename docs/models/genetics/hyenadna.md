@@ -4,6 +4,8 @@ status: active
 updated: 2025-11-26
 ---
 
+<!-- model-id: hyenadna -->
+
 # HyenaDNA
 
 ## Overview

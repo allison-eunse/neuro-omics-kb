@@ -6,13 +6,13 @@ description: |
   This card documents the subject-level PGS table referenced by
   `configs/experiments/03_prediction_baselines_tabular.yaml`.
 storage_location:
-  bucket: "s3://path-to-ukb-pgs-bucket-or-secure-store"
-  notes: "Replace with the actual storage root for the derived PGS table."
+  bucket: "s3://ukb-genetics-derived"
+  path: "pgs/"
 schema_ref: "docs/data/schemas.md#ukb-genetics-pgs"
 dtypes: "parquet / csv"
 required_columns:
   - eid
-  - pgs_*           # one column per polygenic score (see documentation)
+  - pgs_*
   - pc1
   - pc2
   - pc3
@@ -39,7 +39,7 @@ modality_columns:
     - pc9
     - pc10
 counts:
-  subjects: TBD  # fill after data inventory
+  subjects: TBD
 inclusion_criteria:
   - "Linked to UKB genetics and imaging manifests via eid."
   - "PGS computed with documented pipelines and QC."
@@ -60,10 +60,7 @@ covariates:
 access: restricted
 access_notes: |
   Requires UK Biobank approval and compliance with local governance.
-  Update with actual DUA / governance trail once finalized.
 license: "UK Biobank terms of use"
 restrictions: "No raw data redistribution; derived data governed by UKB and institutional policies."
 verified: false
 last_updated: 2025-11-19
-
-

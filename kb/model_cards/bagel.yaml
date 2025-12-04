@@ -1,0 +1,33 @@
+id: bagel
+name: BAGEL
+modality: multimodal
+domain: vision-language-video
+summary: Unified multimodal foundation model with MoT-style expert routing for understanding and generation.
+repo: https://github.com/ChaofanTao/BAGEL
+weights:
+  huggingface:
+    - https://huggingface.co/ChaofanTao/BAGEL-7B
+license:
+  code: Apache-2.0
+  weights: Apache-2.0
+arch:
+  type: unified_multimodal_decoder
+  backbone: Qwen2.5 + MoT experts
+  parameters: 7B active / 14B total
+  context_length: 32768
+  special_features:
+    - MoT expert routing (understanding + generation)
+    - SigLIP2-so400m encoder
+    - FLUX VAE for generation
+tasks:
+  - multimodal_understanding
+  - multimodal_generation
+verified: false
+context_length: 32768
+tags:
+  - unified
+  - multimodal
+  - mot
+notes: |
+  Documented as architectural reference for multimodal integration patterns.
+  See docs/integration/design_patterns.md for how MoT patterns inform gene-brain fusion.

@@ -1,3 +1,5 @@
+<!-- model-id: brainmt -->
+
 # BrainMT Code Walkthrough
 
 > **KB references:** [Model card](../models/brain/brainmt.md) · [fMRI feature spec](../integration/modality_features/fmri.md) · [Integration strategy](../integration/integration_strategy.md) · [Experiment config stub](../kb/templates/experiment_config_stub.md)

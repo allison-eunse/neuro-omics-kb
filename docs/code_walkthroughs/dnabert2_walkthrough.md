@@ -1,3 +1,5 @@
+<!-- model-id: dnabert2 -->
+
 # DNABERT-2 Code Walkthrough
 
 > **KB references:** [Model card](../models/genetics/dnabert2.md) · [Genomics feature spec](../integration/modality_features/genomics.md) · [Integration strategy](../integration/integration_strategy.md) · [Experiment config stub](../kb/templates/experiment_config_stub.md)
