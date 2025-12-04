@@ -14,35 +14,39 @@ Each walkthrough now surfaces the KB scaffolding you need to turn narrative note
 
 ## Walkthrough roster
 
-### 🧠 Brain foundation models
-| Walkthrough | KB Model Card | Modality Spec |
-| --- | --- | --- |
-| [BrainLM](brainlm_walkthrough.md) | [BrainLM card](../models/brain/brainlm.md) | [fMRI spec](../integration/modality_features/fmri.md) |
-| [Brain-JEPA](brainjepa_walkthrough.md) | [Brain-JEPA card](../models/brain/brainjepa.md) | [fMRI spec](../integration/modality_features/fmri.md) |
-| [Brain Harmony](brainharmony_walkthrough.md) | [Brain Harmony card](../models/brain/brainharmony.md) | [fMRI spec](../integration/modality_features/fmri.md), [sMRI spec](../integration/modality_features/smri.md) |
-| [BrainMT](brainmt_walkthrough.md) | [BrainMT card](../models/brain/brainmt.md) | [fMRI spec](../integration/modality_features/fmri.md) |
-| [SwiFT](swift_walkthrough.md) | [SwiFT card](../models/brain/swift.md) | [fMRI spec](../integration/modality_features/fmri.md) |
+### Brain Foundation Models
 
-### 🧬 Genetics foundation models
-| Walkthrough | KB Model Card | Modality Spec |
-| --- | --- | --- |
-| [Caduceus](caduceus_walkthrough.md) | [Caduceus card](../models/genetics/caduceus.md) | [Genomics spec](../integration/modality_features/genomics.md) |
-| [DNABERT-2](dnabert2_walkthrough.md) | [DNABERT-2 card](../models/genetics/dnabert2.md) | [Genomics spec](../integration/modality_features/genomics.md) |
-| [Evo 2](evo2_walkthrough.md) | [Evo2 card](../models/genetics/evo2.md) | [Genomics spec](../integration/modality_features/genomics.md) |
-| [GENERaTOR](generator_walkthrough.md) | [GENERator card](../models/genetics/generator.md) | [Genomics spec](../integration/modality_features/genomics.md) |
+| Model | Code Walkthrough | Model Card | Modality Spec |
+|:------|:-----------------|:-----------|:--------------|
+| <span class="brain">**BrainLM**</span> | [Code Walkthrough](brainlm_walkthrough.md) | [Model Card](../models/brain/brainlm.md) | [fMRI features](../integration/modality_features/fmri.md) |
+| <span class="brain">**Brain-JEPA**</span> | [Code Walkthrough](brainjepa_walkthrough.md) | [Model Card](../models/brain/brainjepa.md) | [fMRI features](../integration/modality_features/fmri.md) |
+| <span class="brain">**Brain Harmony**</span> | [Code Walkthrough](brainharmony_walkthrough.md) | [Model Card](../models/brain/brainharmony.md) | [fMRI](../integration/modality_features/fmri.md) + [sMRI](../integration/modality_features/smri.md) |
+| <span class="brain">**BrainMT**</span> | [Code Walkthrough](brainmt_walkthrough.md) | [Model Card](../models/brain/brainmt.md) | [fMRI features](../integration/modality_features/fmri.md) |
+| <span class="brain">**SwiFT**</span> | [Code Walkthrough](swift_walkthrough.md) | [Model Card](../models/brain/swift.md) | [fMRI features](../integration/modality_features/fmri.md) |
 
-### 🏥 Multimodal & clinical models
-| Walkthrough | KB Model Card | Modality Spec |
-| --- | --- | --- |
-| [BAGEL](bagel_walkthrough.md) | [BAGEL card](../models/multimodal/bagel.md) | — |
-| [Flamingo](flamingo_walkthrough.md) | [Flamingo card](../models/multimodal/flamingo.md) | — |
-| [MoT](mot_walkthrough.md) | [MoT card](../models/multimodal/mot.md) | — |
-| [M3FM](m3fm_walkthrough.md) | [M3FM card](../models/multimodal/m3fm.md) | — |
-| [Me-LLaMA](melamma_walkthrough.md) | [Me-LLaMA card](../models/multimodal/me_llama.md) | — |
-| [TITAN](titan_walkthrough.md) | [TITAN card](../models/multimodal/titan.md) | — |
-| [FMS-Medical](fms_medical_walkthrough.md) | [FMS-Medical card](../models/multimodal/fms_medical.md) | — |
+### Genetics Foundation Models
 
-### 🏗️ Architectures & components
-| Walkthrough | KB Model Card | Modality Spec |
-| --- | --- | --- |
-| [StripedHyena](hyena_walkthrough.md) | — | — |
+| Model | Code Walkthrough | Model Card | Modality Spec |
+|:------|:-----------------|:-----------|:--------------|
+| <span class="genetics">**Caduceus**</span> | [Code Walkthrough](caduceus_walkthrough.md) | [Model Card](../models/genetics/caduceus.md) | [Genomics features](../integration/modality_features/genomics.md) |
+| <span class="genetics">**DNABERT-2**</span> | [Code Walkthrough](dnabert2_walkthrough.md) | [Model Card](../models/genetics/dnabert2.md) | [Genomics features](../integration/modality_features/genomics.md) |
+| <span class="genetics">**Evo 2**</span> | [Code Walkthrough](evo2_walkthrough.md) | [Model Card](../models/genetics/evo2.md) | [Genomics features](../integration/modality_features/genomics.md) |
+| <span class="genetics">**GENERator**</span> | [Code Walkthrough](generator_walkthrough.md) | [Model Card](../models/genetics/generator.md) | [Genomics features](../integration/modality_features/genomics.md) |
+
+### Multimodal & Clinical Models
+
+| Model | Code Walkthrough | Model Card | Architecture Reference |
+|:------|:-----------------|:-----------|:----------------------|
+| <span class="multimodal">**BAGEL**</span> | [Code Walkthrough](bagel_walkthrough.md) | [Model Card](../models/multimodal/bagel.md) | [Multimodal architectures](../integration/multimodal_architectures.md) |
+| <span class="multimodal">**Flamingo**</span> | [Code Walkthrough](flamingo_walkthrough.md) | [Model Card](../models/multimodal/flamingo.md) | [Design patterns](../integration/design_patterns.md) |
+| <span class="multimodal">**MoT**</span> | [Code Walkthrough](mot_walkthrough.md) | [Model Card](../models/multimodal/mot.md) | [Multimodal architectures](../integration/multimodal_architectures.md) |
+| <span class="multimodal">**M3FM**</span> | [Code Walkthrough](m3fm_walkthrough.md) | [Model Card](../models/multimodal/m3fm.md) | [Design patterns](../integration/design_patterns.md) |
+| <span class="multimodal">**Me-LLaMA**</span> | [Code Walkthrough](melamma_walkthrough.md) | [Model Card](../models/multimodal/me_llama.md) | [Multimodal architectures](../integration/multimodal_architectures.md) |
+| <span class="multimodal">**TITAN**</span> | [Code Walkthrough](titan_walkthrough.md) | [Model Card](../models/multimodal/titan.md) | [Design patterns](../integration/design_patterns.md) |
+| <span class="reference">**FMS-Medical**</span> | [Code Walkthrough](fms_medical_walkthrough.md) | [Model Card](../models/multimodal/fms_medical.md) | [Reference catalog](../models/multimodal/fms_medical.md) |
+
+### Architecture References
+
+| Component | Code Walkthrough | Integration Guide |
+|:----------|:-----------------|:------------------|
+| <span class="genetics">**HyenaDNA / StripedHyena**</span> | [Code Walkthrough](hyena_walkthrough.md) | [Long-context genomics](../integration/modality_features/genomics.md) |
