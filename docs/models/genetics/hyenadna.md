@@ -35,7 +35,7 @@ parameters and data.
   window-level features).
 
 HyenaDNA is not currently vendored as code in this KB; instead, the generic StripedHyena codebase in
-`external_repos/hyena/` is used for architectural walkthroughs.
+`external_repos/hyena/` is used for architectural code walkthroughs.
 
 ## Integration Strategy
 

@@ -1,6 +1,6 @@
 # Code Walkthrough Hub
 
-Each walkthrough now surfaces the KB scaffolding you need to turn narrative notes into living cards and experiment configs.
+Each code walkthrough now surfaces the KB scaffolding you need to turn narrative notes into living cards and experiment configs.
 
 ## 🔗 Quick Links
 
@@ -12,7 +12,7 @@ Each walkthrough now surfaces the KB scaffolding you need to turn narrative note
 - KB templates (model/integration/method/dataset): `kb/templates/`
 - Experiment config stub: `kb/templates/experiment_config_stub.md`
 
-## 📚 Walkthrough Roster
+## 📚 Code Walkthrough Roster
 
 ### 🧠 Brain Foundation Models
 

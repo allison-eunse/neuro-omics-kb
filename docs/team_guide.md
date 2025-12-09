@@ -81,7 +81,7 @@ python scripts/manage_kb.py ops strategy <span style="color: #aed581; font-weigh
 
 !!! example "Example: Understanding Caduceus"
     1. **Overview:** [Caduceus model docs](models/genetics/caduceus.md)
-    2. **Step-by-step:** [Caduceus walkthrough](code_walkthroughs/caduceus_walkthrough.md)
+    2. **Step-by-step:** [Caduceus Code Walkthrough](code_walkthroughs/caduceus_walkthrough.md)
     3. **Code:** `external_repos/caduceus/`
     4. **Metadata:** `kb/model_cards/caduceus.yaml`
 
@@ -176,7 +176,7 @@ python scripts/manage_kb.py ops strategy <span style="color: #4fc3f7; font-weigh
 
 ### ✅ Available Now
 
-1. **Read model walkthroughs** — Understand how each FM works
+1. **Read model code walkthroughs** — Understand how each FM works
 2. **Study embedding recipes** — Know what preprocessing to apply
 3. **Review experiment configs** — Understand analysis pipeline
 4. **Validate YAML cards** — `python scripts/manage_kb.py validate models`
@@ -195,7 +195,7 @@ python scripts/manage_kb.py ops strategy <span style="color: #4fc3f7; font-weigh
 2. `README.md` — High-level overview
 3. `docs/integration/integration_strategy.md` — THE PLAYBOOK
 4. `configs/experiments/01_cca_gene_smri.yaml` — See what we're running
-5. Pick one FM walkthrough to read in detail
+5. Pick one FM code walkthrough to read in detail
 
 ---
 

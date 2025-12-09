@@ -79,7 +79,7 @@ python scripts/manage_kb.py validate models
 **Go deeper:** [Explore Integration Strategy](integration/integration_strategy.md)
 
 ### → Clinical & multimodal FMs
-- Reuse BAGEL, MoT, M3FM, Me-LLaMA, TITAN, and FMS-Medical walkthroughs as reference builds
+- Reuse BAGEL, MoT, M3FM, Me-LLaMA, TITAN, and FMS-Medical code walkthroughs as reference builds
 - Understand how vision–language or sparse MoE systems align modalities before adapting to neuro-omics
 - Borrow evaluation scaffolding for bilingual or imaging–text setups
 
@@ -97,7 +97,7 @@ python scripts/manage_kb.py validate models
 ## 📦 What's Inside
 
 <details open>
-<summary><b>📚 Documentation</b> — Walkthroughs, playbooks, decision logs</summary>
+<summary><b>📚 Documentation</b> — Code Walkthroughs, playbooks, decision logs</summary>
 
 <div style="font-family: monospace; background: #f5f5f5; padding: 16px; border-radius: 8px; line-height: 1.8; border-left: 4px solid #7b1fa2;">
 <code>docs/</code><br>
@@ -110,7 +110,7 @@ python scripts/manage_kb.py validate models
 └── <b>decisions/</b> ← Integration plans, validation rationale
 </div>
 
-Walkthroughs, schemas, and decision logs share the same terminology across genetics, brain, and multimodal FMs.
+Code Walkthroughs, schemas, and decision logs share the same terminology across genetics, brain, and multimodal FMs.
 
 </details>
 
@@ -127,12 +127,37 @@ Walkthroughs, schemas, and decision logs share the same terminology across genet
 
 **What's in each folder:**
 
-| Folder | What It Contains | Examples |
-|:-------|:-----------------|:---------|
-| <span class="genetics">**model_cards/**</span> | Foundation model specifications with architecture details, parameters, and integration hooks | Caduceus, BrainLM, BAGEL, MoT |
-| <span class="multimodal">**paper_cards/**</span> | Research paper summaries with key takeaways and implementation notes | RC-equivariance, MURD harmonization, Ensemble Integration |
-| <span class="brain">**datasets/**</span> | Data schema definitions, preprocessing requirements, and access protocols | UKB fMRI/sMRI, HCP, Genomic Benchmarks |
-| <span class="fusion">**integration_cards/**</span> | Embedding extraction recipes, harmonization methods, and fusion strategies | `genetics_joo_mdd_cog_v1`, `murd_t1_t2`, `combat_smri` |
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0;">
+
+<div style="background: #e8f5e9; padding: 14px; border-radius: 8px; border-left: 4px solid #2e7d32;">
+<span class="genetics" style="font-size: 1.1em;">📦 model_cards/</span><br>
+<b>Foundation model specifications</b><br>
+<span style="color: #555;">Architecture details, parameters, integration hooks</span><br>
+<code style="font-size: 0.85em;">Caduceus, BrainLM, BAGEL, MoT</code>
+</div>
+
+<div style="background: #f3e5f5; padding: 14px; border-radius: 8px; border-left: 4px solid #7b1fa2;">
+<span class="multimodal" style="font-size: 1.1em;">📄 paper_cards/</span><br>
+<b>Research paper summaries</b><br>
+<span style="color: #555;">Key takeaways, implementation notes</span><br>
+<code style="font-size: 0.85em;">RC-equivariance, MURD, Ensemble Integration</code>
+</div>
+
+<div style="background: #e3f2fd; padding: 14px; border-radius: 8px; border-left: 4px solid #1565c0;">
+<span class="brain" style="font-size: 1.1em;">🗂️ datasets/</span><br>
+<b>Data schema definitions</b><br>
+<span style="color: #555;">Preprocessing requirements, access protocols</span><br>
+<code style="font-size: 0.85em;">UKB fMRI/sMRI, HCP, Genomic Benchmarks</code>
+</div>
+
+<div style="background: #fff3e0; padding: 14px; border-radius: 8px; border-left: 4px solid #f57c00;">
+<span class="fusion" style="font-size: 1.1em;">🔗 integration_cards/</span><br>
+<b>Embedding & fusion recipes</b><br>
+<span style="color: #555;">Extraction pipelines, harmonization methods</span><br>
+<code style="font-size: 0.85em;">genetics_joo_mdd_cog_v1, murd_t1_t2, combat_smri</code>
+</div>
+
+</div>
 
 [Browse all cards on GitHub →](https://github.com/allison-eunse/neuro-omics-kb/tree/main/kb)
 
@@ -175,18 +200,18 @@ Each config references the exact embeddings, covariates, and validation plan to 
 
 ### 🧬 Genetics Models
 
-| Model | Best For | Context | Walkthrough |
-|:------|:---------|:--------|:------------|
-| [**Caduceus**](models/genetics/caduceus.md) | RC-equivariant gene embeddings | DNA | [walkthrough →](code_walkthroughs/caduceus_walkthrough.md) |
-| [**DNABERT-2**](models/genetics/dnabert2.md) | Cross-species transfer | BPE | [walkthrough →](code_walkthroughs/dnabert2_walkthrough.md) |
-| [**Evo 2**](models/genetics/evo2.md) | Ultra-long regulatory regions | 1M context | [walkthrough →](code_walkthroughs/evo2_walkthrough.md) |
-| [**GENERator**](models/genetics/generator.md) | Generative modeling | 6-mer LM | [walkthrough →](code_walkthroughs/generator_walkthrough.md) |
-| [**HyenaDNA**](models/genetics/hyenadna.md) | Long-range sequences | 1M context | [walkthrough →](code_walkthroughs/hyena_walkthrough.md) |
+| Model | Best For | Context | Code Walkthrough |
+|:------|:---------|:--------|:-----------------|
+| [**Caduceus**](models/genetics/caduceus.md) | RC-equivariant gene embeddings | DNA | [Code Walkthrough →](code_walkthroughs/caduceus_walkthrough.md) |
+| [**DNABERT-2**](models/genetics/dnabert2.md) | Cross-species transfer | BPE | [Code Walkthrough →](code_walkthroughs/dnabert2_walkthrough.md) |
+| [**Evo 2**](models/genetics/evo2.md) | Ultra-long regulatory regions | 1M context | [Code Walkthrough →](code_walkthroughs/evo2_walkthrough.md) |
+| [**GENERator**](models/genetics/generator.md) | Generative modeling | 6-mer LM | [Code Walkthrough →](code_walkthroughs/generator_walkthrough.md) |
+| [**HyenaDNA**](models/genetics/hyenadna.md) | Long-range sequences | 1M context | [Code Walkthrough →](code_walkthroughs/hyena_walkthrough.md) |
 
 ### 🧠 Brain Models
 
-| Model | Modality | Best For | Walkthrough |
-|:------|:---------|:---------|:------------|
+| Model | Modality | Best For | Code Walkthrough |
+|:------|:---------|:---------|:-----------------|
 | <span class="brain">**[BrainLM](models/brain/brainlm.md)**</span> | fMRI | Site-robust embeddings | [Code Walkthrough →](code_walkthroughs/brainlm_walkthrough.md) |
 | <span class="brain">**[Brain-JEPA](models/brain/brainjepa.md)**</span> | fMRI | Lower-latency option | [Code Walkthrough →](code_walkthroughs/brainjepa_walkthrough.md) |
 | <span class="brain">**[Brain Harmony](models/brain/brainharmony.md)**</span> | sMRI + fMRI | Multi-modal fusion | [Code Walkthrough →](code_walkthroughs/brainharmony_walkthrough.md) |
@@ -195,8 +220,8 @@ Each config references the exact embeddings, covariates, and validation plan to 
 
 ### 🏥 Multimodal & Clinical Models
 
-| Model | Type | Key Innovation | Walkthrough |
-|:------|:-----|:---------------|:------------|
+| Model | Type | Key Innovation | Code Walkthrough |
+|:------|:-----|:---------------|:-----------------|
 | <span class="multimodal">**[BAGEL](models/multimodal/bagel.md)**</span> | Unified FM | MoT experts (understand + generate) | [Code Walkthrough →](code_walkthroughs/bagel_walkthrough.md) |
 | <span class="multimodal">**[MoT](models/multimodal/mot.md)**</span> | Sparse | Modality-aware sparsity (~55% FLOPs) | [Code Walkthrough →](code_walkthroughs/mot_walkthrough.md) |
 | <span class="multimodal">**[M3FM](models/multimodal/m3fm.md)**</span> | Radiology | CXR/CT + bilingual (EN/CN) | [Code Walkthrough →](code_walkthroughs/m3fm_walkthrough.md) |
