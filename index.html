@@ -376,7 +376,7 @@
           
   
   
-  Code walkthroughs
+  Code Walkthroughs
 
         </a>
       </li>
@@ -2912,7 +2912,7 @@
   <span class="md-ellipsis">
     
   
-    Code walkthroughs
+    Code Walkthroughs
   
 
     
@@ -2928,7 +2928,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Code walkthroughs
+    Code Walkthroughs
   
 
           </label>
@@ -5955,7 +5955,7 @@
 <p><strong>Go deeper:</strong> <a href="integration/integration_strategy/">Explore Integration Strategy</a></p>
 <h3 id="clinical-multimodal-fms">→ Clinical &amp; multimodal FMs<a class="headerlink" href="#clinical-multimodal-fms" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Reuse BAGEL, MoT, M3FM, Me-LLaMA, TITAN, and FMS-Medical walkthroughs as reference builds</li>
+<li>Reuse BAGEL, MoT, M3FM, Me-LLaMA, TITAN, and FMS-Medical code walkthroughs as reference builds</li>
 <li>Understand how vision–language or sparse MoE systems align modalities before adapting to neuro-omics</li>
 <li>Borrow evaluation scaffolding for bilingual or imaging–text setups</li>
 </ul>
@@ -5970,7 +5970,7 @@
 <hr />
 <h2 id="whats-inside">📦 What's Inside<a class="headerlink" href="#whats-inside" title="Permanent link">&para;</a></h2>
 <details open>
-<summary><b>📚 Documentation</b> — Walkthroughs, playbooks, decision logs</summary>
+<summary><b>📚 Documentation</b> — Code Walkthroughs, playbooks, decision logs</summary>
 
 <div style="font-family: monospace; background: #f5f5f5; padding: 16px; border-radius: 8px; line-height: 1.8; border-left: 4px solid #7b1fa2;">
 <code>docs/</code><br>
@@ -5983,7 +5983,7 @@
 └── <b>decisions/</b> ← Integration plans, validation rationale
 </div>
 
-Walkthroughs, schemas, and decision logs share the same terminology across genetics, brain, and multimodal FMs.
+Code Walkthroughs, schemas, and decision logs share the same terminology across genetics, brain, and multimodal FMs.
 
 </details>
 
@@ -6000,12 +6000,37 @@ Walkthroughs, schemas, and decision logs share the same terminology across genet
 
 **What's in each folder:**
 
-| Folder | What It Contains | Examples |
-|:-------|:-----------------|:---------|
-| <span class="genetics">**model_cards/**</span> | Foundation model specifications with architecture details, parameters, and integration hooks | Caduceus, BrainLM, BAGEL, MoT |
-| <span class="multimodal">**paper_cards/**</span> | Research paper summaries with key takeaways and implementation notes | RC-equivariance, MURD harmonization, Ensemble Integration |
-| <span class="brain">**datasets/**</span> | Data schema definitions, preprocessing requirements, and access protocols | UKB fMRI/sMRI, HCP, Genomic Benchmarks |
-| <span class="fusion">**integration_cards/**</span> | Embedding extraction recipes, harmonization methods, and fusion strategies | `genetics_joo_mdd_cog_v1`, `murd_t1_t2`, `combat_smri` |
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0;">
+
+<div style="background: #e8f5e9; padding: 14px; border-radius: 8px; border-left: 4px solid #2e7d32;">
+<span class="genetics" style="font-size: 1.1em;">📦 model_cards/</span><br>
+<b>Foundation model specifications</b><br>
+<span style="color: #555;">Architecture details, parameters, integration hooks</span><br>
+<code style="font-size: 0.85em;">Caduceus, BrainLM, BAGEL, MoT</code>
+</div>
+
+<div style="background: #f3e5f5; padding: 14px; border-radius: 8px; border-left: 4px solid #7b1fa2;">
+<span class="multimodal" style="font-size: 1.1em;">📄 paper_cards/</span><br>
+<b>Research paper summaries</b><br>
+<span style="color: #555;">Key takeaways, implementation notes</span><br>
+<code style="font-size: 0.85em;">RC-equivariance, MURD, Ensemble Integration</code>
+</div>
+
+<div style="background: #e3f2fd; padding: 14px; border-radius: 8px; border-left: 4px solid #1565c0;">
+<span class="brain" style="font-size: 1.1em;">🗂️ datasets/</span><br>
+<b>Data schema definitions</b><br>
+<span style="color: #555;">Preprocessing requirements, access protocols</span><br>
+<code style="font-size: 0.85em;">UKB fMRI/sMRI, HCP, Genomic Benchmarks</code>
+</div>
+
+<div style="background: #fff3e0; padding: 14px; border-radius: 8px; border-left: 4px solid #f57c00;">
+<span class="fusion" style="font-size: 1.1em;">🔗 integration_cards/</span><br>
+<b>Embedding & fusion recipes</b><br>
+<span style="color: #555;">Extraction pipelines, harmonization methods</span><br>
+<code style="font-size: 0.85em;">genetics_joo_mdd_cog_v1, murd_t1_t2, combat_smri</code>
+</div>
+
+</div>
 
 [Browse all cards on GitHub →](https://github.com/allison-eunse/neuro-omics-kb/tree/main/kb)
 
@@ -6050,7 +6075,7 @@ Each config references the exact embeddings, covariates, and validation plan to 
 <th style="text-align: left;">Model</th>
 <th style="text-align: left;">Best For</th>
 <th style="text-align: left;">Context</th>
-<th style="text-align: left;">Walkthrough</th>
+<th style="text-align: left;">Code Walkthrough</th>
 </tr>
 </thead>
 <tbody>
@@ -6058,31 +6083,31 @@ Each config references the exact embeddings, covariates, and validation plan to 
 <td style="text-align: left;"><a href="models/genetics/caduceus/"><strong>Caduceus</strong></a></td>
 <td style="text-align: left;">RC-equivariant gene embeddings</td>
 <td style="text-align: left;">DNA</td>
-<td style="text-align: left;"><a href="code_walkthroughs/caduceus_walkthrough/">walkthrough →</a></td>
+<td style="text-align: left;"><a href="code_walkthroughs/caduceus_walkthrough/">Code Walkthrough →</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="models/genetics/dnabert2/"><strong>DNABERT-2</strong></a></td>
 <td style="text-align: left;">Cross-species transfer</td>
 <td style="text-align: left;">BPE</td>
-<td style="text-align: left;"><a href="code_walkthroughs/dnabert2_walkthrough/">walkthrough →</a></td>
+<td style="text-align: left;"><a href="code_walkthroughs/dnabert2_walkthrough/">Code Walkthrough →</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="models/genetics/evo2/"><strong>Evo 2</strong></a></td>
 <td style="text-align: left;">Ultra-long regulatory regions</td>
 <td style="text-align: left;">1M context</td>
-<td style="text-align: left;"><a href="code_walkthroughs/evo2_walkthrough/">walkthrough →</a></td>
+<td style="text-align: left;"><a href="code_walkthroughs/evo2_walkthrough/">Code Walkthrough →</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="models/genetics/generator/"><strong>GENERator</strong></a></td>
 <td style="text-align: left;">Generative modeling</td>
 <td style="text-align: left;">6-mer LM</td>
-<td style="text-align: left;"><a href="code_walkthroughs/generator_walkthrough/">walkthrough →</a></td>
+<td style="text-align: left;"><a href="code_walkthroughs/generator_walkthrough/">Code Walkthrough →</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="models/genetics/hyenadna/"><strong>HyenaDNA</strong></a></td>
 <td style="text-align: left;">Long-range sequences</td>
 <td style="text-align: left;">1M context</td>
-<td style="text-align: left;"><a href="code_walkthroughs/hyena_walkthrough/">walkthrough →</a></td>
+<td style="text-align: left;"><a href="code_walkthroughs/hyena_walkthrough/">Code Walkthrough →</a></td>
 </tr>
 </tbody>
 </table>
@@ -6093,7 +6118,7 @@ Each config references the exact embeddings, covariates, and validation plan to 
 <th style="text-align: left;">Model</th>
 <th style="text-align: left;">Modality</th>
 <th style="text-align: left;">Best For</th>
-<th style="text-align: left;">Walkthrough</th>
+<th style="text-align: left;">Code Walkthrough</th>
 </tr>
 </thead>
 <tbody>
@@ -6136,7 +6161,7 @@ Each config references the exact embeddings, covariates, and validation plan to 
 <th style="text-align: left;">Model</th>
 <th style="text-align: left;">Type</th>
 <th style="text-align: left;">Key Innovation</th>
-<th style="text-align: left;">Walkthrough</th>
+<th style="text-align: left;">Code Walkthrough</th>
 </tr>
 </thead>
 <tbody>
